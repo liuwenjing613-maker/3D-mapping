@@ -46,4 +46,6 @@ Use `unified_eval/configs/replica_ca_v2.pending.json`. Supply both significant-o
 
 `eval-online-prefix` needs an online JSON manifest with the original experiment manifest, its method, every source frame in order, per-frame depth/intrinsics/pose `.npy` paths, and ordered checkpoints with committed canonical predictions. Each prediction must record `committed_frame_id` and `max_input_frame_id`. The evaluator constructs observed GT from only the depth frames received through each checkpoint and writes `prefix_curve.csv` and provenance. An example and exact field definitions are in the v2 metric document.
 
+`adapt-ovimap` accepts an OVI-MAP export with `xyz`, compact `instance` owner indices, and `native_instance_ids`, plus its export JSON and input-alignment JSON. It verifies the recorded frame list and maps each native instance independently under the same v2 protocol. The class labels are retained only as metadata; class-agnostic scores ignore them.
+
 The `repair.py` module remains unchanged. Repair Success, False Repair, and Repair Delay are not yet implemented as metrics. Official ScanNet evaluation remains separate and unchanged.

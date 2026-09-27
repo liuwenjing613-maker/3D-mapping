@@ -15,6 +15,7 @@ from .evaluate import evaluate_scenes
 from .io import load_gt, load_prediction, save_gt, save_prediction, sha256_file
 from .official_native import run_official_native
 from .online import evaluate_online_prefixes
+from .ovimap import adapt_export as adapt_ovimap_export
 from .replica import load_existing_reference
 from .schema import EvaluationError, Protocol
 
@@ -125,6 +126,56 @@ def cmd_adapt_conceptgraphs(args: argparse.Namespace) -> None:
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
     })
     print(f"Saved canonical prediction to {args.out}")
+
+
+def cmd_adapt_ovimap(args: argparse.Namespace) -> None:
+    protocol, raw, debug = load_protocol(args.config, args)
+    if not protocol.is_v2:
+        raise EvaluationError("OVI-MAP independent projection requires Replica-CA-v2")
+    gt = load_gt(args.gt)
+    source = json.loads(args.export_manifest.read_text(encoding="utf-8"))
+    alignment = json.loads(args.input_alignment.read_text(encoding="utf-8"))
+    frames = alignment.get("source_frames")
+    if (not isinstance(frames, list) or len(frames) != alignment.get("frames") or
+            not all(isinstance(x, int) and x >= 0 for x in frames) or
+            any(b <= a for a, b in zip(frames, frames[1:]))):
+        raise EvaluationError("OVI-MAP input alignment must give an increasing source frame list")
+    result = adapt_ovimap_export(args.export_npz, gt.xyz_ref,
+        protocol.geometry_mapping_max_distance_m, scene_id=gt.scene_id,
+        method_name=args.method_name, method_commit=args.method_commit,
+        protocol_version=protocol.name)
+    if source.get("vertices") != result.statistics["source_vertex_count"] or \
+            source.get("native_instance_count") != result.statistics["num_native_objects"]:
+        raise EvaluationError("OVI-MAP export manifest count differs from its NPZ")
+    result.prediction.metadata.update({
+        "source_export_manifest": str(args.export_manifest),
+        "source_export_manifest_sha256": sha256_file(args.export_manifest),
+        "source_mesh": source.get("mesh"), "source_mesh_sha256": source.get("mesh_sha256"),
+        "source_features": source.get("features"),
+        "source_features_sha256": source.get("features_sha256"),
+        "source_input_alignment": str(args.input_alignment),
+        "source_input_alignment_sha256": sha256_file(args.input_alignment),
+        "frame_count_from_source": len(frames),
+        "frame_list_sha256": hashlib.sha256(json.dumps(frames, separators=(",", ":")).encode()).hexdigest(),
+        "debug_only": debug,
+    })
+    args.out.mkdir(parents=True, exist_ok=True)
+    save_prediction(args.out / "canonical_prediction.npz", result.prediction)
+    write_json(args.out / "adapter_stats.json", result.statistics)
+    write_json(args.out / "adapter_manifest.json", {
+        "status": "DEBUG_ONLY / NON_OFFICIAL" if debug else "protocol_configured",
+        "evaluator_version": __version__, "config_file": str(args.config),
+        "config_file_sha256": sha256_file(args.config),
+        "effective_protocol_sha256": effective_protocol_sha256(raw),
+        "gt_file": str(args.gt), "gt_file_sha256": sha256_file(args.gt),
+        "source_export": str(args.export_npz), "source_export_sha256": sha256_file(args.export_npz),
+        "source_export_manifest": str(args.export_manifest),
+        "source_export_manifest_sha256": sha256_file(args.export_manifest),
+        "source_input_alignment": str(args.input_alignment),
+        "source_input_alignment_sha256": sha256_file(args.input_alignment),
+        "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+    })
+    print(f"Saved OVI-MAP canonical prediction to {args.out}")
 
 
 def cmd_eval_scene(args: argparse.Namespace) -> None:
@@ -296,6 +347,16 @@ def main() -> None:
     adapt.add_argument("--method-commit", required=True)
     adapt.add_argument("--out", type=Path, required=True)
     adapt.set_defaults(func=cmd_adapt_conceptgraphs)
+    ovi = commands.add_parser("adapt-ovimap")
+    add_protocol_args(ovi)
+    ovi.add_argument("--gt", type=Path, required=True)
+    ovi.add_argument("--export-npz", type=Path, required=True)
+    ovi.add_argument("--export-manifest", type=Path, required=True)
+    ovi.add_argument("--input-alignment", type=Path, required=True)
+    ovi.add_argument("--method-name", required=True)
+    ovi.add_argument("--method-commit", required=True)
+    ovi.add_argument("--out", type=Path, required=True)
+    ovi.set_defaults(func=cmd_adapt_ovimap)
     scene = commands.add_parser("eval-scene")
     add_protocol_args(scene)
     scene.add_argument("--gt", type=Path, required=True)
