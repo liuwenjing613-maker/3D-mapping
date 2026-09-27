@@ -1,0 +1,57 @@
+from __future__ import annotations
+
+import gzip
+import pickle
+from pathlib import Path
+
+import numpy as np
+
+from .geometry import MappingResult, map_point_labels_to_reference
+from .io import sha256_file
+from .schema import EvaluationError
+
+
+def adapt_map(map_path: str | Path, ref_xyz: np.ndarray, max_distance_m: float,
+              *, scene_id: str, method_name: str, method_commit: str,
+              protocol_version: str) -> MappingResult:
+    """Adapt a trusted ConceptGraphs pcd_*.pkl.gz map to reference vertex masks.
+
+    Pickle executes code when loaded. Only pass local outputs produced by the
+    trusted ConceptGraphs run, never a downloaded/untrusted pickle.
+    """
+    map_path = Path(map_path)
+    with gzip.open(map_path, "rb") as handle:
+        raw = pickle.load(handle)
+    if not isinstance(raw, dict) or not isinstance(raw.get("objects"), list):
+        raise EvaluationError("ConceptGraphs map must contain an objects list")
+    points = []
+    owners = []
+    confidence = {}
+    native_uids = {}
+    for index, obj in enumerate(raw["objects"]):
+        xyz = np.asarray(obj["pcd_np"], dtype=np.float64)
+        if xyz.ndim != 2 or xyz.shape[1] != 3:
+            raise EvaluationError(f"ConceptGraphs object {index} pcd_np is not [N,3]")
+        points.append(xyz)
+        owners.append(np.full(len(xyz), index, dtype=np.int64))
+        native_uids[index] = str(obj.get("id", index))
+        values = obj.get("conf", [])
+        if values:
+            confidence[index] = float(max(values))
+    pred_xyz = np.concatenate(points) if points else np.empty((0, 3))
+    labels = np.concatenate(owners) if owners else np.empty(0, dtype=np.int64)
+    result = map_point_labels_to_reference(pred_xyz, labels, ref_xyz, max_distance_m,
+        scene_id=scene_id, method_name=method_name, method_commit=method_commit,
+        adapter_version="conceptgraphs_pcd_v1", protocol_version=protocol_version,
+        confidence_by_id=confidence,
+        metadata={"source_map": str(map_path), "source_map_sha256": sha256_file(map_path),
+                  "native_object_count": len(raw["objects"]),
+                  "native_object_index_is_uid": True,
+                  "native_background_objects_included": True})
+    for instance in result.prediction.instances:
+        native_index = int(instance.instance_uid)
+        instance.instance_uid = native_uids[native_index]
+        instance.metadata["native_object_index"] = native_index
+    result.prediction.validate()
+    result.statistics["num_native_objects"] = len(raw["objects"])
+    return result

@@ -1,4 +1,4 @@
-# repair
+# 3D-mapping
 
 Unified evaluation code for 3D instance maps. The current frozen protocol is **Replica-CA-v1**, a class-agnostic evaluation on a shared Replica reference mesh. It reports uniform-confidence AP, AP50, AP25, panoptic quality, and instance diagnostics. These are custom Replica metrics, not official ScanNet AP.
 
@@ -38,7 +38,6 @@ python -m unified_eval.cli eval-scene \
 
 `metrics.json`, `overlap_matrix.npz`, and `manifest.json` are written under the evaluation output. The adapter writes `canonical_prediction.npz`, `adapter_stats.json`, and `adapter_manifest.json`. `eval-batch` accepts a JSON object with `scenes: [{"gt": "...", "prediction": "..."}]`.
 
-The frozen config uses a maximum projection distance of 0.05 m and a minimum of 100 valid vertices per instance. Its `reference_source` field records the original protocol provenance; supply your own reference root at export time. `replica_ca_v1.pending.json` is an unfinished draft and is not the frozen protocol.
+The frozen config uses a maximum projection distance of 0.05 m and a minimum of 100 valid vertices per instance. Supply your own reference root at export time. The public config replaces server-specific provenance paths with generic descriptions, so its file hash differs from the original internal config while the metric parameters remain the same. `replica_ca_v1.pending.json` is an unfinished draft and is not the frozen protocol.
 
 The `repair.py` module currently defines data types only. Repair Success, False Repair, and Repair Delay are not yet implemented as metrics.
-
