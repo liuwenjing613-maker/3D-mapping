@@ -1,6 +1,7 @@
 """Replica-CA-v3: competitive main metric and independent structure support."""
 
 from argparse import Namespace
+from dataclasses import replace
 import gzip
 import json
 import pickle
@@ -14,6 +15,7 @@ from unified_eval.conceptgraphs import adapt_map
 from unified_eval.evaluate import evaluate_scenes
 from unified_eval.geometry import map_instances_to_reference_v3
 from unified_eval.io import save_gt, save_prediction
+from unified_eval.online import evaluate_online_prefixes
 from unified_eval.ovimap import adapt_export
 from unified_eval.schema import CanonicalGT, EvaluationError, Protocol
 
@@ -195,3 +197,37 @@ def test_v3_pending_config_fails_closed_and_debug_cli_keeps_diagnostic_separate(
     args.diagnostic_pred = tmp_path / "missing.npz"
     with pytest.raises(EvaluationError, match="diagnostic support"):
         cmd_eval_scene(args)
+
+
+def test_v3_online_prefix_requires_checkpoint_support_and_observation_gate(tmp_path):
+    gt = gt_for([1, 2], spacing=1)
+    gt.xyz_ref = np.array([[0., 0, 1], [1., 0, 1]])
+    for frame_id, depth in enumerate(([[1., 0.]], [[0., 1.]])):
+        np.save(tmp_path / f"depth{frame_id}.npy", np.array(depth))
+    np.save(tmp_path / "k.npy", np.eye(3))
+    np.save(tmp_path / "pose.npy", np.eye(4))
+    source = {"entries": [{"scene": "toy", "method": "toy", "cost": {"frames": 2},
+                           "input": {"start": 0, "end": 2, "stride": 1}}]}
+    (tmp_path / "source.json").write_text(json.dumps(source))
+    for frame_id, clouds in enumerate(([], [gt.xyz_ref[:1], gt.xyz_ref[1:]])):
+        value = mapped(gt, clouds)
+        value.prediction.metadata.update({"committed_frame_id": frame_id,
+                                          "max_input_frame_id": frame_id})
+        save_prediction(tmp_path / f"pred{frame_id}.npz", value.prediction)
+        save_prediction(tmp_path / f"diag{frame_id}.npz", value.diagnostic_prediction)
+    spec = {"scene_id": "toy", "source_experiment_manifest": "source.json",
+            "source_method": "toy", "observation_max_distance_m": .02,
+            "frames": [{"frame_id": i, "depth_m": f"depth{i}.npy", "intrinsics": "k.npy",
+                        "world_from_camera": "pose.npy"} for i in range(2)],
+            "checkpoints": [{"frame_id": i, "prediction": f"pred{i}.npz",
+                             "diagnostic_prediction": f"diag{i}.npz"} for i in range(2)]}
+    manifest = tmp_path / "online.json"
+    manifest.write_text(json.dumps(spec))
+    rows, provenance = evaluate_online_prefixes(gt, replace(protocol(), min_valid_instance_vertices=1), manifest)
+    assert [row["observed_reference_vertices"] for row in rows] == [1, 2]
+    assert [row["CA_PRF1_0_5"]["F1"] for row in rows] == [0, 1]
+    assert provenance["observation_max_distance_m"] == .02
+    del spec["observation_max_distance_m"]
+    manifest.write_text(json.dumps(spec))
+    with pytest.raises(EvaluationError, match="observation_max_distance_m"):
+        evaluate_online_prefixes(gt, replace(protocol(), min_valid_instance_vertices=1), manifest)

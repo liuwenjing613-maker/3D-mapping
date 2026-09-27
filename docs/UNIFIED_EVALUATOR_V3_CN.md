@@ -24,7 +24,7 @@
 
 ## 服务器校验结果
 
-服务器代码：`/home/chenkejun/CVPR/3D-mapping`；数据与完整逐条件结果：`/data/chenkejun/CVPR/evaluation_results/replica_v3_geometry_20260927`。复用八场景原 reference，调试用 GT 最小顶点数 100。服务器完整回归：**44 passed**（`REPLICA_REFERENCE_ROOT=... python -m pytest -q unified_eval/tests`）。
+服务器代码：`/home/chenkejun/CVPR/3D-mapping`；数据与完整逐条件结果：`/data/chenkejun/CVPR/evaluation_results/replica_v3_geometry_20260927`。复用八场景原 reference，调试用 GT 最小顶点数 100。服务器完整回归：**45 passed**（`REPLICA_REFERENCE_ROOT=... python -m pytest -q unified_eval/tests`），包括在线前缀的双预测与观测门控校验。
 
 | GT oracle 条件 | 1 cm | 2 cm | 5 cm |
 |---|---:|---:|---:|
