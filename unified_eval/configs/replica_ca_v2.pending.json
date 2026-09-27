@@ -8,10 +8,10 @@
   "ap_policy": "replica_ca_101",
   "geometry_mapping": {
     "method": "independent_nearest_neighbor_per_instance",
-    "max_distance_m": 0.05
+    "max_distance_m": null
   },
   "instance_filter": {
-    "min_valid_instance_vertices": 100,
+    "min_valid_instance_vertices": null,
     "min_prediction_vertices": 0
   },
   "ignore_policy": {
@@ -21,5 +21,5 @@
     "min_intersection_vertices": null,
     "min_gt_fraction": null
   },
-  "source_policy": "Use the same GT, frame list, trajectory and input manifests as Replica-CA-v1; calibrate significant-overlap thresholds on development scenes before freezing"
+  "source_policy": "Use the same GT, frame list, trajectory and input manifests as Replica-CA-v1; calibrate geometry distance, GT size and significant-overlap thresholds before freezing"
 }

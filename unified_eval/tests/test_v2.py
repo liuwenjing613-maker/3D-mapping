@@ -139,6 +139,12 @@ def test_pending_v2_refuses_to_score_without_calibrated_thresholds():
         "debug_min_valid_instance_vertices": None,
         "debug_significant_min_vertices": None,
         "debug_significant_min_gt_fraction": None})()
+    with pytest.raises(EvaluationError, match="geometry_mapping.max_distance_m"):
+        load_protocol(config, args)
+    args.debug_max_distance_m = 0.05
+    with pytest.raises(EvaluationError, match="min_valid_instance_vertices"):
+        load_protocol(config, args)
+    args.debug_min_valid_instance_vertices = 100
     with pytest.raises(EvaluationError, match="significant_overlap thresholds"):
         load_protocol(config, args)
     args.debug_significant_min_vertices = 10
@@ -177,7 +183,7 @@ def test_online_prefix_uses_only_past_depth_and_rejects_future_input(tmp_path):
     save_gt(gt_file, gt)
     config = Path(__file__).parents[1] / "configs" / "replica_ca_v2.pending.json"
     args = Namespace(config=config, gt=gt_file, online_manifest=path,
-        out=tmp_path / "online_output", debug_max_distance_m=None,
+        out=tmp_path / "online_output", debug_max_distance_m=0.05,
         debug_min_valid_instance_vertices=1, debug_significant_min_vertices=1,
         debug_significant_min_gt_fraction=0.05)
     cmd_eval_online_prefix(args)
@@ -200,7 +206,7 @@ def test_v2_eval_scene_writes_explicit_ignore_fraction(tmp_path):
     save_prediction(pred_file, pred)
     args = Namespace(config=Path(__file__).parents[1] / "configs" / "replica_ca_v2.pending.json",
         gt=gt_file, pred=pred_file, out=tmp_path / "evaluation",
-        debug_max_distance_m=None, debug_min_valid_instance_vertices=None,
+        debug_max_distance_m=0.05, debug_min_valid_instance_vertices=100,
         debug_significant_min_vertices=10, debug_significant_min_gt_fraction=0.05)
     cmd_eval_scene(args)
     output = json.loads((args.out / "metrics.json").read_text())
