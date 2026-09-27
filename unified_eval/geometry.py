@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+import hashlib
 
 import numpy as np
 from scipy.spatial import cKDTree
@@ -13,6 +14,105 @@ class MappingResult:
     prediction: CanonicalPrediction
     statistics: dict
     distances_m: np.ndarray
+    diagnostic_prediction: CanonicalPrediction | None = None
+
+
+def _validated_clouds(point_clouds: list[np.ndarray]) -> list[np.ndarray]:
+    clouds = []
+    for index, points in enumerate(point_clouds):
+        xyz = np.asarray(points, dtype=np.float64)
+        if xyz.ndim != 2 or xyz.shape[1] != 3 or not np.isfinite(xyz).all():
+            raise EvaluationError(f"Native object {index} points must be finite [N,3]")
+        clouds.append(xyz)
+    return clouds
+
+
+def pairwise_geometry_support(point_clouds: list[np.ndarray], ref_xyz: np.ndarray,
+                              max_distance_m: float, *, scene_id: str,
+                              method_name: str, method_commit: str,
+                              adapter_version: str, protocol_version: str,
+                              metadata: dict | None = None) -> CanonicalPrediction:
+    """Independent native-to-reference support, exclusively for structure diagnostics.
+
+    This may overlap and must never be passed to the main AP/PQ calculation.
+    """
+    return map_instances_to_reference_v2(point_clouds, ref_xyz, max_distance_m,
+        scene_id=scene_id, method_name=method_name, method_commit=method_commit,
+        adapter_version=adapter_version + "_pairwise_support",
+        protocol_version=protocol_version, metadata=metadata).prediction
+
+
+def map_instances_to_reference_v3(
+    point_clouds: list[np.ndarray], ref_xyz: np.ndarray, max_distance_m: float, *,
+    scene_id: str, method_name: str, method_commit: str, adapter_version: str,
+    protocol_version: str, confidence_by_index: dict[int, float] | None = None,
+    diagnostic_distance_m: float | None = None, metadata: dict | None = None,
+) -> MappingResult:
+    """One nearest native instance per reference vertex; retain empty instances.
+
+    Exact coordinate ties are resolved by a content-derived cloud ordering, so
+    source file, object ID and point order do not alter the metric values.
+    """
+    ref = np.asarray(ref_xyz, dtype=np.float64)
+    if ref.ndim != 2 or ref.shape[1] != 3 or not np.isfinite(ref).all():
+        raise EvaluationError("ref_xyz must be finite and have shape [N,3]")
+    if not np.isfinite(max_distance_m) or max_distance_m <= 0:
+        raise EvaluationError("max_distance_m must be finite and positive")
+    clouds = _validated_clouds(point_clouds)
+    canonical = []
+    for index, xyz in enumerate(clouds):
+        ordered = np.ascontiguousarray(xyz[np.lexsort((xyz[:, 2], xyz[:, 1], xyz[:, 0]))])
+        digest = hashlib.sha256(ordered.tobytes()).hexdigest()
+        canonical.append((digest, index, ordered))
+    canonical.sort(key=lambda row: row[0])
+    nonempty = [(index, xyz) for _, index, xyz in canonical if len(xyz)]
+    if nonempty and len(ref):
+        all_xyz = np.concatenate([xyz for _, xyz in nonempty])
+        all_owner = np.concatenate([np.full(len(xyz), index, dtype=np.int32)
+                                    for index, xyz in nonempty])
+        # Identical native coordinates are represented once. The first owner is
+        # deterministic in the content-derived ordering; no duplicate is lost.
+        unique_xyz, first = np.unique(all_xyz, axis=0, return_index=True)
+        owners = all_owner[first]
+        distances, nearest = cKDTree(unique_xyz).query(ref, k=1, workers=-1)
+        winner = owners[nearest]
+        assigned = distances < max_distance_m
+    else:
+        distances = np.full(len(ref), np.inf)
+        winner = np.full(len(ref), -1, dtype=np.int32)
+        assigned = np.zeros(len(ref), dtype=bool)
+    instances = [CanonicalInstance(str(index),
+        np.flatnonzero(assigned & (winner == index)).astype(np.int32),
+        None if confidence_by_index is None else confidence_by_index.get(index))
+        for index in range(len(clouds))]
+    prediction = CanonicalPrediction(scene_id, len(ref), instances, method_name,
+        method_commit, adapter_version, protocol_version, True, metadata or {})
+    prediction.validate()
+    diagnostic = None
+    if diagnostic_distance_m is not None:
+        diagnostic = pairwise_geometry_support(clouds, ref, diagnostic_distance_m,
+            scene_id=scene_id, method_name=method_name, method_commit=method_commit,
+            adapter_version=adapter_version, protocol_version=protocol_version,
+            metadata={"role": "structure_diagnostics_only"})
+    finite = distances[np.isfinite(distances)]
+    stats = {
+        "num_native_points": int(sum(len(x) for x in clouds)),
+        "num_pred_instances_before_filter": len(clouds),
+        "num_pred_instances_after_filter": len(instances),
+        "native_empty_object_count": sum(len(x) == 0 for x in clouds),
+        "projected_empty_object_count": sum(len(x.vertex_indices) == 0 for x in instances),
+        "mapped_ref_vertices": int(assigned.sum()),
+        "unmapped_ref_vertices": int(len(ref) - assigned.sum()),
+        "mapping_coverage": float(assigned.mean()) if len(ref) else None,
+        "mean_nn_distance_m": float(finite.mean()) if len(finite) else None,
+        "median_nn_distance_m": float(np.median(finite)) if len(finite) else None,
+        "p95_nn_distance_m": float(np.percentile(finite, 95)) if len(finite) else None,
+        "max_distance_m": float(max_distance_m),
+        "diagnostic_max_distance_m": diagnostic_distance_m,
+        "mapping_direction": "competitive_reference_to_nearest_native_instance",
+        "is_partition": True,
+    }
+    return MappingResult(prediction, stats, distances, diagnostic)
 
 
 def map_point_labels_to_reference(

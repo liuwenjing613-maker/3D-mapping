@@ -11,7 +11,7 @@ from dataclasses import replace
 import numpy as np
 
 from .evaluate import evaluate_scenes
-from .geometry import map_instances_to_reference_v2
+from .geometry import map_instances_to_reference_v2, map_instances_to_reference_v3
 from .schema import CanonicalGT, EvaluationError, Protocol
 
 
@@ -47,10 +47,11 @@ def oracle_clouds(gt: CanonicalGT, ids: np.ndarray, *, sigma_m: float = 0.0,
 def evaluate_oracle(gt: CanonicalGT, protocol: Protocol, ids: np.ndarray,
                     clouds: list[np.ndarray], *, delta_m: float) -> dict:
     """Run the actual mapper and metric engine, with GT only as synthetic input."""
-    if not protocol.is_v2 or len(ids) != len(clouds):
-        raise EvaluationError("Oracle requires v2 and one cloud per GT ID")
+    if not protocol.retains_predictions or len(ids) != len(clouds):
+        raise EvaluationError("Oracle requires v2/v3 and one cloud per GT ID")
     effective = replace(protocol, geometry_mapping_max_distance_m=float(delta_m))
-    mapped = map_instances_to_reference_v2(clouds, gt.xyz_ref, delta_m,
+    mapper = map_instances_to_reference_v3 if protocol.is_v3 else map_instances_to_reference_v2
+    mapped = mapper(clouds, gt.xyz_ref, delta_m,
         scene_id=gt.scene_id, method_name="GT geometry oracle",
         method_commit="DIAGNOSTIC_ONLY", adapter_version="oracle_calibration",
         protocol_version=effective.name)
@@ -77,7 +78,7 @@ def evaluate_oracle(gt: CanonicalGT, protocol: Protocol, ids: np.ndarray,
         "self_iou_le_0p5_gt_ids": [int(ids[i]) for i, value in enumerate(own_iou)
                                     if value <= 0.5],
         "foreign_instance_vertex_claims": foreign_vertices,
-        "overlapped_ref_vertices": mapped.statistics["overlapped_ref_vertices"],
+        "overlapped_ref_vertices": mapped.statistics.get("overlapped_ref_vertices", 0),
         "PQ": summary["CA_PQ"]["PQ"],
         "PQ_status": summary["CA_PQ"]["status"],
     }

@@ -13,6 +13,7 @@ from . import __version__
 from .conceptgraphs import adapt_map
 from .evaluate import evaluate_scenes
 from .io import load_gt, load_prediction, save_gt, save_prediction, sha256_file
+from .metrics import build_overlap
 from .official_native import run_official_native
 from .online import evaluate_online_prefixes
 from .ovimap import adapt_export as adapt_ovimap_export
@@ -38,12 +39,15 @@ def effective_protocol_sha256(raw: dict) -> str:
 def load_protocol(path: Path, args: argparse.Namespace) -> tuple[Protocol, dict, bool]:
     raw = json.loads(path.read_text(encoding="utf-8"))
     debug = (args.debug_max_distance_m is not None or
+             getattr(args, "debug_diagnostic_max_distance_m", None) is not None or
              args.debug_min_valid_instance_vertices is not None or
              args.debug_significant_min_vertices is not None or
              args.debug_significant_min_gt_fraction is not None or
              raw.get("frozen") is not True)
     if args.debug_max_distance_m is not None:
         raw["geometry_mapping"]["max_distance_m"] = args.debug_max_distance_m
+    if getattr(args, "debug_diagnostic_max_distance_m", None) is not None:
+        raw["diagnostic_mapping"]["max_distance_m"] = args.debug_diagnostic_max_distance_m
     if args.debug_min_valid_instance_vertices is not None:
         raw["instance_filter"]["min_valid_instance_vertices"] = args.debug_min_valid_instance_vertices
     if args.debug_significant_min_vertices is not None:
@@ -57,6 +61,7 @@ def load_protocol(path: Path, args: argparse.Namespace) -> tuple[Protocol, dict,
 def add_protocol_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--debug-max-distance-m", type=float)
+    parser.add_argument("--debug-diagnostic-max-distance-m", type=float)
     parser.add_argument("--debug-min-valid-instance-vertices", type=int)
     parser.add_argument("--debug-significant-min-vertices", type=int)
     parser.add_argument("--debug-significant-min-gt-fraction", type=float)
@@ -95,7 +100,8 @@ def cmd_adapt_conceptgraphs(args: argparse.Namespace) -> None:
     result = adapt_map(args.map, gt.xyz_ref, protocol.geometry_mapping_max_distance_m,
         scene_id=gt.scene_id, method_name=args.method_name,
         method_commit=args.method_commit, protocol_version=protocol.name,
-        mapping_method=protocol.geometry_mapping_method)
+        mapping_method=protocol.geometry_mapping_method,
+        diagnostic_distance_m=protocol.diagnostic_max_distance_m)
     result.prediction.metadata.update({
         "source_experiment_manifest": str(args.experiment_manifest),
         "source_experiment_manifest_sha256": sha256_file(args.experiment_manifest),
@@ -113,6 +119,11 @@ def cmd_adapt_conceptgraphs(args: argparse.Namespace) -> None:
     result.prediction.metadata["debug_only"] = debug
     args.out.mkdir(parents=True, exist_ok=True)
     save_prediction(args.out / "canonical_prediction.npz", result.prediction)
+    if protocol.is_v3:
+        if result.diagnostic_prediction is None:
+            raise EvaluationError("Replica-CA-v3 adapter did not produce pairwise support")
+        result.diagnostic_prediction.metadata["source_map_sha256"] = result.prediction.metadata["source_map_sha256"]
+        save_prediction(args.out / "diagnostic_support_prediction.npz", result.diagnostic_prediction)
     write_json(args.out / "adapter_stats.json", result.statistics)
     write_json(args.out / "adapter_manifest.json", {
         "status": "DEBUG_ONLY / NON_OFFICIAL" if debug else "protocol_configured",
@@ -130,8 +141,8 @@ def cmd_adapt_conceptgraphs(args: argparse.Namespace) -> None:
 
 def cmd_adapt_ovimap(args: argparse.Namespace) -> None:
     protocol, raw, debug = load_protocol(args.config, args)
-    if not protocol.is_v2:
-        raise EvaluationError("OVI-MAP independent projection requires Replica-CA-v2")
+    if not protocol.retains_predictions:
+        raise EvaluationError("OVI-MAP adapter requires Replica-CA-v2 or v3")
     gt = load_gt(args.gt)
     source = json.loads(args.export_manifest.read_text(encoding="utf-8"))
     alignment = json.loads(args.input_alignment.read_text(encoding="utf-8"))
@@ -143,7 +154,8 @@ def cmd_adapt_ovimap(args: argparse.Namespace) -> None:
     result = adapt_ovimap_export(args.export_npz, gt.xyz_ref,
         protocol.geometry_mapping_max_distance_m, scene_id=gt.scene_id,
         method_name=args.method_name, method_commit=args.method_commit,
-        protocol_version=protocol.name)
+        protocol_version=protocol.name, mapping_method=protocol.geometry_mapping_method,
+        diagnostic_distance_m=protocol.diagnostic_max_distance_m)
     if source.get("vertices") != result.statistics["source_vertex_count"] or \
             source.get("native_instance_count") != result.statistics["num_native_objects"]:
         raise EvaluationError("OVI-MAP export manifest count differs from its NPZ")
@@ -161,6 +173,11 @@ def cmd_adapt_ovimap(args: argparse.Namespace) -> None:
     })
     args.out.mkdir(parents=True, exist_ok=True)
     save_prediction(args.out / "canonical_prediction.npz", result.prediction)
+    if protocol.is_v3:
+        if result.diagnostic_prediction is None:
+            raise EvaluationError("Replica-CA-v3 adapter did not produce pairwise support")
+        result.diagnostic_prediction.metadata["source_export_sha256"] = result.prediction.metadata["source_export_sha256"]
+        save_prediction(args.out / "diagnostic_support_prediction.npz", result.diagnostic_prediction)
     write_json(args.out / "adapter_stats.json", result.statistics)
     write_json(args.out / "adapter_manifest.json", {
         "status": "DEBUG_ONLY / NON_OFFICIAL" if debug else "protocol_configured",
@@ -182,7 +199,19 @@ def cmd_eval_scene(args: argparse.Namespace) -> None:
     protocol, raw, debug = load_protocol(args.config, args)
     gt = load_gt(args.gt)
     pred = load_prediction(args.pred)
-    summary, per_scene, overlaps = evaluate_scenes([(gt, pred)], protocol)
+    diag_path = (getattr(args, "diagnostic_pred", None) or
+        args.pred.parent / "diagnostic_support_prediction.npz") if protocol.is_v3 else None
+    if protocol.is_v3 and not diag_path.is_file():
+        raise EvaluationError("Replica-CA-v3 requires the matching diagnostic support prediction")
+    diag = load_prediction(diag_path) if diag_path is not None else None
+    if diag is not None and diag.metadata.get("role") != "structure_diagnostics_only":
+        raise EvaluationError("Diagnostic prediction has the wrong role")
+    if diag is not None:
+        for key in ("source_map_sha256", "source_export_sha256"):
+            if key in pred.metadata and diag.metadata.get(key) != pred.metadata[key]:
+                raise EvaluationError("Diagnostic and main predictions come from different native maps")
+    summary, per_scene, overlaps = evaluate_scenes([(gt, pred)], protocol,
+        diagnostic_predictions=[diag] if diag is not None else None)
     args.out.mkdir(parents=True, exist_ok=True)
     metrics = per_scene[0]
     status = "DEBUG_ONLY / NON_OFFICIAL" if debug or pred.metadata.get("debug_only") else "protocol_configured"
@@ -195,7 +224,16 @@ def cmd_eval_scene(args: argparse.Namespace) -> None:
         precision=overlap.precision, recall=overlap.recall,
         pred_size=overlap.pred_size, gt_size=overlap.gt_size,
         pred_void_fraction=overlap.pred_void_fraction,
-        **({"pred_ignore_fraction": overlap.pred_void_fraction} if protocol.is_v2 else {}))
+        **({"pred_ignore_fraction": overlap.pred_void_fraction} if protocol.retains_predictions else {}))
+    if diag is not None:
+        pairwise = build_overlap(gt, diag, protocol)
+        np.savez_compressed(args.out / "pairwise_support_matrix.npz",
+            pred_uids=np.array(pairwise.pred_uids, dtype=str), gt_ids=pairwise.gt_ids,
+            supported_gt_vertices=pairwise.intersection,
+            supported_gt_fraction=pairwise.recall,
+            independent_iou=pairwise.iou,
+            gt_size=pairwise.gt_size, pred_supported_size=pairwise.pred_size,
+            diagnostic_max_distance_m=protocol.diagnostic_max_distance_m)
     write_json(args.out / "manifest.json", {
         "status": status, "protocol": protocol.name, "protocol_config": raw,
         "protocol_config_sha256": sha256_file(args.config),
@@ -206,6 +244,8 @@ def cmd_eval_scene(args: argparse.Namespace) -> None:
         "confidence_mode": protocol.confidence_mode,
         "gt_file": str(args.gt), "gt_sha256": sha256_file(args.gt),
         "prediction_file": str(args.pred), "prediction_sha256": sha256_file(args.pred),
+        "diagnostic_prediction_file": str(diag_path) if diag_path else None,
+        "diagnostic_prediction_sha256": sha256_file(diag_path) if diag_path else None,
         "reference_source": gt.metadata,
         "prediction_source": pred.metadata,
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
@@ -222,9 +262,21 @@ def cmd_eval_batch(args: argparse.Namespace) -> None:
     if not entries:
         raise EvaluationError("Batch scene list is empty")
     scenes = [(load_gt(entry["gt"]), load_prediction(entry["prediction"])) for entry in entries]
+    diagnostic_predictions = None
+    if protocol.is_v3:
+        if any("diagnostic_prediction" not in entry for entry in entries):
+            raise EvaluationError("Replica-CA-v3 batch requires diagnostic_prediction for every scene")
+        diagnostic_predictions = [load_prediction(entry["diagnostic_prediction"]) for entry in entries]
+        if any(p.metadata.get("role") != "structure_diagnostics_only" for p in diagnostic_predictions):
+            raise EvaluationError("Batch diagnostic prediction has the wrong role")
+        for (_, pred), diag in zip(scenes, diagnostic_predictions):
+            for key in ("source_map_sha256", "source_export_sha256"):
+                if key in pred.metadata and diag.metadata.get(key) != pred.metadata[key]:
+                    raise EvaluationError("Batch diagnostic and main predictions come from different native maps")
     if len({gt.scene_id for gt, _ in scenes}) != len(scenes):
         raise EvaluationError("Batch contains duplicate scene IDs")
-    summary, per_scene, _ = evaluate_scenes(scenes, protocol)
+    summary, per_scene, _ = evaluate_scenes(scenes, protocol,
+        diagnostic_predictions=diagnostic_predictions)
     status = "DEBUG_ONLY / NON_OFFICIAL" if debug or any(p.metadata.get("debug_only") for _, p in scenes) else "protocol_configured"
     summary["status"] = status
     args.out.mkdir(parents=True, exist_ok=True)
@@ -237,12 +289,15 @@ def cmd_eval_batch(args: argparse.Namespace) -> None:
         "scene_inputs": [{"scene": gt.scene_id, "gt": entry["gt"],
             "gt_sha256": sha256_file(entry["gt"]), "prediction": entry["prediction"],
             "prediction_sha256": sha256_file(entry["prediction"]),
+            "diagnostic_prediction": entry.get("diagnostic_prediction"),
+            "diagnostic_prediction_sha256": sha256_file(entry["diagnostic_prediction"])
+                if "diagnostic_prediction" in entry else None,
             "reference_source": gt.metadata} for entry, (gt, _) in zip(entries, scenes)],
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
     })
     fields = ["scene_id", "CA_AP_uniform", "CA_AP50_uniform", "CA_AP25_uniform",
               "CA_PQ", "CA_SQ", "CA_RQ", "TP", "FP", "FN"]
-    if protocol.is_v2:
+    if protocol.retains_predictions:
         fields += ["CA_P_0_5", "CA_R_0_5", "CA_F1_0_5", "split_gt_rate",
                    "merge_prediction_rate", "duplicate_prediction_rate"]
     fields += ["status"]
@@ -255,7 +310,7 @@ def cmd_eval_batch(args: argparse.Namespace) -> None:
                 "CA_AP50_uniform": row["CA_AP50_uniform"], "CA_AP25_uniform": row["CA_AP25_uniform"],
                 "CA_PQ": pq["PQ"], "CA_SQ": pq["SQ"], "CA_RQ": pq["RQ"],
                 "TP": pq["TP"], "FP": pq["FP"], "FN": pq["FN"], "status": status}
-            if protocol.is_v2:
+            if protocol.retains_predictions:
                 prf, structure = row["CA_PRF1_0_5"], row["structure"]
                 values.update({"CA_P_0_5": prf["P"], "CA_R_0_5": prf["R"],
                                "CA_F1_0_5": prf["F1"],
@@ -267,7 +322,7 @@ def cmd_eval_batch(args: argparse.Namespace) -> None:
         with (args.out / "summary.csv").open("w", encoding="utf-8", newline="") as handle:
             aggregate_fields = ["protocol", "scene_count", "CA_AP_uniform", "CA_AP50_uniform",
                                 "CA_AP25_uniform", "CA_PQ", "CA_SQ", "CA_RQ"]
-            if protocol.is_v2:
+            if protocol.retains_predictions:
                 aggregate_fields += ["CA_F1_0_5", "split_gt_rate", "merge_prediction_rate",
                                      "duplicate_prediction_rate", "macro_CA_AP50_uniform", "macro_CA_F1_0_5"]
             writer = csv.DictWriter(handle, fieldnames=aggregate_fields)
@@ -277,7 +332,7 @@ def cmd_eval_batch(args: argparse.Namespace) -> None:
                 "CA_AP25_uniform": summary["CA_AP25_uniform"],
                 "CA_PQ": summary["CA_PQ"]["PQ"], "CA_SQ": summary["CA_PQ"]["SQ"],
                 "CA_RQ": summary["CA_PQ"]["RQ"]}
-            if protocol.is_v2:
+            if protocol.retains_predictions:
                 values.update({"CA_F1_0_5": summary["CA_PRF1_0_5"]["F1"],
                                "split_gt_rate": summary["structure"]["split_gt_rate"],
                                "merge_prediction_rate": summary["structure"]["merge_prediction_rate"],
@@ -331,7 +386,7 @@ def cmd_eval_online_prefix(args: argparse.Namespace) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Unified class-agnostic instance evaluator v1/v2")
+    parser = argparse.ArgumentParser(description="Unified class-agnostic instance evaluator v1/v2/v3")
     commands = parser.add_subparsers(dest="command", required=True)
     export = commands.add_parser("export-replica-gt")
     export.add_argument("--reference-root", type=Path, required=True)
@@ -361,6 +416,7 @@ def main() -> None:
     add_protocol_args(scene)
     scene.add_argument("--gt", type=Path, required=True)
     scene.add_argument("--pred", type=Path, required=True)
+    scene.add_argument("--diagnostic-pred", type=Path)
     scene.add_argument("--out", type=Path, required=True)
     scene.set_defaults(func=cmd_eval_scene)
     batch = commands.add_parser("eval-batch")

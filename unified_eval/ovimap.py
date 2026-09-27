@@ -4,14 +4,15 @@ from pathlib import Path
 
 import numpy as np
 
-from .geometry import MappingResult, map_instances_to_reference_v2
+from .geometry import MappingResult, map_instances_to_reference_v2, map_instances_to_reference_v3
 from .io import sha256_file
 from .schema import EvaluationError
 
 
 def adapt_export(export_path: str | Path, ref_xyz: np.ndarray, max_distance_m: float,
                  *, scene_id: str, method_name: str, method_commit: str,
-                 protocol_version: str) -> MappingResult:
+                 protocol_version: str, mapping_method: str = "independent_nearest_neighbor_per_instance",
+                 diagnostic_distance_m: float | None = None) -> MappingResult:
     """Map every OVI-MAP exported instance independently onto the shared GT mesh."""
     export_path = Path(export_path)
     with np.load(export_path, allow_pickle=False) as data:
@@ -46,9 +47,16 @@ def adapt_export(export_path: str | Path, ref_xyz: np.ndarray, max_distance_m: f
         left = np.searchsorted(sorted_labels, index, side="left")
         right = np.searchsorted(sorted_labels, index, side="right")
         clouds.append(sorted_xyz[left:right])
-    result = map_instances_to_reference_v2(clouds, ref_xyz, max_distance_m,
+    if mapping_method not in ("independent_nearest_neighbor_per_instance", "competitive_nearest_instance"):
+        raise EvaluationError("Unsupported OVI-MAP mapping method")
+    mapper = (map_instances_to_reference_v3 if mapping_method == "competitive_nearest_instance"
+              else map_instances_to_reference_v2)
+    kwargs = ({"diagnostic_distance_m": diagnostic_distance_m}
+              if mapping_method == "competitive_nearest_instance" else {})
+    result = mapper(clouds, ref_xyz, max_distance_m,
         scene_id=scene_id, method_name=method_name, method_commit=method_commit,
-        adapter_version="ovimap_export_v2", protocol_version=protocol_version,
+        adapter_version="ovimap_export_v3" if kwargs else "ovimap_export_v2",
+        protocol_version=protocol_version, **kwargs,
         metadata={"source_export": str(export_path),
                   "source_export_sha256": sha256_file(export_path),
                   "native_object_count": len(native_ids),
@@ -59,6 +67,9 @@ def adapt_export(export_path: str | Path, ref_xyz: np.ndarray, max_distance_m: f
         instance.metadata["native_instance_id"] = int(native_ids[index])
         if classes is not None:
             instance.semantic_id = int(classes[index]) if classes[index] > 0 else None
+    if result.diagnostic_prediction is not None:
+        for index, instance in enumerate(result.diagnostic_prediction.instances):
+            instance.instance_uid = f"ovi-id:{int(native_ids[index])}"
     result.prediction.validate()
     result.statistics.update({"num_native_objects": len(native_ids),
                               "source_vertex_count": len(xyz),

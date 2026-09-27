@@ -10,19 +10,37 @@ AP_THRESHOLDS = [round(x / 100, 2) for x in range(50, 100, 5)]
 
 
 def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], protocol: Protocol,
-                    observed_masks: list | None = None) -> tuple[dict, list[dict], list]:
+                    observed_masks: list | None = None,
+                    diagnostic_predictions: list[CanonicalPrediction] | None = None) -> tuple[dict, list[dict], list]:
     if not scenes:
         raise ValueError("At least one scene is required")
     if observed_masks is not None and len(observed_masks) != len(scenes):
         raise ValueError("Observed mask count must match scene count")
+    if diagnostic_predictions is not None and len(diagnostic_predictions) != len(scenes):
+        raise ValueError("Diagnostic prediction count must match scene count")
+    if protocol.is_v3 and diagnostic_predictions is not None:
+        for (_, pred), diag in zip(scenes, diagnostic_predictions):
+            if not pred.is_partition or pred.metadata.get("role") == "structure_diagnostics_only":
+                raise ValueError("v3 main prediction must be a competitive partition")
+            if diag.metadata.get("role") != "structure_diagnostics_only":
+                raise ValueError("v3 diagnostic prediction must carry the diagnostic role")
+            if [x.instance_uid for x in pred.instances] != [x.instance_uid for x in diag.instances]:
+                raise ValueError("Diagnostic prediction must retain the same native instances and order")
+    elif protocol.is_v3 and any(not pred.is_partition or
+             pred.metadata.get("role") == "structure_diagnostics_only" for _, pred in scenes):
+        raise ValueError("v3 main prediction must be a competitive partition")
     overlaps = [build_overlap(gt, pred, protocol, None if observed_masks is None else observed_masks[i])
                 for i, (gt, pred) in enumerate(scenes)]
+    diagnostic_overlaps = ([build_overlap(gt, diag, protocol,
+        None if observed_masks is None else observed_masks[i])
+        for i, ((gt, _), diag) in enumerate(zip(scenes, diagnostic_predictions))]
+        if protocol.is_v3 and diagnostic_predictions is not None else None)
     predictions = [p for _, p in scenes]
     thresholds = [0.25] + AP_THRESHOLDS
     pooled_ap = {f"{t:.2f}": average_precision(overlaps, predictions, protocol.confidence_mode, t,
         protocol.ignore_unmatched_pred_void_fraction_gt) for t in thresholds}
     per_scene = []
-    for (gt, pred), overlap in zip(scenes, overlaps):
+    for scene_index, ((gt, pred), overlap) in enumerate(zip(scenes, overlaps)):
         ap = {f"{t:.2f}": average_precision([overlap], [pred], protocol.confidence_mode, t,
             protocol.ignore_unmatched_pred_void_fraction_gt) for t in thresholds}
         row = {
@@ -34,10 +52,12 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
                 protocol.ignore_unmatched_pred_void_fraction_gt),
             "diagnostics": diagnostics(overlap, protocol),
         }
-        if protocol.is_v2:
+        if protocol.retains_predictions:
             row["CA_PRF1_0_5"] = instance_precision_recall_f1(
                 overlap, protocol.ignore_unmatched_pred_void_fraction_gt)
-            row["structure"] = significant_structure_diagnostics(overlap, protocol)
+            row["structure"] = (significant_structure_diagnostics(
+                diagnostic_overlaps[scene_index] if protocol.is_v3 else overlap, protocol)
+                if not protocol.is_v3 or diagnostic_overlaps is not None else None)
         per_scene.append(row)
     pq_rows = [row["CA_PQ"] for row in per_scene]
     if all(row["status"] != "N/A: overlapping masks or non-partition prediction" for row in pq_rows):
@@ -66,7 +86,7 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
         "aggregation": "pooled predictions/GT across scenes; AP across 10 IoU thresholds",
         "per_scene": per_scene,
     }
-    if protocol.is_v2:
+    if protocol.retains_predictions:
         prf = [row["CA_PRF1_0_5"] for row in per_scene]
         tp, fp, fn = (sum(row[key] for row in prf) for key in ("TP", "FP", "FN"))
         gt_count = tp + fn
@@ -78,13 +98,18 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
             "ignored_prediction_count": sum(row["ignored_prediction_count"] for row in prf),
             "status": "ok" if gt_count else "undefined: no valid GT instances",
         }
-        structures = [row["structure"] for row in per_scene]
+        structures = [row["structure"] for row in per_scene if row["structure"] is not None]
+        if protocol.is_v3 and not structures:
+            summary["structure"] = None
+            summary["structure_status"] = "N/A: pairwise native geometry support not provided"
+        else:
+            summary["structure_status"] = "ok"
         gt_total = sum(row["diagnostic_gt_count"] for row in structures)
         pred_total = sum(row["diagnostic_prediction_count"] for row in structures)
         split_total = sum(row["split_gt_count"] for row in structures)
         merge_total = sum(row["merge_prediction_count"] for row in structures)
         duplicate_total = sum(row["duplicate_prediction_count"] for row in structures)
-        summary["structure"] = {
+        structure_summary = {
             "split_gt_count": split_total, "split_gt_rate": split_total / gt_total if gt_total else None,
             "merge_prediction_count": merge_total,
             "merge_prediction_rate": merge_total / pred_total if pred_total else None,
@@ -92,6 +117,8 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
             "duplicate_prediction_rate": duplicate_total / pred_total if pred_total else None,
             "diagnostic_gt_count": gt_total, "diagnostic_prediction_count": pred_total,
         }
+        if structures:
+            summary["structure"] = structure_summary
         pq_values = [row["CA_PQ"]["PQ"] for row in per_scene]
         summary["macro_per_scene"] = {
             "CA_AP_uniform": _mean_defined([row["CA_AP_uniform"] for row in per_scene]),
@@ -99,9 +126,9 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
             "CA_AP25_uniform": _mean_defined([row["CA_AP25_uniform"] for row in per_scene]),
             "CA_F1_0_5": _mean_defined([row["CA_PRF1_0_5"]["F1"] for row in per_scene]),
             "CA_PQ": sum(pq_values) / len(pq_values) if all(x is not None for x in pq_values) else None,
-            "split_gt_rate": _mean_defined([row["structure"]["split_gt_rate"] for row in per_scene]),
-            "merge_prediction_rate": _mean_defined([row["structure"]["merge_prediction_rate"] for row in per_scene]),
-            "duplicate_prediction_rate": _mean_defined([row["structure"]["duplicate_prediction_rate"] for row in per_scene]),
+            "split_gt_rate": _mean_defined([row["structure"]["split_gt_rate"] for row in per_scene if row["structure"] is not None]),
+            "merge_prediction_rate": _mean_defined([row["structure"]["merge_prediction_rate"] for row in per_scene if row["structure"] is not None]),
+            "duplicate_prediction_rate": _mean_defined([row["structure"]["duplicate_prediction_rate"] for row in per_scene if row["structure"] is not None]),
         }
         summary["aggregation"] = "top-level pooled predictions/GT; macro_per_scene is unweighted scene mean"
     return summary, per_scene, overlaps

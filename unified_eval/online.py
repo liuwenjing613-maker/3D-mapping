@@ -51,10 +51,14 @@ def update_observation_count(count: np.ndarray, observed_this_frame: np.ndarray)
 def evaluate_online_prefixes(gt: CanonicalGT, protocol: Protocol,
                              online_manifest_path: str | Path) -> tuple[list[dict], dict]:
     """Evaluate committed snapshots against only depth observed through each checkpoint."""
-    if not protocol.is_v2:
-        raise EvaluationError("Online prefix evaluation requires Replica-CA-v2")
+    if not protocol.retains_predictions:
+        raise EvaluationError("Online prefix evaluation requires Replica-CA-v2 or v3")
     path = Path(online_manifest_path)
     spec = json.loads(path.read_text(encoding="utf-8"))
+    observation_distance = (spec.get("observation_max_distance_m") if protocol.is_v3
+                            else protocol.geometry_mapping_max_distance_m)
+    if not isinstance(observation_distance, (int, float)) or not np.isfinite(observation_distance) or observation_distance <= 0:
+        raise EvaluationError("v3 online manifest requires observation_max_distance_m")
     if spec.get("scene_id") != gt.scene_id:
         raise EvaluationError("Online scene differs from GT")
     source_path = Path(spec["source_experiment_manifest"])
@@ -97,7 +101,7 @@ def evaluate_online_prefixes(gt: CanonicalGT, protocol: Protocol,
         depth, intrinsics, pose = (np.load(paths[key], allow_pickle=False)
                                    for key in ("depth_m", "intrinsics", "world_from_camera"))
         seen = observed_vertices_from_depth(depth, intrinsics, pose, gt.xyz_ref,
-                                            protocol.geometry_mapping_max_distance_m)
+                                            observation_distance)
         observed |= seen
         counts = update_observation_count(counts, seen)
         file_sources.append({"frame_id": frame_id, **{key: {"path": str(value), "sha256": sha256_file(value)}
@@ -106,6 +110,16 @@ def evaluate_online_prefixes(gt: CanonicalGT, protocol: Protocol,
             continue
         pred_path = resolve(checkpoint_by_frame[frame_id]["prediction"])
         pred = load_prediction(pred_path)
+        diagnostic = None
+        if protocol.is_v3:
+            if "diagnostic_prediction" not in checkpoint_by_frame[frame_id]:
+                raise EvaluationError("v3 checkpoint requires diagnostic_prediction")
+            diagnostic = load_prediction(resolve(checkpoint_by_frame[frame_id]["diagnostic_prediction"]))
+            if diagnostic.metadata.get("role") != "structure_diagnostics_only":
+                raise EvaluationError("v3 checkpoint diagnostic prediction has the wrong role")
+            for key in ("source_map_sha256", "source_export_sha256"):
+                if key in pred.metadata and diagnostic.metadata.get(key) != pred.metadata[key]:
+                    raise EvaluationError("v3 checkpoint diagnostic and main predictions differ in source map")
         if pred.metadata.get("committed_frame_id") != frame_id:
             raise EvaluationError(f"Checkpoint {frame_id} lacks matching committed_frame_id")
         max_input = pred.metadata.get("max_input_frame_id")
@@ -114,7 +128,8 @@ def evaluate_online_prefixes(gt: CanonicalGT, protocol: Protocol,
         declared_source_hash = pred.metadata.get("source_experiment_manifest_sha256")
         if declared_source_hash is not None and declared_source_hash != source_hash:
             raise EvaluationError(f"Checkpoint {frame_id} has a different source experiment manifest")
-        _, per_scene, _ = evaluate_scenes([(gt, pred)], protocol, observed_masks=[observed])
+        _, per_scene, _ = evaluate_scenes([(gt, pred)], protocol, observed_masks=[observed],
+            diagnostic_predictions=[diagnostic] if diagnostic is not None else None)
         row = per_scene[0]
         row["frame_id"] = frame_id
         row["input_frame_count"] = len(file_sources)
@@ -128,6 +143,6 @@ def evaluate_online_prefixes(gt: CanonicalGT, protocol: Protocol,
                   "source_experiment_manifest_sha256": source_hash,
                   "frame_list_sha256": frame_hash,
                   "frame_count": len(expected_ids), "frame_files": file_sources,
-                  "observation_max_distance_m": protocol.geometry_mapping_max_distance_m,
+                  "observation_max_distance_m": observation_distance,
                   "observation_count_max": int(counts.max()) if len(counts) else 0}
     return result_rows, provenance
