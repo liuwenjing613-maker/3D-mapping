@@ -36,8 +36,13 @@ def write_json(path, value):
     temp.replace(path)
 
 
-def sample_voxels(frame, observation, voxel_size_m, max_pixels):
+def sample_voxels(frame, observation, voxel_size_m, max_pixels, valid_first=False):
     pixels = source_pixel_indices(frame, observation)
+    if valid_first:
+        depth_all = frame.depth_m.ravel()[pixels]
+        pixels = pixels[np.isfinite(depth_all) & (depth_all > 0) & (depth_all < 10.0)]
+        if not len(pixels):
+            return np.empty((0, 3), dtype=np.int32), 0
     count = min(len(pixels), max_pixels)
     pixels = pixels[np.linspace(0, len(pixels) - 1, num=count, dtype=np.int64)]
     rows, cols = np.divmod(pixels, frame.camera.width)
@@ -112,6 +117,8 @@ def main():
     parser.add_argument("--label-distance-m", type=float, default=0.03)
     parser.add_argument("--chunk-frames", type=int, default=25)
     parser.add_argument("--frame-count", type=int, default=400)
+    parser.add_argument("--valid-first-sampling", action="store_true")
+    parser.add_argument("--deduplicate-frame-instance-votes", action="store_true")
     args = parser.parse_args()
     if args.max_pixels_per_observation < 1 or args.voxel_size_m <= 0 or args.label_distance_m <= 0:
         raise ValueError("Invalid sampling or geometry parameters")
@@ -142,17 +149,24 @@ def main():
         frame = source.load_frame(frame_id)
         mask_path = source.mask_root / source.config["source"]["mask_pattern"].format(frame=frame_id)
         digest = sha256_file(mask_path)
+        frame_pairs = []
         for observation in observations[frame_id]:
             if observation.source_mask_sha256 != digest:
                 raise ValueError(f"Mask checksum mismatch in frame {frame_id}")
             instance_id = assignment[observation.observation_id]
             voxels, count = sample_voxels(
-                frame, observation, args.voxel_size_m, args.max_pixels_per_observation
+                frame, observation, args.voxel_size_m, args.max_pixels_per_observation,
+                valid_first=args.valid_first_sampling
             )
             sampled_pixels += count
             observations_processed += 1
             if len(voxels):
-                chunk_pairs.append(pack_pairs(voxels, instance_id))
+                frame_pairs.append(pack_pairs(voxels, instance_id))
+        if frame_pairs:
+            keys_this_frame = np.concatenate(frame_pairs)
+            if args.deduplicate_frame_instance_votes:
+                keys_this_frame = np.unique(keys_this_frame)
+            chunk_pairs.append(keys_this_frame)
         if frame_index % args.chunk_frames == 0 or frame_index == len(selected_frame_ids):
             keys, counts = np.unique(np.concatenate(chunk_pairs), return_counts=True)
             chunk_path = args.output_dir / f"vote_chunk_{len(chunk_paths):02d}.npz"
@@ -215,6 +229,8 @@ def main():
         "observation_count": observations_processed,
         "sampled_valid_pixels": sampled_pixels,
         "max_pixels_per_observation": args.max_pixels_per_observation,
+        "valid_first_sampling": args.valid_first_sampling,
+        "deduplicate_frame_instance_votes": args.deduplicate_frame_instance_votes,
         "support_voxel_size_m": args.voxel_size_m,
         "label_distance_m": args.label_distance_m,
         "support_instance_voxel_pairs": len(keys),
@@ -245,4 +261,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-
