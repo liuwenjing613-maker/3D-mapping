@@ -1,0 +1,41 @@
+{
+  "contract_version": 1,
+  "dataset": "Replica",
+  "scene": "room0",
+  "purpose": "no_repair_empty_map_dev",
+  "frame_selection": {
+    "start": 0,
+    "stop_exclusive": 2000,
+    "stride": 5
+  },
+  "source": {
+    "scene_root": "/home/chenkejun/beauty/conceptgraphs/data/Replica/room0",
+    "rgb_pattern": "results/frame{frame:06d}.jpg",
+    "depth_pattern": "results/depth{frame:06d}.png",
+    "trajectory": "traj.txt",
+    "mask_root": "/data/chenkejun/ovimap_runtime_20260908/sem_aligned/room0",
+    "mask_pattern": "frame{frame:06d}.png",
+    "mask_metadata": "frames.jsonl"
+  },
+  "camera": {
+    "width": 1200,
+    "height": 680,
+    "fx": 600.0,
+    "fy": 600.0,
+    "cx": 599.5,
+    "cy": 339.5,
+    "depth_png_units_per_meter": 6553.5,
+    "trajectory_matrix": "camera_to_world_4x4_row_major"
+  },
+  "mask": {
+    "encoding": "uint8_instance_id_image",
+    "background_id": 0,
+    "provenance": "existing CropFormer cache; frames.jsonl records source RGB and mask checksums"
+  },
+  "rules": {
+    "input_is_read_only": true,
+    "use_ground_truth_for_mapping": false,
+    "use_future_frames": false,
+    "allow_repair": false
+  }
+}
