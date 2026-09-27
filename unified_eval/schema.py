@@ -95,6 +95,14 @@ class Protocol:
     ignore_unmatched_pred_void_fraction_gt: float
     ap_policy: str = "replica_ca_101"
     pq_iou_strictly_greater_than: float = 0.5
+    geometry_mapping_method: str = "nearest_neighbor_reference_to_prediction"
+    prediction_min_valid_vertices: int | None = None
+    significant_min_intersection_vertices: int | None = None
+    significant_min_gt_fraction: float | None = None
+
+    @property
+    def is_v2(self) -> bool:
+        return self.name == "Replica-CA-v2"
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "Protocol":
@@ -107,8 +115,23 @@ class Protocol:
             raise EvaluationError("instance_filter.min_valid_instance_vertices must be explicitly set")
         if "unmatched_prediction_void_fraction_gt" not in ignore_policy:
             raise EvaluationError("ignore_policy.unmatched_prediction_void_fraction_gt must be explicitly set")
-        if geometry.get("method") != "nearest_neighbor_reference_to_prediction":
+        method = geometry.get("method")
+        allowed_methods = {"nearest_neighbor_reference_to_prediction",
+                           "independent_nearest_neighbor_per_instance"}
+        if method not in allowed_methods:
             raise EvaluationError("Unsupported geometry mapping method")
+        is_v2 = data.get("name") == "Replica-CA-v2"
+        if is_v2 and method != "independent_nearest_neighbor_per_instance":
+            raise EvaluationError("Replica-CA-v2 requires independent per-instance projection")
+        if not is_v2 and method != "nearest_neighbor_reference_to_prediction":
+            raise EvaluationError("Independent projection requires Replica-CA-v2")
+        significant = data.get("significant_overlap", {})
+        if is_v2 and (significant.get("min_intersection_vertices") is None or
+                      significant.get("min_gt_fraction") is None):
+            raise EvaluationError("Replica-CA-v2 significant_overlap thresholds must be explicitly set")
+        pred_min = instance_filter.get("min_prediction_vertices") if is_v2 else None
+        if is_v2 and pred_min is None:
+            raise EvaluationError("Replica-CA-v2 instance_filter.min_prediction_vertices must be explicit")
         obj = cls(
             name=str(data["name"]), dataset=str(data["dataset"]),
             confidence_mode=str(data["confidence_mode"]),
@@ -116,6 +139,10 @@ class Protocol:
             geometry_mapping_max_distance_m=float(geometry["max_distance_m"]),
             ignore_unmatched_pred_void_fraction_gt=float(ignore_policy["unmatched_prediction_void_fraction_gt"]),
             ap_policy=str(data.get("ap_policy", "replica_ca_101")),
+            geometry_mapping_method=method,
+            prediction_min_valid_vertices=int(pred_min) if is_v2 else None,
+            significant_min_intersection_vertices=int(significant["min_intersection_vertices"]) if is_v2 else None,
+            significant_min_gt_fraction=float(significant["min_gt_fraction"]) if is_v2 else None,
         )
         if obj.confidence_mode != "uniform":
             raise EvaluationError("replica_ca_101 requires uniform confidence; use the separate official-native runner for official AP")
@@ -127,4 +154,11 @@ class Protocol:
             raise EvaluationError("Void fraction threshold must lie in [0,1]")
         if obj.ap_policy != "replica_ca_101":
             raise EvaluationError("Only replica_ca_101 is implemented; official compatibility is pending")
+        if is_v2:
+            if obj.prediction_min_valid_vertices != 0:
+                raise EvaluationError("Replica-CA-v2 must retain every prediction, including empty and small masks")
+            if obj.significant_min_intersection_vertices < 1:
+                raise EvaluationError("Significant overlap vertex threshold must be positive")
+            if not np.isfinite(obj.significant_min_gt_fraction) or not 0 < obj.significant_min_gt_fraction <= 1:
+                raise EvaluationError("Significant overlap GT fraction must lie in (0,1]")
         return obj

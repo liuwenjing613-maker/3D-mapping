@@ -45,19 +45,28 @@ def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol
     small_ids = candidate_ids[candidate_sizes < min_size]
     gt_ids = candidate_ids[candidate_sizes >= min_size]
     gt_size = candidate_sizes[candidate_sizes >= min_size].astype(np.int64)
+    small_gt_mask = valid & np.isin(labels, small_ids) if protocol.is_v2 else np.zeros(len(labels), dtype=bool)
+    ignored_region = valid & ((labels < 0) | small_gt_mask)
     pred_uids = []
     active_vertices = []
+    ignore_fractions = []
     dropped = []
     for instance in pred.instances:
         vertices = np.asarray(instance.vertex_indices, dtype=np.int64)
         vertices = vertices[valid[vertices]]
-        if len(vertices) < min_size:
+        if protocol.is_v2:
+            ignore_fraction = float(np.mean(ignored_region[vertices])) if len(vertices) else 0.0
+            vertices = vertices[~small_gt_mask[vertices]]
+        if not protocol.is_v2 and len(vertices) < min_size:
             dropped.append(instance.instance_uid)
         else:
             pred_uids.append(instance.instance_uid)
             active_vertices.append(vertices)
+            if protocol.is_v2:
+                ignore_fractions.append(ignore_fraction)
     pred_size = np.array([len(v) for v in active_vertices], dtype=np.int64)
-    pred_void_fraction = np.array([np.mean(labels[v] < 0) for v in active_vertices], dtype=float)
+    pred_void_fraction = (np.array(ignore_fractions, dtype=float) if protocol.is_v2 else
+                          np.array([np.mean(labels[v] < 0) for v in active_vertices], dtype=float))
     intersection = np.zeros((len(active_vertices), len(gt_ids)), dtype=np.int64)
     for row, vertices in enumerate(active_vertices):
         gt_labels = labels[vertices]
@@ -71,6 +80,61 @@ def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol
     recall = np.divide(intersection, gt_size[None, :], out=np.zeros_like(intersection, dtype=float), where=gt_size[None, :] > 0)
     return Overlap(pred_uids, gt_ids, intersection, iou, precision, recall, pred_size, pred_void_fraction, gt_size,
                    active_vertices, valid, valid & np.isin(labels, gt_ids), small_ids.astype(int).tolist(), dropped)
+
+
+def instance_precision_recall_f1(overlap: Overlap, void_fraction_threshold: float) -> dict:
+    """One-to-one IoU>0.5 counts, independent of the partition/PQ requirement."""
+    matches = _matching(overlap.iou, 0.5, strict=True)
+    tp = len(matches)
+    matched = {r for r, _ in matches}
+    ignored = sum(overlap.pred_void_fraction[r] > void_fraction_threshold
+                  for r in range(len(overlap.pred_uids)) if r not in matched)
+    fp = len(overlap.pred_uids) - tp - ignored
+    fn = len(overlap.gt_ids) - tp
+    if not len(overlap.gt_ids):
+        return {"P": None, "R": None, "F1": None, "TP": tp, "FP": fp, "FN": fn,
+                "ignored_prediction_count": int(ignored), "status": "undefined: no valid GT instances"}
+    precision = tp / (tp + fp) if tp + fp else 0.0
+    recall = tp / (tp + fn)
+    f1 = 2 * tp / (2 * tp + fp + fn) if 2 * tp + fp + fn else 0.0
+    return {"P": precision, "R": recall, "F1": f1, "TP": tp, "FP": fp, "FN": fn,
+            "ignored_prediction_count": int(ignored), "status": "ok"}
+
+
+def significant_structure_diagnostics(overlap: Overlap, protocol: Protocol) -> dict:
+    """Classify significant GT-to-prediction edges; duplicate has precedence over split."""
+    if not protocol.is_v2:
+        raise EvaluationError("Significant structure diagnostics require Replica-CA-v2")
+    eligible = ((overlap.pred_size > 0) &
+                (overlap.pred_void_fraction <= protocol.ignore_unmatched_pred_void_fraction_gt))
+    significant = ((overlap.intersection >= protocol.significant_min_intersection_vertices) &
+                   (overlap.recall >= protocol.significant_min_gt_fraction) & eligible[:, None])
+    matches = _matching(overlap.iou, 0.5, strict=True)
+    matched_pred = {row for row, _ in matches}
+    matched_gt = {col for _, col in matches}
+    duplicates = [row for row in range(len(overlap.pred_uids))
+                  if eligible[row] and row not in matched_pred and
+                  any(overlap.iou[row, col] > 0.5 for col in matched_gt)]
+    duplicate_gt = {col for row in duplicates for col in matched_gt if overlap.iou[row, col] > 0.5}
+    split_gt = [col for col in range(len(overlap.gt_ids))
+                if np.count_nonzero(significant[:, col]) >= 2 and col not in duplicate_gt]
+    merge_pred = [row for row in range(len(overlap.pred_uids))
+                  if eligible[row] and np.count_nonzero(significant[row]) >= 2]
+    pred_count = int(np.count_nonzero(eligible))
+    gt_count = len(overlap.gt_ids)
+    return {
+        "significant_min_intersection_vertices": protocol.significant_min_intersection_vertices,
+        "significant_min_gt_fraction": protocol.significant_min_gt_fraction,
+        "significant_predictions_per_gt": np.count_nonzero(significant, axis=0).astype(int).tolist(),
+        "significant_gt_per_prediction": np.count_nonzero(significant, axis=1).astype(int).tolist(),
+        "split_gt_count": len(split_gt), "split_gt_rate": len(split_gt) / gt_count if gt_count else None,
+        "merge_prediction_count": len(merge_pred),
+        "merge_prediction_rate": len(merge_pred) / pred_count if pred_count else None,
+        "duplicate_prediction_count": len(duplicates),
+        "duplicate_prediction_rate": len(duplicates) / pred_count if pred_count else None,
+        "diagnostic_gt_count": gt_count, "diagnostic_prediction_count": pred_count,
+        "duplicate_gt_count": len(duplicate_gt),
+    }
 
 
 def _matching(matrix: np.ndarray, threshold: float, strict: bool) -> list[tuple[int, int]]:
@@ -157,10 +221,14 @@ def average_precision(overlaps: list[Overlap], predictions: list[CanonicalPredic
             "TP": tp_total, "FP": fp_total, "FN": num_gt - tp_total, "status": "ok"}
 
 
-def diagnostics(overlap: Overlap) -> dict:
+def diagnostics(overlap: Overlap, protocol: Protocol | None = None) -> dict:
     best_iou = overlap.iou.max(axis=0) if overlap.iou.shape[0] else np.zeros(len(overlap.gt_ids))
     gt_recall = overlap.recall.max(axis=0) if overlap.recall.shape[0] else np.zeros(len(overlap.gt_ids))
     purity = overlap.precision.max(axis=1) if overlap.precision.shape[1] else np.zeros(len(overlap.pred_uids))
+    if protocol is not None and protocol.is_v2:
+        eligible = ((overlap.pred_size > 0) &
+                    (overlap.pred_void_fraction <= protocol.ignore_unmatched_pred_void_fraction_gt))
+        purity = purity[eligible]
     gt_vertices = int(overlap.gt_size.sum())
     covered = np.zeros(len(overlap.eval_mask), dtype=bool)
     for vertices in overlap.active_pred_vertices:

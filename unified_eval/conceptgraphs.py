@@ -6,14 +6,15 @@ from pathlib import Path
 
 import numpy as np
 
-from .geometry import MappingResult, map_point_labels_to_reference
+from .geometry import MappingResult, map_instances_to_reference_v2, map_point_labels_to_reference
 from .io import sha256_file
 from .schema import EvaluationError
 
 
 def adapt_map(map_path: str | Path, ref_xyz: np.ndarray, max_distance_m: float,
               *, scene_id: str, method_name: str, method_commit: str,
-              protocol_version: str) -> MappingResult:
+              protocol_version: str,
+              mapping_method: str = "nearest_neighbor_reference_to_prediction") -> MappingResult:
     """Adapt a trusted ConceptGraphs pcd_*.pkl.gz map to reference vertex masks.
 
     Pickle executes code when loaded. Only pass local outputs produced by the
@@ -40,18 +41,32 @@ def adapt_map(map_path: str | Path, ref_xyz: np.ndarray, max_distance_m: float,
             confidence[index] = float(max(values))
     pred_xyz = np.concatenate(points) if points else np.empty((0, 3))
     labels = np.concatenate(owners) if owners else np.empty(0, dtype=np.int64)
-    result = map_point_labels_to_reference(pred_xyz, labels, ref_xyz, max_distance_m,
-        scene_id=scene_id, method_name=method_name, method_commit=method_commit,
-        adapter_version="conceptgraphs_pcd_v1", protocol_version=protocol_version,
-        confidence_by_id=confidence,
-        metadata={"source_map": str(map_path), "source_map_sha256": sha256_file(map_path),
-                  "native_object_count": len(raw["objects"]),
-                  "native_object_index_is_uid": True,
-                  "native_background_objects_included": True})
-    for instance in result.prediction.instances:
-        native_index = int(instance.instance_uid)
-        instance.instance_uid = native_uids[native_index]
-        instance.metadata["native_object_index"] = native_index
+    base_metadata = {"source_map": str(map_path), "source_map_sha256": sha256_file(map_path),
+                     "native_object_count": len(raw["objects"]),
+                     "native_background_objects_included": True}
+    if mapping_method == "independent_nearest_neighbor_per_instance":
+        result = map_instances_to_reference_v2(points, ref_xyz, max_distance_m,
+            scene_id=scene_id, method_name=method_name, method_commit=method_commit,
+            adapter_version="conceptgraphs_pcd_v2", protocol_version=protocol_version,
+            confidence_by_index=confidence,
+            metadata={**base_metadata, "native_object_index_is_uid": True})
+        for instance in result.prediction.instances:
+            native_index = int(instance.instance_uid)
+            instance.instance_uid = f"cg-index:{native_index}"
+            instance.metadata.update({"native_object_index": native_index,
+                                      "native_object_id": native_uids[native_index]})
+    elif mapping_method == "nearest_neighbor_reference_to_prediction":
+        result = map_point_labels_to_reference(pred_xyz, labels, ref_xyz, max_distance_m,
+            scene_id=scene_id, method_name=method_name, method_commit=method_commit,
+            adapter_version="conceptgraphs_pcd_v1", protocol_version=protocol_version,
+            confidence_by_id=confidence,
+            metadata={**base_metadata, "native_object_index_is_uid": True})
+        for instance in result.prediction.instances:
+            native_index = int(instance.instance_uid)
+            instance.instance_uid = native_uids[native_index]
+            instance.metadata["native_object_index"] = native_index
+    else:
+        raise EvaluationError(f"Unsupported mapping method: {mapping_method}")
     result.prediction.validate()
     result.statistics["num_native_objects"] = len(raw["objects"])
     return result

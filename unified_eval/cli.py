@@ -14,6 +14,7 @@ from .conceptgraphs import adapt_map
 from .evaluate import evaluate_scenes
 from .io import load_gt, load_prediction, save_gt, save_prediction, sha256_file
 from .official_native import run_official_native
+from .online import evaluate_online_prefixes
 from .replica import load_existing_reference
 from .schema import EvaluationError, Protocol
 
@@ -37,11 +38,17 @@ def load_protocol(path: Path, args: argparse.Namespace) -> tuple[Protocol, dict,
     raw = json.loads(path.read_text(encoding="utf-8"))
     debug = (args.debug_max_distance_m is not None or
              args.debug_min_valid_instance_vertices is not None or
+             args.debug_significant_min_vertices is not None or
+             args.debug_significant_min_gt_fraction is not None or
              raw.get("frozen") is not True)
     if args.debug_max_distance_m is not None:
         raw["geometry_mapping"]["max_distance_m"] = args.debug_max_distance_m
     if args.debug_min_valid_instance_vertices is not None:
         raw["instance_filter"]["min_valid_instance_vertices"] = args.debug_min_valid_instance_vertices
+    if args.debug_significant_min_vertices is not None:
+        raw["significant_overlap"]["min_intersection_vertices"] = args.debug_significant_min_vertices
+    if args.debug_significant_min_gt_fraction is not None:
+        raw["significant_overlap"]["min_gt_fraction"] = args.debug_significant_min_gt_fraction
     protocol = Protocol.from_dict(raw)
     return protocol, raw, debug
 
@@ -50,6 +57,8 @@ def add_protocol_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--debug-max-distance-m", type=float)
     parser.add_argument("--debug-min-valid-instance-vertices", type=int)
+    parser.add_argument("--debug-significant-min-vertices", type=int)
+    parser.add_argument("--debug-significant-min-gt-fraction", type=float)
 
 
 def cmd_export_replica_gt(args: argparse.Namespace) -> None:
@@ -84,7 +93,8 @@ def cmd_adapt_conceptgraphs(args: argparse.Namespace) -> None:
     trajectory_path = Path(map_config["dataset_root"]) / gt.scene_id / "traj.txt" if "dataset_root" in map_config else None
     result = adapt_map(args.map, gt.xyz_ref, protocol.geometry_mapping_max_distance_m,
         scene_id=gt.scene_id, method_name=args.method_name,
-        method_commit=args.method_commit, protocol_version=protocol.name)
+        method_commit=args.method_commit, protocol_version=protocol.name,
+        mapping_method=protocol.geometry_mapping_method)
     result.prediction.metadata.update({
         "source_experiment_manifest": str(args.experiment_manifest),
         "source_experiment_manifest_sha256": sha256_file(args.experiment_manifest),
@@ -133,7 +143,8 @@ def cmd_eval_scene(args: argparse.Namespace) -> None:
         intersection=overlap.intersection, iou=overlap.iou,
         precision=overlap.precision, recall=overlap.recall,
         pred_size=overlap.pred_size, gt_size=overlap.gt_size,
-        pred_void_fraction=overlap.pred_void_fraction)
+        pred_void_fraction=overlap.pred_void_fraction,
+        **({"pred_ignore_fraction": overlap.pred_void_fraction} if protocol.is_v2 else {}))
     write_json(args.out / "manifest.json", {
         "status": status, "protocol": protocol.name, "protocol_config": raw,
         "protocol_config_sha256": sha256_file(args.config),
@@ -178,32 +189,98 @@ def cmd_eval_batch(args: argparse.Namespace) -> None:
             "reference_source": gt.metadata} for entry, (gt, _) in zip(entries, scenes)],
         "timestamp_utc": datetime.now(timezone.utc).isoformat(),
     })
-    fields = ("scene_id", "CA_AP_uniform", "CA_AP50_uniform", "CA_AP25_uniform", "CA_PQ", "CA_SQ", "CA_RQ", "TP", "FP", "FN", "status")
+    fields = ["scene_id", "CA_AP_uniform", "CA_AP50_uniform", "CA_AP25_uniform",
+              "CA_PQ", "CA_SQ", "CA_RQ", "TP", "FP", "FN"]
+    if protocol.is_v2:
+        fields += ["CA_P_0_5", "CA_R_0_5", "CA_F1_0_5", "split_gt_rate",
+                   "merge_prediction_rate", "duplicate_prediction_rate"]
+    fields += ["status"]
     with (args.out / "per_scene.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fields)
         writer.writeheader()
         for row in per_scene:
             pq = row["CA_PQ"]
-            writer.writerow({"scene_id": row["scene_id"], "CA_AP_uniform": row["CA_AP_uniform"],
+            values = {"scene_id": row["scene_id"], "CA_AP_uniform": row["CA_AP_uniform"],
                 "CA_AP50_uniform": row["CA_AP50_uniform"], "CA_AP25_uniform": row["CA_AP25_uniform"],
                 "CA_PQ": pq["PQ"], "CA_SQ": pq["SQ"], "CA_RQ": pq["RQ"],
-                "TP": pq["TP"], "FP": pq["FP"], "FN": pq["FN"], "status": status})
+                "TP": pq["TP"], "FP": pq["FP"], "FN": pq["FN"], "status": status}
+            if protocol.is_v2:
+                prf, structure = row["CA_PRF1_0_5"], row["structure"]
+                values.update({"CA_P_0_5": prf["P"], "CA_R_0_5": prf["R"],
+                               "CA_F1_0_5": prf["F1"],
+                               "split_gt_rate": structure["split_gt_rate"],
+                               "merge_prediction_rate": structure["merge_prediction_rate"],
+                               "duplicate_prediction_rate": structure["duplicate_prediction_rate"]})
+            writer.writerow(values)
     if status == "protocol_configured":
         with (args.out / "summary.csv").open("w", encoding="utf-8", newline="") as handle:
-            writer = csv.DictWriter(handle, fieldnames=("protocol", "scene_count", "CA_AP_uniform", "CA_AP50_uniform", "CA_AP25_uniform", "CA_PQ", "CA_SQ", "CA_RQ"))
+            aggregate_fields = ["protocol", "scene_count", "CA_AP_uniform", "CA_AP50_uniform",
+                                "CA_AP25_uniform", "CA_PQ", "CA_SQ", "CA_RQ"]
+            if protocol.is_v2:
+                aggregate_fields += ["CA_F1_0_5", "split_gt_rate", "merge_prediction_rate",
+                                     "duplicate_prediction_rate", "macro_CA_AP50_uniform", "macro_CA_F1_0_5"]
+            writer = csv.DictWriter(handle, fieldnames=aggregate_fields)
             writer.writeheader()
-            writer.writerow({"protocol": summary["protocol"], "scene_count": summary["scene_count"],
+            values = {"protocol": summary["protocol"], "scene_count": summary["scene_count"],
                 "CA_AP_uniform": summary["CA_AP_uniform"], "CA_AP50_uniform": summary["CA_AP50_uniform"],
                 "CA_AP25_uniform": summary["CA_AP25_uniform"],
                 "CA_PQ": summary["CA_PQ"]["PQ"], "CA_SQ": summary["CA_PQ"]["SQ"],
-                "CA_RQ": summary["CA_PQ"]["RQ"]})
+                "CA_RQ": summary["CA_PQ"]["RQ"]}
+            if protocol.is_v2:
+                values.update({"CA_F1_0_5": summary["CA_PRF1_0_5"]["F1"],
+                               "split_gt_rate": summary["structure"]["split_gt_rate"],
+                               "merge_prediction_rate": summary["structure"]["merge_prediction_rate"],
+                               "duplicate_prediction_rate": summary["structure"]["duplicate_prediction_rate"],
+                               "macro_CA_AP50_uniform": summary["macro_per_scene"]["CA_AP50_uniform"],
+                               "macro_CA_F1_0_5": summary["macro_per_scene"]["CA_F1_0_5"]})
+            writer.writerow(values)
     print(json.dumps({"status": status, "scene_count": len(scenes),
         "CA_AP_uniform": summary["CA_AP_uniform"], "CA_AP50_uniform": summary["CA_AP50_uniform"],
         "CA_AP25_uniform": summary["CA_AP25_uniform"]}))
 
 
+def cmd_eval_online_prefix(args: argparse.Namespace) -> None:
+    protocol, raw, debug = load_protocol(args.config, args)
+    gt = load_gt(args.gt)
+    rows, provenance = evaluate_online_prefixes(gt, protocol, args.online_manifest)
+    status = "DEBUG_ONLY / NON_OFFICIAL" if debug or any(row["prediction_debug_only"] for row in rows) else "protocol_configured"
+    args.out.mkdir(parents=True, exist_ok=True)
+    write_json(args.out / "prefix_metrics.json", {"status": status, "scene_id": gt.scene_id,
+                                                   "checkpoints": rows})
+    write_json(args.out / "manifest.json", {
+        "status": status, "protocol": protocol.name, "protocol_config": raw,
+        "effective_protocol_sha256": effective_protocol_sha256(raw),
+        "protocol_config_sha256": sha256_file(args.config),
+        "evaluator_version": __version__, "gt_file": str(args.gt),
+        "gt_sha256": sha256_file(args.gt),
+        "online_manifest": str(args.online_manifest),
+        "online_manifest_sha256": sha256_file(args.online_manifest),
+        "source": provenance, "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+    })
+    fields = ("frame_id", "input_frame_count", "observed_reference_vertices",
+              "CA_AP50_uniform", "CA_P_0_5", "CA_R_0_5", "CA_F1_0_5", "CA_PQ",
+              "split_gt_rate", "merge_prediction_rate", "duplicate_prediction_rate", "status")
+    with (args.out / "prefix_curve.csv").open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        for row in rows:
+            prf, structure = row["CA_PRF1_0_5"], row["structure"]
+            writer.writerow({"frame_id": row["frame_id"],
+                "input_frame_count": row["input_frame_count"],
+                "observed_reference_vertices": row["observed_reference_vertices"],
+                "CA_AP50_uniform": row["CA_AP50_uniform"],
+                "CA_P_0_5": prf["P"], "CA_R_0_5": prf["R"], "CA_F1_0_5": prf["F1"],
+                "CA_PQ": row["CA_PQ"]["PQ"],
+                "split_gt_rate": structure["split_gt_rate"],
+                "merge_prediction_rate": structure["merge_prediction_rate"],
+                "duplicate_prediction_rate": structure["duplicate_prediction_rate"],
+                "status": status})
+    print(json.dumps({"status": status, "scene": gt.scene_id,
+                      "checkpoint_count": len(rows)}, ensure_ascii=False))
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Unified class-agnostic instance evaluator v1")
+    parser = argparse.ArgumentParser(description="Unified class-agnostic instance evaluator v1/v2")
     commands = parser.add_subparsers(dest="command", required=True)
     export = commands.add_parser("export-replica-gt")
     export.add_argument("--reference-root", type=Path, required=True)
@@ -230,6 +307,12 @@ def main() -> None:
     batch.add_argument("--scenes", type=Path, required=True, help="JSON object with scenes:[{gt,prediction}]")
     batch.add_argument("--out", type=Path, required=True)
     batch.set_defaults(func=cmd_eval_batch)
+    online = commands.add_parser("eval-online-prefix")
+    add_protocol_args(online)
+    online.add_argument("--gt", type=Path, required=True)
+    online.add_argument("--online-manifest", type=Path, required=True)
+    online.add_argument("--out", type=Path, required=True)
+    online.set_defaults(func=cmd_eval_online_prefix)
     official = commands.add_parser("eval-official-native")
     official.add_argument("--recipe", type=Path, required=True)
     official.add_argument("--out", type=Path, required=True)
