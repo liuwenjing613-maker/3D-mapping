@@ -1,0 +1,44 @@
+# repair
+
+Unified evaluation code for 3D instance maps. The current frozen protocol is **Replica-CA-v1**, a class-agnostic evaluation on a shared Replica reference mesh. It reports uniform-confidence AP, AP50, AP25, panoptic quality, and instance diagnostics. These are custom Replica metrics, not official ScanNet AP.
+
+## Install
+
+Python 3.10 or newer is required.
+
+```bash
+python -m pip install -e '.[test]'
+python -m pytest -q
+python -m unified_eval.cli --help
+```
+
+Only NumPy and SciPy are needed for the evaluator. The ConceptGraphs adapter reads a trusted local `pcd_*.pkl.gz` map. Python pickle files can execute code when loaded; do not use the adapter on untrusted downloads.
+
+## Evaluate a ConceptGraphs map
+
+Prepare a Replica reference dataset, export its GT, and create an experiment manifest with exactly one entry matching the map and scene. Each entry needs `scene`, `map`, `cost.frames`, and `input.start`, `input.end`, `input.stride`. The frame count must equal `len(range(start, end, stride))`.
+
+```bash
+python -m unified_eval.cli export-replica-gt \
+  --reference-root /path/to/reference --scene room0 --out /path/to/gt.npz
+
+python -m unified_eval.cli adapt-conceptgraphs \
+  --config unified_eval/configs/replica_ca_v1.json \
+  --gt /path/to/gt.npz --map /path/to/pcd_map.pkl.gz \
+  --experiment-manifest /path/to/experiment_manifest.json \
+  --method-name my_method --method-commit COMMIT_SHA \
+  --out /path/to/output/adapter
+
+python -m unified_eval.cli eval-scene \
+  --config unified_eval/configs/replica_ca_v1.json \
+  --gt /path/to/gt.npz \
+  --pred /path/to/output/adapter/canonical_prediction.npz \
+  --out /path/to/output/evaluation
+```
+
+`metrics.json`, `overlap_matrix.npz`, and `manifest.json` are written under the evaluation output. The adapter writes `canonical_prediction.npz`, `adapter_stats.json`, and `adapter_manifest.json`. `eval-batch` accepts a JSON object with `scenes: [{"gt": "...", "prediction": "..."}]`.
+
+The frozen config uses a maximum projection distance of 0.05 m and a minimum of 100 valid vertices per instance. Its `reference_source` field records the original protocol provenance; supply your own reference root at export time. `replica_ca_v1.pending.json` is an unfinished draft and is not the frozen protocol.
+
+The `repair.py` module currently defines data types only. Repair Success, False Repair, and Repair Delay are not yet implemented as metrics.
+
