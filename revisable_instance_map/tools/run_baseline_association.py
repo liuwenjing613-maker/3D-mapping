@@ -40,6 +40,11 @@ def main():
     parser.add_argument("--frame-count", type=int, default=400)
     parser.add_argument("--checkpoint-every", type=int, default=25)
     parser.add_argument("--allow-multiple-observations-per-instance-per-frame", action="store_true")
+    parser.add_argument("--improved-association", action="store_true")
+    sampling = parser.add_mutually_exclusive_group()
+    sampling.add_argument("--valid-first-association-sampling", action="store_true")
+    sampling.add_argument("--legacy-association-sampling", action="store_true")
+    parser.add_argument("--parent-child-lineage", type=Path)
     args = parser.parse_args()
     if args.frame_count < 1 or args.checkpoint_every < 1:
         raise ValueError("Invalid frame or checkpoint count")
@@ -53,7 +58,22 @@ def main():
     for line in args.observations.read_text(encoding="utf-8").splitlines():
         record = json.loads(line)
         all_observations[int(record["frame_id"])].append(RawInstanceObservation(**record))
-    associator = OnlineVoxelAssociator(allow_multiple_observations_per_instance_per_frame=args.allow_multiple_observations_per_instance_per_frame)
+    associator = OnlineVoxelAssociator(
+        allow_multiple_observations_per_instance_per_frame=args.allow_multiple_observations_per_instance_per_frame,
+        improved_association=args.improved_association,
+        valid_first_sampling=(False if args.legacy_association_sampling else
+                              True if args.valid_first_association_sampling else None),
+    )
+    lineage = {}
+    if args.parent_child_lineage:
+        for line in args.parent_child_lineage.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            if row["parent_observation_id"] in lineage:
+                raise ValueError("Duplicate parent lineage")
+            lineage[row["parent_observation_id"]] = row
+        expected = {obs.observation_id for frame_obs in all_observations.values() for obs in frame_obs}
+        if set(lineage) != expected:
+            raise ValueError("Parent lineage does not cover the observation catalog exactly")
     decision_counts = Counter()
     frame_summaries = []
     started = time.perf_counter()
@@ -71,6 +91,10 @@ def main():
             if len(decisions) != len(observations):
                 raise ValueError("An observation was not assigned")
             for decision in decisions:
+                if lineage:
+                    parent = lineage[decision["observation_id"]]
+                    decision["geometric_child_ids"] = [item["refined_local_id"] for item in parent["children"]]
+                    decision["residual_pixel_count"] = parent["residual_pixel_count"]
                 decision_counts[decision["decision"]] += 1
                 output.write(json.dumps(decision, ensure_ascii=False) + "\n")
             frame_summaries.append({
@@ -122,6 +146,23 @@ def main():
         instance_ids=np.asarray(support_instance_ids, dtype=np.int32),
         voxel_size_m=np.asarray([associator.voxel_size_m], dtype=np.float32),
     )
+    ledger_entries = list(associator.observation_support.values())
+    ledger_lengths = np.asarray([len(entry.voxels) for entry in ledger_entries], dtype=np.int64)
+    ledger_offsets = np.r_[0, np.cumsum(ledger_lengths)]
+    ledger_voxels = np.asarray(
+        [voxel for entry in ledger_entries for voxel in entry.voxels], dtype=np.int32
+    ).reshape(-1, 3)
+    ledger_path = args.output_dir / "observation_support_3cm.npz"
+    np.savez_compressed(
+        ledger_path,
+        observation_ids=np.asarray([entry.observation_id for entry in ledger_entries]),
+        frame_ids=np.asarray([entry.frame_id for entry in ledger_entries], dtype=np.int32),
+        source_mask_sha256=np.asarray([entry.source_mask_sha256 for entry in ledger_entries]),
+        instance_ids=np.asarray([entry.instance_id for entry in ledger_entries], dtype=np.int32),
+        offsets=ledger_offsets,
+        voxel_coordinates=ledger_voxels,
+        voxel_size_m=np.asarray([associator.voxel_size_m], dtype=np.float32),
+    )
     report = {
         "status": "PASS",
         "purpose": "causal_fixed_mask_no_repair_baseline_association",
@@ -129,11 +170,14 @@ def main():
         "config_sha256": sha256_file(args.config),
         "observation_catalog_path": str(args.observations),
         "observation_catalog_sha256": sha256_file(args.observations),
+        "parent_child_lineage_sha256": sha256_file(args.parent_child_lineage) if args.parent_child_lineage else None,
         "frame_count": len(frame_ids),
         "decision_count": sum(decision_counts.values()),
         "instance_count": len(associator.instances),
         "decision_counts": dict(decision_counts),
         "support_voxel_count": len(support_coordinates),
+        "observation_support_entry_count": len(ledger_entries),
+        "observation_support_sha256": sha256_file(ledger_path),
         "association_parameters": {
             "voxel_size_m": associator.voxel_size_m,
             "max_points_per_observation": associator.max_points_per_observation,
@@ -144,6 +188,8 @@ def main():
             "ambiguity_margin": associator.ambiguity_margin,
             "depth_tolerance_m": associator.depth_tolerance_m,
             "one_existing_instance_per_frame": not args.allow_multiple_observations_per_instance_per_frame,
+            "improved_association": args.improved_association,
+            "valid_first_sampling": associator.valid_first_sampling,
         },
         "frame_summaries": frame_summaries,
         "peak_process_rss_mb": float(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024),
@@ -152,6 +198,7 @@ def main():
             "associations_jsonl": str(decision_path),
             "instances_jsonl": str(instance_path),
             "support_voxels_npz": str(support_path),
+            "observation_support_npz": str(ledger_path),
         },
     }
     if report["decision_count"] != sum(len(all_observations[frame_id]) for frame_id in frame_ids):

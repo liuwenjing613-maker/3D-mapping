@@ -33,6 +33,15 @@ class InstanceState:
     last_frame_id: int = -1
 
 
+@dataclass(frozen=True)
+class ObservationSupport:
+    observation_id: str
+    frame_id: int
+    source_mask_sha256: str
+    instance_id: int
+    voxels: tuple[tuple[int, int, int], ...]
+
+
 class OnlineVoxelAssociator:
     def __init__(
         self,
@@ -45,6 +54,8 @@ class OnlineVoxelAssociator:
         ambiguity_margin: float = 0.05,
         depth_tolerance_m: float = 0.10,
         allow_multiple_observations_per_instance_per_frame: bool = False,
+        improved_association: bool = False,
+        valid_first_sampling: bool | None = None,
     ):
         if voxel_size_m <= 0 or max_points_per_observation < 1:
             raise ValueError("Invalid voxel or sampling configuration")
@@ -57,7 +68,10 @@ class OnlineVoxelAssociator:
         self.ambiguity_margin = ambiguity_margin
         self.depth_tolerance_m = depth_tolerance_m
         self.allow_multiple_observations_per_instance_per_frame = allow_multiple_observations_per_instance_per_frame
+        self.improved_association = improved_association
+        self.valid_first_sampling = improved_association if valid_first_sampling is None else valid_first_sampling
         self.instances: dict[int, InstanceState] = {}
+        self.observation_support: dict[str, ObservationSupport] = {}
         self.voxel_to_instances: dict[tuple[int, int, int], set[int]] = defaultdict(set)
         self.next_instance_id = 1
         self.last_processed_frame_id = -1
@@ -66,6 +80,12 @@ class OnlineVoxelAssociator:
         self, frame: Frame, observation: RawInstanceObservation
     ) -> tuple[tuple[int, int, int], ...]:
         pixels = source_pixel_indices(frame, observation)
+        if self.valid_first_sampling:
+            depth_all = frame.depth_m.ravel()[pixels]
+            valid_pixels = np.isfinite(depth_all) & (depth_all > 0) & (depth_all < 10.0)
+            pixels = pixels[valid_pixels]
+            if not len(pixels):
+                return ()
         sample_count = min(len(pixels), self.max_points_per_observation)
         pixels = pixels[np.linspace(0, len(pixels) - 1, num=sample_count, dtype=np.int64)]
         rows, cols = np.divmod(pixels, frame.camera.width)
@@ -153,7 +173,7 @@ class OnlineVoxelAssociator:
                 "score": round(score, 6),
             })
         ranked.sort(key=lambda item: (-item["score"], -item["prior_observation_count"], item["instance_id"]))
-        return ranked[:3]
+        return ranked[:8] if self.improved_association else ranked[:3]
 
     def _commit(
         self, instance_id: int, observation: RawInstanceObservation,
@@ -163,6 +183,11 @@ class OnlineVoxelAssociator:
             self.instances[instance_id] = InstanceState(
                 instance_id=instance_id, first_frame_id=observation.frame_id
             )
+        if observation.observation_id in self.observation_support:
+            raise ValueError("Observation committed twice")
+        self.observation_support[observation.observation_id] = ObservationSupport(
+            observation.observation_id, observation.frame_id,
+            observation.source_mask_sha256, instance_id, voxels)
         instance = self.instances[instance_id]
         instance.observation_ids.append(observation.observation_id)
         instance.last_frame_id = observation.frame_id
@@ -175,6 +200,8 @@ class OnlineVoxelAssociator:
     def process_frame(
         self, frame: Frame, observations: tuple[RawInstanceObservation, ...]
     ) -> list[dict]:
+        if self.improved_association:
+            return self._process_frame_improved(frame, observations)
         if frame.frame_id <= self.last_processed_frame_id:
             raise ValueError("Frames must be processed once in increasing order")
         if len({item.mask_local_id for item in observations}) != len(observations):
@@ -257,3 +284,110 @@ class OnlineVoxelAssociator:
             self._commit(decision["instance_id"], proposal["observation"], proposal["voxels"])
         self.last_processed_frame_id = frame.frame_id
         return decisions
+
+
+    def _process_frame_improved(
+        self, frame: Frame, observations: tuple[RawInstanceObservation, ...]
+    ) -> list[dict]:
+        """Score against the previous frame, then claim the best eligible old ID.
+
+        Parent proposals are the units of association and birth. Geometric child
+        regions are recorded separately and never create IDs in this mode.
+        """
+        if frame.frame_id <= self.last_processed_frame_id:
+            raise ValueError("Frames must be processed once in increasing order")
+        if len({obs.mask_local_id for obs in observations}) != len(observations):
+            raise ValueError("Duplicate local mask IDs in one frame")
+        proposals = []
+        for obs in observations:
+            if obs.frame_id != frame.frame_id:
+                raise ValueError("Observation belongs to another frame")
+            voxels = self._sample_observation_voxels(frame, obs)
+            candidates = self._score_candidates(frame, obs, voxels)
+            eligible = [item for item in candidates if (
+                item["geometric_coverage"] >= self.min_geometric_coverage
+                and item["score"] >= self.min_total_score
+                and (item["visible_support_points"] < 10
+                     or item["visible_overlap"] is None
+                     or item["visible_overlap"] >= self.min_visible_overlap)
+            )]
+            proposals.append((obs, voxels, candidates, eligible))
+
+        # No state is changed until every proposal has been scored.
+        claimed = set()
+        decisions = [None] * len(proposals)
+        order = sorted(range(len(proposals)), key=lambda i: (
+            -(proposals[i][3][0]["score"] if proposals[i][3] else -1),
+            proposals[i][0].mask_local_id,
+        ))
+        for i in order:
+            obs, voxels, candidates, eligible = proposals[i]
+            selected = next((candidate for candidate in eligible if (
+                self.allow_multiple_observations_per_instance_per_frame
+                or candidate["instance_id"] not in claimed
+            )), None)
+            if selected is None:
+                instance_id = self.next_instance_id
+                self.next_instance_id += 1
+                reason = (
+                    "new_no_projectable_sample" if not voxels else
+                    "new_no_spatial_candidate" if not candidates else
+                    "new_same_frame_conflict" if eligible else
+                    "new_low_score"
+                )
+            else:
+                instance_id = selected["instance_id"]
+                claimed.add(instance_id)
+                other = next((candidate for candidate in eligible if
+                    candidate["instance_id"] != instance_id), None)
+                ambiguous = (other is not None and
+                             abs(selected["score"] - other["score"]) < self.ambiguity_margin)
+                reason = "matched_ambiguous" if ambiguous else "matched"
+            decisions[i] = {
+                "frame_id": frame.frame_id,
+                "observation_id": obs.observation_id,
+                "mask_local_id": obs.mask_local_id,
+                "instance_id": instance_id,
+                "decision": reason,
+                "sampled_voxels": len(voxels),
+                "selected_candidate_id": None if selected is None else instance_id,
+                "candidates": candidates,
+            }
+        for (obs, voxels, _, _), decision in zip(proposals, decisions):
+            self._commit(decision["instance_id"], obs, voxels)
+        self.last_processed_frame_id = frame.frame_id
+        return decisions
+
+    def reassign_observations(self, assignment_updates: dict[str, int]) -> None:
+        """Atomically rebuild the candidate index after an identity revision.
+
+        Source observations and sampled support remain unchanged; region edits
+        require regenerating support from their immutable source masks.
+        """
+        if not set(assignment_updates).issubset(self.observation_support):
+            raise ValueError("Cannot reassign an unknown observation")
+        if any(instance_id <= 0 for instance_id in assignment_updates.values()):
+            raise ValueError("Instance IDs must be positive")
+        revised = {}
+        instances = {}
+        index = defaultdict(set)
+        for obs_id, old in self.observation_support.items():
+            instance_id = assignment_updates.get(obs_id, old.instance_id)
+            entry = ObservationSupport(obs_id, old.frame_id, old.source_mask_sha256,
+                                       instance_id, old.voxels)
+            revised[obs_id] = entry
+            if instance_id not in instances:
+                instances[instance_id] = InstanceState(instance_id, first_frame_id=old.frame_id)
+            state = instances[instance_id]
+            state.observation_ids.append(obs_id)
+            state.first_frame_id = min(state.first_frame_id, old.frame_id)
+            state.last_frame_id = max(state.last_frame_id, old.frame_id)
+            for voxel in old.voxels:
+                if voxel not in state.voxel_set:
+                    state.voxel_set.add(voxel)
+                    state.voxel_list.append(voxel)
+                    index[voxel].add(instance_id)
+        self.observation_support = revised
+        self.instances = instances
+        self.voxel_to_instances = index
+        self.next_instance_id = max(instances, default=0) + 1

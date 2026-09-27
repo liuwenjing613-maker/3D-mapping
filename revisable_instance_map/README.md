@@ -23,3 +23,5 @@ CVPR 项目的统一实现目录。当前目标是从空图跑通**无修复**�
 400 帧共享 TSDF 容量验证见 `docs/geometry_full400_step.md`。逐帧原始实例观测已建表，见 `docs/observation_step.md`。无修复跨帧实例关联、共享 TSDF 上的实例表面及 room0 离线评估已经跑通，见 `docs/no_repair_baseline.md`。本阶段仍无 mask 或历史身份修订。
 
 OVI-MAP 的逐帧 CropFormer + 深度几何细化已按官方实现接入并完成 400 帧对照，见 `docs/ovimap_depth_refinement.md`；前端结果与后续提示分割修复分开保存。
+
+最新无修复来源归组架构、消融与测试：`docs/parent_proposal_regrouped_v1.md`。
