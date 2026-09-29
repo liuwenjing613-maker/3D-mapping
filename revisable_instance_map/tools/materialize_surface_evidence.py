@@ -230,7 +230,8 @@ def main():
                     for index, name in enumerate(STATE_NAMES)}
     report = {
         'status': 'PASS', 'purpose': 'surface_centric_multiview_instance_evidence_P0',
-        'ground_truth_used': False, 'frame_count': len(frame_ids),
+        'ground_truth_used': False, 'scene_id': source.config['scene'],
+        'frame_count': len(frame_ids),
         'observation_count': len(observation_ids), 'tsdf_surface_points': len(xyz),
         'config_sha256': sha256_file(args.config),
         'observation_catalog_sha256': sha256_file(args.observations),

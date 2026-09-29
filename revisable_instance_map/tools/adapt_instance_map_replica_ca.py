@@ -15,7 +15,9 @@ import time
 
 import numpy as np
 
-sys.path.insert(0, "/home/chenkejun/CVPR")
+REPO_ROOT = Path(__file__).resolve().parents[2]
+PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT))
 from unified_eval.geometry import map_point_labels_to_reference  # noqa: E402
 from unified_eval.io import load_gt, save_prediction, sha256_file  # noqa: E402
 from unified_eval.schema import Protocol  # noqa: E402
@@ -40,14 +42,20 @@ def main():
     gt = load_gt(args.gt)
     materialization = json.loads(args.materialization_report.read_text(encoding="utf-8"))
     association = json.loads(args.association_report.read_text(encoding="utf-8"))
-    if gt.scene_id != "room0" or association["frame_count"] != materialization["frame_count"]:
+    scene_id = materialization.get("scene_id")
+    if scene_id is None:
+        config_path = Path(association["config_path"])
+        if not config_path.is_absolute():
+            config_path = PACKAGE_ROOT / config_path
+        scene_id = json.loads(config_path.read_text(encoding="utf-8"))["scene"]
+    if gt.scene_id != scene_id or association["frame_count"] != materialization["frame_count"]:
         raise ValueError("Input scene or frame protocol mismatch")
     with np.load(args.instance_surface, allow_pickle=False) as data:
         xyz = data["xyz_m"]
         labels = data["instance_id"]
     if len(xyz) != materialization["tsdf_surface_points"]:
         raise ValueError("Surface point count mismatch")
-    code_root = Path("/home/chenkejun/CVPR/revisable_instance_map")
+    code_root = PACKAGE_ROOT
     purpose = materialization.get("purpose", "")
     if purpose == "surface_centric_multiview_instance_evidence_P0":
         materializer_paths = [

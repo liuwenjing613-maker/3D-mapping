@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Ablation: retain only refined pixels, grouped by their actual raw source ID."""
+"""Keep OVI refined support while restoring each pixel's raw CropFormer ID."""
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -7,40 +8,97 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-ROOT = Path('/home/chenkejun/CVPR/revisable_instance_map')
-DATA = Path('/data/chenkejun/CVPR/revisable_instance_map')
-raw_cfg = json.loads((ROOT / 'configs/replica_room0_stride5.json').read_text())
-ref_cfg = json.loads((ROOT / 'configs/replica_room0_stride5_ovimap_refined.json').read_text())
-out = DATA / 'ovimap_refined_regrouped_by_source_room0_stride5'
-out.mkdir(parents=True, exist_ok=True)
-records = []
-raw_retained = 0
-raw_removed = 0
-for frame_id in range(0, 2000, 5):
-    raw_path = Path(raw_cfg['source']['mask_root']) / raw_cfg['source']['mask_pattern'].format(frame=frame_id)
-    ref_path = Path(ref_cfg['source']['mask_root']) / ref_cfg['source']['mask_pattern'].format(frame=frame_id)
-    raw = cv2.imread(str(raw_path), cv2.IMREAD_UNCHANGED)
-    ref = cv2.imread(str(ref_path), cv2.IMREAD_UNCHANGED)
-    if raw is None or ref is None or raw.shape != ref.shape:
-        raise ValueError(f'Mask error in frame {frame_id}')
-    kept = np.where(ref > 0, raw, 0).astype(raw.dtype)
-    if np.count_nonzero((kept > 0) & (raw == 0)):
-        raise AssertionError('Added pixels have no raw source')
-    output = out / f'frame{frame_id:06d}.png'
-    if not cv2.imwrite(str(output), kept):
-        raise OSError(output)
-    raw_retained += int(np.count_nonzero(kept))
-    raw_removed += int(np.count_nonzero((raw > 0) & (kept == 0)))
-    records.append({'frame': frame_id, 'mask_sha256': hashlib.sha256(output.read_bytes()).hexdigest(),
-                    'instances': int(np.count_nonzero(np.unique(kept))),
-                    'raw_mask_sha256': hashlib.sha256(raw_path.read_bytes()).hexdigest(),
-                    'refined_mask_sha256': hashlib.sha256(ref_path.read_bytes()).hexdigest()})
-(out / 'frames.jsonl').write_text(''.join(json.dumps(x) + '\n' for x in records))
-cfg = json.loads(json.dumps(raw_cfg))
-cfg['purpose'] = 'ablation_depth_refined_regrouped_by_actual_raw_source'
-cfg['source']['mask_root'] = str(out)
-cfg['mask']['observation_namespace'] = 'ovimap-parent-regrouped-v1'
-cfg['mask']['provenance'] = 'raw mask intersected with positive OVI refined support; raw parent is birth unit'
-(ROOT / 'configs/replica_room0_stride5_ovimap_parent_regrouped.json').write_text(json.dumps(cfg, indent=2) + '\n')
-print(json.dumps({'frames': len(records), 'retained_pixels': raw_retained,
-                  'removed_pixels': raw_removed, 'ground_truth_used': False}), flush=True)
+
+def sha256_file(path):
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def write_json(path, value):
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n",
+                         encoding="utf-8")
+    temporary.replace(path)
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--raw-config", type=Path, required=True)
+    parser.add_argument("--refined-config", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--output-config", type=Path, required=True)
+    args = parser.parse_args()
+    raw_cfg = json.loads(args.raw_config.read_text(encoding="utf-8"))
+    refined_cfg = json.loads(args.refined_config.read_text(encoding="utf-8"))
+    if (raw_cfg["scene"] != refined_cfg["scene"] or
+            raw_cfg["frame_selection"] != refined_cfg["frame_selection"]):
+        raise ValueError("Raw and refined configs describe different protocols")
+    selection = raw_cfg["frame_selection"]
+    frame_ids = range(selection["start"], selection["stop_exclusive"],
+                      selection["stride"])
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    args.output_config.parent.mkdir(parents=True, exist_ok=True)
+    manifest = args.output_dir / "frames.jsonl"
+    report_path = args.output_dir / "regroup_report.json"
+    if manifest.exists() or report_path.exists() or args.output_config.exists():
+        raise FileExistsError("Regrouped output already exists; choose a fresh directory")
+    raw_root = Path(raw_cfg["source"]["mask_root"])
+    refined_root = Path(refined_cfg["source"]["mask_root"])
+    records = []
+    totals = {"retained_pixels": 0, "removed_pixels": 0, "instances": 0}
+    for frame_id in frame_ids:
+        raw_path = raw_root / raw_cfg["source"]["mask_pattern"].format(frame=frame_id)
+        refined_path = refined_root / refined_cfg["source"]["mask_pattern"].format(frame=frame_id)
+        raw = cv2.imread(str(raw_path), cv2.IMREAD_UNCHANGED)
+        refined = cv2.imread(str(refined_path), cv2.IMREAD_UNCHANGED)
+        if raw is None or refined is None or raw.shape != refined.shape:
+            raise ValueError(f"Mask error in frame {frame_id}")
+        kept = np.where(refined > 0, raw, 0).astype(raw.dtype)
+        if np.count_nonzero((kept > 0) & (raw == 0)):
+            raise AssertionError("Regrouping introduced pixels absent from raw mask")
+        output = args.output_dir / f"frame{frame_id:06d}.png"
+        temporary = args.output_dir / f"frame{frame_id:06d}.tmp.png"
+        if output.exists() or not cv2.imwrite(str(temporary), kept):
+            raise FileExistsError(output)
+        temporary.replace(output)
+        instance_count = int(np.count_nonzero(np.unique(kept)))
+        retained = int(np.count_nonzero(kept))
+        removed = int(np.count_nonzero((raw > 0) & (kept == 0)))
+        totals["retained_pixels"] += retained
+        totals["removed_pixels"] += removed
+        totals["instances"] += instance_count
+        records.append({
+            "frame": frame_id, "mask_sha256": sha256_file(output),
+            "instances": instance_count, "raw_mask_sha256": sha256_file(raw_path),
+            "refined_mask_sha256": sha256_file(refined_path),
+        })
+    manifest_tmp = manifest.with_suffix(".jsonl.tmp")
+    manifest_tmp.write_text("".join(json.dumps(row, sort_keys=True) + "\n"
+                                    for row in records), encoding="utf-8")
+    manifest_tmp.replace(manifest)
+    output_cfg = json.loads(json.dumps(raw_cfg))
+    output_cfg["purpose"] = "p0_depth_refined_regrouped_by_raw_source"
+    output_cfg["source"]["mask_root"] = str(args.output_dir)
+    output_cfg["source"]["mask_pattern"] = "frame{frame:06d}.png"
+    output_cfg["source"]["mask_metadata"] = "frames.jsonl"
+    output_cfg["mask"]["observation_namespace"] = "ovimap-parent-regrouped-v1"
+    output_cfg["mask"]["provenance"] = (
+        "raw CropFormer ID intersected with positive OVI refined support")
+    write_json(args.output_config, output_cfg)
+    report = {
+        "status": "PASS", "scene_id": raw_cfg["scene"],
+        "frames": len(records), "ground_truth_used": False,
+        "raw_config_sha256": sha256_file(args.raw_config),
+        "refined_config_sha256": sha256_file(args.refined_config),
+        "output_config_sha256": sha256_file(args.output_config),
+        "manifest_sha256": sha256_file(manifest), **totals,
+    }
+    write_json(report_path, report)
+    print(json.dumps(report), flush=True)
+
+
+if __name__ == "__main__":
+    main()
