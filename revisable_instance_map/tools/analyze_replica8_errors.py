@@ -149,11 +149,14 @@ def project_points(points, pose, camera, depth):
     if not len(index):
         return np.empty(0, np.int32), np.empty(0, np.int32), np.empty(0, np.int32)
     projected = cam[index]
-    u = np.rint(camera[0] * projected[:, 0] / projected[:, 2] + camera[2]).astype(np.int32)
-    v = np.rint(camera[1] * projected[:, 1] / projected[:, 2] + camera[3]).astype(np.int32)
-    inside = ((u >= 0) & (u < depth.shape[1]) &
-              (v >= 0) & (v < depth.shape[0]))
-    index, u, v = index[inside], u[inside], v[inside]
+    u_float = np.rint(camera[0] * projected[:, 0] / projected[:, 2] + camera[2])
+    v_float = np.rint(camera[1] * projected[:, 1] / projected[:, 2] + camera[3])
+    inside = (np.isfinite(u_float) & np.isfinite(v_float) &
+              (u_float >= 0) & (u_float < depth.shape[1]) &
+              (v_float >= 0) & (v_float < depth.shape[0]))
+    index = index[inside]
+    u = u_float[inside].astype(np.int32)
+    v = v_float[inside].astype(np.int32)
     if not len(index):
         return np.empty(0, np.int32), np.empty(0, np.int32), np.empty(0, np.int32)
     observed = depth[v, u]
@@ -232,6 +235,135 @@ def surface_trace(evidence, surface_tree, points):
             "state_counts": state_count, "top_instance_ids": top_ids}
 
 
+def summarize_gt_support(labels):
+    labels = labels[labels > 0]
+    if not len(labels):
+        return {"samples": 0, "purity": 0.0, "mixed": False, "top_gt_ids": []}
+    ids, counts = np.unique(labels, return_counts=True)
+    order = np.argsort(counts)[::-1]
+    ranked = [(int(ids[i]), int(counts[i])) for i in order[:6]]
+    total = int(np.sum(counts))
+    second = ranked[1][1] if len(ranked) > 1 else 0
+    return {
+        "samples": total,
+        "purity": ranked[0][1] / total,
+        "mixed": second >= max(20, int(np.ceil(0.15 * total))),
+        "top_gt_ids": ranked,
+    }
+
+
+def mask_gt_support(mask, local_id, depth, pose, camera, gt_tree, gt_labels,
+                    max_pixels=4000):
+    support = ((mask == local_id) & np.isfinite(depth) & (depth > 0))
+    v, u = np.nonzero(support)
+    if len(u) > max_pixels:
+        choose = np.linspace(0, len(u) - 1, max_pixels, dtype=np.int32)
+        u, v = u[choose], v[choose]
+    if not len(u):
+        return summarize_gt_support(np.empty(0, np.int64))
+    z = depth[v, u]
+    camera_xyz = np.column_stack(((u - camera[2]) * z / camera[0],
+                                  (v - camera[3]) * z / camera[1], z))
+    world_xyz = camera_xyz @ pose[:3, :3].T + pose[:3, 3]
+    distance, index = gt_tree.query(world_xyz, workers=-1)
+    near = np.isfinite(distance) & (distance <= 0.03)
+    return summarize_gt_support(gt_labels[index[near]])
+
+
+def choose_lineage_observations(observations, limit=16):
+    if len(observations) <= limit:
+        return sorted(observations, key=lambda row: int(row["frame_id"]))
+    by_size = sorted(observations, key=lambda row: row["projectable_pixel_count"],
+                     reverse=True)[:limit // 2]
+    by_time = sorted(observations, key=lambda row: int(row["frame_id"]))
+    temporal = [by_time[i] for i in np.linspace(
+        0, len(by_time) - 1, limit - len(by_size), dtype=np.int32)]
+    selected = {(int(row["frame_id"]), int(row["mask_local_id"])): row
+                for row in by_size + temporal}
+    return sorted(selected.values(), key=lambda row: int(row["frame_id"]))
+
+
+def trace_prediction_lineage(scene_dir, instance_ids, gt, lineage):
+    config = read_json(scene_dir / "configs/p0_parent_regrouped.json")
+    raw_root = Path(read_json(scene_dir / "configs/raw.json")["source"]["mask_root"])
+    final_root = Path(config["source"]["mask_root"])
+    scene_root = Path(config["source"]["scene_root"])
+    poses = np.loadtxt(scene_root / config["source"]["trajectory"],
+                       dtype=np.float64).reshape(-1, 4, 4)
+    camera = (config["camera"]["fx"], config["camera"]["fy"],
+              config["camera"]["cx"], config["camera"]["cy"])
+    valid_gt = ((gt.instance_id > 0) & np.isfinite(gt.xyz_ref).all(axis=1))
+    gt_tree = cKDTree(gt.xyz_ref[valid_gt])
+    gt_labels = gt.instance_id[valid_gt]
+    frame_cache = {}
+
+    def load_frame(frame_id):
+        if frame_id not in frame_cache:
+            depth = cv2.imread(str(scene_root / f"results/depth{frame_id:06d}.png"),
+                               cv2.IMREAD_UNCHANGED)
+            raw = cv2.imread(str(raw_root / f"frame{frame_id:06d}.png"),
+                             cv2.IMREAD_UNCHANGED)
+            final = cv2.imread(str(final_root / f"frame{frame_id:06d}.png"),
+                               cv2.IMREAD_UNCHANGED)
+            if depth is None or raw is None or final is None:
+                raise FileNotFoundError(f"Missing frame data for {frame_id}")
+            frame_cache[frame_id] = (
+                depth.astype(np.float32) /
+                config["camera"]["depth_png_units_per_meter"], raw, final)
+        return frame_cache[frame_id]
+
+    traces = {}
+    for instance_id in sorted(set(instance_ids)):
+        observations = choose_lineage_observations(lineage.get(instance_id, []))
+        records = []
+        dominant_observations = Counter()
+        dominant_samples = Counter()
+        raw_mixed = 0
+        final_mixed = 0
+        for row in observations:
+            frame_id = int(row["frame_id"])
+            local_id = int(row["mask_local_id"])
+            depth, raw, final = load_frame(frame_id)
+            raw_support = mask_gt_support(raw, local_id, depth, poses[frame_id],
+                                          camera, gt_tree, gt_labels)
+            final_support = mask_gt_support(final, local_id, depth, poses[frame_id],
+                                            camera, gt_tree, gt_labels)
+            raw_mixed += int(raw_support["mixed"])
+            final_mixed += int(final_support["mixed"])
+            if final_support["top_gt_ids"]:
+                dominant = final_support["top_gt_ids"][0]
+                dominant_observations[dominant[0]] += 1
+                dominant_samples[dominant[0]] += dominant[1]
+            records.append({
+                "frame_id": frame_id, "mask_local_id": local_id,
+                "decision": row["decision"], "raw_support": raw_support,
+                "final_support": final_support,
+            })
+        stable_ids = [int(gt_id) for gt_id, count in dominant_observations.items()
+                      if count >= 2 and dominant_samples[gt_id] >= 100]
+        traces[instance_id] = {
+            "total_observations": len(lineage.get(instance_id, [])),
+            "sampled_observations": len(records),
+            "raw_mixed_observations": raw_mixed,
+            "final_mixed_observations": final_mixed,
+            "stable_dominant_gt_ids": sorted(stable_ids),
+            "dominant_observation_counts": dominant_observations.most_common(),
+            "dominant_sample_counts": dominant_samples.most_common(),
+            "observations": records,
+        }
+    return traces
+
+
+def refine_merge_cause(trace):
+    sampled = trace.get("sampled_observations", 0)
+    mixed = trace.get("raw_mixed_observations", 0)
+    if mixed >= max(2, int(np.ceil(0.20 * sampled))):
+        return "cropformer_mask_merge", "多个单帧原始 CropFormer mask 已同时覆盖不同 GT 实例"
+    if len(trace.get("stable_dominant_gt_ids", [])) >= 2:
+        return "association_merge", "单帧 mask 多数较纯，但不同 GT 的观测被累计到同一 persistent ID"
+    return "surface_attribution_merge", "抽样观测未显示稳定前端混合或跨对象关联；优先检查表面归属及未抽样长尾观测"
+
+
 def classify_fn(case, visibility, surface):
     if surface["geometry_coverage"] < 0.50:
         return "geometry_gap", "GT 表面很少能在最终 TSDF 中找到 3 cm 内对应点"
@@ -241,6 +373,8 @@ def classify_fn(case, visibility, surface):
         return "cropformer_miss", "可见 GT 投影大部分落在原始 CropFormer 背景"
     if visibility["final_coverage"] < 0.60 * visibility["raw_coverage"]:
         return "depth_refinement_erasure", "深度细化删除了大部分原始前景支持"
+    if case["precision"] < 0.50 and case["recall"] >= 0.50:
+        return "instance_merge", "最佳预测覆盖对象但同时包含大量其他表面"
     ids = visibility["persistent_ids"]
     if len(ids) >= 2 and ids[1][1] >= 0.20 * ids[0][1]:
         return "association_fragmentation", "同一 GT 的逐帧支持被分配给多个 persistent ID"
@@ -248,14 +382,14 @@ def classify_fn(case, visibility, surface):
     uncertain = sum(states.get(str(code), 0) for code in (0, 1, 3))
     if surface["surface_points"] and uncertain / surface["surface_points"] > 0.45:
         return "surface_evidence_gap", "附近 TSDF 点多数未确认或存在 ID 冲突"
-    if case["precision"] < 0.50 and case["recall"] >= 0.50:
-        return "instance_merge", "最佳预测覆盖对象但同时包含大量其他表面"
     return "borderline_overlap", "证据链存在，但最终 IoU 未超过 0.5"
 
 
 def classify_fp(case):
-    if case.get("significant_count", 0) >= 2:
+    if case.get("significant_count", 0) >= 2 and case["precision"] < 0.75:
         return "instance_merge", "同一预测显著覆盖多个 GT 对象"
+    if case["precision"] >= 0.75 and case["recall"] < 0.50:
+        return "duplicate_fragment", "预测较纯但只覆盖 GT 的局部，通常是重复出生或关联断裂"
     if case["iou"] >= 0.30 and case["recall"] >= 0.30:
         return "duplicate_fragment", "预测与一个 GT 有明显重叠，但未成为一对一匹配"
     if case["precision"] < 0.30 or case.get("void_fraction", 0) > 0.30:
@@ -334,7 +468,8 @@ def crop_and_save_overlay(path, rgb_path, mask_path, mask_ids, u=None, v=None, c
 
 
 def render_case(scene, scene_dir, case, gt, pred_vertices, classes, lineage,
-                visibility_by_gt, evidence, surface_tree, assets):
+                visibility_by_gt, prediction_traces, evidence, surface_tree,
+                assets):
     gt_id = case["gt_id"]
     pred_uid = case["pred_uid"]
     gt_index = np.flatnonzero(gt.instance_id == gt_id) if gt_id >= 0 else np.empty(0, np.int32)
@@ -347,10 +482,14 @@ def render_case(scene, scene_dir, case, gt, pred_vertices, classes, lineage,
                  f"{scene} · {case['error_type']} · GT {gt_id} · Pred {pred_uid or 'none'}")
     case["plot_3d"] = f"assets/{plot_path.name}"
     frame_images = []
+    instance_id = int(pred_uid) if pred_uid.isdigit() else -1
+    prediction_trace = prediction_traces.get(instance_id)
     if case["error_type"] == "FN" and len(gt_index):
         visibility = visibility_by_gt[gt_id]
         surface = surface_trace(evidence, surface_tree, gt.xyz_ref[gt_index])
         cause, explanation = classify_fn(case, visibility, surface)
+        if cause == "instance_merge" and prediction_trace:
+            cause, explanation = refine_merge_cause(prediction_trace)
         case["root_cause"] = cause
         case["root_cause_explanation"] = explanation
         case["trace"] = {
@@ -360,6 +499,8 @@ def render_case(scene, scene_dir, case, gt, pred_vertices, classes, lineage,
             "persistent_ids": visibility["persistent_ids"],
             "surface": surface,
         }
+        if prediction_trace:
+            case["trace"]["prediction_lineage"] = prediction_trace
         config = visibility["config"]
         scene_root = Path(config["source"]["scene_root"])
         mask_root = Path(config["source"]["mask_root"])
@@ -374,9 +515,10 @@ def render_case(scene, scene_dir, case, gt, pred_vertices, classes, lineage,
             frame_images.append(f"assets/{output.name}")
     else:
         cause, explanation = classify_fp(case)
+        if cause == "instance_merge" and prediction_trace:
+            cause, explanation = refine_merge_cause(prediction_trace)
         case["root_cause"] = cause
         case["root_cause_explanation"] = explanation
-        instance_id = int(pred_uid) if pred_uid.isdigit() else -1
         observations = sorted(lineage.get(instance_id, []),
                               key=lambda row: row["projectable_pixel_count"], reverse=True)
         config = read_json(scene_dir / "configs/p0_parent_regrouped.json")
@@ -387,6 +529,8 @@ def render_case(scene, scene_dir, case, gt, pred_vertices, classes, lineage,
             "birth_decision": observations[0]["decision"] if observations else "none",
             "top_frames": [int(row["frame_id"]) for row in observations[:8]],
         }
+        if prediction_trace:
+            case["trace"]["prediction_lineage"] = prediction_trace
         for row in observations[:2]:
             frame_id = int(row["frame_id"])
             output = assets / f"{slug}_f{frame_id:06d}.jpg"
@@ -406,10 +550,10 @@ def dashboard_html(payload):
 <title>Replica P0 错误追溯</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1220'/%3E%3Cpath d='M7 22V10h7c5 0 8 2 8 6s-3 6-8 6H7zm5-4h2c2 0 3-.6 3-2s-1-2-3-2h-2v4z' fill='%2327d3c2'/%3E%3C/svg%3E">
 <style>
-:root{{--bg:#07101e;--panel:#0e1a2c;--panel2:#13233a;--text:#e9f0fb;--muted:#91a4bd;--line:#243650;--cyan:#27d3c2;--pink:#ef5da8;--yellow:#f6c85f;--red:#ff6b6b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,"Microsoft YaHei",sans-serif}}header{{position:sticky;top:0;z-index:5;background:rgba(7,16,30,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:18px 24px}}h1{{font-size:1.28rem;margin:0 0 4px}}.sub{{color:var(--muted);font-size:.9rem}}main{{max-width:1500px;margin:auto;padding:20px 24px 60px}}.metrics{{display:grid;grid-template-columns:repeat(5,minmax(130px,1fr));gap:10px;margin-bottom:18px}}.metric,.controls,.case{{background:var(--panel);border:1px solid var(--line);border-radius:12px}}.metric{{padding:13px 15px}}.metric b{{font-size:1.35rem;display:block;color:var(--cyan)}}.metric span{{color:var(--muted);font-size:.82rem}}.controls{{display:flex;gap:12px;flex-wrap:wrap;padding:12px;margin-bottom:18px}}select,input{{background:#091525;color:var(--text);border:1px solid #314966;border-radius:8px;padding:9px 11px;font-size:.9rem}}input{{min-width:240px;flex:1}}.scene-table{{overflow:auto;margin-bottom:20px;border:1px solid var(--line);border-radius:12px}}table{{width:100%;border-collapse:collapse;background:var(--panel)}}th,td{{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}}th:first-child,td:first-child{{text-align:left}}th{{color:var(--muted);font-size:.78rem;text-transform:uppercase}}.grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}}.case{{overflow:hidden}}.case-head{{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}}.title{{font-weight:700}}.badge{{display:inline-block;padding:3px 8px;border-radius:999px;background:#203652;color:var(--cyan);font-size:.75rem;margin-right:5px}}.badge.fn{{color:var(--yellow)}}.badge.fp{{color:var(--pink)}}.case-body{{padding:14px 16px}}.cause{{border-left:3px solid var(--cyan);padding-left:10px;margin-bottom:12px}}.cause b{{display:block}}.cause span{{color:var(--muted);font-size:.86rem}}.numbers{{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}}.numbers div{{background:var(--panel2);padding:8px;border-radius:8px;font-size:.78rem;color:var(--muted)}}.numbers strong{{display:block;color:var(--text);font-size:.95rem}}.visuals{{display:grid;grid-template-columns:1.25fr 1fr;gap:8px}}.visuals img{{width:100%;height:190px;object-fit:cover;background:#06101d;border-radius:8px;border:1px solid var(--line)}}.frames{{display:grid;grid-template-rows:1fr 1fr;gap:8px}}.frames img{{height:91px}}details{{margin-top:10px;color:var(--muted);font-size:.82rem}}pre{{white-space:pre-wrap;word-break:break-word;background:#081421;padding:9px;border-radius:7px;max-height:190px;overflow:auto}}.empty{{padding:40px;text-align:center;color:var(--muted)}}@media(max-width:760px){{header,main{{padding-left:12px;padding-right:12px}}.metrics{{grid-template-columns:repeat(2,1fr)}}.grid{{grid-template-columns:1fr}}.visuals{{grid-template-columns:1fr}}.visuals img{{height:auto}}.frames{{grid-template-columns:1fr 1fr;grid-template-rows:none}}}}
+:root{{--bg:#07101e;--panel:#0e1a2c;--panel2:#13233a;--text:#e9f0fb;--muted:#91a4bd;--line:#243650;--cyan:#27d3c2;--pink:#ef5da8;--yellow:#f6c85f;--red:#ff6b6b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,"Microsoft YaHei",sans-serif}}header{{position:sticky;top:0;z-index:5;background:rgba(7,16,30,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:18px 24px}}h1{{font-size:1.28rem;margin:0 0 4px}}.sub{{color:var(--muted);font-size:.9rem}}main{{max-width:1500px;margin:auto;padding:20px 24px 60px}}.metrics{{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:18px}}.metric,.controls,.case,.cause-summary{{background:var(--panel);border:1px solid var(--line);border-radius:12px}}.metric{{padding:13px 15px}}.metric b{{font-size:1.35rem;display:block;color:var(--cyan)}}.metric span{{color:var(--muted);font-size:.82rem}}.controls{{display:flex;gap:12px;flex-wrap:wrap;padding:12px;margin-bottom:18px}}select,input{{background:#091525;color:var(--text);border:1px solid #314966;border-radius:8px;padding:9px 11px;font-size:.9rem}}input{{min-width:240px;flex:1}}.cause-summary{{padding:14px 16px;margin-bottom:18px}}.cause-summary h2{{font-size:1rem;margin:0 0 4px}}.cause-summary p{{color:var(--muted);font-size:.8rem;margin:0 0 12px}}.cause-bars{{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px 16px}}.cause-row{{display:grid;grid-template-columns:minmax(105px,auto) 1fr 28px;align-items:center;gap:8px;font-size:.78rem}}.cause-bar{{height:7px;border-radius:99px;background:#1b314d;overflow:hidden}}.cause-bar i{{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),#5b8cff)}}.scene-table{{overflow:auto;margin-bottom:20px;border:1px solid var(--line);border-radius:12px}}table{{width:100%;border-collapse:collapse;background:var(--panel)}}th,td{{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}}th:first-child,td:first-child{{text-align:left}}th{{color:var(--muted);font-size:.78rem;text-transform:uppercase}}.grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:16px}}.case{{overflow:hidden}}.case-head{{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}}.title{{font-weight:700}}.badge{{display:inline-block;padding:3px 8px;border-radius:999px;background:#203652;color:var(--cyan);font-size:.75rem;margin-right:5px}}.badge.fn{{color:var(--yellow)}}.badge.fp{{color:var(--pink)}}.case-body{{padding:14px 16px}}.cause{{border-left:3px solid var(--cyan);padding-left:10px;margin-bottom:12px}}.cause b{{display:block}}.cause span{{color:var(--muted);font-size:.86rem}}.numbers{{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}}.numbers div{{background:var(--panel2);padding:8px;border-radius:8px;font-size:.78rem;color:var(--muted)}}.numbers strong{{display:block;color:var(--text);font-size:.95rem}}.visuals{{display:grid;grid-template-columns:1.25fr 1fr;gap:8px}}.visuals img{{width:100%;height:190px;object-fit:cover;background:#06101d;border-radius:8px;border:1px solid var(--line)}}.frames{{display:grid;grid-template-rows:1fr 1fr;gap:8px}}.frames img{{height:91px}}details{{margin-top:10px;color:var(--muted);font-size:.82rem}}pre{{white-space:pre-wrap;word-break:break-word;background:#081421;padding:9px;border-radius:7px;max-height:190px;overflow:auto}}.empty{{padding:40px;text-align:center;color:var(--muted)}}@media(max-width:760px){{header,main{{padding-left:12px;padding-right:12px}}.metrics{{grid-template-columns:repeat(2,1fr)}}.grid{{grid-template-columns:1fr}}.visuals{{grid-template-columns:1fr}}.visuals img{{height:auto}}.frames{{grid-template-columns:1fr 1fr;grid-template-rows:none}}}}
 </style></head><body><header><h1>Replica P0 无修复地图 · 错误追溯</h1><div class="sub">统一 Replica-CA-v1 协议 · GT 仅用于建图完成后的诊断 · 黄色点为 GT 可见投影，绿色区域为系统 mask</div></header><main>
-<section class="metrics" id="metrics"></section><section class="controls"><select id="scene"><option value="">全部场景</option></select><select id="type"><option value="">全部错误</option><option>FN</option><option>FP</option></select><select id="cause"><option value="">全部根因</option></select><input id="search" placeholder="搜索 GT ID、预测 ID 或类别"></section><section class="scene-table"><table><thead><tr><th>场景</th><th>AP</th><th>AP50</th><th>PQ</th><th>TP</th><th>FP</th><th>FN</th></tr></thead><tbody id="sceneRows"></tbody></table></section><section class="grid" id="cases"></section></main>
-<script>const DATA={data};const $=s=>document.querySelector(s);const fmt=x=>Number(x).toFixed(3);const scenes=[...new Set(DATA.cases.map(x=>x.scene))];const causes=[...new Set(DATA.cases.map(x=>x.root_cause))].sort();scenes.forEach(x=>$('#scene').insertAdjacentHTML('beforeend',`<option>${{x}}</option>`));causes.forEach(x=>$('#cause').insertAdjacentHTML('beforeend',`<option value="${{x}}">${{DATA.cause_labels[x]||x}}</option>`));$('#sceneRows').innerHTML=DATA.scenes.map(x=>`<tr><td>${{x.scene_id}}</td><td>${{fmt(x.AP)}}</td><td>${{fmt(x.AP50)}}</td><td>${{fmt(x.PQ)}}</td><td>${{x.TP}}</td><td>${{x.FP}}</td><td>${{x.FN}}</td></tr>`).join('');const total=k=>DATA.scenes.reduce((a,x)=>a+(x[k]||0),0);$('#metrics').innerHTML=`<div class="metric"><b>${{fmt(DATA.aggregate.AP50)}}</b><span>八场景宏平均 AP50</span></div><div class="metric"><b>${{fmt(DATA.aggregate.PQ)}}</b><span>八场景宏平均 PQ</span></div><div class="metric"><b>${{total('TP')}}</b><span>匹配 TP</span></div><div class="metric"><b>${{total('FP')}}</b><span>未匹配 FP</span></div><div class="metric"><b>${{total('FN')}}</b><span>未匹配 FN</span></div>`;
+<section class="metrics" id="metrics"></section><section class="cause-summary"><h2>代表性错误的阶段归因</h2><p>此处统计深追案例；全部未匹配错误保存在 CSV。</p><div class="cause-bars" id="causeSummary"></div></section><section class="controls"><select id="scene"><option value="">全部场景</option></select><select id="type"><option value="">全部错误</option><option>FN</option><option>FP</option></select><select id="cause"><option value="">全部根因</option></select><input id="search" placeholder="搜索 GT ID、预测 ID 或类别"></section><section class="scene-table"><table><thead><tr><th>场景</th><th>AP</th><th>AP25</th><th>AP50</th><th>PQ</th><th>TP</th><th>FP</th><th>FN</th></tr></thead><tbody id="sceneRows"></tbody></table></section><section class="grid" id="cases"></section></main>
+<script>const DATA={data};const $=s=>document.querySelector(s);const fmt=x=>Number(x).toFixed(3);const scenes=[...new Set(DATA.cases.map(x=>x.scene))];const causes=[...new Set(DATA.cases.map(x=>x.root_cause))].sort();scenes.forEach(x=>$('#scene').insertAdjacentHTML('beforeend',`<option>${{x}}</option>`));causes.forEach(x=>$('#cause').insertAdjacentHTML('beforeend',`<option value="${{x}}">${{DATA.cause_labels[x]||x}}</option>`));$('#sceneRows').innerHTML=DATA.scenes.map(x=>`<tr><td>${{x.scene_id}}</td><td>${{fmt(x.AP)}}</td><td>${{fmt(x.AP25)}}</td><td>${{fmt(x.AP50)}}</td><td>${{fmt(x.PQ)}}</td><td>${{x.TP}}</td><td>${{x.FP}}</td><td>${{x.FN}}</td></tr>`).join('');const total=k=>DATA.scenes.reduce((a,x)=>a+(x[k]||0),0);$('#metrics').innerHTML=`<div class="metric"><b>${{fmt(DATA.aggregate.AP)}}</b><span>宏平均 AP</span></div><div class="metric"><b>${{fmt(DATA.aggregate.AP25)}}</b><span>宏平均 AP25</span></div><div class="metric"><b>${{fmt(DATA.aggregate.AP50)}}</b><span>宏平均 AP50</span></div><div class="metric"><b>${{fmt(DATA.aggregate.PQ)}}</b><span>宏平均 PQ</span></div><div class="metric"><b>${{total('TP')}}</b><span>匹配 TP</span></div><div class="metric"><b>${{total('FP')}}</b><span>未匹配 FP</span></div><div class="metric"><b>${{total('FN')}}</b><span>未匹配 FN</span></div>`;const counts=DATA.cases.reduce((a,x)=>(a[x.root_cause]=(a[x.root_cause]||0)+1,a),{{}});const maxCause=Math.max(...Object.values(counts));$('#causeSummary').innerHTML=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div class="cause-row"><span>${{DATA.cause_labels[k]||k}}</span><span class="cause-bar"><i style="width:${{100*v/maxCause}}%"></i></span><b>${{v}}</b></div>`).join('');
 function render(){{const scene=$('#scene').value,type=$('#type').value,cause=$('#cause').value,q=$('#search').value.toLowerCase();const rows=DATA.cases.filter(x=>(!scene||x.scene===scene)&&(!type||x.error_type===type)&&(!cause||x.root_cause===cause)&&(!q||`${{x.gt_id}} ${{x.pred_uid}} ${{x.class_name}}`.toLowerCase().includes(q)));$('#cases').innerHTML=rows.length?rows.map(x=>`<article class="case"><div class="case-head"><div><span class="badge ${{x.error_type.toLowerCase()}}">${{x.error_type}}</span><span class="badge">${{x.scene}}</span><span class="badge">${{x.class_name}}</span></div><div class="title">GT ${{x.gt_id}} · Pred ${{x.pred_uid||'—'}}</div></div><div class="case-body"><div class="cause"><b>${{DATA.cause_labels[x.root_cause]||x.root_cause}}</b><span>${{x.root_cause_explanation}}</span></div><div class="numbers"><div><strong>${{fmt(x.iou)}}</strong>IoU</div><div><strong>${{fmt(x.precision)}}</strong>Precision</div><div><strong>${{fmt(x.recall)}}</strong>Recall</div><div><strong>${{x.gt_size}} / ${{x.pred_size}}</strong>GT / Pred 点数</div></div><div class="visuals"><img loading="lazy" src="${{x.plot_3d}}"><div class="frames">${{x.frame_images.map(p=>`<img loading="lazy" src="${{p}}">`).join('')}}</div></div><details><summary>查看追溯证据</summary><pre>${{JSON.stringify(x.trace,null,2)}}</pre></details></div></article>`).join(''):'<div class="empty">当前筛选条件下没有案例</div>'}}['scene','type','cause','search'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',render));render();</script></body></html>"""
 
 
@@ -443,12 +587,17 @@ def main():
         selected_fn = [case for case in selected if case["error_type"] == "FN"]
         visibility_by_gt = trace_gt_visibility_batch(
             scene_dir, selected_fn, gt, association_lookup)
+        prediction_ids = [int(case["pred_uid"]) for case in selected
+                          if case["pred_uid"].isdigit()]
+        prediction_traces = trace_prediction_lineage(
+            scene_dir, prediction_ids, gt, lineage)
         evidence = load_npz(scene_dir / "surface_p0/surface_evidence.npz")
         surface_tree = cKDTree(evidence["xyz_m"])
         for case in selected:
             detailed.append(render_case(scene, scene_dir, dict(case), gt, vertices,
                                         classes, lineage, visibility_by_gt,
-                                        evidence, surface_tree, assets))
+                                        prediction_traces, evidence, surface_tree,
+                                        assets))
     fieldnames = sorted({key for row in all_rows for key in row})
     with (output / "all_errors.csv").open("w", newline="", encoding="utf-8-sig") as stream:
         writer = csv.DictWriter(stream, fieldnames=fieldnames)
@@ -460,12 +609,14 @@ def main():
         "geometry_gap": "TSDF 几何缺口", "visibility_gap": "缺少有效深度可见性",
         "cropformer_miss": "CropFormer 漏检", "depth_refinement_erasure": "深度细化误删",
         "association_fragmentation": "跨帧关联碎片化", "surface_evidence_gap": "表面证据未确认",
-        "instance_merge": "实例合并", "borderline_overlap": "IoU 临界失败",
+        "instance_merge": "实例合并", "cropformer_mask_merge": "CropFormer 单帧混合",
+        "association_merge": "跨帧关联合并", "surface_attribution_merge": "表面归属合并",
+        "borderline_overlap": "IoU 临界失败",
         "duplicate_fragment": "重复或碎片预测", "background_leakage": "背景泄漏",
         "spurious_or_small_fragment": "游离小碎片",
     }
     aggregate = {key: float(np.mean([row[key] for row in summaries]))
-                 for key in ("AP", "AP50", "PQ")}
+                 for key in ("AP", "AP25", "AP50", "PQ")}
     payload = {"scenes": summaries, "aggregate": aggregate, "cases": detailed,
                "cause_labels": cause_labels,
                "diagnostic_scope": "representative_deep_traces_plus_all_error_csv"}
