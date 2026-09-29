@@ -25,3 +25,7 @@ CVPR 项目的统一实现目录。当前目标是从空图跑通**无修复**�
 OVI-MAP 的逐帧 CropFormer + 深度几何细化已按官方实现接入并完成 400 帧对照，见 `docs/ovimap_depth_refinement.md`；前端结果与后续提示分割修复分开保存。
 
 最新无修复来源归组架构、消融与测试：`docs/parent_proposal_regrouped_v1.md`。
+
+P0 表面多视角证据和 room0 完整评估：`docs/surface_evidence_p0.md`。
+
+P0.1 表面点到历史帧的投影证据与 room0 对照：`docs/surface_projective_evidence_p01.md`。
