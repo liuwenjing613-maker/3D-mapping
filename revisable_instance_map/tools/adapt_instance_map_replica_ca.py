@@ -47,11 +47,30 @@ def main():
         labels = data["instance_id"]
     if len(xyz) != materialization["tsdf_surface_points"]:
         raise ValueError("Surface point count mismatch")
-    code_paths = [
-        Path("/home/chenkejun/CVPR/revisable_instance_map/src/revisable_instance_map/association.py"),
-        Path("/home/chenkejun/CVPR/revisable_instance_map/tools/materialize_instance_map.py"),
-        Path(__file__),
-    ]
+    code_root = Path("/home/chenkejun/CVPR/revisable_instance_map")
+    purpose = materialization.get("purpose", "")
+    if purpose == "surface_centric_multiview_instance_evidence_P0":
+        materializer_paths = [
+            code_root / "tools/materialize_surface_evidence.py",
+            code_root / "src/revisable_instance_map/surface_evidence.py",
+        ]
+    elif purpose == "surface_to_frame_projective_instance_evidence_P0_1":
+        materializer_paths = [
+            code_root / "tools/materialize_surface_projective_evidence.py",
+            code_root / "src/revisable_instance_map/surface_projective_evidence.py",
+        ]
+    elif purpose == "p0_local_surface_decoder":
+        materializer_paths = [
+            code_root / "tools/materialize_surface_evidence.py",
+            code_root / "src/revisable_instance_map/surface_evidence.py",
+            code_root / "tools/decode_p0_surface.py",
+            code_root / "src/revisable_instance_map/local_surface_decoder.py",
+        ]
+    else:
+        materializer_paths = [code_root / "tools/materialize_instance_map.py"]
+    code_paths = [code_root / "src/revisable_instance_map/association.py", *materializer_paths, Path(__file__)]
+    if any(not path.is_file() for path in code_paths):
+        raise FileNotFoundError("Materialization code path missing for provenance: " + purpose)
     code_hashes = {str(path): sha256_file(path) for path in code_paths}
     code_digest = hashlib.sha256("".join(code_hashes.values()).encode()).hexdigest()
     result = map_point_labels_to_reference(
