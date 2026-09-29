@@ -135,8 +135,9 @@ def load_lineage(scene_dir):
             row = json.loads(line)
             obs = observations[row["observation_id"]]
             merged = {**row, "pixel_count": obs["pixel_count"],
-                      "projectable_pixel_count": obs["projectable_pixel_count"],
-                      "bbox_xyxy": obs["bbox_xyxy"]}
+                      "projectable_pixel_count": obs["projectable_pixel_count"]}
+            if "bbox_xyxy" in obs:
+                merged["bbox_xyxy"] = obs["bbox_xyxy"]
             by_instance[int(row["instance_id"])].append(merged)
             association_lookup[(int(row["frame_id"]), int(row["mask_local_id"]))] = int(row["instance_id"])
     return by_instance, association_lookup
@@ -144,18 +145,20 @@ def load_lineage(scene_dir):
 
 def project_points(points, pose, camera, depth):
     cam = (points - pose[:3, 3]) @ pose[:3, :3]
-    z = np.maximum(cam[:, 2], 1e-6)
-    u = np.rint(camera[0] * cam[:, 0] / z + camera[2]).astype(np.int32)
-    v = np.rint(camera[1] * cam[:, 1] / z + camera[3]).astype(np.int32)
-    inside = ((cam[:, 2] > 0) & (u >= 0) & (u < depth.shape[1]) &
-              (v >= 0) & (v < depth.shape[0]))
-    index = np.flatnonzero(inside)
+    index = np.flatnonzero(np.isfinite(cam).all(axis=1) & (cam[:, 2] > 0))
     if not len(index):
         return np.empty(0, np.int32), np.empty(0, np.int32), np.empty(0, np.int32)
-    observed = depth[v[index], u[index]]
+    projected = cam[index]
+    u = np.rint(camera[0] * projected[:, 0] / projected[:, 2] + camera[2]).astype(np.int32)
+    v = np.rint(camera[1] * projected[:, 1] / projected[:, 2] + camera[3]).astype(np.int32)
+    inside = ((u >= 0) & (u < depth.shape[1]) &
+              (v >= 0) & (v < depth.shape[0]))
+    index, u, v = index[inside], u[inside], v[inside]
+    if not len(index):
+        return np.empty(0, np.int32), np.empty(0, np.int32), np.empty(0, np.int32)
+    observed = depth[v, u]
     visible = np.isfinite(observed) & (observed > 0) & (np.abs(observed - cam[index, 2]) <= 0.02)
-    index = index[visible]
-    return index, u[index], v[index]
+    return index[visible], u[visible], v[visible]
 
 
 def trace_gt_visibility_batch(scene_dir, cases, gt, association_lookup):
