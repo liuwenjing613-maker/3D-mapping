@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
+import zipfile
 
 import numpy as np
 
@@ -349,6 +350,59 @@ class DeferredAssociationTest(unittest.TestCase):
         resumed.process_frame(frames[2], observations(frames[2]))
         self.assertEqual(model.assignment_rows(), resumed.assignment_rows())
         self.assertEqual(model.ledger.events, resumed.ledger.events)
+
+    def test_checkpoint_streams_full_metadata_without_a_monolithic_unicode_array(self):
+        frames=[make_frame(0),make_frame(5,.025)]
+        model=setup_model(frames)
+        for frame in frames: model.process_frame(frame,observations(frame))
+        model.review_log[-1]['audit_note']='完整保留原始核验日志'*4096
+        actual=json.dumps
+        def reject_large_metadata(value,*args,**kwargs):
+            if isinstance(value,dict) and value.get('format')=='P1B-v1':
+                raise MemoryError('Regression: aggregate metadata materialized as a giant string')
+            return actual(value,*args,**kwargs)
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'streamed.npz'
+            with patch('revisable_instance_map.deferred_association.json.dumps',reject_large_metadata):
+                model.save_checkpoint(path)
+            with zipfile.ZipFile(path) as archive:
+                self.assertIn('metadata.json',archive.namelist())
+                self.assertNotIn('metadata_json.npy',archive.namelist())
+            resumed=DeferredAssociator.from_checkpoint(path,model.verifier.loader)
+        self.assertEqual(model.review_log,resumed.review_log)
+        self.assertEqual(model.ledger.events,resumed.ledger.events)
+        self.assertEqual(model.assignment_rows(),resumed.assignment_rows())
+
+    def test_checkpoint_reader_preserves_legacy_numpy_metadata(self):
+        frame=make_frame(0)
+        model=setup_model([frame])
+        model.process_frame(frame,observations(frame))
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'new.npz'; legacy=Path(directory)/'legacy.npz'
+            model.save_checkpoint(path)
+            with zipfile.ZipFile(path) as archive:
+                metadata=json.loads(archive.read('metadata.json').decode('utf-8'))
+            with np.load(path,allow_pickle=False) as archive:
+                arrays={k:archive[k] for k in ('observations_json','depth_pose_hash','sampling_hash','support_hash','offsets','voxels')}
+            np.savez_compressed(legacy,metadata_json=np.asarray([json.dumps(metadata)]),**arrays)
+            resumed=DeferredAssociator.from_checkpoint(legacy,model.verifier.loader)
+        self.assertEqual(model.assignment_rows(),resumed.assignment_rows())
+        self.assertEqual(model.packets,resumed.packets)
+        self.assertEqual(model.review_queue,resumed.review_queue)
+        self.assertEqual(model.ledger.events,resumed.ledger.events)
+
+    def test_failed_checkpoint_metadata_write_preserves_the_previous_archive(self):
+        frame=make_frame(0)
+        model=setup_model([frame])
+        model.process_frame(frame,observations(frame))
+        with tempfile.TemporaryDirectory() as directory:
+            path=Path(directory)/'state.npz'
+            model.save_checkpoint(path); before=path.read_bytes()
+            with patch('revisable_instance_map.deferred_association.json.dump',side_effect=OSError('injected write failure')):
+                with self.assertRaises(OSError): model.save_checkpoint(path)
+            self.assertEqual(path.read_bytes(),before)
+            resumed=DeferredAssociator.from_checkpoint(path,model.verifier.loader)
+        self.assertEqual(model.assignment_rows(),resumed.assignment_rows())
 
     def test_import_a2_retains_retired_id_highwater_and_revision_history(self):
         frames = [make_frame(0), make_frame(5)]

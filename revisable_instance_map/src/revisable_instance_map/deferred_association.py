@@ -1,8 +1,10 @@
 """P1-B: quarantine, independent raw witnesses, per-observation activation."""
 from collections import Counter
 from dataclasses import asdict, replace
+import io
 import json
 from pathlib import Path
+import zipfile
 
 import numpy as np
 
@@ -449,20 +451,37 @@ class DeferredAssociator:
             "imported_a2_revision_events": self.imported_a2_revision_events,
             "active_observation_order": list(self.engine.observation_support)}
         temporary = path.with_suffix(".tmp.npz")
-        np.savez_compressed(temporary, metadata_json=np.asarray([json.dumps(metadata, sort_keys=True)]),
+        np.savez_compressed(temporary,
             observations_json=np.asarray([json.dumps(asdict(r.observation)) for r in sources], dtype=str),
             depth_pose_hash=np.asarray([r.depth_pose_intrinsics_hash for r in sources], dtype=str),
             sampling_hash=np.asarray([r.sampling_config_hash for r in sources], dtype=str),
             support_hash=np.asarray([r.support_hash for r in sources], dtype=str),
             offsets=np.r_[0, np.cumsum([len(r.voxels) for r in sources], dtype=np.int64)],
             voxels=np.asarray([v for r in sources for v in r.voxels], np.int32).reshape(-1, 3))
+        # Review traces can exceed NumPy's single Unicode-element size limit.
+        # Stream UTF-8 JSON into the same atomic archive without dropping history.
+        with zipfile.ZipFile(temporary, "a", compression=zipfile.ZIP_DEFLATED) as archive:
+            with archive.open("metadata.json", "w", force_zip64=True) as binary:
+                with io.TextIOWrapper(binary, encoding="utf-8", newline="") as stream:
+                    json.dump(metadata, stream, sort_keys=True)
         temporary.replace(path)
 
     @classmethod
     def from_checkpoint(cls, path, frame_loader):
+        m = None
+        with zipfile.ZipFile(path) as archive:
+            names = archive.namelist()
+            if "metadata.json" in names:
+                if names.count("metadata.json") != 1 or "metadata_json.npy" in names:
+                    raise ValueError("Ambiguous checkpoint metadata")
+                with archive.open("metadata.json") as binary:
+                    with io.TextIOWrapper(binary, encoding="utf-8") as stream:
+                        m = json.load(stream)
         with np.load(path, allow_pickle=False) as archive:
-            data = {k: archive[k] for k in archive.files}
-        m = json.loads(str(data["metadata_json"][0]))
+            data = {k: archive[k] for k in ("observations_json", "depth_pose_hash", "sampling_hash",
+                                           "support_hash", "offsets", "voxels")}
+            if m is None:
+                m = json.loads(str(archive["metadata_json"][0]))
         if m["format"] != "P1B-v1":
             raise ValueError("Unsupported checkpoint format")
         result = cls(frame_loader, m["mode"], m["parameters"], **m["association_parameters"])
