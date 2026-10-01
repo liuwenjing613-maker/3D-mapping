@@ -22,7 +22,7 @@ DEFAULT_PARAMETERS = {
     "new_support_fraction": .1, "active_window_steps": 20, "packet_budget": 32,
     "observation_review_budget": 16, "witness_budget": 32, "candidate_budget": 32,
     "expand_candidates": True, "exclude_self_support": True,
-    "frame_cache_size": 16, "point_cache_size": 512, "pair_cache_size": 8192,
+    "frame_cache_size": 96, "point_cache_size": 4096, "pair_cache_size": 65536,
 }
 
 

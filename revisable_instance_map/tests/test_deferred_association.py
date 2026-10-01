@@ -439,6 +439,17 @@ class DeferredAssociationTest(unittest.TestCase):
         changed = replace(frame, camera=replace(frame.camera, fx=80.))
         self.assertNotEqual(original, model.verifier.source_hash(changed))
 
+    def test_cache_eviction_does_not_change_assignments_or_counts(self):
+        frames = [make_frame(f, f*.005) for f in (0,5,10,15,20)]
+        small = setup_model(frames,parameters={"frame_cache_size":1,"point_cache_size":1,"pair_cache_size":1})
+        large = setup_model(frames)
+        for frame in frames:
+            small.process_frame(frame,observations(frame))
+            large.process_frame(frame,observations(frame))
+        self.assertEqual(small.assignment_rows(),large.assignment_rows())
+        for key,value in small.engine.identity_evidence.export_arrays().items():
+            np.testing.assert_array_equal(value,large.engine.identity_evidence.export_arrays()[key])
+
     def test_persistent_wrong_hypothesis_does_not_invent_a_correct_id(self):
         frames = [make_frame(f) for f in (0,5,10,15)]
         model = setup_model(frames)
