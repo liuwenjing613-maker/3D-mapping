@@ -41,6 +41,9 @@ def main():
     parser.add_argument("--checkpoint-every", type=int, default=25)
     parser.add_argument("--allow-multiple-observations-per-instance-per-frame", action="store_true")
     parser.add_argument("--improved-association", action="store_true")
+    parser.add_argument("--association-mode", choices=("legacy", "binary-ledger", "probabilistic"), default="legacy")
+    parser.add_argument("--relative-weight-temperature", type=float, default=0.1)
+    parser.add_argument("--null-candidate-score", type=float)
     sampling = parser.add_mutually_exclusive_group()
     sampling.add_argument("--valid-first-association-sampling", action="store_true")
     sampling.add_argument("--legacy-association-sampling", action="store_true")
@@ -63,7 +66,13 @@ def main():
         improved_association=args.improved_association,
         valid_first_sampling=(False if args.legacy_association_sampling else
                               True if args.valid_first_association_sampling else None),
+        association_mode=args.association_mode,
+        relative_weight_temperature=args.relative_weight_temperature,
+        null_candidate_score=args.null_candidate_score,
     )
+    trace_dir = args.output_dir / "candidate_support_traces"
+    if associator.identity_evidence is not None:
+        trace_dir.mkdir(exist_ok=True)
     lineage = {}
     if args.parent_child_lineage:
         for line in args.parent_child_lineage.read_text(encoding="utf-8").splitlines():
@@ -88,6 +97,8 @@ def main():
             if any(item.source_mask_sha256 != digest for item in observations):
                 raise ValueError(f"Mask checksum differs from observation catalog at {frame_id}")
             decisions = associator.process_frame(frame, observations)
+            if associator.identity_evidence is not None:
+                associator.save_candidate_support_trace(trace_dir / f"f{frame_id:06d}.npz", frame_id)
             if len(decisions) != len(observations):
                 raise ValueError("An observation was not assigned")
             for decision in decisions:
@@ -147,25 +158,22 @@ def main():
         voxel_size_m=np.asarray([associator.voxel_size_m], dtype=np.float32),
     )
     ledger_entries = list(associator.observation_support.values())
-    ledger_lengths = np.asarray([len(entry.voxels) for entry in ledger_entries], dtype=np.int64)
-    ledger_offsets = np.r_[0, np.cumsum(ledger_lengths)]
-    ledger_voxels = np.asarray(
-        [voxel for entry in ledger_entries for voxel in entry.voxels], dtype=np.int32
-    ).reshape(-1, 3)
     ledger_path = args.output_dir / "observation_support_3cm.npz"
-    np.savez_compressed(
-        ledger_path,
-        observation_ids=np.asarray([entry.observation_id for entry in ledger_entries]),
-        frame_ids=np.asarray([entry.frame_id for entry in ledger_entries], dtype=np.int32),
-        source_mask_sha256=np.asarray([entry.source_mask_sha256 for entry in ledger_entries]),
-        instance_ids=np.asarray([entry.instance_id for entry in ledger_entries], dtype=np.int32),
-        offsets=ledger_offsets,
-        voxel_coordinates=ledger_voxels,
-        voxel_size_m=np.asarray([associator.voxel_size_m], dtype=np.float32),
-    )
+    associator.save_checkpoint(ledger_path)
+    counts_path = args.output_dir / "identity_voxel_counts_3cm.npz"
+    if associator.identity_evidence is not None:
+        associator.save_identity_counts(counts_path)
+    revision_path = args.output_dir / "identity_revision_events.jsonl"
+    revision_path.write_text("", encoding="utf-8")
     report = {
         "status": "PASS",
-        "purpose": "causal_fixed_mask_no_repair_baseline_association",
+        "purpose": "causal_fixed_mask_no_repair_" + args.association_mode + "_association",
+        "association_mode": args.association_mode,
+        "map_version": associator.map_version,
+        "next_instance_id": associator.next_instance_id,
+        "identity_vote_unit": "one_per_frame_voxel_instance" if associator.identity_evidence is not None else None,
+        "relative_weights_are_calibrated_probabilities": False,
+        "candidate_support_trace_scope": "all_8_spatially_shortlisted_candidates" if associator.identity_evidence is not None else None,
         "config_path": str(args.config),
         "config_sha256": sha256_file(args.config),
         "observation_catalog_path": str(args.observations),
@@ -190,6 +198,9 @@ def main():
             "one_existing_instance_per_frame": not args.allow_multiple_observations_per_instance_per_frame,
             "improved_association": args.improved_association,
             "valid_first_sampling": associator.valid_first_sampling,
+            "association_mode": associator.association_mode,
+            "relative_weight_temperature": associator.relative_weight_temperature,
+            "null_candidate_score": associator.null_candidate_score,
         },
         "frame_summaries": frame_summaries,
         "peak_process_rss_mb": float(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024),
@@ -199,6 +210,9 @@ def main():
             "instances_jsonl": str(instance_path),
             "support_voxels_npz": str(support_path),
             "observation_support_npz": str(ledger_path),
+            "identity_voxel_counts_npz": str(counts_path) if counts_path.exists() else None,
+            "identity_revision_events_jsonl": str(revision_path),
+            "candidate_support_trace_directory": str(trace_dir) if trace_dir.exists() else None,
         },
     }
     if report["decision_count"] != sum(len(all_observations[frame_id]) for frame_id in frame_ids):

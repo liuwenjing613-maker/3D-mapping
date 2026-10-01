@@ -1,6 +1,6 @@
 # 3D-mapping
 
-本分支：**baseline + 部分未分配 TSDF 点扩散处理**。详见 [P0 版本说明](docs/P0_BRANCH_VARIANTS_CN.md)。
+本分支：**P1-A 可撤销帧级计票与概率支持关联**，基于 main 的 P0 和显式离线扩散。实现、运行与验收见 [P1-A 说明](revisable_instance_map/docs/p1a_probabilistic_association.md)；原 P0 版本见 [P0 版本说明](docs/P0_BRANCH_VARIANTS_CN.md)。
 
 Unified evaluation code for 3D instance maps. The frozen **Replica-CA-v1** is preserved for old results. **Replica-CA-v2** adds independent per-instance projection, F1, significant merge/split/duplicate diagnostics, macro scene averages, and causal online-prefix evaluation. Its significant-overlap thresholds are still pending, so v2 cannot produce formal scores yet. These are custom Replica metrics, not official ScanNet AP. See [v2 metric definitions](docs/UNIFIED_EVALUATOR_V2_CN.md).
 
