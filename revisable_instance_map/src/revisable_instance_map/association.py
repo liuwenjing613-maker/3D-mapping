@@ -542,14 +542,17 @@ class OnlineVoxelAssociator:
             result = cls(**json.loads(str(data["parameters_json"][0])))
             ids, offsets, coordinates = data["observation_ids"], data["offsets"], data["voxel_coordinates"]
             fields = ("frame_ids", "source_mask_sha256", "instance_ids", "assignment_versions")
+            # NpzFile re-decompresses a member on every access. Load these arrays
+            # once so restoring N observations does not repeatedly read N records.
+            columns = {key: data[key] for key in fields}
             if (len(offsets) != len(ids) + 1 or offsets[0] != 0 or offsets[-1] != len(coordinates)
-                or np.any(np.diff(offsets) < 0) or any(len(data[key]) != len(ids) for key in fields)):
+                or np.any(np.diff(offsets) < 0) or any(len(columns[key]) != len(ids) for key in fields)):
                 raise ValueError("Malformed identity checkpoint")
             for i, obs_id in enumerate(ids):
-                entry = ObservationSupport(str(obs_id), int(data["frame_ids"][i]),
-                    str(data["source_mask_sha256"][i]), int(data["instance_ids"][i]),
+                entry = ObservationSupport(str(obs_id), int(columns["frame_ids"][i]),
+                    str(columns["source_mask_sha256"][i]), int(columns["instance_ids"][i]),
                     tuple(tuple(int(v) for v in row) for row in coordinates[offsets[i]:offsets[i + 1]]),
-                    int(data["assignment_versions"][i]))
+                    int(columns["assignment_versions"][i]))
                 if result.identity_evidence is None:
                     validate_instance_id(entry.instance_id)
                     if entry.observation_id in result.observation_support:

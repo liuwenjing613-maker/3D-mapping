@@ -234,6 +234,27 @@ class IdentityEvidenceTest(unittest.TestCase):
         self.assertEqual(row["instance_id"], 1)
         self.assertEqual(row["candidates"][0]["probabilistic_geometric_consistency"], 1)
 
+    def test_one_injected_error_propagates_in_binary_but_not_competitive_counts(self):
+        binary, probability = associator("legacy"), associator()
+        for result in (binary, probability):
+            # An independently established book hypothesis has nine correct views.
+            for f in range(9):
+                result._commit(2, obs(f), ((0, 0, 0),))
+            # The table has a longer history elsewhere, then absorbs the book once.
+            for f in range(9, 40):
+                result._commit(1, obs(f), ((20, 0, 0),))
+            result._commit(1, obs(40), ((0, 0, 0),))
+        binary_ids, probability_ids = [], []
+        for f in range(41, 44):
+            frame = SimpleNamespace(frame_id=f)
+            binary_ids.append(binary.process_frame(frame, (obs(f),))[0]["instance_id"])
+            probability_ids.append(probability.process_frame(frame, (obs(f),))[0]["instance_id"])
+        self.assertEqual(binary_ids, [1, 1, 1])
+        self.assertEqual(probability_ids, [2, 2, 2])
+        # No implicit migration: the original mistake still requires an explicit revision.
+        self.assertEqual(probability.observation_support["f40/m1"].instance_id, 1)
+        self.assertEqual(probability.revision_events, [])
+
     def test_relative_weights_include_null_and_do_not_count_as_evidence(self):
         result = associator()
         result.process_frame(SimpleNamespace(frame_id=0), (obs(0),))

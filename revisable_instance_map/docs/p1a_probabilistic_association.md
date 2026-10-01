@@ -61,6 +61,8 @@ python revisable_instance_map/tools/revise_identity_associations.py \
 
 main 已有的离线扩散仍可作为单独后处理：对各版本重新运行同一 `repair_p0_surface.py` 配置，不回灌补全标签为观测票。
 
+`run_p1a_postprocessing.py --native-root NATIVE --output-root NEW_OUTPUT` 会分别重新运行 A0/A1/A2 的原有扩散，并对原生与扩散结果执行统一 v3 pooled 评估。默认覆盖原生验证中的全部场景。它核验原生运行的源码快照与配置来源，不要求后续只改检查点读取效率的代码仍与旧快照逐字一致。
+
 ## 验证与评估
 
 ```bash
@@ -75,3 +77,5 @@ python revisable_instance_map/tools/run_p1a_validation.py \
 源码哈希、输入配置/目录哈希、阈值、逐帧决定、计数、追踪和指标都保存在新实验目录。首轮保持同参数，结果出来后再讨论开发场景调参，不能预设概率版必然优于基线。
 
 边界：一帧纯错误支持也可能在邻格产生比例 1；持续错误且缺少独立正确实例假设时不会自动分裂。3 cm 量化误差不会因概率表示消失。模糊关联在 P1-A 中仍提交，避免其污染属于后续 P1-B。
+
+2026-10-01 的首次八场景验收与指标见 [P1-A 验收报告](p1a_validation_20261001.md)。
