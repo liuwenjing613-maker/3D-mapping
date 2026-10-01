@@ -87,6 +87,7 @@ class OnlineVoxelAssociator:
         self.revision_events = []
         self.candidate_support_traces = {}
         self.candidate_weight_diagnostics = {}
+        self._last_scoring_map_version = 0
 
     def _sample_observation_voxels(
         self, frame: Frame, observation: RawInstanceObservation
@@ -177,12 +178,14 @@ class OnlineVoxelAssociator:
     def _score_candidates(
         self, frame: Frame, observation: RawInstanceObservation,
         voxels: tuple[tuple[int, int, int], ...],
+        candidate_limit: int = 8, output_limit: int | None = None,
     ) -> list[dict]:
         if not voxels:
             return []
         counts, local_support = self._candidate_counts(voxels)
+        self._retrieved_candidate_counts = counts
         ranked = []
-        for instance_id, matched in counts.most_common(8):
+        for instance_id, matched in counts.most_common(candidate_limit):
             geometric = matched / len(voxels)
             sources = self._probability_sources.get(instance_id, [])
             probability_geometric = sum(item[2] / item[3] for item in sources) / len(voxels)
@@ -226,6 +229,8 @@ class OnlineVoxelAssociator:
             self.candidate_support_traces[observation.observation_id] = [
                 (item["instance_id"], voxels, self._probability_sources[item["instance_id"]]) for item in ranked
             ]
+        if output_limit is not None:
+            return ranked[:output_limit]
         return ranked[:8] if self.improved_association else ranked[:3]
 
     def _commit(
@@ -261,6 +266,7 @@ class OnlineVoxelAssociator:
     ) -> list[dict]:
         self._validate_frame(frame, observations)
         previous_version = self.map_version
+        self._last_scoring_map_version = previous_version
         self.candidate_support_traces = {}
         self.candidate_weight_diagnostics = {}
         if self.improved_association:
@@ -603,4 +609,4 @@ class OnlineVoxelAssociator:
             source_total_frame_instance_votes=np.asarray(totals, np.int32),
             source_unique_support_frames=np.asarray(frames, np.int32),
             frame_id=np.asarray([frame_id], np.int32),
-            map_version_queried=np.asarray([self.map_version - 1], np.int64))
+            map_version_queried=np.asarray([self._last_scoring_map_version], np.int64))

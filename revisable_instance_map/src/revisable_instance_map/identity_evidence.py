@@ -114,6 +114,36 @@ class FrameIdentityEvidence:
             self.entries[old.observation_id] = new
         return changes
 
+    def activate(self, entries):
+        """Activate a prevalidated batch; undo partial writes on any failure."""
+        entries = tuple(entries)
+        ids = [entry.observation_id for entry in entries]
+        if len(set(ids)) != len(ids) or set(ids).intersection(self.entries):
+            raise ValueError("Duplicate activation")
+        for entry in entries:
+            validate_instance_id(entry.instance_id)
+            if entry.frame_id < 0 or entry.assignment_version < 0:
+                raise ValueError("Invalid activation version or frame")
+        added = []
+        try:
+            for entry in entries:
+                self.add(entry)
+                added.append(entry.observation_id)
+        except Exception:
+            self.deactivate(added)
+            raise
+
+    def deactivate(self, observation_ids):
+        """Withdraw exactly these contributions, preserving other frame refs."""
+        ids = tuple(observation_ids)
+        if len(set(ids)) != len(ids) or not set(ids).issubset(self.entries):
+            raise ValueError("Invalid deactivation")
+        removed = [self.entries[key] for key in ids]
+        for entry in removed:
+            self._remove_votes(entry)
+            del self.entries[entry.observation_id]
+        return removed
+
     @classmethod
     def rebuild(cls, entries):
         result = cls()

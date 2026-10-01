@@ -26,6 +26,8 @@ OVI-MAP 的逐帧 CropFormer + 深度几何细化已按官方实现接入并完�
 
 最新无修复来源归组架构、消融与测试：`docs/parent_proposal_regrouped_v1.md`。
 
+P1-A 概率支持与可撤销计票：`docs/p1a_probabilistic_association.md`。P1-B 风险隔离、原始多视图核验与逐观测延迟提交：`docs/p1b_deferred_association.md`。
+
 当前正式无修复架构为 **P0 表面多视角证据**；所有主实验默认走该路径。设计与 room0 验收见 `docs/surface_evidence_p0.md`。
 
 P0.1 和局部解码代码仅保留为可复现实验对照，不属于当前发布架构。
