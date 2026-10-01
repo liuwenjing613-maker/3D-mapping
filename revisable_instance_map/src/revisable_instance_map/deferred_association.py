@@ -242,9 +242,17 @@ class DeferredAssociator:
                 "mask_local_id": record.observation.mask_local_id, "instance_id": identity,
                 "decision": reason, "sampled_voxels": len(record.voxels), "status": status,
                 "packet_id": packet_id, **scores})
-        # A reliable current frame or newly touched local support can wake a packet.
+        # Closed or dormant packets cannot consume the finite pending-review budget.
+        # A spatial hit above has already reactivated any dormant packet worth reviewing.
+        reviewable = {key for key, packet in packets.items() if packet.lifecycle != "DORMANT"
+                      and any((planned.get(k) or self.ledger.assignment_store[k]).status in PENDING
+                              for k in packet.observation_ids)}
+        queue.intersection_update(reviewable)
+        # A reliable current frame can update candidates of still-active pending packets.
         changed_ids = {a.persistent_instance_id for a in planned.values() if a.status == ACCEPTED}
         for packet_id, packet in packets.items():
+            if packet_id not in reviewable:
+                continue
             if any(c["instance_id"] in changed_ids for key in packet.observation_ids
                    for c in (planned.get(key) or self.ledger.assignment_store[key]).candidate_records):
                 queue.add(packet_id)
@@ -296,6 +304,7 @@ class DeferredAssociator:
         for packet_id, packet in list(packets.items()):
             if packet.lifecycle in ("ACTIVE", "PARTIALLY_RESOLVED") and self.processing_step - packet.last_touched_step > self.parameters["active_window_steps"]:
                 packets[packet_id] = replace(packet, lifecycle="DORMANT")
+                queue.discard(packet_id)
         self._commit_transaction(frame, sources, list(planned.values()), packets, queue,
                                  next_packet, next_instance, arrivals, review_logs, repair_tickets)
         return arrivals

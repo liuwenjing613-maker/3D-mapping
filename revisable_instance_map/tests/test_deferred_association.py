@@ -172,9 +172,9 @@ class DeferredAssociationTest(unittest.TestCase):
         self.assertFalse(model.engine.instances)
         self.assertEqual(len(model.ledger.raw_support_store), 2)
 
-    def _binding_case(self, mode):
+    def _binding_case(self, mode, parameters=None):
         frames = [make_frame(0), make_frame(5), make_frame(10), make_frame(15, .025)]
-        model = setup_model(frames, mode)
+        model = setup_model(frames, mode, parameters)
         seed(model, frames[:2])
         target = observations(frames[2])[0].observation_id
         real_score = score_complete
@@ -431,6 +431,45 @@ class DeferredAssociationTest(unittest.TestCase):
         self.assertEqual(reviewed_later, {o.observation_id for f in frames[:3] for o in observations(f)})
         self.assertTrue(model.review_queue)
         self.assertFalse(model.engine.instances)
+
+    def test_resolved_packet_cannot_consume_pending_review_budget(self):
+        model, _, _, original = self._binding_case("B2",{"packet_budget":1})
+        self.assertEqual(next(iter(model.packets.values())).lifecycle,"RESOLVED")
+        regions=((-0.15,.15,1),(.225,.4,2))
+        frames=[make_frame(f,.025,regions) for f in (20,25)]
+        model.verifier.loader={f.frame_id:f for f in [*original,*frames]}.__getitem__
+        for frame in frames: model.process_frame(frame,observations(frame))
+        new_keys={o.observation_id for frame in frames for o in observations(frame) if o.mask_local_id==2}
+        self.assertTrue(any(r["decision_frame_id"]==25 and r["observation_id"] in new_keys for r in model.review_log))
+        self.assertTrue(all(any(model.ledger.assignment_store[k].status.startswith("PENDING") for k in model.packets[q].observation_ids)
+                            for q in model.review_queue))
+
+    def test_dormant_remote_candidate_cannot_starve_an_active_packet(self):
+        whole=((-0.3,.3,1),)
+        right=((.2,.3,1),)
+        both=right+((-.05,.05,2),)
+        frames=[make_frame(0,regions=whole),make_frame(5,regions=whole),
+            make_frame(10,regions=((-.3,-.2,1),)),make_frame(15,regions=right),
+            make_frame(20,regions=right),make_frame(25,regions=both),make_frame(30,regions=both)]
+        model=setup_model(frames,"B1",{"packet_budget":1,"active_window_steps":1})
+        seed(model,frames[:2])
+        target=observations(frames[2])[0].observation_id
+        actual=score_complete
+        def risky(engine,frame,observation,voxels,parameters,excluded_ids=()):
+            scores=actual(engine,frame,observation,voxels,parameters,excluded_ids)
+            if observation.observation_id==target:
+                best={**scores["candidates"][0],"score":.6}
+                scores["candidates"]=[best,{**best,"instance_id":99,"score":.59}]
+            elif observation.mask_local_id==2:
+                scores["candidates"]=[]
+            return scores
+        with patch("revisable_instance_map.deferred_association.score_complete",risky):
+            for frame in frames[2:]: model.process_frame(frame,observations(frame))
+        packet=model.ledger.assignment_store[target].packet_id
+        self.assertEqual(model.packets[packet].lifecycle,"DORMANT")
+        self.assertNotIn(packet,model.review_queue)
+        active_keys={o.observation_id for f in frames[-2:] for o in observations(f) if o.mask_local_id==2}
+        self.assertTrue(any(r["decision_frame_id"]==30 and r["observation_id"] in active_keys for r in model.review_log))
 
     def test_source_hash_detects_changed_intrinsics_with_same_pixel_arrays(self):
         frame = make_frame(0)
