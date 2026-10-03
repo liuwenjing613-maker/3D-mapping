@@ -1,0 +1,108 @@
+<div id="p1a1-room0-roi-review">
+  <style>
+    #p1a1-room0-roi-review .roi-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    #p1a1-room0-roi-review .roi-gallery img { width:100%; height:310px; object-fit:contain; display:block; }
+    #p1a1-room0-roi-review .roi-location { width:100%; height:230px; object-fit:contain; display:block; }
+    #p1a1-room0-roi-review .roi-cloud { width:100%; height:230px; display:block; touch-action:none; }
+    #p1a1-room0-roi-review .roi-aux { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    #p1a1-room0-roi-review .roi-aux img { width:100%; height:290px; object-fit:contain; display:block; }
+    #p1a1-room0-roi-review .roi-summary { margin:10px 0; }
+    @media (max-width:599px) { #p1a1-room0-roi-review .roi-gallery, #p1a1-room0-roi-review .roi-aux { grid-template-columns:minmax(0,1fr); } }
+  </style>
+  <h3>room0 · 状态与周围实例标注</h3>
+  <div class="viz-controls">
+    <label class="form-label">不同异常团的优先代表
+      <select class="form-select" id="roi-choice"></select>
+    </label>
+    <button class="btn" type="button" id="roi-prev">上一个</button>
+    <button class="btn" type="button" id="roi-next">下一个</button>
+  </div>
+  <div class="roi-summary tabular-nums" id="roi-summary" aria-live="polite"></div>
+  <div class="roi-summary" id="roi-case-type"></div>
+  <div class="viz-row text-small">U 灰色 · CONFLICT 红色 · 证据不足 黄色 · 青色轮廓为 ROI</div>
+  <div class="viz-grid">
+    <div><div class="text-small" id="roi-location-label">主帧位置</div><img class="roi-location" id="roi-location" alt="主历史帧中的 ROI 位置"></div>
+    <div>
+      <div class="viz-controls">
+        <label class="form-label">3D 配色
+          <select class="form-select" id="roi-cloud-mode"><option value="states">三状态核心与实例邻域</option><option value="instances">当前实例</option></select>
+        </label>
+        <label class="form-label">视角
+          <select class="form-select" id="roi-cloud-view"><option value="oblique">斜视</option><option value="front">正面</option><option value="top">俯视</option></select>
+        </label>
+      </div>
+      <canvas class="roi-cloud cursor-interaction" id="roi-cloud" role="img" aria-label="当前 ROI 三维点图，可拖动旋转"></canvas>
+      <div class="text-small" id="roi-cloud-label"></div>
+    </div>
+  </div>
+  <div class="roi-gallery">
+    <div><div class="text-small">三状态核心定位 · 白线为定位标注</div><img id="roi-states" alt="灰、红、黄三状态触发点，白线标出核心位置"></div>
+    <div><div class="text-small">周围实例 ID · 参考 v2 配色</div><img id="roi-current3d" alt="当前三维实例投回历史帧，标注周围实例 ID"></div>
+  </div>
+  <dl class="roi-summary">
+    <dt>已确认</dt><dd id="roi-fact"></dd>
+    <dt>邻接关系</dt><dd id="roi-relation"></dd>
+    <dt>代表点实际票数</dt><dd id="roi-votes"></dd>
+    <dt>原因判断（推断）</dt><dd id="roi-inference"></dd>
+  </dl>
+  <div class="roi-summary text-small" id="roi-evidence"></div>
+  <div class="text-small">历史投票 mask · 红圈为投回同一代表 3D 点的实际像素</div>
+  <div class="roi-aux" id="roi-aux"></div>
+  <div class="text-small" id="roi-ranges"></div>
+  <script type="application/json" id="roi-data">__ROI_DATA__</script>
+  <script>
+  (() => {
+    const root=document.getElementById('p1a1-room0-roi-review');
+    const q=id=>root.querySelector('#'+id);
+    const records=JSON.parse(q('roi-data').textContent);
+    const choice=q('roi-choice'),mode=q('roi-cloud-mode'),view=q('roi-cloud-view');
+    const canvas=q('roi-cloud'),ctx=canvas.getContext('2d');
+    let current=records[0],points=[],yaw=-.55,pitch=1.0,drag=null;
+    for(const r of records){const o=document.createElement('option');o.value=String(r.rank);o.textContent=`${r.id} · ${r.place}`;choice.appendChild(o);}
+    function decode(r){
+      const b=Uint8Array.from(atob(r.cloud),c=>c.charCodeAt(0));const d=new DataView(b.buffer);const result=[];
+      for(let i=0;i<r.cloud_count;i++){const j=i*13;result.push({p:[d.getInt16(j,true)/1000,d.getInt16(j+2,true)/1000,d.getInt16(j+4,true)/1000],rgb:[b[j+6],b[j+7],b[j+8]],state:[b[j+9],b[j+10],b[j+11]],role:b[j+12]});}
+      return result;
+    }
+    function rotate(p){const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);const x=cy*p[0]-sy*p[1],y=sy*p[0]+cy*p[1];return [x,cp*y+sp*p[2],-sp*y+cp*p[2]];}
+    function draw(){
+      const w=canvas.clientWidth,h=canvas.clientHeight,dpr=window.devicePixelRatio||1;if(!w||!h)return;
+      canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
+      const projected=points.map(a=>({a,p:rotate(a.p)}));
+      const xx=projected.map(a=>a.p[0]),yy=projected.map(a=>a.p[1]);const xmin=Math.min(...xx),xmax=Math.max(...xx),ymin=Math.min(...yy),ymax=Math.max(...yy);
+      const scale=Math.min((w-35)/Math.max(.08,xmax-xmin),(h-35)/Math.max(.08,ymax-ymin));const midx=(xmin+xmax)/2,midy=(ymin+ymax)/2;
+      projected.sort((a,b)=>a.p[2]-b.p[2]);
+      for(const a of projected){const rgb=mode.value==='states'?a.a.state:a.a.rgb;ctx.fillStyle=`rgb(${rgb.join(',')})`;ctx.beginPath();ctx.arc(w/2+(a.p[0]-midx)*scale,h/2-(a.p[1]-midy)*scale,a.a.role===1?2:1.7,0,Math.PI*2);ctx.fill();}
+      const foreground=getComputedStyle(root).color;ctx.strokeStyle=foreground;ctx.fillStyle=foreground;ctx.lineWidth=1;ctx.font='12px sans-serif';
+      const origin=[w-58,h-40];
+      for(const [label,p] of [['X',[.05,0,0]],['Y',[0,.05,0]],['Z',[0,0,.05]]]){const a=rotate(p);const b=[origin[0]+a[0]*480,origin[1]-a[1]*480];ctx.beginPath();ctx.moveTo(...origin);ctx.lineTo(...b);ctx.stroke();ctx.fillText(label,b[0]+2,b[1]-2);}
+    }
+    function orient(){if(view.value==='top'){yaw=0;pitch=0;}else if(view.value==='front'){const smallest=current.extent.indexOf(Math.min(...current.extent));yaw=smallest===0?Math.PI/2:0;pitch=smallest===2?0:Math.PI/2;}else{yaw=-.55;pitch=1.0;}}
+    function save(){if(!window.openai?.setWidgetState)return;window.openai.setWidgetState({modelContent:{method:'P1-A1',scene:'room0',selected_ROI:current.id,global_priority_rank:current.rank,trigger_counts:current.counts,diagnosis:current.diagnosis.type,competing_IDs:current.competition,images_only:true},privateContent:{kind:'p1a1-room0-roi-v1',rank:current.rank,mode:mode.value,view:view.value,yaw,pitch}}).catch(()=>{});}
+    function show(rank,remember=true){
+      current=records.find(r=>r.rank===Number(rank))||records[0];choice.value=String(current.rank);points=decode(current);orient();
+      q('roi-summary').textContent=`${current.id} · 优先分数 ${current.score.toFixed(2)} · U ${current.counts.U} / C ${current.counts.CONFLICT} / T ${current.counts.T} · ROI ${current.context} 点（已分配邻域 ${current.stable} 点）`;
+      q('roi-location').src=current.images.location;q('roi-location-label').textContent=`主帧 ${current.frame} · 核心可见 ${current.coverage}%`;
+      for(const name of ['states','current3d'])q('roi-'+name).src=current.images[name];
+      q('roi-case-type').textContent=current.diagnosis.type;
+      q('roi-fact').textContent=current.diagnosis.fact;q('roi-relation').textContent=current.diagnosis.relation;
+      q('roi-votes').textContent=current.votes;q('roi-inference').textContent=current.diagnosis.interpretation;
+      q('roi-cloud-label').textContent=`${current.extent.map(x=>(x*100).toFixed(1)).join(' × ')} cm · 拖动旋转 · 显示抽样点`;
+      q('roi-evidence').textContent=`竞争组合：${current.pair_details}`;
+      q('roi-ranges').textContent=current.ranges;
+      const aux=q('roi-aux');aux.replaceChildren();for(const a of current.supports){const fig=document.createElement('figure');fig.style.margin='0';const im=document.createElement('img');im.src=a.rgb;im.alt=`实例 ID${a.id} 在帧 ${a.frame}、mask ${a.local_mask} 对同一代表点投票`;const cap=document.createElement('figcaption');cap.className='text-small';cap.textContent=`ID${a.id} · 帧 ${a.frame} · mask ${a.local_mask} · 该ID合计 ${a.votes}票`;fig.append(im,cap);aux.appendChild(fig);}if(!current.supports.length)aux.textContent='没有红点，无双实例竞争来源。';
+      const pos=records.indexOf(current);q('roi-prev').disabled=pos===0;q('roi-next').disabled=pos===records.length-1;canvas.setAttribute('aria-label',`${current.id} 的三维抽样点，尺寸 ${current.extent.join(' × ')} 米`);draw();if(remember)save();
+    }
+    choice.addEventListener('change',()=>show(choice.value));
+    q('roi-prev').addEventListener('click',()=>show(records[Math.max(0,records.indexOf(current)-1)].rank));
+    q('roi-next').addEventListener('click',()=>show(records[Math.min(records.length-1,records.indexOf(current)+1)].rank));
+    mode.addEventListener('change',()=>{draw();save();});view.addEventListener('change',()=>{orient();draw();save();});
+    canvas.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);});
+    canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-drag.x)*.01;pitch=Math.max(-Math.PI,Math.min(Math.PI,pitch+(e.clientY-drag.y)*.01));drag={x:e.clientX,y:e.clientY};draw();});
+    canvas.addEventListener('pointerup',()=>{drag=null;save();});canvas.addEventListener('pointercancel',()=>{drag=null;});
+    new ResizeObserver(draw).observe(canvas);new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['class','style','data-theme']});
+    function restore(s){const p=s?.privateContent;if(p?.kind!=='p1a1-room0-roi-v1'){show(records[0].rank,false);return;}mode.value=p.mode==='instances'?'instances':'states';view.value=['front','top','oblique'].includes(p.view)?p.view:'oblique';show(p.rank,false);if(Number.isFinite(p.yaw)&&Number.isFinite(p.pitch)){yaw=p.yaw;pitch=p.pitch;draw();}}
+    window.addEventListener('openai:set_globals',e=>{if(e.detail?.globals?.widgetState)restore(e.detail.globals.widgetState);});restore(window.openai?.widgetState);
+  })();
+  </script>
+</div>

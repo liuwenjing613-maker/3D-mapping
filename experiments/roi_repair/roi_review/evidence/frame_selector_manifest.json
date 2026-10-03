@@ -1,0 +1,15 @@
+{
+  "frames_checked": 400,
+  "frame_range": "0:2000:5",
+  "depth_visibility_tolerance_m": 0.02,
+  "visibility": "positive depth and Euclidean surface-to-depth-backprojection distance <= 2cm; no mask gate",
+  "views_per_ROI": 3,
+  "view_diversity_target_deg": 25,
+  "main_view_score": "coverage * (0.65 + 0.35 * unique_pixels / visible_core_voxels)",
+  "auxiliary_selection": "quality weighted by angle diversity plus newly covered voxels",
+  "viewable_ROIs": 1150,
+  "ROIs_without_depth_visible_views": 202,
+  "ranking": "viewable proposals first, then stabilized weighted abnormal density; no proposals discarded",
+  "GT_used": false,
+  "map_modified": false
+}

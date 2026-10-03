@@ -1,0 +1,77 @@
+<div id="room0-cropformer-zoom-review">
+  <style>
+    #room0-cropformer-zoom-review .zoom-panels { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px; }
+    #room0-cropformer-zoom-review canvas { width:100%;height:330px;display:block; }
+    #room0-cropformer-zoom-review .zoom-detail { margin:10px 0; }
+    #room0-cropformer-zoom-review .zoom-crop-slot[hidden] { display:none; }
+    @media (max-width:759px) { #room0-cropformer-zoom-review .zoom-panels { grid-template-columns:minmax(0,1fr); } }
+  </style>
+  <h3>room0 · CropFormer 局部重新分割</h3>
+  <div class="viz-controls">
+    <label class="form-label">ROI<select class="form-select" id="zoom-roi"></select></label>
+    <label class="form-label">已选 RGB 视角<select class="form-select" id="zoom-view"></select></label>
+    <div class="zoom-crop-slot" id="zoom-crop-slot"><label class="form-label">裁剪范围<select class="form-select" id="zoom-crop"></select></label></div>
+    <label class="form-label">显示<select class="form-select" id="zoom-mode"><option value="overlay">mask 叠加 RGB</option><option value="pure">纯 mask</option></select></label>
+    <button class="btn" id="zoom-all" type="button">全部实例</button>
+  </div>
+  <div class="zoom-detail tabular-nums" id="zoom-summary" aria-live="polite"></div>
+  <div class="zoom-panels">
+    <div><div>实际局部 RGB 输入</div><canvas id="zoom-rgb" class="cursor-interaction" role="img" aria-label="局部RGB，可点击目标比较覆盖该像素的两个mask"></canvas></div>
+    <div><div id="zoom-before-title">原整帧 mask 裁剪</div><canvas id="zoom-before" class="cursor-interaction" role="img" aria-label="原整帧CropFormer结果裁剪到相同RGB范围"></canvas></div>
+    <div><div id="zoom-after-title">局部重新分割 mask</div><canvas id="zoom-after" class="cursor-interaction" role="img" aria-label="对局部RGB重新运行CropFormer的分割结果"></canvas></div>
+  </div>
+  <div class="zoom-detail" id="zoom-selected" aria-live="polite">点击目标像素，可突出两侧覆盖该位置的实例。</div>
+  <div class="text-small" id="zoom-probe"></div>
+  <div class="text-small">F = 原整帧 mask ID · L = 局部新 mask ID · 同色仅辅助对应 · 所有结果均为纯 CropFormer，阈值 0.5</div>
+  <script id="zoom-data" type="application/json">__ZOOM_DATA__</script>
+  <script>
+  (()=>{
+    const root=document.getElementById('room0-cropformer-zoom-review'),q=id=>root.querySelector('#'+id);
+    const data=JSON.parse(q('zoom-data').textContent),roi=q('zoom-roi'),view=q('zoom-view'),crop=q('zoom-crop'),mode=q('zoom-mode');
+    const canvases=['rgb','before','after'].map(k=>q('zoom-'+k)),cache=new Map();
+    let currentCase=data.cases.find(r=>r.rank===35)||data.cases[0],currentView=currentCase.views[0],entry=null,pixels=null,selected=null,generation=0,boxes=[];
+    for(const [label,representative] of [['13个代表案例',true],['同异常团其他已选候选',false]]){
+      const group=document.createElement('optgroup');group.label=label;
+      for(const r of data.cases.filter(r=>r.representative===representative)){const o=document.createElement('option');o.value=String(r.rank);o.textContent=r.ROI+' · '+r.place;group.append(o);}roi.append(group);
+    }
+    function setOptions(select,values){select.replaceChildren();for(const [value,label] of values){const o=document.createElement('option');o.value=String(value);o.textContent=label;select.append(o);}}
+    function loadImage(src){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src;});}
+    function raster(im,w,h){const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.drawImage(im,0,0,w,h);return x.getImageData(0,0,w,h).data;}
+    async function decode(e){if(cache.has(e.info.key))return cache.get(e.info.key);const [rgb,b,a]=await Promise.all([e.rgb,e.before,e.after].map(loadImage));const [w,h]=e.wh;const result={rgb:raster(rgb,w,h),before:raster(b,w,h),after:raster(a,w,h)};cache.set(e.info.key,result);return result;}
+    function annotationColor(){const s=document.createElement('span');s.style.color='var(--red, var(--foreground))';s.hidden=true;root.append(s);const color=getComputedStyle(s).color;s.remove();return color;}
+    function draw(){if(!pixels||!entry)return;const [w,h]=entry.wh;boxes=[];const ringColor=annotationColor();
+      canvases.forEach((c,index)=>{
+        const cw=c.clientWidth,wanted=Math.min(440,Math.max(180,cw*h/w));if(Math.abs(c.clientHeight-wanted)>1)c.style.height=wanted+'px';const ch=c.clientHeight,dpr=window.devicePixelRatio||1;c.width=Math.round(cw*dpr);c.height=Math.round(ch*dpr);const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,cw,ch);
+        const image=new ImageData(w,h),mask=index===1?pixels.before:pixels.after,colors=index===1?entry.oldcolors:entry.colors;
+        for(let k=0;k<w*h;k++){const j=k*4,maskID=mask[j],color=colors[maskID]||colors[0];
+          for(let channel=0;channel<3;channel++)image.data[j+channel]=index===0?pixels.rgb[j+channel]:mode.value==='pure'?color[channel]:pixels.rgb[j+channel]*.3+color[channel]*.7;
+          image.data[j+3]=255;
+          if(index&&selected){const selectedID=index===1?selected.before:selected.after;if(maskID!==selectedID)for(let channel=0;channel<3;channel++)image.data[j+channel]*=.23;}
+          if(index&&((k%w&&mask[j]!==mask[j-4])||(k>=w&&mask[j]!==mask[j-w*4])))for(let channel=0;channel<3;channel++)image.data[j+channel]=245;
+        }
+        const off=document.createElement('canvas');off.width=w;off.height=h;off.getContext('2d').putImageData(image,0,0);
+        const scale=Math.min((cw-4)/w,(ch-4)/h),bw=w*scale,bh=h*scale,bx=(cw-bw)/2,by=(ch-bh)/2;boxes[index]={x:bx,y:by,w:bw,h:bh};ctx.imageSmoothingEnabled=index===0;ctx.drawImage(off,bx,by,bw,bh);
+        const probe=entry.info.probe;const mark=selected?{x:selected.x/w,y:selected.y/h}:probe?{x:probe.uv[0]/entry.info.input_wh[0],y:probe.uv[1]/entry.info.input_wh[1]}:null;
+        if(mark){const x=bx+mark.x*bw,y=by+mark.y*bh;ctx.strokeStyle=ringColor;ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,6,0,Math.PI*2);ctx.stroke();}
+      });
+    }
+    function save(){window.openai?.setWidgetState?.({modelContent:{method:'CropFormer ROI RGB resegmentation',scene:'room0',selected_ROI:currentCase.ROI,view:currentView.view,frame:currentView.frame,crop_strategy:crop.value,original_masks:entry?.info.baseline_mask_count,new_masks:entry?.info.local_mask_count,selected_mask_pixel:selected?{F:selected.before,L:selected.after}:null},privateContent:{kind:'room0-cropformer-zoom-v1',rank:currentCase.rank,view:currentView.view,crop:crop.value,mode:mode.value,selected:selected?{x:selected.x/entry.wh[0],y:selected.y/entry.wh[1]}:null}}).catch(()=>{});}
+    function selectionText(){q('zoom-selected').textContent=selected?`选中像素：原 F${selected.before} / 新 L${selected.after}${selected.after?' · 新 mask 得分 '+(entry.info.local_scores[selected.after-1]||0).toFixed(3):'（未分割）'}`:'点击目标像素，可突出两侧覆盖该位置的实例。';}
+    function pick(x,y){if(!entry||!pixels)return;const [w,h]=entry.wh;const xx=Math.max(0,Math.min(w-1,Math.floor(x))),yy=Math.max(0,Math.min(h-1,Math.floor(y))),at=(yy*w+xx)*4;selected={x:xx,y:yy,before:pixels.before[at],after:pixels.after[at]};selectionText();draw();}
+    async function show(remember=true){const token=++generation;entry=data.entries[currentView.crops[crop.value]];if(!entry)return;pixels=null;selected=null;q('zoom-summary').textContent='正在读取 '+entry.info.ROI;
+      const decoded=await decode(entry);if(token!==generation)return;pixels=decoded;const i=entry.info;
+      q('zoom-summary').textContent=`${i.ROI} · 帧 ${i.frame} · 输入 ${i.input_wh.join(' × ')} px · 模型整图分支 ${i.model_input_wh.join(' × ')} px · 相对整帧尺度 ${i.effective_zoom_vs_full.toFixed(2)}×`;
+      q('zoom-before-title').textContent=`原整帧 mask 裁剪 · ${i.baseline_mask_count} 个`;q('zoom-after-title').textContent=`局部重新分割 mask · ${i.local_mask_count} 个`;
+      q('zoom-probe').textContent=i.probe?`红圈为实际证据像素：原 F${i.probe.F}（3D ID${i.probe.source_3D_ID}）→ 新 ${i.probe.L?'L'+i.probe.L:'L0 未分割'}；显示标注未作为模型提示。`:'';
+      selectionText();draw();if(remember)save();
+    }
+    function chooseView(v,strategy){currentView=currentCase.views.find(x=>x.view===Number(v))||currentCase.views[0];view.value=String(currentView.view);setOptions(crop,Object.keys(currentView.crops).map(s=>[s,s==='wide'?'当前观察窗口（宽）':s==='witness'?'竞争来源局部 RGB':'紧 ROI 裁剪']));crop.value=strategy in currentView.crops?strategy:('wide' in currentView.crops?'wide':Object.keys(currentView.crops)[0]);q('zoom-crop-slot').hidden=Object.keys(currentView.crops).length===1;}
+    function chooseCase(rank,v=1,strategy='wide',remember=true){currentCase=data.cases.find(r=>r.rank===Number(rank))||data.cases[0];roi.value=String(currentCase.rank);setOptions(view,currentCase.views.map(v=>[v.view,`${v.label} · 帧 ${v.frame}`]));chooseView(v,strategy);return show(remember);}
+    roi.addEventListener('change',()=>chooseCase(roi.value,1,crop.value));view.addEventListener('change',()=>{chooseView(view.value,crop.value);show();});crop.addEventListener('change',()=>show());mode.addEventListener('change',()=>{draw();save();});q('zoom-all').addEventListener('click',()=>{selected=null;selectionText();draw();save();});
+    canvases.forEach((c,index)=>c.addEventListener('click',e=>{const rect=c.getBoundingClientRect(),b=boxes[index];if(!b||!entry)return;const x=e.clientX-rect.left,y=e.clientY-rect.top;if(x<b.x||x>=b.x+b.w||y<b.y||y>=b.y+b.h)return;pick((x-b.x)/b.w*entry.wh[0],(y-b.y)/b.h*entry.wh[1]);save();}));
+    new ResizeObserver(draw).observe(root);new MutationObserver(draw).observe(document.documentElement,{attributes:true,attributeFilter:['class','style','data-theme']});
+    async function restore(state){const p=state?.privateContent;if(p?.kind!=='room0-cropformer-zoom-v1'){await chooseCase(35,1,'wide',false);return;}mode.value=p.mode==='pure'?'pure':'overlay';await chooseCase(p.rank,p.view,p.crop,false);if(p.selected&&entry)pick(p.selected.x*entry.wh[0],p.selected.y*entry.wh[1]);}
+    window.addEventListener('openai:set_globals',e=>{if(e.detail?.globals?.widgetState)restore(e.detail.globals.widgetState);});restore(window.openai?.widgetState);
+  })();
+  </script>
+</div>

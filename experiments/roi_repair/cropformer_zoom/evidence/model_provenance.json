@@ -1,0 +1,17 @@
+{
+  "weights": "/data/chenkejun/CVPR/models/CropFormer_hornet_3x_03823a.pth",
+  "weights_sha256": "71915b7e9dc63fc662b32c59dff513530a06221c3b22f6de7ff4d6ef82df1128",
+  "config_path": "/data/chenkejun/ovimap_runtime_20260908/detectron2/projects/CropFormer/configs/entityv2/entity_segmentation/cropformer_hornet_3x.yaml",
+  "config_sha256": "bf2bc90b8a890078615d8e4d9e7b156fbbe58e498875fbb23c72b03b8f9e4f17",
+  "predictor_source_sha256": "cdc964ef375fd1d1d33eea8d03dc40d198443543fcc7c53192836fe7de271f69",
+  "MIN_SIZE_TEST": 800,
+  "MAX_SIZE_TEST": 1333,
+  "ENTITY_CROP_AREA_RATIO": 0.7,
+  "ENTITY_CROP_STRIDE_RATIO": 0.6,
+  "ENTITY_CROP_SAMPLE_NUM_TEST": 4,
+  "score_threshold": 0.5,
+  "winner_policy": "all masks >=0.5; ascending score painting, highest score owns overlap; same as frozen cache",
+  "input": "lossless native-resolution RGB crop; standard predictor resize supplies effective zoom",
+  "device": "NVIDIA RTX 5880 Ada Generation",
+  "GPU_visible": "1"
+}

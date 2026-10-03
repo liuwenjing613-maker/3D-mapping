@@ -1,6 +1,8 @@
 # 3D-mapping
 
-本分支：**P1-A 可撤销帧级计票与概率支持关联**，基于 main 的 P0 和显式离线扩散。实现、运行与验收见 [P1-A 说明](revisable_instance_map/docs/p1a_probabilistic_association.md)；原 P0 版本见 [P0 版本说明](docs/P0_BRANCH_VARIANTS_CN.md)。
+本分支：**ROI-repair：三状态 ROI 排序与局部 CropFormer 重分割诊断**。已保存 room0 的 1,352 个候选排序、13 个状态诊断案例、32 个 ROI 的可视化，以及 159 次局部重分割输入与标签。入口见 [ROI-repair 工作说明](experiments/roi_repair/README.md)。本次没有将修复写回地图；正式评估继续使用 [统一 v3 协议](docs/UNIFIED_EVALUATOR_V3_CN.md)。
+
+本分支基于 **P1-A 可撤销帧级计票与概率支持关联**。原实现、运行与验收见 [P1-A 说明](revisable_instance_map/docs/p1a_probabilistic_association.md)；原 P0 版本见 [P0 版本说明](docs/P0_BRANCH_VARIANTS_CN.md)。
 
 Unified evaluation code for 3D instance maps. The frozen **Replica-CA-v1** is preserved for old results. **Replica-CA-v2** adds independent per-instance projection, F1, significant merge/split/duplicate diagnostics, macro scene averages, and causal online-prefix evaluation. Its significant-overlap thresholds are still pending, so v2 cannot produce formal scores yet. These are custom Replica metrics, not official ScanNet AP. See [v2 metric definitions](docs/UNIFIED_EVALUATOR_V2_CN.md).
 
