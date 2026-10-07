@@ -1,0 +1,571 @@
+{
+  "schema": "cvpr_roi_human_selection_v1",
+  "source_selection": "selection-20261006-f49eb927",
+  "exported_at": "2026-10-07T11:56:23.043Z",
+  "is_qa": false,
+  "pilot_case_uids": [
+    "room0-971efdbf3ec0d694",
+    "room0-e69e11d7edf3f35c",
+    "room0-cfa818bb7488e504",
+    "room0-580118f842261de9",
+    "room0-a5635309720ef8a2",
+    "room0-2567eed0660d43bf",
+    "room0-d30fc01b2b51d42f",
+    "room0-467cac824a423a0d",
+    "room0-2f1a29ddc32cd41f",
+    "room0-5262f00ca0047746",
+    "room0-f427ae3ae4f22bb5",
+    "room0-ea8fc9547564a3ba",
+    "room0-525a1f6167384561",
+    "room0-24846d27fc3b2012"
+  ],
+  "total_fixed_cases": 14,
+  "source_total_fixed_cases": 37,
+  "scene_scope": "room0",
+  "asset_base_path": "../",
+  "source_data_directory": "roi_threeway_fixed_20261006/selection-20261006-f49eb927/review",
+  "selections": [
+    {
+      "case_uid": "room0-971efdbf3ec0d694",
+      "scene": "room0",
+      "ROI": "ROI-C0001",
+      "aliases": [
+        "ROI-C0001",
+        "ROI-U0015",
+        "ROI-T0001"
+      ],
+      "view_number": 1,
+      "frame": 1995,
+      "source_rgb": "room0/assets/frame001995.jpg",
+      "crop_key": "room0_ROI-C0001_v1_f001995_balanced",
+      "crop_xyxy": [
+        0,
+        0,
+        1200,
+        680
+      ],
+      "native_crop_wh": [
+        1200,
+        680
+      ],
+      "crop_strategy": "balanced",
+      "choice": "sam2_1_local",
+      "model_index": 2,
+      "mask_ids": [
+        2,
+        5,
+        6,
+        17
+      ],
+      "label_asset": "assets/room0_ROI-C0001_v1_f001995_balanced_sam_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:44:42.448Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-e69e11d7edf3f35c",
+      "scene": "room0",
+      "ROI": "ROI-C0002",
+      "aliases": [
+        "ROI-C0002",
+        "ROI-U0012",
+        "ROI-T0010"
+      ],
+      "view_number": 1,
+      "frame": 190,
+      "source_rgb": "room0/assets/frame000190.jpg",
+      "crop_key": "room0_ROI-C0002_v1_f000190_target_balanced",
+      "crop_xyxy": [
+        0,
+        323,
+        1200,
+        680
+      ],
+      "native_crop_wh": [
+        1200,
+        357
+      ],
+      "crop_strategy": "balanced",
+      "choice": "original",
+      "model_index": 0,
+      "mask_ids": [
+        9
+      ],
+      "label_asset": "assets/room0_ROI-C0002_v1_f000190_target_balanced_original_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:44:58.349Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-cfa818bb7488e504",
+      "scene": "room0",
+      "ROI": "ROI-C0005",
+      "aliases": [
+        "ROI-C0005"
+      ],
+      "view_number": 1,
+      "frame": 580,
+      "source_rgb": "room0/assets/frame000580.jpg",
+      "crop_key": "room0_ROI-C0005_v1_f000580_target_balanced",
+      "crop_xyxy": [
+        366,
+        0,
+        1200,
+        680
+      ],
+      "native_crop_wh": [
+        834,
+        680
+      ],
+      "crop_strategy": "balanced",
+      "choice": "sam2_1_local",
+      "model_index": 2,
+      "mask_ids": [
+        2,
+        4,
+        14,
+        17
+      ],
+      "label_asset": "assets/room0_ROI-C0005_v1_f000580_target_balanced_sam_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:45:24.280Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-580118f842261de9",
+      "scene": "room0",
+      "ROI": "ROI-C0007",
+      "aliases": [
+        "ROI-C0007",
+        "ROI-U0001",
+        "ROI-T0006"
+      ],
+      "view_number": 1,
+      "frame": 1630,
+      "source_rgb": "room0/assets/frame001630.jpg",
+      "crop_key": "room0_ROI-C0007_v1_f001630_target_balanced",
+      "crop_xyxy": [
+        0,
+        0,
+        1174,
+        680
+      ],
+      "native_crop_wh": [
+        1174,
+        680
+      ],
+      "crop_strategy": "balanced",
+      "choice": "cropformer_local",
+      "model_index": 1,
+      "mask_ids": [
+        17
+      ],
+      "label_asset": "assets/room0_ROI-C0007_v1_f001630_target_balanced_local_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:45:48.059Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-a5635309720ef8a2",
+      "scene": "room0",
+      "ROI": "ROI-C0010",
+      "aliases": [
+        "ROI-C0010"
+      ],
+      "view_number": 1,
+      "frame": 1660,
+      "source_rgb": "room0/assets/frame001660.jpg",
+      "crop_key": "room0_ROI-C0010_v1_f001660_balanced",
+      "crop_xyxy": [
+        800,
+        345,
+        1200,
+        680
+      ],
+      "native_crop_wh": [
+        400,
+        335
+      ],
+      "crop_strategy": "balanced",
+      "choice": "cropformer_local",
+      "model_index": 1,
+      "mask_ids": [
+        9
+      ],
+      "label_asset": "assets/room0_ROI-C0010_v1_f001660_balanced_local_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:46:52.622Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-2567eed0660d43bf",
+      "scene": "room0",
+      "ROI": "ROI-C0011",
+      "aliases": [
+        "ROI-C0011",
+        "ROI-U0014",
+        "ROI-T0020"
+      ],
+      "view_number": 1,
+      "frame": 1860,
+      "source_rgb": "room0/assets/frame001860.jpg",
+      "crop_key": "room0_ROI-C0011_v1_f001860_target_balanced",
+      "crop_xyxy": [
+        800,
+        272,
+        1200,
+        592
+      ],
+      "native_crop_wh": [
+        400,
+        320
+      ],
+      "crop_strategy": "balanced",
+      "choice": "original",
+      "model_index": 0,
+      "mask_ids": [
+        7,
+        13,
+        18,
+        20
+      ],
+      "label_asset": "assets/room0_ROI-C0011_v1_f001860_target_balanced_original_ids.png",
+      "scope": "selected_visible_masks",
+      "artificial_crop_border_check": "TOUCHES_CROP_BORDER_ALLOWED",
+      "border_touching_mask_ids": [
+        18,
+        20
+      ],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:47:21.694Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-d30fc01b2b51d42f",
+      "scene": "room0",
+      "ROI": "ROI-C0015",
+      "aliases": [
+        "ROI-C0015",
+        "ROI-U0021",
+        "ROI-T0014"
+      ],
+      "view_number": 1,
+      "frame": 0,
+      "source_rgb": "room0/assets/frame000000.jpg",
+      "crop_key": "room0_ROI-C0015_v1_f000000_balanced",
+      "crop_xyxy": [
+        674,
+        190,
+        1146,
+        416
+      ],
+      "native_crop_wh": [
+        472,
+        226
+      ],
+      "crop_strategy": "balanced",
+      "choice": "cropformer_local",
+      "model_index": 1,
+      "mask_ids": [
+        5,
+        8,
+        9
+      ],
+      "label_asset": "assets/room0_ROI-C0015_v1_f000000_balanced_local_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:48:06.214Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-467cac824a423a0d",
+      "scene": "room0",
+      "ROI": "ROI-C0020",
+      "aliases": [
+        "ROI-C0020",
+        "ROI-T0023"
+      ],
+      "view_number": 1,
+      "frame": 1870,
+      "source_rgb": "room0/assets/frame001870.jpg",
+      "crop_key": "room0_ROI-C0020_v1_f001870_balanced",
+      "crop_xyxy": [
+        800,
+        278,
+        1200,
+        680
+      ],
+      "native_crop_wh": [
+        400,
+        402
+      ],
+      "crop_strategy": "balanced",
+      "choice": "cropformer_local",
+      "model_index": 1,
+      "mask_ids": [
+        13,
+        16,
+        20
+      ],
+      "label_asset": "assets/room0_ROI-C0020_v1_f001870_balanced_local_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:49:44.966Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-2f1a29ddc32cd41f",
+      "scene": "room0",
+      "ROI": "ROI-C0021",
+      "aliases": [
+        "ROI-C0021",
+        "ROI-U0010",
+        "ROI-T0007"
+      ],
+      "view_number": 1,
+      "frame": 945,
+      "source_rgb": "room0/assets/frame000945.jpg",
+      "crop_key": "room0_ROI-C0021_v1_f000945_balanced",
+      "crop_xyxy": [
+        55,
+        358,
+        564,
+        680
+      ],
+      "native_crop_wh": [
+        509,
+        322
+      ],
+      "crop_strategy": "balanced",
+      "choice": "sam2_1_local",
+      "model_index": 2,
+      "mask_ids": [
+        3,
+        5
+      ],
+      "label_asset": "assets/room0_ROI-C0021_v1_f000945_balanced_sam_ids.png",
+      "scope": "selected_visible_masks",
+      "artificial_crop_border_check": "TOUCHES_CROP_BORDER_ALLOWED",
+      "border_touching_mask_ids": [
+        5
+      ],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:50:19.296Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-5262f00ca0047746",
+      "scene": "room0",
+      "ROI": "ROI-C0027",
+      "aliases": [
+        "ROI-C0027"
+      ],
+      "view_number": 1,
+      "frame": 625,
+      "source_rgb": "room0/assets/frame000625.jpg",
+      "crop_key": "room0_ROI-C0027_v1_f000625_balanced",
+      "crop_xyxy": [
+        800,
+        277,
+        1200,
+        680
+      ],
+      "native_crop_wh": [
+        400,
+        403
+      ],
+      "crop_strategy": "balanced",
+      "choice": "unreliable",
+      "model_index": -1,
+      "mask_ids": [],
+      "label_asset": null,
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:50:38.187Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-f427ae3ae4f22bb5",
+      "scene": "room0",
+      "ROI": "ROI-C0030",
+      "aliases": [
+        "ROI-C0030"
+      ],
+      "view_number": 1,
+      "frame": 1225,
+      "source_rgb": "room0/assets/frame001225.jpg",
+      "crop_key": "room0_ROI-C0030_v1_f001225_balanced",
+      "crop_xyxy": [
+        0,
+        352,
+        400,
+        578
+      ],
+      "native_crop_wh": [
+        400,
+        226
+      ],
+      "crop_strategy": "balanced",
+      "choice": "original",
+      "model_index": 0,
+      "mask_ids": [
+        15,
+        19,
+        20
+      ],
+      "label_asset": "assets/room0_ROI-C0030_v1_f001225_balanced_original_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:51:07.363Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-ea8fc9547564a3ba",
+      "scene": "room0",
+      "ROI": "ROI-U0002",
+      "aliases": [
+        "ROI-U0002",
+        "ROI-T0008"
+      ],
+      "view_number": 1,
+      "frame": 785,
+      "source_rgb": "room0/assets/frame000785.jpg",
+      "crop_key": "room0_ROI-U0002_v1_f000785_balanced",
+      "crop_xyxy": [
+        495,
+        439,
+        895,
+        680
+      ],
+      "native_crop_wh": [
+        400,
+        241
+      ],
+      "crop_strategy": "balanced",
+      "choice": "cropformer_local",
+      "model_index": 1,
+      "mask_ids": [
+        6,
+        9
+      ],
+      "label_asset": "assets/room0_ROI-U0002_v1_f000785_balanced_local_ids.png",
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:51:37.005Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-525a1f6167384561",
+      "scene": "room0",
+      "ROI": "ROI-U0017",
+      "aliases": [
+        "ROI-U0017",
+        "ROI-T0026"
+      ],
+      "view_number": 2,
+      "frame": 1050,
+      "source_rgb": "room0/assets/frame001050.jpg",
+      "crop_key": "room0_ROI-U0017_v2_f001050_target_balanced",
+      "crop_xyxy": [
+        389,
+        188,
+        789,
+        680
+      ],
+      "native_crop_wh": [
+        400,
+        492
+      ],
+      "crop_strategy": "balanced",
+      "choice": "cropformer_local",
+      "model_index": 1,
+      "mask_ids": [
+        12,
+        24
+      ],
+      "label_asset": "assets/room0_ROI-U0017_v2_f001050_target_balanced_local_ids.png",
+      "scope": "selected_visible_masks",
+      "artificial_crop_border_check": "TOUCHES_CROP_BORDER_ALLOWED",
+      "border_touching_mask_ids": [
+        12,
+        24
+      ],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:56:16.219Z",
+      "is_qa": false,
+      "target_notes": ""
+    },
+    {
+      "case_uid": "room0-24846d27fc3b2012",
+      "scene": "room0",
+      "ROI": "ROI-U0019",
+      "aliases": [
+        "ROI-U0019",
+        "ROI-T0022"
+      ],
+      "view_number": 1,
+      "frame": 780,
+      "source_rgb": "room0/assets/frame000780.jpg",
+      "crop_key": "room0_ROI-U0019_v1_f000780_target_balanced",
+      "crop_xyxy": [
+        498,
+        451,
+        1009,
+        680
+      ],
+      "native_crop_wh": [
+        511,
+        229
+      ],
+      "crop_strategy": "balanced",
+      "choice": "unreliable",
+      "model_index": -1,
+      "mask_ids": [],
+      "label_asset": null,
+      "scope": "selected_whole_visible_objects",
+      "artificial_crop_border_check": "PASS",
+      "border_touching_mask_ids": [],
+      "crop_border_selection_allowed": true,
+      "selected_at": "2026-10-07T11:54:54.345Z",
+      "is_qa": false,
+      "target_notes": ""
+    }
+  ]
+}
