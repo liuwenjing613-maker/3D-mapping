@@ -68,3 +68,11 @@ bash audit_split_evaluation.sh
 已观察到两个实例的局部归属分离和纯度提升，但 mask24 仍有旧 ID52 残留与覆盖不足。
 “局部分离有效”与“完整实例验收通过”是不同结论。当前评分为
 `DEBUG_ONLY / NON_OFFICIAL`，不是正式 benchmark 结果；详见审计说明。
+
+## 2026-10-07 增量实现
+
+固定表面诊断和严格局部提交已经完成，原149份源文件快照保持不变。
+
+- [变更、结果与局限](docs/strict_local_changes_20261007.md)
+- [新入口与接口说明](strict_local_repair_20261007/README.md)
+- 无门槛对照驱动与配置已补入pilot10_repair_20261007目录。

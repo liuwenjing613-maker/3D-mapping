@@ -1,0 +1,48 @@
+{
+  "version": "joint_whole_observation_no_quality_gate_v1",
+  "scene": "room2",
+  "case_uid": "room2-14047feb0df3aaa5",
+  "native_mask_ids": [
+    14,
+    24
+  ],
+  "track_ids": [
+    4,
+    7
+  ],
+  "persistent_ids": {
+    "4": 52,
+    "7": 355
+  },
+  "old_observation_family_instance_ids": [
+    52
+  ],
+  "mapping_frames": "unchanged range(0,2000,5)",
+  "seed_surface_visibility_depth_tolerance_m": 0.03,
+  "minimum_visible_seed_surface_samples_each_target": 20,
+  "minimum_tracked_coverage_of_visible_seed_samples_each_target": 0.8,
+  "seed_surface_bbox_padding_m": 0.3,
+  "minimum_new_surface_support_fraction_inside_target_bbox": 0.9,
+  "minimum_old_surface_support_fraction_inside_joint_bbox": 0.9,
+  "maximum_new_mask_pixel_overlap_fraction_with_other_old_instance_families": 0.05,
+  "minimum_visible_protected_seed_samples": 20,
+  "maximum_new_union_coverage_of_other_visible_seed_samples": 0.1,
+  "frame_acceptance": "Accept every mapping frame containing an identified old family52 mask observation; bypass every visibility, seed coverage, bounding box, foreign mask and protected seed quality check. Retain original evidence in frames without an identified old family52 observation.",
+  "replace_unit": "complete old frame-local-mask observations in family 52",
+  "vote_unit": "one vote per frame, surface point and persistent ID after union and deduplication",
+  "unchanged_other_old_observations": "preserve their complete original surface supports, even at shared surface points",
+  "paired_conditions": [
+    "whole_old_mask_replacement_without_quality_gates"
+  ],
+  "pixel_overlap_control": "remove only portions of the selected old family masks inside the accepted new mask foreground; add the same new mask support",
+  "whole_old_mask_replacement": "remove every surface contribution of all selected old family mask observations; add the same new mask support",
+  "geometry_and_postprocessing": "reuse immutable baseline TSDF and original assignment settings",
+  "GT_used_for_repair_or_frame_selection": false,
+  "evaluation": "exact unchanged unified v3 debug preset and fixed targets from prior human seed support",
+  "all_source_maps_and_original_annotations": "read-only; independent trial output",
+  "quality_gates_enabled": false,
+  "quality_thresholds_retained_for_diagnostics_only": true,
+  "tracking_source": "/data/chenkejun/CVPR/revisable_instance_map/pilot10_repair_20261007/joint_mask_replacement_20261007/room2_mask14_mask24/tracking",
+  "gated_driver_sha256": "2b1e2439e2cbd328b75520e303cd14768fbd873f66b87f9aa7fda8d4297ce9d3",
+  "gated_policy_sha256": "26f7677c4000f107c6a6b116e4a10b07ef5c7f54c779cd426f4c65e6fe59a200"
+}
