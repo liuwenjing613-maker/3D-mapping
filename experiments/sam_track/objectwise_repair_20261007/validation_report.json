@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "tests": {
+    "test_objectwise_ops": {
+      "status": "PASS",
+      "log_sha256": "c69ae6a3ecb54d1db7f1507449ecf1b1da7aa600264be00fff44f35a208088c3"
+    },
+    "test_fixed_surface_repair": {
+      "status": "PASS",
+      "log_sha256": "a1a96415266440ad3c426c92cd48409a6e22f3adf178951397c78f62c5274bf3"
+    }
+  },
+  "unit_test_count": 31,
+  "cases": {
+    "room2_original_control": {
+      "status": "PASS",
+      "repeat_outputs_hash_and_mtime_unchanged": true,
+      "outside_final_changes": 0,
+      "full_replay_and_exact_rollback": true,
+      "sources_unchanged": true,
+      "final_map_sha256": "42cdf7b1c621785235a03e87489b94248e46dfdf5a15beea19230ca4a73c155c",
+      "fixed_mapping_cache_sha256": "0c90700d6dd7a8fa213c2b5d18dbe4aad8a07a5f53d4653f9e9d7946dfb1aaf6"
+    },
+    "room2_sam_seed": {
+      "status": "PASS",
+      "repeat_outputs_hash_and_mtime_unchanged": true,
+      "outside_final_changes": 0,
+      "full_replay_and_exact_rollback": true,
+      "sources_unchanged": true,
+      "final_map_sha256": "5dc6a6226d14e59b89d45dd122cbfc9a7309f0dccf311dd7e91965b320b818d0",
+      "fixed_mapping_cache_sha256": "0c90700d6dd7a8fa213c2b5d18dbe4aad8a07a5f53d4653f9e9d7946dfb1aaf6"
+    },
+    "room2_original_seed": {
+      "status": "PASS",
+      "repeat_outputs_hash_and_mtime_unchanged": true,
+      "outside_final_changes": 0,
+      "full_replay_and_exact_rollback": true,
+      "sources_unchanged": true,
+      "final_map_sha256": "93bc0a586b3829beb2cf96e71149dc6b6b841bec747ed5c4f657d06e2282ca96",
+      "fixed_mapping_cache_sha256": "0c90700d6dd7a8fa213c2b5d18dbe4aad8a07a5f53d4653f9e9d7946dfb1aaf6"
+    }
+  },
+  "original_seed_masks_pixel_identical": true,
+  "original_reassociate_corrects_many_to_one_without_GT": true,
+  "original_control_preserves_many_to_one": true,
+  "one_fixed_mapping_for_all_conditions": true,
+  "independent_forward_reverse_tracking_retained": true,
+  "GT_not_used_for_repair": true,
+  "numeric_quality_and_confirmation_thresholds_unchanged": true,
+  "no_parameter_tuning_after_scores": true
+}

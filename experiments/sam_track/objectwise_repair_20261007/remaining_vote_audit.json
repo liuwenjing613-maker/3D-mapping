@@ -1,0 +1,3340 @@
+{
+  "status": "PASS",
+  "posthoc_readonly_audit": true,
+  "GT_used_only_after_prediction_freeze": true,
+  "no_new_repair_parameters_or_decisions": true,
+  "cases": {
+    "room2_sam_seed": {
+      "retired_support_unique_native_points": 16161,
+      "retired_support_raw_states_and_final_labels": [
+        {
+          "state": 0,
+          "surface_points": 39,
+          "final_assigned": 5,
+          "final_unassigned": 34
+        },
+        {
+          "state": 1,
+          "surface_points": 52,
+          "final_assigned": 22,
+          "final_unassigned": 30
+        },
+        {
+          "state": 2,
+          "surface_points": 13483,
+          "final_assigned": 13483,
+          "final_unassigned": 0
+        },
+        {
+          "state": 3,
+          "surface_points": 2587,
+          "final_assigned": 110,
+          "final_unassigned": 2477
+        }
+      ],
+      "target_B_unique_reachable_native_points": 3844,
+      "target_B_final_wrong_ID52_native_points": 876,
+      "target_B_ID52_votes_before": 146434,
+      "target_B_ID52_votes_after": 50276,
+      "target_B_ID355_votes_after": 94897,
+      "rejected_target_B_reason_frame_counts_nonexclusive": {
+        "anchor_coverage": 51,
+        "spatial_extent": 8,
+        "foreign_old_family_overlap": 14,
+        "other_seed_3_overlap": 4,
+        "insufficient_visible_anchor": 3,
+        "other_seed_4_overlap": 3
+      },
+      "per_frame_remaining_votes": [
+        {
+          "frame": 230,
+          "old_ID52_votes_before": 39,
+          "ID52_votes_after": 39,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 235,
+          "old_ID52_votes_before": 105,
+          "ID52_votes_after": 105,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 2,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 240,
+          "old_ID52_votes_before": 97,
+          "ID52_votes_after": 97,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 4,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 245,
+          "old_ID52_votes_before": 36,
+          "ID52_votes_after": 36,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 885,
+          "old_ID52_votes_before": 19,
+          "ID52_votes_after": 19,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "insufficient_visible_anchor"
+          ]
+        },
+        {
+          "frame": 890,
+          "old_ID52_votes_before": 80,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 80,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 895,
+          "old_ID52_votes_before": 223,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 220,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 900,
+          "old_ID52_votes_before": 476,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 468,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 905,
+          "old_ID52_votes_before": 849,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 846,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 910,
+          "old_ID52_votes_before": 1179,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1168,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 915,
+          "old_ID52_votes_before": 1138,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1127,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 920,
+          "old_ID52_votes_before": 1087,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1082,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 925,
+          "old_ID52_votes_before": 1044,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1034,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 930,
+          "old_ID52_votes_before": 953,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 937,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 935,
+          "old_ID52_votes_before": 893,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 883,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 940,
+          "old_ID52_votes_before": 849,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 843,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 945,
+          "old_ID52_votes_before": 809,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 804,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 950,
+          "old_ID52_votes_before": 802,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 790,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 955,
+          "old_ID52_votes_before": 810,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 807,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 960,
+          "old_ID52_votes_before": 791,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 782,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 965,
+          "old_ID52_votes_before": 776,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 760,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 970,
+          "old_ID52_votes_before": 777,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 758,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 975,
+          "old_ID52_votes_before": 791,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 780,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 980,
+          "old_ID52_votes_before": 779,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 763,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 985,
+          "old_ID52_votes_before": 782,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 775,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 990,
+          "old_ID52_votes_before": 751,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 750,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 995,
+          "old_ID52_votes_before": 607,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 728,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1000,
+          "old_ID52_votes_before": 627,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 686,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1005,
+          "old_ID52_votes_before": 656,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 667,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1010,
+          "old_ID52_votes_before": 676,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 662,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1015,
+          "old_ID52_votes_before": 656,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 644,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1020,
+          "old_ID52_votes_before": 654,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 640,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1025,
+          "old_ID52_votes_before": 665,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 657,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1030,
+          "old_ID52_votes_before": 707,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 688,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1035,
+          "old_ID52_votes_before": 734,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 717,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1040,
+          "old_ID52_votes_before": 815,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 791,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1045,
+          "old_ID52_votes_before": 856,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 835,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1050,
+          "old_ID52_votes_before": 913,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 892,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1055,
+          "old_ID52_votes_before": 944,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 937,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1060,
+          "old_ID52_votes_before": 938,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 917,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1065,
+          "old_ID52_votes_before": 774,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 766,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1070,
+          "old_ID52_votes_before": 709,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 701,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1075,
+          "old_ID52_votes_before": 720,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 708,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1080,
+          "old_ID52_votes_before": 843,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 822,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1085,
+          "old_ID52_votes_before": 883,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 867,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1090,
+          "old_ID52_votes_before": 811,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 795,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1095,
+          "old_ID52_votes_before": 759,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 744,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1100,
+          "old_ID52_votes_before": 693,
+          "ID52_votes_after": 6,
+          "ID355_votes_after": 671,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1105,
+          "old_ID52_votes_before": 657,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 644,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1110,
+          "old_ID52_votes_before": 614,
+          "ID52_votes_after": 5,
+          "ID355_votes_after": 599,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1115,
+          "old_ID52_votes_before": 621,
+          "ID52_votes_after": 6,
+          "ID355_votes_after": 603,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1120,
+          "old_ID52_votes_before": 609,
+          "ID52_votes_after": 7,
+          "ID355_votes_after": 597,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1125,
+          "old_ID52_votes_before": 615,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 597,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1130,
+          "old_ID52_votes_before": 609,
+          "ID52_votes_after": 5,
+          "ID355_votes_after": 600,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1135,
+          "old_ID52_votes_before": 646,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 630,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1140,
+          "old_ID52_votes_before": 682,
+          "ID52_votes_after": 10,
+          "ID355_votes_after": 665,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1145,
+          "old_ID52_votes_before": 699,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 685,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1150,
+          "old_ID52_votes_before": 759,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 747,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1155,
+          "old_ID52_votes_before": 829,
+          "ID52_votes_after": 6,
+          "ID355_votes_after": 820,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1160,
+          "old_ID52_votes_before": 883,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 869,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1165,
+          "old_ID52_votes_before": 953,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 946,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1170,
+          "old_ID52_votes_before": 1049,
+          "ID52_votes_after": 3,
+          "ID355_votes_after": 1031,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1175,
+          "old_ID52_votes_before": 1146,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 1134,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1180,
+          "old_ID52_votes_before": 1224,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 1198,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1185,
+          "old_ID52_votes_before": 1307,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 1289,
+          "ID52_votes_on_final_wrong_ID52_points": 1,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1190,
+          "old_ID52_votes_before": 1349,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1335,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1195,
+          "old_ID52_votes_before": 1406,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 1382,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1200,
+          "old_ID52_votes_before": 1336,
+          "ID52_votes_after": 8,
+          "ID355_votes_after": 1306,
+          "ID52_votes_on_final_wrong_ID52_points": 2,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1205,
+          "old_ID52_votes_before": 1312,
+          "ID52_votes_after": 8,
+          "ID355_votes_after": 1281,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1210,
+          "old_ID52_votes_before": 1280,
+          "ID52_votes_after": 3,
+          "ID355_votes_after": 1254,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1215,
+          "old_ID52_votes_before": 1214,
+          "ID52_votes_after": 18,
+          "ID355_votes_after": 1170,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1220,
+          "old_ID52_votes_before": 1181,
+          "ID52_votes_after": 8,
+          "ID355_votes_after": 1126,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1225,
+          "old_ID52_votes_before": 1229,
+          "ID52_votes_after": 18,
+          "ID355_votes_after": 1174,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1230,
+          "old_ID52_votes_before": 1255,
+          "ID52_votes_after": 17,
+          "ID355_votes_after": 1228,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1235,
+          "old_ID52_votes_before": 1266,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1253,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1240,
+          "old_ID52_votes_before": 1280,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1260,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1245,
+          "old_ID52_votes_before": 1308,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1290,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1250,
+          "old_ID52_votes_before": 1271,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1255,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1255,
+          "old_ID52_votes_before": 1284,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1264,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1260,
+          "old_ID52_votes_before": 1267,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1244,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1265,
+          "old_ID52_votes_before": 1264,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1237,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1270,
+          "old_ID52_votes_before": 1236,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1215,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1275,
+          "old_ID52_votes_before": 1197,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1176,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1280,
+          "old_ID52_votes_before": 1155,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1123,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1285,
+          "old_ID52_votes_before": 1136,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1106,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1290,
+          "old_ID52_votes_before": 1094,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1071,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1295,
+          "old_ID52_votes_before": 1084,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1060,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1300,
+          "old_ID52_votes_before": 1045,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1017,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1305,
+          "old_ID52_votes_before": 1036,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1012,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1310,
+          "old_ID52_votes_before": 974,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 958,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1315,
+          "old_ID52_votes_before": 977,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 962,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1320,
+          "old_ID52_votes_before": 957,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 946,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1325,
+          "old_ID52_votes_before": 947,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 923,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1330,
+          "old_ID52_votes_before": 994,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 974,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1335,
+          "old_ID52_votes_before": 927,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 909,
+          "ID52_votes_on_final_wrong_ID52_points": 1,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1340,
+          "old_ID52_votes_before": 926,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 910,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1345,
+          "old_ID52_votes_before": 936,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 914,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1350,
+          "old_ID52_votes_before": 901,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 882,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1355,
+          "old_ID52_votes_before": 883,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 866,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1360,
+          "old_ID52_votes_before": 854,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 834,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1365,
+          "old_ID52_votes_before": 831,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 813,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1370,
+          "old_ID52_votes_before": 792,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 779,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1375,
+          "old_ID52_votes_before": 754,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 741,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1380,
+          "old_ID52_votes_before": 706,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 693,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1385,
+          "old_ID52_votes_before": 662,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 654,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1390,
+          "old_ID52_votes_before": 660,
+          "ID52_votes_after": 3,
+          "ID355_votes_after": 648,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1395,
+          "old_ID52_votes_before": 590,
+          "ID52_votes_after": 5,
+          "ID355_votes_after": 581,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1400,
+          "old_ID52_votes_before": 602,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 582,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1405,
+          "old_ID52_votes_before": 557,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 551,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1410,
+          "old_ID52_votes_before": 529,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 518,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1415,
+          "old_ID52_votes_before": 515,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 514,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1420,
+          "old_ID52_votes_before": 476,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 487,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1425,
+          "old_ID52_votes_before": 440,
+          "ID52_votes_after": 9,
+          "ID355_votes_after": 445,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1430,
+          "old_ID52_votes_before": 448,
+          "ID52_votes_after": 9,
+          "ID355_votes_after": 450,
+          "ID52_votes_on_final_wrong_ID52_points": 3,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1435,
+          "old_ID52_votes_before": 444,
+          "ID52_votes_after": 444,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 56,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1440,
+          "old_ID52_votes_before": 428,
+          "ID52_votes_after": 428,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 65,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1445,
+          "old_ID52_votes_before": 472,
+          "ID52_votes_after": 472,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 155,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1450,
+          "old_ID52_votes_before": 530,
+          "ID52_votes_after": 530,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 216,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1455,
+          "old_ID52_votes_before": 582,
+          "ID52_votes_after": 582,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 260,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1460,
+          "old_ID52_votes_before": 675,
+          "ID52_votes_after": 253,
+          "ID355_votes_after": 430,
+          "ID52_votes_on_final_wrong_ID52_points": 209,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1465,
+          "old_ID52_votes_before": 709,
+          "ID52_votes_after": 269,
+          "ID355_votes_after": 448,
+          "ID52_votes_on_final_wrong_ID52_points": 227,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1470,
+          "old_ID52_votes_before": 748,
+          "ID52_votes_after": 748,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 385,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1475,
+          "old_ID52_votes_before": 775,
+          "ID52_votes_after": 775,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 385,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1480,
+          "old_ID52_votes_before": 727,
+          "ID52_votes_after": 727,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 323,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "other_seed_4_overlap"
+          ]
+        },
+        {
+          "frame": 1485,
+          "old_ID52_votes_before": 737,
+          "ID52_votes_after": 737,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 298,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "other_seed_4_overlap"
+          ]
+        },
+        {
+          "frame": 1490,
+          "old_ID52_votes_before": 699,
+          "ID52_votes_after": 699,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 241,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "other_seed_4_overlap"
+          ]
+        },
+        {
+          "frame": 1495,
+          "old_ID52_votes_before": 740,
+          "ID52_votes_after": 740,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 251,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1500,
+          "old_ID52_votes_before": 720,
+          "ID52_votes_after": 720,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 216,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1505,
+          "old_ID52_votes_before": 751,
+          "ID52_votes_after": 751,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 172,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1510,
+          "old_ID52_votes_before": 734,
+          "ID52_votes_after": 734,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 108,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1515,
+          "old_ID52_votes_before": 820,
+          "ID52_votes_after": 820,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 106,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1520,
+          "old_ID52_votes_before": 842,
+          "ID52_votes_after": 842,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 97,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1525,
+          "old_ID52_votes_before": 902,
+          "ID52_votes_after": 905,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 93,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1530,
+          "old_ID52_votes_before": 988,
+          "ID52_votes_after": 988,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 75,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1535,
+          "old_ID52_votes_before": 958,
+          "ID52_votes_after": 958,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 52,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1540,
+          "old_ID52_votes_before": 954,
+          "ID52_votes_after": 954,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 38,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1545,
+          "old_ID52_votes_before": 980,
+          "ID52_votes_after": 980,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 28,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1550,
+          "old_ID52_votes_before": 970,
+          "ID52_votes_after": 970,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 31,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1555,
+          "old_ID52_votes_before": 1023,
+          "ID52_votes_after": 1023,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 28,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1560,
+          "old_ID52_votes_before": 1072,
+          "ID52_votes_after": 1072,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 26,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1565,
+          "old_ID52_votes_before": 1190,
+          "ID52_votes_after": 1190,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 29,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1570,
+          "old_ID52_votes_before": 1280,
+          "ID52_votes_after": 1280,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 33,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1575,
+          "old_ID52_votes_before": 1395,
+          "ID52_votes_after": 1395,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 37,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1580,
+          "old_ID52_votes_before": 1536,
+          "ID52_votes_after": 1536,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 38,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1585,
+          "old_ID52_votes_before": 1670,
+          "ID52_votes_after": 1670,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 40,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1590,
+          "old_ID52_votes_before": 1710,
+          "ID52_votes_after": 1710,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 52,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1595,
+          "old_ID52_votes_before": 1741,
+          "ID52_votes_after": 1741,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 50,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1600,
+          "old_ID52_votes_before": 1800,
+          "ID52_votes_after": 1800,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 56,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1605,
+          "old_ID52_votes_before": 1850,
+          "ID52_votes_after": 1850,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 61,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1610,
+          "old_ID52_votes_before": 1839,
+          "ID52_votes_after": 1840,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 61,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1615,
+          "old_ID52_votes_before": 1899,
+          "ID52_votes_after": 1899,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 73,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1620,
+          "old_ID52_votes_before": 1896,
+          "ID52_votes_after": 1896,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 99,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1625,
+          "old_ID52_votes_before": 1858,
+          "ID52_votes_after": 1858,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 105,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1630,
+          "old_ID52_votes_before": 1653,
+          "ID52_votes_after": 1653,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 131,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1635,
+          "old_ID52_votes_before": 1443,
+          "ID52_votes_after": 1443,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 183,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1640,
+          "old_ID52_votes_before": 1227,
+          "ID52_votes_after": 1227,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 210,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1645,
+          "old_ID52_votes_before": 1047,
+          "ID52_votes_after": 1047,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 250,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1650,
+          "old_ID52_votes_before": 940,
+          "ID52_votes_after": 940,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 291,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1655,
+          "old_ID52_votes_before": 793,
+          "ID52_votes_after": 793,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 274,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1660,
+          "old_ID52_votes_before": 631,
+          "ID52_votes_after": 631,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 241,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1665,
+          "old_ID52_votes_before": 467,
+          "ID52_votes_after": 467,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 175,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1670,
+          "old_ID52_votes_before": 313,
+          "ID52_votes_after": 313,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 78,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1675,
+          "old_ID52_votes_before": 220,
+          "ID52_votes_after": 220,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 28,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent"
+          ]
+        },
+        {
+          "frame": 1680,
+          "old_ID52_votes_before": 161,
+          "ID52_votes_after": 161,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 21,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "insufficient_visible_anchor",
+            "anchor_coverage",
+            "spatial_extent"
+          ]
+        },
+        {
+          "frame": 1685,
+          "old_ID52_votes_before": 95,
+          "ID52_votes_after": 95,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 17,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "insufficient_visible_anchor",
+            "anchor_coverage",
+            "spatial_extent"
+          ]
+        }
+      ]
+    },
+    "room2_original_seed": {
+      "retired_support_unique_native_points": 16042,
+      "retired_support_raw_states_and_final_labels": [
+        {
+          "state": 0,
+          "surface_points": 34,
+          "final_assigned": 3,
+          "final_unassigned": 31
+        },
+        {
+          "state": 1,
+          "surface_points": 46,
+          "final_assigned": 24,
+          "final_unassigned": 22
+        },
+        {
+          "state": 2,
+          "surface_points": 13458,
+          "final_assigned": 13458,
+          "final_unassigned": 0
+        },
+        {
+          "state": 3,
+          "surface_points": 2504,
+          "final_assigned": 108,
+          "final_unassigned": 2396
+        }
+      ],
+      "target_B_unique_reachable_native_points": 3844,
+      "target_B_final_wrong_ID52_native_points": 875,
+      "target_B_ID52_votes_before": 146434,
+      "target_B_ID52_votes_after": 50303,
+      "target_B_ID355_votes_after": 94922,
+      "rejected_target_B_reason_frame_counts_nonexclusive": {
+        "anchor_coverage": 51,
+        "spatial_extent": 8,
+        "foreign_old_family_overlap": 14,
+        "other_seed_3_overlap": 4,
+        "insufficient_visible_anchor": 3,
+        "other_seed_4_overlap": 3
+      },
+      "per_frame_remaining_votes": [
+        {
+          "frame": 230,
+          "old_ID52_votes_before": 39,
+          "ID52_votes_after": 39,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 235,
+          "old_ID52_votes_before": 105,
+          "ID52_votes_after": 105,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 2,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 240,
+          "old_ID52_votes_before": 97,
+          "ID52_votes_after": 97,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 4,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 245,
+          "old_ID52_votes_before": 36,
+          "ID52_votes_after": 36,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap",
+            "other_seed_3_overlap"
+          ]
+        },
+        {
+          "frame": 885,
+          "old_ID52_votes_before": 19,
+          "ID52_votes_after": 19,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "insufficient_visible_anchor"
+          ]
+        },
+        {
+          "frame": 890,
+          "old_ID52_votes_before": 80,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 80,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 895,
+          "old_ID52_votes_before": 223,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 220,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 900,
+          "old_ID52_votes_before": 476,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 468,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 905,
+          "old_ID52_votes_before": 849,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 846,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 910,
+          "old_ID52_votes_before": 1179,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1169,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 915,
+          "old_ID52_votes_before": 1138,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1127,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 920,
+          "old_ID52_votes_before": 1087,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1082,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 925,
+          "old_ID52_votes_before": 1044,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1035,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 930,
+          "old_ID52_votes_before": 953,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 937,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 935,
+          "old_ID52_votes_before": 893,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 882,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 940,
+          "old_ID52_votes_before": 849,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 843,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 945,
+          "old_ID52_votes_before": 809,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 804,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 950,
+          "old_ID52_votes_before": 802,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 790,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 955,
+          "old_ID52_votes_before": 810,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 807,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 960,
+          "old_ID52_votes_before": 791,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 782,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 965,
+          "old_ID52_votes_before": 776,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 761,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 970,
+          "old_ID52_votes_before": 777,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 760,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 975,
+          "old_ID52_votes_before": 791,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 785,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 980,
+          "old_ID52_votes_before": 779,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 763,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 985,
+          "old_ID52_votes_before": 782,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 775,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 990,
+          "old_ID52_votes_before": 751,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 750,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 995,
+          "old_ID52_votes_before": 607,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 728,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1000,
+          "old_ID52_votes_before": 627,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 686,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1005,
+          "old_ID52_votes_before": 656,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 668,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1010,
+          "old_ID52_votes_before": 676,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 662,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1015,
+          "old_ID52_votes_before": 656,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 645,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1020,
+          "old_ID52_votes_before": 654,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 640,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1025,
+          "old_ID52_votes_before": 665,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 657,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1030,
+          "old_ID52_votes_before": 707,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 689,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1035,
+          "old_ID52_votes_before": 734,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 716,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1040,
+          "old_ID52_votes_before": 815,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 791,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1045,
+          "old_ID52_votes_before": 856,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 837,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1050,
+          "old_ID52_votes_before": 913,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 892,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1055,
+          "old_ID52_votes_before": 944,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 938,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1060,
+          "old_ID52_votes_before": 938,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 919,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1065,
+          "old_ID52_votes_before": 774,
+          "ID52_votes_after": 13,
+          "ID355_votes_after": 767,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1070,
+          "old_ID52_votes_before": 709,
+          "ID52_votes_after": 7,
+          "ID355_votes_after": 700,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1075,
+          "old_ID52_votes_before": 720,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 703,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1080,
+          "old_ID52_votes_before": 843,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 828,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1085,
+          "old_ID52_votes_before": 883,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 866,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1090,
+          "old_ID52_votes_before": 811,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 795,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1095,
+          "old_ID52_votes_before": 759,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 745,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1100,
+          "old_ID52_votes_before": 693,
+          "ID52_votes_after": 7,
+          "ID355_votes_after": 673,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1105,
+          "old_ID52_votes_before": 657,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 644,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1110,
+          "old_ID52_votes_before": 614,
+          "ID52_votes_after": 5,
+          "ID355_votes_after": 599,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1115,
+          "old_ID52_votes_before": 621,
+          "ID52_votes_after": 6,
+          "ID355_votes_after": 599,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1120,
+          "old_ID52_votes_before": 609,
+          "ID52_votes_after": 7,
+          "ID355_votes_after": 590,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1125,
+          "old_ID52_votes_before": 615,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 605,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1130,
+          "old_ID52_votes_before": 609,
+          "ID52_votes_after": 5,
+          "ID355_votes_after": 597,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1135,
+          "old_ID52_votes_before": 646,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 631,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1140,
+          "old_ID52_votes_before": 682,
+          "ID52_votes_after": 11,
+          "ID355_votes_after": 654,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1145,
+          "old_ID52_votes_before": 699,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 685,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1150,
+          "old_ID52_votes_before": 759,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 744,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1155,
+          "old_ID52_votes_before": 829,
+          "ID52_votes_after": 6,
+          "ID355_votes_after": 820,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1160,
+          "old_ID52_votes_before": 883,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 869,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1165,
+          "old_ID52_votes_before": 953,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 946,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1170,
+          "old_ID52_votes_before": 1049,
+          "ID52_votes_after": 3,
+          "ID355_votes_after": 1031,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1175,
+          "old_ID52_votes_before": 1146,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 1135,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1180,
+          "old_ID52_votes_before": 1224,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 1196,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1185,
+          "old_ID52_votes_before": 1307,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 1288,
+          "ID52_votes_on_final_wrong_ID52_points": 1,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1190,
+          "old_ID52_votes_before": 1349,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1334,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1195,
+          "old_ID52_votes_before": 1406,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 1383,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1200,
+          "old_ID52_votes_before": 1336,
+          "ID52_votes_after": 9,
+          "ID355_votes_after": 1319,
+          "ID52_votes_on_final_wrong_ID52_points": 2,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1205,
+          "old_ID52_votes_before": 1312,
+          "ID52_votes_after": 8,
+          "ID355_votes_after": 1282,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1210,
+          "old_ID52_votes_before": 1280,
+          "ID52_votes_after": 3,
+          "ID355_votes_after": 1262,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1215,
+          "old_ID52_votes_before": 1214,
+          "ID52_votes_after": 19,
+          "ID355_votes_after": 1179,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1220,
+          "old_ID52_votes_before": 1181,
+          "ID52_votes_after": 8,
+          "ID355_votes_after": 1133,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1225,
+          "old_ID52_votes_before": 1229,
+          "ID52_votes_after": 18,
+          "ID355_votes_after": 1172,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1230,
+          "old_ID52_votes_before": 1255,
+          "ID52_votes_after": 17,
+          "ID355_votes_after": 1214,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1235,
+          "old_ID52_votes_before": 1266,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1250,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1240,
+          "old_ID52_votes_before": 1280,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1263,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1245,
+          "old_ID52_votes_before": 1308,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1291,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1250,
+          "old_ID52_votes_before": 1271,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1255,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1255,
+          "old_ID52_votes_before": 1284,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1264,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1260,
+          "old_ID52_votes_before": 1267,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1243,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1265,
+          "old_ID52_votes_before": 1264,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1237,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1270,
+          "old_ID52_votes_before": 1236,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1215,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1275,
+          "old_ID52_votes_before": 1197,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1176,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1280,
+          "old_ID52_votes_before": 1155,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1123,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1285,
+          "old_ID52_votes_before": 1136,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1106,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1290,
+          "old_ID52_votes_before": 1094,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1071,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1295,
+          "old_ID52_votes_before": 1084,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1060,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1300,
+          "old_ID52_votes_before": 1045,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1017,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1305,
+          "old_ID52_votes_before": 1036,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 1014,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1310,
+          "old_ID52_votes_before": 974,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 958,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1315,
+          "old_ID52_votes_before": 977,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 962,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1320,
+          "old_ID52_votes_before": 957,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 946,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1325,
+          "old_ID52_votes_before": 947,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 923,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1330,
+          "old_ID52_votes_before": 994,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 974,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1335,
+          "old_ID52_votes_before": 927,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 909,
+          "ID52_votes_on_final_wrong_ID52_points": 1,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1340,
+          "old_ID52_votes_before": 926,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 910,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1345,
+          "old_ID52_votes_before": 936,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 916,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1350,
+          "old_ID52_votes_before": 901,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 883,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1355,
+          "old_ID52_votes_before": 883,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 865,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1360,
+          "old_ID52_votes_before": 854,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 834,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1365,
+          "old_ID52_votes_before": 831,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 813,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1370,
+          "old_ID52_votes_before": 792,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 779,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1375,
+          "old_ID52_votes_before": 754,
+          "ID52_votes_after": 4,
+          "ID355_votes_after": 741,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1380,
+          "old_ID52_votes_before": 706,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 693,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1385,
+          "old_ID52_votes_before": 662,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 655,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1390,
+          "old_ID52_votes_before": 660,
+          "ID52_votes_after": 5,
+          "ID355_votes_after": 647,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1395,
+          "old_ID52_votes_before": 590,
+          "ID52_votes_after": 6,
+          "ID355_votes_after": 581,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1400,
+          "old_ID52_votes_before": 602,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 583,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1405,
+          "old_ID52_votes_before": 557,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 550,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1410,
+          "old_ID52_votes_before": 529,
+          "ID52_votes_after": 0,
+          "ID355_votes_after": 515,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1415,
+          "old_ID52_votes_before": 515,
+          "ID52_votes_after": 2,
+          "ID355_votes_after": 516,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1420,
+          "old_ID52_votes_before": 476,
+          "ID52_votes_after": 1,
+          "ID355_votes_after": 487,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1425,
+          "old_ID52_votes_before": 440,
+          "ID52_votes_after": 9,
+          "ID355_votes_after": 445,
+          "ID52_votes_on_final_wrong_ID52_points": 0,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1430,
+          "old_ID52_votes_before": 448,
+          "ID52_votes_after": 9,
+          "ID355_votes_after": 450,
+          "ID52_votes_on_final_wrong_ID52_points": 3,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1435,
+          "old_ID52_votes_before": 444,
+          "ID52_votes_after": 444,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 56,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1440,
+          "old_ID52_votes_before": 428,
+          "ID52_votes_after": 428,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 65,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1445,
+          "old_ID52_votes_before": 472,
+          "ID52_votes_after": 472,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 154,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1450,
+          "old_ID52_votes_before": 530,
+          "ID52_votes_after": 530,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 216,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1455,
+          "old_ID52_votes_before": 582,
+          "ID52_votes_after": 582,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 259,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1460,
+          "old_ID52_votes_before": 675,
+          "ID52_votes_after": 252,
+          "ID355_votes_after": 431,
+          "ID52_votes_on_final_wrong_ID52_points": 209,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1465,
+          "old_ID52_votes_before": 709,
+          "ID52_votes_after": 268,
+          "ID355_votes_after": 449,
+          "ID52_votes_on_final_wrong_ID52_points": 226,
+          "track7_accepted": true,
+          "track7_reasons": []
+        },
+        {
+          "frame": 1470,
+          "old_ID52_votes_before": 748,
+          "ID52_votes_after": 748,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 384,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1475,
+          "old_ID52_votes_before": 775,
+          "ID52_votes_after": 775,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 383,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1480,
+          "old_ID52_votes_before": 727,
+          "ID52_votes_after": 727,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 324,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "other_seed_4_overlap"
+          ]
+        },
+        {
+          "frame": 1485,
+          "old_ID52_votes_before": 737,
+          "ID52_votes_after": 737,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 297,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "other_seed_4_overlap"
+          ]
+        },
+        {
+          "frame": 1490,
+          "old_ID52_votes_before": 699,
+          "ID52_votes_after": 699,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 241,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "other_seed_4_overlap"
+          ]
+        },
+        {
+          "frame": 1495,
+          "old_ID52_votes_before": 740,
+          "ID52_votes_after": 740,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 250,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1500,
+          "old_ID52_votes_before": 720,
+          "ID52_votes_after": 720,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 215,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1505,
+          "old_ID52_votes_before": 751,
+          "ID52_votes_after": 752,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 169,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1510,
+          "old_ID52_votes_before": 734,
+          "ID52_votes_after": 734,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 108,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1515,
+          "old_ID52_votes_before": 820,
+          "ID52_votes_after": 820,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 106,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1520,
+          "old_ID52_votes_before": 842,
+          "ID52_votes_after": 842,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 97,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1525,
+          "old_ID52_votes_before": 902,
+          "ID52_votes_after": 905,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 94,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1530,
+          "old_ID52_votes_before": 988,
+          "ID52_votes_after": 988,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 73,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1535,
+          "old_ID52_votes_before": 958,
+          "ID52_votes_after": 958,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 53,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1540,
+          "old_ID52_votes_before": 954,
+          "ID52_votes_after": 954,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 39,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1545,
+          "old_ID52_votes_before": 980,
+          "ID52_votes_after": 980,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 30,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1550,
+          "old_ID52_votes_before": 970,
+          "ID52_votes_after": 970,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 31,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1555,
+          "old_ID52_votes_before": 1023,
+          "ID52_votes_after": 1023,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 28,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1560,
+          "old_ID52_votes_before": 1072,
+          "ID52_votes_after": 1072,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 25,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1565,
+          "old_ID52_votes_before": 1190,
+          "ID52_votes_after": 1190,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 29,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1570,
+          "old_ID52_votes_before": 1280,
+          "ID52_votes_after": 1280,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 34,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1575,
+          "old_ID52_votes_before": 1395,
+          "ID52_votes_after": 1395,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 35,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1580,
+          "old_ID52_votes_before": 1536,
+          "ID52_votes_after": 1536,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 40,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1585,
+          "old_ID52_votes_before": 1670,
+          "ID52_votes_after": 1670,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 41,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1590,
+          "old_ID52_votes_before": 1710,
+          "ID52_votes_after": 1710,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 52,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1595,
+          "old_ID52_votes_before": 1741,
+          "ID52_votes_after": 1741,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 50,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1600,
+          "old_ID52_votes_before": 1800,
+          "ID52_votes_after": 1800,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 58,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1605,
+          "old_ID52_votes_before": 1850,
+          "ID52_votes_after": 1850,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 60,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1610,
+          "old_ID52_votes_before": 1839,
+          "ID52_votes_after": 1839,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 60,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1615,
+          "old_ID52_votes_before": 1899,
+          "ID52_votes_after": 1899,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 71,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1620,
+          "old_ID52_votes_before": 1896,
+          "ID52_votes_after": 1896,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 99,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1625,
+          "old_ID52_votes_before": 1858,
+          "ID52_votes_after": 1858,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 104,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1630,
+          "old_ID52_votes_before": 1653,
+          "ID52_votes_after": 1653,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 130,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent",
+            "foreign_old_family_overlap"
+          ]
+        },
+        {
+          "frame": 1635,
+          "old_ID52_votes_before": 1443,
+          "ID52_votes_after": 1443,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 182,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1640,
+          "old_ID52_votes_before": 1227,
+          "ID52_votes_after": 1227,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 209,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1645,
+          "old_ID52_votes_before": 1047,
+          "ID52_votes_after": 1047,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 249,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1650,
+          "old_ID52_votes_before": 940,
+          "ID52_votes_after": 940,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 290,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1655,
+          "old_ID52_votes_before": 793,
+          "ID52_votes_after": 793,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 274,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1660,
+          "old_ID52_votes_before": 631,
+          "ID52_votes_after": 631,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 240,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1665,
+          "old_ID52_votes_before": 467,
+          "ID52_votes_after": 467,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 174,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1670,
+          "old_ID52_votes_before": 313,
+          "ID52_votes_after": 313,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 76,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage"
+          ]
+        },
+        {
+          "frame": 1675,
+          "old_ID52_votes_before": 220,
+          "ID52_votes_after": 220,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 27,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "anchor_coverage",
+            "spatial_extent"
+          ]
+        },
+        {
+          "frame": 1680,
+          "old_ID52_votes_before": 161,
+          "ID52_votes_after": 161,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 21,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "insufficient_visible_anchor",
+            "anchor_coverage",
+            "spatial_extent"
+          ]
+        },
+        {
+          "frame": 1685,
+          "old_ID52_votes_before": 95,
+          "ID52_votes_after": 95,
+          "ID355_votes_after": 0,
+          "ID52_votes_on_final_wrong_ID52_points": 17,
+          "track7_accepted": false,
+          "track7_reasons": [
+            "insufficient_visible_anchor",
+            "anchor_coverage",
+            "spatial_extent"
+          ]
+        }
+      ]
+    }
+  }
+}

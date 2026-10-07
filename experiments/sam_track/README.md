@@ -76,3 +76,9 @@ bash audit_split_evaluation.sh
 - [变更、结果与局限](docs/strict_local_changes_20261007.md)
 - [新入口与接口说明](strict_local_repair_20261007/README.md)
 - 无门槛对照驱动与配置已补入pilot10_repair_20261007目录。
+
+## 2026-10-07：逐对象离线修复入口
+
+原mask只改关联、逐对象接收可靠证据、未知部分保留及配置化入口已实现。SAM2仍为独立双向完整历史追踪。本轮结果尚未实现完整修复，不能视为正式benchmark。旧入口仅保留复现对照。
+
+[全部改动和实际效果](docs/objectwise_changes_20261007.md) · [新入口与配置](objectwise_repair_20261007/README.md)
