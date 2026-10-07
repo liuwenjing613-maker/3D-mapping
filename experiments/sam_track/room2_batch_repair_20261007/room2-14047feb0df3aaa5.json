@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "scene": "room2",
+  "case_uid": "room2-14047feb0df3aaa5",
+  "experiment_mode": "offline_retrospective",
+  "seed_mode": "original_reassociate",
+  "seed_frame": 1065,
+  "seed_manifest": "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/seed_manifest.json",
+  "objects": [
+    {
+      "track_id": 1,
+      "original_mask_id": 1
+    },
+    {
+      "track_id": 2,
+      "original_mask_id": 4
+    },
+    {
+      "track_id": 3,
+      "original_mask_id": 5
+    },
+    {
+      "track_id": 4,
+      "original_mask_id": 8
+    },
+    {
+      "track_id": 5,
+      "original_mask_id": 11
+    }
+  ],
+  "old_family_ids": [
+    1,
+    8,
+    43,
+    44,
+    52
+  ],
+  "policy_file": "/home/chenkejun/CVPR/experiments/pilot10_repair_20261007/objectwise_repair_20261007/policy.json",
+  "output_dir": "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/cases/room2-14047feb0df3aaa5",
+  "tracking": {
+    "checkpoint": "/data/chenkejun/CVPR/models/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "repo": "/home/chenkejun/CVPR/repos/sam2_1",
+    "python": "/data/chenkejun/CVPR/runtime/sam2_1_env/bin/python",
+    "cuda_visible_devices": "GPU-d31841e8-d3ae-e7f2-f581-8dc866e5c129",
+    "directions": [
+      "forward",
+      "reverse"
+    ]
+  }
+}

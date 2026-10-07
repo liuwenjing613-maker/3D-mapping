@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "runtime_source": "/home/chenkejun/CVPR/experiments/room2_repair_20261007/batch_8e890bff216d",
+  "data_root": "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d",
+  "annotation_sha256": "8e890bff216d8b656e234120515e746e8f86f2fbe84aca013e63234804666316",
+  "source_sha256": {
+    "prepare_local.py": "5226b50daf87df3a92baa685a4ba1f8882e9de8fce9aaaf1f526bb73b2d3de03",
+    "prepare_server.py": "1c27916efaaa4fdc00e860d82e62ff6000b78b74ca2b0faa01987ee16f5c4245",
+    "cross_seed_diagnostics.py": "603c9098b6893612ea742a9495b8223247a00384879aa01b0061eedc84bc8f8a",
+    "joint_batch_ops.py": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+    "test_joint_batch_ops.py": "bee41c861f7a7fcdae24e4bcdbf15bb08a1e9aa7d5b7c5710555d3700c6f4598",
+    "run_batch_v2.py": "ba4b7fa3c9daf4b782dc233a01564a5d3e012fdf253dc6a2a69154a820d49157",
+    "evaluate_batch.py": "cbc42b794e2f1506bcaa5edf409dc2182cb00d5edfb5c762b9b2a18c98661995",
+    "export_review.py": "84846747d11970d6d85dc17d0ab0112d335ee84062340f09545fd360ab2e3dc2",
+    "build_review.py": "9f17098c40db257215a2c9440398c15c1223772121338a02d963fc7da52154df",
+    "room2_viewer.js": "42e40b9dba0facd06cec9b1decdb9beaea8931e84547510a87e5a584e874508a",
+    "CHANGES_CN.md": "72c70564ef50d750389cceb20db792080d527f8a5148ffe1d7c6ff3730164d66",
+    "room2-14047feb0df3aaa5.json": "9df07f54c1b4b558aa9aef762f1d9c774b0c541bbd4d48900e88a9711cddf529",
+    "room2-7704f54997e6d29b.json": "d26e1ca0b7a42e7dca6a5130862bca087979fb91056d21b71441f1fbb199babf",
+    "room2-0ba2ef6c21b4c92d.json": "eadf1263ea0569cec87ab28b4c6621bca8f436c08cff606db38d46851043c12b",
+    "room2-eadde8f5bac2ff37.json": "2264abf5a5a0ad9062687bff5cdc4d29e6279a65ae5a73cecba345193c5073a0",
+    "human_selection.json": "8e890bff216d8b656e234120515e746e8f86f2fbe84aca013e63234804666316"
+  },
+  "final_validation": {
+    "status": "PASS",
+    "rerun_does_not_reapply_or_change_final_maps": true,
+    "verified_output_hashes": {
+      "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/validated_v2/seed_only/native/instance_surface.npz": "927ccc5c53c03d578bf409190b9b9cae64357ce1da5a6fe0064a924bde1a31b2",
+      "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/validated_v2/seed_only/candidate/instance_surface.npz": "2f9ad5cc610a0c5a4680ae3e851d77174bedba35bac622fd19e61b985f13633a",
+      "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/validated_v2/seed_only/final/instance_surface.npz": "a9cc87cc35335eed1361ad588cdf7de5e1c7260772c6df9bc8ede643bd616c7e",
+      "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/validated_v2/full_track/native/instance_surface.npz": "e986c75e9279d78ebf81b8d9ad5c56867b126c17c2d767bde542e0ccde01c4ed",
+      "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/validated_v2/full_track/candidate/instance_surface.npz": "d374ab7d238022c34c7ab74e76ff5dcbb3b2936aad425c05169226ea627e84ba",
+      "/data/chenkejun/CVPR/revisable_instance_map/room2_repair_20261007/batch_8e890bff216d/validated_v2/full_track/final/instance_surface.npz": "a4d14269018818ef31bdddaf7a003aa5e3fc66173b411e88a49d2ee8f115ed5b"
+    },
+    "full_replay_and_rollback": true,
+    "v3_unchanged": true,
+    "failed_first_attempt_excluded": true
+  },
+  "result_summary": {
+    "AP50_before": 0.2843784378437844,
+    "AP50_after": 0.30137647911132576,
+    "F1_before": 0.5301204819277109,
+    "F1_after": 0.5454545454545454,
+    "strict_success": false,
+    "final_changed_points": 58919,
+    "gray_point_delta": 17350,
+    "outside_changed_points": 0
+  },
+  "no_weights_datasets_PLY_or_secrets_committed": true
+}
