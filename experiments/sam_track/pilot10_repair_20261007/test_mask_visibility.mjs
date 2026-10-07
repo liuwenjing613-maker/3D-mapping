@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import { hiddenInstanceIDs } from './mask_visibility.js';
+const ids = [349, 1, 44, 52, 228, 354, 355, 356];
+const objects = ids.map((id, i) => ({track_id:i+1,audit:{persistent_id:id}}));
+const state = {c:{objects},solo:7,visible_track_ids:[7],enabled_track_ids:[1,2,3,4,5,6,7,8]};
+assert.deepEqual(hiddenInstanceIDs(state,true),[], 'Selecting mask 24 must preserve original colored chairs');
+assert.deepEqual(hiddenInstanceIDs({...state,enabled_track_ids:[1,3,4,5,6,7,8]},true),[1], 'Unchecking mask 9 hides only its actual instance');
+assert.deepEqual(hiddenInstanceIDs({...state,enabled_track_ids:[7]},false),[], 'Disabling follow keeps all map instances');
+assert.deepEqual(hiddenInstanceIDs({...state,enabled_track_ids:undefined},true),[], 'Older state payload must not hide unselected objects');
+const shared = {...state,c:{objects:[...objects,{track_id:9,audit:{persistent_id:1}}]},enabled_track_ids:[1,3,4,5,6,7,8,9]};
+assert.deepEqual(hiddenInstanceIDs(shared,true),[], 'An enabled mask sharing an identity keeps that identity visible');
+console.log('PASS: solo selection, explicit visibility, shared identities, and legacy payloads');

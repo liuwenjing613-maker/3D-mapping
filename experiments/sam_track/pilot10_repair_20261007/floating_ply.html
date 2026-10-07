@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="floating_ply.css">
+<button id="plyLaunch" hidden>打开修复后 3D PLY</button>
+<aside id="plyFloat" aria-label="悬浮 PLY 三维查看器">
+<header id="plyDrag"><strong id="plyTitle">修复后 3D PLY</strong><button id="plyMinimize" aria-label="最小化 3D 窗口">收起</button><button id="plyClose" aria-label="关闭 3D 窗口">关闭</button></header>
+<div class="plyBody">
+<div class="plyRow"><button data-ply-state="0">修复前</button><button data-ply-state="1">仅种子</button><button data-ply-state="2" class="active">追踪修复后</button><span class="small muted" id="plyScopeText"></span></div>
+<div class="plyRow"><label>着色 <select id="plyColor" aria-label="3D 着色方式"><option value="1">原 PLY 实例颜色</option><option value="3">与 2D mask 同色</option><option value="0">自然 RGB</option><option value="2">修复变化</option></select></label><button id="plyFocus">定位当前 mask</button><button id="plyLocal" class="active">局部 PLY</button><button id="plyFull">完整场景 PLY</button><button id="plyReset">复位视角</button></div>
+<div class="plyRow"><label><input id="plyFollow" type="checkbox" checked>跟随网页 mask</label><label><input id="plyOnly" type="checkbox">只看所选 ID</label><label><input id="plySeedBox" type="checkbox" checked>种子范围框</label><label><input id="plyUnassigned" type="checkbox" checked>显示未分配表面</label><label>点大小 <input id="plySize" type="range" min="1" max="5" step=".5" value="2" aria-label="3D 点大小"></label></div>
+<p class="plyFoot plyVersion" id="plyVersion" aria-live="polite"></p>
+<div class="plyStage" id="plyStage"><canvas id="plyCanvas" aria-label="可旋转缩放的修复后 PLY 点云"></canvas><div id="plyBusy" class="plyBusy">正在加载真实 PLY…</div></div>
+<p class="plyFoot" id="plyStatus" aria-live="polite"></p>
+<p class="plyFoot">左键拖动旋转 · 滚轮缩放 · 右键拖动平移。拖动蓝色标题栏移动窗口，右下角可调整大小。</p>
+<p class="plyFoot plyHighlight">默认保留原 PLY 配色。点击 mask 只定位；取消勾选才隐藏对应 ID。“只看所选 ID”可单独显示实例。灰色表示未分配表面。黄色框表示种子范围。</p>
+<div class="plyDownloads"><a id="plyDownload" download>下载完整 PLY（含三组实例 ID）</a><a id="plyDownloadLocal" download>下载局部 PLY</a></div>
+</div></aside>
+<script type="application/json" id="plyData">__PLY_DATA__</script>
+<script type="module" src="floating_ply.js?v=visibility-fixed2-20261007"></script>
