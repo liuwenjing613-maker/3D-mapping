@@ -1,0 +1,41 @@
+{
+  "definitions": {
+    "CA_mCov": "For each eligible GT instance j, max_i IoU(P_i,G_j), then mean across all GT including missed instances as zero. All classes collapsed.",
+    "CA_mWCov": "Same best-GT IoU, weighted by GT reference vertex count. Vertex weighted, not physical triangle-area weighted.",
+    "CA_mAR_all": "Mean of TP_t / total_GT for IoU thresholds 0.50:0.05:0.95, strict > and V3 one-to-one matching, all predictions, no maxDet cap. Not COCO AR@100.",
+    "R25_R50_R75": "TP/(TP+FN) at strict IoU>0.25/0.50/0.75 under the same V3 one-to-one matcher.",
+    "P25_P50_P75": "TP/(TP+FP), excluding V3 void-majority unmatched predictions at each corresponding threshold.",
+    "SQ50": "Mean IoU of correctly matched pairs at IoU>0.50; conditioned on true positives.",
+    "GT_surface_coverage": "Assigned eligible GT vertices / all eligible GT vertices, regardless of instance identity.",
+    "Completeness": "Per GT maximum intersection / GT size over any predicted instance; average across all GT including misses as zero.",
+    "Purity": "Per eligible nonempty prediction maximum intersection / prediction size; mean across predictions, exclude void-majority predictions as in existing V3 diagnostics.",
+    "merge_split_duplicate": "Existing V3 pairwise 2cm support diagnostics, with >=10 vertices and >=5% of GT; unchanged."
+  },
+  "sources": [
+    {
+      "topic": "mCov/mWCov in 3D instance segmentation",
+      "title": "Unified 3D Segmenter as Prototypical Classifiers, NeurIPS 2023",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/916cb4e1aeafaa0757953c9bacd17337-Paper-Conference.pdf"
+    },
+    {
+      "topic": "PQ=SQ*RQ and RQ=F1",
+      "title": "Panoptic Segmentation, CVPR 2019",
+      "url": "https://arxiv.org/html/1801.00868"
+    },
+    {
+      "topic": "Average recall over IoU thresholds and maxDet conventions",
+      "title": "COCO official evaluator",
+      "url": "https://raw.githubusercontent.com/cocodataset/cocoapi/master/PythonAPI/pycocotools/cocoeval.py"
+    },
+    {
+      "topic": "VI split/merge diagnostics, optional future extension",
+      "title": "scikit-image metrics documentation",
+      "url": "https://scikit-image.org/docs/stable/api/skimage.metrics.html#skimage.metrics.variation_of_information"
+    },
+    {
+      "topic": "Temporal association metrics, requires GT/predicted track histories",
+      "title": "TrackEval official HOTA implementation",
+      "url": "https://github.com/JonathonLuiten/TrackEval"
+    }
+  ]
+}

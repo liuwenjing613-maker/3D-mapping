@@ -53,3 +53,7 @@ Run `scripts/replica_projection_calibration.py` on the existing reference mesh w
 `adapt-ovimap` accepts an OVI-MAP export with `xyz`, compact `instance` owner indices, and `native_instance_ids`, plus its export JSON and input-alignment JSON. It verifies the recorded frame list and maps each native instance independently under the same v2 protocol. The class labels are retained only as metadata; class-agnostic scores ignore them.
 
 The `repair.py` module remains unchanged. Repair Success, False Repair, and Repair Delay are not yet implemented as metrics. Official ScanNet evaluation remains separate and unchanged.
+
+## 最新统一 v3 评估（2026-10-07）
+
+已核验 P1-A1、OVI-MAP、OVO 和 OpenVox 六种方法／版本共 48 组场景评估，补充 19 项覆盖、召回和结构指标。完整数值、逐场景数据、定义和核验见[最新评估报告](docs/evaluation_reports/20261007/README.md)。OVO、OpenVox 的原生输入预算与主比较不同，作为参考；全部保持 `DEBUG_ONLY / NON_OFFICIAL` 标记。

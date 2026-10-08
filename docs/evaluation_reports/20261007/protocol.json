@@ -1,0 +1,38 @@
+{
+  "ap_policy": "replica_ca_101",
+  "confidence_mode": "uniform",
+  "dataset": "Replica",
+  "diagnostic_mapping": {
+    "max_distance_m": 0.02,
+    "method": "pairwise_geometry_support"
+  },
+  "frozen": false,
+  "geometry_mapping": {
+    "max_distance_m": 0.01,
+    "method": "competitive_nearest_instance"
+  },
+  "ignore_policy": {
+    "unmatched_prediction_void_fraction_gt": 0.5
+  },
+  "instance_filter": {
+    "min_prediction_vertices": 0,
+    "min_valid_instance_vertices": 100
+  },
+  "name": "Replica-CA-v3",
+  "reference_source": "same_reference_mesh_as_Replica-CA-v1/v2",
+  "scenes": [
+    "room0",
+    "room1",
+    "room2",
+    "office0",
+    "office1",
+    "office2",
+    "office3",
+    "office4"
+  ],
+  "significant_overlap": {
+    "min_gt_fraction": 0.05,
+    "min_intersection_vertices": 10
+  },
+  "source_policy": "Inherit v1/v2 GT, filters, frames and transforms; calibrate all pending values on GT oracle and development scenes before formal scoring"
+}
