@@ -54,3 +54,29 @@ def load_existing_reference(reference_root: str | Path, scene_id: str) -> Canoni
                   "countable_classes": manifest["instance_classes"]})
     result.validate()
     return result
+
+
+def load_scope_source(reference_root: str | Path, scene_id: str) -> tuple[CanonicalGT, dict]:
+    """Validate historical sources, then preserve raw labels for independent qualification."""
+    legacy = load_existing_reference(reference_root, scene_id)
+    directory = Path(reference_root) / scene_id
+    manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+    with np.load(directory / "reference.npz", allow_pickle=False) as data:
+        if "raw_instance" not in data:
+            raise EvaluationError("Raw GT identities are required; do not reconstruct unknown IDs from -1")
+        encoded = data["raw_instance"].copy()
+    # Existing references call the original semantic*1000+object_id encoding
+    # "raw_instance". Decode the physical object ID, retaining the encoded source hash.
+    if np.any(encoded < 0):
+        raise EvaluationError("Unexpected source instance encoding")
+    raw_ids = encoded % 1000
+    raw_semantic = np.where(encoded >= 1000, encoded // 1000, -1).astype(np.int64)
+    result = CanonicalGT(scene_id, legacy.xyz_ref, raw_ids.copy(), legacy.semantic_id,
+        legacy.valid_vertex_mask, legacy.ignore_vertex_mask,
+        metadata={**legacy.metadata, "role": "raw_gt_qualification_source_only",
+                  "source_instance_encoding": "original_semantic_id*1000+raw_object_id",
+                  "source_raw_semantic_encoding": "original positive class from encoded reference; -1 unresolved",
+                  "source_encoded_instance_sha256": __import__('hashlib').sha256(encoded.tobytes()).hexdigest()},
+        raw_instance_id=raw_ids, raw_semantic_id=raw_semantic)
+    result.validate()
+    return result, manifest

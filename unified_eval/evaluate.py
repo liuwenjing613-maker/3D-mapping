@@ -131,6 +131,31 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
             "duplicate_prediction_rate": _mean_defined([row["structure"]["duplicate_prediction_rate"] for row in per_scene if row["structure"] is not None]),
         }
         summary["aggregation"] = "top-level pooled predictions/GT; macro_per_scene is unweighted scene mean"
+    if protocol.is_object_observed_repair:
+        summary["evaluation_profile"] = protocol.evaluation_profile
+        summary["status"] = "DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN"
+        summary["reference_scope"] = [{"scene_id": gt.scene_id,
+            "gt_scope_sha256": gt.metadata["gt_scope_sha256"],
+            "gt_observed_support_sha256": gt.metadata["gt_observed_support_sha256"],
+            "evaluation_region_sha256": gt.metadata["evaluation_region_sha256"]} for gt, _ in scenes]
+        total = sum(int(o.gt_size.sum()) for o in overlaps)
+        coverage_keys = ("correct_owner_vertices", "wrong_owner_vertices", "unpredicted_target_vertices")
+        counts = {key: sum(row["diagnostics"][key] for row in per_scene) for key in coverage_keys}
+        no_geometry = sum(pred.metadata.get("no_geometry_target_vertex_count", 0) for _, pred in scenes)
+        if no_geometry > counts["unpredicted_target_vertices"]:
+            raise ValueError("NO_GEOMETRY cannot exceed unpredicted target surface")
+        summary["owner_surface"] = {**counts, "target_vertices": total,
+            "no_geometry_target_vertices": no_geometry,
+            "unassigned_with_geometry_target_vertices": counts["unpredicted_target_vertices"] - no_geometry,
+            "Correct_owner_Coverage": counts["correct_owner_vertices"] / total if total else None,
+            "Wrong_owner_Coverage": counts["wrong_owner_vertices"] / total if total else None,
+            "Unassigned_Coverage": (counts["unpredicted_target_vertices"] - no_geometry) / total if total else None,
+            "No_geometry_Coverage": no_geometry / total if total else None,
+            "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only"}
+        summary["CA_mCov"] = sum(float(o.iou.max(axis=0).sum()) if len(o.pred_uids) else 0.0
+            for o in overlaps) / sum(len(o.gt_ids) for o in overlaps) if any(len(o.gt_ids) for o in overlaps) else None
+        for key in ("background_only_prediction_count", "unknown_or_unobserved_prediction_count", "unverifiable_prediction_count", "empty_native_prediction_count"):
+            summary[key] = sum(row["diagnostics"][key] for row in per_scene)
     return summary, per_scene, overlaps
 
 

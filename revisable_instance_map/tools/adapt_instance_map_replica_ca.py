@@ -35,10 +35,25 @@ def main():
     parser.add_argument("--gt", type=Path, required=True)
     parser.add_argument("--protocol", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--fixed-correspondence", type=Path)
+    parser.add_argument("--exported-instance-list", type=Path)
+    parser.add_argument("--method-name", default="revisable_instance_map")
+    parser.add_argument("--method-commit", default="development")
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
     protocol = Protocol.from_dict(json.loads(args.protocol.read_text(encoding="utf-8")))
+    if protocol.is_object_observed_repair:
+        from unified_eval.repair_profile import adapt_surface
+        if args.fixed_correspondence is None:
+            raise ValueError("object_observed_repair requires --fixed-correspondence")
+        inventory = (np.asarray(json.loads(args.exported_instance_list.read_text(encoding="utf-8")), dtype=np.int64)
+                     if args.exported_instance_list else None)
+        value = adapt_surface(args.instance_surface, args.gt, args.protocol,
+            args.fixed_correspondence, args.output_dir, method_name=args.method_name,
+            method_commit=args.method_commit, exported_instance_ids=inventory)
+        print(json.dumps({"status": value["summary"]["status"], "output_dir": str(args.output_dir)}), flush=True)
+        return
     gt = load_gt(args.gt)
     materialization = json.loads(args.materialization_report.read_text(encoding="utf-8"))
     association = json.loads(args.association_report.read_text(encoding="utf-8"))

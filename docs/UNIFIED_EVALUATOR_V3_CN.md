@@ -1,5 +1,7 @@
 # Replica-CA-v3：实现与校验（2026-09-27）
 
+2026-10-09 新增独立的 [object_observed_repair 开发 profile](OBJECT_OBSERVED_REPAIR_V3_CN.md)，用于 GT 资格、可信观测、完整 TSDF 固定对应及显式 FP/ignore 验收。下述历史 V3 定义和 332-GT 结果继续使用 legacy profile；不能与新 profile 混合比较。
+
 ## 结论
 
 已实现 v3 **实验版**，旧 v1/v2 和官方 evaluator 未改。v3 的竞争映射保留全部原始实例，并把主指标与结构诊断分开；合成测试通过，但八场景 GT oracle **未通过 PQ=1 的冻结门槛**。因此配置仍为 `frozen: false`，所有下述数值仅用于协议校准，不得进入论文正式比较表。

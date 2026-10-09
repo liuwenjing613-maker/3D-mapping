@@ -17,6 +17,15 @@ def sha256_file(path: str | Path) -> str:
     return digest.hexdigest()
 
 
+def sha256_array(value: np.ndarray) -> str:
+    """Bind point order, dtype, shape and every value, independently of NPZ compression."""
+    array = np.ascontiguousarray(value)
+    digest = hashlib.sha256()
+    digest.update(json.dumps([array.dtype.str, list(array.shape)], separators=(",", ":")).encode())
+    digest.update(array.tobytes(order="C"))
+    return digest.hexdigest()
+
+
 def _json(value: dict) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
@@ -27,7 +36,10 @@ def save_gt(path: str | Path, gt: CanonicalGT) -> None:
         instance_id=gt.instance_id, semantic_id=gt.semantic_id,
         valid_vertex_mask=gt.valid_vertex_mask, ignore_vertex_mask=gt.ignore_vertex_mask,
         observation_count=gt.observation_count if gt.observation_count is not None else np.array([], dtype=np.uint16),
-        metadata_json=_json(gt.metadata))
+        metadata_json=_json(gt.metadata),
+        raw_instance_id=gt.raw_instance_id if gt.raw_instance_id is not None else np.array([], dtype=np.int64),
+        raw_semantic_id=gt.raw_semantic_id if gt.raw_semantic_id is not None else np.array([], dtype=np.int64),
+        evaluation_region=gt.evaluation_region if gt.evaluation_region is not None else np.array([], dtype=np.uint8))
 
 
 def load_gt(path: str | Path) -> CanonicalGT:
@@ -38,6 +50,9 @@ def load_gt(path: str | Path) -> CanonicalGT:
             data["valid_vertex_mask"].copy(), data["ignore_vertex_mask"].copy(),
             count.copy() if len(count) else None,
             json.loads(str(data["metadata_json"].item())) if "metadata_json" in data else {})
+        for name in ("raw_instance_id", "raw_semantic_id", "evaluation_region"):
+            if name in data and len(data[name]):
+                setattr(gt, name, data[name].copy())
     gt.validate()
     return gt
 

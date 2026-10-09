@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
+from .io import sha256_array
 from .schema import CanonicalGT, CanonicalPrediction, EvaluationError, Protocol
 
 
@@ -24,6 +25,34 @@ class Overlap:
     gt_object_mask: np.ndarray
     ignored_small_gt_ids: list[int]
     dropped_prediction_uids: list[str]
+    unmatched_ignore_mask: np.ndarray | None = None
+    unmatched_policy: list[str] = field(default_factory=list)
+    prediction_ignore_fraction: np.ndarray | None = None
+
+
+def _prediction_ignored(overlap: Overlap, row: int, threshold: float) -> bool:
+    if overlap.unmatched_ignore_mask is not None:
+        return bool(overlap.unmatched_ignore_mask[row])
+    return bool(overlap.pred_void_fraction[row] > threshold)
+
+
+def _explicit_unmatched_policy(gt: CanonicalGT, instance, target_count: int, background_count: int) -> str:
+    meta = instance.metadata
+    if target_count:
+        return "FP_IF_UNMATCHED_TARGET_SUPPORT"
+    if background_count:
+        return ("FP_IF_UNMATCHED_OBJECT_ON_BACKGROUND" if meta.get("prediction_type") == "object"
+                else "IGNORE_BACKGROUND_ONLY_REPORT")
+    if meta.get("native_target_support_count", 0) > 0:
+        return "FP_IF_UNMATCHED_NATIVE_TARGET_SUPPORT"
+    if meta.get("native_point_count", len(instance.vertex_indices)) == 0:
+        return "FP_IF_UNMATCHED_EMPTY_NATIVE_EXPORT"
+    if meta.get("native_known_non_target_support_count", 0):
+        return ("FP_IF_UNMATCHED_OBJECT_ON_BACKGROUND" if meta.get("prediction_type") == "object"
+                else "IGNORE_BACKGROUND_ONLY_REPORT")
+    if len(instance.vertex_indices) or meta.get("native_ignore_support_count", 0):
+        return "IGNORE_UNKNOWN_OR_UNOBSERVED"
+    return "UNVERIFIABLE_OUTSIDE_REFERENCE"
 
 
 def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol,
@@ -34,7 +63,30 @@ def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol
         raise EvaluationError("GT and prediction must use the same scene and reference mesh")
     if pred.protocol_version != protocol.name:
         raise EvaluationError("Prediction protocol_version does not match evaluation protocol")
+    if gt.metadata.get("role") == "raw_gt_qualification_source_only":
+        raise EvaluationError("Raw qualification source must be converted to a fixed GT scope before scoring")
+    if protocol.is_object_observed_repair:
+        if observed_mask is not None:
+            raise EvaluationError("Repair observation scope is fixed; build a separate GT scope for a different input prefix")
+        if gt.evaluation_region is None or gt.raw_instance_id is None:
+            raise EvaluationError("Repair profile requires preserved raw GT and explicit regions")
+        if gt.metadata.get("evaluation_profile") != protocol.evaluation_profile or pred.metadata.get("evaluation_profile") != protocol.evaluation_profile:
+            raise EvaluationError("GT/prediction evaluation_profile mismatch")
+        for key in ("gt_scope_sha256", "gt_observed_support_sha256", "evaluation_region_sha256", "reference_xyz_sha256"):
+            if not gt.metadata.get(key) or gt.metadata[key] != pred.metadata.get(key):
+                raise EvaluationError(f"Fixed repair scope/reference mismatch: {key}")
+        for key, array in (("gt_observed_support_sha256", gt.observation_count),
+                           ("evaluation_region_sha256", gt.evaluation_region),
+                           ("reference_xyz_sha256", gt.xyz_ref),
+                           ("qualified_instance_sha256", gt.instance_id),
+                           ("raw_instance_sha256", gt.raw_instance_id)):
+            if array is None or gt.metadata.get(key) != sha256_array(array):
+                raise EvaluationError(f"Fixed GT array/hash mismatch: {key}")
+    elif gt.evaluation_region is not None or pred.metadata.get("evaluation_profile") == "object_observed_repair":
+        raise EvaluationError("Explicit repair regions cannot be scored under the historical profile")
     valid = np.asarray(gt.valid_vertex_mask, dtype=bool) & ~np.asarray(gt.ignore_vertex_mask, dtype=bool)
+    if protocol.is_object_observed_repair and not np.array_equal(valid, gt.evaluation_region != 0):
+        raise EvaluationError("Valid/ignore masks disagree with fixed evaluation regions")
     if observed_mask is not None:
         if len(observed_mask) != gt.vertex_count:
             raise EvaluationError("Observed mask must match reference vertex count")
@@ -50,9 +102,16 @@ def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol
     pred_uids = []
     active_vertices = []
     ignore_fractions = []
+    policies = []
+    explicit_fractions = []
     dropped = []
     for instance in pred.instances:
         vertices = np.asarray(instance.vertex_indices, dtype=np.int64)
+        if protocol.is_object_observed_repair:
+            regions = gt.evaluation_region[vertices]
+            policies.append(_explicit_unmatched_policy(gt, instance,
+                int(np.count_nonzero(regions == 1)), int(np.count_nonzero(regions == 2))))
+            explicit_fractions.append(float(np.mean(regions == 0)) if len(regions) else None)
         vertices = vertices[valid[vertices]]
         if protocol.retains_predictions:
             ignore_fraction = float(np.mean(ignored_region[vertices])) if len(vertices) else 0.0
@@ -78,8 +137,13 @@ def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol
     iou = np.divide(intersection, union, out=np.zeros_like(intersection, dtype=float), where=union > 0)
     precision = np.divide(intersection, pred_size[:, None], out=np.zeros_like(intersection, dtype=float), where=pred_size[:, None] > 0)
     recall = np.divide(intersection, gt_size[None, :], out=np.zeros_like(intersection, dtype=float), where=gt_size[None, :] > 0)
-    return Overlap(pred_uids, gt_ids, intersection, iou, precision, recall, pred_size, pred_void_fraction, gt_size,
+    result = Overlap(pred_uids, gt_ids, intersection, iou, precision, recall, pred_size, pred_void_fraction, gt_size,
                    active_vertices, valid, valid & np.isin(labels, gt_ids), small_ids.astype(int).tolist(), dropped)
+    if protocol.is_object_observed_repair:
+        result.unmatched_policy = policies
+        result.unmatched_ignore_mask = np.array([not x.startswith("FP_IF_") for x in policies], dtype=bool)
+        result.prediction_ignore_fraction = np.array([np.nan if x is None else x for x in explicit_fractions])
+    return result
 
 
 def instance_precision_recall_f1(overlap: Overlap, void_fraction_threshold: float) -> dict:
@@ -87,7 +151,7 @@ def instance_precision_recall_f1(overlap: Overlap, void_fraction_threshold: floa
     matches = _matching(overlap.iou, 0.5, strict=True)
     tp = len(matches)
     matched = {r for r, _ in matches}
-    ignored = sum(overlap.pred_void_fraction[r] > void_fraction_threshold
+    ignored = sum(_prediction_ignored(overlap, r, void_fraction_threshold)
                   for r in range(len(overlap.pred_uids)) if r not in matched)
     fp = len(overlap.pred_uids) - tp - ignored
     fn = len(overlap.gt_ids) - tp
@@ -106,7 +170,8 @@ def significant_structure_diagnostics(overlap: Overlap, protocol: Protocol) -> d
     if not protocol.retains_predictions:
         raise EvaluationError("Significant structure diagnostics require Replica-CA-v2/v3")
     eligible = ((overlap.pred_size > 0) &
-                (overlap.pred_void_fraction <= protocol.ignore_unmatched_pred_void_fraction_gt))
+                np.array([not _prediction_ignored(overlap, r, protocol.ignore_unmatched_pred_void_fraction_gt)
+                          for r in range(len(overlap.pred_uids))], dtype=bool))
     significant = ((overlap.intersection >= protocol.significant_min_intersection_vertices) &
                    (overlap.recall >= protocol.significant_min_gt_fraction) & eligible[:, None])
     matches = _matching(overlap.iou, 0.5, strict=True)
@@ -156,7 +221,7 @@ def panoptic_quality(overlap: Overlap, is_partition: bool, void_fraction_thresho
     matches = _matching(overlap.iou, 0.5, strict=True)
     tp = len(matches)
     matched_pred = {r for r, _ in matches}
-    ignored_pred = int(sum(overlap.pred_void_fraction[r] > void_fraction_threshold
+    ignored_pred = int(sum(_prediction_ignored(overlap, r, void_fraction_threshold)
                        for r in range(len(overlap.pred_uids)) if r not in matched_pred))
     fp = len(overlap.pred_uids) - tp - ignored_pred
     fn = len(overlap.gt_ids) - tp
@@ -179,7 +244,9 @@ def average_precision(overlaps: list[Overlap], predictions: list[CanonicalPredic
         raise EvaluationError("Overlap/prediction count differs")
     num_gt = sum(len(o.gt_ids) for o in overlaps)
     if num_gt == 0:
-        return {"ap": None, "TP": 0, "FP": sum(len(o.pred_uids) for o in overlaps), "FN": 0,
+        return {"ap": None, "TP": 0, "FP": sum(sum(not _prediction_ignored(o, r, void_fraction_threshold)
+                for r in range(len(o.pred_uids))) for o in overlaps) if any(o.unmatched_ignore_mask is not None for o in overlaps)
+                else sum(len(o.pred_uids) for o in overlaps), "FN": 0,
                 "status": "undefined: no valid GT instances"}
     # Score ties are evaluated as a group. This avoids an arbitrary UID/scene order
     # deciding uniform-confidence AP. Matching is one-to-one within each scene.
@@ -208,7 +275,7 @@ def average_precision(overlaps: list[Overlap], predictions: list[CanonicalPredic
                 used[scene_idx].add(available[col])
             tp_group += len(matches)
             matched_rows = {rows[r] for r, _ in matches}
-            fp_total -= int(sum(overlaps[scene_idx].pred_void_fraction[row] > void_fraction_threshold
+            fp_total -= int(sum(_prediction_ignored(overlaps[scene_idx], row, void_fraction_threshold)
                             for row in rows if row not in matched_rows))
         tp_total += tp_group
         fp_total += len(group) - tp_group
@@ -227,7 +294,8 @@ def diagnostics(overlap: Overlap, protocol: Protocol | None = None) -> dict:
     purity = overlap.precision.max(axis=1) if overlap.precision.shape[1] else np.zeros(len(overlap.pred_uids))
     if protocol is not None and protocol.retains_predictions:
         eligible = ((overlap.pred_size > 0) &
-                    (overlap.pred_void_fraction <= protocol.ignore_unmatched_pred_void_fraction_gt))
+                    np.array([not _prediction_ignored(overlap, r, protocol.ignore_unmatched_pred_void_fraction_gt)
+                              for r in range(len(overlap.pred_uids))], dtype=bool))
         purity = purity[eligible]
     gt_vertices = int(overlap.gt_size.sum())
     covered = np.zeros(len(overlap.eval_mask), dtype=bool)
@@ -235,7 +303,7 @@ def diagnostics(overlap: Overlap, protocol: Protocol | None = None) -> dict:
         covered[vertices] = True
     matches = _matching(overlap.iou, 0.5, strict=True)
     # This counts coverage of object GT surface, irrespective of which instance claimed it.
-    return {
+    result = {
         "gt_instance_count": len(overlap.gt_ids), "prediction_instance_count": len(overlap.pred_uids),
         "mean_best_gt_iou": float(best_iou.mean()) if len(best_iou) else None,
         "median_best_gt_iou": float(np.median(best_iou)) if len(best_iou) else None,
@@ -256,3 +324,38 @@ def diagnostics(overlap: Overlap, protocol: Protocol | None = None) -> dict:
         "dropped_prediction_uids": overlap.dropped_prediction_uids,
         "total_valid_gt_vertices": gt_vertices,
     }
+    if overlap.unmatched_ignore_mask is not None:
+        result.update(owner_coverage(overlap))
+        policies = overlap.unmatched_policy
+        matched = {row for row, _ in matches}
+        result["background_only_prediction_count"] = policies.count("IGNORE_BACKGROUND_ONLY_REPORT")
+        result["unknown_or_unobserved_prediction_count"] = policies.count("IGNORE_UNKNOWN_OR_UNOBSERVED")
+        result["unverifiable_prediction_count"] = policies.count("UNVERIFIABLE_OUTSIDE_REFERENCE")
+        result["empty_native_prediction_count"] = policies.count("FP_IF_UNMATCHED_EMPTY_NATIVE_EXPORT")
+        result["prediction_scope_audit"] = [{"instance_uid": uid,
+            "unmatched_policy": policies[row], "matched_iou_gt_0_5": row in matched,
+            "ignored_reference_fraction": float(overlap.prediction_ignore_fraction[row])
+                if np.isfinite(overlap.prediction_ignore_fraction[row]) else None}
+            for row, uid in enumerate(overlap.pred_uids)]
+    return result
+
+
+def owner_coverage(overlap: Overlap) -> dict:
+    """Maximum-intersection one-to-one alignment for scoring; deleting labels cannot increase its optimum."""
+    matrix = overlap.intersection
+    pairs = []
+    if matrix.size:
+        rows, cols = linear_sum_assignment(-matrix)
+        pairs = [(int(r), int(c)) for r, c in zip(rows, cols) if matrix[r, c] > 0]
+    correct = int(sum(matrix[r, c] for r, c in pairs))
+    assigned = int(matrix.sum())
+    total = int(overlap.gt_size.sum())
+    if assigned > total:
+        raise EvaluationError("Owner coverage requires a partition prediction")
+    return {"correct_owner_vertices": correct, "wrong_owner_vertices": assigned - correct,
+        "unpredicted_target_vertices": total - assigned,
+        "Correct_owner_Coverage": correct / total if total else None,
+        "Wrong_owner_Coverage": (assigned - correct) / total if total else None,
+        "Unpredicted_Coverage": (total - assigned) / total if total else None,
+        "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+        "scoring_owner_alignment": [{"instance_uid": overlap.pred_uids[r], "raw_gt_id": int(overlap.gt_ids[c])} for r, c in pairs]}
