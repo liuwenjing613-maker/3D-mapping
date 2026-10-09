@@ -8,6 +8,8 @@
 
 已完成的八场景开发重评、八项验收和逐文件改动见 [2026-10-09 验收报告](evaluation_reports/20261009_object_observed_repair/README.md)。
 
+开发底座已锁定为 `05f6bb0`、profile revision 1。独立审核分支 `codex/v3-object-observed-repair-audit-20261009` 使用明确的 revision 2：修正原生精确重合坐标的归属冲突，并将主结构诊断改为主分区交集；原 2cm 支持另报辅助诊断。完整改动、36 次真实地图重评、91 项测试及来源核验见 [独立审核报告](evaluation_reports/20261009_object_observed_repair_audit/README.md)。两版均未正式冻结，分数须标明 revision，不能直接混用。
+
 ## GT 身份和资格
 
 `replica.load_scope_source()` 校验原参考、网格和原始标签文件哈希，保留原始物理对象 ID 和语义信息。历史参考中的 `raw_instance` 实际是 `original_semantic_id*1000+raw_object_id`，新加载器显式解码，不把未知对象合并为背景。
@@ -24,6 +26,8 @@
 168 个 UNKNOWN 的官方来源已核对：148 个在现有官方元数据中 `class_id=-1`，20 个缺少对象 ID 记录。用户已于 2026-10-09 确认暂无额外官方映射，继续保持 UNKNOWN；不猜测类别，不当背景，不计普通 FN。此确认没有改变已使用的 scope 规则或哈希。
 
 6 个指定极小对象保留 TARGET 候选身份并设 `quality_verified=false`、`PENDING_GEOMETRY_REVIEW`：room0:76，office0:43，office1:10，office3:20/35/109。当前其他 `quality_verified` 表示标签来源验证、类别一致且没有待审标记，并不声称进行了逐个物体的人工审核。
+
+用户已于 2026-10-09 确认暂无这 6 个对象的逐项人工结论，继续待审并保持当前 350-GT 范围。此决定不改变已有 GT scope、观测掩码或哈希；不等于通过这 6 个对象的质量审核。
 
 资格和观测分开：只有 TARGET、质量通过且有可信输入观测的对象进入 TP/FN 分母；IoU 仅使用其可信观测顶点。一个已知物体完全不可观测时保留对象记录，不当作普通 FN。
 
