@@ -6,6 +6,8 @@
 
 当前版本全部输出 `DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN`。GT 审核和几何/结构阈值尚未冻结，不能通过把 JSON 的 `frozen` 改成 true 生成正式结果。
 
+已完成的八场景开发重评、八项验收和逐文件改动见 [2026-10-09 验收报告](evaluation_reports/20261009_object_observed_repair/README.md)。
+
 ## GT 身份和资格
 
 `replica.load_scope_source()` 校验原参考、网格和原始标签文件哈希，保留原始物理对象 ID 和语义信息。历史参考中的 `raw_instance` 实际是 `original_semantic_id*1000+raw_object_id`，新加载器显式解码，不把未知对象合并为背景。
@@ -18,6 +20,8 @@
 | NON_TARGET | wall、floor、ceiling；不作为物体 GT，可信可观测表面仍参与预测越界统计 |
 | UNKNOWN | 官方类别未定义、来源缺失或不能解明；保留原始身份 |
 | INVALID | 原始 void ID；极小对象不能仅因尺寸小而自动置 INVALID |
+
+168 个 UNKNOWN 的官方来源已核对：148 个在现有官方元数据中 `class_id=-1`，20 个缺少对象 ID 记录。用户已于 2026-10-09 确认暂无额外官方映射，继续保持 UNKNOWN；不猜测类别，不当背景，不计普通 FN。此确认没有改变已使用的 scope 规则或哈希。
 
 6 个指定极小对象保留 TARGET 候选身份并设 `quality_verified=false`、`PENDING_GEOMETRY_REVIEW`：room0:76，office0:43，office1:10，office3:20/35/109。当前其他 `quality_verified` 表示标签来源验证、类别一致且没有待审标记，并不声称进行了逐个物体的人工审核。
 
@@ -100,4 +104,6 @@ P1-A1 输入证据来自已校验的 association/materialization 报告及 400 �
 
 输出有完整 main/diagnostic prediction、交集矩阵、逐实例 ignore 原因、源码与输入哈希、成对改善/退化表、小目标诊断、oracle 及 `*.development.csv/json`。最终在线前缀不能使用这份最终 400 帧 scope；更换输入帧必须单独生成 scope，禁止临时传入 observed_mask 改变分母。
 
-正式冻结还需：6 个极小对象的审核结论、未知 GT 的来源处置确认、观测及离散几何残差审核、小物体结构门槛与几何稳定性验收。不能把开发候选数 366 当作最终可评价 GT 数。
+实际网格可见性运行需要 NumPy、SciPy、Pillow、plyfile 和 Open3D；Open3D 仅在调用网格可见性时加载。普通历史 V3 和不渲染网格的单元测试不依赖 Open3D。
+
+正式冻结还需：6 个极小对象的审核结论、观测及离散几何残差审核、小物体结构门槛与几何稳定性验收。UNKNOWN 的来源处置已按用户决定确认。不能把开发候选数 366 当作最终可评价 GT 数。

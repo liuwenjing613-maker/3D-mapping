@@ -4,6 +4,8 @@
 
 V3 标签修复的新增开发入口见 [object_observed_repair profile](docs/OBJECT_OBSERVED_REPAIR_V3_CN.md)：固定 GT 资格、可信可观测表面和完整 TSDF 几何对应，保留历史 V3 结果。
 
+八场景开发重评及改动清单见 [2026-10-09 验收报告](docs/evaluation_reports/20261009_object_observed_repair/README.md)。
+
 Unified evaluation code for 3D instance maps. The frozen **Replica-CA-v1** is preserved for old results. **Replica-CA-v2** adds independent per-instance projection, F1, significant merge/split/duplicate diagnostics, macro scene averages, and causal online-prefix evaluation. Its significant-overlap thresholds are still pending, so v2 cannot produce formal scores yet. These are custom Replica metrics, not official ScanNet AP. See [v2 metric definitions](docs/UNIFIED_EVALUATOR_V2_CN.md).
 
 ## Install

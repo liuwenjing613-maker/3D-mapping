@@ -1,0 +1,183 @@
+{
+  "status": "PASS",
+  "profile_status": "DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN",
+  "tests_passed": 77,
+  "acceptance_cases_passed": 8,
+  "method_scene_runs": 32,
+  "evaluable_gt": 350,
+  "verified_candidates": 366,
+  "unknown_preserved": 168,
+  "pending_review": 6,
+  "known_small_candidates": 34,
+  "known_small_evaluable": 31,
+  "scoring_code_commit": "7fbe2d559daa5fbe9ad4162986e38708374eafa7",
+  "acceptance_case_tests": [
+    "test_small_objects_are_qualified_by_identity_and_observation_not_100_vertices",
+    "test_unknown_and_non_target_raw_identities_remain_distinct",
+    "test_label_switch_reuses_exact_indices_and_cache",
+    "test_deleting_wrong_labels_cannot_increase_correct_owner_surface",
+    "test_artificial_merge_and_split_degrade_quality_and_structure",
+    "test_empty_projection_duplicate_and_empty_native_export_remain_fp",
+    "test_instance_id_renaming_preserves_segmentation_metrics",
+    "test_discrete_perfect_gt_oracle_has_ideal_scores"
+  ],
+  "empty_projection_counts_inventory_preserved": {
+    "room0/P1-A1_native": 1,
+    "room0/P1-A1_holes_geodesic": 1,
+    "room0/P1-A1_auto_v2": 1,
+    "room0/OVI-MAP_full400": 3,
+    "room1/P1-A1_native": 1,
+    "room1/P1-A1_holes_geodesic": 1,
+    "room1/P1-A1_auto_v2": 2,
+    "room1/OVI-MAP_full400": 2,
+    "room2/P1-A1_native": 0,
+    "room2/P1-A1_holes_geodesic": 0,
+    "room2/P1-A1_auto_v2": 0,
+    "room2/OVI-MAP_full400": 5,
+    "office0/P1-A1_native": 3,
+    "office0/P1-A1_holes_geodesic": 3,
+    "office0/P1-A1_auto_v2": 3,
+    "office0/OVI-MAP_full400": 7,
+    "office1/P1-A1_native": 2,
+    "office1/P1-A1_holes_geodesic": 2,
+    "office1/P1-A1_auto_v2": 2,
+    "office1/OVI-MAP_full400": 2,
+    "office2/P1-A1_native": 1,
+    "office2/P1-A1_holes_geodesic": 1,
+    "office2/P1-A1_auto_v2": 1,
+    "office2/OVI-MAP_full400": 3,
+    "office3/P1-A1_native": 1,
+    "office3/P1-A1_holes_geodesic": 1,
+    "office3/P1-A1_auto_v2": 1,
+    "office3/OVI-MAP_full400": 5,
+    "office4/P1-A1_native": 2,
+    "office4/P1-A1_holes_geodesic": 2,
+    "office4/P1-A1_auto_v2": 3,
+    "office4/OVI-MAP_full400": 4
+  },
+  "per_scene": [
+    {
+      "scene_id": "room0",
+      "evaluable_gt": 72,
+      "unobserved_verified_targets": [
+        66
+      ],
+      "geometry_oracle_PQ": 0.9673954339517553,
+      "shared_gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+      "shared_observed_support_sha256": "0deefd6c71a0f8703eddac590d7e4483b770b316078998a27d6ed2c8556c1394",
+      "shared_p1_geometry_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+      "shared_p1_correspondence_sha256": "4a2801f25ef0bb9265f08fa9d7289ff41f3435db95a46a0d134689ad88ddaf34"
+    },
+    {
+      "scene_id": "room1",
+      "evaluable_gt": 45,
+      "unobserved_verified_targets": [],
+      "geometry_oracle_PQ": 0.9779273427436084,
+      "shared_gt_scope_sha256": "feecc4a265810201e0d345c46f52049c1c39df5e294aa6f01e87773ce5cd216e",
+      "shared_observed_support_sha256": "b6c44372bf81575c0f75a7a94202138163bc62dfae708c24f46a1dfe546562b8",
+      "shared_p1_geometry_sha256": "6fee3729a4123695de4975ccad350cd3c8bebdd60db9d04d6bba84700c993559",
+      "shared_p1_correspondence_sha256": "038fc0298355fd26d684c579d3cb27a1950221816afeacfc7642d3be60d17aed"
+    },
+    {
+      "scene_id": "room2",
+      "evaluable_gt": 52,
+      "unobserved_verified_targets": [],
+      "geometry_oracle_PQ": 0.9543020010164983,
+      "shared_gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+      "shared_observed_support_sha256": "b8b581affe231f624cfea45b863c39964939a6c21659aef8ce6e99b143d59e70",
+      "shared_p1_geometry_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+      "shared_p1_correspondence_sha256": "dd8da20fb5ab7683c23c906504cd53309c3aaa182bc13cba149f7cf082ba1f30"
+    },
+    {
+      "scene_id": "office0",
+      "evaluable_gt": 31,
+      "unobserved_verified_targets": [
+        21,
+        31,
+        37
+      ],
+      "geometry_oracle_PQ": 0.9644338412287223,
+      "shared_gt_scope_sha256": "4eff9e78b2a9cba1803f67ac415b67f7208c38f43a07e8ab56e409542e7bc308",
+      "shared_observed_support_sha256": "24a75ddcb73236c8807b5c125f9f67b914af63c95f0768d662081b076fa54bb9",
+      "shared_p1_geometry_sha256": "1043b7da9304419f1a1e07bf5f5b2686fdd472fa71915029fe2ff94bc10b1e72",
+      "shared_p1_correspondence_sha256": "edbdac5c7f056b82132b73fac1b0ab6c4ec97707850c227edbaf511db3b7d338"
+    },
+    {
+      "scene_id": "office1",
+      "evaluable_gt": 23,
+      "unobserved_verified_targets": [
+        4,
+        9,
+        13,
+        24,
+        38
+      ],
+      "geometry_oracle_PQ": 0.9575490178342415,
+      "shared_gt_scope_sha256": "ba87d4cc5ad32d35ea807055300bdc70c1bf26d92316cb6c9ae518a21360b9fc",
+      "shared_observed_support_sha256": "400f28766877a74e3deb4165aea5e757983cb9528e327ffd1f7061a06c9cf5bd",
+      "shared_p1_geometry_sha256": "8dadb7d5fc611e89ea145530b9751fa5bb7bfd093221e37095b7f2f7120bf5f9",
+      "shared_p1_correspondence_sha256": "24f55d4c697f4b178783138143b0c8e499edc8518fb4a3d7585e5a7de0fe6514"
+    },
+    {
+      "scene_id": "office2",
+      "evaluable_gt": 41,
+      "unobserved_verified_targets": [
+        9,
+        74
+      ],
+      "geometry_oracle_PQ": 0.927639201199917,
+      "shared_gt_scope_sha256": "8451c48e5e571b2eabe2875161a9f21057b87a27bb8bd5492444bb5f3d5c2e48",
+      "shared_observed_support_sha256": "43a176fc0de052f80b230881d9b8c8abb42bc25847d295fcd44f495f453b0bbd",
+      "shared_p1_geometry_sha256": "2ffe8ad3af8c572220af9bce7ba648084badf1f283ef83d4d5e246efcc962276",
+      "shared_p1_correspondence_sha256": "768034b5734b0c7d1ffdb5f5e7ccc7f2710ea968b2caef79e4031bdb2d821d1e"
+    },
+    {
+      "scene_id": "office3",
+      "evaluable_gt": 58,
+      "unobserved_verified_targets": [
+        37,
+        112
+      ],
+      "geometry_oracle_PQ": 0.9474860982966904,
+      "shared_gt_scope_sha256": "5f7408e2f5782aa87c0c80b77d57a93c75cc7dbbb8602fa3d16b0eabc3383f3f",
+      "shared_observed_support_sha256": "f2af5d9fbe74675dae2f7938b336b2806e026b1bc38678dc52f35cf89c9a2b94",
+      "shared_p1_geometry_sha256": "80728af2fe7594083778118d5878a5dd53a6214f07e5e7e8dd097a8b9c21cdc5",
+      "shared_p1_correspondence_sha256": "d16b07bebe614d28bbfa29a8c0362fcc8c971edd856a2804663b542110d3ffbb"
+    },
+    {
+      "scene_id": "office4",
+      "evaluable_gt": 28,
+      "unobserved_verified_targets": [
+        50,
+        64,
+        67
+      ],
+      "geometry_oracle_PQ": 0.9110956711530899,
+      "shared_gt_scope_sha256": "2caa859eec3f71070ff5ecb14479f495263ce1b6a27ed07981077a9ebaf18c0c",
+      "shared_observed_support_sha256": "6856935dac3cfd28b2f3fd78896f2d75ab1f19c80ec10e2c582e0d4ac4f1bd77",
+      "shared_p1_geometry_sha256": "b81d8e6bfe67eb5a21b60491a2711ee86b28322302c647676414c2b01aeac553",
+      "shared_p1_correspondence_sha256": "f209ffcf29456e73503321d78dd8c3dc6e0b9be4f412c5405aaf53f17a900899"
+    }
+  ],
+  "pair_totals": {
+    "P1-A1_holes_geodesic_to_P1-A1_auto_v2": {
+      "corrected_instances": 93,
+      "degraded_instances": 48,
+      "unchanged_instances": 209,
+      "correct_owner_vertex_gain": -115
+    },
+    "P1-A1_native_to_P1-A1_holes_geodesic": {
+      "corrected_instances": 248,
+      "degraded_instances": 69,
+      "unchanged_instances": 33,
+      "correct_owner_vertex_gain": 17778
+    }
+  },
+  "source_artifact_sha256": {
+    "mesh_acceptance_report.json": "128ea012ba4ba6934bfa777399d7329efdcf46f8ffdd50e0e9e44a69980facff",
+    "candidate_scope_summary.json": "7468ded60b6f1a4688d7a83cad0cf4ecc7585abacf772a49c6f795ac2fd224bb",
+    "mesh_method_comparison.development.json": "c3108cf034e05c5c31851496d2889ac8bda8e4624b4f3b152ddcc818c65d79de",
+    "unified_eval_tests.xml": "939a02d1db33fe1242eecdc3f9572b1e177fcae3459dfc912ee740773cedcf7b",
+    "artifact_integrity_audit.json": "96d34fe151f5e6595d617056f753276dcb1a4865f895bf26884e936b8dbcc1ab"
+  }
+}

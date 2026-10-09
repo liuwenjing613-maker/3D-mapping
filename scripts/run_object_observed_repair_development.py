@@ -114,7 +114,8 @@ def observation_frames(args, scene, source, config, progress_path):
         renderer = GTMeshVisibility(xyz, faces, source.raw_instance_id)
         common.update(renderer.source_hashes)
         common['source_mesh_file_sha256'] = source.metadata['source_mesh_sha256']
-        emit('mesh_loaded', scene_id=scene, vertices=len(xyz), triangles=len(faces),
+        emit('mesh_loaded', scene_id=scene, vertices=len(xyz), source_faces=len(faces),
+             rendered_triangles=len(renderer.face_ids),
              mixed_label_triangles=renderer.mixed_label_face_count)
     else:
         provenance_path = args.gt_cache_root / 'provenance.json'
