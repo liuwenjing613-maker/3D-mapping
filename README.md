@@ -1,5 +1,38 @@
 # 3D-mapping
 
+当前统一开发评价协议：**`object_observed_repair / revision 2`**，配置 `unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json`。评分源码固定为 `cd260569`，审核归档为 `d035f687`，八场景共 **350 个固定可评价 GT**。本次 main 更新只提升默认入口，评分规则和配置字节保持不变。
+
+用于固定 TSDF 的实例地图质量和成对标签修复；当前仍为 DEVELOPMENT、`frozen=false`。协议选择、配置 SHA256、评分源码和逐场景 GT 锁见 `unified_eval/configs/current_protocol.json`，完整依据见[revision 2 审核报告](docs/evaluation_reports/20261009_object_observed_repair_audit/README.md)。旧 v1/v2/v3 和 revision 1 仅供历史复现。
+
+```bash
+# 显示唯一当前协议及其来源锁
+python -m unified_eval.cli current-protocol
+
+# 固定 GT 对应完整原生表面；P1 与 OVI 导出均走此入口
+python -m unified_eval.cli adapt-surface \
+  --gt /data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz \
+  --surface /path/to/native_surface.npz \
+  --fixed-correspondence /path/to/new_result/fixed_gt_to_tsdf.npz \
+  --method-name MY_METHOD --method-commit METHOD_COMMIT \
+  --out /path/to/new_result/adapter
+
+# 不传 --config 即使用 audit_r2.json；固定 GT 与 revision 2 预测必须一致
+python -m unified_eval.cli eval-scene \
+  --gt /data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz \
+  --pred /path/to/new_result/adapter/canonical_prediction.npz \
+  --out /path/to/new_result/evaluation
+
+python -m unified_eval.cli eval-repair-pair \
+  --gt /data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz \
+  --before /path/to/before/canonical_prediction.npz \
+  --after /path/to/after/canonical_prediction.npz \
+  --out /path/to/new_result/paired
+```
+
+同一 P1 TSDF 的所有标签版本复用同一个对应缓存。OVI 几何不同，使用自己的缓存。当前入口拒绝旧配置、改过参数的配置、不同 GT 文件和改变过的评分源码；旧预测在 revision 2 下也会被既有评分校验拒绝。历史复现须显式加 `--historical-protocol`，不能据此将旧结果当成当前基准。
+
+## 历史实现与复现说明
+
 本分支：**baseline + 部分未分配 TSDF 点扩散处理**。详见 [P0 版本说明](docs/P0_BRANCH_VARIANTS_CN.md)。
 
 V3 标签修复的新增开发入口见 [object_observed_repair profile](docs/OBJECT_OBSERVED_REPAIR_V3_CN.md)：固定 GT 资格、可信可观测表面和完整 TSDF 几何对应，保留历史 V3 结果。
@@ -20,15 +53,17 @@ python -m unified_eval.cli --help
 
 Only NumPy and SciPy are needed for the evaluator. The ConceptGraphs adapter reads a trusted local `pcd_*.pkl.gz` map. Python pickle files can execute code when loaded; do not use the adapter on untrusted downloads.
 
-## Evaluate a ConceptGraphs map
+## Historical: evaluate a ConceptGraphs map
 
 Prepare a Replica reference dataset, export its GT, and create an experiment manifest with exactly one entry matching the map and scene. Each entry needs `scene`, `map`, `cost.frames`, and `input.start`, `input.end`, `input.stride`. The frame count must equal `len(range(start, end, stride))`.
 
 ```bash
 python -m unified_eval.cli export-replica-gt \
+  --historical-protocol \
   --reference-root /path/to/reference --scene room0 --out /path/to/gt.npz
 
 python -m unified_eval.cli adapt-conceptgraphs \
+  --historical-protocol \
   --config unified_eval/configs/replica_ca_v1.json \
   --gt /path/to/gt.npz --map /path/to/pcd_map.pkl.gz \
   --experiment-manifest /path/to/experiment_manifest.json \
@@ -36,6 +71,7 @@ python -m unified_eval.cli adapt-conceptgraphs \
   --out /path/to/output/adapter
 
 python -m unified_eval.cli eval-scene \
+  --historical-protocol \
   --config unified_eval/configs/replica_ca_v1.json \
   --gt /path/to/gt.npz \
   --pred /path/to/output/adapter/canonical_prediction.npz \
@@ -58,6 +94,6 @@ Run `scripts/replica_projection_calibration.py` on the existing reference mesh w
 
 The `repair.py` module remains unchanged. Repair Success, False Repair, and Repair Delay are not yet implemented as metrics. Official ScanNet evaluation remains separate and unchanged.
 
-## 最新统一 v3 评估（2026-10-07）
+## 历史统一 v3 评估（2026-10-07）
 
-已核验 P1-A1、OVI-MAP、OVO 和 OpenVox 六种方法／版本共 48 组场景评估，补充 19 项覆盖、召回和结构指标。完整数值、逐场景数据、定义和核验见[最新评估报告](docs/evaluation_reports/20261007/README.md)。OVO、OpenVox 的原生输入预算与主比较不同，作为参考；全部保持 `DEBUG_ONLY / NON_OFFICIAL` 标记。
+已核验 P1-A1、OVI-MAP、OVO 和 OpenVox 六种方法／版本共 48 组场景评估，补充 19 项覆盖、召回和结构指标。完整数值、逐场景数据、定义和核验见[历史评估报告](docs/evaluation_reports/20261007/README.md)。OVO、OpenVox 的原生输入预算与主比较不同，作为参考；全部保持 `DEBUG_ONLY / NON_OFFICIAL` 标记。这些历史分数不属于当前 revision 2，不能和 350-GT 当前结果直接混用。

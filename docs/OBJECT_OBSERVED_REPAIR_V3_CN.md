@@ -1,8 +1,14 @@
-# V3 object_observed_repair 开发 profile
+# V3 object_observed_repair 当前开发评价基准
+
+main 当前统一使用 `unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json`，**profile revision 2**。评分代码 `cd260569e89de1e9525f82c45ee10842b80616b0`、审核归档 `d035f68770cefab27c9751e97062c72faa07367c`、固定可评价 GT 350 个。选择和逐场景来源锁见 `unified_eval/configs/current_protocol.json`。
+
+`python -m unified_eval.cli current-protocol` 显示当前基准；`adapt-surface`、`eval-scene`、`eval-batch`、`eval-repair-pair` 默认使用 revision 2，并校验配置、评分源码与固定 GT。历史配置必须显式加 `--historical-protocol`，禁止混入当前比较。README 开头给出当前运行示例。
+
+以下 revision 1 说明用于来源追溯。其 `05f6bb0` 开发锁保持不变，后续开发评价已按用户决定统一提升为 revision 2；提升默认入口没有重新定义原归档，也没有修改评分参数或 GT 范围。
 
 本 profile 用于固定 RGB-D 输入下的物体实例建图和标签修复评估。沿用 V3 的一对一匹配、AP、PQ 和 F1 公式，单独修改 GT 资格、可信观测表面、完整几何对应和 unmatched prediction 判定。
 
-配置：`unified_eval/configs/replica_ca_v3.object_observed_repair.development.json`。协议名称仍是 `Replica-CA-v3`，同时必须记录 `evaluation_profile=object_observed_repair`、配置哈希和 GT scope 哈希。历史配置默认 `evaluation_profile=legacy`，原 332-GT 数据和结果没有被替换。两种 profile 不能混合评分。
+历史 revision 1 配置：`unified_eval/configs/replica_ca_v3.object_observed_repair.development.json`；当前 revision 2 配置：`unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json`。协议名称仍是 `Replica-CA-v3`，必须记录 `evaluation_profile=object_observed_repair`、`profile_revision`、配置哈希和 GT scope 哈希。历史旧协议默认 `evaluation_profile=legacy`，原 332-GT 数据和结果没有被替换。不同 profile/revision 不能混合评分。
 
 当前版本全部输出 `DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN`。GT 审核和几何/结构阈值尚未冻结，不能通过把 JSON 的 `frozen` 改成 true 生成正式结果。
 
@@ -53,7 +59,7 @@ OVI-MAP 导出使用 compact index，源 ID 0 合法。适配器将 compact inde
 
 ## IoU 和 FP/ignore
 
-参考区域固定为 TARGET=1、KNOWN_NON_TARGET=2、IGNORE=0。交并比包含 TARGET 和已知非目标表面；UNKNOWN、不可观测、不可信与几何歧义区域不加入交并比。主质量映射仍为 partition；独立几何支持只用于结构诊断。
+参考区域固定为 TARGET=1、KNOWN_NON_TARGET=2、IGNORE=0。交并比包含 TARGET 和已知非目标表面；UNKNOWN、不可观测、不可信与几何歧义区域不加入交并比。主质量映射仍为 partition；当前 revision 2 的主 Merge/Split 使用实际主分区交集，2cm 独立几何支持另报辅助诊断。
 
 | 未匹配预测的证据 | 处理 |
 |---|---|
@@ -80,14 +86,17 @@ OVI-MAP 导出使用 compact index，源 ID 0 合法。适配器将 compact inde
 
 ## 运行与来源校验
 
-服务器代码所在 task worktree：`/home/chenkejun/CVPR/worktrees/v3-object-observed-repair-20261009`。结果放 `/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009`，不重写任何原地图。
+当前 main 工作区：`/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009`。固定 GT 仍读取 `/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/<scene>/gt.npz`，新评估另选结果目录，不覆盖锁定文件。原 revision 1 代码、结果与 revision 2 审核归档保持不变。
+
+以下是历史 GT 构建及验收命令，必须显式声明历史复现；后续开发评价直接使用已锁定的 GT，不重建这些范围。
 
 ```bash
 # 先生成八场景候选清单，并验收 room0、room1
-python scripts/run_object_observed_repair_development.py --scenes room0 room1 --visibility mesh
+python scripts/run_object_observed_repair_development.py --historical-protocol --scenes room0 room1 --visibility mesh
 
 # 两场景验收通过后补完八场景；复用时逐个核验源 RGB/深度文件
 python scripts/run_object_observed_repair_development.py \
+  --historical-protocol \
   --scenes room0 room1 room2 office0 office1 office2 office3 office4 \
   --visibility mesh --reuse-observed
 

@@ -11,6 +11,8 @@ import numpy as np
 
 from . import __version__
 from .conceptgraphs import adapt_map
+from .current_protocol import (CURRENT_CONFIG, CURRENT_PROTOCOL, require_current_gt,
+    require_current_protocol, reject_current_debug_overrides)
 from .evaluate import evaluate_scenes
 from .io import load_gt, load_prediction, save_gt, save_prediction, sha256_file
 from .metrics import build_overlap
@@ -59,7 +61,10 @@ def load_protocol(path: Path, args: argparse.Namespace) -> tuple[Protocol, dict,
 
 
 def add_protocol_args(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--config", type=Path, required=True)
+    parser.add_argument("--config", type=Path, default=CURRENT_CONFIG,
+        help="Default: locked object_observed_repair revision 2")
+    parser.add_argument("--historical-protocol", action="store_true",
+        help="Explicit historical reproduction; keep its outputs separate from the current baseline")
     parser.add_argument("--debug-max-distance-m", type=float)
     parser.add_argument("--debug-diagnostic-max-distance-m", type=float)
     parser.add_argument("--debug-min-valid-instance-vertices", type=int)
@@ -215,6 +220,8 @@ def cmd_eval_scene(args: argparse.Namespace) -> None:
     args.out.mkdir(parents=True, exist_ok=True)
     metrics = per_scene[0]
     status = "DEBUG_ONLY / NON_OFFICIAL" if debug or pred.metadata.get("debug_only") else "protocol_configured"
+    if protocol.is_object_observed_repair and protocol.profile_revision == 2:
+        status = summary["status"]
     metrics["status"] = status
     write_json(args.out / "metrics.json", metrics)
     overlap = overlaps[0]
@@ -236,6 +243,7 @@ def cmd_eval_scene(args: argparse.Namespace) -> None:
             diagnostic_max_distance_m=protocol.diagnostic_max_distance_m)
     write_json(args.out / "manifest.json", {
         "status": status, "protocol": protocol.name, "protocol_config": raw,
+        "evaluation_profile": protocol.evaluation_profile, "profile_revision": protocol.profile_revision,
         "protocol_config_sha256": sha256_file(args.config),
         "effective_protocol_sha256": effective_protocol_sha256(raw),
         "evaluator_version": __version__, "scene_id": gt.scene_id,
@@ -252,6 +260,7 @@ def cmd_eval_scene(args: argparse.Namespace) -> None:
     })
     # Formal aggregate files are deliberately absent while parameters are not frozen.
     print(json.dumps({"status": status, "scene": gt.scene_id,
+        "evaluation_profile": protocol.evaluation_profile, "profile_revision": protocol.profile_revision,
         "CA_AP_uniform": summary["CA_AP_uniform"], "CA_AP50_uniform": summary["CA_AP50_uniform"],
         "CA_AP25_uniform": summary["CA_AP25_uniform"], "CA_PQ": metrics["CA_PQ"]["PQ"]}, ensure_ascii=False))
 
@@ -278,11 +287,14 @@ def cmd_eval_batch(args: argparse.Namespace) -> None:
     summary, per_scene, _ = evaluate_scenes(scenes, protocol,
         diagnostic_predictions=diagnostic_predictions)
     status = "DEBUG_ONLY / NON_OFFICIAL" if debug or any(p.metadata.get("debug_only") for _, p in scenes) else "protocol_configured"
+    if protocol.is_object_observed_repair and protocol.profile_revision == 2:
+        status = summary["status"]
     summary["status"] = status
     args.out.mkdir(parents=True, exist_ok=True)
     write_json(args.out / "summary.json", summary)
     write_json(args.out / "manifest.json", {
         "status": status, "protocol_config": raw,
+        "evaluation_profile": protocol.evaluation_profile, "profile_revision": protocol.profile_revision,
         "protocol_config_sha256": sha256_file(args.config),
         "effective_protocol_sha256": effective_protocol_sha256(raw),
         "evaluator_version": __version__,
@@ -385,10 +397,69 @@ def cmd_eval_online_prefix(args: argparse.Namespace) -> None:
                       "checkpoint_count": len(rows)}, ensure_ascii=False))
 
 
-def main() -> None:
+def cmd_current_protocol(args: argparse.Namespace) -> None:
+    require_current_protocol()
+    print(json.dumps({**CURRENT_PROTOCOL, "resolved_config": str(CURRENT_CONFIG)},
+        ensure_ascii=False, indent=2, sort_keys=True))
+
+
+def cmd_adapt_surface(args: argparse.Namespace) -> None:
+    from .repair_profile import adapt_surface
+    protocol = Protocol.from_dict(json.loads(args.config.read_text(encoding="utf-8")))
+    provenance = json.loads(args.source_provenance.read_text(encoding="utf-8")) if args.source_provenance else None
+    value = adapt_surface(args.surface, args.gt, args.config, args.fixed_correspondence,
+        args.out, method_name=args.method_name, method_commit=args.method_commit,
+        source_provenance=provenance)
+    print(json.dumps({"status": value["summary"]["status"],
+        "evaluation_profile": protocol.evaluation_profile, "profile_revision": protocol.profile_revision,
+        "config_sha256": sha256_file(args.config), "output_dir": str(args.out)}))
+
+
+def cmd_eval_repair_pair(args: argparse.Namespace) -> None:
+    from .repair_profile import paired_revision_metrics
+    protocol, raw, _ = load_protocol(args.config, args)
+    gt = load_gt(args.gt)
+    value = paired_revision_metrics(gt, load_prediction(args.before), load_prediction(args.after), protocol)
+    args.out.mkdir(parents=True, exist_ok=True)
+    write_json(args.out / "paired_repair_metrics.json", value)
+    write_json(args.out / "manifest.json", {"protocol_config": raw,
+        "protocol_config_sha256": sha256_file(args.config), "gt_file": str(args.gt),
+        "gt_sha256": sha256_file(args.gt), "before_file": str(args.before),
+        "before_sha256": sha256_file(args.before), "after_file": str(args.after),
+        "after_sha256": sha256_file(args.after)})
+    print(json.dumps({"evaluation_profile": protocol.evaluation_profile,
+        "profile_revision": protocol.profile_revision, "output_dir": str(args.out)}))
+
+
+def validate_current_command(args: argparse.Namespace) -> None:
+    if args.command == "adapt-surface" and any(getattr(args, name, None) is not None for name in (
+            "debug_max_distance_m", "debug_diagnostic_max_distance_m", "debug_min_valid_instance_vertices",
+            "debug_significant_min_vertices", "debug_significant_min_gt_fraction")):
+        raise EvaluationError("adapt-surface reads the literal config; parameter experiments require a separate historical config file")
+    if args.command == "export-replica-gt" and not args.historical_protocol:
+        raise EvaluationError("The current baseline uses fixed canonical 350-GT files; legacy GT export requires --historical-protocol")
+    if not hasattr(args, "config") or not require_current_protocol(args.config,
+            historical_protocol=args.historical_protocol):
+        return
+    reject_current_debug_overrides(args)
+    if args.command in ("adapt-conceptgraphs", "adapt-ovimap"):
+        raise EvaluationError("Current revision 2 uses complete immutable native surfaces; use adapt-surface with --fixed-correspondence")
+    if args.command == "eval-online-prefix":
+        raise EvaluationError("The fixed 400-frame 350-GT scope is for final-map evaluation; online prefixes need a separately reviewed prefix scope")
+    if hasattr(args, "gt"):
+        require_current_gt(args.gt)
+    if args.command == "eval-batch":
+        for entry in json.loads(args.scenes.read_text(encoding="utf-8"))["scenes"]:
+            require_current_gt(Path(entry["gt"]))
+
+
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Unified class-agnostic instance evaluator v1/v2/v3")
     commands = parser.add_subparsers(dest="command", required=True)
+    current = commands.add_parser("current-protocol", help="Show the locked current development baseline")
+    current.set_defaults(func=cmd_current_protocol)
     export = commands.add_parser("export-replica-gt")
+    export.add_argument("--historical-protocol", action="store_true")
     export.add_argument("--reference-root", type=Path, required=True)
     export.add_argument("--scene", required=True)
     export.add_argument("--out", type=Path, required=True)
@@ -412,6 +483,23 @@ def main() -> None:
     ovi.add_argument("--method-commit", required=True)
     ovi.add_argument("--out", type=Path, required=True)
     ovi.set_defaults(func=cmd_adapt_ovimap)
+    surface = commands.add_parser("adapt-surface", help="Current fixed-surface P1/OVI adapter")
+    add_protocol_args(surface)
+    surface.add_argument("--gt", type=Path, required=True)
+    surface.add_argument("--surface", type=Path, required=True)
+    surface.add_argument("--fixed-correspondence", type=Path, required=True)
+    surface.add_argument("--source-provenance", type=Path)
+    surface.add_argument("--method-name", required=True)
+    surface.add_argument("--method-commit", required=True)
+    surface.add_argument("--out", type=Path, required=True)
+    surface.set_defaults(func=cmd_adapt_surface)
+    pair = commands.add_parser("eval-repair-pair", help="Paired label repair on exactly the same TSDF geometry")
+    add_protocol_args(pair)
+    pair.add_argument("--gt", type=Path, required=True)
+    pair.add_argument("--before", type=Path, required=True)
+    pair.add_argument("--after", type=Path, required=True)
+    pair.add_argument("--out", type=Path, required=True)
+    pair.set_defaults(func=cmd_eval_repair_pair)
     scene = commands.add_parser("eval-scene")
     add_protocol_args(scene)
     scene.add_argument("--gt", type=Path, required=True)
@@ -434,7 +522,16 @@ def main() -> None:
     official.add_argument("--recipe", type=Path, required=True)
     official.add_argument("--out", type=Path, required=True)
     official.set_defaults(func=lambda args: print(json.dumps(run_official_native(args.recipe, args.out))))
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
     args = parser.parse_args()
+    try:
+        validate_current_command(args)
+    except (EvaluationError, OSError) as exc:
+        parser.error(str(exc))
     args.func(args)
 
 

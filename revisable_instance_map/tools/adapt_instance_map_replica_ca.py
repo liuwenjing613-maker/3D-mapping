@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline adapter: labeled shared TSDF surface to frozen Replica-CA-v1 vertices.
+"""Offline adapter: shared TSDF labels to the current revision-2 fixed GT scope.
 
 GT is loaded only here, after mapping has finished. It is a query geometry and
 metric target, never an input to observation association or instance fusion.
@@ -19,6 +19,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 from unified_eval.geometry import map_point_labels_to_reference  # noqa: E402
+from unified_eval.current_protocol import CURRENT_CONFIG, require_current_gt, require_current_protocol  # noqa: E402
 from unified_eval.io import load_gt, save_prediction, sha256_file  # noqa: E402
 from unified_eval.schema import Protocol  # noqa: E402
 
@@ -33,13 +34,17 @@ def main():
     parser.add_argument("--materialization-report", type=Path, required=True)
     parser.add_argument("--association-report", type=Path, required=True)
     parser.add_argument("--gt", type=Path, required=True)
-    parser.add_argument("--protocol", type=Path, required=True)
+    parser.add_argument("--protocol", type=Path, default=CURRENT_CONFIG)
+    parser.add_argument("--historical-protocol", action="store_true")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--fixed-correspondence", type=Path)
     parser.add_argument("--exported-instance-list", type=Path)
     parser.add_argument("--method-name", default="revisable_instance_map")
     parser.add_argument("--method-commit", default="development")
     args = parser.parse_args()
+    current = require_current_protocol(args.protocol, historical_protocol=args.historical_protocol)
+    if current:
+        require_current_gt(args.gt)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
     protocol = Protocol.from_dict(json.loads(args.protocol.read_text(encoding="utf-8")))

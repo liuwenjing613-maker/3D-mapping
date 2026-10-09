@@ -1,4 +1,4 @@
-"""Audit fixed GT scope and existing maps without changing any map algorithm.
+"""Historical revision-1 scope generation and acceptance; explicit replay only.
 
 All outputs are development results. This script does not freeze thresholds or
 silently update historical Replica-CA-v3 GT/results.
@@ -387,6 +387,8 @@ def audit_scene(args, scene, config):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--historical-protocol', action='store_true',
+        help='Required: this runner rebuilds historical GT; current revision 2 uses fixed canonical GT')
     data = Path('/data/chenkejun/CVPR')
     parser.add_argument('--reference-root', type=Path, default=Path('/home/chenkejun/beauty/ovimap_aligned_eval_20260908/reference'))
     parser.add_argument('--annotation-root', type=Path, default=Path('/data/chenkejun/ReplicaSSG/Replica/data'))
@@ -403,6 +405,8 @@ def main():
     parser.add_argument('--scope-only', action='store_true')
     parser.add_argument('--reuse-observed', action='store_true')
     args = parser.parse_args()
+    if not args.historical_protocol:
+        parser.error('Historical scope generation requires --historical-protocol; use unified_eval.cli with the fixed revision-2 350-GT baseline')
     if not args.output_root.resolve().is_relative_to(Path('/data/chenkejun/CVPR')):
         raise EvaluationError('Experiment outputs must stay under /data/chenkejun/CVPR')
     args.output_root.mkdir(parents=True, exist_ok=True)
