@@ -1,0 +1,356 @@
+{
+  "status": "PASS",
+  "repair_effect_vs_same_rule_baseline": {
+    "original": {
+      "seed_only": {
+        "F1": 0.0,
+        "PQ": 5.3646710599819514e-05,
+        "mCov": 7.688218887735854e-05,
+        "macro_best_GT_recall": 0.00020233122431612127,
+        "correct_owner_vertices": -79,
+        "wrong_owner_vertices": 13,
+        "unassigned_with_geometry_target_vertices": 66,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "full_track": {
+        "F1": 0.02423469387755106,
+        "PQ": 0.024469879592609378,
+        "mCov": 0.04556348929895648,
+        "macro_best_GT_recall": -0.024278176773459115,
+        "correct_owner_vertices": 22190,
+        "wrong_owner_vertices": -36293,
+        "unassigned_with_geometry_target_vertices": 14103,
+        "TP": 10,
+        "FP": 11,
+        "FN": -10
+      }
+    },
+    "strict": {
+      "seed_only": {
+        "F1": 0.0,
+        "PQ": 4.7312664545495764e-05,
+        "mCov": 7.556207538361726e-05,
+        "macro_best_GT_recall": 0.00018535135391595237,
+        "correct_owner_vertices": -70,
+        "wrong_owner_vertices": -4,
+        "unassigned_with_geometry_target_vertices": 74,
+        "TP": 0,
+        "FP": 0,
+        "FN": 0
+      },
+      "full_track": {
+        "F1": 0.02423469387755106,
+        "PQ": 0.025298553449775274,
+        "mCov": 0.04645508619222938,
+        "macro_best_GT_recall": -0.023192740799182765,
+        "correct_owner_vertices": 22424,
+        "wrong_owner_vertices": -36193,
+        "unassigned_with_geometry_target_vertices": 13769,
+        "TP": 10,
+        "FP": 11,
+        "FN": -10
+      }
+    }
+  },
+  "additional_repair_gain_from_strict_voting": {
+    "seed_only": {
+      "F1": 0.0,
+      "PQ": -6.33404605432375e-06,
+      "mCov": -1.3201134937412817e-06,
+      "macro_best_GT_recall": -1.6979870400168906e-05,
+      "correct_owner_vertices": 9,
+      "wrong_owner_vertices": -17,
+      "unassigned_with_geometry_target_vertices": 8,
+      "TP": 0,
+      "FP": 0,
+      "FN": 0
+    },
+    "full_track": {
+      "F1": 0.0,
+      "PQ": 0.0008286738571658958,
+      "mCov": 0.0008915968932728946,
+      "macro_best_GT_recall": 0.0010854359742763497,
+      "correct_owner_vertices": 234,
+      "wrong_owner_vertices": 100,
+      "unassigned_with_geometry_target_vertices": -334,
+      "TP": 0,
+      "FP": 0,
+      "FN": 0
+    }
+  },
+  "point_state_effects": {
+    "room0": {
+      "seed_only": {
+        "original": {
+          "native_state_counts": [
+            86831,
+            16324,
+            1467564,
+            62315
+          ],
+          "final_three_state_counts": {
+            "0": 75830,
+            "1": 10090,
+            "3": 59243
+          },
+          "final_unassigned": 145163,
+          "assigned_to_unassigned": 271,
+          "unassigned_to_assigned": 487,
+          "changed_labels": 758
+        },
+        "strict": {
+          "native_state_counts": [
+            86866,
+            16470,
+            1468466,
+            61232
+          ],
+          "final_three_state_counts": {
+            "0": 75851,
+            "1": 10184,
+            "3": 58282
+          },
+          "final_unassigned": 144317,
+          "assigned_to_unassigned": 271,
+          "unassigned_to_assigned": 461,
+          "changed_labels": 732
+        }
+      },
+      "full_track": {
+        "original": {
+          "native_state_counts": [
+            87228,
+            16457,
+            1465687,
+            63662
+          ],
+          "final_three_state_counts": {
+            "0": 76077,
+            "1": 10200,
+            "3": 60573
+          },
+          "final_unassigned": 146850,
+          "assigned_to_unassigned": 4059,
+          "unassigned_to_assigned": 2588,
+          "changed_labels": 23005
+        },
+        "strict": {
+          "native_state_counts": [
+            87290,
+            16612,
+            1466874,
+            62258
+          ],
+          "final_three_state_counts": {
+            "0": 76118,
+            "1": 10298,
+            "3": 59337
+          },
+          "final_unassigned": 145753,
+          "assigned_to_unassigned": 3852,
+          "unassigned_to_assigned": 2606,
+          "changed_labels": 22900
+        }
+      }
+    },
+    "room2": {
+      "seed_only": {
+        "original": {
+          "native_state_counts": [
+            86692,
+            26245,
+            1056956,
+            59410
+          ],
+          "final_three_state_counts": {
+            "0": 77886,
+            "1": 17557,
+            "3": 55479
+          },
+          "final_unassigned": 150922,
+          "assigned_to_unassigned": 579,
+          "unassigned_to_assigned": 73,
+          "changed_labels": 652
+        },
+        "strict": {
+          "native_state_counts": [
+            86775,
+            26507,
+            1058010,
+            58011
+          ],
+          "final_three_state_counts": {
+            "0": 77935,
+            "1": 17787,
+            "3": 54190
+          },
+          "final_unassigned": 149912,
+          "assigned_to_unassigned": 570,
+          "unassigned_to_assigned": 79,
+          "changed_labels": 649
+        }
+      },
+      "full_track": {
+        "original": {
+          "native_state_counts": [
+            86846,
+            26337,
+            1022879,
+            93241
+          ],
+          "final_three_state_counts": {
+            "0": 77994,
+            "1": 17644,
+            "3": 88713
+          },
+          "final_unassigned": 184351,
+          "assigned_to_unassigned": 34827,
+          "unassigned_to_assigned": 892,
+          "changed_labels": 69408
+        },
+        "strict": {
+          "native_state_counts": [
+            86964,
+            26707,
+            1024491,
+            91141
+          ],
+          "final_three_state_counts": {
+            "0": 78076,
+            "1": 17969,
+            "3": 86713
+          },
+          "final_unassigned": 182758,
+          "assigned_to_unassigned": 34396,
+          "unassigned_to_assigned": 1059,
+          "changed_labels": 69252
+        }
+      }
+    }
+  },
+  "full_track_quality_and_groups": {
+    "original": {
+      "quality_matrix": [
+        [
+          9935,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          47380,
+          363,
+          1039
+        ],
+        [
+          0,
+          2147,
+          325888,
+          614
+        ],
+        [
+          0,
+          13358,
+          24588,
+          95838
+        ]
+      ],
+      "groups": {
+        "selected_targets": {
+          "objects": 45,
+          "mean_IoU_delta": 0.12424509966120098,
+          "mean_recall_delta": -0.06895064864945098,
+          "improved_over_0_01": 20,
+          "degraded_over_0_01": 7
+        },
+        "other_targets": {
+          "objects": 79,
+          "mean_IoU_delta": 0.0007448504850196703,
+          "mean_recall_delta": 0.0011681679660302416,
+          "improved_over_0_01": 2,
+          "degraded_over_0_01": 1
+        }
+      },
+      "correct_gain_at_changed_identity_vertices": 18633,
+      "correct_gain_at_unchanged_identity_vertices": 3557
+    },
+    "strict": {
+      "quality_matrix": [
+        [
+          9935,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          46562,
+          434,
+          1026
+        ],
+        [
+          0,
+          2013,
+          326325,
+          632
+        ],
+        [
+          0,
+          13216,
+          24635,
+          96372
+        ]
+      ],
+      "groups": {
+        "selected_targets": {
+          "objects": 45,
+          "mean_IoU_delta": 0.12601566118931815,
+          "mean_recall_delta": -0.06667551052715097,
+          "improved_over_0_01": 20,
+          "degraded_over_0_01": 6
+        },
+        "other_targets": {
+          "objects": 79,
+          "mean_IoU_delta": 0.0011357713204699154,
+          "mean_recall_delta": 0.001575925501558722,
+          "improved_over_0_01": 3,
+          "degraded_over_0_01": 1
+        }
+      },
+      "correct_gain_at_changed_identity_vertices": 18871,
+      "correct_gain_at_unchanged_identity_vertices": 3553
+    }
+  },
+  "policy_decisions": [
+    "使用room0最新12个、room2实际14个冻结案例，分别复验仅种子帧和完整追踪。",
+    "冻结SAM结果、Mask编辑、身份关联、接受门槛和修复范围；逐个重投影验证原事务。",
+    "先合并整帧保留旧支持与新支持，再按每点唯一ID归约；不同ID不能分别计有效票。",
+    "同ID共享原始支持保留；撤去歧义支持后允许原先弃权的保留旧票重新生效。",
+    "严格修复相对严格未修复作比较；另外计算差中差，扣除规则改变本身的基线收益。",
+    "要求400帧全量等于增量、精确回滚、范围外票/证据/最终标签不变。",
+    "预测先冻结再评分；不使用GT重新选择种子、案例、身份或门槛。",
+    "用户要求最新协议后核对服务器，全部24份预测统一改用主分支锁定的R2；R1评分仅留历史记录。",
+    "共用固定GT和同一R2几何缓存，精确重合坐标按R2一致归属规则处理；GT范围不重建。",
+    "保留各条件原语义对照的导出实例清单；严格规则新激活的既有ID可追加，弃权不隐式删除实例。",
+    "冻结P1-A1与原修复结果均不覆盖，所有新产物保存在独立实验目录。"
+  ],
+  "profile_revision": 2,
+  "scoring_commit": "cd260569e89de1e9525f82c45ee10842b80616b0",
+  "entry_commit": "29304d8523f55f0f628cdf7dec904b6980f4a9ad",
+  "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+  "strict_native_full_track_effect": {
+    "F1": 0.025000000000000022,
+    "PQ": 0.026518447436345904,
+    "correct_owner_vertices": 22180,
+    "wrong_owner_vertices": -36293
+  },
+  "strict_full_track_new_three_state_points": 34583,
+  "original_full_track_new_three_state_points": 35406,
+  "target_mapping_and_attribution_audit": "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/targets_and_attribution_complete.json",
+  "baseline_replaced": false,
+  "original_sources_modified": false,
+  "GT_used_for_repair": false
+}

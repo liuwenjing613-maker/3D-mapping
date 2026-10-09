@@ -1,0 +1,42 @@
+{
+  "status": "FROZEN_BEFORE_NEW_PREDICTIONS_AND_GT",
+  "vote_rule": "one frame one point at most one ID; unresolved multi-ID abstention",
+  "cases": {
+    "room0": 12,
+    "room2": 14
+  },
+  "conditions": [
+    "seed_only",
+    "full_track"
+  ],
+  "repair_source_roots": {
+    "room0": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d",
+    "room2": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c"
+  },
+  "changed": "effective vote reduction after rebuilding the complete raw candidate frame",
+  "fixed": [
+    "human masks",
+    "SAM tracking",
+    "identity association",
+    "accepted objects and observation plans",
+    "numeric thresholds",
+    "raw support projection",
+    "geometry/RGB",
+    "allowed repair scope",
+    "bounded final commit",
+    "postprocessing settings",
+    "v3 evaluation scope/config"
+  ],
+  "inventory_policy": "Strict condition retains its original-semantic counterpart exported stage IDs, appends newly activated existing IDs; no disappeared ID is silently dropped",
+  "decisions": [
+    "Evaluate latest room0 and room2 batches with both seed-only and full-track conditions.",
+    "Replay frozen raw edits and verify every saved transaction using fresh residual/new mask projections.",
+    "Reduce retained old and new candidate support together, so same-ID sharing remains once and different-ID support abstains.",
+    "Use strict no-repair baseline for strict repair effect; original semantic controls use original no-repair baseline.",
+    "Require 400-frame full sum, incremental equality, exact rollback, and unchanged raw/final outside frozen scope.",
+    "Reuse frozen SAM inference and gates; do not reselect cases, identities or thresholds using GT.",
+    "Freeze all native/final predictions before any GT read; score all rows with current same v3 development profile."
+  ],
+  "GT_used_for_mapping": false,
+  "baseline_modified": false
+}

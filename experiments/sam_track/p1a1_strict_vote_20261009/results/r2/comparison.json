@@ -1,0 +1,2775 @@
+{
+  "status": "PASS",
+  "protocol": "Replica-CA-v3",
+  "evaluation_profile": "object_observed_repair",
+  "protocol_status": "DEVELOPMENT_NOT_OFFICIAL_NOT_FROZEN",
+  "evaluator_commit": "29304d8523f55f0f628cdf7dec904b6980f4a9ad",
+  "profile_revision": 2,
+  "scoring_commit": "cd260569e89de1e9525f82c45ee10842b80616b0",
+  "current_protocol_registry_sha256": "0cb8a9171169a2c2fe202e1446307c7d7abe15ec3e31c47c33e5f156f864dc30",
+  "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+  "predictions_freeze_sha256": "b8a8f18190c8a936c492f50b5ba3ccba81c30a1bd0517087de5d7f95696ddfb0",
+  "all_baseline_metric_controls_exact": true,
+  "original_R2_archived_scene_controls": 8,
+  "strict_baseline_not_compared_to_revision_1": true,
+  "all_24_reference_partitions_independently_verified": true,
+  "geometry_scope_correspondence_identical": true,
+  "baseline_modified": false,
+  "per_scene": {
+    "room0": {
+      "original_baseline_native": {
+        "F1": 0.671875,
+        "PQ": 0.5342048743280633,
+        "AP": 0.22349717114568596,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5350527309522097,
+        "macro_best_GT_recall": 0.8116877410606858,
+        "correct_owner_vertices": 230717,
+        "wrong_owner_vertices": 74387,
+        "unassigned_with_geometry_target_vertices": 31857,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6751619010830473,
+        "Wrong_owner_Coverage": 0.21768343180547875,
+        "Unassigned_Coverage": 0.09322517492340242,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 1
+      },
+      "original_baseline_final": {
+        "F1": 0.671875,
+        "PQ": 0.5442824880747146,
+        "AP": 0.23778288543140028,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5445266200841794,
+        "macro_best_GT_recall": 0.8261171704394302,
+        "correct_owner_vertices": 233303,
+        "wrong_owner_vertices": 74749,
+        "unassigned_with_geometry_target_vertices": 28909,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6827294781415248,
+        "Wrong_owner_Coverage": 0.2187427755391094,
+        "Unassigned_Coverage": 0.08459825413129424,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "strict_baseline_native": {
+        "F1": 0.671875,
+        "PQ": 0.53458992267721,
+        "AP": 0.22537128712871285,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5354960795867227,
+        "macro_best_GT_recall": 0.8141811747786648,
+        "correct_owner_vertices": 230830,
+        "wrong_owner_vertices": 74637,
+        "unassigned_with_geometry_target_vertices": 31494,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6754925802043187,
+        "Wrong_owner_Coverage": 0.218415022781743,
+        "Unassigned_Coverage": 0.09216290482586671,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 1
+      },
+      "strict_baseline_final": {
+        "F1": 0.671875,
+        "PQ": 0.5445764624297625,
+        "AP": 0.23719943422913717,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5448768124873489,
+        "macro_best_GT_recall": 0.8291225620220758,
+        "correct_owner_vertices": 233391,
+        "wrong_owner_vertices": 74989,
+        "unassigned_with_geometry_target_vertices": 28581,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6829869981651698,
+        "Wrong_owner_Coverage": 0.21944510287632307,
+        "Unassigned_Coverage": 0.08363840677043553,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 18,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "original_seed_only_native": {
+        "F1": 0.671875,
+        "PQ": 0.5341065490191907,
+        "AP": 0.22349717114568596,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5350159054409989,
+        "macro_best_GT_recall": 0.8121092751998881,
+        "correct_owner_vertices": 230671,
+        "wrong_owner_vertices": 74600,
+        "unassigned_with_geometry_target_vertices": 31690,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6750272883434146,
+        "Wrong_owner_Coverage": 0.21830674731725588,
+        "Unassigned_Coverage": 0.0927364721512579,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 1
+      },
+      "strict_seed_only_native": {
+        "F1": 0.671875,
+        "PQ": 0.5344910100317571,
+        "AP": 0.22537128712871285,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5354673333372626,
+        "macro_best_GT_recall": 0.8145600465725382,
+        "correct_owner_vertices": 230786,
+        "wrong_owner_vertices": 74837,
+        "unassigned_with_geometry_target_vertices": 31338,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6753638201924962,
+        "Wrong_owner_Coverage": 0.2190002955627544,
+        "Unassigned_Coverage": 0.09170639205667781,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 1
+      },
+      "original_seed_only_final": {
+        "F1": 0.671875,
+        "PQ": 0.5442035577979278,
+        "AP": 0.23778288543140028,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5445106272991916,
+        "macro_best_GT_recall": 0.8266132350305797,
+        "correct_owner_vertices": 233267,
+        "wrong_owner_vertices": 74971,
+        "unassigned_with_geometry_target_vertices": 28723,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6826241290409427,
+        "Wrong_owner_Coverage": 0.21939242832603206,
+        "Unassigned_Coverage": 0.08405395044495363,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "strict_seed_only_final": {
+        "F1": 0.671875,
+        "PQ": 0.5444968847593648,
+        "AP": 0.23719943422913717,
+        "AP50": 0.45615275813295625,
+        "mCov": 0.5448699307177738,
+        "macro_best_GT_recall": 0.8295848738281095,
+        "correct_owner_vertices": 233357,
+        "wrong_owner_vertices": 75198,
+        "unassigned_with_geometry_target_vertices": 28406,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6828875017923979,
+        "Wrong_owner_Coverage": 0.22005671293248,
+        "Unassigned_Coverage": 0.08312629308705055,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 43,
+        "FP": 13,
+        "FN": 29,
+        "merge_predictions": 18,
+        "split_GT": 18,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "original_full_track_native": {
+        "F1": 0.6911764705882353,
+        "PQ": 0.5530884598838006,
+        "AP": 0.2457766089108911,
+        "AP50": 0.47988861386138615,
+        "mCov": 0.5625697106072481,
+        "macro_best_GT_recall": 0.7948370300111559,
+        "correct_owner_vertices": 238000,
+        "wrong_owner_vertices": 66922,
+        "unassigned_with_geometry_target_vertices": 32039,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6964746094035777,
+        "Wrong_owner_Coverage": 0.19583812525422786,
+        "Unassigned_Coverage": 0.09375777315412281,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 47,
+        "FP": 17,
+        "FN": 25,
+        "merge_predictions": 17,
+        "split_GT": 18,
+        "duplicate_coordinate_conflict_target_vertices": 1
+      },
+      "strict_full_track_native": {
+        "F1": 0.6911764705882353,
+        "PQ": 0.5540361433539206,
+        "AP": 0.24676670792079208,
+        "AP50": 0.47988861386138615,
+        "mCov": 0.5636984835144145,
+        "macro_best_GT_recall": 0.7979907270869747,
+        "correct_owner_vertices": 238191,
+        "wrong_owner_vertices": 67193,
+        "unassigned_with_geometry_target_vertices": 31577,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.6970335449094437,
+        "Wrong_owner_Coverage": 0.19663116987249832,
+        "Unassigned_Coverage": 0.09240579302998646,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 47,
+        "FP": 17,
+        "FN": 25,
+        "merge_predictions": 17,
+        "split_GT": 18,
+        "duplicate_coordinate_conflict_target_vertices": 1
+      },
+      "original_full_track_final": {
+        "F1": 0.6911764705882353,
+        "PQ": 0.5628824158322354,
+        "AP": 0.2559560643564357,
+        "AP50": 0.47988861386138615,
+        "mCov": 0.5721999831685558,
+        "macro_best_GT_recall": 0.8086904453697072,
+        "correct_owner_vertices": 240655,
+        "wrong_owner_vertices": 67304,
+        "unassigned_with_geometry_target_vertices": 29002,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.7042441055715042,
+        "Wrong_owner_Coverage": 0.19695599626595967,
+        "Unassigned_Coverage": 0.08487040597446455,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 47,
+        "FP": 17,
+        "FN": 25,
+        "merge_predictions": 17,
+        "split_GT": 18,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "strict_full_track_final": {
+        "F1": 0.6911764705882353,
+        "PQ": 0.5637547583534501,
+        "AP": 0.25702351485148517,
+        "AP50": 0.47988861386138615,
+        "mCov": 0.5731801902354144,
+        "macro_best_GT_recall": 0.8122056736977801,
+        "correct_owner_vertices": 240823,
+        "wrong_owner_vertices": 67556,
+        "unassigned_with_geometry_target_vertices": 28582,
+        "no_geometry_target_vertices": 4760,
+        "target_vertices": 341721,
+        "Correct_owner_Coverage": 0.7047357347075538,
+        "Wrong_owner_Coverage": 0.19769343997003402,
+        "Unassigned_Coverage": 0.08364133313434059,
+        "No_geometry_Coverage": 0.013929492188071555,
+        "TP": 47,
+        "FP": 17,
+        "FN": 25,
+        "merge_predictions": 17,
+        "split_GT": 20,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      }
+    },
+    "room2": {
+      "original_baseline_native": {
+        "F1": 0.6458333333333334,
+        "PQ": 0.47259599976521594,
+        "AP": 0.1605085508550855,
+        "AP50": 0.41854185418541856,
+        "mCov": 0.5142908058326994,
+        "macro_best_GT_recall": 0.7765920038857419,
+        "correct_owner_vertices": 93298,
+        "wrong_owner_vertices": 58673,
+        "unassigned_with_geometry_target_vertices": 22283,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5199716879657135,
+        "Wrong_owner_Coverage": 0.3269984227744679,
+        "Unassigned_Coverage": 0.12418839763917762,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 31,
+        "FP": 13,
+        "FN": 21,
+        "merge_predictions": 13,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 2
+      },
+      "original_baseline_final": {
+        "F1": 0.6666666666666666,
+        "PQ": 0.4983603192508009,
+        "AP": 0.17821782178217824,
+        "AP50": 0.4464446444644465,
+        "mCov": 0.5288845173775263,
+        "macro_best_GT_recall": 0.7938109502834106,
+        "correct_owner_vertices": 95346,
+        "wrong_owner_vertices": 59035,
+        "unassigned_with_geometry_target_vertices": 19873,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5313856734418628,
+        "Wrong_owner_Coverage": 0.3290159338791388,
+        "Unassigned_Coverage": 0.11075690105835735,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 32,
+        "FP": 12,
+        "FN": 20,
+        "merge_predictions": 13,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "strict_baseline_native": {
+        "F1": 0.6458333333333334,
+        "PQ": 0.4733807838725721,
+        "AP": 0.1605085508550855,
+        "AP50": 0.41854185418541856,
+        "mCov": 0.5151707823625572,
+        "macro_best_GT_recall": 0.778396716938804,
+        "correct_owner_vertices": 93570,
+        "wrong_owner_vertices": 58862,
+        "unassigned_with_geometry_target_vertices": 21822,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5214876079117645,
+        "Wrong_owner_Coverage": 0.32805176420756954,
+        "Unassigned_Coverage": 0.12161913626002485,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 31,
+        "FP": 13,
+        "FN": 21,
+        "merge_predictions": 13,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 2
+      },
+      "strict_baseline_final": {
+        "F1": 0.6666666666666666,
+        "PQ": 0.4994009249340923,
+        "AP": 0.18022052205220523,
+        "AP50": 0.4464446444644465,
+        "mCov": 0.530014041994632,
+        "macro_best_GT_recall": 0.795902686375346,
+        "correct_owner_vertices": 95579,
+        "wrong_owner_vertices": 59234,
+        "unassigned_with_geometry_target_vertices": 19441,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5326842372191786,
+        "Wrong_owner_Coverage": 0.33012500766319824,
+        "Unassigned_Coverage": 0.1083492634969821,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 32,
+        "FP": 12,
+        "FN": 20,
+        "merge_predictions": 13,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "original_seed_only_native": {
+        "F1": 0.6458333333333334,
+        "PQ": 0.472898339109364,
+        "AP": 0.16242124212421238,
+        "AP50": 0.41854185418541856,
+        "mCov": 0.5145641285500262,
+        "macro_best_GT_recall": 0.7763603979636057,
+        "correct_owner_vertices": 93223,
+        "wrong_owner_vertices": 58444,
+        "unassigned_with_geometry_target_vertices": 22587,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5195536953335302,
+        "Wrong_owner_Coverage": 0.3257221519375352,
+        "Unassigned_Coverage": 0.12588266110829352,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 31,
+        "FP": 13,
+        "FN": 21,
+        "merge_predictions": 13,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 2
+      },
+      "strict_seed_only_native": {
+        "F1": 0.6458333333333334,
+        "PQ": 0.47366478187637806,
+        "AP": 0.16242124212421238,
+        "AP50": 0.41854185418541856,
+        "mCov": 0.5154273045374012,
+        "macro_best_GT_recall": 0.7781702470415658,
+        "correct_owner_vertices": 93506,
+        "wrong_owner_vertices": 58630,
+        "unassigned_with_geometry_target_vertices": 22118,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5211309208656348,
+        "Wrong_owner_Coverage": 0.3267587736653495,
+        "Unassigned_Coverage": 0.12326881384837457,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 31,
+        "FP": 13,
+        "FN": 21,
+        "merge_predictions": 13,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 2
+      },
+      "original_seed_only_final": {
+        "F1": 0.6666666666666666,
+        "PQ": 0.49859073527791625,
+        "AP": 0.18022052205220523,
+        "AP50": 0.4464446444644465,
+        "mCov": 0.5290899956840629,
+        "macro_best_GT_recall": 0.7936065737690347,
+        "correct_owner_vertices": 95303,
+        "wrong_owner_vertices": 58826,
+        "unassigned_with_geometry_target_vertices": 20125,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5311460243327444,
+        "Wrong_owner_Coverage": 0.3278511277441216,
+        "Unassigned_Coverage": 0.11216135630249291,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 32,
+        "FP": 12,
+        "FN": 20,
+        "merge_predictions": 13,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "strict_seed_only_final": {
+        "F1": 0.6666666666666666,
+        "PQ": 0.49961742471189546,
+        "AP": 0.18022052205220523,
+        "AP50": 0.4464446444644465,
+        "mCov": 0.5302037570861124,
+        "macro_best_GT_recall": 0.7957045540263299,
+        "correct_owner_vertices": 95543,
+        "wrong_owner_vertices": 59021,
+        "unassigned_with_geometry_target_vertices": 19690,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.5324836007557306,
+        "Wrong_owner_Coverage": 0.328937908587798,
+        "Unassigned_Coverage": 0.10973699903583033,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 32,
+        "FP": 12,
+        "FN": 20,
+        "merge_predictions": 13,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "original_full_track_native": {
+        "F1": 0.6788990825688074,
+        "PQ": 0.5087483717434432,
+        "AP": 0.19101962827861735,
+        "AP50": 0.4627410109431995,
+        "mCov": 0.584431295238812,
+        "macro_best_GT_recall": 0.7429712766184736,
+        "correct_owner_vertices": 107996,
+        "wrong_owner_vertices": 29725,
+        "unassigned_with_geometry_target_vertices": 36533,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.6018870974034297,
+        "Wrong_owner_Coverage": 0.16566441322194295,
+        "Unassigned_Coverage": 0.20360699775398625,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 37,
+        "FP": 20,
+        "FN": 15,
+        "merge_predictions": 11,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 2
+      },
+      "strict_full_track_native": {
+        "F1": 0.6788990825688074,
+        "PQ": 0.5109695009834957,
+        "AP": 0.19296508598228243,
+        "AP50": 0.4627410109431995,
+        "mCov": 0.5868744949521235,
+        "macro_best_GT_recall": 0.7469984646489483,
+        "correct_owner_vertices": 108389,
+        "wrong_owner_vertices": 30013,
+        "unassigned_with_geometry_target_vertices": 35852,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.6040773787960697,
+        "Wrong_owner_Coverage": 0.16726950492952644,
+        "Unassigned_Coverage": 0.19981162465376276,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 37,
+        "FP": 20,
+        "FN": 15,
+        "merge_predictions": 12,
+        "split_GT": 17,
+        "duplicate_coordinate_conflict_target_vertices": 2
+      },
+      "original_full_track_final": {
+        "F1": 0.6972477064220184,
+        "PQ": 0.5318393926495361,
+        "AP": 0.21231544207052283,
+        "AP50": 0.4884488448844885,
+        "mCov": 0.5992189506659014,
+        "macro_best_GT_recall": 0.7600461480740096,
+        "correct_owner_vertices": 110184,
+        "wrong_owner_vertices": 30187,
+        "unassigned_with_geometry_target_vertices": 33883,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.6140813357929877,
+        "Wrong_owner_Coverage": 0.16823924783619149,
+        "Unassigned_Coverage": 0.18883792475017974,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 38,
+        "FP": 19,
+        "FN": 14,
+        "merge_predictions": 11,
+        "split_GT": 16,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      },
+      "strict_full_track_final": {
+        "F1": 0.6972477064220184,
+        "PQ": 0.5339935808933224,
+        "AP": 0.21587632447455274,
+        "AP50": 0.4884488448844885,
+        "mCov": 0.6016022629557034,
+        "macro_best_GT_recall": 0.7640203036878582,
+        "correct_owner_vertices": 110571,
+        "wrong_owner_vertices": 30474,
+        "unassigned_with_geometry_target_vertices": 33209,
+        "no_geometry_target_vertices": 5175,
+        "target_vertices": 179429,
+        "Correct_owner_Coverage": 0.6162381777750531,
+        "Wrong_owner_Coverage": 0.1698387663086792,
+        "Unassigned_Coverage": 0.1850815642956267,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "TP": 38,
+        "FP": 19,
+        "FN": 14,
+        "merge_predictions": 12,
+        "split_GT": 18,
+        "duplicate_coordinate_conflict_target_vertices": 0
+      }
+    }
+  },
+  "pooled": {
+    "original_baseline_native": {
+      "F1": 0.6607142857142857,
+      "PQ": 0.5078010709439859,
+      "AP": 0.1933960396039604,
+      "AP50": 0.43960396039603966,
+      "mCov": 0.526346117192415,
+      "macro_best_GT_recall": 0.7969701738582899,
+      "correct_owner_vertices": 324015,
+      "wrong_owner_vertices": 133060,
+      "unassigned_with_geometry_target_vertices": 54140,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6217307876810899,
+      "Wrong_owner_Coverage": 0.2553199654609997,
+      "Unassigned_Coverage": 0.10388563753238031,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 74,
+      "FP": 26,
+      "FN": 50,
+      "merge_predictions": 31,
+      "split_GT": 33,
+      "duplicate_coordinate_conflict_target_vertices": 3
+    },
+    "original_baseline_final": {
+      "F1": 0.6696428571428571,
+      "PQ": 0.5246015585787516,
+      "AP": 0.20926732673267323,
+      "AP50": 0.452970297029703,
+      "mCov": 0.5379670286265507,
+      "macro_best_GT_recall": 0.8125694006965835,
+      "correct_owner_vertices": 328649,
+      "wrong_owner_vertices": 133784,
+      "unassigned_with_geometry_target_vertices": 48782,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6306226614218555,
+      "Wrong_owner_Coverage": 0.25670920080591003,
+      "Unassigned_Coverage": 0.0936045284467044,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 75,
+      "FP": 25,
+      "FN": 49,
+      "merge_predictions": 31,
+      "split_GT": 33,
+      "duplicate_coordinate_conflict_target_vertices": 0
+    },
+    "strict_baseline_native": {
+      "F1": 0.6607142857142857,
+      "PQ": 0.5083574346180795,
+      "AP": 0.19413861386138614,
+      "AP50": 0.43960396039603966,
+      "mCov": 0.5269725678475565,
+      "macro_best_GT_recall": 0.7991747892329167,
+      "correct_owner_vertices": 324400,
+      "wrong_owner_vertices": 133499,
+      "unassigned_with_geometry_target_vertices": 53316,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6224695385205795,
+      "Wrong_owner_Coverage": 0.2561623333013528,
+      "Unassigned_Coverage": 0.10230451885253766,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 74,
+      "FP": 26,
+      "FN": 50,
+      "merge_predictions": 31,
+      "split_GT": 33,
+      "duplicate_coordinate_conflict_target_vertices": 3
+    },
+    "strict_baseline_final": {
+      "F1": 0.6696428571428571,
+      "PQ": 0.525215517788761,
+      "AP": 0.20999999999999996,
+      "AP50": 0.452970297029703,
+      "mCov": 0.5386440377645967,
+      "macro_best_GT_recall": 0.8151916464282859,
+      "correct_owner_vertices": 328970,
+      "wrong_owner_vertices": 134223,
+      "unassigned_with_geometry_target_vertices": 48022,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6312386069269884,
+      "Wrong_owner_Coverage": 0.25755156864626305,
+      "Unassigned_Coverage": 0.09214621510121845,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 75,
+      "FP": 25,
+      "FN": 49,
+      "merge_predictions": 31,
+      "split_GT": 35,
+      "duplicate_coordinate_conflict_target_vertices": 0
+    },
+    "original_seed_only_native": {
+      "F1": 0.6607142857142857,
+      "PQ": 0.5078744590578365,
+      "AP": 0.1943960396039604,
+      "AP50": 0.43960396039603966,
+      "mCov": 0.5264393538415588,
+      "macro_best_GT_recall": 0.7971178105524148,
+      "correct_owner_vertices": 323894,
+      "wrong_owner_vertices": 133044,
+      "unassigned_with_geometry_target_vertices": 54277,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6214986088458218,
+      "Wrong_owner_Coverage": 0.25528926412741054,
+      "Unassigned_Coverage": 0.10414851770123765,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 74,
+      "FP": 26,
+      "FN": 50,
+      "merge_predictions": 31,
+      "split_GT": 33,
+      "duplicate_coordinate_conflict_target_vertices": 3
+    },
+    "strict_seed_only_native": {
+      "F1": 0.6607142857142857,
+      "PQ": 0.5084226265365946,
+      "AP": 0.19513861386138615,
+      "AP50": 0.43960396039603966,
+      "mCov": 0.5270634502921594,
+      "macro_best_GT_recall": 0.7992998080595498,
+      "correct_owner_vertices": 324292,
+      "wrong_owner_vertices": 133467,
+      "unassigned_with_geometry_target_vertices": 53456,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6222623045188526,
+      "Wrong_owner_Coverage": 0.25610093063417444,
+      "Unassigned_Coverage": 0.10257315552144296,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 74,
+      "FP": 26,
+      "FN": 50,
+      "merge_predictions": 31,
+      "split_GT": 33,
+      "duplicate_coordinate_conflict_target_vertices": 3
+    },
+    "original_seed_only_final": {
+      "F1": 0.6696428571428571,
+      "PQ": 0.5246552052893514,
+      "AP": 0.21029702970297026,
+      "AP50": 0.452970297029703,
+      "mCov": 0.538043910815428,
+      "macro_best_GT_recall": 0.8127717319208996,
+      "correct_owner_vertices": 328570,
+      "wrong_owner_vertices": 133797,
+      "unassigned_with_geometry_target_vertices": 48848,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.630471073587259,
+      "Wrong_owner_Coverage": 0.25673414563945124,
+      "Unassigned_Coverage": 0.09373117144775976,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 75,
+      "FP": 25,
+      "FN": 49,
+      "merge_predictions": 31,
+      "split_GT": 33,
+      "duplicate_coordinate_conflict_target_vertices": 0
+    },
+    "strict_seed_only_final": {
+      "F1": 0.6696428571428571,
+      "PQ": 0.5252628304533065,
+      "AP": 0.20999999999999996,
+      "AP50": 0.452970297029703,
+      "mCov": 0.5387195998399803,
+      "macro_best_GT_recall": 0.8153769977822019,
+      "correct_owner_vertices": 328900,
+      "wrong_owner_vertices": 134219,
+      "unassigned_with_geometry_target_vertices": 48096,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6311042885925358,
+      "Wrong_owner_Coverage": 0.25754389331286576,
+      "Unassigned_Coverage": 0.0922882087690684,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 75,
+      "FP": 25,
+      "FN": 49,
+      "merge_predictions": 31,
+      "split_GT": 35,
+      "duplicate_coordinate_conflict_target_vertices": 0
+    },
+    "original_full_track_native": {
+      "F1": 0.6857142857142857,
+      "PQ": 0.5333616451601314,
+      "AP": 0.2175353899026266,
+      "AP50": 0.4673921937648311,
+      "mCov": 0.5717374719043555,
+      "macro_best_GT_recall": 0.7730868753626118,
+      "correct_owner_vertices": 345996,
+      "wrong_owner_vertices": 96647,
+      "unassigned_with_geometry_target_vertices": 68572,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6639086635325722,
+      "Wrong_owner_Coverage": 0.18544948671207906,
+      "Unassigned_Coverage": 0.13157824042981867,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 84,
+      "FP": 37,
+      "FN": 40,
+      "merge_predictions": 28,
+      "split_GT": 34,
+      "duplicate_coordinate_conflict_target_vertices": 3
+    },
+    "strict_full_track_native": {
+      "F1": 0.6857142857142857,
+      "PQ": 0.5348758820544254,
+      "AP": 0.21918009982816464,
+      "AP50": 0.4673921937648311,
+      "mCov": 0.5734174560528087,
+      "macro_best_GT_recall": 0.7766068750968346,
+      "correct_owner_vertices": 346580,
+      "wrong_owner_vertices": 97206,
+      "unassigned_with_geometry_target_vertices": 67429,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6650292622085772,
+      "Wrong_owner_Coverage": 0.18652211455435094,
+      "Unassigned_Coverage": 0.12938501391154178,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 84,
+      "FP": 37,
+      "FN": 40,
+      "merge_predictions": 29,
+      "split_GT": 35,
+      "duplicate_coordinate_conflict_target_vertices": 3
+    },
+    "original_full_track_final": {
+      "F1": 0.6938775510204082,
+      "PQ": 0.549071438171361,
+      "AP": 0.23408886343179774,
+      "AP50": 0.479911627526389,
+      "mCov": 0.5835305179255071,
+      "macro_best_GT_recall": 0.7882912239231243,
+      "correct_owner_vertices": 350839,
+      "wrong_owner_vertices": 97491,
+      "unassigned_with_geometry_target_vertices": 62885,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.6732015734433464,
+      "Wrong_owner_Coverage": 0.18706898205890818,
+      "Unassigned_Coverage": 0.1206658351722153,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 85,
+      "FP": 36,
+      "FN": 39,
+      "merge_predictions": 28,
+      "split_GT": 34,
+      "duplicate_coordinate_conflict_target_vertices": 0
+    },
+    "strict_full_track_final": {
+      "F1": 0.6938775510204082,
+      "PQ": 0.5505140712385362,
+      "AP": 0.23601178299648148,
+      "AP50": 0.479911627526389,
+      "mCov": 0.5850991239568261,
+      "macro_best_GT_recall": 0.7919989056291031,
+      "correct_owner_vertices": 351394,
+      "wrong_owner_vertices": 98030,
+      "unassigned_with_geometry_target_vertices": 61791,
+      "no_geometry_target_vertices": 9935,
+      "target_vertices": 521150,
+      "Correct_owner_Coverage": 0.674266525952221,
+      "Wrong_owner_Coverage": 0.18810323323419362,
+      "Unassigned_Coverage": 0.11856663148805527,
+      "No_geometry_Coverage": 0.019063609325530077,
+      "TP": 85,
+      "FP": 36,
+      "FN": 39,
+      "merge_predictions": 29,
+      "split_GT": 38,
+      "duplicate_coordinate_conflict_target_vertices": 0
+    }
+  },
+  "states": {
+    "room0": {
+      "original_baseline_native": {
+        "counts_U_T_assigned_C": [
+          86821,
+          16308,
+          1467472,
+          62433
+        ],
+        "three_state_total": 165562,
+        "state_sha256": "6066ad83c20b0120541f13d96033eecad172357459f5453389a8bb63d84c83ce",
+        "r2_duplicate_coordinate_conflicts": 1
+      },
+      "original_baseline_final": {
+        "counts_U_T_assigned_C": [
+          75821,
+          10081,
+          1487655,
+          59477
+        ],
+        "three_state_total": 145379,
+        "state_sha256": "6066ad83c20b0120541f13d96033eecad172357459f5453389a8bb63d84c83ce",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "strict_baseline_native": {
+        "counts_U_T_assigned_C": [
+          86856,
+          16453,
+          1468397,
+          61328
+        ],
+        "three_state_total": 164637,
+        "state_sha256": "794b51b805ae111d6e13e36779e682026dc67e2740c118a090c53a002778aa02",
+        "r2_duplicate_coordinate_conflicts": 1
+      },
+      "strict_baseline_final": {
+        "counts_U_T_assigned_C": [
+          75842,
+          10174,
+          1488527,
+          58491
+        ],
+        "three_state_total": 144507,
+        "state_sha256": "794b51b805ae111d6e13e36779e682026dc67e2740c118a090c53a002778aa02",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "original_seed_only_native": {
+        "counts_U_T_assigned_C": [
+          86831,
+          16324,
+          1467564,
+          62315
+        ],
+        "three_state_total": 165470,
+        "state_sha256": "e25c022392e3e7864aaf9122f03e3d9ccd0b5a40595d3f6b7dde8d053ab1fc89",
+        "r2_duplicate_coordinate_conflicts": 1
+      },
+      "strict_seed_only_native": {
+        "counts_U_T_assigned_C": [
+          86866,
+          16470,
+          1468466,
+          61232
+        ],
+        "three_state_total": 164568,
+        "state_sha256": "5a5fca4a27b6ef2838769ace58ea0b81ba2fc201e4c2e04fbcc868da938aa374",
+        "r2_duplicate_coordinate_conflicts": 1
+      },
+      "original_seed_only_final": {
+        "counts_U_T_assigned_C": [
+          75830,
+          10090,
+          1487871,
+          59243
+        ],
+        "three_state_total": 145163,
+        "state_sha256": "e25c022392e3e7864aaf9122f03e3d9ccd0b5a40595d3f6b7dde8d053ab1fc89",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "strict_seed_only_final": {
+        "counts_U_T_assigned_C": [
+          75851,
+          10184,
+          1488717,
+          58282
+        ],
+        "three_state_total": 144317,
+        "state_sha256": "5a5fca4a27b6ef2838769ace58ea0b81ba2fc201e4c2e04fbcc868da938aa374",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "original_full_track_native": {
+        "counts_U_T_assigned_C": [
+          87228,
+          16457,
+          1465687,
+          63662
+        ],
+        "three_state_total": 167347,
+        "state_sha256": "3cae275ac84c2eefcfd422e9fc80d81ee3acda0eff9a88f45b5f4d5e3ced7c60",
+        "r2_duplicate_coordinate_conflicts": 1
+      },
+      "strict_full_track_native": {
+        "counts_U_T_assigned_C": [
+          87290,
+          16612,
+          1466874,
+          62258
+        ],
+        "three_state_total": 166160,
+        "state_sha256": "4c98568ec8c02d7ae7cb1411adcc221dd42fed4c38e8391bc65f9d9c8ef9a06c",
+        "r2_duplicate_coordinate_conflicts": 1
+      },
+      "original_full_track_final": {
+        "counts_U_T_assigned_C": [
+          76077,
+          10200,
+          1486184,
+          60573
+        ],
+        "three_state_total": 146850,
+        "state_sha256": "3cae275ac84c2eefcfd422e9fc80d81ee3acda0eff9a88f45b5f4d5e3ced7c60",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "strict_full_track_final": {
+        "counts_U_T_assigned_C": [
+          76118,
+          10298,
+          1487281,
+          59337
+        ],
+        "three_state_total": 145753,
+        "state_sha256": "4c98568ec8c02d7ae7cb1411adcc221dd42fed4c38e8391bc65f9d9c8ef9a06c",
+        "r2_duplicate_coordinate_conflicts": 0
+      }
+    },
+    "room2": {
+      "original_baseline_native": {
+        "counts_U_T_assigned_C": [
+          86693,
+          26241,
+          1057555,
+          58814
+        ],
+        "three_state_total": 171748,
+        "state_sha256": "16bf6c4a0a21229899d7bb08d19dce5a5abb6bb48023b80f7216e29e2b92e1e6",
+        "r2_duplicate_coordinate_conflicts": 3
+      },
+      "original_baseline_final": {
+        "counts_U_T_assigned_C": [
+          77887,
+          17552,
+          1078887,
+          54977
+        ],
+        "three_state_total": 150416,
+        "state_sha256": "16bf6c4a0a21229899d7bb08d19dce5a5abb6bb48023b80f7216e29e2b92e1e6",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "strict_baseline_native": {
+        "counts_U_T_assigned_C": [
+          86776,
+          26502,
+          1058591,
+          57434
+        ],
+        "three_state_total": 170712,
+        "state_sha256": "b106b99741a4cb115d9ceed0ea3604ed46e0cc9a48d1feb865c2a0a60661c992",
+        "r2_duplicate_coordinate_conflicts": 3
+      },
+      "strict_baseline_final": {
+        "counts_U_T_assigned_C": [
+          77936,
+          17780,
+          1079882,
+          53705
+        ],
+        "three_state_total": 149421,
+        "state_sha256": "b106b99741a4cb115d9ceed0ea3604ed46e0cc9a48d1feb865c2a0a60661c992",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "original_seed_only_native": {
+        "counts_U_T_assigned_C": [
+          86692,
+          26245,
+          1056956,
+          59410
+        ],
+        "three_state_total": 172347,
+        "state_sha256": "8c1536628c86fb06d83a8e5896aa4d0fba2ed6df4f71ef2e28d50c67add29f06",
+        "r2_duplicate_coordinate_conflicts": 3
+      },
+      "strict_seed_only_native": {
+        "counts_U_T_assigned_C": [
+          86775,
+          26507,
+          1058010,
+          58011
+        ],
+        "three_state_total": 171293,
+        "state_sha256": "0857aaf76c686df30a9dbf1b981c252b5c1d7e233698bdf4f4016e36ebe10b83",
+        "r2_duplicate_coordinate_conflicts": 3
+      },
+      "original_seed_only_final": {
+        "counts_U_T_assigned_C": [
+          77886,
+          17557,
+          1078381,
+          55479
+        ],
+        "three_state_total": 150922,
+        "state_sha256": "8c1536628c86fb06d83a8e5896aa4d0fba2ed6df4f71ef2e28d50c67add29f06",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "strict_seed_only_final": {
+        "counts_U_T_assigned_C": [
+          77935,
+          17787,
+          1079391,
+          54190
+        ],
+        "three_state_total": 149912,
+        "state_sha256": "0857aaf76c686df30a9dbf1b981c252b5c1d7e233698bdf4f4016e36ebe10b83",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "original_full_track_native": {
+        "counts_U_T_assigned_C": [
+          86846,
+          26337,
+          1022879,
+          93241
+        ],
+        "three_state_total": 206424,
+        "state_sha256": "77467e18fad05697f130e8d33a97c358122ebdde396d4b34fd7d2522110f7c1b",
+        "r2_duplicate_coordinate_conflicts": 3
+      },
+      "strict_full_track_native": {
+        "counts_U_T_assigned_C": [
+          86964,
+          26707,
+          1024491,
+          91141
+        ],
+        "three_state_total": 204812,
+        "state_sha256": "7242f9df574d185fa6bbe8ce88c63eb8d23c4eeea6f72a00b6864ebd23cf55ba",
+        "r2_duplicate_coordinate_conflicts": 3
+      },
+      "original_full_track_final": {
+        "counts_U_T_assigned_C": [
+          77994,
+          17644,
+          1044952,
+          88713
+        ],
+        "three_state_total": 184351,
+        "state_sha256": "77467e18fad05697f130e8d33a97c358122ebdde396d4b34fd7d2522110f7c1b",
+        "r2_duplicate_coordinate_conflicts": 0
+      },
+      "strict_full_track_final": {
+        "counts_U_T_assigned_C": [
+          78076,
+          17969,
+          1046545,
+          86713
+        ],
+        "three_state_total": 182758,
+        "state_sha256": "7242f9df574d185fa6bbe8ce88c63eb8d23c4eeea6f72a00b6864ebd23cf55ba",
+        "r2_duplicate_coordinate_conflicts": 0
+      }
+    }
+  },
+  "paired": {
+    "room0": {
+      "original_baseline_native -> original_seed_only_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 11,
+        "degraded_instances": 18,
+        "unchanged_instances": 43,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 230717,
+        "correct_owner_vertices_after": 230671,
+        "correct_owner_vertex_gain": -46,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            31620,
+            3,
+            234
+          ],
+          [
+            0,
+            49,
+            230668,
+            0
+          ],
+          [
+            0,
+            21,
+            0,
+            74366
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_baseline_native -> original_full_track_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 25,
+        "degraded_instances": 24,
+        "unchanged_instances": 23,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 230717,
+        "correct_owner_vertices_after": 238000,
+        "correct_owner_vertex_gain": 7283,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            30763,
+            143,
+            951
+          ],
+          [
+            0,
+            659,
+            230011,
+            47
+          ],
+          [
+            0,
+            617,
+            7846,
+            65924
+          ]
+        ],
+        "owner_alignment_changes": {
+          "153": [
+            27,
+            null
+          ],
+          "18": [
+            7,
+            27
+          ],
+          "799": [
+            null,
+            50
+          ],
+          "804": [
+            null,
+            7
+          ],
+          "810": [
+            null,
+            55
+          ],
+          "812": [
+            null,
+            85
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 1047
+      },
+      "strict_baseline_native -> strict_seed_only_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 9,
+        "degraded_instances": 16,
+        "unchanged_instances": 47,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 230830,
+        "correct_owner_vertices_after": 230786,
+        "correct_owner_vertex_gain": -44,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            31266,
+            4,
+            224
+          ],
+          [
+            0,
+            48,
+            230782,
+            0
+          ],
+          [
+            0,
+            24,
+            0,
+            74613
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "strict_baseline_native -> strict_full_track_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 24,
+        "degraded_instances": 24,
+        "unchanged_instances": 24,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 230830,
+        "correct_owner_vertices_after": 238191,
+        "correct_owner_vertex_gain": 7361,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            30401,
+            168,
+            925
+          ],
+          [
+            0,
+            612,
+            230160,
+            58
+          ],
+          [
+            0,
+            564,
+            7863,
+            66210
+          ]
+        ],
+        "owner_alignment_changes": {
+          "153": [
+            27,
+            null
+          ],
+          "18": [
+            7,
+            27
+          ],
+          "799": [
+            null,
+            50
+          ],
+          "804": [
+            null,
+            7
+          ],
+          "810": [
+            null,
+            55
+          ],
+          "812": [
+            null,
+            85
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 1056
+      },
+      "original_baseline_native -> strict_baseline_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 33,
+        "degraded_instances": 25,
+        "unchanged_instances": 14,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 230717,
+        "correct_owner_vertices_after": 230830,
+        "correct_owner_vertex_gain": 113,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            31494,
+            113,
+            250
+          ],
+          [
+            0,
+            0,
+            230717,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            74387
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_seed_only_native -> strict_seed_only_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 34,
+        "degraded_instances": 25,
+        "unchanged_instances": 13,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 230671,
+        "correct_owner_vertices_after": 230786,
+        "correct_owner_vertex_gain": 115,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            31338,
+            115,
+            237
+          ],
+          [
+            0,
+            0,
+            230671,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            74600
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_full_track_native -> strict_full_track_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 37,
+        "degraded_instances": 22,
+        "unchanged_instances": 13,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 238000,
+        "correct_owner_vertices_after": 238191,
+        "correct_owner_vertex_gain": 191,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            31577,
+            191,
+            271
+          ],
+          [
+            0,
+            0,
+            238000,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            66922
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_baseline_final -> original_seed_only_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 11,
+        "degraded_instances": 17,
+        "unchanged_instances": 44,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 233303,
+        "correct_owner_vertices_after": 233267,
+        "correct_owner_vertex_gain": -36,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            28672,
+            3,
+            234
+          ],
+          [
+            0,
+            39,
+            233264,
+            0
+          ],
+          [
+            0,
+            12,
+            0,
+            74737
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_baseline_final -> original_full_track_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 25,
+        "degraded_instances": 24,
+        "unchanged_instances": 23,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 233303,
+        "correct_owner_vertices_after": 240655,
+        "correct_owner_vertex_gain": 7352,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            27818,
+            132,
+            959
+          ],
+          [
+            0,
+            598,
+            232635,
+            70
+          ],
+          [
+            0,
+            586,
+            7888,
+            66275
+          ]
+        ],
+        "owner_alignment_changes": {
+          "153": [
+            27,
+            null
+          ],
+          "18": [
+            7,
+            27
+          ],
+          "799": [
+            null,
+            50
+          ],
+          "804": [
+            null,
+            7
+          ],
+          "810": [
+            null,
+            55
+          ],
+          "812": [
+            null,
+            85
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 1099
+      },
+      "strict_baseline_final -> strict_seed_only_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 11,
+        "degraded_instances": 15,
+        "unchanged_instances": 46,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 233391,
+        "correct_owner_vertices_after": 233357,
+        "correct_owner_vertex_gain": -34,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            28353,
+            4,
+            224
+          ],
+          [
+            0,
+            38,
+            233353,
+            0
+          ],
+          [
+            0,
+            15,
+            0,
+            74974
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "strict_baseline_final -> strict_full_track_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 24,
+        "degraded_instances": 24,
+        "unchanged_instances": 24,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 233391,
+        "correct_owner_vertices_after": 240823,
+        "correct_owner_vertex_gain": 7432,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            27492,
+            159,
+            930
+          ],
+          [
+            0,
+            549,
+            232762,
+            80
+          ],
+          [
+            0,
+            541,
+            7902,
+            66546
+          ]
+        ],
+        "owner_alignment_changes": {
+          "153": [
+            27,
+            null
+          ],
+          "18": [
+            7,
+            27
+          ],
+          "799": [
+            null,
+            50
+          ],
+          "804": [
+            null,
+            7
+          ],
+          "810": [
+            null,
+            55
+          ],
+          "812": [
+            null,
+            85
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 1108
+      },
+      "original_baseline_final -> strict_baseline_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 28,
+        "degraded_instances": 26,
+        "unchanged_instances": 18,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 233303,
+        "correct_owner_vertices_after": 233391,
+        "correct_owner_vertex_gain": 88,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            28567,
+            95,
+            247
+          ],
+          [
+            0,
+            6,
+            233296,
+            1
+          ],
+          [
+            0,
+            8,
+            0,
+            74741
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_seed_only_final -> strict_seed_only_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 30,
+        "degraded_instances": 25,
+        "unchanged_instances": 17,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 233267,
+        "correct_owner_vertices_after": 233357,
+        "correct_owner_vertex_gain": 90,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            28392,
+            97,
+            234
+          ],
+          [
+            0,
+            6,
+            233260,
+            1
+          ],
+          [
+            0,
+            8,
+            0,
+            74963
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_full_track_final -> strict_full_track_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+        "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "corrected_instances": 35,
+        "degraded_instances": 23,
+        "unchanged_instances": 14,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 240655,
+        "correct_owner_vertices_after": 240823,
+        "correct_owner_vertex_gain": 168,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            4760,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            28570,
+            174,
+            258
+          ],
+          [
+            0,
+            5,
+            240649,
+            1
+          ],
+          [
+            0,
+            7,
+            0,
+            67297
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      }
+    },
+    "room2": {
+      "original_baseline_native -> original_seed_only_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 13,
+        "degraded_instances": 3,
+        "unchanged_instances": 36,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 93298,
+        "correct_owner_vertices_after": 93223,
+        "correct_owner_vertex_gain": -75,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            22283,
+            0,
+            0
+          ],
+          [
+            0,
+            75,
+            93223,
+            0
+          ],
+          [
+            0,
+            229,
+            0,
+            58444
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_baseline_native -> original_full_track_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 19,
+        "degraded_instances": 12,
+        "unchanged_instances": 21,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 93298,
+        "correct_owner_vertices_after": 107996,
+        "correct_owner_vertex_gain": 14698,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            22010,
+            209,
+            64
+          ],
+          [
+            0,
+            1648,
+            91175,
+            475
+          ],
+          [
+            0,
+            12875,
+            16612,
+            29186
+          ]
+        ],
+        "owner_alignment_changes": {
+          "350": [
+            null,
+            52
+          ],
+          "352": [
+            null,
+            7
+          ],
+          "357": [
+            null,
+            29
+          ],
+          "358": [
+            null,
+            38
+          ],
+          "359": [
+            null,
+            57
+          ],
+          "360": [
+            null,
+            19
+          ],
+          "371": [
+            null,
+            56
+          ],
+          "52": [
+            7,
+            6
+          ],
+          "55": [
+            57,
+            null
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 3483
+      },
+      "strict_baseline_native -> strict_seed_only_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 13,
+        "degraded_instances": 3,
+        "unchanged_instances": 36,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 93570,
+        "correct_owner_vertices_after": 93506,
+        "correct_owner_vertex_gain": -64,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            21815,
+            7,
+            0
+          ],
+          [
+            0,
+            71,
+            93499,
+            0
+          ],
+          [
+            0,
+            232,
+            0,
+            58630
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "strict_baseline_native -> strict_full_track_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 19,
+        "degraded_instances": 13,
+        "unchanged_instances": 20,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 93570,
+        "correct_owner_vertices_after": 108389,
+        "correct_owner_vertex_gain": 14819,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            21499,
+            239,
+            84
+          ],
+          [
+            0,
+            1570,
+            91514,
+            486
+          ],
+          [
+            0,
+            12783,
+            16636,
+            29443
+          ]
+        ],
+        "owner_alignment_changes": {
+          "350": [
+            null,
+            52
+          ],
+          "352": [
+            null,
+            7
+          ],
+          "357": [
+            null,
+            29
+          ],
+          "358": [
+            null,
+            38
+          ],
+          "359": [
+            null,
+            57
+          ],
+          "360": [
+            null,
+            19
+          ],
+          "371": [
+            null,
+            56
+          ],
+          "52": [
+            7,
+            6
+          ],
+          "55": [
+            57,
+            null
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 3496
+      },
+      "original_baseline_native -> strict_baseline_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 20,
+        "degraded_instances": 17,
+        "unchanged_instances": 15,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 93298,
+        "correct_owner_vertices_after": 93570,
+        "correct_owner_vertex_gain": 272,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            21822,
+            272,
+            189
+          ],
+          [
+            0,
+            0,
+            93298,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            58673
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_seed_only_native -> strict_seed_only_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 20,
+        "degraded_instances": 19,
+        "unchanged_instances": 13,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 93223,
+        "correct_owner_vertices_after": 93506,
+        "correct_owner_vertex_gain": 283,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            22118,
+            283,
+            186
+          ],
+          [
+            0,
+            0,
+            93223,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            58444
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_full_track_native -> strict_full_track_native": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 26,
+        "degraded_instances": 15,
+        "unchanged_instances": 11,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 107996,
+        "correct_owner_vertices_after": 108389,
+        "correct_owner_vertex_gain": 393,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            35852,
+            393,
+            288
+          ],
+          [
+            0,
+            0,
+            107996,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            29725
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_baseline_final -> original_seed_only_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 13,
+        "degraded_instances": 3,
+        "unchanged_instances": 36,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 95346,
+        "correct_owner_vertices_after": 95303,
+        "correct_owner_vertex_gain": -43,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19836,
+            31,
+            6
+          ],
+          [
+            0,
+            74,
+            95272,
+            0
+          ],
+          [
+            0,
+            215,
+            0,
+            58820
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_baseline_final -> original_full_track_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 19,
+        "degraded_instances": 11,
+        "unchanged_instances": 22,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 95346,
+        "correct_owner_vertices_after": 110184,
+        "correct_owner_vertex_gain": 14838,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19562,
+            231,
+            80
+          ],
+          [
+            0,
+            1549,
+            93253,
+            544
+          ],
+          [
+            0,
+            12772,
+            16700,
+            29563
+          ]
+        ],
+        "owner_alignment_changes": {
+          "350": [
+            null,
+            52
+          ],
+          "352": [
+            null,
+            7
+          ],
+          "357": [
+            null,
+            29
+          ],
+          "358": [
+            null,
+            38
+          ],
+          "359": [
+            null,
+            57
+          ],
+          "360": [
+            null,
+            19
+          ],
+          "371": [
+            null,
+            56
+          ],
+          "52": [
+            7,
+            6
+          ],
+          "55": [
+            57,
+            null
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 3622
+      },
+      "strict_baseline_final -> strict_seed_only_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 13,
+        "degraded_instances": 3,
+        "unchanged_instances": 36,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 95579,
+        "correct_owner_vertices_after": 95543,
+        "correct_owner_vertex_gain": -36,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19401,
+            35,
+            5
+          ],
+          [
+            0,
+            71,
+            95508,
+            0
+          ],
+          [
+            0,
+            218,
+            0,
+            59016
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "strict_baseline_final -> strict_full_track_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 19,
+        "degraded_instances": 13,
+        "unchanged_instances": 20,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 95579,
+        "correct_owner_vertices_after": 110571,
+        "correct_owner_vertex_gain": 14992,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19070,
+            275,
+            96
+          ],
+          [
+            0,
+            1464,
+            93563,
+            552
+          ],
+          [
+            0,
+            12675,
+            16733,
+            29826
+          ]
+        ],
+        "owner_alignment_changes": {
+          "350": [
+            null,
+            52
+          ],
+          "352": [
+            null,
+            7
+          ],
+          "357": [
+            null,
+            29
+          ],
+          "358": [
+            null,
+            38
+          ],
+          "359": [
+            null,
+            57
+          ],
+          "360": [
+            null,
+            19
+          ],
+          "371": [
+            null,
+            56
+          ],
+          "52": [
+            7,
+            6
+          ],
+          "55": [
+            57,
+            null
+          ]
+        },
+        "quality_changed_on_same_identity_vertices": 3639
+      },
+      "original_baseline_final -> strict_baseline_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 20,
+        "degraded_instances": 16,
+        "unchanged_instances": 16,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 95346,
+        "correct_owner_vertices_after": 95579,
+        "correct_owner_vertex_gain": 233,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19426,
+            244,
+            203
+          ],
+          [
+            0,
+            10,
+            95335,
+            1
+          ],
+          [
+            0,
+            5,
+            0,
+            59030
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_seed_only_final -> strict_seed_only_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 21,
+        "degraded_instances": 17,
+        "unchanged_instances": 14,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 95303,
+        "correct_owner_vertices_after": 95543,
+        "correct_owner_vertex_gain": 240,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            19674,
+            253,
+            198
+          ],
+          [
+            0,
+            12,
+            95290,
+            1
+          ],
+          [
+            0,
+            4,
+            0,
+            58822
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      },
+      "original_full_track_final -> strict_full_track_final": {
+        "evaluation_profile": "object_observed_repair",
+        "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+        "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+        "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+        "corrected_instances": 25,
+        "degraded_instances": 15,
+        "unchanged_instances": 12,
+        "instance_change_definition": "best-GT IoU improves/degrades on exactly the same observed reference surface",
+        "correct_owner_vertices_before": 110184,
+        "correct_owner_vertices_after": 110571,
+        "correct_owner_vertex_gain": 387,
+        "fixed_selected_target_GT_ids": [],
+        "target_definition": "Frozen original human-seed target list intersect current qualified observed GT, for posthoc analysis only",
+        "quality_order": [
+          "no_geometry",
+          "unassigned_with_geometry",
+          "correct_owner",
+          "wrong_owner"
+        ],
+        "quality_transition_matrix": [
+          [
+            5175,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            33187,
+            403,
+            293
+          ],
+          [
+            0,
+            14,
+            110168,
+            2
+          ],
+          [
+            0,
+            8,
+            0,
+            30179
+          ]
+        ],
+        "owner_alignment_changes": {},
+        "quality_changed_on_same_identity_vertices": 0
+      }
+    }
+  },
+  "GT_and_evaluator_sha256": {
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/configs/current_protocol.json": "0cb8a9171169a2c2fe202e1446307c7d7abe15ec3e31c47c33e5f156f864dc30",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_audit_20261009/pooled_metrics.review_r2.json": "bbf38b73bec5c0c8f9738fe41b972adf38951dfc87596bc5e8909495ca974c4f",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_audit_20261009/manual_comparison.review_r2.json": "012aead7ba216b1e93aafa24629d44b8bae1d0301402ddeb56f35d1dafc8d9f0",
+    "/home/chenkejun/CVPR/experiments/p1a1_strict_repair_20261009/evaluate_strict_repair_r2.py": "ed91e829f051b2e2cb4434b234757b07a73203daa2cbb6d93d6fde1794eb3b22",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/independent_correctness.json": "127bdb33551bb870bb1929f785b026069d5bae234b3dfb1965060a028be8b40d",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz": "a5fbea2c9273751a3abf7fbc5a05378ceb5625cf0fa6e395638bf6a1a3eaca6c",
+    "/data/chenkejun/CVPR/revisable_instance_map/p1a1_raw_replica8_20261002/native/room0/P1-A1/surface_p0/materialization_report.json": "863748e11eb10bb80c729a1891e1b11ea9aa20eabcb6db48b1a73534f4276d3e",
+    "/data/chenkejun/CVPR/revisable_instance_map/p1a1_raw_replica8_20261002/native/room0/P1-A1/association/association_report.json": "dcfc151ccd0f6946b3bf237fe7bb9b3cafa932f012affd8e6f523cbd01d4d036",
+    "/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/room0/configs/raw.json": "fdfd15755730194878774fdaff8147badd84192dee695a3c4baaeae1fec3aa2a",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/geometry_cache/room0/fixed_gt_to_tsdf_r2.npz": "da1b5e0952110d253fefaf5bc1d47b782b487b7c856b9cc40bf8bc23bd83d0ba",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room2/gt.npz": "3cbbd1bb19d09da0c474f0e0ac08e899a398f27c9f1196d9fd10a9a6aaae0d3d",
+    "/data/chenkejun/CVPR/revisable_instance_map/p1a1_raw_replica8_20261002/native/room2/P1-A1/surface_p0/materialization_report.json": "ecf7d14d34cf54ad99f08842ed7858fe394499972e75865c021975c2b3ab47af",
+    "/data/chenkejun/CVPR/revisable_instance_map/p1a1_raw_replica8_20261002/native/room2/P1-A1/association/association_report.json": "40a23fb814e78b20aa0cb3d8dfc52347cb32f8e179ec936732e1c3dfc8df42d7",
+    "/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/room2/configs/raw.json": "af39d47ef6ffcfa646f4ec4c014dc53c339226a084b479b98afeee2768a944fa",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/geometry_cache/room2/fixed_gt_to_tsdf_r2.npz": "64165ce52904f905e79d5d47c4db02990f0b2e04a0b36bb3d2ab5ac7b510e619"
+  }
+}

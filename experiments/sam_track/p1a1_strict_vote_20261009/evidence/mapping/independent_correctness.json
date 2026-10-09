@@ -1,0 +1,75 @@
+{
+  "status": "PASS",
+  "real_frame_conditions_checked": 1600,
+  "scenes": {
+    "room0": {
+      "seed_only": {
+        "verified_frames": 400,
+        "updated_frames": 11,
+        "collision_point_frame_events_before": 56837,
+        "collision_point_frame_events_after": 56952,
+        "ambiguous_candidate_key_units_before": 113837,
+        "ambiguous_candidate_key_units_after": 114069,
+        "same_ID_shared_candidate_keys_preserved": 3,
+        "shared_keys_with_effective_vote_after": 0,
+        "shared_keys_abstained_due_to_other_ID": 3,
+        "streaming_full_recompute_equals_stored_delta": true,
+        "all_frame_point_votes_unique": true,
+        "maximum_effective_observed_frames_at_one_point": 229
+      },
+      "full_track": {
+        "verified_frames": 400,
+        "updated_frames": 392,
+        "collision_point_frame_events_before": 56837,
+        "collision_point_frame_events_after": 74629,
+        "ambiguous_candidate_key_units_before": 113837,
+        "ambiguous_candidate_key_units_after": 149697,
+        "same_ID_shared_candidate_keys_preserved": 44,
+        "shared_keys_with_effective_vote_after": 9,
+        "shared_keys_abstained_due_to_other_ID": 35,
+        "streaming_full_recompute_equals_stored_delta": true,
+        "all_frame_point_votes_unique": true,
+        "maximum_effective_observed_frames_at_one_point": 225
+      }
+    },
+    "room2": {
+      "seed_only": {
+        "verified_frames": 400,
+        "updated_frames": 14,
+        "collision_point_frame_events_before": 62371,
+        "collision_point_frame_events_after": 62713,
+        "ambiguous_candidate_key_units_before": 125019,
+        "ambiguous_candidate_key_units_after": 125704,
+        "same_ID_shared_candidate_keys_preserved": 6,
+        "shared_keys_with_effective_vote_after": 6,
+        "shared_keys_abstained_due_to_other_ID": 0,
+        "streaming_full_recompute_equals_stored_delta": true,
+        "all_frame_point_votes_unique": true,
+        "maximum_effective_observed_frames_at_one_point": 216
+      },
+      "full_track": {
+        "verified_frames": 400,
+        "updated_frames": 385,
+        "collision_point_frame_events_before": 62371,
+        "collision_point_frame_events_after": 77092,
+        "ambiguous_candidate_key_units_before": 125019,
+        "ambiguous_candidate_key_units_after": 154658,
+        "same_ID_shared_candidate_keys_preserved": 145,
+        "shared_keys_with_effective_vote_after": 66,
+        "shared_keys_abstained_due_to_other_ID": 79,
+        "streaming_full_recompute_equals_stored_delta": true,
+        "all_frame_point_votes_unique": true,
+        "maximum_effective_observed_frames_at_one_point": 216
+      }
+    }
+  },
+  "GT_read": false,
+  "independent_of_one_vote_and_strict_vote_ops": true,
+  "all_prediction_hashes_unchanged": true,
+  "definitions": {
+    "collision_point_frame_events": "Distinct (frame,point) with >1 ID in the raw candidate set",
+    "ambiguous_candidate_key_units": "All (point,ID) keys on ambiguous points, removed by abstention",
+    "legacy_receipt_name_note": "Primary replay receipts ambiguous_point_frames_before/after store candidate key units; use the distinct event counts in this independent audit instead"
+  },
+  "audit_code_sha256": "053acea8e438d84465430f70c01cead9b3e2a4d99c233915ab8f2b4bf5ddf79c"
+}

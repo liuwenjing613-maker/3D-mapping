@@ -1,0 +1,758 @@
+{
+  "status": "PASS",
+  "profile_revision": 2,
+  "GT_used_to_change_repairs": false,
+  "main_metrics_sha256_unchanged": "0365cf1d9f017263043066ce6ecf006624072fd8f82fd78c257ac82edc96dd68",
+  "diagnostic_correction": "Initial grouping compared compact legacy evaluation IDs directly with physical R2 IDs. Corrected groups use verified reference-vertex lineage, no modulo guess on compact IDs. Main metrics and predictions were correct and unchanged.",
+  "corrected_pairs": 28,
+  "scenes": {
+    "room0": {
+      "legacy_selected_target_ids": [
+        4000,
+        5003,
+        5004,
+        5006,
+        5007,
+        6001,
+        7000,
+        7001,
+        7002,
+        7003,
+        7004,
+        8000,
+        9005,
+        9006,
+        11000,
+        25000,
+        31000,
+        32000,
+        39000,
+        39001,
+        39004,
+        39005,
+        39006,
+        46000,
+        48000
+      ],
+      "selected_physical_raw_GT_ids": [
+        3,
+        4,
+        7,
+        10,
+        11,
+        22,
+        27,
+        30,
+        35,
+        36,
+        42,
+        43,
+        50,
+        55,
+        58,
+        60,
+        61,
+        73,
+        75,
+        77,
+        79,
+        85,
+        90,
+        92,
+        93
+      ],
+      "mapped_but_not_evaluable": [],
+      "reference_vertex_verified_mapping": [
+        {
+          "legacy_compact_evaluation_id": 4000,
+          "physical_raw_GT_id": 73,
+          "reference_vertices_checked": 18421,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "chair"
+        },
+        {
+          "legacy_compact_evaluation_id": 5003,
+          "physical_raw_GT_id": 22,
+          "reference_vertices_checked": 13996,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5004,
+          "physical_raw_GT_id": 30,
+          "reference_vertices_checked": 13749,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5006,
+          "physical_raw_GT_id": 50,
+          "reference_vertices_checked": 6636,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5007,
+          "physical_raw_GT_id": 58,
+          "reference_vertices_checked": 13780,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 6001,
+          "physical_raw_GT_id": 77,
+          "reference_vertices_checked": 39756,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "sofa"
+        },
+        {
+          "legacy_compact_evaluation_id": 7000,
+          "physical_raw_GT_id": 7,
+          "reference_vertices_checked": 2618,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "table"
+        },
+        {
+          "legacy_compact_evaluation_id": 7001,
+          "physical_raw_GT_id": 10,
+          "reference_vertices_checked": 2393,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "table"
+        },
+        {
+          "legacy_compact_evaluation_id": 7002,
+          "physical_raw_GT_id": 11,
+          "reference_vertices_checked": 20657,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "table"
+        },
+        {
+          "legacy_compact_evaluation_id": 7003,
+          "physical_raw_GT_id": 27,
+          "reference_vertices_checked": 2486,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "table"
+        },
+        {
+          "legacy_compact_evaluation_id": 7004,
+          "physical_raw_GT_id": 93,
+          "reference_vertices_checked": 2691,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "table"
+        },
+        {
+          "legacy_compact_evaluation_id": 8000,
+          "physical_raw_GT_id": 60,
+          "reference_vertices_checked": 59967,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "rug"
+        },
+        {
+          "legacy_compact_evaluation_id": 9005,
+          "physical_raw_GT_id": 42,
+          "reference_vertices_checked": 1607,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "window"
+        },
+        {
+          "legacy_compact_evaluation_id": 9006,
+          "physical_raw_GT_id": 61,
+          "reference_vertices_checked": 6772,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "window"
+        },
+        {
+          "legacy_compact_evaluation_id": 11000,
+          "physical_raw_GT_id": 36,
+          "reference_vertices_checked": 12913,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "door"
+        },
+        {
+          "legacy_compact_evaluation_id": 25000,
+          "physical_raw_GT_id": 35,
+          "reference_vertices_checked": 1512,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "indoor-plant"
+        },
+        {
+          "legacy_compact_evaluation_id": 31000,
+          "physical_raw_GT_id": 55,
+          "reference_vertices_checked": 327,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "plant-stand"
+        },
+        {
+          "legacy_compact_evaluation_id": 32000,
+          "physical_raw_GT_id": 75,
+          "reference_vertices_checked": 4039,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "basket"
+        },
+        {
+          "legacy_compact_evaluation_id": 39000,
+          "physical_raw_GT_id": 3,
+          "reference_vertices_checked": 234,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "book"
+        },
+        {
+          "legacy_compact_evaluation_id": 39001,
+          "physical_raw_GT_id": 4,
+          "reference_vertices_checked": 296,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "book"
+        },
+        {
+          "legacy_compact_evaluation_id": 39004,
+          "physical_raw_GT_id": 85,
+          "reference_vertices_checked": 206,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "book"
+        },
+        {
+          "legacy_compact_evaluation_id": 39005,
+          "physical_raw_GT_id": 90,
+          "reference_vertices_checked": 325,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "book"
+        },
+        {
+          "legacy_compact_evaluation_id": 39006,
+          "physical_raw_GT_id": 92,
+          "reference_vertices_checked": 308,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "book"
+        },
+        {
+          "legacy_compact_evaluation_id": 46000,
+          "physical_raw_GT_id": 43,
+          "reference_vertices_checked": 1050,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "pot"
+        },
+        {
+          "legacy_compact_evaluation_id": 48000,
+          "physical_raw_GT_id": 79,
+          "reference_vertices_checked": 876,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "candle"
+        }
+      ]
+    },
+    "room2": {
+      "legacy_selected_target_ids": [
+        4001,
+        4002,
+        4003,
+        4004,
+        5000,
+        5001,
+        5002,
+        5003,
+        5004,
+        5005,
+        8000,
+        9002,
+        10001,
+        10003,
+        21001,
+        25000,
+        25001,
+        30000,
+        30002,
+        30004
+      ],
+      "selected_physical_raw_GT_ids": [
+        1,
+        6,
+        7,
+        9,
+        11,
+        14,
+        19,
+        27,
+        29,
+        32,
+        38,
+        39,
+        42,
+        46,
+        47,
+        52,
+        55,
+        56,
+        57,
+        60
+      ],
+      "mapped_but_not_evaluable": [],
+      "reference_vertex_verified_mapping": [
+        {
+          "legacy_compact_evaluation_id": 4001,
+          "physical_raw_GT_id": 6,
+          "reference_vertices_checked": 9124,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "chair"
+        },
+        {
+          "legacy_compact_evaluation_id": 4002,
+          "physical_raw_GT_id": 7,
+          "reference_vertices_checked": 9503,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "chair"
+        },
+        {
+          "legacy_compact_evaluation_id": 4003,
+          "physical_raw_GT_id": 9,
+          "reference_vertices_checked": 9473,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "chair"
+        },
+        {
+          "legacy_compact_evaluation_id": 4004,
+          "physical_raw_GT_id": 11,
+          "reference_vertices_checked": 9110,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "chair"
+        },
+        {
+          "legacy_compact_evaluation_id": 5000,
+          "physical_raw_GT_id": 19,
+          "reference_vertices_checked": 6169,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5001,
+          "physical_raw_GT_id": 29,
+          "reference_vertices_checked": 13076,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5002,
+          "physical_raw_GT_id": 32,
+          "reference_vertices_checked": 15070,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5003,
+          "physical_raw_GT_id": 38,
+          "reference_vertices_checked": 7200,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5004,
+          "physical_raw_GT_id": 52,
+          "reference_vertices_checked": 7302,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 5005,
+          "physical_raw_GT_id": 57,
+          "reference_vertices_checked": 3687,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "blinds"
+        },
+        {
+          "legacy_compact_evaluation_id": 8000,
+          "physical_raw_GT_id": 1,
+          "reference_vertices_checked": 43433,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "rug"
+        },
+        {
+          "legacy_compact_evaluation_id": 9002,
+          "physical_raw_GT_id": 60,
+          "reference_vertices_checked": 5137,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "window"
+        },
+        {
+          "legacy_compact_evaluation_id": 10001,
+          "physical_raw_GT_id": 39,
+          "reference_vertices_checked": 4346,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "lamp"
+        },
+        {
+          "legacy_compact_evaluation_id": 10003,
+          "physical_raw_GT_id": 55,
+          "reference_vertices_checked": 4349,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "lamp"
+        },
+        {
+          "legacy_compact_evaluation_id": 21001,
+          "physical_raw_GT_id": 42,
+          "reference_vertices_checked": 606,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "vent"
+        },
+        {
+          "legacy_compact_evaluation_id": 25000,
+          "physical_raw_GT_id": 47,
+          "reference_vertices_checked": 2046,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "indoor-plant"
+        },
+        {
+          "legacy_compact_evaluation_id": 25001,
+          "physical_raw_GT_id": 56,
+          "reference_vertices_checked": 584,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "indoor-plant"
+        },
+        {
+          "legacy_compact_evaluation_id": 30000,
+          "physical_raw_GT_id": 14,
+          "reference_vertices_checked": 1139,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "vase"
+        },
+        {
+          "legacy_compact_evaluation_id": 30002,
+          "physical_raw_GT_id": 27,
+          "reference_vertices_checked": 1696,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "vase"
+        },
+        {
+          "legacy_compact_evaluation_id": 30004,
+          "physical_raw_GT_id": 46,
+          "reference_vertices_checked": 895,
+          "evaluable_in_current_scope": true,
+          "semantic_class": "vase"
+        }
+      ]
+    }
+  },
+  "full_track_physical_attribution": {
+    "room0_original": {
+      "correct_owner_gain_at_changed_identity_vertices": 6375,
+      "correct_owner_gain_at_unchanged_identity_vertices": 977,
+      "changed_identity_target_reference_vertices": 10124,
+      "quality_transition_on_changed_identity_vertices": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          132,
+          959
+        ],
+        [
+          0,
+          598,
+          760,
+          9
+        ],
+        [
+          0,
+          586,
+          6850,
+          230
+        ]
+      ],
+      "quality_transition_on_unchanged_identity_vertices": [
+        [
+          4760,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          27818,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          231875,
+          61
+        ],
+        [
+          0,
+          0,
+          1038,
+          66045
+        ]
+      ]
+    },
+    "room0_strict": {
+      "correct_owner_gain_at_changed_identity_vertices": 6464,
+      "correct_owner_gain_at_unchanged_identity_vertices": 968,
+      "changed_identity_target_reference_vertices": 10069,
+      "quality_transition_on_changed_identity_vertices": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          159,
+          930
+        ],
+        [
+          0,
+          549,
+          770,
+          10
+        ],
+        [
+          0,
+          541,
+          6864,
+          246
+        ]
+      ],
+      "quality_transition_on_unchanged_identity_vertices": [
+        [
+          4760,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          27492,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          231992,
+          70
+        ],
+        [
+          0,
+          0,
+          1038,
+          66300
+        ]
+      ]
+    },
+    "room2_original": {
+      "correct_owner_gain_at_changed_identity_vertices": 12258,
+      "correct_owner_gain_at_unchanged_identity_vertices": 2580,
+      "changed_identity_target_reference_vertices": 31377,
+      "quality_transition_on_changed_identity_vertices": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          231,
+          80
+        ],
+        [
+          0,
+          1549,
+          2662,
+          23
+        ],
+        [
+          0,
+          12772,
+          13599,
+          461
+        ]
+      ],
+      "quality_transition_on_unchanged_identity_vertices": [
+        [
+          5175,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          19562,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          90591,
+          521
+        ],
+        [
+          0,
+          0,
+          3101,
+          29102
+        ]
+      ]
+    },
+    "room2_strict": {
+      "correct_owner_gain_at_changed_identity_vertices": 12407,
+      "correct_owner_gain_at_unchanged_identity_vertices": 2585,
+      "changed_identity_target_reference_vertices": 31311,
+      "quality_transition_on_changed_identity_vertices": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          275,
+          96
+        ],
+        [
+          0,
+          1464,
+          2669,
+          25
+        ],
+        [
+          0,
+          12675,
+          13621,
+          486
+        ]
+      ],
+      "quality_transition_on_unchanged_identity_vertices": [
+        [
+          5175,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          19070,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          90894,
+          527
+        ],
+        [
+          0,
+          0,
+          3112,
+          29340
+        ]
+      ]
+    }
+  },
+  "protected_sha256": {
+    "/home/chenkejun/CVPR/experiments/p1a1_strict_repair_20261009/analyze_targets_and_attribution_r2.py": "f23ab26183b2e3223f7a08111c4baa8609d6a7ff1de0c0f48220950829b8e32d",
+    "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz": "a5fbea2c9273751a3abf7fbc5a05378ceb5625cf0fa6e395638bf6a1a3eaca6c",
+    "/home/chenkejun/beauty/ovimap_aligned_eval_20260908/reference/room0/reference.npz": "9ca9c5ae011c4a7ca114f05da2946e133b977e07b5b0a01352431d30c713e2a0",
+    "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/evaluation_summary.json": "9179d33b9d979a4f3e1d9f78a686964e83d8d4c1a37ce00bac9979fbb391d9ea",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt_scope.json": "b61fc6f7b3c54a43a8bf9b3fb5e7f1868e819018c6161be3e2c8de3d666a2f69",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_baseline_native/canonical_prediction.npz": "d56375877f12d42e55eae6c1ca0fb79fc1fdbbf27a1e41b147a46aa36741ff80",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_baseline_final/canonical_prediction.npz": "397858e74e668bccb1a65a661cbead4511770117bd84f37bb27dc3d7a879a164",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_baseline_native/canonical_prediction.npz": "51a77aa4d16aaa90724a8ae7c9c11413af2e650a76028b7d8b91ba46f35d1c85",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_baseline_final/canonical_prediction.npz": "8a5e9102dff0e9cbc8898b968eec976f4de9b5cd1782fbd8ada2d9dc9094da03",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_seed_only_native/canonical_prediction.npz": "a15c20fdee92e79c49d57daab810fe1dc04047a2ea1a5be65e5636d3145c1a67",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_seed_only_native/canonical_prediction.npz": "91d35958893d87819438609074214f88b23b1cda3ffef5e63103686baa9f0836",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_seed_only_final/canonical_prediction.npz": "7aa5e2484ebdb80fbbc0690b3ead59416c108d2c654044ef24111bd6520db613",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_seed_only_final/canonical_prediction.npz": "3faaf3be36ea88abac8770d8d868e3c17644ff247c247a5e07580a40051bc43e",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_full_track_native/canonical_prediction.npz": "df34151cc3e410ed3041b2782ead1a8365bae2ff17ef5456617eef9f76a9857d",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_full_track_native/canonical_prediction.npz": "31c3ff0f11fa83c52837008abe1708d9c0d697e5e0fa81b91ef69a81f81a8038",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_full_track_final/canonical_prediction.npz": "7cc212461fd28c565d19854cdb22ef1d1f136b74d8c5ba62449cd01e582b1830",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_full_track_final/canonical_prediction.npz": "03a90986cc7a3b02529c752a5a277b89584c45efdd19cddb2567843208244a64",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_full_track_final/paired_vs_same_rule_baseline.json": "9857c8ed0395c3a10992f69b83137225b909baf6a2d84e7ab249f69dd57a2ec3",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_full_track_native/paired_vs_same_rule_baseline.json": "d9de3258476ba5e8e0a88836b14a74367519b8d784a85fe03f9a49588e8195c1",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_seed_only_final/paired_vs_same_rule_baseline.json": "0abe1f07951b5c43fc352a607fae9c815e7747a1e5efa87158b2157feb9efb5a",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/original_seed_only_native/paired_vs_same_rule_baseline.json": "c540c10650f1719652688f6d4fc441398316e3a1f32a8fa75f1a2ee01aed50ca",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_baseline_final/paired_vs_original_vote_rule.json": "95c0d829a540e38b42b2aff093a26da303eefa5b035a06a503ae2c3a1cc30236",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_baseline_native/paired_vs_original_vote_rule.json": "63af874c81aaa193b73d49dbad896e17bd0c1092f04e207511af812246e53219",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_full_track_final/paired_vs_original_vote_rule.json": "6137e0ffbc177e4ff102b8893bdc77ca1e7dfd99f074726bb7bb6a74ebbfde19",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_full_track_final/paired_vs_same_rule_baseline.json": "acc4e91d48bf07017e5f9c77f269c6e4578cd4ec06ec1957aaf3c6f4dd33e142",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_full_track_native/paired_vs_original_vote_rule.json": "6c58d4ef53aef9558b0690e6ef28af4f858da16c772c53128e747f4c22a6c22b",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_full_track_native/paired_vs_same_rule_baseline.json": "e03324b01208d3f635e9280db392e9ce2b98a2ad79de8c66c1df9423861acd7c",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_seed_only_final/paired_vs_original_vote_rule.json": "e918d1318eb57e29530f8882a1019813465a77635ad5cfa0fd2dd6e5462b3577",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_seed_only_final/paired_vs_same_rule_baseline.json": "b8e87b667b7c26a0a9bf6db6ee07472268485a7badd78664514150dae77e2b86",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_seed_only_native/paired_vs_original_vote_rule.json": "c88fb0e0e5f5a569460e662bf2f30e1bc8a28640c7e9bc1aa26fe829a6913e08",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room0/strict_seed_only_native/paired_vs_same_rule_baseline.json": "9aa179185fe65e48e0817962f7730de74e294bd8a336da92ca221835b1008c54",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room2/gt.npz": "3cbbd1bb19d09da0c474f0e0ac08e899a398f27c9f1196d9fd10a9a6aaae0d3d",
+    "/home/chenkejun/beauty/ovimap_aligned_eval_20260908/reference/room2/reference.npz": "4d07f929020ad92e19c425ab2ab8c0fe95939fb006bc7f3b86362a2815a483c8",
+    "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/evaluation_summary.json": "f2a9b25262e48574b848280788d27f02538eb6d90d67c76e70768b6cddf5b05d",
+    "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room2/gt_scope.json": "94d3ebf8f65b9caa4b7401ef744f3d7f63c1965f20849e8c04505e93e3621f73",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_baseline_native/canonical_prediction.npz": "1b25c36bf2663c60dece94c858a73ba37d033cc294af928bc7ea5c2b3ba95cc5",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_baseline_final/canonical_prediction.npz": "95169986abd71556c8cc742e670f3c32a30ded6b230026c00ac90342926c4b69",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_baseline_native/canonical_prediction.npz": "1013a8e547743e4249fa7ba2021d6353c294bc1e0b9c7f34d56696b57a16f264",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_baseline_final/canonical_prediction.npz": "d5350bffcfba4d819a3a97a7009ac6eca4f5f2c80e6c88ef9846ba6967db9be5",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_seed_only_native/canonical_prediction.npz": "e3b12129fecf064e0c9c396732216255f9afe3d347af7b35a526a25200b60f37",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_seed_only_native/canonical_prediction.npz": "9409b3f0faba894ba43d42fa5f72f96660e42c910b6a4cec762e14805b1c41de",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_seed_only_final/canonical_prediction.npz": "f30f2c2c337740ba965e1c0e0568bf312d71176c39484700e9b667adbdab0c9e",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_seed_only_final/canonical_prediction.npz": "285c366a5b85ef847ca6defe95d68e3a1ac018048d8300f76005321c80a231a5",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_full_track_native/canonical_prediction.npz": "17707829bbf16deec2047128b02a646397a56fe401a42d29d3b2a030fa9444d2",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_full_track_native/canonical_prediction.npz": "870d7d6ec9c5b21db9417c9708c3fdf98a04053a078d51f9a4c359d5df3ce233",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_full_track_final/canonical_prediction.npz": "94994b78fc6eb090d3b3d9cabe0a1ff9d52fc5b0275c2abe0ba0685a4900ba05",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_full_track_final/canonical_prediction.npz": "288dfcb0fc82d8a382715e25a2c26ca8a63724afaeb84c8c3e1d5b1b9877daad",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_full_track_final/paired_vs_same_rule_baseline.json": "6a9703ff0fbe5cb5bfc48ddf69197bd6d1a48f8bde7f220ff604231d55ccf2d4",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_full_track_native/paired_vs_same_rule_baseline.json": "8c85e50528c6a4bd511461fab7e49e336e61673d9d5e3029b2a772b9f4b22496",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_seed_only_final/paired_vs_same_rule_baseline.json": "eb59b9d598275c05d68ece98dc8a9baf6beefb25718f0119fd71460c893ef963",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/original_seed_only_native/paired_vs_same_rule_baseline.json": "f6125efd83b9a722454d2af17bb6b8e22b0e394f433fd045303cbbbc6560d885",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_baseline_final/paired_vs_original_vote_rule.json": "68dd875a3b1895d4c432ef0d9da9b1ea03370ecd38ae89fb96583f7661ea2b82",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_baseline_native/paired_vs_original_vote_rule.json": "96bce3273251fd8ffdb846e0978cea9a325ca4b3fbb1a7b2d07a74720446720f",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_full_track_final/paired_vs_original_vote_rule.json": "599a22ea784024c27bb1c40a1d441f33d67ec49de0145e16adc59c38cc7464ed",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_full_track_final/paired_vs_same_rule_baseline.json": "e78d3ad0932ad9c820fcae62d005bed2e4be06cb051d9170939398b657f2c5b3",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_full_track_native/paired_vs_original_vote_rule.json": "8b1334a966b8b34a19d441cf14fcf6e1bda79f64e4ba4443356ab02831da6811",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_full_track_native/paired_vs_same_rule_baseline.json": "e1d6ebfc17f1343ce44f9b06ed9bf7b742c40f1e3c3f4bf81b25e98d1bcc1741",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_seed_only_final/paired_vs_original_vote_rule.json": "dee05d172392cdb231998e68ba716cfec3240616a22e6dafb180fc608b40b056",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_seed_only_final/paired_vs_same_rule_baseline.json": "dbc5b237527a697f31f3d8b0f675108eb00f4c7cd796555e404fbc8f138f3b3f",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_seed_only_native/paired_vs_original_vote_rule.json": "9a99908e2d68f572de8c03cb466e1142a0b10002711ddab92e4004998b2ee174",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_seed_only_native/paired_vs_same_rule_baseline.json": "48690e45ef7e13ff6ea2d02b67e3c5f420132fa2dd14f68270ea3ebcbe1dbfd0"
+  },
+  "corrected_pair_sha256": {
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/original_full_track_final/paired_vs_same_rule_baseline.json": "1c0ac88813a12039ccff9eac18cfb1dab803b005192becde81314031db2963ea",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/original_full_track_native/paired_vs_same_rule_baseline.json": "8b0e1b13fe976b932cb9ed1f6c7a25582721c1bd2e17b04d26d5fa185e227fd1",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/original_seed_only_final/paired_vs_same_rule_baseline.json": "2eaf3c0ab157ad8a83db9a5c58e39937674ccba40a9fc9537553ea05b7f77012",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/original_seed_only_native/paired_vs_same_rule_baseline.json": "930c1577d36d0733d181bdb3a234ebaa241f6d29d0e4d97827936282b9b1df35",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_baseline_final/paired_vs_original_vote_rule.json": "6289515992fda8566eda7b83f30a25a9f47c4bfdabae04a43853a66f2121d0e2",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_baseline_native/paired_vs_original_vote_rule.json": "cd2aca9cb4f9a04a40653e191029956c1f33599eaf38cda0bb4cc954dca8686b",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_full_track_final/paired_vs_original_vote_rule.json": "f588a9d9d9369c914200660bfb668500c7c76d31b2a2757e3b97950a2f0e3aef",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_full_track_final/paired_vs_same_rule_baseline.json": "6f149c367f39559361e70f470772f31aaecdb49697db931d844b1155626643df",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_full_track_native/paired_vs_original_vote_rule.json": "06efc4b06fead113bbbcd576cae0589604655665e559a4188bd0da36a652feac",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_full_track_native/paired_vs_same_rule_baseline.json": "05d1605e3c0f7ccb41256b4867ed3cc9455f7bb733121399a0135b545dc4aa24",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_seed_only_final/paired_vs_original_vote_rule.json": "1e4dc3f7c64c81ffdb81a48a2fadebf6df2dd60fafc0d68cfff13089d74f3c72",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_seed_only_final/paired_vs_same_rule_baseline.json": "dac4d54762e9cad2593dbf40e7fbe76635a79cd059b599e66983d46d6b4da194",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_seed_only_native/paired_vs_original_vote_rule.json": "273c59a2ea2f9607bb7f4290264ee07c9bff2e02845f1595c0f940fd613d8096",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room0/strict_seed_only_native/paired_vs_same_rule_baseline.json": "4e9fc3265ffadbfdbc53df9182539c97a5530641f956e0011a360e0d8942b578",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/original_full_track_final/paired_vs_same_rule_baseline.json": "0cbece29d44baefe3dfd686484eae30b70d8146f152f78e3e7585321fc6d1e86",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/original_full_track_native/paired_vs_same_rule_baseline.json": "13423db8c64b6483c68437ade3b2f152a6d4bcd205af3cd00773cf1385cb3b6d",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/original_seed_only_final/paired_vs_same_rule_baseline.json": "a36a627078fe2fd8751ae88c97295b2680da47875caed46e749da7a9591fe198",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/original_seed_only_native/paired_vs_same_rule_baseline.json": "adf3ba650892a798adef2eb01c73630f8709c35b5450eacc92a52f52cd7183ff",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_baseline_final/paired_vs_original_vote_rule.json": "7717eb4efecceaacf734dafebf5f41a2eb1713d8146ef2739430097d1bf8e36b",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_baseline_native/paired_vs_original_vote_rule.json": "91cf1f084bef035e47b8a968f3d771210be68239250157fa4e301c0cba971a16",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_full_track_final/paired_vs_original_vote_rule.json": "755095b7b3c5cff2dacc4f3c2ec9a348c29078b76fad4fc4902efc54fd01356c",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_full_track_final/paired_vs_same_rule_baseline.json": "669800d16c0f9f9a11b2872ef6e6b37ebe7a28127e73e23ae3f19b25ab229227",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_full_track_native/paired_vs_original_vote_rule.json": "7e6e58845f647f87f7374a25d3327985b3a8926b566b971c85db27b55064f8d0",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_full_track_native/paired_vs_same_rule_baseline.json": "f50eeca3be0a700616fea5b9dbf215aa7254a7c6df9210b1b168dc26a0c5b050",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_seed_only_final/paired_vs_original_vote_rule.json": "d141980a719b50a5b1a813aa635eda97990df6f7a95c7f4252d0913b4ffaeee8",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_seed_only_final/paired_vs_same_rule_baseline.json": "fc080f1dbb375dbd850901684aa2adc5240a915d95e73a4e18630cb1a3f2bdd6",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_seed_only_native/paired_vs_original_vote_rule.json": "a0fcdb413c6a7f87f429ef9bdf7f92c6962219e6deefbe2aeadba6daa4b11c2a",
+    "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/analysis/corrected_pairs/room2/strict_seed_only_native/paired_vs_same_rule_baseline.json": "5acdf1b2ec6c4a224f5cc1a3fe58d5b2a174f679b8e0a7b04246b8e45b722148"
+  },
+  "created_unix": 1791536891.3070443
+}

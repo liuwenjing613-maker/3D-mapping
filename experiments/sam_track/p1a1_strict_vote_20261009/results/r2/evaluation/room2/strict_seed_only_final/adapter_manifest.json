@@ -1,0 +1,137 @@
+{
+  "adapter_statistics": {
+    "assigned_ref_vertices": 533473,
+    "conflict_unassigned_ref_vertices": 0,
+    "conflicting_exact_coordinate_group_count": 0,
+    "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+    "duplicate_coordinate_policy": "unanimous_owner_else_unassigned",
+    "empty_native_exports": 0,
+    "empty_projected_predictions": 0,
+    "exact_duplicate_coordinate_group_count": 3,
+    "exported_prediction_count": 51,
+    "geometry_point_count": 1229303,
+    "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+    "no_geometry_ref_vertices": 144766,
+    "nonpositive_native_state_counts": {
+      "-1": 149912
+    },
+    "positive_native_label_count": 1079391,
+    "unassigned_with_geometry_ref_vertices": 44257
+  },
+  "canonical_prediction_sha256": "285c366a5b85ef847ca6defe95d68e3a1ac018048d8300f76005321c80a231a5",
+  "correspondence_cache": "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/geometry_cache/room2/fixed_gt_to_tsdf_r2.npz",
+  "correspondence_file_sha256": "64165ce52904f905e79d5d47c4db02990f0b2e04a0b36bb3d2ab5ac7b510e619",
+  "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+  "diagnostic_prediction_sha256": "6f8d442bda6c8f1845183c8e23262da29dae3506bb08ef0ea806823cbeeb9583",
+  "evaluation_profile": "object_observed_repair",
+  "evaluator_code_sha256": {
+    "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+    "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+    "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+    "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+    "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+    "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+    "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+  },
+  "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+  "gt_file": "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room2/gt.npz",
+  "gt_file_sha256": "3cbbd1bb19d09da0c474f0e0ac08e899a398f27c9f1196d9fd10a9a6aaae0d3d",
+  "gt_observed_support_sha256": "b8b581affe231f624cfea45b863c39964939a6c21659aef8ce6e99b143d59e70",
+  "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+  "method_commit": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+  "method_name": "P1-A1_strict_seed_only_final",
+  "prediction_type_source": "explicit_native_declaration_if_provided_otherwise_unknown_no_GT_completion",
+  "profile_config": {
+    "ap_policy": "replica_ca_101",
+    "baseline_commit": "05f6bb0d6c9a2491a51e990d217fd7f1397f5f6b",
+    "confidence_mode": "uniform",
+    "dataset": "Replica",
+    "diagnostic_mapping": {
+      "max_distance_m": 0.02,
+      "method": "pairwise_geometry_support"
+    },
+    "evaluation_profile": "object_observed_repair",
+    "frozen": false,
+    "geometry_mapping": {
+      "duplicate_coordinate_policy": "unanimous_owner_else_unassigned",
+      "max_distance_m": 0.01,
+      "method": "fixed_surface_correspondence"
+    },
+    "ignore_policy": {
+      "background_only_without_object_semantics": "ignore_and_report",
+      "method": "explicit_reference_regions"
+    },
+    "instance_filter": {
+      "min_prediction_vertices": 0,
+      "min_valid_instance_vertices": 1
+    },
+    "name": "Replica-CA-v3",
+    "observation": {
+      "depth_tolerance_m": 0.02,
+      "minimum_trusted_observation_count": 1,
+      "pixel_size_filter": null
+    },
+    "profile_revision": 2,
+    "review_required_gt_ids": {
+      "office0": [
+        43
+      ],
+      "office1": [
+        10
+      ],
+      "office3": [
+        20,
+        35,
+        109
+      ],
+      "room0": [
+        76
+      ]
+    },
+    "scenes": [
+      "room0",
+      "room1",
+      "room2",
+      "office0",
+      "office1",
+      "office2",
+      "office3",
+      "office4"
+    ],
+    "significant_overlap": {
+      "min_gt_fraction": 0.05,
+      "min_intersection_vertices": 10
+    },
+    "source_policy": "Fixed GT qualification and RGB-D observation evidence, complete immutable geometry, positive native instance IDs; all distances and structure thresholds remain development values.",
+    "status": "DEVELOPMENT_REVIEW_REVISION_NOT_OFFICIAL",
+    "structure_metrics": {
+      "auxiliary_source": "pairwise_geometry_support",
+      "source": "main_partition_intersection",
+      "status": "DEVELOPMENT_AUDIT_PENDING_REAL_CASE_REVIEW"
+    }
+  },
+  "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+  "profile_revision": 2,
+  "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+  "protocol": "Replica-CA-v3",
+  "source_provenance": {
+    "GT_used_for_mapping": false,
+    "association_report_sha256": "40a23fb814e78b20aa0cb3d8dfc52347cb32f8e179ec936732e1c3dfc8df42d7",
+    "condition": "seed_only",
+    "fixed_raw_repair_batch": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c",
+    "frame_count": 400,
+    "frame_list_sha256": "937af0bde6876c9b8fc9fdccbef609641a0ec95b68b867f33720c2be678a1215",
+    "fresh_raw_reprojection_and_transaction_checks": "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/mapping_complete.json",
+    "geometry_and_mask_edits_frozen": true,
+    "input_config_sha256": "af39d47ef6ffcfa646f4ec4c014dc53c339226a084b479b98afeee2768a944fa",
+    "input_scope_verified": true,
+    "materialization_report_sha256": "ecf7d14d34cf54ad99f08842ed7858fe394499972e75865c021975c2b3ab47af",
+    "prediction_freeze_sha256": "b8a8f18190c8a936c492f50b5ba3ccba81c30a1bd0517087de5d7f95696ddfb0",
+    "prediction_frozen_before_GT": true,
+    "vote_rule": "strict"
+  },
+  "source_surface": "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/room2/seed_only/final/instance_surface.npz",
+  "source_surface_sha256": "e9ecccf35b35f3eb34eb94f6946bf65ffe0eb63593f675d72004d3761f36d5d5",
+  "status": "DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN",
+  "structure_source": "main_partition_intersection"
+}

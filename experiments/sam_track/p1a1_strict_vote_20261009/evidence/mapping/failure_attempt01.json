@@ -1,0 +1,4 @@
+{
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/chenkejun/CVPR/experiments/p1a1_strict_repair_20261009/run_strict_repair.py\", line 314, in <module>\n    try:main()\n  File \"/home/chenkejun/CVPR/experiments/p1a1_strict_repair_20261009/run_strict_repair.py\", line 300, in main\n    for scene in ROOTS:results[scene]=scene_run(scene,priorfreeze);gc.collect()\n  File \"/home/chenkejun/CVPR/experiments/p1a1_strict_repair_20261009/run_strict_repair.py\", line 191, in scene_run\n    before,after,eff,rem,add,scope,receipt,tx=raw_replay(scene,fid,frame,table,op,ol,root,cond,decision,obj,info,canonical,fixed,helper.merge_foregrounds)\n  File \"/home/chenkejun/CVPR/experiments/p1a1_strict_repair_20261009/run_strict_repair.py\", line 115, in raw_replay\n    for value in labels.values():value[conflict]=0\nValueError: assignment destination is read-only\n"
+}
