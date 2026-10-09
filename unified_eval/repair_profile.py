@@ -11,7 +11,7 @@ from .evaluate import evaluate_scenes
 from .geometry import (attach_reference_support, build_fixed_surface_correspondence,
     load_fixed_surface_correspondence, map_fixed_surface_labels, native_reference_region_support,
     save_fixed_surface_correspondence)
-from .io import load_gt, load_prediction, save_prediction, sha256_file
+from .io import load_gt, load_prediction, save_prediction, sha256_file, repair_evaluator_code_hashes
 from .metrics import build_overlap, owner_coverage
 from .schema import EvaluationError, Protocol
 
@@ -66,6 +66,13 @@ def adapt_surface(surface_path: str | Path, gt_path: str | Path, config_path: st
     gt = load_gt(gt_path)
     if gt.metadata.get("evaluation_profile") != protocol.evaluation_profile or gt.evaluation_region is None:
         raise EvaluationError("Surface adapter requires the fixed observed-object GT scope")
+    if protocol.profile_revision >= 2:
+        observation = gt.metadata.get("observation_metadata", {})
+        for name in ("depth_tolerance_m", "minimum_trusted_observation_count"):
+            if observation.get(name) != config["observation"][name]:
+                raise EvaluationError("Fixed observed GT was generated with a different observation configuration: " + name)
+        if config["observation"].get("pixel_size_filter") is not None:
+            raise EvaluationError("Revision 2 must not impose an arbitrary pixel-size qualification gate")
     xyz, labels, inventory, original_ids, classes, source_meta = load_surface_export(surface_path, exported_instance_ids)
     provenance = source_provenance or {}
     if provenance.get("frame_list_sha256") is not None and provenance["frame_list_sha256"] != gt.metadata.get("observation_metadata", {}).get("frame_list_sha256"):
@@ -83,7 +90,11 @@ def adapt_surface(surface_path: str | Path, gt_path: str | Path, config_path: st
     result = map_fixed_surface_labels(xyz, labels, gt.xyz_ref, correspondence,
         scene_id=gt.scene_id, method_name=method_name, method_commit=method_commit,
         native_instance_ids=inventory, diagnostic_distance_m=protocol.diagnostic_max_distance_m,
+        duplicate_coordinate_policy=protocol.duplicate_coordinate_policy,
         metadata={**source_meta, "source_provenance": provenance,
+            "profile_revision": protocol.profile_revision,
+            "profile_semantics_sha256": protocol.profile_semantics_sha256,
+            "evaluator_code_sha256": repair_evaluator_code_hashes(),
             "method_input_scope_verified": provenance.get("input_scope_verified") is True,
             "source_instance_surface": str(surface_path),
             "source_instance_surface_sha256": sha256_file(surface_path),
@@ -135,8 +146,11 @@ def adapt_surface(surface_path: str | Path, gt_path: str | Path, config_path: st
         "adapter_statistics": result.statistics, "method_name": method_name,
         "source_provenance": provenance,
         "method_commit": method_commit,
-        "evaluator_code_sha256": {name: sha256_file(Path(__file__).parent / name) for name in
-            ("schema.py", "io.py", "gt_scope.py", "geometry.py", "metrics.py", "evaluate.py", "repair_profile.py")}}
+        "profile_revision": protocol.profile_revision,
+        "profile_semantics_sha256": protocol.profile_semantics_sha256,
+        "structure_source": protocol.structure_source,
+        "prediction_type_source": "explicit_native_declaration_if_provided_otherwise_unknown_no_GT_completion",
+        "evaluator_code_sha256": repair_evaluator_code_hashes()}
     write_json(out / "adapter_manifest.json", manifest)
     return {"manifest": manifest, "summary": summary}
 
@@ -148,6 +162,10 @@ def paired_revision_metrics(gt, before, after, protocol: Protocol) -> dict:
                 "gt_scope_sha256", "gt_observed_support_sha256", "evaluation_region_sha256", "profile_config_sha256"):
         if not before.metadata.get(key) or before.metadata[key] != after.metadata.get(key):
             raise EvaluationError(f"Paired revision changes its physical surface/scope/profile: {key}")
+    if protocol.profile_revision >= 2:
+        for key in ("profile_revision", "profile_semantics_sha256", "evaluator_code_sha256", "duplicate_coordinate_policy"):
+            if before.metadata.get(key) != after.metadata.get(key):
+                raise EvaluationError("Paired revision changes its scoring implementation: " + key)
     first, second = build_overlap(gt, before, protocol), build_overlap(gt, after, protocol)
     if not np.array_equal(first.gt_ids, second.gt_ids) or not np.array_equal(first.gt_size, second.gt_size):
         raise EvaluationError("Paired revision GT denominator changed")

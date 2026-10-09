@@ -18,6 +18,7 @@ class MappingResult:
     statistics: dict
     distances_m: np.ndarray
     diagnostic_prediction: CanonicalPrediction | None = None
+    conflict_ref_mask: np.ndarray | None = None
 
 
 @dataclass(frozen=True)
@@ -28,6 +29,8 @@ class FixedSurfaceCorrespondence:
     reference_xyz_sha256: str
     native_point_count: int
     max_distance_m: float
+    native_unique_index: np.ndarray | None = None
+    unique_first_index: np.ndarray | None = None
 
     @property
     def sha256(self) -> str:
@@ -37,6 +40,9 @@ class FixedSurfaceCorrespondence:
             "max_distance_m": self.max_distance_m,
             "index_sha256": sha256_array(self.nearest_native_index),
             "distances_sha256": sha256_array(self.distances_m)}
+        if self.native_unique_index is not None:
+            value.update({"cache_revision": 2, "native_unique_index_sha256": sha256_array(self.native_unique_index),
+                          "unique_first_index_sha256": sha256_array(self.unique_first_index)})
         return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
     def validate(self, native_xyz: np.ndarray, ref_xyz: np.ndarray) -> None:
@@ -54,6 +60,20 @@ class FixedSurfaceCorrespondence:
             raise EvaluationError("Correspondence distances are invalid")
         if not np.array_equal(indices >= 0, self.distances_m < self.max_distance_m):
             raise EvaluationError("Fixed correspondence violates its strict geometry gate")
+        if (self.native_unique_index is None) != (self.unique_first_index is None):
+            raise EvaluationError("Fixed duplicate-coordinate groups are incomplete")
+        if self.native_unique_index is not None:
+            inverse, first = self.native_unique_index, self.unique_first_index
+            if inverse.shape != (len(native_xyz),) or first.ndim != 1 or any(
+                    not np.issubdtype(x.dtype, np.integer) for x in (inverse, first)):
+                raise EvaluationError("Fixed duplicate-coordinate group dimensions are invalid")
+            if len(inverse) and (inverse.min() < 0 or inverse.max() >= len(first)):
+                raise EvaluationError("Fixed unique-coordinate index outside geometry")
+            if len(first) and (first.min() < 0 or first.max() >= len(native_xyz)):
+                raise EvaluationError("Fixed unique-coordinate representative outside geometry")
+            if not np.array_equal(inverse[first], np.arange(len(first))) or not np.array_equal(
+                    native_xyz[first][inverse], native_xyz):
+                raise EvaluationError("Fixed duplicate-coordinate groups disagree with geometry")
 
 
 def build_fixed_surface_correspondence(native_xyz: np.ndarray, ref_xyz: np.ndarray,
@@ -67,25 +87,32 @@ def build_fixed_surface_correspondence(native_xyz: np.ndarray, ref_xyz: np.ndarr
         raise EvaluationError("max_distance_m must be finite and positive")
     nearest = np.full(len(ref), -1, dtype=np.int64)
     distances = np.full(len(ref), np.inf, dtype=np.float64)
+    # These groups depend only on geometry. Revision 2 reads ALL labels in a
+    # coincident group, so the representative is never an arbitrary winning owner.
+    unique, first, inverse = np.unique(native, axis=0, return_index=True, return_inverse=True)
+    inverse = inverse.reshape(-1).astype(np.int64)
     if len(native) and len(ref):
-        # Coincident native points have a fixed first source index, independent of labels.
-        unique, first = np.unique(native, axis=0, return_index=True)
         distances, query = cKDTree(unique).query(ref, k=1, workers=-1)
         matched = distances < max_distance_m
         nearest[matched] = first[query[matched]]
     nearest.setflags(write=False)
     distances.setflags(write=False)
+    inverse.setflags(write=False)
+    first = first.astype(np.int64)
+    first.setflags(write=False)
     result = FixedSurfaceCorrespondence(nearest, distances, sha256_array(native),
-        sha256_array(ref), len(native), float(max_distance_m))
+        sha256_array(ref), len(native), float(max_distance_m), inverse, first)
     result.validate(native, ref)
     return result
 
 
 def save_fixed_surface_correspondence(path: str | Path, value: FixedSurfaceCorrespondence) -> None:
+    groups = ({} if value.native_unique_index is None else
+        {"native_unique_index": value.native_unique_index, "unique_first_index": value.unique_first_index})
     np.savez_compressed(path, nearest_native_index=value.nearest_native_index,
         distances_m=value.distances_m, native_xyz_sha256=value.native_xyz_sha256,
         reference_xyz_sha256=value.reference_xyz_sha256, native_point_count=value.native_point_count,
-        max_distance_m=value.max_distance_m, correspondence_sha256=value.sha256)
+        max_distance_m=value.max_distance_m, correspondence_sha256=value.sha256, **groups)
 
 
 def load_fixed_surface_correspondence(path: str | Path, native_xyz: np.ndarray,
@@ -93,12 +120,17 @@ def load_fixed_surface_correspondence(path: str | Path, native_xyz: np.ndarray,
     with np.load(path, allow_pickle=False) as data:
         result = FixedSurfaceCorrespondence(data["nearest_native_index"].copy(), data["distances_m"].copy(),
             str(data["native_xyz_sha256"].item()), str(data["reference_xyz_sha256"].item()),
-            int(data["native_point_count"].item()), float(data["max_distance_m"].item()))
+            int(data["native_point_count"].item()), float(data["max_distance_m"].item()),
+            data["native_unique_index"].copy() if "native_unique_index" in data else None,
+            data["unique_first_index"].copy() if "unique_first_index" in data else None)
         if result.sha256 != str(data["correspondence_sha256"].item()):
             raise EvaluationError("Correspondence cache checksum mismatch")
     result.validate(np.asarray(native_xyz), np.asarray(ref_xyz))
     result.nearest_native_index.setflags(write=False)
     result.distances_m.setflags(write=False)
+    for array in (result.native_unique_index, result.unique_first_index):
+        if array is not None:
+            array.setflags(write=False)
     return result
 
 
@@ -107,6 +139,7 @@ def map_fixed_surface_labels(native_xyz: np.ndarray, labels: np.ndarray, ref_xyz
                              method_name: str, method_commit: str,
                              native_instance_ids: np.ndarray | None = None,
                              diagnostic_distance_m: float | None = None,
+                             duplicate_coordinate_policy: str = "first_source_index",
                              metadata: dict | None = None) -> MappingResult:
     """Read labels from fixed native indices; never rebuild the tree after a revision."""
     native_xyz, ref_xyz, labels = np.asarray(native_xyz), np.asarray(ref_xyz), np.asarray(labels)
@@ -121,7 +154,27 @@ def map_fixed_surface_labels(native_xyz: np.ndarray, labels: np.ndarray, ref_xyz
         raise EvaluationError("Exported inventory must be unique and include every positive native label")
     reference_labels = np.full(len(ref_xyz), -1, dtype=np.int64)
     matched = correspondence.nearest_native_index >= 0
-    reference_labels[matched] = labels[correspondence.nearest_native_index[matched]]
+    conflict_ref = np.zeros(len(ref_xyz), dtype=bool)
+    conflicting_groups = 0
+    if duplicate_coordinate_policy == "unanimous_owner_else_unassigned":
+        if correspondence.native_unique_index is None:
+            raise EvaluationError("Revision 2 requires a new geometry cache with exact-coordinate groups")
+        inverse, first = correspondence.native_unique_index, correspondence.unique_first_index
+        normalized = np.where(labels > 0, labels, -1)
+        low = np.full(len(first), np.iinfo(np.int64).max, dtype=np.int64)
+        high = np.full(len(first), np.iinfo(np.int64).min, dtype=np.int64)
+        np.minimum.at(low, inverse, normalized)
+        np.maximum.at(high, inverse, normalized)
+        conflict = low != high
+        owners = np.where(conflict, -1, low)
+        ref_group = inverse[correspondence.nearest_native_index[matched]]
+        reference_labels[matched] = owners[ref_group]
+        conflict_ref[matched] = conflict[ref_group]
+        conflicting_groups = int(np.count_nonzero(conflict))
+    elif duplicate_coordinate_policy == "first_source_index":
+        reference_labels[matched] = labels[correspondence.nearest_native_index[matched]]
+    else:
+        raise EvaluationError("Unsupported duplicate coordinate ownership policy")
     reference_labels[reference_labels <= 0] = -1
     instances = [CanonicalInstance(str(int(native_id)),
         np.flatnonzero(reference_labels == native_id).astype(np.int32),
@@ -134,6 +187,7 @@ def map_fixed_surface_labels(native_xyz: np.ndarray, labels: np.ndarray, ref_xyz
             "geometry_mapping_method": "fixed_surface_correspondence", "mapping_uses_gt_labels": False,
             "geometry_mapping_max_distance_m": correspondence.max_distance_m,
             "diagnostic_mapping_max_distance_m": diagnostic_distance_m,
+            "duplicate_coordinate_policy": duplicate_coordinate_policy,
             "instance_inventory_source": "explicit_export" if native_instance_ids is not None else "positive_labels_in_export"}
     prediction = CanonicalPrediction(scene_id, len(ref_xyz), instances, method_name,
         method_commit, "fixed_complete_surface_v1", "Replica-CA-v3", True, meta)
@@ -150,6 +204,11 @@ def map_fixed_surface_labels(native_xyz: np.ndarray, labels: np.ndarray, ref_xyz
             instance.metadata = dict(main.metadata)
         diagnostic.validate()
     statistics = {"geometry_point_count": len(native_xyz), "positive_native_label_count": int(np.count_nonzero(labels > 0)),
+        "duplicate_coordinate_policy": duplicate_coordinate_policy,
+        "exact_duplicate_coordinate_group_count": (int(np.count_nonzero(np.bincount(correspondence.native_unique_index) > 1))
+            if correspondence.native_unique_index is not None else None),
+        "conflicting_exact_coordinate_group_count": conflicting_groups,
+        "conflict_unassigned_ref_vertices": int(np.count_nonzero(conflict_ref)),
         "nonpositive_native_state_counts": {str(int(x)): int(np.count_nonzero(labels == x)) for x in np.unique(labels[labels <= 0])},
         "no_geometry_ref_vertices": int(np.count_nonzero(~matched)),
         "unassigned_with_geometry_ref_vertices": int(np.count_nonzero(matched & (reference_labels <= 0))),
@@ -159,7 +218,7 @@ def map_fixed_surface_labels(native_xyz: np.ndarray, labels: np.ndarray, ref_xyz
         "empty_projected_predictions": sum(len(x.vertex_indices) == 0 for x in instances),
         "geometry_xyz_sha256": correspondence.native_xyz_sha256,
         "correspondence_sha256": correspondence.sha256}
-    return MappingResult(prediction, statistics, correspondence.distances_m, diagnostic)
+    return MappingResult(prediction, statistics, correspondence.distances_m, diagnostic, conflict_ref)
 
 
 def native_reference_region_support(native_xyz: np.ndarray, ref_xyz: np.ndarray,
@@ -193,6 +252,9 @@ def attach_reference_support(result: MappingResult, labels: np.ndarray, native_s
             "gt_observed_support_sha256": gt.metadata["gt_observed_support_sha256"],
             "evaluation_region_sha256": gt.metadata["evaluation_region_sha256"],
             "no_geometry_target_vertex_count": no_geometry})
+        if result.conflict_ref_mask is not None:
+            prediction.metadata["duplicate_coordinate_conflict_target_vertex_count"] = int(
+                np.count_nonzero(targets & result.conflict_ref_mask))
         for instance in prediction.instances:
             selected = labels == instance.metadata["native_instance_id"]
             for region, name in ((1, "target"), (2, "known_non_target"), (0, "ignore"), (-1, "outside")):

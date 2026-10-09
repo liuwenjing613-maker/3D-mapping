@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
-from .io import sha256_array
+from .io import sha256_array, repair_evaluator_code_hashes
 from .schema import CanonicalGT, CanonicalPrediction, EvaluationError, Protocol
 
 
@@ -72,6 +72,17 @@ def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol
             raise EvaluationError("Repair profile requires preserved raw GT and explicit regions")
         if gt.metadata.get("evaluation_profile") != protocol.evaluation_profile or pred.metadata.get("evaluation_profile") != protocol.evaluation_profile:
             raise EvaluationError("GT/prediction evaluation_profile mismatch")
+        if protocol.profile_revision >= 2:
+            if pred.metadata.get("profile_revision") != protocol.profile_revision or pred.metadata.get(
+                    "profile_semantics_sha256") != protocol.profile_semantics_sha256:
+                raise EvaluationError("Adapted profile revision/configuration semantics differ from scoring")
+            if pred.metadata.get("evaluator_code_sha256") != repair_evaluator_code_hashes():
+                raise EvaluationError("Adapted evaluator code hashes differ from the current scoring implementation")
+            if not pred.metadata.get("evaluation_only_discrete_gt_oracle") and pred.metadata.get(
+                    "duplicate_coordinate_policy") != protocol.duplicate_coordinate_policy:
+                raise EvaluationError("Adapted duplicate-coordinate policy differs from scoring")
+        elif pred.metadata.get("profile_revision", 1) != 1:
+            raise EvaluationError("Revision-2 predictions cannot be scored under the locked revision-1 profile")
         if not pred.metadata.get("evaluation_only_discrete_gt_oracle"):
             if pred.metadata.get("geometry_mapping_method") != "fixed_surface_correspondence" or pred.metadata.get("geometry_mapping_max_distance_m") != protocol.geometry_mapping_max_distance_m:
                 raise EvaluationError("Adapted main geometry distance differs from the scoring profile")

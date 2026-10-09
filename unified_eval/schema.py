@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+import hashlib
+import json
 from typing import Any
 
 import numpy as np
@@ -113,6 +115,10 @@ class Protocol:
     significant_min_intersection_vertices: int | None = None
     significant_min_gt_fraction: float | None = None
     evaluation_profile: str = "legacy"
+    profile_revision: int = 1
+    duplicate_coordinate_policy: str = "first_source_index"
+    structure_source: str = "pairwise_geometry_support"
+    profile_semantics_sha256: str | None = None
 
     @property
     def is_object_observed_repair(self) -> bool:
@@ -139,6 +145,18 @@ class Protocol:
         if profile not in ("legacy", "object_observed_repair"):
             raise EvaluationError("Unsupported evaluation_profile")
         repair = profile == "object_observed_repair"
+        revision = data.get("profile_revision", 1)
+        if repair and (type(revision) is not int or revision not in (1, 2)):
+            raise EvaluationError("Unsupported repair profile_revision")
+        duplicate_policy = geometry.get("duplicate_coordinate_policy", "first_source_index")
+        structure_source = data.get("structure_metrics", {}).get("source", "pairwise_geometry_support")
+        if repair and revision == 2:
+            if duplicate_policy != "unanimous_owner_else_unassigned":
+                raise EvaluationError("Repair revision 2 requires unanimous duplicate-coordinate ownership")
+            if structure_source != "main_partition_intersection":
+                raise EvaluationError("Repair revision 2 requires main partition structure intersections")
+        elif repair and (duplicate_policy != "first_source_index" or structure_source != "pairwise_geometry_support"):
+            raise EvaluationError("Revision 1 semantics are locked; use a new profile revision")
         if repair and data.get("name") != "Replica-CA-v3":
             raise EvaluationError("object_observed_repair requires Replica-CA-v3")
         if repair and data.get("frozen") is not False:
@@ -190,6 +208,11 @@ class Protocol:
             significant_min_intersection_vertices=int(significant["min_intersection_vertices"]) if is_v2 or is_v3 else None,
             significant_min_gt_fraction=float(significant["min_gt_fraction"]) if is_v2 or is_v3 else None,
             evaluation_profile=profile,
+            profile_revision=revision if repair else 1,
+            duplicate_coordinate_policy=duplicate_policy if repair else "first_source_index",
+            structure_source=structure_source if repair else "pairwise_geometry_support",
+            profile_semantics_sha256=(hashlib.sha256(json.dumps(data, sort_keys=True,
+                separators=(",", ":"), allow_nan=False).encode()).hexdigest() if repair else None),
         )
         if obj.confidence_mode != "uniform":
             raise EvaluationError("replica_ca_101 requires uniform confidence; use the separate official-native runner for official AP")

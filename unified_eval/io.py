@@ -26,6 +26,12 @@ def sha256_array(value: np.ndarray) -> str:
     return digest.hexdigest()
 
 
+def repair_evaluator_code_hashes() -> dict[str, str]:
+    """Bind adapted revision-2 predictions to the actual scoring implementation."""
+    return {name: sha256_file(Path(__file__).parent / name) for name in
+        ("schema.py", "io.py", "gt_scope.py", "geometry.py", "metrics.py", "evaluate.py", "repair_profile.py")}
+
+
 def _json(value: dict) -> str:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 

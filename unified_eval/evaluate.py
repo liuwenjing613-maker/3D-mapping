@@ -55,9 +55,14 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
         if protocol.retains_predictions:
             row["CA_PRF1_0_5"] = instance_precision_recall_f1(
                 overlap, protocol.ignore_unmatched_pred_void_fraction_gt)
-            row["structure"] = (significant_structure_diagnostics(
-                diagnostic_overlaps[scene_index] if protocol.is_v3 else overlap, protocol)
+            use_main_structure = protocol.is_object_observed_repair and protocol.structure_source == "main_partition_intersection"
+            row["structure"] = (significant_structure_diagnostics(overlap, protocol) if use_main_structure else
+                significant_structure_diagnostics(diagnostic_overlaps[scene_index] if protocol.is_v3 else overlap, protocol)
                 if not protocol.is_v3 or diagnostic_overlaps is not None else None)
+            if use_main_structure:
+                row["structure_source"] = "main_partition_intersection"
+                row["auxiliary_geometry_structure"] = (significant_structure_diagnostics(diagnostic_overlaps[scene_index], protocol)
+                    if diagnostic_overlaps is not None else None)
         per_scene.append(row)
     pq_rows = [row["CA_PQ"] for row in per_scene]
     if all(row["status"] != "N/A: overlapping masks or non-partition prediction" for row in pq_rows):
@@ -133,6 +138,12 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
         summary["aggregation"] = "top-level pooled predictions/GT; macro_per_scene is unweighted scene mean"
     if protocol.is_object_observed_repair:
         summary["evaluation_profile"] = protocol.evaluation_profile
+        summary["profile_revision"] = protocol.profile_revision
+        summary["profile_semantics_sha256"] = protocol.profile_semantics_sha256
+        if protocol.profile_revision >= 2:
+            summary["structure_source"] = protocol.structure_source
+            auxiliary = [row["auxiliary_geometry_structure"] for row in per_scene if row["auxiliary_geometry_structure"] is not None]
+            summary["auxiliary_geometry_structure"] = _pool_structures(auxiliary) if auxiliary else None
         summary["status"] = "DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN"
         summary["reference_scope"] = [{"scene_id": gt.scene_id,
             "gt_scope_sha256": gt.metadata["gt_scope_sha256"],
@@ -152,11 +163,28 @@ def evaluate_scenes(scenes: list[tuple[CanonicalGT, CanonicalPrediction]], proto
             "Unassigned_Coverage": (counts["unpredicted_target_vertices"] - no_geometry) / total if total else None,
             "No_geometry_Coverage": no_geometry / total if total else None,
             "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only"}
+        if protocol.profile_revision >= 2:
+            conflicts = sum(pred.metadata.get("duplicate_coordinate_conflict_target_vertex_count", 0) for _, pred in scenes)
+            if conflicts > summary["owner_surface"]["unassigned_with_geometry_target_vertices"]:
+                raise ValueError("Duplicate-coordinate conflicts must be part of unassigned geometry")
+            summary["owner_surface"]["duplicate_coordinate_conflict_target_vertices"] = conflicts
         summary["CA_mCov"] = sum(float(o.iou.max(axis=0).sum()) if len(o.pred_uids) else 0.0
             for o in overlaps) / sum(len(o.gt_ids) for o in overlaps) if any(len(o.gt_ids) for o in overlaps) else None
         for key in ("background_only_prediction_count", "unknown_or_unobserved_prediction_count", "unverifiable_prediction_count", "empty_native_prediction_count"):
             summary[key] = sum(row["diagnostics"][key] for row in per_scene)
     return summary, per_scene, overlaps
+
+
+def _pool_structures(rows: list[dict]) -> dict:
+    gt = sum(x["diagnostic_gt_count"] for x in rows)
+    pred = sum(x["diagnostic_prediction_count"] for x in rows)
+    split, merge, duplicate = (sum(x[key] for x in rows) for key in
+        ("split_gt_count", "merge_prediction_count", "duplicate_prediction_count"))
+    return {"source": "auxiliary_pairwise_geometry_support_only", "split_gt_count": split,
+        "split_gt_rate": split / gt if gt else None, "merge_prediction_count": merge,
+        "merge_prediction_rate": merge / pred if pred else None, "duplicate_prediction_count": duplicate,
+        "duplicate_prediction_rate": duplicate / pred if pred else None,
+        "diagnostic_gt_count": gt, "diagnostic_prediction_count": pred}
 
 
 def _mean_defined(values: list[float | None]) -> float | None:
