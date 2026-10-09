@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "experiment": "seed-centered independent forward/reverse continuity gap0 vs gap1",
+  "only_algorithmic_intervention": "Suppress saved raw track masks after reaching the per-direction empty-frame limit",
+  "empty_definition": "area=0 of original max-logit-partitioned native 1200x680 mask; count every original frame",
+  "SAM_GPU_rerun": false,
+  "all_four_vote_repair_and_geodesic_diffusion_runs_completed": true,
+  "GT_used_for_filter_or_repair": false,
+  "original_outputs_preserved": true,
+  "facts": {
+    "room0": {
+      "gap0_gap1_final_labels_identical": true,
+      "unknown_delta_vs_unrestricted": 12698,
+      "AP50_delta_vs_unrestricted": -0.033439192975901394,
+      "F1_delta_vs_unrestricted": -0.03305785123966937,
+      "PQ_delta_vs_unrestricted": -0.03076042766484649,
+      "target_best_IoU_delta_vs_unrestricted": -0.07794349946903303,
+      "target_mean_completeness_delta_vs_unrestricted": -0.04009236194932672,
+      "non_target_lost": [],
+      "non_target_degraded_gt": [],
+      "new_unknown_points": 13988,
+      "restored_assigned_points": 1290,
+      "surface_points": 1633034
+    },
+    "room2": {
+      "gap0_gap1_final_labels_identical": true,
+      "unknown_delta_vs_unrestricted": -3216,
+      "AP50_delta_vs_unrestricted": -0.02186468646864681,
+      "F1_delta_vs_unrestricted": -0.021052631578947434,
+      "PQ_delta_vs_unrestricted": -0.020638415205475436,
+      "target_best_IoU_delta_vs_unrestricted": -0.03515356511252065,
+      "target_mean_completeness_delta_vs_unrestricted": -0.007984841509072079,
+      "non_target_lost": [],
+      "non_target_degraded_gt": [],
+      "new_unknown_points": 11546,
+      "restored_assigned_points": 14762,
+      "surface_points": 1229303
+    }
+  },
+  "numeric_gates_weights_diffusion_and_v3_code_protocol_flags_unchanged": true,
+  "reporting_only_changes": [
+    "Per-single-identity fixed-surface diagnostics, as in the original evaluator, preserving multiple selected parts of one GT"
+  ],
+  "display_only_changes": [
+    "Room2 restored identity 113 lacked a table entry; use the original renderer palette [249,74,245]; preserve every explicit original color",
+    "Same-frame paired native mask canvases, optional black-background masks",
+    "Four-state full-point 3D pack, synchronized cameras and per-identity visibility controls"
+  ],
+  "not_implemented_in_current_algorithm": [
+    "GT-assisted filtering",
+    "Reacquisition/new seeds",
+    "Changing the original observation retirement behavior",
+    "Weakening replacement gates",
+    "New appearance/3D identity re-identification"
+  ],
+  "streaming_tracker_generated_but_not_GPU_tested": "track_with_continuity.py; separate experimental runner, not installed as original tracker",
+  "server_code_directory": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008",
+  "server_result_directory": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008",
+  "local_PLY_directory": "D:\\Users\\刘雯静\\Downloads\\CVPR\\可视化ply\\连续性截断_20261008",
+  "review_URL": "http://127.0.0.1:8785/continuous_tracking_ablation_20261008/index.html",
+  "evaluation_protocol_status": "Same current v3 debug protocol as originals, still unfrozen; not formal benchmark",
+  "checks": [
+    "10 continuity tests",
+    "4000 original native frame mask validations",
+    "original frozen inputs SHA checks",
+    "complete frame replay equals delta vote ledger",
+    "exact withdrawal rollback",
+    "outside-scope final changes zero",
+    "colored full PLY geometry/IDs/colors match aligned binary packs and frozen server SHA"
+  ],
+  "source_file_SHA256": {
+    "audit_final_comparison.py": "6baf2c214f847d1ef8b59ce9d39ef96318f75fd556199fc7309d88404d9f7201",
+    "build_preview.py": "9a297273b28e7b3ae3440dee2603d5738b92b9825f1d8dfec1f63a31814016c8",
+    "build_streaming_tracker.py": "4471ca37ea57304cc1230b5dd597adfd13e581e48a58cd035cab16d4624273c5",
+    "check_why_equal.py": "880914066931e90232bab1e8179e3a5ab8d4e2386bb9a8830ccac024caa2dc7b",
+    "continue_with_complete_palette.py": "b2a0c0205392620b965837711597299e9c72a1c8529cc949c1e65ccdd30b9ba8",
+    "continuity_policy.py": "7f4a2bff324849ec788e42cfbdebc5bba5164c6cc3291706e8fe3d3353f89074",
+    "evaluate_ablation_v2.py": "58932b52be2e592ca16bd38fb9593b68e7c4074a4b6d880585cabb931e97a67f",
+    "export_comparison_pack.py": "dc23e66feca11d7429a5642522a50162db8a60b528ba921732568de0faa7c2e6",
+    "finish_server.py": "05f2fdf31a12303cf4fc6d5b4022d3a11be3065230e77d419c30912a5d01d80f",
+    "make_execution_record.py": "c041fdd80f71478b1b036596c760678e852cc04d0fd1ad64e10f806f136f4008",
+    "orchestrate_server.py": "2c87ccaae66ea8691658aeddff8a20f508f11f684dad61668da21d0b35d18557",
+    "prepare_evaluator_v2.py": "e567b1620c3a7f69eb0da268a10bc0908a96e5996da7cd1252f076ada411fc6c",
+    "prepare_existing_tunnel_helper.py": "a52981170638d24ed7c18769c859ef45454cb5e9b0a343f6b95f3b6e6813ffb3",
+    "prepare_final_download.py": "28edf59153d5c915852874e8ad3ae5c81950760448b730462b17d03b595d8325",
+    "publish_final_report.py": "f08942796c160009e2cdbf66834c8834ce0168d4743e3495068c522b74fd7fdc",
+    "recover_pipeline.py": "1107d4f211194813d76e7e5189efa65f29345e471f29001c64c709e80bf60b64",
+    "run_ablation.py": "6dd3e987b31ef2a1af9df3e6f62bd29474d061b98192c77a66e71cf3b304079e",
+    "run_user_side.py": "10f7c996b12e453b88c6d8b0565b595eb09f720b32104abfafbcb4d9074b6c9b",
+    "ssh_existing_tunnel.py": "f7c5c5ee624abe6bb812cb0aaa17ca842360779bd9b87d1f06e0a04c0f8268bf",
+    "ssh_via_configured_proxy.py": "cfbe47e113a476931086955914c20cff8d49a99abef306e14b88ef75155b0054",
+    "test_continuity_policy.py": "86b817b4abea1f7e9fd3bdde538db25a8c1a9aee1c8f66e4a563f13722c77d50",
+    "track_with_continuity.py": "eaaa3ab5177c11ffd255d8fdf2e1fdbea958bc045f6322d543e5871699e86bc4",
+    "verify_final_artifacts.py": "f8c6c17339743ed9a46af1ef88d214466f306244807388a1301e0c14581d1a21",
+    "verify_preview.py": "2728b704562f345d90cb2e106a79eb641f0dd7b0803bf9a601d3209c30b2adf5"
+  }
+}

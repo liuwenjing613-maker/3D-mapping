@@ -82,3 +82,14 @@ bash audit_split_evaluation.sh
 原mask只改关联、逐对象接收可靠证据、未知部分保留及配置化入口已实现。SAM2仍为独立双向完整历史追踪。本轮结果尚未实现完整修复，不能视为正式benchmark。旧入口仅保留复现对照。
 
 [全部改动和实际效果](docs/objectwise_changes_20261007.md) · [新入口与配置](objectwise_repair_20261007/README.md)
+
+
+## 2026-10-09 当前room0/room2方法与实际效果
+
+新分支 `repair-room0/2-track-1009` 基于SAM-track：
+- [总报告、指标、3D截图、连续性截断及局限](continuous_tracking_ablation_20261008/README_CN.md)
+- [最新room2前30人工标注批次](room2_top30_repair_20261008/ARCHIVE_1009_CN.md)
+- [原始帧顺序mask检查页面源代码](chronological_playback_20261008/README_CN.md)
+- [本次来源与逐文件SHA清单](publication_20261009/source_manifest.json)
+
+room0既有代码保持；results_1009补齐效果收据。gap0/gap1指标下降，未改默认追踪或原门槛。原始地图和实验输出保留，当前v3仍为pending/debug离线对比。大体积数据/PLY留在/data，分支记录可核验路径与SHA。

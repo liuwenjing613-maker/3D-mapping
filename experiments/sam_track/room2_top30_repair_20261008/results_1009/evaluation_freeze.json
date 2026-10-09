@@ -1,0 +1,73 @@
+{
+  "status": "PREDICTIONS_FROZEN_BEFORE_GT",
+  "predictions": {
+    "baseline": {
+      "path": "/data/chenkejun/CVPR/revisable_instance_map/p1a1_raw_replica8_20261002/final/room2/P1-A1/diffusion/holes_geodesic/instance_surface.npz",
+      "sha256": "42cdf7b1c621785235a03e87489b94248e46dfdf5a15beea19230ca4a73c155c"
+    },
+    "seed_only": {
+      "path": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/validated/seed_only/final/instance_surface.npz",
+      "sha256": "dfa58a557f6838cd6c885951754557f323bf105df9ae406b136add60ca5ddd6a"
+    },
+    "full_track": {
+      "path": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/validated/full_track/final/instance_surface.npz",
+      "sha256": "d9a8a5d51fdfdd1e2f3ecbc41193241fc0793cd504565cbe50c5f53c4f687d4b"
+    }
+  },
+  "repair_complete_sha256": "46e3a337254b863a3d180252f77b71e20afa646b6bad96c9aaad6ed559d410c4",
+  "wrapper_sha256": "0d5b49242ac2e050aa945747278a1e5185c543b3516b1a18bbec20ebf24434b8",
+  "evaluator_sha256": "1a879097b45885a8bdbca94fc2df00e4e62d57776ee5dd56dba57d061dd7d0f1",
+  "flags": [
+    "--debug-max-distance-m",
+    "0.01",
+    "--debug-diagnostic-max-distance-m",
+    "0.02",
+    "--debug-min-valid-instance-vertices",
+    "100",
+    "--debug-significant-min-vertices",
+    "10",
+    "--debug-significant-min-gt-fraction",
+    "0.05"
+  ],
+  "protocol_sha256": "0863fc50a69b8773988bc588a4b71253fdd6caf09e65ab2217195894fcf79ede",
+  "effective_protocol": {
+    "name": "Replica-CA-v3",
+    "dataset": "Replica",
+    "frozen": false,
+    "scenes": [
+      "room0",
+      "room1",
+      "room2",
+      "office0",
+      "office1",
+      "office2",
+      "office3",
+      "office4"
+    ],
+    "reference_source": "same_reference_mesh_as_Replica-CA-v1/v2",
+    "confidence_mode": "uniform",
+    "ap_policy": "replica_ca_101",
+    "geometry_mapping": {
+      "method": "competitive_nearest_instance",
+      "max_distance_m": 0.01
+    },
+    "diagnostic_mapping": {
+      "method": "pairwise_geometry_support",
+      "max_distance_m": 0.02
+    },
+    "instance_filter": {
+      "min_valid_instance_vertices": 100,
+      "min_prediction_vertices": 0
+    },
+    "ignore_policy": {
+      "unmatched_prediction_void_fraction_gt": 0.5
+    },
+    "significant_overlap": {
+      "min_intersection_vertices": 10,
+      "min_gt_fraction": 0.05
+    },
+    "source_policy": "Inherit v1/v2 GT, filters, frames and transforms; calibrate all pending values on GT oracle and development scenes before formal scoring"
+  },
+  "GT_used_for_repair": false,
+  "target_definition": "fixed human-seed native support; nearest valid GT within 1cm; >=10 hits and >=5% per seed, unchanged previous rule"
+}

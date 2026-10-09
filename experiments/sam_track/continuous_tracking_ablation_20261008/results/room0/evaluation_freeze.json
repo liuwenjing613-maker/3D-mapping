@@ -1,0 +1,59 @@
+{
+  "status": "FROZEN_BEFORE_NEW_GT_EVALUATION",
+  "predictions_frozen_sha256": "2f70e9ecb4dfb4b8b31b2ecbdf46e06a8153a0551670b2e3300b05ce26d3c25b",
+  "evaluator_sha256": "1a879097b45885a8bdbca94fc2df00e4e62d57776ee5dd56dba57d061dd7d0f1",
+  "flags": [
+    "--debug-max-distance-m",
+    "0.01",
+    "--debug-diagnostic-max-distance-m",
+    "0.02",
+    "--debug-min-valid-instance-vertices",
+    "100",
+    "--debug-significant-min-vertices",
+    "10",
+    "--debug-significant-min-gt-fraction",
+    "0.05"
+  ],
+  "protocol_sha256": "0863fc50a69b8773988bc588a4b71253fdd6caf09e65ab2217195894fcf79ede",
+  "supplementary_reporting_wrapper": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/evaluate_ablation_v2.py",
+  "supplementary_reporting_wrapper_sha256": "58932b52be2e592ca16bd38fb9593b68e7c4074a4b6d880585cabb931e97a67f",
+  "effective_protocol": {
+    "name": "Replica-CA-v3",
+    "dataset": "Replica",
+    "frozen": false,
+    "scenes": [
+      "room0",
+      "room1",
+      "room2",
+      "office0",
+      "office1",
+      "office2",
+      "office3",
+      "office4"
+    ],
+    "reference_source": "same_reference_mesh_as_Replica-CA-v1/v2",
+    "confidence_mode": "uniform",
+    "ap_policy": "replica_ca_101",
+    "geometry_mapping": {
+      "method": "competitive_nearest_instance",
+      "max_distance_m": 0.01
+    },
+    "diagnostic_mapping": {
+      "method": "pairwise_geometry_support",
+      "max_distance_m": 0.02
+    },
+    "instance_filter": {
+      "min_valid_instance_vertices": 100,
+      "min_prediction_vertices": 0
+    },
+    "ignore_policy": {
+      "unmatched_prediction_void_fraction_gt": 0.5
+    },
+    "significant_overlap": {
+      "min_intersection_vertices": 10,
+      "min_gt_fraction": 0.05
+    },
+    "source_policy": "Inherit v1/v2 GT, filters, frames and transforms; calibrate all pending values on GT oracle and development scenes before formal scoring"
+  },
+  "GT_used_for_filter_or_repair": false
+}

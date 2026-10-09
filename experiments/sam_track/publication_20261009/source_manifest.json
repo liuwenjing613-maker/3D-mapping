@@ -1,0 +1,916 @@
+{
+  "status": "PASS",
+  "base_commit": "cf3193ac6f56b30f2f47735470d327e593f3957b",
+  "branch": "repair-room0/2-track-1009",
+  "scope": "actual latest room2 top30, room0 receipts, bidirectional gap0/gap1 saved-output ablation, chronological replay sources, real metrics and 3D proofs",
+  "copied_source_bytes_unchanged": true,
+  "original_experiments_unchanged": true,
+  "files": [
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/audit_final_comparison.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/audit_final_comparison.py",
+      "sha256": "6baf2c214f847d1ef8b59ce9d39ef96318f75fd556199fc7309d88404d9f7201",
+      "bytes": 3964
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/check_why_equal.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/check_why_equal.py",
+      "sha256": "880914066931e90232bab1e8179e3a5ab8d4e2386bb9a8830ccac024caa2dc7b",
+      "bytes": 2343
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/continue_with_complete_palette.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/continue_with_complete_palette.py",
+      "sha256": "b2a0c0205392620b965837711597299e9c72a1c8529cc949c1e65ccdd30b9ba8",
+      "bytes": 3904
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/continuity_policy.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/continuity_policy.py",
+      "sha256": "7f4a2bff324849ec788e42cfbdebc5bba5164c6cc3291706e8fe3d3353f89074",
+      "bytes": 3601
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/evaluate_ablation_v2.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/evaluate_ablation_v2.py",
+      "sha256": "58932b52be2e592ca16bd38fb9593b68e7c4074a4b6d880585cabb931e97a67f",
+      "bytes": 18283
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/evaluator_reporting_revision.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/evaluator_reporting_revision.json",
+      "sha256": "4c4f66c713c13d3a89c39390cfcd607742d4451e473ced5c0f7169b38b2c0e5a",
+      "bytes": 525
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/execution_record.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/execution_record.json",
+      "sha256": "68cfcc82f9d34b3840d1e0ab1f80ee71841cb12646ce5e578b40070e34e984cc",
+      "bytes": 6122
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/export_comparison_pack.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/export_comparison_pack.py",
+      "sha256": "dc23e66feca11d7429a5642522a50162db8a60b528ba921732568de0faa7c2e6",
+      "bytes": 3694
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/final_browser_validation.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/final_browser_validation.json",
+      "sha256": "8d0aa8d9d941225dcd8a3b64b30fcf4c3527081874933c8c59a030f666a21153",
+      "bytes": 1017
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/final_local_validation.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/final_local_validation.json",
+      "sha256": "8d22afb014b754521e11ac30db3f2f47835e3e8642cddd4f69690bb0af931af6",
+      "bytes": 4115
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/final_publish_receipt.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/final_publish_receipt.json",
+      "sha256": "e06c9e3b066a06c38004fdd84ff99f9ddc21093ea0c961b0e8867ef31e96cf3e",
+      "bytes": 4669
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/finish_server.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/finish_server.py",
+      "sha256": "05f2fdf31a12303cf4fc6d5b4022d3a11be3065230e77d419c30912a5d01d80f",
+      "bytes": 3211
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/local_review/comparison_model.js",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/local_review/comparison_model.js",
+      "sha256": "18ec0480f9c3858078c79756407c8b30b2bfa36ef155ee6deb5789d5ef6279b3",
+      "bytes": 9596
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/local_review/continuity_playback.js",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/local_review/continuity_playback.js",
+      "sha256": "d07c447d743514119d5cff70fada6dc4cf6451d1cae738f76a11b094c604cadf",
+      "bytes": 20042
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/local_review/index.html",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/local_review/index.html",
+      "sha256": "dba159dda9b46aec5f4c22f1654800cfd6b09f6e53f6cb48a35c9680c97346fd",
+      "bytes": 78984
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/local_review/model.html",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/local_review/model.html",
+      "sha256": "d36e84439e9b7f09e9964309adae9b5095c594c905e542047b7488bf8fd7e9e6",
+      "bytes": 4165
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/local_review/playback.html",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/local_review/playback.html",
+      "sha256": "bffac2e33e7a5eccf9a4c8e783b0c4b515cfb9f333cbce5bad18577a0f8594fb",
+      "bytes": 9672
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/make_execution_record.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/make_execution_record.py",
+      "sha256": "c041fdd80f71478b1b036596c760678e852cc04d0fd1ad64e10f806f136f4008",
+      "bytes": 2901
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/orchestrate_server.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/orchestrate_server.py",
+      "sha256": "2c87ccaae66ea8691658aeddff8a20f508f11f684dad61668da21d0b35d18557",
+      "bytes": 3485
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/publish_final_report.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/publish_final_report.py",
+      "sha256": "f08942796c160009e2cdbf66834c8834ce0168d4743e3495068c522b74fd7fdc",
+      "bytes": 16060
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/recover_pipeline.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/recover_pipeline.py",
+      "sha256": "1107d4f211194813d76e7e5189efa65f29345e471f29001c64c709e80bf60b64",
+      "bytes": 4167
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/room0_gap0_windows.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/room0_gap0_windows.json",
+      "sha256": "f41ded50499645edd94f6bd3803a372299979d1e4e9e26087d0ca4cf945f961e",
+      "bytes": 43657
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/room0_gap1_windows.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/room0_gap1_windows.json",
+      "sha256": "3d92112ca314c796055409165f020abde00042587c2783e2bf8f29fd2ee5c961",
+      "bytes": 44587
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/room2_gap0_windows.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/room2_gap0_windows.json",
+      "sha256": "ffd787e4ab0a6439cec8b5ab98d8f68908ebe3b4bca303197cea997c28f46f96",
+      "bytes": 32832
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/room2_gap1_windows.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/room2_gap1_windows.json",
+      "sha256": "a6ca66bb07480567b8213de80595f46dc60e20332bfca684ae6976a3cf0cc729",
+      "bytes": 33705
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/run_ablation.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/run_ablation.py",
+      "sha256": "6dd3e987b31ef2a1af9df3e6f62bd29474d061b98192c77a66e71cf3b304079e",
+      "bytes": 17682
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/test_continuity_policy.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/test_continuity_policy.py",
+      "sha256": "86b817b4abea1f7e9fd3bdde538db25a8c1a9aee1c8f66e4a563f13722c77d50",
+      "bytes": 3920
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/track_with_continuity.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/track_with_continuity.py",
+      "sha256": "eaaa3ab5177c11ffd255d8fdf2e1fdbea958bc045f6322d543e5871699e86bc4",
+      "bytes": 9555
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/verify_final_artifacts.py",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/verify_final_artifacts.py",
+      "sha256": "f8c6c17339743ed9a46af1ef88d214466f306244807388a1301e0c14581d1a21",
+      "bytes": 4139
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/why_policies_equal.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/why_policies_equal.json",
+      "sha256": "2430737037e4f6953bd18098bcc84e8c5e0cc57717556a5f400d15666c6c7060",
+      "bytes": 22900
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/CHANGES_CN.md",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/CHANGES_CN.md",
+      "sha256": "19f7850b9e20adc676925832042ae500c97acb56177f8471bf10e820aa81c5a0",
+      "bytes": 5587
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/README_CN.md",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/README_CN.md",
+      "sha256": "d6e2e927f5f58bf026bdb44d9fdb93a39f6db9edcb69bd449b9247d7df210c14",
+      "bytes": 3117
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/adapt_batch.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/adapt_batch.py",
+      "sha256": "225d9229fa4ac43eb5fc2b8ba7613536a849acf133cd9277c59857f062545438",
+      "bytes": 3773
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/adaptation_receipt.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/adaptation_receipt.json",
+      "sha256": "822037bfb9b6563027b5b978737900edd23248d22ee2e4e1372880f8b92f4ba6",
+      "bytes": 1583
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/alias_review.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/alias_review.py",
+      "sha256": "c22215e16e215a20592597e103653572fe5868ce98aee27d12d5a9a8303cbd29",
+      "bytes": 2564
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/build_review.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/build_review.py",
+      "sha256": "b0c277d54de64787d2a40834530b06dd1c427a7f38c626c4063e1b2bab6382d4",
+      "bytes": 25197
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/cross_seed_diagnostics.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/cross_seed_diagnostics.py",
+      "sha256": "e963be41c66c3ce7b04670cd5dd19907bbf0c7808fdf4cf4baac19007cd36241",
+      "bytes": 2673
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/evaluate_batch.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/evaluate_batch.py",
+      "sha256": "0d5b49242ac2e050aa945747278a1e5185c543b3516b1a18bbec20ebf24434b8",
+      "bytes": 9957
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/explain_retained_votes.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/explain_retained_votes.py",
+      "sha256": "71f04c1577f2d230a639fd516441db583ad580938cbf9c00785bd57dbbd8b0b7",
+      "bytes": 3632
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/export_cross_seed_review.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/export_cross_seed_review.py",
+      "sha256": "2c37253e02d2e1c32bc9c51253ddcc61036335c72bd0140d27f21fd996147cfb",
+      "bytes": 2605
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/export_review.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/export_review.py",
+      "sha256": "20b542c77f90e83d86047998eb95fb0eef7f80dcc0c7380fa113b64fad236fa6",
+      "bytes": 13180
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/finalize_notes.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/finalize_notes.py",
+      "sha256": "734c513c051bb74ac57543f17727866ab281abb4e5309fbeae5b76e4bc5cfafa",
+      "bytes": 7893
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/joint_batch_ops.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/joint_batch_ops.py",
+      "sha256": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "bytes": 2157
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/pipeline.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/pipeline.py",
+      "sha256": "4a0f2d7dcb974927cbaf10982025a4c426d93dfa7d1e41632980dd2a82740395",
+      "bytes": 2793
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/prepare_local.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/prepare_local.py",
+      "sha256": "1450d1e22bc6000961304910e2cb2e78fdbb8e7566887e7668b8038f883f0511",
+      "bytes": 5463
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/prepare_server.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/prepare_server.py",
+      "sha256": "742768c077a673dcfb9c4b765fca1aeaddf55c7042b6e6cf190a90a41a2e5571",
+      "bytes": 8763
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-0b324734bca2ccef.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-0b324734bca2ccef.json",
+      "sha256": "545bf082513b81c24bd6a0e3b5f38ca934935df79fe808c7401f9e513e212a8f",
+      "bytes": 1193
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-0ba2ef6c21b4c92d.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-0ba2ef6c21b4c92d.json",
+      "sha256": "cf1e028aaf05cef8e2be05dab542f6710b026c87e1276bcf24b42ed17b61fd92",
+      "bytes": 1099
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-14047feb0df3aaa5.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-14047feb0df3aaa5.json",
+      "sha256": "1d1831ccc3477137db04dfbee7e265643adaa6a9bb2105f766e1e6d640f53c4d",
+      "bytes": 1260
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-579feefc65a0d844.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-579feefc65a0d844.json",
+      "sha256": "8f1961b56c4302b2e457ee2b7c5511633bf0d3b739c6583800470478eefa41a5",
+      "bytes": 1201
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-6f08166618cd41f8.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-6f08166618cd41f8.json",
+      "sha256": "56ea92298b3901aaac648ca4d14d8cfc5137e2f9bcc08a5294891f965fc5670a",
+      "bytes": 1166
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-74781753162bd8a3.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-74781753162bd8a3.json",
+      "sha256": "8355f59131649508460f9fb4abcd0d2dd0d1825a5043b67cda06e07551e5d767",
+      "bytes": 1127
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-75ede2d925653a39.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-75ede2d925653a39.json",
+      "sha256": "ec1591d355db0a2eea85300a5d27c2fac291772739b2242834a55b83570c3eb4",
+      "bytes": 1128
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-7704f54997e6d29b.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-7704f54997e6d29b.json",
+      "sha256": "192499d5ccd0ce18586e4df8557ec213ff77d4eb004749f167e9cae0bede5747",
+      "bytes": 1129
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-8d83120d5b27ce5e.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-8d83120d5b27ce5e.json",
+      "sha256": "4cb21b67b5b4da5e6d6cf5e0cc8180e613216b68d04ae91620c68d79a9a46d59",
+      "bytes": 1131
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-b18070389a477f61.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-b18070389a477f61.json",
+      "sha256": "978304e5f31848b758cbf5a85501df8cc022d039e65bc467d5b8030e3bd1b8f7",
+      "bytes": 1127
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-c9af20694ea516a9.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-c9af20694ea516a9.json",
+      "sha256": "c9b500e3cef9f2780f9e0dedfe2f953812159905776cd4f01f8f6b4ed0ba4fac",
+      "bytes": 1127
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-eadde8f5bac2ff37.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-eadde8f5bac2ff37.json",
+      "sha256": "6b5082f1eb2a768a23f85420079ae30bb172d9e08962b574838ce2c63f054987",
+      "bytes": 1201
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-ec916c94e6c24185.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-ec916c94e6c24185.json",
+      "sha256": "27bc6ec9dbb6cd097b91c6a44e1311c72b7a8d4fb5d1de94fb35e6758781bce9",
+      "bytes": 1131
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2-f1797fac02e52a4c.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2-f1797fac02e52a4c.json",
+      "sha256": "12b906ce3b4517883053dbd296991059ef03af24dd0b6c8b533a080c22362522",
+      "bytes": 1135
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/room2_viewer.js",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/room2_viewer.js",
+      "sha256": "42e40b9dba0facd06cec9b1decdb9beaea8931e84547510a87e5a584e874508a",
+      "bytes": 8615
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/root_cause_audit.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/root_cause_audit.py",
+      "sha256": "26551db9de384c8d8021f5c24bc7be7de751230b671807e6fac52ac9e3f967c7",
+      "bytes": 13903
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/root_cause_vote_provenance.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/root_cause_vote_provenance.py",
+      "sha256": "36873c893900a8cc4817a41f16693dd0e5bd3c77f00405a546664fb45e62c566",
+      "bytes": 6661
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/run_batch.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/run_batch.py",
+      "sha256": "77c633b9b81e152535419d9ebf9cb4a95a6312cabb2d08e7a86c1dd585f5079c",
+      "bytes": 25620
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/selection_views.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/selection_views.json",
+      "sha256": "016b10b2843c582737d40b493fb70cd2e2b8a07288513ea808a79dfc9cc9471a",
+      "bytes": 62072
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/task_paths.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/task_paths.json",
+      "sha256": "c09eafc5b2915f41e5da49b834bb4df862eaeac858f9cdb28e8bfe1d1794cb88",
+      "bytes": 344
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/test_joint_batch_ops.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/test_joint_batch_ops.py",
+      "sha256": "bee41c861f7a7fcdae24e4bcdbf15bb08a1e9aa7d5b7c5710555d3700c6f4598",
+      "bytes": 2438
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/tracking_queue.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/tracking_queue.py",
+      "sha256": "e3ed6363e558e576f87f10f1918f00f991f17661bf6b236ee5a62b2966542b43",
+      "bytes": 4739
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_top30_repair_20261008/batch_6b3f32f5dc1c/verify_review.py",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/verify_review.py",
+      "sha256": "24b4069dc0fbc1ee9bcc5c383cccf453b5826a9e2ecd099c05951903cfe7b258",
+      "bytes": 3312
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/input_freeze.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/input_freeze.json",
+      "sha256": "bd78e09f6cffa52b94a594d0c83d2ed7d93fac46904107309f6b6be81144f077",
+      "bytes": 316546
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/global_association.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/global_association.json",
+      "sha256": "b9a1ac32ef9381af4e448931b4ed3141990e32c839cada1d9041f9555af82180",
+      "bytes": 33391
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/alias_review.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/alias_review.json",
+      "sha256": "591431b4cde5959f68f96a528a44e3803ff3d3709404fecf4f3de916da2ea872",
+      "bytes": 2651
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/tracking_validation.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/tracking_validation.json",
+      "sha256": "7d7c861bda4f0c682d87ce9b2a948b44440c58f45fa06742b4165bfc1a19eed5",
+      "bytes": 4292
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/tracking_queue_complete.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/tracking_queue_complete.json",
+      "sha256": "8618ca1ac6c0ed9c44edbf29ac6b0d8d79553bb64ca03afe13caf66a55929c40",
+      "bytes": 7758
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/repair_complete.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/repair_complete.json",
+      "sha256": "96ab85017a01d8074b8d9d94b7fcb2462a29bfb8d10b656d0a3bded99f08771c",
+      "bytes": 455
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/evaluation_freeze.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/evaluation_freeze.json",
+      "sha256": "e7a488227c906f759c02248083137cb157ae08bbeb68ee5e87abd67589f72447",
+      "bytes": 2723
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/evaluation_summary.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/evaluation_summary.json",
+      "sha256": "9179d33b9d979a4f3e1d9f78a686964e83d8d4c1a37ce00bac9979fbb391d9ea",
+      "bytes": 181781
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/seed_manifest.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/seed_manifest.json",
+      "sha256": "24bd069dc46be899c287b32f008023597527d1c7e1b52bdcc45beee4fcba7a91",
+      "bytes": 60173
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/selection_views.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/selection_views.json",
+      "sha256": "4bf2614f616e7c5120c030969e4b5aee09cd606dd91eedd34423855c867d0ea0",
+      "bytes": 50390
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/pipeline_complete.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/pipeline_complete.json",
+      "sha256": "d7d4bcdc10c03d471dc08279062df8f337344a8bf22b81d38aa90e6d55d15edc",
+      "bytes": 480
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/final_validation.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/final_validation.json",
+      "sha256": "203c7331c6d79ca815d9a3074ea78f111f4bca25ddb72dc9dddd411feb5fac9e",
+      "bytes": 88699
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/instance_palettes.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/instance_palettes.json",
+      "sha256": "803e249ae751fa748d851ccad2e9517d9681c5624334d383a3be7b0f3bf42fc9",
+      "bytes": 27162
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/cross_seed_diagnostics.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/cross_seed_diagnostics.json",
+      "sha256": "0255a07bbd6783c6fff4737e09342e9abe9fdbefb68db4b4a248862c72aef444",
+      "bytes": 3224
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/cross_seed_diagnostics_pretrack.json",
+      "archive_path": "experiments/sam_track/room0_batch_repair_20261007/results_1009/cross_seed_diagnostics_pretrack.json",
+      "sha256": "ca845608aca7935c0c1c60da67a736d34813cca0bd327f6aa6f4de03ce5853a7",
+      "bytes": 1792
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/input_freeze.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/input_freeze.json",
+      "sha256": "ff177d92c85a7c858ac8579b8cb0a339d51054553c7b2a936c6b2e93066983c4",
+      "bytes": 317494
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/global_association.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/global_association.json",
+      "sha256": "dce85b5d7deadb3cedc044e0479a7b03d809803ce10cb4e51d9b154b11a4c088",
+      "bytes": 29506
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/alias_review.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/alias_review.json",
+      "sha256": "545677a226dd63e4f4584584ad3ee683f6ee297ce9743a8717de030f6717fb0f",
+      "bytes": 4042
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/tracking_validation.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/tracking_validation.json",
+      "sha256": "71da2edd390468795766c0dc72d92515ebd4e87fcc7a118267a7641e7fa35845",
+      "bytes": 4866
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/tracking_queue_complete.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/tracking_queue_complete.json",
+      "sha256": "33ff11986c8fffc5bb7994a768202e418e7aef644aad639b0ef13dbbe1f4c80b",
+      "bytes": 9114
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/repair_complete.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/repair_complete.json",
+      "sha256": "46e3a337254b863a3d180252f77b71e20afa646b6bad96c9aaad6ed559d410c4",
+      "bytes": 2090
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/evaluation_freeze.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/evaluation_freeze.json",
+      "sha256": "65209c0ef29035cb37854641b4a01a407618aa3803145463c07fa347c5a6459f",
+      "bytes": 2735
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/evaluation_summary.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/evaluation_summary.json",
+      "sha256": "f2a9b25262e48574b848280788d27f02538eb6d90d67c76e70768b6cddf5b05d",
+      "bytes": 149588
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/seed_manifest.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/seed_manifest.json",
+      "sha256": "522db49faaf8ab279b761ed52a4eb608cf8e7ed03ff5d29d55dcbf6c7d9a14e7",
+      "bytes": 58790
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/selection_views.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/selection_views.json",
+      "sha256": "016b10b2843c582737d40b493fb70cd2e2b8a07288513ea808a79dfc9cc9471a",
+      "bytes": 62072
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/pipeline_complete.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/pipeline_complete.json",
+      "sha256": "6ce5071320a730f108de28289287ce192abe4d43972103c3cade0b776f3fccfc",
+      "bytes": 851
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/final_validation.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/final_validation.json",
+      "sha256": "796c4e67436aa50f64ae7a40ee2816482c5c0781257f0d1fd57c3a6c29c6b328",
+      "bytes": 717
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/instance_palettes.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/instance_palettes.json",
+      "sha256": "114e612e0bd17cad6543f3b080d825ecb55031529966b317eb233ad95b813f36",
+      "bytes": 4016
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/delivery_source_hashes.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/delivery_source_hashes.json",
+      "sha256": "0702ed9cbfb78537233cb8e295fe888ad7c41b03b955c14c3b5a869467156a5f",
+      "bytes": 5353
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/delivery_validation.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/delivery_validation.json",
+      "sha256": "ef9e756a42afb42902ada3dfc4405faf80d2cabb14eb771802cd26dc07ab0330",
+      "bytes": 165
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/pipeline_code_freeze.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/pipeline_code_freeze.json",
+      "sha256": "f247f219e55869217164c2bbee766c746d7f9de85eddb533b700fc47eabc7024",
+      "bytes": 1295
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/cross_seed_diagnostics.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/cross_seed_diagnostics.json",
+      "sha256": "43a1b7ca5380106513a1b23ffc94b53f31f43b70a966629d8b2b934f3d9c9c9c",
+      "bytes": 9675
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/cross_seed_diagnostics_pretrack.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/cross_seed_diagnostics_pretrack.json",
+      "sha256": "8eecaf0b73dfe57c440b58e14f32017f09012fb1fab5168859f01cc843975358",
+      "bytes": 5153
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/complete.json",
+      "sha256": "3ecb92f0354a6815184ae7c102f3ba867ba9f72ce91d96a90fb024c980b49061",
+      "bytes": 276527
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/failure.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/failure.json",
+      "sha256": "47cc9254e7e2f9fedfa9d2b3294a8a7d51e647b61dbfc40b64cb396446c121eb",
+      "bytes": 599
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/original_geometry_export_validation.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/original_geometry_export_validation.json",
+      "sha256": "33e0d18bf7464781599634c762fdcc2e3bb12746341be0e284a4d848cfa63881",
+      "bytes": 1285
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/recovery_launch.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/recovery_launch.json",
+      "sha256": "ea96474b7ad7009e995b0e74bac94d27621d9401c20380531c1f4c9f4618e8d7",
+      "bytes": 727
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/comparison_audit.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/comparison_audit.json",
+      "sha256": "2d7120bf5d0d06827539957405ce90f3b20b1e33a1962a8cb76b3e7c301bba96",
+      "bytes": 164422
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/comparison_pack.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/comparison_pack.json",
+      "sha256": "b4be922a4b500fa7acbf3b2354608822b7e344bbb95a636f636877fa7efec46a",
+      "bytes": 6838
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/evaluation_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/evaluation_freeze.json",
+      "sha256": "a3321f7043b9456a69cab99adf903747fcbd6e24e9315b851b4cc28f64065975",
+      "bytes": 1956
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/evaluation_summary.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/evaluation_summary.json",
+      "sha256": "fee0dbb85b90dd22dd028e8281d76a727bb8302f8b438994ce50f459b47801cc",
+      "bytes": 133859
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap0/full_track/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap0/full_track/complete.json",
+      "sha256": "a6b7402895e58536a20f8800b849e6a37d13bf82e9ad805a9358718cda4bf72c",
+      "bytes": 10736
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap0/full_track/source_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap0/full_track/source_freeze.json",
+      "sha256": "6c122b8de8b38dfb4ebb32d775efc49f83939fa10d45f7f720e79d333d6f649f",
+      "bytes": 11524
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap0/full_track/status.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap0/full_track/status.json",
+      "sha256": "5338c62b793e4caf257d31e47175aba3319ebe4130b64468e646b321e4e4859c",
+      "bytes": 82
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap0/v3/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap0/v3/complete.json",
+      "sha256": "0232d1228ec9ec19c3dffb5fb829140c0dd7b202505865ad08238c8d2bbd885b",
+      "bytes": 4155
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap1/full_track/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap1/full_track/complete.json",
+      "sha256": "1134b356d52ed6d12231aba0e8e69781eb445af9893075b5d30702c720530f7f",
+      "bytes": 10738
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap1/full_track/source_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap1/full_track/source_freeze.json",
+      "sha256": "6c122b8de8b38dfb4ebb32d775efc49f83939fa10d45f7f720e79d333d6f649f",
+      "bytes": 11524
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap1/full_track/status.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap1/full_track/status.json",
+      "sha256": "5338c62b793e4caf257d31e47175aba3319ebe4130b64468e646b321e4e4859c",
+      "bytes": 82
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/gap1/v3/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/gap1/v3/complete.json",
+      "sha256": "dd2df1b10460360cda9e72605266f2e2d273399b0d1643978c7f7f02e93b2fe0",
+      "bytes": 4154
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/predictions_frozen.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/predictions_frozen.json",
+      "sha256": "2f70e9ecb4dfb4b8b31b2ecbdf46e06a8153a0551670b2e3300b05ce26d3c25b",
+      "bytes": 2094746
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room0/source_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room0/source_freeze.json",
+      "sha256": "71adc228f17f5d7dd3a1f539604a995d290cf0443818c61e9129954219d0088b",
+      "bytes": 13955
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/comparison_audit.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/comparison_audit.json",
+      "sha256": "b66ddd373dc94988baea30e081cd9419da82a66ec343e2d02686271f64d75f9e",
+      "bytes": 115292
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/comparison_pack.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/comparison_pack.json",
+      "sha256": "0c4960086801ef129783394b5f722d4d5abdec9ad95e5e4fce7b5592685afa42",
+      "bytes": 6023
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/evaluation_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/evaluation_freeze.json",
+      "sha256": "d69209ee2de03de12b5e3b5a06290e1696a3582e58cef3841b8ab072ddbf0bae",
+      "bytes": 1956
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/evaluation_summary.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/evaluation_summary.json",
+      "sha256": "537a5be4edb511b4ceac12415cb562df54e8834c4d7e81fbdc2a468f5febe804",
+      "bytes": 113828
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap0/full_track/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap0/full_track/complete.json",
+      "sha256": "c04e219bba0c6edcfc0c57a73c9e4b6c5866b261dcec013dc6c40ac2c99a2c8b",
+      "bytes": 10389
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap0/full_track/source_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap0/full_track/source_freeze.json",
+      "sha256": "2ea39a06e3e376ae27cbe339db50b5fc0d4e5e090fc18111149d4fe1ede099b4",
+      "bytes": 13016
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap0/full_track/status.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap0/full_track/status.json",
+      "sha256": "5338c62b793e4caf257d31e47175aba3319ebe4130b64468e646b321e4e4859c",
+      "bytes": 82
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap0/v3/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap0/v3/complete.json",
+      "sha256": "886dab63e6f666bada3daf980d07b0ee317519abcf8186ff23adf9f52a6ce73e",
+      "bytes": 3737
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap1/full_track/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap1/full_track/complete.json",
+      "sha256": "161cc5cd2a3baf7f0d1555f2bfc4685dfef86ce921ed646a38d1652cb21b9c66",
+      "bytes": 10389
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap1/full_track/source_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap1/full_track/source_freeze.json",
+      "sha256": "2ea39a06e3e376ae27cbe339db50b5fc0d4e5e090fc18111149d4fe1ede099b4",
+      "bytes": 13016
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap1/full_track/status.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap1/full_track/status.json",
+      "sha256": "5338c62b793e4caf257d31e47175aba3319ebe4130b64468e646b321e4e4859c",
+      "bytes": 82
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/gap1/v3/complete.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/gap1/v3/complete.json",
+      "sha256": "c00a85ab40575e0305eb68229d6912be816765e035a65cb69b0b779ac5c32657",
+      "bytes": 3737
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/predictions_frozen.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/predictions_frozen.json",
+      "sha256": "0cbb40ec3c5d621c963ba089fee54bb5336c87b29bf267f853fe68acc4a71714",
+      "bytes": 2472945
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/repair_failure.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/repair_failure.json",
+      "sha256": "3abafe6be6493d7020a1da287c036042bfdd202495819c6ef414a30acd4764e6",
+      "bytes": 732
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/room2/source_freeze.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/room2/source_freeze.json",
+      "sha256": "5bfd6321cab43dfd43510d23487f7bc3caea777a2001ce19886ef79aac629f7e",
+      "bytes": 15501
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/continuous_tracking_ablation_20261008/status.json",
+      "archive_path": "experiments/sam_track/continuous_tracking_ablation_20261008/results/status.json",
+      "sha256": "f0e2c5deabeebda8e6213be9610529049782fdac33474923649fcd110fb3e1a9",
+      "bytes": 75
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room0_tracking_playback_20261008/CHANGES_CN.md",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room0/server_source/CHANGES_CN.md",
+      "sha256": "16149ae37a276407f639456ba8365782b0dd6dfdcc1e7b9c617b7a1ce16ad055",
+      "bytes": 2001
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room0_tracking_playback_20261008/export_playback.py",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room0/server_source/export_playback.py",
+      "sha256": "b06fe0aefdcaa2c109a7b048987473a0b2cdac849c84a238ac03f300294d17ff",
+      "bytes": 9398
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room0_tracking_playback_20261008/web/index.html",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room0/server_source/web/index.html",
+      "sha256": "96589e089c40d02161ce68f2f1c0f99b1ed6e758b2b3ace7e273dfeff0b8e54b",
+      "bytes": 8668
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room0_tracking_playback_20261008/web/playback.js",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room0/server_source/web/playback.js",
+      "sha256": "4f89442dc3ac53f5ae5826cba06110199f28243a1a5f3f1244f551bab20badab",
+      "bytes": 16663
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_tracking_playback_20261008/complete.json",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room0/results/complete.json",
+      "sha256": "17987ed45849e1226a8029fd8441dd177e503d795ef8fedba80f9c9a2b4df130",
+      "bytes": 604
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_tracking_playback_20261008/playback_data.json",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room0/results/playback_data.json",
+      "sha256": "71d70c733609744ba5ccddd590c62fae68cd6c0289c3d814c4ff94d6c5ca0230",
+      "bytes": 1745012
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room0_tracking_playback_20261008/status.json",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room0/results/status.json",
+      "sha256": "17987ed45849e1226a8029fd8441dd177e503d795ef8fedba80f9c9a2b4df130",
+      "bytes": 604
+    },
+    {
+      "source": "/home/chenkejun/CVPR/experiments/room2_tracking_playback_20261008/export_playback.py",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room2/server_source/export_playback.py",
+      "sha256": "af8cfcc2a9d3f878a46175faf58ec270ca3aed6a3d4c06001038f3f40ac717ee",
+      "bytes": 9751
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_tracking_playback_20261008/complete.json",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room2/results/complete.json",
+      "sha256": "21cc0c4a3ec010f387912b8ff40630737608b50c755062ec17f80331a363f0ab",
+      "bytes": 603
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_tracking_playback_20261008/launcher.json",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room2/results/launcher.json",
+      "sha256": "99b8ad4db2bd3f924082253fa8cf1d033acf316d7a839dada3ed2dccd0121195",
+      "bytes": 136
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_tracking_playback_20261008/playback_data.json",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room2/results/playback_data.json",
+      "sha256": "71323493ad6bd587bd58681e21f7af76e24bf72221e0ba31de169fe6b2e644f7",
+      "bytes": 1466754
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_tracking_playback_20261008/status.json",
+      "archive_path": "experiments/sam_track/chronological_playback_20261008/room2/results/status.json",
+      "sha256": "21cc0c4a3ec010f387912b8ff40630737608b50c755062ec17f80331a363f0ab",
+      "bytes": 603
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/root_cause_20261008/retained_vote_explanation.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/root_cause_20261008/retained_vote_explanation.json",
+      "sha256": "72f44bff60b81511c9ff2feb29386b12d8d04932f4f9222cc5ccc34d5d348af6",
+      "bytes": 43466
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/root_cause_20261008/root_cause_audit.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/root_cause_20261008/root_cause_audit.json",
+      "sha256": "f4d3a806fa1c386c2fb7321ecf65cce07cddd82736c78752982810742752a44a",
+      "bytes": 63532
+    },
+    {
+      "source": "/data/chenkejun/CVPR/revisable_instance_map/room2_top30_repair_20261008/batch_6b3f32f5dc1c/root_cause_20261008/vote_provenance.json",
+      "archive_path": "experiments/sam_track/room2_top30_repair_20261008/results_1009/root_cause_20261008/vote_provenance.json",
+      "sha256": "9eb94f2b788727620f41f2d25a4505aa1ea2705d8934b854d2a4acec99c97327",
+      "bytes": 6792
+    }
+  ]
+}

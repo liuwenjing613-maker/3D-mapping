@@ -1,0 +1,89 @@
+{
+  "status": "FROZEN",
+  "GT_used": false,
+  "aliases": {
+    "11": 8
+  },
+  "annotation_sha256": "386cdcff710d1714be1a6e5792480c797fe302782acf67c77fb50c653a29dd79",
+  "cross_seed_diagnostics_sha256": "0255a07bbd6783c6fff4737e09342e9abe9fdbefb68db4b4a248862c72aef444",
+  "review_code_sha256": "e97106752c7c2afbc814a6774a8175472ff90eb947423d9ef4a603923fd80b1a",
+  "tracking_contact_sha256": "8ce3138ca051fd3a333e735641020075b1f0b540bfb97064b07ec1c2a7674d5e",
+  "decisions": [
+    {
+      "member_track_ids": [
+        8,
+        11
+      ],
+      "canonical_track_id": 8,
+      "sources": [
+        "C0005 mask14 at f580",
+        "C0010 mask9 at f1660"
+      ],
+      "physical_identity": "The same lower side table next to the white sofa; upper table track9 remains distinct",
+      "visual_review": "Human-selected RGB seed contacts were inspected before any GT read; lower top plate and visible legs belong to the same lower table",
+      "evidence": {
+        "track_a": 8,
+        "track_b": 11,
+        "same_old_family": true,
+        "a_in_b_seed": {
+          "visible_samples": 1211,
+          "coverage": 0.9966969446738233,
+          "tracking_on_other_seed_frame_IoU": 0.9793754538852578,
+          "tracking_on_other_seed_frame_seed_coverage": 0.9992590397154713
+        },
+        "b_in_a_seed": {
+          "visible_samples": 1532,
+          "coverage": 0.9040469973890339,
+          "tracking_on_other_seed_frame_IoU": 0.0,
+          "tracking_on_other_seed_frame_seed_coverage": 0.0
+        }
+      },
+      "tracking_pixel_counts_at_other_seed": {
+        "8": {
+          "other_seed_frame": 1660,
+          "foreground_pixels": 184665,
+          "sha256": "c7611b04a88a5a66841bf132394e3dc020e7cb6f13080bd6e22f9709bdf99aad"
+        },
+        "11": {
+          "other_seed_frame": 580,
+          "foreground_pixels": 6880,
+          "sha256": "91e16cf4916104f0436fb19d81acfbb8b2044da7b6c68de1a13bb4b7711c4046"
+        }
+      },
+      "propagation_failure_acknowledged": "Track8 has zero overlap with track11 seed at f1660; track11 at f580 overlaps track8 seed with IoU above .97",
+      "action": "Alias only the persistent identity. Preserve both original masks and all raw tracking. Apply unchanged per-object reliability to each frame; never fill missing masks from GT."
+    }
+  ],
+  "other_tracks_remain_distinct": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "no_GT_regrouping": true,
+  "all_raw_tracks_and_numeric_thresholds_unchanged": true
+}

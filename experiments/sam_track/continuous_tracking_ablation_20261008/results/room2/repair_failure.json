@@ -1,0 +1,4 @@
+{
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/run_ablation.py\", line 278, in <module>\n    if args.stage == 'repair': run_scene(args.scene)\n  File \"/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/run_ablation.py\", line 196, in run_scene\n    'PLY':export_ply(engine,scene,name,surface)}\n  File \"/home/chenkejun/CVPR/experiments/continuous_tracking_ablation_20261008/run_ablation.py\", line 139, in export_ply\n    assert set(map(int, np.unique(ids[ids > 0]))).issubset(known), 'Require the original complete identity palette'\nAssertionError: Require the original complete identity palette\n"
+}

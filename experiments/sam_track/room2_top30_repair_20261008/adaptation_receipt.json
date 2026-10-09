@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "sources": [
+    {
+      "file": "prepare_server.py",
+      "source_sha256": "9272d5977fb5e3994ffcd72ebaea83fbbb9e9ccccf78388286cc61ef48f2e106",
+      "adapted_sha256": "742768c077a673dcfb9c4b765fca1aeaddf55c7042b6e6cf190a90a41a2e5571"
+    },
+    {
+      "file": "cross_seed_diagnostics.py",
+      "source_sha256": "5fdd3327e371d2eda797386886f9dfc254e150fc576f7523219718324139ab73",
+      "adapted_sha256": "e963be41c66c3ce7b04670cd5dd19907bbf0c7808fdf4cf4baac19007cd36241"
+    },
+    {
+      "file": "run_batch.py",
+      "source_sha256": "7af5adeac74ab7e7d5cd8fb8708fdcca4e8c4cf1220c2d48e02a927f4f0586cb",
+      "adapted_sha256": "77c633b9b81e152535419d9ebf9cb4a95a6312cabb2d08e7a86c1dd585f5079c"
+    },
+    {
+      "file": "evaluate_batch.py",
+      "source_sha256": "b3e8bdfc6987accfb1209041cc4c60058d1a5cebbd7201385f58ac4507a9fd5e",
+      "adapted_sha256": "0d5b49242ac2e050aa945747278a1e5185c543b3516b1a18bbec20ebf24434b8"
+    },
+    {
+      "file": "tracking_queue.py",
+      "source_sha256": "73ad7528e21b149aa85ad1f64d2d51e7a3adfb49d677e10eb196a78409be3f4f",
+      "adapted_sha256": "e3ed6363e558e576f87f10f1918f00f991f17661bf6b236ee5a62b2966542b43"
+    }
+  ],
+  "scope": "partial human export: 18 decisions, 14 groups, 25 masks, 12 unannotated",
+  "numerical_thresholds_changed": false,
+  "vote_algorithm_changed": false,
+  "baseline_changed": false,
+  "changes": [
+    "new room2 input/source hashes and isolated batch paths",
+    "partial annotation counts and explicit unannotated cases",
+    "use already corrected color palette exporter"
+  ]
+}

@@ -1,0 +1,1957 @@
+{
+  "status": "PASS",
+  "scene": "room2",
+  "annotation_sha256": "6b3f32f5dc1c6ac96c940572efb12aad9d2ecf208288cf685823c172f50f6a69",
+  "repair_cases": 14,
+  "selected_masks": 25,
+  "total_ranked_cases": 30,
+  "unannotated_cases": [
+    {
+      "case_uid": "room2-b4a44441452f25db",
+      "ROI": "ROI-C0017",
+      "rank": 17,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-9cfe3a2676f3d857",
+      "ROI": "ROI-C0018",
+      "rank": 18,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-f2fdcadc88f2f5c8",
+      "ROI": "ROI-C0019",
+      "rank": 19,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-484f8436078a799f",
+      "ROI": "ROI-C0020",
+      "rank": 20,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-643fcda2169d6501",
+      "ROI": "ROI-C0021",
+      "rank": 21,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-5b29bfae991c4fc0",
+      "ROI": "ROI-C0022",
+      "rank": 22,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-5a3119a1c3664255",
+      "ROI": "ROI-C0023",
+      "rank": 23,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-3fc8ed82d4bb8223",
+      "ROI": "ROI-C0024",
+      "rank": 24,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-3c538142a11821ea",
+      "ROI": "ROI-C0026",
+      "rank": 26,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-599d3ca182893959",
+      "ROI": "ROI-C0027",
+      "rank": 27,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-2cc0a409cceececc",
+      "ROI": "ROI-C0028",
+      "rank": 28,
+      "status": "UNANNOTATED"
+    },
+    {
+      "case_uid": "room2-25422e72833b7e1f",
+      "ROI": "ROI-C0030",
+      "rank": 30,
+      "status": "UNANNOTATED"
+    }
+  ],
+  "seeds": [
+    {
+      "status": "READY",
+      "case_uid": "room2-ec916c94e6c24185",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-ec916c94e6c24185",
+        "scene": "room2",
+        "ROI": "ROI-C0001",
+        "aliases": [
+          "ROI-C0001",
+          "ROI-U0004",
+          "ROI-T0001"
+        ],
+        "conflict_rank": 1,
+        "conflict_points": 14607,
+        "view_number": 1,
+        "frame": 735,
+        "source_rgb": "room2/assets/frame000735.jpg",
+        "crop_key": "room2_ROI-C0001_v1_f000735_balanced",
+        "crop_xyxy": [
+          0,
+          0,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          1200,
+          680
+        ],
+        "crop_strategy": "balanced",
+        "choice": "sam2_1_local",
+        "model_index": 2,
+        "mask_ids": [
+          6,
+          8
+        ],
+        "label_asset": "assets/room2_ROI-C0001_v1_f000735_balanced_sam_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:26:51.817Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 1,
+          "native_mask_id": 6,
+          "crop_pixels": 45398,
+          "touches_crop_border": false,
+          "seed_pixels": 45398,
+          "projected_seed_points": 11359,
+          "old_family_id": 10,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 21,
+              "old_persistent_id": 10,
+              "pixels": 45398,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 16,
+            "10": 11343
+          },
+          "seed_xyz_bounds_m": [
+            [
+              0.04373765364289284,
+              1.3528807163238525,
+              -1.3157950639724731
+            ],
+            [
+              1.6999999284744263,
+              1.6976318359375,
+              0.606827974319458
+            ]
+          ]
+        },
+        {
+          "track_id": 2,
+          "native_mask_id": 8,
+          "crop_pixels": 43362,
+          "touches_crop_border": false,
+          "seed_pixels": 43362,
+          "projected_seed_points": 10291,
+          "old_family_id": 10,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 21,
+              "old_persistent_id": 10,
+              "pixels": 43335,
+              "fraction": 0.9993773349937733
+            },
+            {
+              "old_local_id": 32,
+              "old_persistent_id": 180,
+              "pixels": 23,
+              "fraction": 0.0005304183386375167
+            },
+            {
+              "old_local_id": 0,
+              "old_persistent_id": -1,
+              "pixels": 4,
+              "fraction": 9.224666758913334e-05
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 49,
+            "6": 6,
+            "10": 10236
+          },
+          "seed_xyz_bounds_m": [
+            [
+              0.8299999833106995,
+              1.043730616569519,
+              -1.4299999475479126
+            ],
+            [
+              2.440000057220459,
+              1.5351284742355347,
+              0.3799999952316284
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-ec916c94e6c24185/prepared_seed.png",
+      "seed_sha256": "4b79a1c3b60c33422ed7d5672e45432257bc11e4d2ab0cb3c83731a341ff51be",
+      "source_label_sha256": "6e30f67c7d65b3813cce59bb0e46a32316becf5278b3f54c076344bee433ef1e",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0001_v1_f000735_balanced_sam_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0001_v1_f000735_balanced_sam_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-14047feb0df3aaa5",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-14047feb0df3aaa5",
+        "scene": "room2",
+        "ROI": "ROI-C0002",
+        "aliases": [
+          "ROI-C0002",
+          "ROI-U0001",
+          "ROI-T0003"
+        ],
+        "conflict_rank": 2,
+        "conflict_points": 12105,
+        "view_number": 1,
+        "frame": 1065,
+        "source_rgb": "room2/assets/frame001065.jpg",
+        "crop_key": "room2_ROI-C0002_v1_f001065_balanced",
+        "crop_xyxy": [
+          0,
+          0,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          1200,
+          680
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          4,
+          7,
+          8
+        ],
+        "label_asset": "assets/room2_ROI-C0002_v1_f001065_balanced_original_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:27:30.919Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 3,
+          "native_mask_id": 4,
+          "crop_pixels": 31978,
+          "touches_crop_border": false,
+          "seed_pixels": 31978,
+          "projected_seed_points": 3978,
+          "old_family_id": 44,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 4,
+              "old_persistent_id": 44,
+              "pixels": 31978,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 31,
+            "1": 38,
+            "8": 18,
+            "44": 3874,
+            "52": 17
+          },
+          "seed_xyz_bounds_m": [
+            [
+              2.1441948413848877,
+              -0.3700000047683716,
+              -2.7754476070404053
+            ],
+            [
+              4.630000114440918,
+              0.6800000071525574,
+              -1.4113177061080933
+            ]
+          ]
+        },
+        {
+          "track_id": 4,
+          "native_mask_id": 7,
+          "crop_pixels": 8431,
+          "touches_crop_border": false,
+          "seed_pixels": 8431,
+          "projected_seed_points": 1557,
+          "old_family_id": 52,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 7,
+              "old_persistent_id": 52,
+              "pixels": 8431,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "6": 5,
+            "8": 3,
+            "52": 1549
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.2812891006469727,
+              -0.4699999988079071,
+              -2.8156871795654297
+            ],
+            [
+              5.389999866485596,
+              -0.19999998807907104,
+              -1.5999999046325684
+            ]
+          ]
+        },
+        {
+          "track_id": 5,
+          "native_mask_id": 8,
+          "crop_pixels": 17534,
+          "touches_crop_border": false,
+          "seed_pixels": 17534,
+          "projected_seed_points": 2822,
+          "old_family_id": 52,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 8,
+              "old_persistent_id": 52,
+              "pixels": 17534,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "1": 1,
+            "6": 16,
+            "8": 12,
+            "52": 2793
+          },
+          "seed_xyz_bounds_m": [
+            [
+              2.7348344326019287,
+              -0.35999998450279236,
+              -2.8999998569488525
+            ],
+            [
+              5.5037760734558105,
+              0.4699999988079071,
+              -1.4900000095367432
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-14047feb0df3aaa5/prepared_seed.png",
+      "seed_sha256": "49a6004fbcf77dcffd968635935d06b75c5f91db5c2b24f0356f8b38d775cb1e",
+      "source_label_sha256": "66a4410a448b7b0697cb200d4443004c03f42701e3e498c30c280b0c0fdd3d1d",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0002_v1_f001065_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0002_v1_f001065_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-7704f54997e6d29b",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-7704f54997e6d29b",
+        "scene": "room2",
+        "ROI": "ROI-C0003",
+        "aliases": [
+          "ROI-C0003",
+          "ROI-U0006",
+          "ROI-T0002"
+        ],
+        "conflict_rank": 3,
+        "conflict_points": 9696,
+        "view_number": 1,
+        "frame": 1400,
+        "source_rgb": "room2/assets/frame001400.jpg",
+        "crop_key": "room2_ROI-C0003_v1_f001400_balanced",
+        "crop_xyxy": [
+          144,
+          0,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          1056,
+          680
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          4
+        ],
+        "label_asset": "assets/room2_ROI-C0003_v1_f001400_balanced_original_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:29:48.574Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 6,
+          "native_mask_id": 4,
+          "crop_pixels": 67486,
+          "touches_crop_border": false,
+          "seed_pixels": 67486,
+          "projected_seed_points": 15285,
+          "old_family_id": 254,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 4,
+              "old_persistent_id": 254,
+              "pixels": 67486,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 1834,
+            "6": 44,
+            "220": 10,
+            "223": 1,
+            "224": 3,
+            "254": 13163,
+            "271": 1,
+            "343": 229
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.6041479110717773,
+              -3.240000009536743,
+              -0.2199999988079071
+            ],
+            [
+              5.909999847412109,
+              0.8399999737739563,
+              0.12999999523162842
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-7704f54997e6d29b/prepared_seed.png",
+      "seed_sha256": "a42ea37bab51150546637580c0e82b88b7c663bc9cc29eca0f65095d7e275cf2",
+      "source_label_sha256": "08511133a32f37a771780c8539694dd7bafc1fe9ff05f65aa19fb2cf5092e049",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0003_v1_f001400_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0003_v1_f001400_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "NO_RELIABLE_SEED",
+      "case_uid": "room2-ea0a9c646a7b1129",
+      "source_choice": {
+        "case_uid": "room2-ea0a9c646a7b1129",
+        "scene": "room2",
+        "ROI": "ROI-C0004",
+        "aliases": [
+          "ROI-C0004",
+          "ROI-U0016",
+          "ROI-T0011"
+        ],
+        "conflict_rank": 4,
+        "conflict_points": 5775,
+        "view_number": 1,
+        "frame": 1935,
+        "source_rgb": "room2/assets/frame001935.jpg",
+        "crop_key": "room2_ROI-C0004_v1_f001935_balanced",
+        "crop_xyxy": [
+          503,
+          0,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          697,
+          680
+        ],
+        "crop_strategy": "balanced",
+        "choice": "unreliable",
+        "model_index": -1,
+        "mask_ids": [],
+        "label_asset": null,
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:30:28.040Z",
+        "is_qa": false,
+        "target_notes": ""
+      }
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-74781753162bd8a3",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-74781753162bd8a3",
+        "scene": "room2",
+        "ROI": "ROI-C0005",
+        "aliases": [
+          "ROI-C0005",
+          "ROI-T0021"
+        ],
+        "conflict_rank": 5,
+        "conflict_points": 1407,
+        "view_number": 1,
+        "frame": 1635,
+        "source_rgb": "room2/assets/frame001635.jpg",
+        "crop_key": "room2_ROI-C0005_v1_f001635_balanced",
+        "crop_xyxy": [
+          314,
+          265,
+          776,
+          680
+        ],
+        "native_crop_wh": [
+          462,
+          415
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          9
+        ],
+        "label_asset": "assets/room2_ROI-C0005_v1_f001635_balanced_original_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:30:45.624Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 7,
+          "native_mask_id": 9,
+          "crop_pixels": 22553,
+          "touches_crop_border": false,
+          "seed_pixels": 22553,
+          "projected_seed_points": 3582,
+          "old_family_id": 1,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 9,
+              "old_persistent_id": 1,
+              "pixels": 22553,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 768,
+            "1": 2691,
+            "8": 117,
+            "52": 6
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.259999990463257,
+              -0.9399999976158142,
+              -2.7599213123321533
+            ],
+            [
+              4.489999771118164,
+              0.10999999940395355,
+              -1.5662713050842285
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-74781753162bd8a3/prepared_seed.png",
+      "seed_sha256": "a7710594c20cd316961301f8c12ae344bbba4b92af4077a14397b7a62cd501ee",
+      "source_label_sha256": "8e161fe864e47c17cc9c3ba9eee3c45afbf48821304fb3c8c6b008c3fc3fb324",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0005_v1_f001635_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0005_v1_f001635_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "NO_RELIABLE_SEED",
+      "case_uid": "room2-d4df44dfbac3d805",
+      "source_choice": {
+        "case_uid": "room2-d4df44dfbac3d805",
+        "scene": "room2",
+        "ROI": "ROI-C0006",
+        "aliases": [
+          "ROI-C0006",
+          "ROI-U0005",
+          "ROI-T0007"
+        ],
+        "conflict_rank": 6,
+        "conflict_points": 1187,
+        "view_number": 1,
+        "frame": 945,
+        "source_rgb": "room2/assets/frame000945.jpg",
+        "crop_key": "room2_ROI-C0006_v1_f000945_balanced",
+        "crop_xyxy": [
+          800,
+          454,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          400,
+          226
+        ],
+        "crop_strategy": "balanced",
+        "choice": "unreliable",
+        "model_index": -1,
+        "mask_ids": [],
+        "label_asset": null,
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:31:04.004Z",
+        "is_qa": false,
+        "target_notes": ""
+      }
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-b18070389a477f61",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-b18070389a477f61",
+        "scene": "room2",
+        "ROI": "ROI-C0007",
+        "aliases": [
+          "ROI-C0007",
+          "ROI-T0025"
+        ],
+        "conflict_rank": 7,
+        "conflict_points": 1113,
+        "view_number": 1,
+        "frame": 1040,
+        "source_rgb": "room2/assets/frame001040.jpg",
+        "crop_key": "room2_ROI-C0007_v1_f001040_balanced",
+        "crop_xyxy": [
+          465,
+          454,
+          956,
+          680
+        ],
+        "native_crop_wh": [
+          491,
+          226
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          8
+        ],
+        "label_asset": "assets/room2_ROI-C0007_v1_f001040_balanced_original_ids.png",
+        "scope": "selected_visible_masks",
+        "artificial_crop_border_check": "TOUCHES_CROP_BORDER_ALLOWED",
+        "border_touching_mask_ids": [
+          8
+        ],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:31:28.767Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 8,
+          "native_mask_id": 8,
+          "crop_pixels": 41746,
+          "touches_crop_border": true,
+          "seed_pixels": 162856,
+          "projected_seed_points": 20109,
+          "old_family_id": 8,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 8,
+              "old_persistent_id": 8,
+              "pixels": 162856,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 7871,
+            "1": 293,
+            "6": 3,
+            "8": 11936,
+            "44": 6
+          },
+          "seed_xyz_bounds_m": [
+            [
+              1.309999942779541,
+              -2.4600000381469727,
+              -2.8994479179382324
+            ],
+            [
+              5.359999656677246,
+              1.2200000286102295,
+              -1.2999999523162842
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-b18070389a477f61/prepared_seed.png",
+      "seed_sha256": "268c9539e95d06a36d0a9f0efc3042764a54daa5e0a1b1c0f36c56384825c536",
+      "source_label_sha256": "9ab2433ea0eabc07bad385e9655b5f7d65d0a477ec21b983588d6ba105c59e73",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0007_v1_f001040_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0007_v1_f001040_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-eadde8f5bac2ff37",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-eadde8f5bac2ff37",
+        "scene": "room2",
+        "ROI": "ROI-C0008",
+        "aliases": [
+          "ROI-C0008"
+        ],
+        "conflict_rank": 8,
+        "conflict_points": 1022,
+        "view_number": 1,
+        "frame": 1590,
+        "source_rgb": "room2/assets/frame001590.jpg",
+        "crop_key": "room2_ROI-C0008_v1_f001590_balanced",
+        "crop_xyxy": [
+          0,
+          0,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          1200,
+          680
+        ],
+        "crop_strategy": "balanced",
+        "choice": "sam2_1_local",
+        "model_index": 2,
+        "mask_ids": [
+          8,
+          10,
+          12,
+          15
+        ],
+        "label_asset": "assets/room2_ROI-C0008_v1_f001590_balanced_sam_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:31:52.055Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 9,
+          "native_mask_id": 8,
+          "crop_pixels": 49034,
+          "touches_crop_border": false,
+          "seed_pixels": 49034,
+          "projected_seed_points": 9327,
+          "old_family_id": 10,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 13,
+              "old_persistent_id": 10,
+              "pixels": 49034,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "10": 9327
+          },
+          "seed_xyz_bounds_m": [
+            [
+              4.460000038146973,
+              0.5299999713897705,
+              -1.96999990940094
+            ],
+            [
+              5.831380367279053,
+              0.7994306683540344,
+              -0.949999988079071
+            ]
+          ]
+        },
+        {
+          "track_id": 10,
+          "native_mask_id": 10,
+          "crop_pixels": 44067,
+          "touches_crop_border": false,
+          "seed_pixels": 44067,
+          "projected_seed_points": 4062,
+          "old_family_id": 10,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 13,
+              "old_persistent_id": 10,
+              "pixels": 44067,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "10": 4062
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.8399999141693115,
+              0.8029339909553528,
+              -1.7699999809265137
+            ],
+            [
+              4.519999980926514,
+              0.9264774918556213,
+              -0.9399999976158142
+            ]
+          ]
+        },
+        {
+          "track_id": 11,
+          "native_mask_id": 12,
+          "crop_pixels": 43902,
+          "touches_crop_border": false,
+          "seed_pixels": 43902,
+          "projected_seed_points": 5716,
+          "old_family_id": 10,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 13,
+              "old_persistent_id": 10,
+              "pixels": 43902,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 381,
+            "10": 5334,
+            "55": 1
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.6599998474121094,
+              0.8052781224250793,
+              -2.6399998664855957
+            ],
+            [
+              4.509999752044678,
+              0.9649011492729187,
+              -0.9599999785423279
+            ]
+          ]
+        },
+        {
+          "track_id": 12,
+          "native_mask_id": 15,
+          "crop_pixels": 27702,
+          "touches_crop_border": false,
+          "seed_pixels": 27702,
+          "projected_seed_points": 6178,
+          "old_family_id": 10,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 13,
+              "old_persistent_id": 10,
+              "pixels": 27702,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "10": 6178
+          },
+          "seed_xyz_bounds_m": [
+            [
+              4.369999885559082,
+              0.5600000023841858,
+              -2.8476693630218506
+            ],
+            [
+              5.675458908081055,
+              0.8448219299316406,
+              -1.8607041835784912
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-eadde8f5bac2ff37/prepared_seed.png",
+      "seed_sha256": "47cbe7f0c653876317ee0eb58545b94b2588e3814c19674146cccdddba7b8758",
+      "source_label_sha256": "fd69ca3edd9f07082bf8e223124c4721f6b1f0afe86685d3340ff3273c8dd182",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0008_v1_f001590_balanced_sam_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0008_v1_f001590_balanced_sam_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-0ba2ef6c21b4c92d",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-0ba2ef6c21b4c92d",
+        "scene": "room2",
+        "ROI": "ROI-C0009",
+        "aliases": [
+          "ROI-C0009"
+        ],
+        "conflict_rank": 9,
+        "conflict_points": 812,
+        "view_number": 1,
+        "frame": 1085,
+        "source_rgb": "room2/assets/frame001085.jpg",
+        "crop_key": "room2_ROI-C0009_v1_f001085_balanced",
+        "crop_xyxy": [
+          800,
+          454,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          400,
+          226
+        ],
+        "crop_strategy": "balanced",
+        "choice": "cropformer_local",
+        "model_index": 1,
+        "mask_ids": [
+          4
+        ],
+        "label_asset": "assets/room2_ROI-C0009_v1_f001085_balanced_local_ids.png",
+        "scope": "selected_visible_masks",
+        "artificial_crop_border_check": "TOUCHES_CROP_BORDER_ALLOWED",
+        "border_touching_mask_ids": [
+          4
+        ],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:32:10.396Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 13,
+          "native_mask_id": 4,
+          "crop_pixels": 51452,
+          "touches_crop_border": true,
+          "seed_pixels": 51452,
+          "projected_seed_points": 5114,
+          "old_family_id": 8,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 15,
+              "old_persistent_id": 8,
+              "pixels": 51408,
+              "fraction": 0.9991448340200575
+            },
+            {
+              "old_local_id": 13,
+              "old_persistent_id": 1,
+              "pixels": 28,
+              "fraction": 0.0005441965326906631
+            },
+            {
+              "old_local_id": 0,
+              "old_persistent_id": -1,
+              "pixels": 15,
+              "fraction": 0.00029153385679856955
+            },
+            {
+              "old_local_id": 16,
+              "old_persistent_id": 241,
+              "pixels": 1,
+              "fraction": 1.943559045323797e-05
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 1190,
+            "1": 3843,
+            "8": 81
+          },
+          "seed_xyz_bounds_m": [
+            [
+              1.3600000143051147,
+              -1.9499999284744263,
+              -2.419528007507324
+            ],
+            [
+              2.1599998474121094,
+              -0.7417202591896057,
+              -1.3899999856948853
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-0ba2ef6c21b4c92d/prepared_seed.png",
+      "seed_sha256": "7c4ca007f4047fd8590bc6f5f1d29ef8807c7bee9c1c92e2a76e3fcafc58e15a",
+      "source_label_sha256": "342d2c7cf159c02d38c50403f357ec91831c1b8f624082baf9b9b8aedf612e7a",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0009_v1_f001085_balanced_local_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0009_v1_f001085_balanced_local_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "NO_RELIABLE_SEED",
+      "case_uid": "room2-9fbb545ed05f1f98",
+      "source_choice": {
+        "case_uid": "room2-9fbb545ed05f1f98",
+        "scene": "room2",
+        "ROI": "ROI-C0010",
+        "aliases": [
+          "ROI-C0010",
+          "ROI-U0008",
+          "ROI-T0012"
+        ],
+        "conflict_rank": 10,
+        "conflict_points": 731,
+        "view_number": 1,
+        "frame": 1070,
+        "source_rgb": "room2/assets/frame001070.jpg",
+        "crop_key": "room2_ROI-C0010_v1_f001070_balanced",
+        "crop_xyxy": [
+          543,
+          405,
+          1200,
+          680
+        ],
+        "native_crop_wh": [
+          657,
+          275
+        ],
+        "crop_strategy": "balanced",
+        "choice": "unreliable",
+        "model_index": -1,
+        "mask_ids": [],
+        "label_asset": null,
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:32:25.842Z",
+        "is_qa": false,
+        "target_notes": ""
+      }
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-8d83120d5b27ce5e",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-8d83120d5b27ce5e",
+        "scene": "room2",
+        "ROI": "ROI-C0011",
+        "aliases": [
+          "ROI-C0011",
+          "ROI-U0028",
+          "ROI-T0006"
+        ],
+        "conflict_rank": 11,
+        "conflict_points": 641,
+        "view_number": 2,
+        "frame": 1750,
+        "source_rgb": "room2/assets/frame001750.jpg",
+        "crop_key": "room2_ROI-C0011_v2_f001750_balanced",
+        "crop_xyxy": [
+          405,
+          306,
+          1104,
+          599
+        ],
+        "native_crop_wh": [
+          699,
+          293
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          13
+        ],
+        "label_asset": "assets/room2_ROI-C0011_v2_f001750_balanced_original_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:33:01.092Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 14,
+          "native_mask_id": 13,
+          "crop_pixels": 2308,
+          "touches_crop_border": false,
+          "seed_pixels": 2308,
+          "projected_seed_points": 501,
+          "old_family_id": 228,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 13,
+              "old_persistent_id": 228,
+              "pixels": 2308,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 200,
+            "1": 66,
+            "8": 1,
+            "215": 2,
+            "228": 232
+          },
+          "seed_xyz_bounds_m": [
+            [
+              2.119999885559082,
+              -2.3499999046325684,
+              -2.745600938796997
+            ],
+            [
+              4.160018444061279,
+              -1.4900000095367432,
+              -1.826537013053894
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-8d83120d5b27ce5e/prepared_seed.png",
+      "seed_sha256": "f1f09ad5c348a2b15ad85c40b9f295b9a17a6110d9ad70bddd86f8213f739580",
+      "source_label_sha256": "9046dcd1c637db87600a059b24aba067ae5c837a70d387e453d6a81d88358f61",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0011_v2_f001750_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0011_v2_f001750_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-75ede2d925653a39",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-75ede2d925653a39",
+        "scene": "room2",
+        "ROI": "ROI-C0012",
+        "aliases": [
+          "ROI-C0012",
+          "ROI-T0009"
+        ],
+        "conflict_rank": 12,
+        "conflict_points": 549,
+        "view_number": 3,
+        "frame": 1995,
+        "source_rgb": "room2/assets/frame001995.jpg",
+        "crop_key": "room2_ROI-C0012_v3_f001995_balanced",
+        "crop_xyxy": [
+          348,
+          0,
+          828,
+          680
+        ],
+        "native_crop_wh": [
+          480,
+          680
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          8
+        ],
+        "label_asset": "assets/room2_ROI-C0012_v3_f001995_balanced_original_ids.png",
+        "scope": "selected_visible_masks",
+        "artificial_crop_border_check": "TOUCHES_CROP_BORDER_ALLOWED",
+        "border_touching_mask_ids": [
+          8
+        ],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:33:24.781Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 15,
+          "native_mask_id": 8,
+          "crop_pixels": 44369,
+          "touches_crop_border": true,
+          "seed_pixels": 125191,
+          "projected_seed_points": 16070,
+          "old_family_id": 8,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 8,
+              "old_persistent_id": 8,
+              "pixels": 125191,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 448,
+            "6": 1108,
+            "8": 14514
+          },
+          "seed_xyz_bounds_m": [
+            [
+              1.0399999618530273,
+              -3.16355299949646,
+              -2.887338876724243
+            ],
+            [
+              5.030717849731445,
+              -1.5499999523162842,
+              -1.8734811544418335
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-75ede2d925653a39/prepared_seed.png",
+      "seed_sha256": "344d1d5e7f79293efe18cb8a5e0ecad1a5d1bbb337f18e007e0b1ce112d888b0",
+      "source_label_sha256": "58a5d72702ad8acd9121dc48da9db6d033870f1cadd6025848f20e2646f766dc",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0012_v3_f001995_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0012_v3_f001995_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-6f08166618cd41f8",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-6f08166618cd41f8",
+        "scene": "room2",
+        "ROI": "ROI-C0013",
+        "aliases": [
+          "ROI-C0013",
+          "ROI-U0009",
+          "ROI-T0010"
+        ],
+        "conflict_rank": 13,
+        "conflict_points": 435,
+        "view_number": 1,
+        "frame": 795,
+        "source_rgb": "room2/assets/frame000795.jpg",
+        "crop_key": "room2_ROI-C0013_v1_f000795_balanced",
+        "crop_xyxy": [
+          183,
+          0,
+          583,
+          615
+        ],
+        "native_crop_wh": [
+          400,
+          615
+        ],
+        "crop_strategy": "balanced",
+        "choice": "cropformer_local",
+        "model_index": 1,
+        "mask_ids": [
+          13,
+          16,
+          18
+        ],
+        "label_asset": "assets/room2_ROI-C0013_v1_f000795_balanced_local_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:34:16.517Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 16,
+          "native_mask_id": 13,
+          "crop_pixels": 5496,
+          "touches_crop_border": false,
+          "seed_pixels": 5496,
+          "projected_seed_points": 1343,
+          "old_family_id": 7,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 12,
+              "old_persistent_id": 7,
+              "pixels": 5344,
+              "fraction": 0.9723435225618632
+            },
+            {
+              "old_local_id": 0,
+              "old_persistent_id": -1,
+              "pixels": 67,
+              "fraction": 0.012190684133915575
+            },
+            {
+              "old_local_id": 22,
+              "old_persistent_id": 7,
+              "pixels": 39,
+              "fraction": 0.007096069868995633
+            },
+            {
+              "old_local_id": 2,
+              "old_persistent_id": 6,
+              "pixels": 28,
+              "fraction": 0.005094614264919942
+            },
+            {
+              "old_local_id": 6,
+              "old_persistent_id": 4,
+              "pixels": 18,
+              "fraction": 0.0032751091703056767
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 14,
+            "6": 21,
+            "7": 1307,
+            "18": 1
+          },
+          "seed_xyz_bounds_m": [
+            [
+              -0.14999999105930328,
+              0.018256330862641335,
+              -0.8199999928474426
+            ],
+            [
+              0.15808425843715668,
+              0.5600000023841858,
+              -0.04999999701976776
+            ]
+          ]
+        },
+        {
+          "track_id": 17,
+          "native_mask_id": 16,
+          "crop_pixels": 2596,
+          "touches_crop_border": false,
+          "seed_pixels": 2596,
+          "projected_seed_points": 641,
+          "old_family_id": 7,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 22,
+              "old_persistent_id": 7,
+              "pixels": 2552,
+              "fraction": 0.9830508474576272
+            },
+            {
+              "old_local_id": 6,
+              "old_persistent_id": 4,
+              "pixels": 28,
+              "fraction": 0.01078582434514638
+            },
+            {
+              "old_local_id": 2,
+              "old_persistent_id": 6,
+              "pixels": 10,
+              "fraction": 0.003852080123266564
+            },
+            {
+              "old_local_id": 12,
+              "old_persistent_id": 7,
+              "pixels": 4,
+              "fraction": 0.0015408320493066256
+            },
+            {
+              "old_local_id": 0,
+              "old_persistent_id": -1,
+              "pixels": 2,
+              "fraction": 0.0007704160246533128
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 10,
+            "4": 7,
+            "6": 2,
+            "7": 6,
+            "18": 616
+          },
+          "seed_xyz_bounds_m": [
+            [
+              -0.19999998807907104,
+              -0.03164418041706085,
+              -0.8307068347930908
+            ],
+            [
+              0.07999999821186066,
+              0.22999998927116394,
+              -0.4899999797344208
+            ]
+          ]
+        },
+        {
+          "track_id": 18,
+          "native_mask_id": 18,
+          "crop_pixels": 3918,
+          "touches_crop_border": false,
+          "seed_pixels": 3918,
+          "projected_seed_points": 884,
+          "old_family_id": 7,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 22,
+              "old_persistent_id": 7,
+              "pixels": 3434,
+              "fraction": 0.8764675855028076
+            },
+            {
+              "old_local_id": 0,
+              "old_persistent_id": -1,
+              "pixels": 305,
+              "fraction": 0.07784583971413987
+            },
+            {
+              "old_local_id": 2,
+              "old_persistent_id": 6,
+              "pixels": 162,
+              "fraction": 0.04134762633996937
+            },
+            {
+              "old_local_id": 12,
+              "old_persistent_id": 7,
+              "pixels": 17,
+              "fraction": 0.004338948443083206
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 116,
+            "4": 1,
+            "6": 51,
+            "7": 716
+          },
+          "seed_xyz_bounds_m": [
+            [
+              -0.15382790565490723,
+              -0.17000000178813934,
+              -0.8199999928474426
+            ],
+            [
+              0.004628692287951708,
+              0.5699999928474426,
+              0.20999999344348907
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-6f08166618cd41f8/prepared_seed.png",
+      "seed_sha256": "82f13f08f08e83d2c4de79d53230d07b12db103e38adab826e1cf7c29a41158b",
+      "source_label_sha256": "43667c2c841e0fcbf4a2cb7e4f7e1990f41ade146d8dbf5fa85a6a405fec5443",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0013_v1_f000795_balanced_local_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0013_v1_f000795_balanced_local_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "NO_RELIABLE_SEED",
+      "case_uid": "room2-00d8ce08c611b2a8",
+      "source_choice": {
+        "case_uid": "room2-00d8ce08c611b2a8",
+        "scene": "room2",
+        "ROI": "ROI-C0014",
+        "aliases": [
+          "ROI-C0014",
+          "ROI-U0017",
+          "ROI-T0015"
+        ],
+        "conflict_rank": 14,
+        "conflict_points": 343,
+        "view_number": 1,
+        "frame": 835,
+        "source_rgb": "room2/assets/frame000835.jpg",
+        "crop_key": "room2_ROI-C0014_v1_f000835_balanced",
+        "crop_xyxy": [
+          0,
+          234,
+          400,
+          460
+        ],
+        "native_crop_wh": [
+          400,
+          226
+        ],
+        "crop_strategy": "balanced",
+        "choice": "unreliable",
+        "model_index": -1,
+        "mask_ids": [],
+        "label_asset": null,
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:34:24.847Z",
+        "is_qa": false,
+        "target_notes": ""
+      }
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-579feefc65a0d844",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-579feefc65a0d844",
+        "scene": "room2",
+        "ROI": "ROI-C0015",
+        "aliases": [
+          "ROI-C0015",
+          "ROI-U0002",
+          "ROI-T0005"
+        ],
+        "conflict_rank": 15,
+        "conflict_points": 311,
+        "view_number": 1,
+        "frame": 455,
+        "source_rgb": "room2/assets/frame000455.jpg",
+        "crop_key": "room2_ROI-C0015_v1_f000455_balanced",
+        "crop_xyxy": [
+          226,
+          0,
+          1199,
+          680
+        ],
+        "native_crop_wh": [
+          973,
+          680
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          14,
+          23
+        ],
+        "label_asset": "assets/room2_ROI-C0015_v1_f000455_balanced_original_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:34:43.304Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 19,
+          "native_mask_id": 14,
+          "crop_pixels": 219,
+          "touches_crop_border": false,
+          "seed_pixels": 219,
+          "projected_seed_points": 56,
+          "old_family_id": 12,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 14,
+              "old_persistent_id": 12,
+              "pixels": 219,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 5,
+            "12": 51
+          },
+          "seed_xyz_bounds_m": [
+            [
+              -0.47225767374038696,
+              -1.1100000143051147,
+              -0.9199999570846558
+            ],
+            [
+              -0.4458892047405243,
+              -1.0499999523162842,
+              -0.8100000023841858
+            ]
+          ]
+        },
+        {
+          "track_id": 20,
+          "native_mask_id": 23,
+          "crop_pixels": 56,
+          "touches_crop_border": false,
+          "seed_pixels": 56,
+          "projected_seed_points": 14,
+          "old_family_id": 22,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 23,
+              "old_persistent_id": 22,
+              "pixels": 56,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "22": 14
+          },
+          "seed_xyz_bounds_m": [
+            [
+              -0.5199999809265137,
+              -1.266723871231079,
+              -1.0856720209121704
+            ],
+            [
+              -0.5099999904632568,
+              -1.2200000286102295,
+              -1.0299999713897705
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-579feefc65a0d844/prepared_seed.png",
+      "seed_sha256": "85292ec3f466514d9b4527783b358ae85c4dd85a6d0d40a34f7e97e9800919c0",
+      "source_label_sha256": "ace2ac8831fa47388fe1fa450cecbc564a3a746ca4a52fc4b4bd656c2f57b02e",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0015_v1_f000455_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0015_v1_f000455_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-c9af20694ea516a9",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-c9af20694ea516a9",
+        "scene": "room2",
+        "ROI": "ROI-C0016",
+        "aliases": [
+          "ROI-C0016",
+          "ROI-U0014",
+          "ROI-T0024"
+        ],
+        "conflict_rank": 16,
+        "conflict_points": 306,
+        "view_number": 3,
+        "frame": 940,
+        "source_rgb": "room2/assets/frame000940.jpg",
+        "crop_key": "room2_ROI-C0016_v3_f000940_balanced",
+        "crop_xyxy": [
+          390,
+          361,
+          860,
+          680
+        ],
+        "native_crop_wh": [
+          470,
+          319
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          3
+        ],
+        "label_asset": "assets/room2_ROI-C0016_v3_f000940_balanced_original_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:35:48.963Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 21,
+          "native_mask_id": 3,
+          "crop_pixels": 38026,
+          "touches_crop_border": false,
+          "seed_pixels": 38026,
+          "projected_seed_points": 3240,
+          "old_family_id": 1,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 3,
+              "old_persistent_id": 1,
+              "pixels": 38026,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 54,
+            "1": 3184,
+            "8": 2
+          },
+          "seed_xyz_bounds_m": [
+            [
+              1.3670319318771362,
+              -0.9699999690055847,
+              -2.418966054916382
+            ],
+            [
+              2.2899999618530273,
+              0.5999999642372131,
+              -1.287042498588562
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-c9af20694ea516a9/prepared_seed.png",
+      "seed_sha256": "734e0b86f4b134d7b96966e58dd6e0f902f37bd65288cfe2b2863ae2355c9f6a",
+      "source_label_sha256": "23f1770f836ac33025048344cab4a138c39801dd7df5cc38aaa0b47a62d025ac",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0016_v3_f000940_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0016_v3_f000940_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-f1797fac02e52a4c",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-f1797fac02e52a4c",
+        "scene": "room2",
+        "ROI": "ROI-C0025",
+        "aliases": [
+          "ROI-C0025",
+          "ROI-T0018"
+        ],
+        "conflict_rank": 25,
+        "conflict_points": 82,
+        "view_number": 1,
+        "frame": 1345,
+        "source_rgb": "room2/assets/frame001345.jpg",
+        "crop_key": "room2_ROI-C0025_v1_f001345_balanced",
+        "crop_xyxy": [
+          680,
+          308,
+          1080,
+          534
+        ],
+        "native_crop_wh": [
+          400,
+          226
+        ],
+        "crop_strategy": "balanced",
+        "choice": "sam2_1_local",
+        "model_index": 2,
+        "mask_ids": [
+          7,
+          8
+        ],
+        "label_asset": "assets/room2_ROI-C0025_v1_f001345_balanced_sam_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:37:00.063Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 22,
+          "native_mask_id": 7,
+          "crop_pixels": 3997,
+          "touches_crop_border": false,
+          "seed_pixels": 3997,
+          "projected_seed_points": 780,
+          "old_family_id": 211,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 10,
+              "old_persistent_id": 211,
+              "pixels": 3997,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "211": 780
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.1044023036956787,
+              -1.0536800622940063,
+              -1.7873605489730835
+            ],
+            [
+              3.3044018745422363,
+              -0.7974369525909424,
+              -1.5483437776565552
+            ]
+          ]
+        },
+        {
+          "track_id": 23,
+          "native_mask_id": 8,
+          "crop_pixels": 2550,
+          "touches_crop_border": false,
+          "seed_pixels": 2550,
+          "projected_seed_points": 492,
+          "old_family_id": 211,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 10,
+              "old_persistent_id": 211,
+              "pixels": 2550,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "43": 4,
+            "211": 488
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.109147071838379,
+              -1.1200000047683716,
+              -1.9034227132797241
+            ],
+            [
+              3.819999933242798,
+              -0.8199999928474426,
+              -1.4659191370010376
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-f1797fac02e52a4c/prepared_seed.png",
+      "seed_sha256": "6742cab5cb48979f47fd02c299973ca7459b1e7697e5e9bb86ace12455a0b341",
+      "source_label_sha256": "e934951d404aabfcd5d2fb7ee0fa4f35788ae4b6d7014bb76b892851aa85be69",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0025_v1_f001345_balanced_sam_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0025_v1_f001345_balanced_sam_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    },
+    {
+      "status": "READY",
+      "case_uid": "room2-0b324734bca2ccef",
+      "scene": "room2",
+      "source_choice": {
+        "case_uid": "room2-0b324734bca2ccef",
+        "scene": "room2",
+        "ROI": "ROI-C0029",
+        "aliases": [
+          "ROI-C0029",
+          "ROI-U0007",
+          "ROI-T0004"
+        ],
+        "conflict_rank": 29,
+        "conflict_points": 61,
+        "view_number": 3,
+        "frame": 1605,
+        "source_rgb": "room2/assets/frame001605.jpg",
+        "crop_key": "room2_ROI-C0029_v3_f001605_balanced",
+        "crop_xyxy": [
+          205,
+          148,
+          663,
+          680
+        ],
+        "native_crop_wh": [
+          458,
+          532
+        ],
+        "crop_strategy": "balanced",
+        "choice": "original",
+        "model_index": 0,
+        "mask_ids": [
+          4,
+          10
+        ],
+        "label_asset": "assets/room2_ROI-C0029_v3_f001605_balanced_original_ids.png",
+        "scope": "selected_whole_visible_objects",
+        "artificial_crop_border_check": "PASS",
+        "border_touching_mask_ids": [],
+        "crop_border_selection_allowed": true,
+        "selected_at": "2026-10-08T09:37:56.378Z",
+        "is_qa": false,
+        "target_notes": ""
+      },
+      "objects": [
+        {
+          "track_id": 24,
+          "native_mask_id": 4,
+          "crop_pixels": 33913,
+          "touches_crop_border": false,
+          "seed_pixels": 33913,
+          "projected_seed_points": 3912,
+          "old_family_id": 52,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 4,
+              "old_persistent_id": 52,
+              "pixels": 33913,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 15,
+            "1": 16,
+            "6": 8,
+            "8": 10,
+            "52": 3863
+          },
+          "seed_xyz_bounds_m": [
+            [
+              3.2469635009765625,
+              -0.6499999761581421,
+              -2.8975701332092285
+            ],
+            [
+              5.445276260375977,
+              0.08999999612569809,
+              -1.5793122053146362
+            ]
+          ]
+        },
+        {
+          "track_id": 25,
+          "native_mask_id": 10,
+          "crop_pixels": 48746,
+          "touches_crop_border": false,
+          "seed_pixels": 48746,
+          "projected_seed_points": 2240,
+          "old_family_id": 52,
+          "old_pixel_overlap": [
+            {
+              "old_local_id": 10,
+              "old_persistent_id": 52,
+              "pixels": 48746,
+              "fraction": 1.0
+            }
+          ],
+          "baseline_seed_support_labels": {
+            "-1": 3,
+            "1": 30,
+            "8": 8,
+            "52": 2199
+          },
+          "seed_xyz_bounds_m": [
+            [
+              2.8792333602905273,
+              -0.45382726192474365,
+              -2.7756974697113037
+            ],
+            [
+              4.589999675750732,
+              0.3999999761581421,
+              -1.4900000095367432
+            ]
+          ]
+        }
+      ],
+      "seed_file": "cases/room2-0b324734bca2ccef/prepared_seed.png",
+      "seed_sha256": "c9438fe4d9386d88d56e7178a47ac00c3814fa4da1761fa9979f52f41e0e34b2",
+      "source_label_sha256": "50175ece9adb535b6726ab9d2a6738fd2f007648e45fb434895654d3ed992f00",
+      "source_label_local_path": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room2_selection_top30_20261008\\assets\\room2_ROI-C0029_v3_f001605_balanced_original_ids.png",
+      "source_label_relative_path": "assets/room2_ROI-C0029_v3_f001605_balanced_original_ids.png",
+      "selection_viewer_sha256": "e64cc6992122ddc2fdb9d932287dec752986d21bfd47199f69789c288f6fd074"
+    }
+  ],
+  "GT_used": false
+}

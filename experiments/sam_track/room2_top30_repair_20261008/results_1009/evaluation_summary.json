@@ -1,0 +1,4466 @@
+{
+  "status": "PASS",
+  "scene": "room2",
+  "formal_benchmark_result": false,
+  "protocol_frozen": false,
+  "protocol_metric_status": "DEBUG_ONLY / NON_OFFICIAL",
+  "predictions_frozen_before_GT": true,
+  "GT_used_for_repair": false,
+  "v3_code_flags_protocol_unchanged": true,
+  "prediction_freeze_sha256": "65209c0ef29035cb37854641b4a01a407618aa3803145463c07fa347c5a6459f",
+  "baseline_v3_metrics": {
+    "CA_AP_uniform": 0.06864686468646866,
+    "CA_AP50_uniform": 0.2843784378437844,
+    "CA_AP25_uniform": 0.528052805280528,
+    "CA_PQ": {
+      "FN": 25,
+      "FP": 14,
+      "PQ": 0.3487147785023908,
+      "RQ": 0.5301204819277109,
+      "SQ": 0.6578028776295098,
+      "TP": 22,
+      "ignored_prediction_count": 15,
+      "status": "ok"
+    },
+    "CA_PRF1_0_5": {
+      "F1": 0.5301204819277109,
+      "FN": 25,
+      "FP": 14,
+      "P": 0.6111111111111112,
+      "R": 0.46808510638297873,
+      "TP": 22,
+      "ignored_prediction_count": 15,
+      "status": "ok"
+    },
+    "structure": {
+      "diagnostic_gt_count": 47,
+      "diagnostic_prediction_count": 36,
+      "duplicate_gt_count": 0,
+      "duplicate_prediction_count": 0,
+      "duplicate_prediction_rate": 0.0,
+      "merge_prediction_count": 14,
+      "merge_prediction_rate": 0.3888888888888889,
+      "significant_gt_per_prediction": [
+        4,
+        1,
+        3,
+        9,
+        1,
+        0,
+        2,
+        0,
+        1,
+        8,
+        3,
+        0,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        1,
+        2,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        2,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1
+      ],
+      "significant_min_gt_fraction": 0.05,
+      "significant_min_intersection_vertices": 10,
+      "significant_predictions_per_gt": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        1,
+        2,
+        3,
+        5,
+        1,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1
+      ],
+      "split_gt_count": 12,
+      "split_gt_rate": 0.2553191489361702
+    },
+    "status": "DEBUG_ONLY / NON_OFFICIAL"
+  },
+  "comparisons": {
+    "seed_only": {
+      "scene_metrics": {
+        "CA_AP_uniform": 0.06864686468646866,
+        "CA_AP50_uniform": 0.2843784378437844,
+        "CA_AP25_uniform": 0.528052805280528,
+        "CA_PQ": {
+          "FN": 25,
+          "FP": 14,
+          "PQ": 0.3487414043427688,
+          "RQ": 0.5301204819277109,
+          "SQ": 0.6578531036465866,
+          "TP": 22,
+          "ignored_prediction_count": 15,
+          "status": "ok"
+        },
+        "CA_PRF1_0_5": {
+          "F1": 0.5301204819277109,
+          "FN": 25,
+          "FP": 14,
+          "P": 0.6111111111111112,
+          "R": 0.46808510638297873,
+          "TP": 22,
+          "ignored_prediction_count": 15,
+          "status": "ok"
+        },
+        "structure": {
+          "diagnostic_gt_count": 47,
+          "diagnostic_prediction_count": 36,
+          "duplicate_gt_count": 0,
+          "duplicate_prediction_count": 0,
+          "duplicate_prediction_rate": 0.0,
+          "merge_prediction_count": 14,
+          "merge_prediction_rate": 0.3888888888888889,
+          "significant_gt_per_prediction": [
+            4,
+            1,
+            3,
+            9,
+            1,
+            0,
+            2,
+            0,
+            1,
+            8,
+            3,
+            0,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            2,
+            0,
+            0,
+            2,
+            1,
+            2,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1,
+            0,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1
+          ],
+          "significant_min_gt_fraction": 0.05,
+          "significant_min_intersection_vertices": 10,
+          "significant_predictions_per_gt": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            2,
+            2,
+            1,
+            2,
+            3,
+            5,
+            1,
+            4,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "split_gt_count": 12,
+          "split_gt_rate": 0.2553191489361702
+        },
+        "status": "DEBUG_ONLY / NON_OFFICIAL"
+      },
+      "F1_delta": 0.0,
+      "PQ_delta": 2.662584037799176e-05,
+      "target_mean_IoU_delta": 4.216141805303969e-05,
+      "target_structure_count_delta": 0,
+      "strict_success": false,
+      "outcome": "small_or_unchanged",
+      "non_target_previously_correct_lost": [],
+      "non_target_IoU_degraded_over_0_01": [],
+      "targets": [
+        {
+          "before": {
+            "GT_id": 4001,
+            "GT_vertices": 9124,
+            "best_IoU": 0.26604563037814793,
+            "best_pred_uid": "p1a1-id:52",
+            "completeness_best_single_instance": 0.3693555458132398,
+            "purity_of_best_IoU_instance": 0.48748734268768984,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4001,
+            "GT_vertices": 9124,
+            "best_IoU": 0.26606663508605716,
+            "best_pred_uid": "p1a1-id:52",
+            "completeness_best_single_instance": 0.3693555458132398,
+            "purity_of_best_IoU_instance": 0.48755787037037035,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 4002,
+            "GT_vertices": 9503,
+            "best_IoU": 0.2710801393728223,
+            "best_pred_uid": "p1a1-id:52",
+            "completeness_best_single_instance": 0.3684099757971167,
+            "purity_of_best_IoU_instance": 0.5064371474034428,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4002,
+            "GT_vertices": 9503,
+            "best_IoU": 0.27100271002710025,
+            "best_pred_uid": "p1a1-id:52",
+            "completeness_best_single_instance": 0.36830474586972534,
+            "purity_of_best_IoU_instance": 0.5063657407407407,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 4003,
+            "GT_vertices": 9473,
+            "best_IoU": 0.17780425008646197,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.48844083183785497,
+            "purity_of_best_IoU_instance": 0.218491759928224,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4003,
+            "GT_vertices": 9473,
+            "best_IoU": 0.17803001154290113,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.48844083183785497,
+            "purity_of_best_IoU_instance": 0.21883276579644342,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 4004,
+            "GT_vertices": 9110,
+            "best_IoU": 0.3930331909300033,
+            "best_pred_uid": "p1a1-id:44",
+            "completeness_best_single_instance": 0.39385290889132823,
+            "purity_of_best_IoU_instance": 0.9947324646520654,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4004,
+            "GT_vertices": 9110,
+            "best_IoU": 0.3930331909300033,
+            "best_pred_uid": "p1a1-id:44",
+            "completeness_best_single_instance": 0.39385290889132823,
+            "purity_of_best_IoU_instance": 0.9947324646520654,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5000,
+            "GT_vertices": 6169,
+            "best_IoU": 0.10849314103580045,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9987031933862863,
+            "purity_of_best_IoU_instance": 0.108508427411543,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5000,
+            "GT_vertices": 6169,
+            "best_IoU": 0.10856387665198237,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9987031933862863,
+            "purity_of_best_IoU_instance": 0.1085791829685242,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5001,
+            "GT_vertices": 13076,
+            "best_IoU": 0.2302964124059952,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 1.0,
+            "purity_of_best_IoU_instance": 0.2302964124059952,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5001,
+            "GT_vertices": 13076,
+            "best_IoU": 0.230446582778189,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 1.0,
+            "purity_of_best_IoU_instance": 0.230446582778189,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5002,
+            "GT_vertices": 15070,
+            "best_IoU": 0.26541503020482926,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 1.0,
+            "purity_of_best_IoU_instance": 0.26541503020482926,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5002,
+            "GT_vertices": 15070,
+            "best_IoU": 0.26558810052518417,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 1.0,
+            "purity_of_best_IoU_instance": 0.26558810052518417,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5003,
+            "GT_vertices": 7200,
+            "best_IoU": 0.11335595579918212,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9047222222222222,
+            "purity_of_best_IoU_instance": 0.11472551471494742,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5003,
+            "GT_vertices": 7200,
+            "best_IoU": 0.11342898934317755,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9047222222222222,
+            "purity_of_best_IoU_instance": 0.11480032427478763,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5004,
+            "GT_vertices": 7302,
+            "best_IoU": 0.12782920905346898,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9946589975349219,
+            "purity_of_best_IoU_instance": 0.1279170115711795,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5004,
+            "GT_vertices": 7302,
+            "best_IoU": 0.12791250594388967,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9946589975349219,
+            "purity_of_best_IoU_instance": 0.1280004229671143,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5005,
+            "GT_vertices": 3687,
+            "best_IoU": 0.05473765001395479,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.8510984540276648,
+            "purity_of_best_IoU_instance": 0.05526691206255834,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5005,
+            "GT_vertices": 3687,
+            "best_IoU": 0.05412901650211074,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.8416056414429075,
+            "purity_of_best_IoU_instance": 0.054686123153924786,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 8000,
+            "GT_vertices": 43433,
+            "best_IoU": 0.2199543059987538,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.2682062026569659,
+            "purity_of_best_IoU_instance": 0.5500779147187987,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 8000,
+            "GT_vertices": 43433,
+            "best_IoU": 0.21935422960725076,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.26746943568254555,
+            "purity_of_best_IoU_instance": 0.5494230041619372,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 9002,
+            "GT_vertices": 5137,
+            "best_IoU": 0.0561184457407976,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.6404516254623321,
+            "purity_of_best_IoU_instance": 0.05794395815354268,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 9002,
+            "GT_vertices": 5137,
+            "best_IoU": 0.056153885541654576,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.6404516254623321,
+            "purity_of_best_IoU_instance": 0.05798174191956575,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 10001,
+            "GT_vertices": 4346,
+            "best_IoU": 0.7416762342135477,
+            "best_pred_uid": "p1a1-id:223",
+            "completeness_best_single_instance": 0.7432121491026231,
+            "purity_of_best_IoU_instance": 0.9972213646187095,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 10001,
+            "GT_vertices": 4346,
+            "best_IoU": 0.7416762342135477,
+            "best_pred_uid": "p1a1-id:223",
+            "completeness_best_single_instance": 0.7432121491026231,
+            "purity_of_best_IoU_instance": 0.9972213646187095,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 10003,
+            "GT_vertices": 4349,
+            "best_IoU": 0.5036764705882353,
+            "best_pred_uid": "p1a1-id:271",
+            "completeness_best_single_instance": 0.5040239135433433,
+            "purity_of_best_IoU_instance": 0.9986332574031891,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 10003,
+            "GT_vertices": 4349,
+            "best_IoU": 0.5036764705882353,
+            "best_pred_uid": "p1a1-id:271",
+            "completeness_best_single_instance": 0.5040239135433433,
+            "purity_of_best_IoU_instance": 0.9986332574031891,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 21001,
+            "GT_vertices": 606,
+            "best_IoU": 0.7929373996789727,
+            "best_pred_uid": "p1a1-id:224",
+            "completeness_best_single_instance": 0.8151815181518152,
+            "purity_of_best_IoU_instance": 0.9667318982387475,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 21001,
+            "GT_vertices": 606,
+            "best_IoU": 0.7929373996789727,
+            "best_pred_uid": "p1a1-id:224",
+            "completeness_best_single_instance": 0.8151815181518152,
+            "purity_of_best_IoU_instance": 0.9667318982387475,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 25000,
+            "GT_vertices": 2046,
+            "best_IoU": 0.4561573178594455,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.6915933528836755,
+            "purity_of_best_IoU_instance": 0.5726426547956293,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 25000,
+            "GT_vertices": 2046,
+            "best_IoU": 0.4563044179297001,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.6915933528836755,
+            "purity_of_best_IoU_instance": 0.5728744939271255,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 25001,
+            "GT_vertices": 584,
+            "best_IoU": 0.3589021815622801,
+            "best_pred_uid": "p1a1-id:211",
+            "completeness_best_single_instance": 0.8732876712328768,
+            "purity_of_best_IoU_instance": 0.37861915367483295,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 25001,
+            "GT_vertices": 584,
+            "best_IoU": 0.3589021815622801,
+            "best_pred_uid": "p1a1-id:211",
+            "completeness_best_single_instance": 0.8732876712328768,
+            "purity_of_best_IoU_instance": 0.37861915367483295,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 30000,
+            "GT_vertices": 1139,
+            "best_IoU": 0.5039322444041138,
+            "best_pred_uid": "p1a1-id:211",
+            "completeness_best_single_instance": 0.7313432835820896,
+            "purity_of_best_IoU_instance": 0.6184112843355605,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 2,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 30000,
+            "GT_vertices": 1139,
+            "best_IoU": 0.5039322444041138,
+            "best_pred_uid": "p1a1-id:211",
+            "completeness_best_single_instance": 0.7313432835820896,
+            "purity_of_best_IoU_instance": 0.6184112843355605,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 2,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 30002,
+            "GT_vertices": 1696,
+            "best_IoU": 0.16072423398328692,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.3402122641509434,
+            "purity_of_best_IoU_instance": 0.23350870093079726,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 30002,
+            "GT_vertices": 1696,
+            "best_IoU": 0.16076901643911953,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.3402122641509434,
+            "purity_of_best_IoU_instance": 0.23360323886639675,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 30004,
+            "GT_vertices": 895,
+            "best_IoU": 0.6441988950276243,
+            "best_pred_uid": "p1a1-id:18",
+            "completeness_best_single_instance": 0.6513966480446928,
+            "purity_of_best_IoU_instance": 0.9831365935919055,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 30004,
+            "GT_vertices": 895,
+            "best_IoU": 0.6453038674033149,
+            "best_pred_uid": "p1a1-id:18",
+            "completeness_best_single_instance": 0.6525139664804469,
+            "purity_of_best_IoU_instance": 0.9831649831649831,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        }
+      ]
+    },
+    "full_track": {
+      "scene_metrics": {
+        "CA_AP_uniform": 0.08333333333333333,
+        "CA_AP50_uniform": 0.3003300330033003,
+        "CA_AP25_uniform": 0.541460396039604,
+        "CA_PQ": {
+          "FN": 21,
+          "FP": 22,
+          "PQ": 0.3752177474478525,
+          "RQ": 0.5473684210526316,
+          "SQ": 0.6854939616835767,
+          "TP": 26,
+          "ignored_prediction_count": 15,
+          "status": "ok"
+        },
+        "CA_PRF1_0_5": {
+          "F1": 0.5473684210526316,
+          "FN": 21,
+          "FP": 22,
+          "P": 0.5416666666666666,
+          "R": 0.5531914893617021,
+          "TP": 26,
+          "ignored_prediction_count": 15,
+          "status": "ok"
+        },
+        "structure": {
+          "diagnostic_gt_count": 47,
+          "diagnostic_prediction_count": 48,
+          "duplicate_gt_count": 0,
+          "duplicate_prediction_count": 0,
+          "duplicate_prediction_rate": 0.0,
+          "merge_prediction_count": 16,
+          "merge_prediction_rate": 0.3333333333333333,
+          "significant_gt_per_prediction": [
+            4,
+            1,
+            3,
+            9,
+            1,
+            0,
+            2,
+            0,
+            1,
+            7,
+            3,
+            0,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            2,
+            0,
+            0,
+            2,
+            1,
+            2,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            0,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            2,
+            1,
+            0,
+            0,
+            1,
+            1,
+            1,
+            2,
+            0,
+            0,
+            1
+          ],
+          "significant_min_gt_fraction": 0.05,
+          "significant_min_intersection_vertices": 10,
+          "significant_predictions_per_gt": [
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            1,
+            2,
+            1,
+            3,
+            1,
+            1,
+            1,
+            2,
+            2,
+            1,
+            1,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            2,
+            1,
+            1,
+            2,
+            2,
+            1,
+            2,
+            3,
+            5,
+            1,
+            4,
+            3,
+            2,
+            2,
+            2,
+            1
+          ],
+          "split_gt_count": 19,
+          "split_gt_rate": 0.40425531914893614
+        },
+        "status": "DEBUG_ONLY / NON_OFFICIAL"
+      },
+      "F1_delta": 0.01724793912492073,
+      "PQ_delta": 0.026502968945461725,
+      "target_mean_IoU_delta": 0.15113972063121434,
+      "target_structure_count_delta": 8,
+      "strict_success": false,
+      "outcome": "mixed",
+      "non_target_previously_correct_lost": [],
+      "non_target_IoU_degraded_over_0_01": [],
+      "targets": [
+        {
+          "before": {
+            "GT_id": 4001,
+            "GT_vertices": 9124,
+            "best_IoU": 0.26604563037814793,
+            "best_pred_uid": "p1a1-id:52",
+            "completeness_best_single_instance": 0.3693555458132398,
+            "purity_of_best_IoU_instance": 0.48748734268768984,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4001,
+            "GT_vertices": 9124,
+            "best_IoU": 0.34357341004828934,
+            "best_pred_uid": "p1a1-id:52",
+            "completeness_best_single_instance": 0.3665059184568172,
+            "purity_of_best_IoU_instance": 0.8459397925626106,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 4002,
+            "GT_vertices": 9503,
+            "best_IoU": 0.2710801393728223,
+            "best_pred_uid": "p1a1-id:52",
+            "completeness_best_single_instance": 0.3684099757971167,
+            "purity_of_best_IoU_instance": 0.5064371474034428,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4002,
+            "GT_vertices": 9503,
+            "best_IoU": 0.29280605805637355,
+            "best_pred_uid": "p1a1-id:352",
+            "completeness_best_single_instance": 0.2929601178575187,
+            "purity_of_best_IoU_instance": 0.9982072427393331,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 4003,
+            "GT_vertices": 9473,
+            "best_IoU": 0.17780425008646197,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.48844083183785497,
+            "purity_of_best_IoU_instance": 0.218491759928224,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4003,
+            "GT_vertices": 9473,
+            "best_IoU": 0.18009977394964533,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.48780745276047716,
+            "purity_of_best_IoU_instance": 0.22209939440545998,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 4004,
+            "GT_vertices": 9110,
+            "best_IoU": 0.3930331909300033,
+            "best_pred_uid": "p1a1-id:44",
+            "completeness_best_single_instance": 0.39385290889132823,
+            "purity_of_best_IoU_instance": 0.9947324646520654,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 4004,
+            "GT_vertices": 9110,
+            "best_IoU": 0.3992790037142233,
+            "best_pred_uid": "p1a1-id:44",
+            "completeness_best_single_instance": 0.40120746432491766,
+            "purity_of_best_IoU_instance": 0.9881048932143822,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5000,
+            "GT_vertices": 6169,
+            "best_IoU": 0.10849314103580045,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9987031933862863,
+            "purity_of_best_IoU_instance": 0.108508427411543,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5000,
+            "GT_vertices": 6169,
+            "best_IoU": 0.9848874598070739,
+            "best_pred_uid": "p1a1-id:360",
+            "completeness_best_single_instance": 0.9930296644512887,
+            "purity_of_best_IoU_instance": 0.9917435648372996,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 2,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5001,
+            "GT_vertices": 13076,
+            "best_IoU": 0.2302964124059952,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 1.0,
+            "purity_of_best_IoU_instance": 0.2302964124059952,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5001,
+            "GT_vertices": 13076,
+            "best_IoU": 0.17868131309278612,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.5373967574181707,
+            "purity_of_best_IoU_instance": 0.21116052647394676,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5002,
+            "GT_vertices": 15070,
+            "best_IoU": 0.26541503020482926,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 1.0,
+            "purity_of_best_IoU_instance": 0.26541503020482926,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5002,
+            "GT_vertices": 15070,
+            "best_IoU": 0.45285173387823785,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 1.0,
+            "purity_of_best_IoU_instance": 0.45285173387823785,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5003,
+            "GT_vertices": 7200,
+            "best_IoU": 0.11335595579918212,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9047222222222222,
+            "purity_of_best_IoU_instance": 0.11472551471494742,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5003,
+            "GT_vertices": 7200,
+            "best_IoU": 0.16493510231099087,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.7959722222222222,
+            "purity_of_best_IoU_instance": 0.1722158783580744,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5004,
+            "GT_vertices": 7302,
+            "best_IoU": 0.12782920905346898,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.9946589975349219,
+            "purity_of_best_IoU_instance": 0.1279170115711795,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5004,
+            "GT_vertices": 7302,
+            "best_IoU": 0.583581685180168,
+            "best_pred_uid": "p1a1-id:350",
+            "completeness_best_single_instance": 0.589975349219392,
+            "purity_of_best_IoU_instance": 0.9817684594348223,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 5005,
+            "GT_vertices": 3687,
+            "best_IoU": 0.05473765001395479,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.8510984540276648,
+            "purity_of_best_IoU_instance": 0.05526691206255834,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 5005,
+            "GT_vertices": 3687,
+            "best_IoU": 0.7965825874694874,
+            "best_pred_uid": "p1a1-id:359",
+            "completeness_best_single_instance": 0.7965825874694874,
+            "purity_of_best_IoU_instance": 1.0,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 3,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 8000,
+            "GT_vertices": 43433,
+            "best_IoU": 0.2199543059987538,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.2682062026569659,
+            "purity_of_best_IoU_instance": 0.5500779147187987,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 8000,
+            "GT_vertices": 43433,
+            "best_IoU": 0.2133386219401632,
+            "best_pred_uid": "p1a1-id:1",
+            "completeness_best_single_instance": 0.26005571800244054,
+            "purity_of_best_IoU_instance": 0.5428722483898876,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 9002,
+            "GT_vertices": 5137,
+            "best_IoU": 0.0561184457407976,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.6404516254623321,
+            "purity_of_best_IoU_instance": 0.05794395815354268,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 9002,
+            "GT_vertices": 5137,
+            "best_IoU": 0.09056068133427964,
+            "best_pred_uid": "p1a1-id:10",
+            "completeness_best_single_instance": 0.6209850107066381,
+            "purity_of_best_IoU_instance": 0.09585912614940802,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 2,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 10001,
+            "GT_vertices": 4346,
+            "best_IoU": 0.7416762342135477,
+            "best_pred_uid": "p1a1-id:223",
+            "completeness_best_single_instance": 0.7432121491026231,
+            "purity_of_best_IoU_instance": 0.9972213646187095,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 10001,
+            "GT_vertices": 4346,
+            "best_IoU": 0.7430603349392062,
+            "best_pred_uid": "p1a1-id:223",
+            "completeness_best_single_instance": 0.7452830188679245,
+            "purity_of_best_IoU_instance": 0.9960024600246002,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 10003,
+            "GT_vertices": 4349,
+            "best_IoU": 0.5036764705882353,
+            "best_pred_uid": "p1a1-id:271",
+            "completeness_best_single_instance": 0.5040239135433433,
+            "purity_of_best_IoU_instance": 0.9986332574031891,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 10003,
+            "GT_vertices": 4349,
+            "best_IoU": 0.5156106519742883,
+            "best_pred_uid": "p1a1-id:271",
+            "completeness_best_single_instance": 0.5164405610485169,
+            "purity_of_best_IoU_instance": 0.9968930315135375,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 21001,
+            "GT_vertices": 606,
+            "best_IoU": 0.7929373996789727,
+            "best_pred_uid": "p1a1-id:224",
+            "completeness_best_single_instance": 0.8151815181518152,
+            "purity_of_best_IoU_instance": 0.9667318982387475,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 21001,
+            "GT_vertices": 606,
+            "best_IoU": 0.7872340425531915,
+            "best_pred_uid": "p1a1-id:224",
+            "completeness_best_single_instance": 0.7937293729372937,
+            "purity_of_best_IoU_instance": 0.9897119341563786,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 0,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 25000,
+            "GT_vertices": 2046,
+            "best_IoU": 0.4561573178594455,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.6915933528836755,
+            "purity_of_best_IoU_instance": 0.5726426547956293,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 25000,
+            "GT_vertices": 2046,
+            "best_IoU": 0.45539452495974236,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.6911045943304008,
+            "purity_of_best_IoU_instance": 0.5717751718560453,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 25001,
+            "GT_vertices": 584,
+            "best_IoU": 0.3589021815622801,
+            "best_pred_uid": "p1a1-id:211",
+            "completeness_best_single_instance": 0.8732876712328768,
+            "purity_of_best_IoU_instance": 0.37861915367483295,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 25001,
+            "GT_vertices": 584,
+            "best_IoU": 0.7922297297297297,
+            "best_pred_uid": "p1a1-id:371",
+            "completeness_best_single_instance": 0.803082191780822,
+            "purity_of_best_IoU_instance": 0.9832285115303984,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 30000,
+            "GT_vertices": 1139,
+            "best_IoU": 0.5039322444041138,
+            "best_pred_uid": "p1a1-id:211",
+            "completeness_best_single_instance": 0.7313432835820896,
+            "purity_of_best_IoU_instance": 0.6184112843355605,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 2,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 30000,
+            "GT_vertices": 1139,
+            "best_IoU": 0.6973572037510657,
+            "best_pred_uid": "p1a1-id:211",
+            "completeness_best_single_instance": 0.7181738366988587,
+            "purity_of_best_IoU_instance": 0.960093896713615,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 2,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 30002,
+            "GT_vertices": 1696,
+            "best_IoU": 0.16072423398328692,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.3402122641509434,
+            "purity_of_best_IoU_instance": 0.23350870093079726,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 30002,
+            "GT_vertices": 1696,
+            "best_IoU": 0.1606347438752784,
+            "best_pred_uid": "p1a1-id:7",
+            "completeness_best_single_instance": 0.3402122641509434,
+            "purity_of_best_IoU_instance": 0.23331985442782047,
+            "matched_IoU_gt_0_5": false,
+            "significant_predictions": 1,
+            "split": false,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        },
+        {
+          "before": {
+            "GT_id": 30004,
+            "GT_vertices": 895,
+            "best_IoU": 0.6441988950276243,
+            "best_pred_uid": "p1a1-id:18",
+            "completeness_best_single_instance": 0.6513966480446928,
+            "purity_of_best_IoU_instance": 0.9831365935919055,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          },
+          "after": {
+            "GT_id": 30004,
+            "GT_vertices": 895,
+            "best_IoU": 0.63646408839779,
+            "best_pred_uid": "p1a1-id:18",
+            "completeness_best_single_instance": 0.6435754189944134,
+            "purity_of_best_IoU_instance": 0.9829351535836177,
+            "matched_IoU_gt_0_5": true,
+            "significant_predictions": 2,
+            "split": true,
+            "merged_predictions_touching_GT": 1,
+            "duplicate_predictions": 0
+          }
+        }
+      ]
+    }
+  },
+  "target_GT_ids": [
+    4001,
+    4002,
+    4003,
+    4004,
+    5000,
+    5001,
+    5002,
+    5003,
+    5004,
+    5005,
+    8000,
+    9002,
+    10001,
+    10003,
+    21001,
+    25000,
+    25001,
+    30000,
+    30002,
+    30004
+  ],
+  "target_sources": [
+    {
+      "case_uid": "room2-ec916c94e6c24185",
+      "ROI": "ROI-C0001",
+      "targets": [
+        5002,
+        5004
+      ],
+      "objects": [
+        {
+          "track_id": 1,
+          "canonical_track_id": 1,
+          "native_mask_id": 6,
+          "nearest_valid_native_points": 11358,
+          "GT_overlap": [
+            {
+              "GT_id": 5002,
+              "native_points": 11044,
+              "fraction": 0.9723542877267124,
+              "included": true
+            },
+            {
+              "GT_id": 9001,
+              "native_points": 314,
+              "fraction": 0.02764571227328755,
+              "included": false
+            }
+          ]
+        },
+        {
+          "track_id": 2,
+          "canonical_track_id": 2,
+          "native_mask_id": 8,
+          "nearest_valid_native_points": 10221,
+          "GT_overlap": [
+            {
+              "GT_id": 5002,
+              "native_points": 2,
+              "fraction": 0.00019567556990509734,
+              "included": false
+            },
+            {
+              "GT_id": 5004,
+              "native_points": 10069,
+              "fraction": 0.9851286566872126,
+              "included": true
+            },
+            {
+              "GT_id": 9001,
+              "native_points": 150,
+              "fraction": 0.0146756677428823,
+              "included": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-14047feb0df3aaa5",
+      "ROI": "ROI-C0002",
+      "targets": [
+        4001,
+        4002,
+        4004
+      ],
+      "objects": [
+        {
+          "track_id": 3,
+          "canonical_track_id": 3,
+          "native_mask_id": 4,
+          "nearest_valid_native_points": 3960,
+          "GT_overlap": [
+            {
+              "GT_id": 4001,
+              "native_points": 20,
+              "fraction": 0.005050505050505051,
+              "included": false
+            },
+            {
+              "GT_id": 4004,
+              "native_points": 3876,
+              "fraction": 0.9787878787878788,
+              "included": true
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 64,
+              "fraction": 0.01616161616161616,
+              "included": false
+            }
+          ]
+        },
+        {
+          "track_id": 4,
+          "canonical_track_id": 4,
+          "native_mask_id": 7,
+          "nearest_valid_native_points": 1549,
+          "GT_overlap": [
+            {
+              "GT_id": 4002,
+              "native_points": 1549,
+              "fraction": 1.0,
+              "included": true
+            }
+          ]
+        },
+        {
+          "track_id": 5,
+          "canonical_track_id": 5,
+          "native_mask_id": 8,
+          "nearest_valid_native_points": 2794,
+          "GT_overlap": [
+            {
+              "GT_id": 4001,
+              "native_points": 2768,
+              "fraction": 0.9906943450250537,
+              "included": true
+            },
+            {
+              "GT_id": 4002,
+              "native_points": 25,
+              "fraction": 0.00894774516821761,
+              "included": false
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 1,
+              "fraction": 0.00035790980672870435,
+              "included": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-7704f54997e6d29b",
+      "ROI": "ROI-C0003",
+      "targets": [
+        9002,
+        10001,
+        10003,
+        21001
+      ],
+      "objects": [
+        {
+          "track_id": 6,
+          "canonical_track_id": 6,
+          "native_mask_id": 4,
+          "nearest_valid_native_points": 233,
+          "GT_overlap": [
+            {
+              "GT_id": 9002,
+              "native_points": 40,
+              "fraction": 0.17167381974248927,
+              "included": true
+            },
+            {
+              "GT_id": 10001,
+              "native_points": 65,
+              "fraction": 0.27896995708154504,
+              "included": true
+            },
+            {
+              "GT_id": 10003,
+              "native_points": 75,
+              "fraction": 0.3218884120171674,
+              "included": true
+            },
+            {
+              "GT_id": 21001,
+              "native_points": 53,
+              "fraction": 0.22746781115879827,
+              "included": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-74781753162bd8a3",
+      "ROI": "ROI-C0005",
+      "targets": [
+        8000
+      ],
+      "objects": [
+        {
+          "track_id": 7,
+          "canonical_track_id": 7,
+          "native_mask_id": 9,
+          "nearest_valid_native_points": 3565,
+          "GT_overlap": [
+            {
+              "GT_id": 4001,
+              "native_points": 1,
+              "fraction": 0.00028050490883590464,
+              "included": false
+            },
+            {
+              "GT_id": 4002,
+              "native_points": 4,
+              "fraction": 0.0011220196353436186,
+              "included": false
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 3560,
+              "fraction": 0.9985974754558204,
+              "included": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-b18070389a477f61",
+      "ROI": "ROI-C0007",
+      "targets": [
+        8000
+      ],
+      "objects": [
+        {
+          "track_id": 8,
+          "canonical_track_id": 8,
+          "native_mask_id": 8,
+          "nearest_valid_native_points": 8653,
+          "GT_overlap": [
+            {
+              "GT_id": 4003,
+              "native_points": 14,
+              "fraction": 0.0016179359759620942,
+              "included": false
+            },
+            {
+              "GT_id": 4004,
+              "native_points": 26,
+              "fraction": 0.0030047382410724605,
+              "included": false
+            },
+            {
+              "GT_id": 4005,
+              "native_points": 1,
+              "fraction": 0.00011556685542586386,
+              "included": false
+            },
+            {
+              "GT_id": 5005,
+              "native_points": 3,
+              "fraction": 0.0003467005662775916,
+              "included": false
+            },
+            {
+              "GT_id": 7000,
+              "native_points": 1,
+              "fraction": 0.00011556685542586386,
+              "included": false
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 8588,
+              "fraction": 0.9924881543973189,
+              "included": true
+            },
+            {
+              "GT_id": 9002,
+              "native_points": 20,
+              "fraction": 0.0023113371085172773,
+              "included": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-eadde8f5bac2ff37",
+      "ROI": "ROI-C0008",
+      "targets": [
+        5000,
+        5001,
+        5003,
+        5005
+      ],
+      "objects": [
+        {
+          "track_id": 9,
+          "canonical_track_id": 9,
+          "native_mask_id": 8,
+          "nearest_valid_native_points": 9327,
+          "GT_overlap": [
+            {
+              "GT_id": 5001,
+              "native_points": 9202,
+              "fraction": 0.9865980486758872,
+              "included": true
+            },
+            {
+              "GT_id": 9002,
+              "native_points": 125,
+              "fraction": 0.013401951324112791,
+              "included": false
+            }
+          ]
+        },
+        {
+          "track_id": 10,
+          "canonical_track_id": 10,
+          "native_mask_id": 10,
+          "nearest_valid_native_points": 4062,
+          "GT_overlap": [
+            {
+              "GT_id": 5003,
+              "native_points": 4005,
+              "fraction": 0.9859675036927622,
+              "included": true
+            },
+            {
+              "GT_id": 9002,
+              "native_points": 57,
+              "fraction": 0.014032496307237814,
+              "included": false
+            }
+          ]
+        },
+        {
+          "track_id": 11,
+          "canonical_track_id": 11,
+          "native_mask_id": 12,
+          "nearest_valid_native_points": 5716,
+          "GT_overlap": [
+            {
+              "GT_id": 5003,
+              "native_points": 6,
+              "fraction": 0.0010496850944716584,
+              "included": false
+            },
+            {
+              "GT_id": 5005,
+              "native_points": 5710,
+              "fraction": 0.9989503149055283,
+              "included": true
+            }
+          ]
+        },
+        {
+          "track_id": 12,
+          "canonical_track_id": 12,
+          "native_mask_id": 15,
+          "nearest_valid_native_points": 6178,
+          "GT_overlap": [
+            {
+              "GT_id": 5000,
+              "native_points": 6105,
+              "fraction": 0.9881838782777598,
+              "included": true
+            },
+            {
+              "GT_id": 9002,
+              "native_points": 73,
+              "fraction": 0.011816121722240207,
+              "included": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-0ba2ef6c21b4c92d",
+      "ROI": "ROI-C0009",
+      "targets": [
+        8000
+      ],
+      "objects": [
+        {
+          "track_id": 13,
+          "canonical_track_id": 13,
+          "native_mask_id": 4,
+          "nearest_valid_native_points": 5110,
+          "GT_overlap": [
+            {
+              "GT_id": 4003,
+              "native_points": 12,
+              "fraction": 0.0023483365949119373,
+              "included": false
+            },
+            {
+              "GT_id": 4005,
+              "native_points": 24,
+              "fraction": 0.004696673189823875,
+              "included": false
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 5074,
+              "fraction": 0.9929549902152642,
+              "included": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-8d83120d5b27ce5e",
+      "ROI": "ROI-C0011",
+      "targets": [
+        8000
+      ],
+      "objects": [
+        {
+          "track_id": 14,
+          "canonical_track_id": 14,
+          "native_mask_id": 13,
+          "nearest_valid_native_points": 500,
+          "GT_overlap": [
+            {
+              "GT_id": 4000,
+              "native_points": 2,
+              "fraction": 0.004,
+              "included": false
+            },
+            {
+              "GT_id": 7000,
+              "native_points": 1,
+              "fraction": 0.002,
+              "included": false
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 497,
+              "fraction": 0.994,
+              "included": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-75ede2d925653a39",
+      "ROI": "ROI-C0012",
+      "targets": [
+        8000
+      ],
+      "objects": [
+        {
+          "track_id": 15,
+          "canonical_track_id": 15,
+          "native_mask_id": 8,
+          "nearest_valid_native_points": 56,
+          "GT_overlap": [
+            {
+              "GT_id": 7000,
+              "native_points": 4,
+              "fraction": 0.07142857142857142,
+              "included": false
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 52,
+              "fraction": 0.9285714285714286,
+              "included": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-6f08166618cd41f8",
+      "ROI": "ROI-C0013",
+      "targets": [
+        25000,
+        30002,
+        30004
+      ],
+      "objects": [
+        {
+          "track_id": 16,
+          "canonical_track_id": 16,
+          "native_mask_id": 13,
+          "nearest_valid_native_points": 1314,
+          "GT_overlap": [
+            {
+              "GT_id": 25000,
+              "native_points": 743,
+              "fraction": 0.5654490106544902,
+              "included": true
+            },
+            {
+              "GT_id": 29000,
+              "native_points": 4,
+              "fraction": 0.0030441400304414,
+              "included": false
+            },
+            {
+              "GT_id": 30002,
+              "native_points": 558,
+              "fraction": 0.4246575342465753,
+              "included": true
+            },
+            {
+              "GT_id": 30004,
+              "native_points": 9,
+              "fraction": 0.00684931506849315,
+              "included": false
+            }
+          ]
+        },
+        {
+          "track_id": 17,
+          "canonical_track_id": 17,
+          "native_mask_id": 16,
+          "nearest_valid_native_points": 638,
+          "GT_overlap": [
+            {
+              "GT_id": 29000,
+              "native_points": 6,
+              "fraction": 0.009404388714733543,
+              "included": false
+            },
+            {
+              "GT_id": 30002,
+              "native_points": 9,
+              "fraction": 0.014106583072100314,
+              "included": false
+            },
+            {
+              "GT_id": 30004,
+              "native_points": 623,
+              "fraction": 0.9764890282131662,
+              "included": true
+            }
+          ]
+        },
+        {
+          "track_id": 18,
+          "canonical_track_id": 18,
+          "native_mask_id": 18,
+          "nearest_valid_native_points": 100,
+          "GT_overlap": [
+            {
+              "GT_id": 25000,
+              "native_points": 99,
+              "fraction": 0.99,
+              "included": true
+            },
+            {
+              "GT_id": 29000,
+              "native_points": 1,
+              "fraction": 0.01,
+              "included": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-579feefc65a0d844",
+      "ROI": "ROI-C0015",
+      "targets": [],
+      "objects": [
+        {
+          "track_id": 19,
+          "canonical_track_id": 19,
+          "native_mask_id": 14,
+          "nearest_valid_native_points": 0,
+          "GT_overlap": []
+        },
+        {
+          "track_id": 20,
+          "canonical_track_id": 20,
+          "native_mask_id": 23,
+          "nearest_valid_native_points": 0,
+          "GT_overlap": []
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-c9af20694ea516a9",
+      "ROI": "ROI-C0016",
+      "targets": [
+        4003
+      ],
+      "objects": [
+        {
+          "track_id": 21,
+          "canonical_track_id": 21,
+          "native_mask_id": 3,
+          "nearest_valid_native_points": 3195,
+          "GT_overlap": [
+            {
+              "GT_id": 4003,
+              "native_points": 3173,
+              "fraction": 0.993114241001565,
+              "included": true
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 22,
+              "fraction": 0.006885758998435055,
+              "included": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-f1797fac02e52a4c",
+      "ROI": "ROI-C0025",
+      "targets": [
+        25001,
+        30000
+      ],
+      "objects": [
+        {
+          "track_id": 22,
+          "canonical_track_id": 22,
+          "native_mask_id": 7,
+          "nearest_valid_native_points": 776,
+          "GT_overlap": [
+            {
+              "GT_id": 25001,
+              "native_points": 42,
+              "fraction": 0.05412371134020619,
+              "included": true
+            },
+            {
+              "GT_id": 30000,
+              "native_points": 734,
+              "fraction": 0.9458762886597938,
+              "included": true
+            }
+          ]
+        },
+        {
+          "track_id": 23,
+          "canonical_track_id": 23,
+          "native_mask_id": 8,
+          "nearest_valid_native_points": 490,
+          "GT_overlap": [
+            {
+              "GT_id": 7000,
+              "native_points": 4,
+              "fraction": 0.00816326530612245,
+              "included": false
+            },
+            {
+              "GT_id": 25001,
+              "native_points": 486,
+              "fraction": 0.9918367346938776,
+              "included": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "case_uid": "room2-0b324734bca2ccef",
+      "ROI": "ROI-C0029",
+      "targets": [
+        4001,
+        4002
+      ],
+      "objects": [
+        {
+          "track_id": 24,
+          "canonical_track_id": 4,
+          "native_mask_id": 4,
+          "nearest_valid_native_points": 3897,
+          "GT_overlap": [
+            {
+              "GT_id": 4002,
+              "native_points": 3863,
+              "fraction": 0.9912753400051322,
+              "included": true
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 34,
+              "fraction": 0.008724659994867847,
+              "included": false
+            }
+          ]
+        },
+        {
+          "track_id": 25,
+          "canonical_track_id": 5,
+          "native_mask_id": 10,
+          "nearest_valid_native_points": 2234,
+          "GT_overlap": [
+            {
+              "GT_id": 4001,
+              "native_points": 2197,
+              "fraction": 0.9834377797672337,
+              "included": true
+            },
+            {
+              "GT_id": 4002,
+              "native_points": 5,
+              "fraction": 0.0022381378692927483,
+              "included": false
+            },
+            {
+              "GT_id": 8000,
+              "native_points": 32,
+              "fraction": 0.01432408236347359,
+              "included": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "fixed_surface_diagnostics": [
+    {
+      "canonical_track_id": 1,
+      "member_track_ids": [
+        1
+      ],
+      "persistent_id": 10,
+      "GT_id": 5002,
+      "seed_GT_fraction": 0.9723542877267124,
+      "seed_GT_counts": {
+        "5002": 11044,
+        "9001": 314
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 5002,
+          "expected_persistent_id": 10,
+          "GT_reference_points": 15070,
+          "reachable_fixed_surface_reference_points": 15070,
+          "no_geometric_correspondence_reference_points": 0,
+          "expected_identity_reference_points": 15070,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 0,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 15070
+          },
+          "expected_identity_full_GT_coverage": 1.0,
+          "expected_identity_reachable_GT_coverage": 1.0,
+          "expected_identity_reference_purity": 0.2675828761164083,
+          "expected_identity_fixed_IoU": 0.2675828761164083,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.2675828761164083,
+          "best_prediction_full_GT_coverage": 1.0,
+          "best_prediction_reference_purity": 0.2675828761164083
+        },
+        "seed_only": {
+          "GT_id": 5002,
+          "expected_persistent_id": 10,
+          "GT_reference_points": 15070,
+          "reachable_fixed_surface_reference_points": 15070,
+          "no_geometric_correspondence_reference_points": 0,
+          "expected_identity_reference_points": 15070,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 0,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 15070
+          },
+          "expected_identity_full_GT_coverage": 1.0,
+          "expected_identity_reachable_GT_coverage": 1.0,
+          "expected_identity_reference_purity": 0.26772548810602426,
+          "expected_identity_fixed_IoU": 0.26772548810602426,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.26772548810602426,
+          "best_prediction_full_GT_coverage": 1.0,
+          "best_prediction_reference_purity": 0.26772548810602426
+        },
+        "full_track": {
+          "GT_id": 5002,
+          "expected_persistent_id": 10,
+          "GT_reference_points": 15070,
+          "reachable_fixed_surface_reference_points": 15070,
+          "no_geometric_correspondence_reference_points": 0,
+          "expected_identity_reference_points": 15070,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 0,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 15070
+          },
+          "expected_identity_full_GT_coverage": 1.0,
+          "expected_identity_reachable_GT_coverage": 1.0,
+          "expected_identity_reference_purity": 0.48492454226598447,
+          "expected_identity_fixed_IoU": 0.48492454226598447,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.48492454226598447,
+          "best_prediction_full_GT_coverage": 1.0,
+          "best_prediction_reference_purity": 0.48492454226598447
+        }
+      }
+    },
+    {
+      "canonical_track_id": 2,
+      "member_track_ids": [
+        2
+      ],
+      "persistent_id": 350,
+      "GT_id": 5004,
+      "seed_GT_fraction": 0.9851286566872126,
+      "seed_GT_counts": {
+        "5002": 2,
+        "5004": 10069,
+        "9001": 150
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 5004,
+          "expected_persistent_id": 350,
+          "GT_reference_points": 7302,
+          "reachable_fixed_surface_reference_points": 7263,
+          "no_geometric_correspondence_reference_points": 39,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 7262,
+          "unassigned_reachable_reference_points": 1,
+          "reachable_label_counts": {
+            "-1": 1,
+            "10": 7262
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.12885253464397878,
+          "best_prediction_full_GT_coverage": 0.994522048753766,
+          "best_prediction_reference_purity": 0.12894405085317567
+        },
+        "seed_only": {
+          "GT_id": 5004,
+          "expected_persistent_id": 350,
+          "GT_reference_points": 7302,
+          "reachable_fixed_surface_reference_points": 7263,
+          "no_geometric_correspondence_reference_points": 39,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 7262,
+          "unassigned_reachable_reference_points": 1,
+          "reachable_label_counts": {
+            "-1": 1,
+            "10": 7262
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.12892115961582842,
+          "best_prediction_full_GT_coverage": 0.994522048753766,
+          "best_prediction_reference_purity": 0.1290127733660218
+        },
+        "full_track": {
+          "GT_id": 5004,
+          "expected_persistent_id": 350,
+          "GT_reference_points": 7302,
+          "reachable_fixed_surface_reference_points": 7263,
+          "no_geometric_correspondence_reference_points": 39,
+          "expected_identity_reference_points": 3900,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 5,
+          "unassigned_reachable_reference_points": 3358,
+          "reachable_label_counts": {
+            "-1": 3358,
+            "10": 5,
+            "350": 3900
+          },
+          "expected_identity_full_GT_coverage": 0.5341002465078061,
+          "expected_identity_reachable_GT_coverage": 0.53696819496076,
+          "expected_identity_reference_purity": 0.9903504316912138,
+          "expected_identity_fixed_IoU": 0.5313351498637602,
+          "best_fixed_IoU_prediction_id": 350,
+          "best_fixed_IoU": 0.5313351498637602,
+          "best_prediction_full_GT_coverage": 0.5341002465078061,
+          "best_prediction_reference_purity": 0.9903504316912138
+        }
+      }
+    },
+    {
+      "canonical_track_id": 3,
+      "member_track_ids": [
+        3
+      ],
+      "persistent_id": 44,
+      "GT_id": 4004,
+      "seed_GT_fraction": 0.9787878787878788,
+      "seed_GT_counts": {
+        "4001": 20,
+        "4004": 3876,
+        "8000": 64
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 4004,
+          "expected_persistent_id": 44,
+          "GT_reference_points": 9110,
+          "reachable_fixed_surface_reference_points": 4249,
+          "no_geometric_correspondence_reference_points": 4861,
+          "expected_identity_reference_points": 3473,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 59,
+          "unassigned_reachable_reference_points": 717,
+          "reachable_label_counts": {
+            "-1": 717,
+            "1": 27,
+            "8": 6,
+            "43": 19,
+            "44": 3473,
+            "52": 7
+          },
+          "expected_identity_full_GT_coverage": 0.38122941822173434,
+          "expected_identity_reachable_GT_coverage": 0.8173687926570958,
+          "expected_identity_reference_purity": 0.9962707974756168,
+          "expected_identity_fixed_IoU": 0.38068617779239283,
+          "best_fixed_IoU_prediction_id": 44,
+          "best_fixed_IoU": 0.38068617779239283,
+          "best_prediction_full_GT_coverage": 0.38122941822173434,
+          "best_prediction_reference_purity": 0.9962707974756168
+        },
+        "seed_only": {
+          "GT_id": 4004,
+          "expected_persistent_id": 44,
+          "GT_reference_points": 9110,
+          "reachable_fixed_surface_reference_points": 4249,
+          "no_geometric_correspondence_reference_points": 4861,
+          "expected_identity_reference_points": 3473,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 59,
+          "unassigned_reachable_reference_points": 717,
+          "reachable_label_counts": {
+            "-1": 717,
+            "1": 27,
+            "8": 6,
+            "43": 19,
+            "44": 3473,
+            "52": 7
+          },
+          "expected_identity_full_GT_coverage": 0.38122941822173434,
+          "expected_identity_reachable_GT_coverage": 0.8173687926570958,
+          "expected_identity_reference_purity": 0.9962707974756168,
+          "expected_identity_fixed_IoU": 0.38068617779239283,
+          "best_fixed_IoU_prediction_id": 44,
+          "best_fixed_IoU": 0.38068617779239283,
+          "best_prediction_full_GT_coverage": 0.38122941822173434,
+          "best_prediction_reference_purity": 0.9962707974756168
+        },
+        "full_track": {
+          "GT_id": 4004,
+          "expected_persistent_id": 44,
+          "GT_reference_points": 9110,
+          "reachable_fixed_surface_reference_points": 4249,
+          "no_geometric_correspondence_reference_points": 4861,
+          "expected_identity_reference_points": 3526,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 38,
+          "unassigned_reachable_reference_points": 685,
+          "reachable_label_counts": {
+            "-1": 685,
+            "1": 13,
+            "8": 4,
+            "43": 20,
+            "44": 3526,
+            "52": 1
+          },
+          "expected_identity_full_GT_coverage": 0.38704720087815586,
+          "expected_identity_reachable_GT_coverage": 0.8298423158390209,
+          "expected_identity_reference_purity": 0.9924007880664227,
+          "expected_identity_fixed_IoU": 0.38590346941009085,
+          "best_fixed_IoU_prediction_id": 44,
+          "best_fixed_IoU": 0.38590346941009085,
+          "best_prediction_full_GT_coverage": 0.38704720087815586,
+          "best_prediction_reference_purity": 0.9924007880664227
+        }
+      }
+    },
+    {
+      "canonical_track_id": 4,
+      "member_track_ids": [
+        4,
+        24
+      ],
+      "persistent_id": 352,
+      "GT_id": 4002,
+      "seed_GT_fraction": 0.9937568857877341,
+      "seed_GT_counts": {
+        "4002": 5412,
+        "8000": 34
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 4002,
+          "expected_persistent_id": 352,
+          "GT_reference_points": 9503,
+          "reachable_fixed_surface_reference_points": 3901,
+          "no_geometric_correspondence_reference_points": 5602,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 3386,
+          "unassigned_reachable_reference_points": 515,
+          "reachable_label_counts": {
+            "-1": 515,
+            "1": 9,
+            "8": 28,
+            "52": 3349
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 52,
+          "best_fixed_IoU": 0.26291411524572145,
+          "best_prediction_full_GT_coverage": 0.35241502683363146,
+          "best_prediction_reference_purity": 0.5086573511543135
+        },
+        "seed_only": {
+          "GT_id": 4002,
+          "expected_persistent_id": 352,
+          "GT_reference_points": 9503,
+          "reachable_fixed_surface_reference_points": 3901,
+          "no_geometric_correspondence_reference_points": 5602,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 3384,
+          "unassigned_reachable_reference_points": 517,
+          "reachable_label_counts": {
+            "-1": 517,
+            "1": 9,
+            "8": 28,
+            "52": 3347
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 52,
+          "best_fixed_IoU": 0.26275710472601665,
+          "best_prediction_full_GT_coverage": 0.3522045669788488,
+          "best_prediction_reference_purity": 0.5085080522637496
+        },
+        "full_track": {
+          "GT_id": 4002,
+          "expected_persistent_id": 352,
+          "GT_reference_points": 9503,
+          "reachable_fixed_surface_reference_points": 3901,
+          "no_geometric_correspondence_reference_points": 5602,
+          "expected_identity_reference_points": 2673,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 474,
+          "unassigned_reachable_reference_points": 754,
+          "reachable_label_counts": {
+            "-1": 754,
+            "1": 9,
+            "8": 28,
+            "52": 437,
+            "352": 2673
+          },
+          "expected_identity_full_GT_coverage": 0.2812795959170788,
+          "expected_identity_reachable_GT_coverage": 0.6852089207895411,
+          "expected_identity_reference_purity": 0.9985057900635039,
+          "expected_identity_fixed_IoU": 0.2811612496055538,
+          "best_fixed_IoU_prediction_id": 352,
+          "best_fixed_IoU": 0.2811612496055538,
+          "best_prediction_full_GT_coverage": 0.2812795959170788,
+          "best_prediction_reference_purity": 0.9985057900635039
+        }
+      }
+    },
+    {
+      "canonical_track_id": 5,
+      "member_track_ids": [
+        5,
+        25
+      ],
+      "persistent_id": 52,
+      "GT_id": 4001,
+      "seed_GT_fraction": 0.9874701670644391,
+      "seed_GT_counts": {
+        "4001": 4965,
+        "4002": 30,
+        "8000": 33
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 4001,
+          "expected_persistent_id": 52,
+          "GT_reference_points": 9124,
+          "reachable_fixed_surface_reference_points": 3747,
+          "no_geometric_correspondence_reference_points": 5377,
+          "expected_identity_reference_points": 3215,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 23,
+          "unassigned_reachable_reference_points": 509,
+          "reachable_label_counts": {
+            "-1": 509,
+            "1": 17,
+            "8": 2,
+            "44": 4,
+            "52": 3215
+          },
+          "expected_identity_full_GT_coverage": 0.3523673827268742,
+          "expected_identity_reachable_GT_coverage": 0.8580197491326395,
+          "expected_identity_reference_purity": 0.48830498177399756,
+          "expected_identity_fixed_IoU": 0.25734411270311375,
+          "best_fixed_IoU_prediction_id": 52,
+          "best_fixed_IoU": 0.25734411270311375,
+          "best_prediction_full_GT_coverage": 0.3523673827268742,
+          "best_prediction_reference_purity": 0.48830498177399756
+        },
+        "seed_only": {
+          "GT_id": 4001,
+          "expected_persistent_id": 52,
+          "GT_reference_points": 9124,
+          "reachable_fixed_surface_reference_points": 3747,
+          "no_geometric_correspondence_reference_points": 5377,
+          "expected_identity_reference_points": 3215,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 23,
+          "unassigned_reachable_reference_points": 509,
+          "reachable_label_counts": {
+            "-1": 509,
+            "1": 17,
+            "8": 2,
+            "44": 4,
+            "52": 3215
+          },
+          "expected_identity_full_GT_coverage": 0.3523673827268742,
+          "expected_identity_reachable_GT_coverage": 0.8580197491326395,
+          "expected_identity_reference_purity": 0.4884533576420541,
+          "expected_identity_fixed_IoU": 0.25738531742854853,
+          "best_fixed_IoU_prediction_id": 52,
+          "best_fixed_IoU": 0.25738531742854853,
+          "best_prediction_full_GT_coverage": 0.3523673827268742,
+          "best_prediction_reference_purity": 0.4884533576420541
+        },
+        "full_track": {
+          "GT_id": 4001,
+          "expected_persistent_id": 52,
+          "GT_reference_points": 9124,
+          "reachable_fixed_surface_reference_points": 3747,
+          "no_geometric_correspondence_reference_points": 5377,
+          "expected_identity_reference_points": 3175,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 34,
+          "unassigned_reachable_reference_points": 538,
+          "reachable_label_counts": {
+            "-1": 538,
+            "1": 16,
+            "8": 1,
+            "44": 17,
+            "52": 3175
+          },
+          "expected_identity_full_GT_coverage": 0.34798334064007014,
+          "expected_identity_reachable_GT_coverage": 0.847344542300507,
+          "expected_identity_reference_purity": 0.8770718232044199,
+          "expected_identity_fixed_IoU": 0.3318006061239419,
+          "best_fixed_IoU_prediction_id": 52,
+          "best_fixed_IoU": 0.3318006061239419,
+          "best_prediction_full_GT_coverage": 0.34798334064007014,
+          "best_prediction_reference_purity": 0.8770718232044199
+        }
+      }
+    },
+    {
+      "canonical_track_id": 6,
+      "member_track_ids": [
+        6
+      ],
+      "persistent_id": 254,
+      "GT_id": 10003,
+      "seed_GT_fraction": 0.3218884120171674,
+      "seed_GT_counts": {
+        "9002": 40,
+        "10001": 65,
+        "10003": 75,
+        "21001": 53
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 10003,
+          "expected_persistent_id": 254,
+          "GT_reference_points": 4349,
+          "reachable_fixed_surface_reference_points": 2373,
+          "no_geometric_correspondence_reference_points": 1976,
+          "expected_identity_reference_points": 59,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 2015,
+          "unassigned_reachable_reference_points": 299,
+          "reachable_label_counts": {
+            "-1": 299,
+            "254": 59,
+            "271": 1987,
+            "343": 28
+          },
+          "expected_identity_full_GT_coverage": 0.013566337088985974,
+          "expected_identity_reachable_GT_coverage": 0.024863042562157607,
+          "expected_identity_reference_purity": 0.0018368045826717724,
+          "expected_identity_fixed_IoU": 0.001620389442750817,
+          "best_fixed_IoU_prediction_id": 271,
+          "best_fixed_IoU": 0.4567816091954023,
+          "best_prediction_full_GT_coverage": 0.4568866406070361,
+          "best_prediction_reference_purity": 0.9994969818913481
+        },
+        "seed_only": {
+          "GT_id": 10003,
+          "expected_persistent_id": 254,
+          "GT_reference_points": 4349,
+          "reachable_fixed_surface_reference_points": 2373,
+          "no_geometric_correspondence_reference_points": 1976,
+          "expected_identity_reference_points": 59,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 2015,
+          "unassigned_reachable_reference_points": 299,
+          "reachable_label_counts": {
+            "-1": 299,
+            "254": 59,
+            "271": 1987,
+            "343": 28
+          },
+          "expected_identity_full_GT_coverage": 0.013566337088985974,
+          "expected_identity_reachable_GT_coverage": 0.024863042562157607,
+          "expected_identity_reference_purity": 0.0018368045826717724,
+          "expected_identity_fixed_IoU": 0.001620389442750817,
+          "best_fixed_IoU_prediction_id": 271,
+          "best_fixed_IoU": 0.4567816091954023,
+          "best_prediction_full_GT_coverage": 0.4568866406070361,
+          "best_prediction_reference_purity": 0.9994969818913481
+        },
+        "full_track": {
+          "GT_id": 10003,
+          "expected_persistent_id": 254,
+          "GT_reference_points": 4349,
+          "reachable_fixed_surface_reference_points": 2373,
+          "no_geometric_correspondence_reference_points": 1976,
+          "expected_identity_reference_points": 41,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 2108,
+          "unassigned_reachable_reference_points": 224,
+          "reachable_label_counts": {
+            "-1": 224,
+            "254": 41,
+            "271": 2080,
+            "343": 28
+          },
+          "expected_identity_full_GT_coverage": 0.00942745458726144,
+          "expected_identity_reachable_GT_coverage": 0.017277707543194267,
+          "expected_identity_reference_purity": 0.0012758674342617084,
+          "expected_identity_fixed_IoU": 0.001125044590181928,
+          "best_fixed_IoU_prediction_id": 271,
+          "best_fixed_IoU": 0.47794117647058826,
+          "best_prediction_full_GT_coverage": 0.4782708668659462,
+          "best_prediction_reference_purity": 0.9985597695631301
+        }
+      }
+    },
+    {
+      "canonical_track_id": 7,
+      "member_track_ids": [
+        7
+      ],
+      "persistent_id": 355,
+      "GT_id": 8000,
+      "seed_GT_fraction": 0.9985974754558204,
+      "seed_GT_counts": {
+        "4001": 1,
+        "4002": 4,
+        "8000": 3560
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 8000,
+          "expected_persistent_id": 355,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13081,
+          "unassigned_reachable_reference_points": 8889,
+          "reachable_label_counts": {
+            "-1": 8889,
+            "1": 10879,
+            "8": 1844,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 250
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.20719931435101419,
+          "best_prediction_full_GT_coverage": 0.2504777473349757,
+          "best_prediction_reference_purity": 0.5452859505789184
+        },
+        "seed_only": {
+          "GT_id": 8000,
+          "expected_persistent_id": 355,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 12864,
+          "unassigned_reachable_reference_points": 9106,
+          "reachable_label_counts": {
+            "-1": 9106,
+            "1": 10839,
+            "8": 1711,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 206
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.2064414139875057,
+          "best_prediction_full_GT_coverage": 0.24955678861695024,
+          "best_prediction_reference_purity": 0.5443997990959317
+        },
+        "full_track": {
+          "GT_id": 8000,
+          "expected_persistent_id": 355,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 31,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11349,
+          "unassigned_reachable_reference_points": 10590,
+          "reachable_label_counts": {
+            "-1": 10590,
+            "1": 9721,
+            "8": 1079,
+            "43": 13,
+            "52": 7,
+            "215": 86,
+            "228": 38,
+            "352": 4,
+            "355": 31,
+            "356": 373,
+            "361": 14,
+            "362": 14
+          },
+          "expected_identity_full_GT_coverage": 0.000713743006469735,
+          "expected_identity_reachable_GT_coverage": 0.001411015020482476,
+          "expected_identity_reference_purity": 1.0,
+          "expected_identity_fixed_IoU": 0.000713743006469735,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.18522893999733236,
+          "best_prediction_full_GT_coverage": 0.22381599244813852,
+          "best_prediction_reference_purity": 0.5179284991208908
+        }
+      }
+    },
+    {
+      "canonical_track_id": 8,
+      "member_track_ids": [
+        8
+      ],
+      "persistent_id": 356,
+      "GT_id": 8000,
+      "seed_GT_fraction": 0.9924881543973189,
+      "seed_GT_counts": {
+        "4003": 14,
+        "4004": 26,
+        "4005": 1,
+        "5005": 3,
+        "7000": 1,
+        "8000": 8588,
+        "9002": 20
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 8000,
+          "expected_persistent_id": 356,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13081,
+          "unassigned_reachable_reference_points": 8889,
+          "reachable_label_counts": {
+            "-1": 8889,
+            "1": 10879,
+            "8": 1844,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 250
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.20719931435101419,
+          "best_prediction_full_GT_coverage": 0.2504777473349757,
+          "best_prediction_reference_purity": 0.5452859505789184
+        },
+        "seed_only": {
+          "GT_id": 8000,
+          "expected_persistent_id": 356,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 12864,
+          "unassigned_reachable_reference_points": 9106,
+          "reachable_label_counts": {
+            "-1": 9106,
+            "1": 10839,
+            "8": 1711,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 206
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.2064414139875057,
+          "best_prediction_full_GT_coverage": 0.24955678861695024,
+          "best_prediction_reference_purity": 0.5443997990959317
+        },
+        "full_track": {
+          "GT_id": 8000,
+          "expected_persistent_id": 356,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 373,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11007,
+          "unassigned_reachable_reference_points": 10590,
+          "reachable_label_counts": {
+            "-1": 10590,
+            "1": 9721,
+            "8": 1079,
+            "43": 13,
+            "52": 7,
+            "215": 86,
+            "228": 38,
+            "352": 4,
+            "355": 31,
+            "356": 373,
+            "361": 14,
+            "362": 14
+          },
+          "expected_identity_full_GT_coverage": 0.008587940045587456,
+          "expected_identity_reachable_GT_coverage": 0.016977696859353665,
+          "expected_identity_reference_purity": 0.9973262032085561,
+          "expected_identity_fixed_IoU": 0.008587742321683474,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.18522893999733236,
+          "best_prediction_full_GT_coverage": 0.22381599244813852,
+          "best_prediction_reference_purity": 0.5179284991208908
+        }
+      }
+    },
+    {
+      "canonical_track_id": 9,
+      "member_track_ids": [
+        9
+      ],
+      "persistent_id": 357,
+      "GT_id": 5001,
+      "seed_GT_fraction": 0.9865980486758872,
+      "seed_GT_counts": {
+        "5001": 9202,
+        "9002": 125
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 5001,
+          "expected_persistent_id": 357,
+          "GT_reference_points": 13076,
+          "reachable_fixed_surface_reference_points": 13076,
+          "no_geometric_correspondence_reference_points": 0,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13076,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 13076
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.23217741792290347,
+          "best_prediction_full_GT_coverage": 1.0,
+          "best_prediction_reference_purity": 0.23217741792290347
+        },
+        "seed_only": {
+          "GT_id": 5001,
+          "expected_persistent_id": 357,
+          "GT_reference_points": 13076,
+          "reachable_fixed_surface_reference_points": 13076,
+          "no_geometric_correspondence_reference_points": 0,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13076,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 13076
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.23230116008456358,
+          "best_prediction_full_GT_coverage": 1.0,
+          "best_prediction_reference_purity": 0.23230116008456358
+        },
+        "full_track": {
+          "GT_id": 5001,
+          "expected_persistent_id": 357,
+          "GT_reference_points": 13076,
+          "reachable_fixed_surface_reference_points": 13076,
+          "no_geometric_correspondence_reference_points": 0,
+          "expected_identity_reference_points": 81,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 6122,
+          "unassigned_reachable_reference_points": 6873,
+          "reachable_label_counts": {
+            "-1": 6873,
+            "10": 6122,
+            "357": 81
+          },
+          "expected_identity_full_GT_coverage": 0.006194554909758336,
+          "expected_identity_reachable_GT_coverage": 0.006194554909758336,
+          "expected_identity_reference_purity": 1.0,
+          "expected_identity_fixed_IoU": 0.006194554909758336,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.1609739423102206,
+          "best_prediction_full_GT_coverage": 0.46818598959926583,
+          "best_prediction_reference_purity": 0.19699456189464878
+        }
+      }
+    },
+    {
+      "canonical_track_id": 10,
+      "member_track_ids": [
+        10
+      ],
+      "persistent_id": 358,
+      "GT_id": 5003,
+      "seed_GT_fraction": 0.9859675036927622,
+      "seed_GT_counts": {
+        "5003": 4005,
+        "9002": 57
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 5003,
+          "expected_persistent_id": 358,
+          "GT_reference_points": 7200,
+          "reachable_fixed_surface_reference_points": 6514,
+          "no_geometric_correspondence_reference_points": 686,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 6514,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 6514
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.11427067801070082,
+          "best_prediction_full_GT_coverage": 0.9047222222222222,
+          "best_prediction_reference_purity": 0.11566256503133933
+        },
+        "seed_only": {
+          "GT_id": 5003,
+          "expected_persistent_id": 358,
+          "GT_reference_points": 7200,
+          "reachable_fixed_surface_reference_points": 6514,
+          "no_geometric_correspondence_reference_points": 686,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 6514,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 6514
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.11433084686265906,
+          "best_prediction_full_GT_coverage": 0.9047222222222222,
+          "best_prediction_reference_purity": 0.11572420899287605
+        },
+        "full_track": {
+          "GT_id": 5003,
+          "expected_persistent_id": 358,
+          "GT_reference_points": 7200,
+          "reachable_fixed_surface_reference_points": 6514,
+          "no_geometric_correspondence_reference_points": 686,
+          "expected_identity_reference_points": 215,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 5000,
+          "unassigned_reachable_reference_points": 1299,
+          "reachable_label_counts": {
+            "-1": 1299,
+            "10": 5000,
+            "358": 215
+          },
+          "expected_identity_full_GT_coverage": 0.029861111111111113,
+          "expected_identity_reachable_GT_coverage": 0.033005833589192506,
+          "expected_identity_reference_purity": 1.0,
+          "expected_identity_fixed_IoU": 0.029861111111111113,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.15025392914024702,
+          "best_prediction_full_GT_coverage": 0.6944444444444444,
+          "best_prediction_reference_purity": 0.16089069086462657
+        }
+      }
+    },
+    {
+      "canonical_track_id": 11,
+      "member_track_ids": [
+        11
+      ],
+      "persistent_id": 359,
+      "GT_id": 5005,
+      "seed_GT_fraction": 0.9989503149055283,
+      "seed_GT_counts": {
+        "5003": 6,
+        "5005": 5710
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 5005,
+          "expected_persistent_id": 359,
+          "GT_reference_points": 3687,
+          "reachable_fixed_surface_reference_points": 3485,
+          "no_geometric_correspondence_reference_points": 202,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 3224,
+          "unassigned_reachable_reference_points": 261,
+          "reachable_label_counts": {
+            "-1": 261,
+            "8": 2,
+            "10": 3072,
+            "55": 150
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.05395721361576562,
+          "best_prediction_full_GT_coverage": 0.8331977217249796,
+          "best_prediction_reference_purity": 0.05454642305438662
+        },
+        "seed_only": {
+          "GT_id": 5005,
+          "expected_persistent_id": 359,
+          "GT_reference_points": 3687,
+          "reachable_fixed_surface_reference_points": 3485,
+          "no_geometric_correspondence_reference_points": 202,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 3194,
+          "unassigned_reachable_reference_points": 291,
+          "reachable_label_counts": {
+            "-1": 291,
+            "8": 2,
+            "10": 3043,
+            "55": 149
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.053448790683786204,
+          "best_prediction_full_GT_coverage": 0.8253322484404665,
+          "best_prediction_reference_purity": 0.05406029597257013
+        },
+        "full_track": {
+          "GT_id": 5005,
+          "expected_persistent_id": 359,
+          "GT_reference_points": 3687,
+          "reachable_fixed_surface_reference_points": 3485,
+          "no_geometric_correspondence_reference_points": 202,
+          "expected_identity_reference_points": 2850,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 270,
+          "unassigned_reachable_reference_points": 365,
+          "reachable_label_counts": {
+            "-1": 365,
+            "8": 1,
+            "10": 119,
+            "55": 150,
+            "359": 2850
+          },
+          "expected_identity_full_GT_coverage": 0.772986167615948,
+          "expected_identity_reachable_GT_coverage": 0.8177905308464849,
+          "expected_identity_reference_purity": 1.0,
+          "expected_identity_fixed_IoU": 0.772986167615948,
+          "best_fixed_IoU_prediction_id": 359,
+          "best_fixed_IoU": 0.772986167615948,
+          "best_prediction_full_GT_coverage": 0.772986167615948,
+          "best_prediction_reference_purity": 1.0
+        }
+      }
+    },
+    {
+      "canonical_track_id": 12,
+      "member_track_ids": [
+        12
+      ],
+      "persistent_id": 360,
+      "GT_id": 5000,
+      "seed_GT_fraction": 0.9881838782777598,
+      "seed_GT_counts": {
+        "5000": 6105,
+        "9002": 73
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 5000,
+          "expected_persistent_id": 360,
+          "GT_reference_points": 6169,
+          "reachable_fixed_surface_reference_points": 6161,
+          "no_geometric_correspondence_reference_points": 8,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 6161,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 6161
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.10937916097076003,
+          "best_prediction_full_GT_coverage": 0.9987031933862863,
+          "best_prediction_reference_purity": 0.10939469805926952
+        },
+        "seed_only": {
+          "GT_id": 5000,
+          "expected_persistent_id": 360,
+          "GT_reference_points": 6169,
+          "reachable_fixed_surface_reference_points": 6161,
+          "no_geometric_correspondence_reference_points": 8,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 6161,
+          "unassigned_reachable_reference_points": 0,
+          "reachable_label_counts": {
+            "10": 6161
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 10,
+          "best_fixed_IoU": 0.10943744782137592,
+          "best_prediction_full_GT_coverage": 0.9987031933862863,
+          "best_prediction_reference_purity": 0.10945300147453321
+        },
+        "full_track": {
+          "GT_id": 5000,
+          "expected_persistent_id": 360,
+          "GT_reference_points": 6169,
+          "reachable_fixed_surface_reference_points": 6161,
+          "no_geometric_correspondence_reference_points": 8,
+          "expected_identity_reference_points": 6106,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 21,
+          "unassigned_reachable_reference_points": 34,
+          "reachable_label_counts": {
+            "-1": 34,
+            "10": 21,
+            "360": 6106
+          },
+          "expected_identity_full_GT_coverage": 0.9897876479170044,
+          "expected_identity_reachable_GT_coverage": 0.9910728777795812,
+          "expected_identity_reference_purity": 0.9955975868253709,
+          "expected_identity_fixed_IoU": 0.9854744996772111,
+          "best_fixed_IoU_prediction_id": 360,
+          "best_fixed_IoU": 0.9854744996772111,
+          "best_prediction_full_GT_coverage": 0.9897876479170044,
+          "best_prediction_reference_purity": 0.9955975868253709
+        }
+      }
+    },
+    {
+      "canonical_track_id": 13,
+      "member_track_ids": [
+        13
+      ],
+      "persistent_id": 361,
+      "GT_id": 8000,
+      "seed_GT_fraction": 0.9929549902152642,
+      "seed_GT_counts": {
+        "4003": 12,
+        "4005": 24,
+        "8000": 5074
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 8000,
+          "expected_persistent_id": 361,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13081,
+          "unassigned_reachable_reference_points": 8889,
+          "reachable_label_counts": {
+            "-1": 8889,
+            "1": 10879,
+            "8": 1844,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 250
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.20719931435101419,
+          "best_prediction_full_GT_coverage": 0.2504777473349757,
+          "best_prediction_reference_purity": 0.5452859505789184
+        },
+        "seed_only": {
+          "GT_id": 8000,
+          "expected_persistent_id": 361,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 12864,
+          "unassigned_reachable_reference_points": 9106,
+          "reachable_label_counts": {
+            "-1": 9106,
+            "1": 10839,
+            "8": 1711,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 206
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.2064414139875057,
+          "best_prediction_full_GT_coverage": 0.24955678861695024,
+          "best_prediction_reference_purity": 0.5443997990959317
+        },
+        "full_track": {
+          "GT_id": 8000,
+          "expected_persistent_id": 361,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 14,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11366,
+          "unassigned_reachable_reference_points": 10590,
+          "reachable_label_counts": {
+            "-1": 10590,
+            "1": 9721,
+            "8": 1079,
+            "43": 13,
+            "52": 7,
+            "215": 86,
+            "228": 38,
+            "352": 4,
+            "355": 31,
+            "356": 373,
+            "361": 14,
+            "362": 14
+          },
+          "expected_identity_full_GT_coverage": 0.00032233555130891257,
+          "expected_identity_reachable_GT_coverage": 0.0006372325898953118,
+          "expected_identity_reference_purity": 1.0,
+          "expected_identity_fixed_IoU": 0.00032233555130891257,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.18522893999733236,
+          "best_prediction_full_GT_coverage": 0.22381599244813852,
+          "best_prediction_reference_purity": 0.5179284991208908
+        }
+      }
+    },
+    {
+      "canonical_track_id": 14,
+      "member_track_ids": [
+        14
+      ],
+      "persistent_id": 362,
+      "GT_id": 8000,
+      "seed_GT_fraction": 0.994,
+      "seed_GT_counts": {
+        "4000": 2,
+        "7000": 1,
+        "8000": 497
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 8000,
+          "expected_persistent_id": 362,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13081,
+          "unassigned_reachable_reference_points": 8889,
+          "reachable_label_counts": {
+            "-1": 8889,
+            "1": 10879,
+            "8": 1844,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 250
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.20719931435101419,
+          "best_prediction_full_GT_coverage": 0.2504777473349757,
+          "best_prediction_reference_purity": 0.5452859505789184
+        },
+        "seed_only": {
+          "GT_id": 8000,
+          "expected_persistent_id": 362,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 12864,
+          "unassigned_reachable_reference_points": 9106,
+          "reachable_label_counts": {
+            "-1": 9106,
+            "1": 10839,
+            "8": 1711,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 206
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.2064414139875057,
+          "best_prediction_full_GT_coverage": 0.24955678861695024,
+          "best_prediction_reference_purity": 0.5443997990959317
+        },
+        "full_track": {
+          "GT_id": 8000,
+          "expected_persistent_id": 362,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 14,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11366,
+          "unassigned_reachable_reference_points": 10590,
+          "reachable_label_counts": {
+            "-1": 10590,
+            "1": 9721,
+            "8": 1079,
+            "43": 13,
+            "52": 7,
+            "215": 86,
+            "228": 38,
+            "352": 4,
+            "355": 31,
+            "356": 373,
+            "361": 14,
+            "362": 14
+          },
+          "expected_identity_full_GT_coverage": 0.00032233555130891257,
+          "expected_identity_reachable_GT_coverage": 0.0006372325898953118,
+          "expected_identity_reference_purity": 1.0,
+          "expected_identity_fixed_IoU": 0.00032233555130891257,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.18522893999733236,
+          "best_prediction_full_GT_coverage": 0.22381599244813852,
+          "best_prediction_reference_purity": 0.5179284991208908
+        }
+      }
+    },
+    {
+      "canonical_track_id": 15,
+      "member_track_ids": [
+        15
+      ],
+      "persistent_id": 8,
+      "GT_id": 8000,
+      "seed_GT_fraction": 0.9285714285714286,
+      "seed_GT_counts": {
+        "7000": 4,
+        "8000": 52
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 8000,
+          "expected_persistent_id": 8,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 1844,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11237,
+          "unassigned_reachable_reference_points": 8889,
+          "reachable_label_counts": {
+            "-1": 8889,
+            "1": 10879,
+            "8": 1844,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 250
+          },
+          "expected_identity_full_GT_coverage": 0.042456196900973915,
+          "expected_identity_reachable_GT_coverage": 0.08393263541192535,
+          "expected_identity_reference_purity": 0.02231553979644936,
+          "expected_identity_fixed_IoU": 0.014844391492650256,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.20719931435101419,
+          "best_prediction_full_GT_coverage": 0.2504777473349757,
+          "best_prediction_reference_purity": 0.5452859505789184
+        },
+        "seed_only": {
+          "GT_id": 8000,
+          "expected_persistent_id": 8,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 1711,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11153,
+          "unassigned_reachable_reference_points": 9106,
+          "reachable_label_counts": {
+            "-1": 9106,
+            "1": 10839,
+            "8": 1711,
+            "43": 12,
+            "52": 13,
+            "215": 83,
+            "228": 206
+          },
+          "expected_identity_full_GT_coverage": 0.039394009163539245,
+          "expected_identity_reachable_GT_coverage": 0.07787892580791989,
+          "expected_identity_reference_purity": 0.020740650948542334,
+          "expected_identity_fixed_IoU": 0.013774282103093779,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.2064414139875057,
+          "best_prediction_full_GT_coverage": 0.24955678861695024,
+          "best_prediction_reference_purity": 0.5443997990959317
+        },
+        "full_track": {
+          "GT_id": 8000,
+          "expected_persistent_id": 8,
+          "GT_reference_points": 43433,
+          "reachable_fixed_surface_reference_points": 21970,
+          "no_geometric_correspondence_reference_points": 21463,
+          "expected_identity_reference_points": 1079,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 10301,
+          "unassigned_reachable_reference_points": 10590,
+          "reachable_label_counts": {
+            "-1": 10590,
+            "1": 9721,
+            "8": 1079,
+            "43": 13,
+            "52": 7,
+            "215": 86,
+            "228": 38,
+            "352": 4,
+            "355": 31,
+            "356": 373,
+            "361": 14,
+            "362": 14
+          },
+          "expected_identity_full_GT_coverage": 0.024842861418736904,
+          "expected_identity_reachable_GT_coverage": 0.049112426035502955,
+          "expected_identity_reference_purity": 0.013699499758766918,
+          "expected_identity_fixed_IoU": 0.00890881469004921,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.18522893999733236,
+          "best_prediction_full_GT_coverage": 0.22381599244813852,
+          "best_prediction_reference_purity": 0.5179284991208908
+        }
+      }
+    },
+    {
+      "canonical_track_id": 16,
+      "member_track_ids": [
+        16
+      ],
+      "persistent_id": 7,
+      "GT_id": 25000,
+      "seed_GT_fraction": 0.5654490106544902,
+      "seed_GT_counts": {
+        "25000": 743,
+        "29000": 4,
+        "30002": 558,
+        "30004": 9
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 25000,
+          "expected_persistent_id": 7,
+          "GT_reference_points": 2046,
+          "reachable_fixed_surface_reference_points": 1506,
+          "no_geometric_correspondence_reference_points": 540,
+          "expected_identity_reference_points": 1308,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13,
+          "unassigned_reachable_reference_points": 185,
+          "reachable_label_counts": {
+            "-1": 185,
+            "6": 13,
+            "7": 1308
+          },
+          "expected_identity_full_GT_coverage": 0.6392961876832844,
+          "expected_identity_reachable_GT_coverage": 0.8685258964143426,
+          "expected_identity_reference_purity": 0.5719282903366856,
+          "expected_identity_fixed_IoU": 0.43239669421487603,
+          "best_fixed_IoU_prediction_id": 7,
+          "best_fixed_IoU": 0.43239669421487603,
+          "best_prediction_full_GT_coverage": 0.6392961876832844,
+          "best_prediction_reference_purity": 0.5719282903366856
+        },
+        "seed_only": {
+          "GT_id": 25000,
+          "expected_persistent_id": 7,
+          "GT_reference_points": 2046,
+          "reachable_fixed_surface_reference_points": 1506,
+          "no_geometric_correspondence_reference_points": 540,
+          "expected_identity_reference_points": 1308,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 13,
+          "unassigned_reachable_reference_points": 185,
+          "reachable_label_counts": {
+            "-1": 185,
+            "6": 13,
+            "7": 1308
+          },
+          "expected_identity_full_GT_coverage": 0.6392961876832844,
+          "expected_identity_reachable_GT_coverage": 0.8685258964143426,
+          "expected_identity_reference_purity": 0.5724288840262582,
+          "expected_identity_fixed_IoU": 0.4326827654647701,
+          "best_fixed_IoU_prediction_id": 7,
+          "best_fixed_IoU": 0.4326827654647701,
+          "best_prediction_full_GT_coverage": 0.6392961876832844,
+          "best_prediction_reference_purity": 0.5724288840262582
+        },
+        "full_track": {
+          "GT_id": 25000,
+          "expected_persistent_id": 7,
+          "GT_reference_points": 2046,
+          "reachable_fixed_surface_reference_points": 1506,
+          "no_geometric_correspondence_reference_points": 540,
+          "expected_identity_reference_points": 1307,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11,
+          "unassigned_reachable_reference_points": 188,
+          "reachable_label_counts": {
+            "-1": 188,
+            "6": 11,
+            "7": 1307
+          },
+          "expected_identity_full_GT_coverage": 0.6388074291300098,
+          "expected_identity_reachable_GT_coverage": 0.8678618857901726,
+          "expected_identity_reference_purity": 0.5719912472647702,
+          "expected_identity_fixed_IoU": 0.4322089947089947,
+          "best_fixed_IoU_prediction_id": 7,
+          "best_fixed_IoU": 0.4322089947089947,
+          "best_prediction_full_GT_coverage": 0.6388074291300098,
+          "best_prediction_reference_purity": 0.5719912472647702
+        }
+      }
+    },
+    {
+      "canonical_track_id": 17,
+      "member_track_ids": [
+        17
+      ],
+      "persistent_id": 18,
+      "GT_id": 30004,
+      "seed_GT_fraction": 0.9764890282131662,
+      "seed_GT_counts": {
+        "29000": 6,
+        "30002": 9,
+        "30004": 623
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 30004,
+          "expected_persistent_id": 18,
+          "GT_reference_points": 895,
+          "reachable_fixed_surface_reference_points": 696,
+          "no_geometric_correspondence_reference_points": 199,
+          "expected_identity_reference_points": 554,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 28,
+          "unassigned_reachable_reference_points": 114,
+          "reachable_label_counts": {
+            "-1": 114,
+            "4": 14,
+            "6": 4,
+            "7": 10,
+            "18": 554
+          },
+          "expected_identity_full_GT_coverage": 0.6189944134078212,
+          "expected_identity_reachable_GT_coverage": 0.7959770114942529,
+          "expected_identity_reference_purity": 0.9857651245551602,
+          "expected_identity_fixed_IoU": 0.6135105204872646,
+          "best_fixed_IoU_prediction_id": 18,
+          "best_fixed_IoU": 0.6135105204872646,
+          "best_prediction_full_GT_coverage": 0.6189944134078212,
+          "best_prediction_reference_purity": 0.9857651245551602
+        },
+        "seed_only": {
+          "GT_id": 30004,
+          "expected_persistent_id": 18,
+          "GT_reference_points": 895,
+          "reachable_fixed_surface_reference_points": 696,
+          "no_geometric_correspondence_reference_points": 199,
+          "expected_identity_reference_points": 554,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 28,
+          "unassigned_reachable_reference_points": 114,
+          "reachable_label_counts": {
+            "-1": 114,
+            "4": 14,
+            "6": 4,
+            "7": 10,
+            "18": 554
+          },
+          "expected_identity_full_GT_coverage": 0.6189944134078212,
+          "expected_identity_reachable_GT_coverage": 0.7959770114942529,
+          "expected_identity_reference_purity": 0.9857651245551602,
+          "expected_identity_fixed_IoU": 0.6135105204872646,
+          "best_fixed_IoU_prediction_id": 18,
+          "best_fixed_IoU": 0.6135105204872646,
+          "best_prediction_full_GT_coverage": 0.6189944134078212,
+          "best_prediction_reference_purity": 0.9857651245551602
+        },
+        "full_track": {
+          "GT_id": 30004,
+          "expected_persistent_id": 18,
+          "GT_reference_points": 895,
+          "reachable_fixed_surface_reference_points": 696,
+          "no_geometric_correspondence_reference_points": 199,
+          "expected_identity_reference_points": 544,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 28,
+          "unassigned_reachable_reference_points": 124,
+          "reachable_label_counts": {
+            "-1": 124,
+            "4": 14,
+            "6": 4,
+            "7": 10,
+            "18": 544
+          },
+          "expected_identity_full_GT_coverage": 0.6078212290502794,
+          "expected_identity_reachable_GT_coverage": 0.7816091954022989,
+          "expected_identity_reference_purity": 0.9855072463768116,
+          "expected_identity_fixed_IoU": 0.602436323366556,
+          "best_fixed_IoU_prediction_id": 18,
+          "best_fixed_IoU": 0.602436323366556,
+          "best_prediction_full_GT_coverage": 0.6078212290502794,
+          "best_prediction_reference_purity": 0.9855072463768116
+        }
+      }
+    },
+    {
+      "canonical_track_id": 18,
+      "member_track_ids": [
+        18
+      ],
+      "persistent_id": 366,
+      "GT_id": 25000,
+      "seed_GT_fraction": 0.99,
+      "seed_GT_counts": {
+        "25000": 99,
+        "29000": 1
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 25000,
+          "expected_persistent_id": 366,
+          "GT_reference_points": 2046,
+          "reachable_fixed_surface_reference_points": 1506,
+          "no_geometric_correspondence_reference_points": 540,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 1321,
+          "unassigned_reachable_reference_points": 185,
+          "reachable_label_counts": {
+            "-1": 185,
+            "6": 13,
+            "7": 1308
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 7,
+          "best_fixed_IoU": 0.43239669421487603,
+          "best_prediction_full_GT_coverage": 0.6392961876832844,
+          "best_prediction_reference_purity": 0.5719282903366856
+        },
+        "seed_only": {
+          "GT_id": 25000,
+          "expected_persistent_id": 366,
+          "GT_reference_points": 2046,
+          "reachable_fixed_surface_reference_points": 1506,
+          "no_geometric_correspondence_reference_points": 540,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 1321,
+          "unassigned_reachable_reference_points": 185,
+          "reachable_label_counts": {
+            "-1": 185,
+            "6": 13,
+            "7": 1308
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 7,
+          "best_fixed_IoU": 0.4326827654647701,
+          "best_prediction_full_GT_coverage": 0.6392961876832844,
+          "best_prediction_reference_purity": 0.5724288840262582
+        },
+        "full_track": {
+          "GT_id": 25000,
+          "expected_persistent_id": 366,
+          "GT_reference_points": 2046,
+          "reachable_fixed_surface_reference_points": 1506,
+          "no_geometric_correspondence_reference_points": 540,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 1318,
+          "unassigned_reachable_reference_points": 188,
+          "reachable_label_counts": {
+            "-1": 188,
+            "6": 11,
+            "7": 1307
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 7,
+          "best_fixed_IoU": 0.4322089947089947,
+          "best_prediction_full_GT_coverage": 0.6388074291300098,
+          "best_prediction_reference_purity": 0.5719912472647702
+        }
+      }
+    },
+    {
+      "canonical_track_id": 19,
+      "persistent_id": 12,
+      "status": "NO_EVALUABLE_GT_SEED_SUPPORT"
+    },
+    {
+      "canonical_track_id": 20,
+      "persistent_id": 22,
+      "status": "NO_EVALUABLE_GT_SEED_SUPPORT"
+    },
+    {
+      "canonical_track_id": 21,
+      "member_track_ids": [
+        21
+      ],
+      "persistent_id": 1,
+      "GT_id": 4003,
+      "seed_GT_fraction": 0.993114241001565,
+      "seed_GT_counts": {
+        "4003": 3173,
+        "8000": 22
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 4003,
+          "expected_persistent_id": 1,
+          "GT_reference_points": 9473,
+          "reachable_fixed_surface_reference_points": 5007,
+          "no_geometric_correspondence_reference_points": 4466,
+          "expected_identity_reference_points": 4423,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 14,
+          "unassigned_reachable_reference_points": 570,
+          "reachable_label_counts": {
+            "-1": 570,
+            "1": 4423,
+            "8": 9,
+            "43": 5
+          },
+          "expected_identity_full_GT_coverage": 0.4669059432070094,
+          "expected_identity_reachable_GT_coverage": 0.8833632913920512,
+          "expected_identity_reference_purity": 0.22169314821312214,
+          "expected_identity_fixed_IoU": 0.17691292348306067,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.17691292348306067,
+          "best_prediction_full_GT_coverage": 0.4669059432070094,
+          "best_prediction_reference_purity": 0.22169314821312214
+        },
+        "seed_only": {
+          "GT_id": 4003,
+          "expected_persistent_id": 1,
+          "GT_reference_points": 9473,
+          "reachable_fixed_surface_reference_points": 5007,
+          "no_geometric_correspondence_reference_points": 4466,
+          "expected_identity_reference_points": 4423,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 12,
+          "unassigned_reachable_reference_points": 572,
+          "reachable_label_counts": {
+            "-1": 572,
+            "1": 4423,
+            "8": 7,
+            "43": 5
+          },
+          "expected_identity_full_GT_coverage": 0.4669059432070094,
+          "expected_identity_reachable_GT_coverage": 0.8833632913920512,
+          "expected_identity_reference_purity": 0.222149673530889,
+          "expected_identity_fixed_IoU": 0.17720352564102565,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.17720352564102565,
+          "best_prediction_full_GT_coverage": 0.4669059432070094,
+          "best_prediction_reference_purity": 0.222149673530889
+        },
+        "full_track": {
+          "GT_id": 4003,
+          "expected_persistent_id": 1,
+          "GT_reference_points": 9473,
+          "reachable_fixed_surface_reference_points": 5007,
+          "no_geometric_correspondence_reference_points": 4466,
+          "expected_identity_reference_points": 4415,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 11,
+          "unassigned_reachable_reference_points": 581,
+          "reachable_label_counts": {
+            "-1": 581,
+            "1": 4415,
+            "8": 5,
+            "43": 5,
+            "44": 1
+          },
+          "expected_identity_full_GT_coverage": 0.4660614377705056,
+          "expected_identity_reachable_GT_coverage": 0.8817655282604354,
+          "expected_identity_reference_purity": 0.2352283019873195,
+          "expected_identity_fixed_IoU": 0.18529399420825116,
+          "best_fixed_IoU_prediction_id": 1,
+          "best_fixed_IoU": 0.18529399420825116,
+          "best_prediction_full_GT_coverage": 0.4660614377705056,
+          "best_prediction_reference_purity": 0.2352283019873195
+        }
+      }
+    },
+    {
+      "canonical_track_id": 22,
+      "member_track_ids": [
+        22
+      ],
+      "persistent_id": 211,
+      "GT_id": 30000,
+      "seed_GT_fraction": 0.9458762886597938,
+      "seed_GT_counts": {
+        "25001": 42,
+        "30000": 734
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 30000,
+          "expected_persistent_id": 211,
+          "GT_reference_points": 1139,
+          "reachable_fixed_surface_reference_points": 968,
+          "no_geometric_correspondence_reference_points": 171,
+          "expected_identity_reference_points": 809,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 8,
+          "unassigned_reachable_reference_points": 151,
+          "reachable_label_counts": {
+            "-1": 151,
+            "43": 8,
+            "211": 809
+          },
+          "expected_identity_full_GT_coverage": 0.7102721685689201,
+          "expected_identity_reachable_GT_coverage": 0.8357438016528925,
+          "expected_identity_reference_purity": 0.6128787878787879,
+          "expected_identity_fixed_IoU": 0.4903030303030303,
+          "best_fixed_IoU_prediction_id": 211,
+          "best_fixed_IoU": 0.4903030303030303,
+          "best_prediction_full_GT_coverage": 0.7102721685689201,
+          "best_prediction_reference_purity": 0.6128787878787879
+        },
+        "seed_only": {
+          "GT_id": 30000,
+          "expected_persistent_id": 211,
+          "GT_reference_points": 1139,
+          "reachable_fixed_surface_reference_points": 968,
+          "no_geometric_correspondence_reference_points": 171,
+          "expected_identity_reference_points": 809,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 8,
+          "unassigned_reachable_reference_points": 151,
+          "reachable_label_counts": {
+            "-1": 151,
+            "43": 8,
+            "211": 809
+          },
+          "expected_identity_full_GT_coverage": 0.7102721685689201,
+          "expected_identity_reachable_GT_coverage": 0.8357438016528925,
+          "expected_identity_reference_purity": 0.6128787878787879,
+          "expected_identity_fixed_IoU": 0.4903030303030303,
+          "best_fixed_IoU_prediction_id": 211,
+          "best_fixed_IoU": 0.4903030303030303,
+          "best_prediction_full_GT_coverage": 0.7102721685689201,
+          "best_prediction_reference_purity": 0.6128787878787879
+        },
+        "full_track": {
+          "GT_id": 30000,
+          "expected_persistent_id": 211,
+          "GT_reference_points": 1139,
+          "reachable_fixed_surface_reference_points": 968,
+          "no_geometric_correspondence_reference_points": 171,
+          "expected_identity_reference_points": 792,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 23,
+          "unassigned_reachable_reference_points": 153,
+          "reachable_label_counts": {
+            "-1": 153,
+            "43": 20,
+            "54": 1,
+            "211": 792,
+            "371": 2
+          },
+          "expected_identity_full_GT_coverage": 0.6953467954345918,
+          "expected_identity_reachable_GT_coverage": 0.8181818181818182,
+          "expected_identity_reference_purity": 0.967032967032967,
+          "expected_identity_fixed_IoU": 0.6792452830188679,
+          "best_fixed_IoU_prediction_id": 211,
+          "best_fixed_IoU": 0.6792452830188679,
+          "best_prediction_full_GT_coverage": 0.6953467954345918,
+          "best_prediction_reference_purity": 0.967032967032967
+        }
+      }
+    },
+    {
+      "canonical_track_id": 23,
+      "member_track_ids": [
+        23
+      ],
+      "persistent_id": 371,
+      "GT_id": 25001,
+      "seed_GT_fraction": 0.9918367346938776,
+      "seed_GT_counts": {
+        "7000": 4,
+        "25001": 486
+      },
+      "status": "POSTHOC_ONLY",
+      "conditions": {
+        "baseline": {
+          "GT_id": 25001,
+          "expected_persistent_id": 371,
+          "GT_reference_points": 584,
+          "reachable_fixed_surface_reference_points": 517,
+          "no_geometric_correspondence_reference_points": 67,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 507,
+          "unassigned_reachable_reference_points": 10,
+          "reachable_label_counts": {
+            "-1": 10,
+            "211": 507
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 211,
+          "best_fixed_IoU": 0.36292054402290624,
+          "best_prediction_full_GT_coverage": 0.8681506849315068,
+          "best_prediction_reference_purity": 0.3840909090909091
+        },
+        "seed_only": {
+          "GT_id": 25001,
+          "expected_persistent_id": 371,
+          "GT_reference_points": 584,
+          "reachable_fixed_surface_reference_points": 517,
+          "no_geometric_correspondence_reference_points": 67,
+          "expected_identity_reference_points": 0,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 507,
+          "unassigned_reachable_reference_points": 10,
+          "reachable_label_counts": {
+            "-1": 10,
+            "211": 507
+          },
+          "expected_identity_full_GT_coverage": 0.0,
+          "expected_identity_reachable_GT_coverage": 0.0,
+          "expected_identity_reference_purity": 0.0,
+          "expected_identity_fixed_IoU": 0.0,
+          "best_fixed_IoU_prediction_id": 211,
+          "best_fixed_IoU": 0.36292054402290624,
+          "best_prediction_full_GT_coverage": 0.8681506849315068,
+          "best_prediction_reference_purity": 0.3840909090909091
+        },
+        "full_track": {
+          "GT_id": 25001,
+          "expected_persistent_id": 371,
+          "GT_reference_points": 584,
+          "reachable_fixed_surface_reference_points": 517,
+          "no_geometric_correspondence_reference_points": 67,
+          "expected_identity_reference_points": 456,
+          "other_target_identity_reference_points": 0,
+          "other_positive_identity_reference_points": 29,
+          "unassigned_reachable_reference_points": 32,
+          "reachable_label_counts": {
+            "-1": 32,
+            "113": 2,
+            "211": 27,
+            "371": 456
+          },
+          "expected_identity_full_GT_coverage": 0.7808219178082192,
+          "expected_identity_reachable_GT_coverage": 0.8820116054158608,
+          "expected_identity_reference_purity": 0.987012987012987,
+          "expected_identity_fixed_IoU": 0.7728813559322034,
+          "best_fixed_IoU_prediction_id": 371,
+          "best_fixed_IoU": 0.7728813559322034,
+          "best_prediction_full_GT_coverage": 0.7808219178082192,
+          "best_prediction_reference_purity": 0.987012987012987
+        }
+      }
+    }
+  ],
+  "fixed_mapping_sha256": "0c90700d6dd7a8fa213c2b5d18dbe4aad8a07a5f53d4653f9e9d7946dfb1aaf6",
+  "multiple_selected_parts_of_same_GT_instance": {
+    "8000": [
+      7,
+      8,
+      13,
+      14,
+      15
+    ],
+    "25000": [
+      16,
+      18
+    ]
+  },
+  "cases": [
+    {
+      "case_uid": "room2-ec916c94e6c24185",
+      "ROI": "ROI-C0001",
+      "status": "READY",
+      "target_GT_ids": [
+        5002,
+        5004
+      ]
+    },
+    {
+      "case_uid": "room2-14047feb0df3aaa5",
+      "ROI": "ROI-C0002",
+      "status": "READY",
+      "target_GT_ids": [
+        4001,
+        4002,
+        4004
+      ]
+    },
+    {
+      "case_uid": "room2-7704f54997e6d29b",
+      "ROI": "ROI-C0003",
+      "status": "READY",
+      "target_GT_ids": [
+        9002,
+        10001,
+        10003,
+        21001
+      ]
+    },
+    {
+      "case_uid": "room2-ea0a9c646a7b1129",
+      "ROI": "ROI-C0004",
+      "status": "NO_RELIABLE_SEED",
+      "target_GT_ids": []
+    },
+    {
+      "case_uid": "room2-74781753162bd8a3",
+      "ROI": "ROI-C0005",
+      "status": "READY",
+      "target_GT_ids": [
+        8000
+      ]
+    },
+    {
+      "case_uid": "room2-d4df44dfbac3d805",
+      "ROI": "ROI-C0006",
+      "status": "NO_RELIABLE_SEED",
+      "target_GT_ids": []
+    },
+    {
+      "case_uid": "room2-b18070389a477f61",
+      "ROI": "ROI-C0007",
+      "status": "READY",
+      "target_GT_ids": [
+        8000
+      ]
+    },
+    {
+      "case_uid": "room2-eadde8f5bac2ff37",
+      "ROI": "ROI-C0008",
+      "status": "READY",
+      "target_GT_ids": [
+        5000,
+        5001,
+        5003,
+        5005
+      ]
+    },
+    {
+      "case_uid": "room2-0ba2ef6c21b4c92d",
+      "ROI": "ROI-C0009",
+      "status": "READY",
+      "target_GT_ids": [
+        8000
+      ]
+    },
+    {
+      "case_uid": "room2-9fbb545ed05f1f98",
+      "ROI": "ROI-C0010",
+      "status": "NO_RELIABLE_SEED",
+      "target_GT_ids": []
+    },
+    {
+      "case_uid": "room2-8d83120d5b27ce5e",
+      "ROI": "ROI-C0011",
+      "status": "READY",
+      "target_GT_ids": [
+        8000
+      ]
+    },
+    {
+      "case_uid": "room2-75ede2d925653a39",
+      "ROI": "ROI-C0012",
+      "status": "READY",
+      "target_GT_ids": [
+        8000
+      ]
+    },
+    {
+      "case_uid": "room2-6f08166618cd41f8",
+      "ROI": "ROI-C0013",
+      "status": "READY",
+      "target_GT_ids": [
+        25000,
+        30002,
+        30004
+      ]
+    },
+    {
+      "case_uid": "room2-00d8ce08c611b2a8",
+      "ROI": "ROI-C0014",
+      "status": "NO_RELIABLE_SEED",
+      "target_GT_ids": []
+    },
+    {
+      "case_uid": "room2-579feefc65a0d844",
+      "ROI": "ROI-C0015",
+      "status": "READY",
+      "target_GT_ids": []
+    },
+    {
+      "case_uid": "room2-c9af20694ea516a9",
+      "ROI": "ROI-C0016",
+      "status": "READY",
+      "target_GT_ids": [
+        4003
+      ]
+    },
+    {
+      "case_uid": "room2-f1797fac02e52a4c",
+      "ROI": "ROI-C0025",
+      "status": "READY",
+      "target_GT_ids": [
+        25001,
+        30000
+      ]
+    },
+    {
+      "case_uid": "room2-0b324734bca2ccef",
+      "ROI": "ROI-C0029",
+      "status": "READY",
+      "target_GT_ids": [
+        4001,
+        4002
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+--- frozen_run_ablation.py
++++ evaluate_ablation_v2.py
+@@ -220,6 +220,7 @@
+     dump(OUT/scene/'evaluation_freeze.json', {'status':'FROZEN_BEFORE_NEW_GT_EVALUATION',
+         'predictions_frozen_sha256':engine.r.sha(OUT/scene/'predictions_frozen.json'),
+         'evaluator_sha256':engine.r.sha(e.__file__),'flags':e.FLAGS,'protocol_sha256':engine.r.sha(e.PROTOCOL),
++        'supplementary_reporting_wrapper':str(Path(__file__).resolve()),'supplementary_reporting_wrapper_sha256':engine.r.sha(__file__),
+         'effective_protocol':raw,'GT_used_for_filter_or_repair':False})
+     reference = read(engine.ROOT / 'evaluation_summary.json')
+     gt = e.load_gt(e.INPUT / scene / 'ground_truth/gt.npz')
+@@ -257,7 +258,7 @@
+                 'target_mean_best_IoU_delta':float(np.mean([per_gt[g]['best_IoU']-unrestricted_gt[g]['best_IoU'] for g in target_ids])),
+                 'target_completeness_mean_delta':float(np.mean([per_gt[g]['completeness_best_single_instance']-unrestricted_gt[g]['completeness_best_single_instance'] for g in target_ids]))},
+            'targets':[{'unrestricted':unrestricted_gt[g],'after':per_gt[g]} for g in sorted(target_ids)],
+-           'fixed_identity_diagnostics':engine.f.target_diagnostics(mapping,arrays['instance_id'],gt.instance_id,valid,identity_gt),
++           'fixed_identity_diagnostics':{'targets':[engine.f.target_diagnostics(mapping,arrays['instance_id'],gt.instance_id,valid,{pid:gid})['targets'][0] for pid,gid in sorted(identity_gt.items())], 'multiple_selected_parts_of_same_GT_preserved':True, 'same_single_identity_diagnostics_as_original_evaluate_batch':True},
+            'PLY':item['PLY']}
+         assert engine.r.sha(item['surface']) == item['sha256']
+     assert engine.r.sha(mapping_path) == mapping_hash
+@@ -272,7 +273,7 @@
+ 
+ if __name__ == '__main__':
+     parser = argparse.ArgumentParser();parser.add_argument('--scene',choices=SOURCE,required=True)
+-    parser.add_argument('--stage',choices=['repair','evaluate'],required=True)
++    parser.add_argument('--stage',choices=['evaluate'],required=True)
+     args = parser.parse_args()
+     try:
+         if args.stage == 'repair': run_scene(args.scene)
