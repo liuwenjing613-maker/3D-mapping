@@ -72,6 +72,11 @@ def build_overlap(gt: CanonicalGT, pred: CanonicalPrediction, protocol: Protocol
             raise EvaluationError("Repair profile requires preserved raw GT and explicit regions")
         if gt.metadata.get("evaluation_profile") != protocol.evaluation_profile or pred.metadata.get("evaluation_profile") != protocol.evaluation_profile:
             raise EvaluationError("GT/prediction evaluation_profile mismatch")
+        if not pred.metadata.get("evaluation_only_discrete_gt_oracle"):
+            if pred.metadata.get("geometry_mapping_method") != "fixed_surface_correspondence" or pred.metadata.get("geometry_mapping_max_distance_m") != protocol.geometry_mapping_max_distance_m:
+                raise EvaluationError("Adapted main geometry distance differs from the scoring profile")
+            if pred.metadata.get("role") == "structure_diagnostics_only" and pred.metadata.get("diagnostic_mapping_max_distance_m") != protocol.diagnostic_max_distance_m:
+                raise EvaluationError("Adapted diagnostic geometry distance differs from the scoring profile")
         for key in ("gt_scope_sha256", "gt_observed_support_sha256", "evaluation_region_sha256", "reference_xyz_sha256"):
             if not gt.metadata.get(key) or gt.metadata[key] != pred.metadata.get(key):
                 raise EvaluationError(f"Fixed repair scope/reference mismatch: {key}")

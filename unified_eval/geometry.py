@@ -132,6 +132,8 @@ def map_fixed_surface_labels(native_xyz: np.ndarray, labels: np.ndarray, ref_xyz
             "reference_xyz_sha256": correspondence.reference_xyz_sha256,
             "correspondence_sha256": correspondence.sha256,
             "geometry_mapping_method": "fixed_surface_correspondence", "mapping_uses_gt_labels": False,
+            "geometry_mapping_max_distance_m": correspondence.max_distance_m,
+            "diagnostic_mapping_max_distance_m": diagnostic_distance_m,
             "instance_inventory_source": "explicit_export" if native_instance_ids is not None else "positive_labels_in_export"}
     prediction = CanonicalPrediction(scene_id, len(ref_xyz), instances, method_name,
         method_commit, "fixed_complete_surface_v1", "Replica-CA-v3", True, meta)

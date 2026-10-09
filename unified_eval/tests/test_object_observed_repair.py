@@ -355,6 +355,15 @@ def test_method_input_frame_mismatch_is_rejected_before_scoring(tmp_path):
     with pytest.raises(EvaluationError, match='input frame list'):
         adapt_surface(path, gt_path, CONFIG, tmp_path / 'fixed.npz', tmp_path / 'output',
             method_name='test', method_commit='test', source_provenance={'frame_list_sha256': 'changed'})
+
+
+def test_old_adapted_distances_cannot_be_relabelled_as_a_different_profile():
+    gt, _, _ = qualified([1, 1])
+    result, _ = mapped(gt, [11, 11])
+    with pytest.raises(EvaluationError, match='main geometry distance'):
+        build_overlap(gt, result.prediction, replace(protocol(), geometry_mapping_max_distance_m=.02))
+    with pytest.raises(EvaluationError, match='diagnostic geometry distance'):
+        build_overlap(gt, result.diagnostic_prediction, replace(protocol(), diagnostic_max_distance_m=.03))
     raw=json.loads(CONFIG.read_text());raw['evaluation_profile']='legacy'
     raw['ignore_policy']['unmatched_prediction_void_fraction_gt']=.5
     with pytest.raises(EvaluationError,match="competitive"):

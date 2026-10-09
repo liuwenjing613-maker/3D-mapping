@@ -268,7 +268,7 @@ def direct_gt_oracle(gt, protocol):
     pred = CanonicalPrediction(gt.scene_id, gt.vertex_count,
         [CanonicalInstance(str(int(raw)), np.flatnonzero(gt.instance_id == raw).astype(np.int32)) for raw in ids],
         'discrete_GT_oracle_evaluator_test_only', 'not_a_research_method', 'direct_reference_oracle', protocol.name, True,
-        {**gt.metadata, 'no_geometry_target_vertex_count': 0})
+        {**gt.metadata, 'no_geometry_target_vertex_count': 0, 'evaluation_only_discrete_gt_oracle': True})
     summary = evaluate_scenes([(gt, pred)], protocol)[0]
     for value in (summary['CA_PQ']['PQ'], summary['CA_PRF1_0_5']['F1'], summary['CA_AP50_uniform'],
                   summary['CA_mCov'], summary['owner_surface']['Correct_owner_Coverage']):
