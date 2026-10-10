@@ -1,6 +1,18 @@
 # 3D-mapping
 
-当前统一开发评价协议：**`object_observed_repair / revision 2`**，配置 `unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json`。评分源码固定为 `cd260569`，审核归档为 `d035f687`，八场景共 **350 个固定可评价 GT**。本次 main 更新只提升默认入口，评分规则和配置字节保持不变。
+## P1-A1-strict-vote 分支最新结果（2026-10-10）
+
+本分支包含[严格一票无修复基线](experiments/sam_track/p1a1_strict_vote_20261009/baseline_materialization/README.md)、[既有严格追踪修复](experiments/sam_track/p1a1_strict_vote_20261009/README.md)和[最新核心区域历史重关联](experiments/sam_track/p1a1_history_core_reassociation_20261009/README.md)。room0、room2共26个案例使用同一R2开发协议评价；完整代码、三条件结果、全部案例图、退化分析及PLY来源均已归档。
+
+| 两场景最终条件 | F1 | PQ | 灰点 |
+|---|---:|---:|---:|
+| 严格一票无修复 | 66.96% | 52.52% | 293,928 |
+| 既有严格追踪修复 | 69.39% | 55.05% | 328,511 |
+| 加核心区域历史重关联 | 71.02% | 56.37% | 279,833 |
+
+历史重关联相对既有修复提高总分、减少冲突，同时存在同一地毯被多个修复目标ID拆分等问题。当前保存为独立开发实验，尚不替换冻结P1-A1。下一步优先验证修复目标身份一致性和混合Mask。
+
+当前统一开发评价协议：**`object_observed_repair / revision 2`**，配置 `unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json`。评分源码固定为 `cd260569`，审核归档为 `d035f687`，八场景共 **350 个固定可评价 GT**。此前 main 更新只提升默认入口；本分支保留相同评分规则和配置字节。
 
 用于固定 TSDF 的实例地图质量和成对标签修复；当前仍为 DEVELOPMENT、`frozen=false`。协议选择、配置 SHA256、评分源码和逐场景 GT 锁见 `unified_eval/configs/current_protocol.json`，完整依据见[revision 2 审核报告](docs/evaluation_reports/20261009_object_observed_repair_audit/README.md)。旧 v1/v2/v3 和 revision 1 仅供历史复现。
 
@@ -33,7 +45,7 @@ python -m unified_eval.cli eval-repair-pair \
 
 ## 历史实现与复现说明
 
-本分支：**baseline + 部分未分配 TSDF 点扩散处理**。详见 [P0 版本说明](docs/P0_BRANCH_VARIANTS_CN.md)。
+历史P0版本：**baseline + 部分未分配 TSDF 点扩散处理**。详见 [P0 版本说明](docs/P0_BRANCH_VARIANTS_CN.md)。
 
 V3 标签修复的新增开发入口见 [object_observed_repair profile](docs/OBJECT_OBSERVED_REPAIR_V3_CN.md)：固定 GT 资格、可信可观测表面和完整 TSDF 几何对应，保留历史 V3 结果。
 

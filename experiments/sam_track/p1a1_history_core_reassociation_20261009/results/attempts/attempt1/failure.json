@@ -1,0 +1,4 @@
+{
+  "status": "FAIL",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/chenkejun/CVPR/experiments/p1a1_history_core_reassociation_20261009/run_history_core.py\", line 309, in <module>\n    try:main()\n  File \"/home/chenkejun/CVPR/experiments/p1a1_history_core_reassociation_20261009/run_history_core.py\", line 299, in main\n    for scene in ('room0','room2'):result[scene]=scene_run(scene,freeze);gc.collect()\n  File \"/home/chenkejun/CVPR/experiments/p1a1_history_core_reassociation_20261009/run_history_core.py\", line 167, in scene_run\n    residual,rp,rl,np_,nl=reconstruct_current(frame,table,scene,decisions[fid],obj,info,canonical,fixed)\n  File \"/home/chenkejun/CVPR/experiments/p1a1_history_core_reassociation_20261009/run_history_core.py\", line 87, in reconstruct_current\n    assert int(conflict.sum())==decision['cross_case_conflict_pixels']\nKeyError: 'cross_case_conflict_pixels'\n"
+}

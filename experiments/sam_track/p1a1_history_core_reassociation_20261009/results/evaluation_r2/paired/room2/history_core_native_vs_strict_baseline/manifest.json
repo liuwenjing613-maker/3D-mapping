@@ -1,0 +1,78 @@
+{
+  "after_file": "/data/chenkejun/CVPR/results/p1a1_history_core_reassociation_20261009/evaluation_r2/evaluation/room2/history_core_native/canonical_prediction.npz",
+  "after_sha256": "54262313baea43879585a91483895468a04c3e1e2ee76f1c6c669ed467c875ee",
+  "before_file": "/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/evaluation/room2/strict_baseline_native/canonical_prediction.npz",
+  "before_sha256": "1013a8e547743e4249fa7ba2021d6353c294bc1e0b9c7f34d56696b57a16f264",
+  "gt_file": "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room2/gt.npz",
+  "gt_sha256": "3cbbd1bb19d09da0c474f0e0ac08e899a398f27c9f1196d9fd10a9a6aaae0d3d",
+  "protocol_config": {
+    "ap_policy": "replica_ca_101",
+    "baseline_commit": "05f6bb0d6c9a2491a51e990d217fd7f1397f5f6b",
+    "confidence_mode": "uniform",
+    "dataset": "Replica",
+    "diagnostic_mapping": {
+      "max_distance_m": 0.02,
+      "method": "pairwise_geometry_support"
+    },
+    "evaluation_profile": "object_observed_repair",
+    "frozen": false,
+    "geometry_mapping": {
+      "duplicate_coordinate_policy": "unanimous_owner_else_unassigned",
+      "max_distance_m": 0.01,
+      "method": "fixed_surface_correspondence"
+    },
+    "ignore_policy": {
+      "background_only_without_object_semantics": "ignore_and_report",
+      "method": "explicit_reference_regions"
+    },
+    "instance_filter": {
+      "min_prediction_vertices": 0,
+      "min_valid_instance_vertices": 1
+    },
+    "name": "Replica-CA-v3",
+    "observation": {
+      "depth_tolerance_m": 0.02,
+      "minimum_trusted_observation_count": 1,
+      "pixel_size_filter": null
+    },
+    "profile_revision": 2,
+    "review_required_gt_ids": {
+      "office0": [
+        43
+      ],
+      "office1": [
+        10
+      ],
+      "office3": [
+        20,
+        35,
+        109
+      ],
+      "room0": [
+        76
+      ]
+    },
+    "scenes": [
+      "room0",
+      "room1",
+      "room2",
+      "office0",
+      "office1",
+      "office2",
+      "office3",
+      "office4"
+    ],
+    "significant_overlap": {
+      "min_gt_fraction": 0.05,
+      "min_intersection_vertices": 10
+    },
+    "source_policy": "Fixed GT qualification and RGB-D observation evidence, complete immutable geometry, positive native instance IDs; all distances and structure thresholds remain development values.",
+    "status": "DEVELOPMENT_REVIEW_REVISION_NOT_OFFICIAL",
+    "structure_metrics": {
+      "auxiliary_source": "pairwise_geometry_support",
+      "source": "main_partition_intersection",
+      "status": "DEVELOPMENT_AUDIT_PENDING_REAL_CASE_REVIEW"
+    }
+  },
+  "protocol_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0"
+}

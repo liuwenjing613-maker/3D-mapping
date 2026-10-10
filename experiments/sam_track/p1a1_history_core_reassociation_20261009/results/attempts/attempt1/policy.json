@@ -1,0 +1,34 @@
+{
+  "status": "FROZEN_BEFORE_TWO_SCENE_MAPPING_AND_NEW_R2_SCORING",
+  "method": "history_core_reassociation_v1",
+  "scenes": [
+    "room0",
+    "room2"
+  ],
+  "repair_cases": {
+    "room0": 12,
+    "room2": 14
+  },
+  "all_selected_seed_masks": {
+    "room0": 30,
+    "room2": 25
+  },
+  "control": "Frozen strict one-vote+abstention full-track repair",
+  "manual_core_erosion_pixels": 10,
+  "empty_core_policy": "No fallback or parameter relaxation",
+  "projection_stride": 2,
+  "projection_max_distance_m": 0.015,
+  "maximum_depth_m": 10,
+  "old_identity_selection": "All retained original positive IDs different from the uniquely claimed target; no old_family_ids restriction",
+  "multi_target_policy": "Same persistent ID unions; different persistent IDs mark ambiguous core and retain current observations",
+  "already_accepted_new_masks": "Preserved exactly; may still cause strict per-frame abstention",
+  "replacement_unit": "Frozen sampled source depth pixels; split residual old mask and fresh-project new fragment",
+  "vote_rule": "Deduplicate same-ID supports; multi-ID candidates abstain jointly per frame/point",
+  "final_commit": "Only effective changed source scope; candidate geodesic postprocessing settings frozen",
+  "GT_used_for_masks_frames_IDs_or_thresholds": false,
+  "GT_read_by_mapper": false,
+  "diagnosis_informed_method": true,
+  "pre_registered_benchmark": false,
+  "baseline_modified": false,
+  "SAM_tracking_reused": true
+}

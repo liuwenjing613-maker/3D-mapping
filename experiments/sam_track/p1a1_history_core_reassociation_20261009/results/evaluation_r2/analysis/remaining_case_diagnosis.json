@@ -1,0 +1,614 @@
+{
+  "status": "PASS",
+  "profile_revision": 2,
+  "GT_used_to_change_predictions": false,
+  "original_metrics_and_predictions_unchanged": true,
+  "source_comparison_sha256": "b24095c3ebc14e927fac0a239c50e6a65046c615ff8bbd0067d9d49b3b38487d",
+  "scenes": {
+    "room0": {
+      "all_more_than_1pp_losses_included": true,
+      "losses": [
+        {
+          "GT_result": {
+            "after_best_iou": 0.9432157342924925,
+            "before_best_iou": 0.9430785277901952,
+            "change": "IMPROVED",
+            "delta_iou": 0.00013720650229731568,
+            "raw_gt_id": 36,
+            "scene_id": "room0",
+            "semantic_class": "door",
+            "selected_target": true,
+            "before_best_recall": 0.9802524587624875,
+            "after_best_recall": 0.9544644931464416,
+            "delta_best_recall": -0.025787965616045905
+          },
+          "before_top_recall_predictions": [
+            {
+              "native_instance_id": 10,
+              "IoU": 0.9430785277901952,
+              "recall": 0.9802524587624875,
+              "scored_owner_GT": 36,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 13,
+              "IoU": 0.0005575495696414259,
+              "recall": 0.0061953070549059085,
+              "scored_owner_GT": 60,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 2,
+              "IoU": 0.00022221012915396893,
+              "recall": 0.003794625571129869,
+              "scored_owner_GT": 84,
+              "GT_support_qualifies": true
+            }
+          ],
+          "after_top_recall_predictions": [
+            {
+              "native_instance_id": 10,
+              "IoU": 0.9432157342924925,
+              "recall": 0.9544644931464416,
+              "scored_owner_GT": 36,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 801,
+              "IoU": 0.024846102499443745,
+              "recall": 0.025942848292418493,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 13,
+              "IoU": 0.0005640794223826715,
+              "recall": 0.0061953070549059085,
+              "scored_owner_GT": 60,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 2,
+              "IoU": 0.00022221012915396893,
+              "recall": 0.003794625571129869,
+              "scored_owner_GT": 84,
+              "GT_support_qualifies": true
+            }
+          ],
+          "changed_raw_identity_transitions": [
+            {
+              "before_native_ID": 10,
+              "after_native_ID": 801,
+              "reference_vertices": 333
+            },
+            {
+              "before_native_ID": -1,
+              "after_native_ID": 801,
+              "reference_vertices": 2
+            }
+          ],
+          "unchanged_native_identity_vertices": 12578,
+          "matching_quality_transition": [
+            [
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              124,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              12325,
+              333
+            ],
+            [
+              0,
+              0,
+              0,
+              129
+            ]
+          ]
+        },
+        {
+          "GT_result": {
+            "after_best_iou": 0.3194901256732495,
+            "before_best_iou": 0.33093086194643256,
+            "change": "DEGRADED",
+            "delta_iou": -0.011440736273183039,
+            "raw_gt_id": 60,
+            "scene_id": "room0",
+            "semantic_class": "rug",
+            "selected_target": true,
+            "before_best_recall": 0.8420216263607803,
+            "after_best_recall": 0.8126141594213487,
+            "delta_best_recall": -0.029407466939431526
+          },
+          "before_top_recall_predictions": [
+            {
+              "native_instance_id": 13,
+              "IoU": 0.33093086194643256,
+              "recall": 0.8420216263607803,
+              "scored_owner_GT": 60,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 15,
+              "IoU": 0.09160932337963386,
+              "recall": 0.09167458171988017,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 818,
+              "IoU": 7.283586437962052e-05,
+              "recall": 7.306202966318405e-05,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 172,
+              "IoU": 4.7918729834201196e-05,
+              "recall": 5.479652224738803e-05,
+              "scored_owner_GT": 11,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 1,
+              "IoU": 1.7186560109993984e-05,
+              "recall": 1.826550741579601e-05,
+              "scored_owner_GT": 41,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 14,
+              "IoU": 1.3487813760267599e-05,
+              "recall": 1.826550741579601e-05,
+              "scored_owner_GT": 9,
+              "GT_support_qualifies": true
+            }
+          ],
+          "after_top_recall_predictions": [
+            {
+              "native_instance_id": 13,
+              "IoU": 0.3194901256732495,
+              "recall": 0.8126141594213487,
+              "scored_owner_GT": 60,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 15,
+              "IoU": 0.16890868271670287,
+              "recall": 0.16902900562577627,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 818,
+              "IoU": 7.245983008169846e-05,
+              "recall": 7.306202966318405e-05,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 172,
+              "IoU": 4.7918729834201196e-05,
+              "recall": 5.479652224738803e-05,
+              "scored_owner_GT": 11,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 1,
+              "IoU": 1.7186560109993984e-05,
+              "recall": 1.826550741579601e-05,
+              "scored_owner_GT": 41,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 14,
+              "IoU": 1.3487813760267599e-05,
+              "recall": 1.826550741579601e-05,
+              "scored_owner_GT": 9,
+              "GT_support_qualifies": true
+            }
+          ],
+          "changed_raw_identity_transitions": [
+            {
+              "before_native_ID": -1,
+              "after_native_ID": 15,
+              "reference_vertices": 2625
+            },
+            {
+              "before_native_ID": 13,
+              "after_native_ID": 15,
+              "reference_vertices": 1610
+            }
+          ],
+          "unchanged_native_identity_vertices": 50513,
+          "matching_quality_transition": [
+            [
+              141,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              855,
+              0,
+              2625
+            ],
+            [
+              0,
+              0,
+              44489,
+              1610
+            ],
+            [
+              0,
+              0,
+              0,
+              5028
+            ]
+          ]
+        }
+      ],
+      "native_ID_owner_alignment_changes": {
+        "796": [
+          null,
+          58
+        ]
+      },
+      "clarifies_method_specific_UID_changes": "Native persistent IDs are matched across conditions; different method prefixes in instance_uid are not physical identity changes."
+    },
+    "room2": {
+      "all_more_than_1pp_losses_included": true,
+      "losses": [
+        {
+          "GT_result": {
+            "after_best_iou": 0.22797171755604173,
+            "before_best_iou": 0.31247027489774565,
+            "change": "DEGRADED",
+            "delta_iou": -0.08449855734170392,
+            "raw_gt_id": 1,
+            "scene_id": "room2",
+            "semantic_class": "rug",
+            "selected_target": true,
+            "before_best_recall": 0.4360619469026549,
+            "after_best_recall": 0.318141592920354,
+            "delta_best_recall": -0.11792035398230089
+          },
+          "before_top_recall_predictions": [
+            {
+              "native_instance_id": 1,
+              "IoU": 0.31247027489774565,
+              "recall": 0.4360619469026549,
+              "scored_owner_GT": 1,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 8,
+              "IoU": 0.01085070310162561,
+              "recall": 0.048141592920353984,
+              "scored_owner_GT": 60,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 356,
+              "IoU": 0.01707889031458785,
+              "recall": 0.017079646017699113,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 215,
+              "IoU": 0.003324598114757304,
+              "recall": 0.003761061946902655,
+              "scored_owner_GT": 48,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 228,
+              "IoU": 0.001762295081967213,
+              "recall": 0.001902654867256637,
+              "scored_owner_GT": 3,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 355,
+              "IoU": 0.0013716814159292034,
+              "recall": 0.0013716814159292034,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 362,
+              "IoU": 0.000752212389380531,
+              "recall": 0.000752212389380531,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 361,
+              "IoU": 0.000663716814159292,
+              "recall": 0.000663716814159292,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 43,
+              "IoU": 0.000399897169299323,
+              "recall": 0.0006194690265486725,
+              "scored_owner_GT": 5,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 352,
+              "IoU": 0.0001582841992798069,
+              "recall": 0.00017699115044247788,
+              "scored_owner_GT": 7,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 52,
+              "IoU": 0.00011494693283267559,
+              "recall": 0.00013274336283185842,
+              "scored_owner_GT": 6,
+              "GT_support_qualifies": true
+            }
+          ],
+          "after_top_recall_predictions": [
+            {
+              "native_instance_id": 1,
+              "IoU": 0.22797171755604173,
+              "recall": 0.318141592920354,
+              "scored_owner_GT": 9,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 356,
+              "IoU": 0.15043015742690893,
+              "recall": 0.18646017699115044,
+              "scored_owner_GT": 1,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 361,
+              "IoU": 0.09491150442477876,
+              "recall": 0.09491150442477876,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 355,
+              "IoU": 0.05876106194690266,
+              "recall": 0.05876106194690266,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 8,
+              "IoU": 0.010972062644267097,
+              "recall": 0.046902654867256637,
+              "scored_owner_GT": 60,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 215,
+              "IoU": 0.003324598114757304,
+              "recall": 0.003761061946902655,
+              "scored_owner_GT": 48,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 228,
+              "IoU": 0.001762295081967213,
+              "recall": 0.001902654867256637,
+              "scored_owner_GT": 3,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 362,
+              "IoU": 0.000752212389380531,
+              "recall": 0.000752212389380531,
+              "scored_owner_GT": null,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 43,
+              "IoU": 0.000399897169299323,
+              "recall": 0.0006194690265486725,
+              "scored_owner_GT": 5,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 352,
+              "IoU": 0.0001582841992798069,
+              "recall": 0.00017699115044247788,
+              "scored_owner_GT": 7,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 52,
+              "IoU": 0.00011494693283267559,
+              "recall": 0.00013274336283185842,
+              "scored_owner_GT": 6,
+              "GT_support_qualifies": true
+            }
+          ],
+          "changed_raw_identity_transitions": [
+            {
+              "before_native_ID": -1,
+              "after_native_ID": 356,
+              "reference_vertices": 3676
+            },
+            {
+              "before_native_ID": 1,
+              "after_native_ID": 361,
+              "reference_vertices": 1731
+            },
+            {
+              "before_native_ID": 1,
+              "after_native_ID": 355,
+              "reference_vertices": 791
+            },
+            {
+              "before_native_ID": -1,
+              "after_native_ID": 355,
+              "reference_vertices": 487
+            },
+            {
+              "before_native_ID": -1,
+              "after_native_ID": 361,
+              "reference_vertices": 399
+            },
+            {
+              "before_native_ID": 1,
+              "after_native_ID": 356,
+              "reference_vertices": 143
+            },
+            {
+              "before_native_ID": 8,
+              "after_native_ID": 355,
+              "reference_vertices": 19
+            },
+            {
+              "before_native_ID": 8,
+              "after_native_ID": 356,
+              "reference_vertices": 9
+            }
+          ],
+          "unchanged_native_identity_vertices": 15345,
+          "matching_quality_transition": [
+            [
+              852,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              5645,
+              3676,
+              886
+            ],
+            [
+              0,
+              0,
+              143,
+              9712
+            ],
+            [
+              0,
+              0,
+              395,
+              1291
+            ]
+          ]
+        },
+        {
+          "GT_result": {
+            "after_best_iou": 0.2780248428155191,
+            "before_best_iou": 0.15278967331457238,
+            "change": "IMPROVED",
+            "delta_iou": 0.1252351695009467,
+            "raw_gt_id": 38,
+            "scene_id": "room2",
+            "semantic_class": "blinds",
+            "selected_target": true,
+            "before_best_recall": 0.765986811838675,
+            "after_best_recall": 0.6224505443950314,
+            "delta_best_recall": -0.14353626744364356
+          },
+          "before_top_recall_predictions": [
+            {
+              "native_instance_id": 10,
+              "IoU": 0.15278967331457238,
+              "recall": 0.765986811838675,
+              "scored_owner_GT": 32,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 358,
+              "IoU": 0.03235700046005214,
+              "recall": 0.03235700046005214,
+              "scored_owner_GT": 38,
+              "GT_support_qualifies": true
+            }
+          ],
+          "after_top_recall_predictions": [
+            {
+              "native_instance_id": 10,
+              "IoU": 0.12456651833665797,
+              "recall": 0.6224505443950314,
+              "scored_owner_GT": 32,
+              "GT_support_qualifies": true
+            },
+            {
+              "native_instance_id": 358,
+              "IoU": 0.2780248428155191,
+              "recall": 0.2780248428155191,
+              "scored_owner_GT": 38,
+              "GT_support_qualifies": true
+            }
+          ],
+          "changed_raw_identity_transitions": [
+            {
+              "before_native_ID": 10,
+              "after_native_ID": 358,
+              "reference_vertices": 936
+            },
+            {
+              "before_native_ID": -1,
+              "after_native_ID": 358,
+              "reference_vertices": 666
+            }
+          ],
+          "unchanged_native_identity_vertices": 4919,
+          "matching_quality_transition": [
+            [
+              24,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              625,
+              666,
+              0
+            ],
+            [
+              0,
+              0,
+              211,
+              0
+            ],
+            [
+              0,
+              0,
+              936,
+              4059
+            ]
+          ]
+        }
+      ],
+      "native_ID_owner_alignment_changes": {
+        "1": [
+          1,
+          9
+        ],
+        "356": [
+          null,
+          1
+        ]
+      },
+      "clarifies_method_specific_UID_changes": "Native persistent IDs are matched across conditions; different method prefixes in instance_uid are not physical identity changes."
+    }
+  }
+}
