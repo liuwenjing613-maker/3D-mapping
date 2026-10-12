@@ -7,3 +7,10 @@
 - 当前入口：`python -m unified_eval.cli current-protocol`、`adapt-surface`、`eval-scene`、`eval-batch`、`eval-repair-pair`。默认 revision 2；旧协议复现须显式使用 `--historical-protocol`，结果单独标记，不能混入当前比较。
 - 配置仍为开发基准、`frozen=false`。用户采用当前开发基准不等于批准论文正式冻结，不擅自修改参数、评分源码或这一标记。
 - 服务器代码、配置、文档在 `/home/chenkejun/CVPR`；数据和结果在 `/data/chenkejun/CVPR`。新的评价使用独立输出目录，不覆盖已锁定的开发和审核归档。
+
+## 当前冻结算法架构
+
+- 当前算法为 `instance_repair/configs/current_architecture.json` 指定的 `P1-A1-strict-vote-E1-20261012`，说明见 `docs/FROZEN_E1.md`。
+- E1 使用自适应可信范围扩展、历史观察重关联、严格一票歧义弃权；不启用 E2 的局部新 Mask 约束。
+- `instance_repair/frozen_e1_20261012` 和其源码锁为冻结记录。后续算法开发使用新版本/新输出，不直接覆盖冻结实现及参考结果。用户明确要求升级冻结版本时，应重新验证并更新注册。
+- 算法 `frozen=true` 不改变评价协议 `frozen=false`。评价继续从 main 的 unified_eval 默认 R2 入口执行。

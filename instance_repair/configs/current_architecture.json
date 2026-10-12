@@ -1,0 +1,24 @@
+{
+  "architecture": "P1-A1-strict-vote-E1-20261012",
+  "frozen": true,
+  "variant": "E1_expanded_history",
+  "validated_scenes": [
+    "room0",
+    "room2"
+  ],
+  "entry": "python -m instance_repair.cli",
+  "scope": "fixed TSDF; frozen SAM2 and V2 accepted masks; adaptive trusted region expansion; historical source-observation reassociation; strict one vote with ambiguity abstention",
+  "E2_local_new_mask_constraint": false,
+  "GT_used_by_mapper": false,
+  "evaluation": {
+    "protocol": "object_observed_repair",
+    "revision": 2,
+    "config": "unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json",
+    "frozen": false
+  },
+  "limitations": [
+    "Validated on room0 and room2 only",
+    "Frozen persistent identity aliases reused; duplicate object identities are not globally merged",
+    "Replay requires server data and original frozen mask/baseline artifacts"
+  ]
+}

@@ -1,6 +1,13 @@
 # 3D-mapping
 
-当前统一开发评价协议：**`object_observed_repair / revision 2`**，配置 `unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json`。评分源码固定为 `cd260569`，审核归档为 `d035f687`，八场景共 **350 个固定可评价 GT**。本次 main 更新只提升默认入口，评分规则和配置字节保持不变。
+## 当前冻结算法架构（2026-10-12）
+
+**P1-A1-strict-vote-E1** 为当前冻结修复架构：自适应可信物体范围扩展、历史原始观察重关联、严格一帧一点一票与歧义弃权。E2 不纳入默认版本。
+运行 `python -m instance_repair.cli current-architecture` 查看源码锁定的注册信息；参数、两场景复现入口与指标见 [冻结 E1 说明](docs/FROZEN_E1.md)。
+算法已冻结；下述 R2 评价协议仍为开发基准，`frozen=false`。
+
+
+当前统一开发评价协议：**`object_observed_repair / revision 2`**，配置 `unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json`。评分源码固定为 `cd260569`，审核归档为 `d035f687`，八场景共 **350 个固定可评价 GT**。该评价基准的评分规则和配置字节保持不变。
 
 用于固定 TSDF 的实例地图质量和成对标签修复；当前仍为 DEVELOPMENT、`frozen=false`。协议选择、配置 SHA256、评分源码和逐场景 GT 锁见 `unified_eval/configs/current_protocol.json`，完整依据见[revision 2 审核报告](docs/evaluation_reports/20261009_object_observed_repair_audit/README.md)。旧 v1/v2/v3 和 revision 1 仅供历史复现。
 
