@@ -1,0 +1,145 @@
+{
+  "status": "PASS",
+  "protocol": "object_observed_repair / revision 2",
+  "development_protocol_frozen": false,
+  "scene": "room2",
+  "GT_count": 52,
+  "control": "same strict pre-repair map used by ROI selection",
+  "rows": [
+    {
+      "variant": "before",
+      "stage": "native",
+      "F1": 0.6458333333333334,
+      "PQ": 0.4733807838725721,
+      "AP": 0.1605085508550855,
+      "AP50": 0.41854185418541856,
+      "mCov": 0.5151707823625572,
+      "TP": 31,
+      "FP": 13,
+      "FN": 21,
+      "gray_total": 170712,
+      "gray_states": {
+        "U": 86776,
+        "T": 26502,
+        "C": 57434
+      },
+      "owner_surface": {
+        "Correct_owner_Coverage": 0.5214876079117645,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "Unassigned_Coverage": 0.12161913626002485,
+        "Wrong_owner_Coverage": 0.32805176420756954,
+        "correct_owner_vertices": 93570,
+        "duplicate_coordinate_conflict_target_vertices": 2,
+        "no_geometry_target_vertices": 5175,
+        "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+        "target_vertices": 179429,
+        "unassigned_with_geometry_target_vertices": 21822,
+        "unpredicted_target_vertices": 26997,
+        "wrong_owner_vertices": 58862
+      }
+    },
+    {
+      "variant": "after",
+      "stage": "native",
+      "F1": 0.5106382978723404,
+      "PQ": 0.37849257142332027,
+      "AP": 0.1079096673712315,
+      "AP50": 0.28034264100567363,
+      "mCov": 0.5858541768402011,
+      "TP": 36,
+      "FP": 53,
+      "FN": 16,
+      "gray_total": 246218,
+      "gray_states": {
+        "U": 87046,
+        "T": 26816,
+        "C": 132356
+      },
+      "owner_surface": {
+        "Correct_owner_Coverage": 0.6502293386241912,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "Unassigned_Coverage": 0.12411594558293253,
+        "Wrong_owner_Coverage": 0.19681322417223526,
+        "correct_owner_vertices": 116670,
+        "duplicate_coordinate_conflict_target_vertices": 2,
+        "no_geometry_target_vertices": 5175,
+        "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+        "target_vertices": 179429,
+        "unassigned_with_geometry_target_vertices": 22270,
+        "unpredicted_target_vertices": 27445,
+        "wrong_owner_vertices": 35314
+      }
+    },
+    {
+      "variant": "before",
+      "stage": "final",
+      "F1": 0.6666666666666666,
+      "PQ": 0.4994009249340923,
+      "AP": 0.18022052205220523,
+      "AP50": 0.4464446444644465,
+      "mCov": 0.530014041994632,
+      "TP": 32,
+      "FP": 12,
+      "FN": 20,
+      "gray_total": 149421,
+      "gray_states": {
+        "U": 77936,
+        "T": 17780,
+        "C": 53705
+      },
+      "owner_surface": {
+        "Correct_owner_Coverage": 0.5326842372191786,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "Unassigned_Coverage": 0.1083492634969821,
+        "Wrong_owner_Coverage": 0.33012500766319824,
+        "correct_owner_vertices": 95579,
+        "duplicate_coordinate_conflict_target_vertices": 0,
+        "no_geometry_target_vertices": 5175,
+        "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+        "target_vertices": 179429,
+        "unassigned_with_geometry_target_vertices": 19441,
+        "unpredicted_target_vertices": 24616,
+        "wrong_owner_vertices": 59234
+      }
+    },
+    {
+      "variant": "after",
+      "stage": "final",
+      "F1": 0.5106382978723404,
+      "PQ": 0.38822944191296066,
+      "AP": 0.12191567471353873,
+      "AP50": 0.28034264100567363,
+      "mCov": 0.5997923358199424,
+      "TP": 36,
+      "FP": 53,
+      "FN": 16,
+      "gray_total": 224864,
+      "gray_states": {
+        "U": 78163,
+        "T": 18196,
+        "C": 128505
+      },
+      "owner_surface": {
+        "Correct_owner_Coverage": 0.6606680079585797,
+        "No_geometry_Coverage": 0.028841491620641032,
+        "Unassigned_Coverage": 0.11110244163429546,
+        "Wrong_owner_Coverage": 0.1993880587864838,
+        "correct_owner_vertices": 118543,
+        "duplicate_coordinate_conflict_target_vertices": 1,
+        "no_geometry_target_vertices": 5175,
+        "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+        "target_vertices": 179429,
+        "unassigned_with_geometry_target_vertices": 19935,
+        "unpredicted_target_vertices": 25110,
+        "wrong_owner_vertices": 35776
+      }
+    }
+  ],
+  "GT_best_IoU_changes": {
+    "improved": 26,
+    "worsened": 21,
+    "unchanged": 5
+  },
+  "same_geometry_GT_scope_and_correspondence": true,
+  "predictions_frozen_before_GT": true
+}

@@ -1,0 +1,18 @@
+from selection_rules import choose
+def n(k,eligible=True,crop=False):return dict(key=k,model=int(k[0]),label=int(k[2:]),eligible=eligible,touches_crop=crop,touches_frame=False)
+def e(a,b,near=False,contain=False):return dict(a=a,b=b,group_link=True,near=near,containment=contain)
+def run(nodes,edges,expected):
+ result=choose(nodes,edges);actual=[(g['selected'],g['reason']) for g in result];assert actual==expected,(actual,expected)
+run([n('0:1')],[],[('0:1','SINGLE_REMAINING')])
+run([n('1:1',crop=True)],[],[('1:1','SINGLE_REMAINING')])
+run([n('0:1'),n('1:1')],[e('0:1','1:1',True)],[('0:1','CROPFORMERS_AGREE')])
+run([n('0:1'),n('1:1'),n('2:1')],[e('0:1','1:1',True),e('0:1','2:1',True),e('1:1','2:1',True)],[('0:1','THREE_AGREE')])
+run([n('0:1'),n('1:1'),n('2:1')],[e('0:1','1:1'),e('1:1','2:1',True)],[('1:1','ONE_CROPFORMER_WITH_SAM')])
+run([n('0:1'),n('1:1'),n('2:1')],[e('0:1','1:1',True),e('0:1','2:1',contain=True) ],[(None,'WHOLE_PART_CONFLICT')])
+run([n('0:1'),n('1:1'),n('2:1',False)],[e('0:1','1:1',True),e('0:1','2:1',contain=True)],[(None,'WHOLE_PART_CONFLICT')])
+run([n('0:1'),n('1:1')],[e('0:1','1:1')],[(None,'UNRESOLVED_DISAGREEMENT')])
+run([n('0:1'),n('1:1',crop=True),n('2:1')],[e('0:1','1:1'),e('1:1','2:1',True)],[(None,'CROP_TRUNCATION_UNCERTAIN')])
+run([n('1:1'),n('1:2'),n('2:1'),n('2:2')],[e('1:1','2:1',True),e('1:2','2:2',True)],[('1:1','CROSS_MODEL_AGREE'),('1:2','CROSS_MODEL_AGREE')])
+run([n('0:1'),n('0:2'),n('1:1',False)],[e('0:1','1:1'),e('0:2','1:1')],[('0:1','SINGLE_REMAINING'),('0:2','SINGLE_REMAINING')])
+run([n('0:1'),n('1:1',crop=True)],[e('0:1','1:1',contain=True)],[(None,'CROP_TRUNCATION_UNCERTAIN')])
+print('PASS: 12 decision cases, including whole/part priority, crop risk, singleton override and reference non-bridging')

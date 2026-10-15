@@ -1,0 +1,69 @@
+{
+  "method": "cropformer_local",
+  "input_image": "/data/chenkejun/CVPR/results/vlm_threeway_20261014/inputs/cropformer_local_vlm_input.png",
+  "input_sha256": "d1011538c037b5112cbdc0774ef59aae9d59e4032264fe2f207dc37594bd3c30",
+  "seconds": 4.225,
+  "accepted_ids": [
+    4
+  ],
+  "uncertain_ids": [
+    6
+  ],
+  "rejected_ids": [
+    1,
+    2,
+    3,
+    5,
+    7
+  ],
+  "original_structured_output": {
+    "accepted_ids": [
+      {
+        "id": 4,
+        "object": "桌子",
+        "reason": "Mask 4 完整覆盖了白色圆桌的桌面和支架，是一个结构完整的独立家具实例。"
+      }
+    ],
+    "uncertain_ids": [
+      {
+        "id": 6,
+        "object": "桌上的杂物堆（包含瓶子、盒子等）",
+        "reason": "Mask 6 覆盖了桌面上的一堆物品，但由于这些物体相互堆叠且形态不规则，难以界定是单一物体还是多个物体的混合体。"
+      }
+    ],
+    "rejected_ids": [
+      {
+        "id": 1,
+        "object": "地毯",
+        "reason": "属于背景纹理碎片，非独立前景物体。"
+      },
+      {
+        "id": 2,
+        "object": "沙发/座椅边缘",
+        "reason": "位于图像边缘，被严重截断且无法辨认完整形态。"
+      },
+      {
+        "id": 3,
+        "object": "墙面",
+        "reason": "属于背景纹理碎片，非独立前景物体。"
+      },
+      {
+        "id": 5,
+        "object": "桌上的绿色瓶子",
+        "reason": "Mask 5 仅覆盖了瓶子的局部（瓶颈部分），未能覆盖完整物体。"
+      },
+      {
+        "id": 7,
+        "object": "桌上的白色盒子",
+        "reason": "Mask 7 仅覆盖了盒子的一个角，属于物体的局部部件，未覆盖完整主体。"
+      }
+    ]
+  },
+  "validation": {
+    "all_candidates_exactly_once": true,
+    "unknown_ids": [],
+    "missing_ids": [],
+    "done_reason": "stop"
+  },
+  "format_note": "Model returned fenced JSON with object records instead of integer ID lists. Only fences and ID representation normalized; decisions and reasons unchanged."
+}

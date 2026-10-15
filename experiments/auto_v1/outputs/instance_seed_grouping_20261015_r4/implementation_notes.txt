@@ -1,0 +1,21 @@
+Room2 E1 seed selection revision 4 — 2026-10-15
+
+Input: verified revision 3, after global SAM-only source routing and artificial crop-edge exclusion. All 517 remaining masks are screened in native 1200x680 image pixels. This revision only excludes whole masks; it never erodes or edits retained pixels and never writes the map.
+
+The user's additional rule is area strictly less than 100 pixels, not less than or equal. Exactly 100 pixels proceeds to shape screening.
+
+Morphology features use the exact Euclidean distance of each foreground pixel to nearest background, with zero padding outside the mask bounding box. Connected components use 8-connectivity. At least 95% of pixels must lie in the relevant boundary band, checked with integer arithmetic.
+1. Thin edge band / scattered pixels: extent >=80 pixels and radius-3 interior <=5% of area.
+2. Sparse outline: extent >=80, bounding-box occupancy <=10%, radius-8 interior <=5%.
+3. Larger sparse outline: extent >=200, occupancy <=5%, radius-12 interior <=5%.
+These are initial reviewable morphology thresholds, not semantic ground truth. The area rule has first counting priority, then the three shape rules. Every matching condition is also recorded.
+
+Inspection included all 63 candidates with small area or weak radius-3 interior, additional larger thin outlines, and nearby retained controls. Compact socket-sized shapes, plate/animal-shaped objects, hollow shelving, and substantial chair parts were considered to avoid treating every small, elongated, or hollow object as noise. No per-ID classifier overrides are used. M0734 is caught by the general thin-edge rule: 861 pixels, 267 TSDF points, 149 components, 100% within radius 3. M0267, M0705, M0709, M0746, M0788, M0797 and M0821 remain available for review.
+
+Result: 67 unique masks /147 occurrences excluded: 23 area<100, 31 thin edges/scattered pixels, 10 sparse outlines, 3 larger sparse outlines. 450 masks /888 occurrences remain. Unchanged full TSDF supports, ordinary 3D IoU strictly >0.25, fixed-primary grouping, and descending TSDF count produce 90 unique primary seeds (62 multi-member, 28 singleton). 60 previous groups lose all their candidates; 61 former primaries are removed. All 7 recognized window/cabinet groups remain entirely SAM. Earlier 319 crop-contact removals and the global CropFormer semantic replacement remain effective.
+
+Validation passed: inherited source hashes, complete binary-mask digests, exact partition of the previous 517 candidates, unchanged support hashes, all pair intersections independently recomputed and equal to the previous submatrix, grouping replay, all primary/member edges, source policies, noise rule boundary tests, full occurrence accounting, exported assets and original colors. No tracking, repair, GT evaluation, or map write was run.
+
+The existing review page has three tabs: all 67 noise exclusions (default, all six pages verified), 36 retained controls, and 90 reselections. Each audit card has original-color overlay and pure original-color mask; its modal adds a clean original image. Every native foreground pixel is forward-mapped, preventing isolated pixels from disappearing when downscaled. Optional screen-space thickening is explicitly display-only. Reasons, measured areas, TSDF counts, connected-component counts, original IDs, frame/ROI aliases and previous group IDs are shown. Previous crop exclusions remain collapsible in the seed tab.
+
+Review statuses and notes are browser-local, exportable, and do not change the computed exclusions. QA notes were tested under the separate ?qa=1 storage namespace. Text input is saved immediately, and status buttons also capture the current note. Browser refresh persistence, export content, category filters, all exclusion pages, M0734 modal/toggles, retained shelving control, active seed absence, and zero console errors were verified. The generated QA download was moved into this revision directory.

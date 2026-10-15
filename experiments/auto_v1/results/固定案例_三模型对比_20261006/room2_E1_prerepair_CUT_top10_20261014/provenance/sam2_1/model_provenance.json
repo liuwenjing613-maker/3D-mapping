@@ -1,0 +1,33 @@
+{
+  "checkpoint": "/data/chenkejun/CVPR/models/sam2.1_hiera_large.pt",
+  "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+  "config": "configs/sam2.1/sam2.1_hiera_l.yaml",
+  "parameters": {
+    "points_per_side": 32,
+    "points_per_batch": 64,
+    "pred_iou_thresh": 0.8,
+    "stability_score_thresh": 0.95,
+    "stability_score_offset": 1.0,
+    "mask_threshold": 0.0,
+    "box_nms_thresh": 0.7,
+    "crop_n_layers": 0,
+    "crop_nms_thresh": 0.7,
+    "crop_overlap_ratio": 0.3413333333333333,
+    "crop_n_points_downscale_factor": 1,
+    "min_mask_region_area": 0,
+    "output_mode": "binary_mask",
+    "use_m2m": false,
+    "multimask_output": true
+  },
+  "apply_postprocessing": false,
+  "generator_sha256": "66df266dbe14412305ae3398f0ec1bb21b303a93216b102d767e6c4ee5d4c3d7",
+  "code_sha256": "e3f919919bf19748144cb6b15a4db99ae83442c01a34790f2ed6311326f78e1a",
+  "torch": "2.5.1+cu124",
+  "precision": "bfloat16 autocast; TF32 allowed",
+  "seed": 0,
+  "manual_prompts": false,
+  "partition": "smallest area wins; ties higher predicted IoU, stability, mask SHA; same as existing SAM2.1 ablation",
+  "GT_used": false,
+  "GPU": "NVIDIA RTX 5880 Ada Generation",
+  "GPU_visible": "1"
+}

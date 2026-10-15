@@ -1,0 +1,16 @@
+{
+  "model": "qwen3.6:35b-a3b-mtp-q4_K_M",
+  "created_at": "2026-10-14T07:24:03.065512278Z",
+  "message": {
+    "role": "assistant",
+    "content": "```json\n{\n  \"accepted_ids\": [\n    {\n      \"id\": 2,\n      \"object\": \"桌子\",\n      \"reason\": \"Mask 2 完整覆盖了白色圆桌的桌面和桌腿，是一个结构完整的独立家具实例。\"\n    },\n    {\n      \"id\": 10,\n      \"object\": \"绿色瓶子\",\n      \"reason\": \"Mask 10 准确分割了位于桌子后方的高大绿色瓶状物体，边界清晰且完整。\"\n    }\n  ],\n  \"uncertain_ids\": [\n    {\n      \"id\": 8,\n      \"object\": \"米色瓶子\",\n      \"reason\": \"Mask 8 覆盖了右侧的米色瓶子，但该物体位于图像边缘，被严重截断，无法确认其完整形态。\"\n    }\n  ],\n  \"rejected_ids\": [\n    {\n      \"id\": 1,\n      \"object\": \"地毯\",\n      \"reason\": \"Mask 1 仅覆盖了地面/地毯的一部分纹理区域，属于背景碎片。\"\n    },\n    {\n      \"id\": 5,\n      \"object\": \"沙发/椅子\",\n      \"reason\": \"Mask 5 仅覆盖了右侧家具的一角，被图像边缘截断，无法视为完整物体。\"\n    },\n    {\n      \"id\": 6,\n      \"object\": \"墙面\",\n      \"reason\": \"Mask 6 覆盖了背景墙面，属于背景区域而非前景独立物体。\"\n    },\n    {\n      \"id\": 9,\n      \"object\": \"白色盒子\",\n      \"reason\": \"Mask 9 仅覆盖了左侧白色盒子的局部可见部分，未能覆盖其完整主体。\"\n    },\n    {\n      \"id\": 11,\n      \"object\": \"粉色包装物\",\n      \"reason\": \"Mask 11 覆盖了桌子上的粉色物体，但该物体看起来是扁平的包装袋或纸巾包，且被其他物体（如瓶子）遮挡，边界界定不如家具清晰。\"\n    },\n    {\n      \"id\": 12,\n      \"object\": \"蓝色瓶子\",\n      \"reason\": \"Mask 12 仅覆盖了中间蓝色瓶子的可见部分，其底部和侧面被周围物体遮挡或截断，不完整。\"\n    }\n  ]\n}\n```"
+  },
+  "done": true,
+  "done_reason": "stop",
+  "total_duration": 5472014931,
+  "load_duration": 504233084,
+  "prompt_eval_count": 1682,
+  "prompt_eval_duration": 1065605000,
+  "eval_count": 526,
+  "eval_duration": 3364654000
+}

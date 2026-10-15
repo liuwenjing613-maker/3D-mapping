@@ -1,0 +1,637 @@
+{
+  "status": "PASS",
+  "seeds": 90,
+  "all_mapping_frames_playable": true,
+  "PLY_sha256": "bcf36c747cda7305771cf5365fdcb2df43857c0a6538c11414ff5d21a7abfa2f",
+  "summary": {
+    "seeds": 90,
+    "tracking_cases": 59,
+    "mapping_frames": 400,
+    "raw_tracking_frames_per_case": 2000,
+    "seed_pixels_preserved": true,
+    "retained_source_policy": "SAM only for windows/cabinets",
+    "seeds_with_accepted_frames": 75,
+    "zero_accepted_track_ids": [
+      1,
+      8,
+      19,
+      21,
+      23,
+      28,
+      42,
+      44,
+      71,
+      77,
+      80,
+      82,
+      85,
+      88,
+      90
+    ],
+    "empty_core_track_ids": [
+      61,
+      89
+    ],
+    "accepted_object_frame_events": 4802,
+    "updated_mapping_frames": 400,
+    "changed_final_points_vs_prerepair": 494454,
+    "unassigned_to_assigned": 18046,
+    "assigned_to_unassigned": 93489,
+    "assigned_identity_changed": 382919,
+    "surface_points": 1229303,
+    "region": {
+      "region_points": 746935,
+      "unique_owned_points": 624236,
+      "ambiguous_points": 122699,
+      "core_ambiguous_points": 52870,
+      "GT_read": false
+    },
+    "evaluation": {
+      "status": "PASS",
+      "protocol": "object_observed_repair / revision 2",
+      "development_protocol_frozen": false,
+      "scene": "room2",
+      "GT_count": 52,
+      "control": "same strict pre-repair map used by ROI selection",
+      "rows": [
+        {
+          "variant": "before",
+          "stage": "native",
+          "F1": 0.6458333333333334,
+          "PQ": 0.4733807838725721,
+          "AP": 0.1605085508550855,
+          "AP50": 0.41854185418541856,
+          "mCov": 0.5151707823625572,
+          "TP": 31,
+          "FP": 13,
+          "FN": 21,
+          "gray_total": 170712,
+          "gray_states": {
+            "U": 86776,
+            "T": 26502,
+            "C": 57434
+          },
+          "owner_surface": {
+            "Correct_owner_Coverage": 0.5214876079117645,
+            "No_geometry_Coverage": 0.028841491620641032,
+            "Unassigned_Coverage": 0.12161913626002485,
+            "Wrong_owner_Coverage": 0.32805176420756954,
+            "correct_owner_vertices": 93570,
+            "duplicate_coordinate_conflict_target_vertices": 2,
+            "no_geometry_target_vertices": 5175,
+            "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+            "target_vertices": 179429,
+            "unassigned_with_geometry_target_vertices": 21822,
+            "unpredicted_target_vertices": 26997,
+            "wrong_owner_vertices": 58862
+          }
+        },
+        {
+          "variant": "after",
+          "stage": "native",
+          "F1": 0.5106382978723404,
+          "PQ": 0.37849257142332027,
+          "AP": 0.1079096673712315,
+          "AP50": 0.28034264100567363,
+          "mCov": 0.5858541768402011,
+          "TP": 36,
+          "FP": 53,
+          "FN": 16,
+          "gray_total": 246218,
+          "gray_states": {
+            "U": 87046,
+            "T": 26816,
+            "C": 132356
+          },
+          "owner_surface": {
+            "Correct_owner_Coverage": 0.6502293386241912,
+            "No_geometry_Coverage": 0.028841491620641032,
+            "Unassigned_Coverage": 0.12411594558293253,
+            "Wrong_owner_Coverage": 0.19681322417223526,
+            "correct_owner_vertices": 116670,
+            "duplicate_coordinate_conflict_target_vertices": 2,
+            "no_geometry_target_vertices": 5175,
+            "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+            "target_vertices": 179429,
+            "unassigned_with_geometry_target_vertices": 22270,
+            "unpredicted_target_vertices": 27445,
+            "wrong_owner_vertices": 35314
+          }
+        },
+        {
+          "variant": "before",
+          "stage": "final",
+          "F1": 0.6666666666666666,
+          "PQ": 0.4994009249340923,
+          "AP": 0.18022052205220523,
+          "AP50": 0.4464446444644465,
+          "mCov": 0.530014041994632,
+          "TP": 32,
+          "FP": 12,
+          "FN": 20,
+          "gray_total": 149421,
+          "gray_states": {
+            "U": 77936,
+            "T": 17780,
+            "C": 53705
+          },
+          "owner_surface": {
+            "Correct_owner_Coverage": 0.5326842372191786,
+            "No_geometry_Coverage": 0.028841491620641032,
+            "Unassigned_Coverage": 0.1083492634969821,
+            "Wrong_owner_Coverage": 0.33012500766319824,
+            "correct_owner_vertices": 95579,
+            "duplicate_coordinate_conflict_target_vertices": 0,
+            "no_geometry_target_vertices": 5175,
+            "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+            "target_vertices": 179429,
+            "unassigned_with_geometry_target_vertices": 19441,
+            "unpredicted_target_vertices": 24616,
+            "wrong_owner_vertices": 59234
+          }
+        },
+        {
+          "variant": "after",
+          "stage": "final",
+          "F1": 0.5106382978723404,
+          "PQ": 0.38822944191296066,
+          "AP": 0.12191567471353873,
+          "AP50": 0.28034264100567363,
+          "mCov": 0.5997923358199424,
+          "TP": 36,
+          "FP": 53,
+          "FN": 16,
+          "gray_total": 224864,
+          "gray_states": {
+            "U": 78163,
+            "T": 18196,
+            "C": 128505
+          },
+          "owner_surface": {
+            "Correct_owner_Coverage": 0.6606680079585797,
+            "No_geometry_Coverage": 0.028841491620641032,
+            "Unassigned_Coverage": 0.11110244163429546,
+            "Wrong_owner_Coverage": 0.1993880587864838,
+            "correct_owner_vertices": 118543,
+            "duplicate_coordinate_conflict_target_vertices": 1,
+            "no_geometry_target_vertices": 5175,
+            "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+            "target_vertices": 179429,
+            "unassigned_with_geometry_target_vertices": 19935,
+            "unpredicted_target_vertices": 25110,
+            "wrong_owner_vertices": 35776
+          }
+        }
+      ],
+      "GT_best_IoU_changes": {
+        "improved": 26,
+        "worsened": 21,
+        "unchanged": 5
+      },
+      "same_geometry_GT_scope_and_correspondence": true,
+      "predictions_frozen_before_GT": true
+    },
+    "runtime": {
+      "GPU_model": "NVIDIA RTX 5880 Ada Generation",
+      "GPU_memory_MiB": 49140,
+      "tracking_by_object_count": [
+        {
+          "objects": 1,
+          "tasks": 37,
+          "min_seconds": 176.5,
+          "median_seconds": 206.12,
+          "max_seconds": 221.29
+        },
+        {
+          "objects": 2,
+          "tasks": 17,
+          "min_seconds": 181.37,
+          "median_seconds": 222.43,
+          "max_seconds": 249.7
+        },
+        {
+          "objects": 3,
+          "tasks": 2,
+          "min_seconds": 211.1,
+          "median_seconds": 211.26999999999998,
+          "max_seconds": 211.44
+        },
+        {
+          "objects": 4,
+          "tasks": 2,
+          "min_seconds": 240.55,
+          "median_seconds": 292.055,
+          "max_seconds": 343.56
+        },
+        {
+          "objects": 5,
+          "tasks": 1,
+          "min_seconds": 273.1,
+          "median_seconds": 273.1,
+          "max_seconds": 273.1
+        }
+      ],
+      "tracking_tasks": [
+        {
+          "case_uid": "auto90-f000000-b01",
+          "objects": 5,
+          "seconds": 273.1,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000005-b01",
+          "objects": 1,
+          "seconds": 208.6,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000210-b01",
+          "objects": 1,
+          "seconds": 206.36,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000225-b01",
+          "objects": 2,
+          "seconds": 182.45,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000280-b01",
+          "objects": 1,
+          "seconds": 204.31,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000310-b01",
+          "objects": 1,
+          "seconds": 198.66,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000320-b01",
+          "objects": 2,
+          "seconds": 181.37,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000385-b01",
+          "objects": 1,
+          "seconds": 212.66,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000390-b01",
+          "objects": 1,
+          "seconds": 214.84,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000465-b01",
+          "objects": 2,
+          "seconds": 188.47,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000590-b01",
+          "objects": 1,
+          "seconds": 219.52,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000730-b01",
+          "objects": 1,
+          "seconds": 209.3,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000735-b01",
+          "objects": 2,
+          "seconds": 184.91,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000785-b01",
+          "objects": 1,
+          "seconds": 200.7,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000805-b01",
+          "objects": 1,
+          "seconds": 200.94,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000810-b01",
+          "objects": 2,
+          "seconds": 182.58,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000810-b02",
+          "objects": 1,
+          "seconds": 211.54,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000825-b01",
+          "objects": 1,
+          "seconds": 197.1,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000830-b01",
+          "objects": 1,
+          "seconds": 205.84,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000835-b01",
+          "objects": 1,
+          "seconds": 204.1,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000855-b01",
+          "objects": 2,
+          "seconds": 185.86,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000865-b01",
+          "objects": 1,
+          "seconds": 199.81,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000940-b01",
+          "objects": 2,
+          "seconds": 202.36,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000940-b02",
+          "objects": 1,
+          "seconds": 199.16,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000945-b01",
+          "objects": 2,
+          "seconds": 206.38,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f000985-b01",
+          "objects": 1,
+          "seconds": 201.72,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001015-b01",
+          "objects": 1,
+          "seconds": 200.99,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001025-b01",
+          "objects": 1,
+          "seconds": 202.01,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001035-b01",
+          "objects": 3,
+          "seconds": 211.1,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001070-b01",
+          "objects": 4,
+          "seconds": 343.56,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001095-b01",
+          "objects": 1,
+          "seconds": 202.36,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001110-b01",
+          "objects": 1,
+          "seconds": 210.09,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001340-b01",
+          "objects": 1,
+          "seconds": 216.16,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001345-b01",
+          "objects": 1,
+          "seconds": 200.52,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001350-b01",
+          "objects": 1,
+          "seconds": 208.3,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001380-b01",
+          "objects": 1,
+          "seconds": 207.62,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001395-b01",
+          "objects": 1,
+          "seconds": 209.78,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001400-b01",
+          "objects": 1,
+          "seconds": 206.12,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001415-b01",
+          "objects": 1,
+          "seconds": 202.97,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001470-b01",
+          "objects": 1,
+          "seconds": 221.29,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001475-b01",
+          "objects": 2,
+          "seconds": 222.43,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001475-b02",
+          "objects": 1,
+          "seconds": 209.16,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001480-b01",
+          "objects": 1,
+          "seconds": 204.87,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001490-b01",
+          "objects": 1,
+          "seconds": 206.76,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001510-b01",
+          "objects": 3,
+          "seconds": 211.44,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001590-b01",
+          "objects": 2,
+          "seconds": 249.7,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001620-b01",
+          "objects": 1,
+          "seconds": 211.6,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001635-b01",
+          "objects": 1,
+          "seconds": 211.6,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001660-b01",
+          "objects": 1,
+          "seconds": 210.95,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001735-b01",
+          "objects": 2,
+          "seconds": 242.24,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001745-b01",
+          "objects": 1,
+          "seconds": 198.5,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001750-b01",
+          "objects": 2,
+          "seconds": 231.01,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001755-b01",
+          "objects": 1,
+          "seconds": 176.5,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001875-b01",
+          "objects": 2,
+          "seconds": 230.71,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001935-b01",
+          "objects": 2,
+          "seconds": 246.24,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001950-b01",
+          "objects": 2,
+          "seconds": 244.62,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001960-b01",
+          "objects": 2,
+          "seconds": 236.33,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001990-b01",
+          "objects": 4,
+          "seconds": 240.55,
+          "frames": 2000
+        },
+        {
+          "case_uid": "auto90-f001995-b01",
+          "objects": 2,
+          "seconds": 241.05,
+          "frames": 2000
+        }
+      ],
+      "pipeline_stages": [
+        {
+          "stage": "identity",
+          "seconds": 26.719679355621338
+        },
+        {
+          "stage": "raw_repair",
+          "seconds": 1315.6289427280426
+        },
+        {
+          "stage": "strict_repair",
+          "seconds": 326.279372215271
+        },
+        {
+          "stage": "history_core",
+          "seconds": 313.57447957992554
+        },
+        {
+          "stage": "expand",
+          "seconds": 80.31075930595398
+        },
+        {
+          "stage": "E1",
+          "seconds": 301.8491723537445
+        }
+      ],
+      "scope": "offline full sequence; includes initialization and IO; concurrent GPU jobs; not online latency"
+    },
+    "overlap_rejected_object_frame_events": 4473,
+    "lost_all_frames_after_overlap_track_ids": [
+      1,
+      8,
+      19,
+      21,
+      23,
+      28,
+      42,
+      44,
+      71,
+      77,
+      80,
+      82,
+      85,
+      88,
+      90
+    ]
+  }
+}

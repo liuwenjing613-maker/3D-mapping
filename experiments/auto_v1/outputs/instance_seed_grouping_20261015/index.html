@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>room2 · 同实例分组与唯一种子</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div><span class="eyebrow">ROOM2 · E1 修复前</span><h1>同实例 Mask · 唯一种子检查</h1></div><div class="headerActions"><a href="../room2_E1_selected_ROI_20261015_r3/index.html">上一版 ROI 页面 ↗</a><button id="export">导出检查记录</button></div></header>
+<section class="overview" id="overview">正在读取分组结果…</section>
+<div class="layout"><aside>
+<label class="searchLabel" for="search">查找组 / Mask / ROI / 帧</label><input id="search" type="search" placeholder="例如 G022、M0105、ROI-C0001">
+<select id="filter" aria-label="分组筛选"><option value="all">全部分组</option><option value="multi">多个成员</option><option value="single">只有一张</option><option value="pending">尚未检查</option><option value="flagged">已标记问题</option></select>
+<div class="listMeta" id="listMeta"></div><nav id="groupList" aria-label="实例组列表"></nav>
+</aside><main>
+<section class="rule"><b>当前规则</b>：按完整 Mask 的 TSDF 支持点数从多到少取主种子；剩余 Mask 与它的普通 <b>3D IoU &gt; 0.25</b> 就入组。主种子固定，不通过成员继续扩张。触及裁剪边缘只提示。
+<details><summary>点数、重复展示和验证帧如何计算</summary><p>点数是完整 Mask 对应的去重 TSDF 表面点数，不限于 ROI 异常点。3D IoU = 两张 Mask 的公共 TSDF 点数 ÷ TSDF 点集的并集大小；同帧、跨帧均用此公式。同帧且像素完全相同的重复展示只算一张，原 ROI 和 ID 全部保留。不同成员之间可以不超过阈值，只要求它们分别通过固定主种子的比较。同一帧多张 Mask 不算多个独立验证视角。</p></details></section>
+<div id="groupHeader"></div>
+<div class="toolbar"><div><button id="previous" aria-label="上一组">← 上一组</button><button id="next" aria-label="下一组">下一组 →</button></div><div class="viewOptions"><label><input type="checkbox" id="fullFrame"> 完整原图</label><label><input type="checkbox" id="showMask" checked> 显示 Mask</label><label>颜色强度 <input id="opacity" type="range" min="15" max="90" value="55"></label></div></div>
+<section id="review" class="review"></section>
+<p class="hint">第一张为唯一主种子，其余按 TSDF 点数排序。点击图片，可与主种子放大对照；每张 Mask 沿用原颜色。</p>
+<section id="cards" class="cards" aria-label="同组 Mask"></section>
+<details id="matrixDetails" class="extra"><summary>查看组内两两 3D IoU（辅助检查）</summary><p class="hint">淡黄色表示 ≤ 0.25。辅助成员之间的低值不会使本组失效；本轮只比较固定主种子。</p><div id="matrix" class="tableWrap"></div></details>
+<details id="outsideDetails" class="extra"><summary>查看最接近、但分在其他组的 Mask</summary><p class="hint">按与本组主种子的 3D IoU 排序，最多显示 5 张，便于发现漏归组。高于 0.25 仍在外部，表示它已被更早的主种子收进其他组。</p><div id="outside" class="cards"></div></details>
+<footer id="footer"></footer>
+</main></div>
+<dialog id="compare"><div class="dialogHeader"><div id="compareTitle"></div><button id="closeCompare">关闭 ✕</button></div><div class="dialogOptions"><label><input type="checkbox" id="dialogFull"> 完整原图</label><label><input type="checkbox" id="dialogMask" checked> 显示 Mask</label></div><div id="pairNumbers"></div><div id="compareCards" class="pairCards"></div></dialog>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body></html>

@@ -1,0 +1,141 @@
+{
+  "method": "sam2",
+  "input_image": "/data/chenkejun/CVPR/results/vlm_threeway_20261014/inputs/sam2_vlm_input.png",
+  "input_sha256": "a1bf98345b1bcf8c08d801d59d1d90c8dc52d616f7e7ada2bc29e85230e66012",
+  "seconds": 7.402,
+  "accepted_ids": [
+    10,
+    18
+  ],
+  "uncertain_ids": [
+    15
+  ],
+  "rejected_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    19
+  ],
+  "original_structured_output": {
+    "accepted_ids": [
+      {
+        "id": 10,
+        "object": "绿色椅子",
+        "reason": "Mask 10 完整覆盖了前景中可见的绿色椅子主体，边界清晰，未混入背景。"
+      },
+      {
+        "id": 18,
+        "object": "桌子腿",
+        "reason": "Mask 18 准确覆盖了桌子的金属支撑腿部分，属于该独立物体的一个部件。"
+      }
+    ],
+    "uncertain_ids": [
+      {
+        "id": 15,
+        "object": "墙面/踢脚线",
+        "reason": "Mask 15 覆盖了桌子后方的墙面区域，虽然边界清晰，但作为背景纹理碎片，其作为独立物体的属性较弱。"
+      }
+    ],
+    "rejected_ids": [
+      {
+        "id": 1,
+        "object": "地毯",
+        "reason": "Mask 1 仅覆盖了地毯的一小块区域，属于背景纹理碎片。"
+      },
+      {
+        "id": 2,
+        "object": "墙面/沙发边缘",
+        "reason": "Mask 2 位于图像右侧边缘，覆盖的是背景物体（可能是沙发或墙壁）的局部，且被裁剪。"
+      },
+      {
+        "id": 3,
+        "object": "墙面",
+        "reason": "Mask 3 覆盖了大面积的背景墙面，属于背景纹理碎片。"
+      },
+      {
+        "id": 4,
+        "object": "沙发/椅子",
+        "reason": "Mask 4 位于图像右侧边缘，覆盖的是另一个物体的局部，且被裁剪。"
+      },
+      {
+        "id": 5,
+        "object": "地毯",
+        "reason": "Mask 5 仅覆盖了地毯的一小块区域，属于背景纹理碎片。"
+      },
+      {
+        "id": 6,
+        "object": "地毯",
+        "reason": "Mask 6 仅覆盖了地毯的一小块区域，属于背景纹理碎片。"
+      },
+      {
+        "id": 7,
+        "object": "地毯/角落",
+        "reason": "Mask 7 位于图像左下角边缘，覆盖的是地毯的极小局部，且被裁剪。"
+      },
+      {
+        "id": 8,
+        "object": "地毯",
+        "reason": "Mask 8 仅覆盖了地毯的一小块区域，属于背景纹理碎片。"
+      },
+      {
+        "id": 9,
+        "object": "椅子腿/缝隙",
+        "reason": "Mask 9 仅覆盖了绿色椅子腿部与地面接触处的极小缝隙或局部，不是完整物体。"
+      },
+      {
+        "id": 11,
+        "object": "地毯",
+        "reason": "Mask 11 仅覆盖了地毯的一小块区域，属于背景纹理碎片。"
+      },
+      {
+        "id": 12,
+        "object": "墙面/踢脚线",
+        "reason": "Mask 12 覆盖了桌子左侧的墙面或踢脚线区域，属于背景纹理碎片。"
+      },
+      {
+        "id": 13,
+        "object": "瓶子局部",
+        "reason": "Mask 13 仅覆盖了桌上橙色瓶子的局部，未覆盖完整物体。"
+      },
+      {
+        "id": 14,
+        "object": "绿色瓶子",
+        "reason": "Mask 14 仅覆盖了桌上绿色瓶子的顶部或局部，未覆盖完整物体。"
+      },
+      {
+        "id": 16,
+        "object": "墙面/踢脚线",
+        "reason": "Mask 16 覆盖了桌子左侧的墙面或踢脚线区域，属于背景纹理碎片。"
+      },
+      {
+        "id": 17,
+        "object": "蓝色瓶子",
+        "reason": "Mask 17 仅覆盖了桌上蓝色瓶子的局部，未覆盖完整物体。"
+      },
+      {
+        "id": 19,
+        "object": "瓶子局部",
+        "reason": "Mask 19 仅覆盖了桌上橙色瓶子的顶部或局部，未覆盖完整物体。"
+      }
+    ]
+  },
+  "validation": {
+    "all_candidates_exactly_once": true,
+    "unknown_ids": [],
+    "missing_ids": [],
+    "done_reason": "stop"
+  },
+  "format_note": "Model returned fenced JSON with object records instead of integer ID lists. Only fences and ID representation normalized; decisions and reasons unchanged."
+}

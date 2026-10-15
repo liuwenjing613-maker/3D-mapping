@@ -1,0 +1,20 @@
+room2 E1 pre-repair: ordinary 3D IoU grouping and one seed per proposed instance group.
+
+Input: semantic_sam_route_20261015/selection.json, finished r3 selection. Only status=selected is used. No segmentation, semantic classification, tracking, repair, map writing, or evaluation is run here.
+
+User's latest rule: ordinary 3D IoU strictly greater than 0.25; rank by unique TSDF support point count. The updated referenced conversation supplies fixed-primary grouping. Crop contact is warning-only as explicitly confirmed by the user.
+
+Each support set uses the full native-resolution mask and the full-frame fixed-surface visibility cache, not just ROI/anomaly points. All 105 caches were recomputed using the established project_visible function and checked for exact index/UV agreement. No persistent instance ID, GT, image IoU, common-visible fraction, minimum count, containment, or semantic feature gate enters grouping.
+
+Sort descending by support count. Ties: frame, representative model, mask digest. The first remaining observation is the fixed primary; collect all remaining observations passing IoU > 0.25 against it, then repeat. Membership is not a transitive closure and does not require auxiliary pairs to pass each other. Test exact strict boundary with integer arithmetic: 4 * intersection > union. A zero-support observation would remain a singleton; none occur here.
+
+Exact same-frame, same-full-binary-mask duplicates collapse to one observation with all ROI/source aliases retained. The alias representative prefers a semantic SAM occurrence only when pixels are exactly identical, never to override point-count ranking. All 1407 occurrences become 837 unique observations; 203 groups/primary seeds, 84 multi-member and 119 singleton groups; 634 auxiliary observations. 31 of the 32 deduplicated ROIs have selected input masks. No new filtering was applied.
+
+G014 contains a previously semantic-selected SAM observation but the highest TSDF support count belongs to CropFormer. The latest point-count rule is applied uniformly, and this case has an explicit review notice. Twenty groups have auxiliary pairs at or below 0.25, allowed by fixed-primary grouping. Group IDs indicate algorithmic proposals, not known physical instances.
+
+Review page: room2_E1_instance_seed_groups_20261015/index.html on existing localhost:8785. Preserves original mask palette; per-frame common display crop for members; full-frame view and mask visibility controls; pair intersection/union; full pair matrix; nearest external-group masks; aliases and links to original ROI; local review notes/export. Review data is isolated by grouping SHA and QA suffix. QA records do not appear in the formal page.
+
+Validation: check_rules.py, server audit.json, local validate_delivery.py/page_verification.json, and browser_qa.json. Source hashes remained unchanged. All primary edges and 150 random pairs were independently recounted; all exported masks checked for area, dimensions, hashes, and support set uniqueness. The result can be replayed from config.json + grouping_rules.py + compute.py.
+
+Code archive: /home/chenkejun/CVPR/experiments/instance_seed_grouping_20261015
+Data/result archive: /data/chenkejun/CVPR/results/instance_seed_grouping_20261015

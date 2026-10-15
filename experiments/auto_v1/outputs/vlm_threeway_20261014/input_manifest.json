@@ -1,0 +1,387 @@
+{
+  "scene": "office2",
+  "frame": 520,
+  "ROI": "ROI-C0008",
+  "crop_key": "office2_ROI-C0008_v1_f000520_balanced",
+  "crop_xyxy": [
+    787,
+    312,
+    1187,
+    666
+  ],
+  "native_wh": [
+    400,
+    354
+  ],
+  "RGB_source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\assets\\office2_ROI-C0008_v1_f000520_balanced_rgb.webp",
+  "RGB_sha256": "650487ec26b6ef24ba4294223d69b6e48dc4c716ce45c18ecdae5e57c5d4adb9",
+  "source_server_root": "/data/chenkejun/CVPR/revisable_instance_map/roi_threeway_fixed_20261006/selection-20261006-f49eb927",
+  "SAM_representation": "existing non-overlapping partition of AMG proposals; smallest area wins; not raw overlapping proposal masks",
+  "models": [
+    {
+      "method": "cropformer",
+      "title": "CropFormer (full-frame prediction, same ROI)",
+      "mask_ids": [
+        1,
+        2,
+        5,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "mask_count": 9,
+      "input_image": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\vlm_threeway_20261014\\cropformer_vlm_input.png",
+      "input_image_sha256": "d32eb10da2dbc1af8b857da3b6056cadbb4a0f8e4dc427b7701585a607e5710b",
+      "mask_file": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\vlm_threeway_20261014\\cropformer_mask_ids.png",
+      "mask_sha256": "3c84c55dcd13830308046d963d039eabf54e8706d491c407bc0b6da7e5df2721",
+      "placements": [
+        {
+          "id": 1,
+          "area_px": 49374,
+          "label_center": [
+            950,
+            700
+          ]
+        },
+        {
+          "id": 6,
+          "area_px": 42136,
+          "label_center": [
+            960,
+            240
+          ]
+        },
+        {
+          "id": 5,
+          "area_px": 18086,
+          "label_center": [
+            1538,
+            622
+          ]
+        },
+        {
+          "id": 2,
+          "area_px": 17353,
+          "label_center": [
+            1296,
+            504
+          ]
+        },
+        {
+          "id": 11,
+          "area_px": 5333,
+          "label_center": [
+            1360,
+            404
+          ]
+        },
+        {
+          "id": 8,
+          "area_px": 2381,
+          "label_center": [
+            1394,
+            312
+          ]
+        },
+        {
+          "id": 10,
+          "area_px": 2065,
+          "label_center": [
+            1226,
+            238
+          ]
+        },
+        {
+          "id": 9,
+          "area_px": 2062,
+          "label_center": [
+            1160,
+            324
+          ]
+        },
+        {
+          "id": 12,
+          "area_px": 1597,
+          "label_center": [
+            1294,
+            300
+          ]
+        }
+      ],
+      "mask_pixels_sha256": "35c591e5b83704d461d4528d214950f75f3560f5cfac744692b46fe578a36a9a"
+    },
+    {
+      "method": "cropformer_local",
+      "title": "CropFormer (local crop)",
+      "mask_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "mask_count": 7,
+      "input_image": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\vlm_threeway_20261014\\cropformer_local_vlm_input.png",
+      "input_image_sha256": "d1011538c037b5112cbdc0774ef59aae9d59e4032264fe2f207dc37594bd3c30",
+      "mask_file": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\vlm_threeway_20261014\\cropformer_local_mask_ids.png",
+      "mask_sha256": "59dfdf93882430e72798950c45e6a0dde449e5c0e92fa963694ee94717866d98",
+      "placements": [
+        {
+          "id": 1,
+          "area_px": 49580,
+          "label_center": [
+            950,
+            700
+          ]
+        },
+        {
+          "id": 3,
+          "area_px": 40220,
+          "label_center": [
+            968,
+            234
+          ]
+        },
+        {
+          "id": 4,
+          "area_px": 18497,
+          "label_center": [
+            1302,
+            506
+          ]
+        },
+        {
+          "id": 2,
+          "area_px": 18112,
+          "label_center": [
+            1538,
+            618
+          ]
+        },
+        {
+          "id": 6,
+          "area_px": 10724,
+          "label_center": [
+            1302,
+            360
+          ]
+        },
+        {
+          "id": 5,
+          "area_px": 2136,
+          "label_center": [
+            1226,
+            238
+          ]
+        },
+        {
+          "id": 7,
+          "area_px": 112,
+          "label_center": [
+            1160,
+            338
+          ]
+        }
+      ],
+      "mask_pixels_sha256": "bbec967adec22fcdc94c783498c32725f8b2d838b5ce63376307323805299cc1"
+    },
+    {
+      "method": "sam2",
+      "title": "SAM2.1 (local AMG partition)",
+      "mask_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "mask_count": 19,
+      "input_image": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\vlm_threeway_20261014\\sam2_vlm_input.png",
+      "input_image_sha256": "a1bf98345b1bcf8c08d801d59d1d90c8dc52d616f7e7ada2bc29e85230e66012",
+      "mask_file": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\vlm_threeway_20261014\\sam2_mask_ids.png",
+      "mask_sha256": "dc2fe511cf2180b2ab6a6a4a8e9a7348e26eede7d94a3c1f8079058fbba4613a",
+      "placements": [
+        {
+          "id": 3,
+          "area_px": 39446,
+          "label_center": [
+            968,
+            234
+          ]
+        },
+        {
+          "id": 4,
+          "area_px": 17914,
+          "label_center": [
+            1538,
+            614
+          ]
+        },
+        {
+          "id": 1,
+          "area_px": 12630,
+          "label_center": [
+            1374,
+            654
+          ]
+        },
+        {
+          "id": 5,
+          "area_px": 9449,
+          "label_center": [
+            996,
+            728
+          ]
+        },
+        {
+          "id": 6,
+          "area_px": 7016,
+          "label_center": [
+            1164,
+            740
+          ]
+        },
+        {
+          "id": 8,
+          "area_px": 5112,
+          "label_center": [
+            876,
+            606
+          ]
+        },
+        {
+          "id": 10,
+          "area_px": 5003,
+          "label_center": [
+            1002,
+            486
+          ]
+        },
+        {
+          "id": 11,
+          "area_px": 4121,
+          "label_center": [
+            1338,
+            768
+          ]
+        },
+        {
+          "id": 12,
+          "area_px": 3250,
+          "label_center": [
+            896,
+            516
+          ]
+        },
+        {
+          "id": 14,
+          "area_px": 2102,
+          "label_center": [
+            1226,
+            240
+          ]
+        },
+        {
+          "id": 15,
+          "area_px": 2027,
+          "label_center": [
+            1026,
+            398
+          ]
+        },
+        {
+          "id": 13,
+          "area_px": 1945,
+          "label_center": [
+            1394,
+            312
+          ]
+        },
+        {
+          "id": 16,
+          "area_px": 1642,
+          "label_center": [
+            856,
+            392
+          ]
+        },
+        {
+          "id": 17,
+          "area_px": 1286,
+          "label_center": [
+            1298,
+            302
+          ]
+        },
+        {
+          "id": 18,
+          "area_px": 416,
+          "label_center": [
+            1170,
+            534
+          ]
+        },
+        {
+          "id": 19,
+          "area_px": 240,
+          "label_center": [
+            1432,
+            268
+          ]
+        },
+        {
+          "id": 2,
+          "area_px": 131,
+          "label_center": [
+            1480,
+            428
+          ]
+        },
+        {
+          "id": 9,
+          "area_px": 64,
+          "label_center": [
+            1034,
+            636
+          ]
+        },
+        {
+          "id": 7,
+          "area_px": 11,
+          "label_center": [
+            848,
+            801
+          ]
+        }
+      ],
+      "mask_pixels_sha256": "19248cc3616a5f238d4d10dc1a19e81c083da453e3a6e48b364950b6871ad0f1"
+    }
+  ],
+  "prepared_model": {
+    "endpoint": "http://127.0.0.1:11465",
+    "model": "qwen3.6:35b-a3b-mtp-q4_K_M",
+    "parameter_size": "35.5B",
+    "vision_capability_verified": true,
+    "inference_status": "completed_three_independent_requests",
+    "summary_file": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\vlm_threeway_20261014\\vlm_outputs\\outputs\\summary.json"
+  }
+}

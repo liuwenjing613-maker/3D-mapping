@@ -1,0 +1,139 @@
+{
+  "status": "FROZEN",
+  "scope": "path and input-count adaptation; unchanged-frame fallback; numerical rules unchanged",
+  "files": [
+    {
+      "file": "run_batch.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/run_batch.py",
+      "source_sha256": "3d19a80c16a87ab9d05b9afda6bc8285cd0817d51ee52c4d0ac41100015489f4",
+      "adapter_sha256": "fe30a9a8265735b2dfaf6be5c86af2f6eb5c0437aa300802e3fd7f93011dc87c",
+      "diff": "--- /home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/run_batch.py\n+++ /home/chenkejun/CVPR/experiments/e1_auto90_repair_20261015/run_batch.py\n@@ -7,7 +7,7 @@\n from scipy.optimize import linear_sum_assignment\n \n HERE=Path(__file__).resolve().parent\n-ROOT=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2')\n+ROOT=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015')\n REPAIR_ROOT=ROOT/'validated'\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(LEGACY/'objectwise_repair_20261007'))\n@@ -138,7 +138,7 @@\n                'same-object union and pixel overlap abstention','cross-case protected seed anchors',\n                'whole retirement additionally requires every selected object sharing that original family',\n                'each original frame/observation rebuilt once before persistent vote dedup'],\n-            'unchanged':['human masks','SAM2.1 independent forward/reverse','remaining thresholds; changed visibility fraction and bbox fraction; removed other-seed acceptance veto',\n+            'unchanged':['approved r4 exact primary masks','SAM2.1 independent forward/reverse','remaining thresholds; changed visibility fraction and bbox fraction; removed other-seed acceptance veto',\n                'vote units/weights','native confirmation','geometry/RGB','postprocessing','strict commit','unified v3']}\n     if (out/'source_freeze.json').exists():assert json.loads((out/'source_freeze.json').read_text())==freeze\n     else:f.atomic_json(out/'source_freeze.json',freeze)\n@@ -304,8 +304,8 @@\n     for condition in ['full_track']:repair(condition,scene,cases,objects,canonical,policy,association,tracking)\n     scene.verify_unchanged()\n     f.atomic_json(ROOT/'repair_complete.json',{'status':'PASS','conditions':['full_track'],\n-         'outputs_root':str(REPAIR_ROOT),'implementation':'run_batch.py','repair_cases':len(cases),'no_reliable_seed_cases':json.loads((ROOT/'inputs/local_ingest.json').read_text())['no_reliable_seed_cases'],'total_ranked_cases':30,'unannotated_cases':json.loads((ROOT/'inputs/local_ingest.json').read_text())['unannotated_cases'],'selected_masks':len(objects),'unique_objects':len(association['objects']),\n-         'GT_used_for_repair':False,'annotation_sha256':r.sha(ROOT/'inputs/human_selection.json')})\n+         'outputs_root':str(REPAIR_ROOT),'implementation':'run_batch.py','repair_cases':len(cases),'no_reliable_seed_cases':json.loads((ROOT/'inputs/local_ingest.json').read_text())['no_reliable_seed_cases'],'source_ROI_rank_slots':60,'unannotated_cases':json.loads((ROOT/'inputs/local_ingest.json').read_text())['unannotated_cases'],'selected_masks':len(objects),'unique_objects':len(association['objects']),\n+         'GT_used_for_repair':False,'annotation_sha256':r.sha(ROOT/'inputs/input_selection.json')})\n \n if __name__=='__main__':\n     parser=argparse.ArgumentParser();parser.add_argument('--identity-only',action='store_true');args=parser.parse_args()\n"
+    },
+    {
+      "file": "run_strict_repair.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/run_strict_repair.py",
+      "source_sha256": "6d578ddb82ea2ea0f4b5e37d80574dceb56961cee024f4ea62fa6bfdc0b254aa",
+      "adapter_sha256": "d890081dc2481bcc06070019d86ac525a5a3f48c5f0a2e5d673c053e2e5d7de4",
+      "diff": "--- /home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/run_strict_repair.py\n+++ /home/chenkejun/CVPR/experiments/e1_auto90_repair_20261015/run_strict_repair.py\n@@ -7,14 +7,14 @@\n from strict_vote_ops import strict_frame_keys,frame_delta\n \n HERE=Path(__file__).resolve().parent\n-OUT=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2/original_repair')\n+OUT=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015/original_repair')\n PRIOR=Path('/data/chenkejun/CVPR/results/p1a1_one_vote_20261009')\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'))\n import run_repairs as r\n import fixed_surface_repair as f\n from joint_vote_ops import batch_delta\n-ROOTS={'room2':Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2')}\n+ROOTS={'room2':Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015')}\n CONDITIONS=('full_track',)\n FIELDS=r.FIELDS\n hashes={}\n@@ -280,7 +280,7 @@\n     for path in (LEGACY/'run_repairs.py',LEGACY/'joint_vote_ops.py',LEGACY/'evidence_replacement.py',LEGACY/'strict_local_repair_20261007/fixed_surface_repair.py'):record(path)\n     tests=read(OUT/'tests_complete.json');assert tests['status']=='PASS' and tests['tests']==10\n     policy={'status':'FROZEN_BEFORE_NEW_PREDICTIONS_AND_GT','vote_rule':'one frame one point at most one ID; unresolved multi-ID abstention',\n-        'cases':{'room2':13},'conditions':list(CONDITIONS),'repair_source_roots':{s:str(p) for s,p in ROOTS.items()},\n+        'cases':{'room2':59},'conditions':list(CONDITIONS),'repair_source_roots':{s:str(p) for s,p in ROOTS.items()},\n         'changed':'effective vote reduction after rebuilding the complete raw candidate frame',\n         'fixed':['human masks','SAM tracking','identity association','accepted objects and observation plans','numeric thresholds','raw support projection','geometry/RGB','allowed repair scope','bounded final commit','postprocessing settings','v3 evaluation scope/config'],\n         'inventory_policy':'Strict condition retains its original-semantic counterpart exported stage IDs, appends newly activated existing IDs; no disappeared ID is silently dropped',\n"
+    },
+    {
+      "file": "gate_policy.json",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/gate_policy.json",
+      "source_sha256": "69fa69e870bcd93b2c452df5bc3f7fc4af41d1033709c04d9c2ced224d0a61c1",
+      "adapter_sha256": "69fa69e870bcd93b2c452df5bc3f7fc4af41d1033709c04d9c2ced224d0a61c1",
+      "diff": ""
+    },
+    {
+      "file": "gate_v1.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/gate_v1.py",
+      "source_sha256": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "adapter_sha256": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "diff": ""
+    },
+    {
+      "file": "strict_vote_ops.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/strict_vote_ops.py",
+      "source_sha256": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "adapter_sha256": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "diff": ""
+    },
+    {
+      "file": "one_vote.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/one_vote.py",
+      "source_sha256": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc",
+      "adapter_sha256": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc",
+      "diff": ""
+    },
+    {
+      "file": "test_strict_repair.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/test_strict_repair.py",
+      "source_sha256": "831bb4f7e82361bbe201a4f5d9f3066a45d855bcce450148432de16ee56d2ffe",
+      "adapter_sha256": "831bb4f7e82361bbe201a4f5d9f3066a45d855bcce450148432de16ee56d2ffe",
+      "diff": ""
+    },
+    {
+      "file": "test_history_core.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/test_history_core.py",
+      "source_sha256": "052170a9cec7b6b0b36ab9e2810c6f655c35efa47c55c7d563bdd4274686245e",
+      "adapter_sha256": "052170a9cec7b6b0b36ab9e2810c6f655c35efa47c55c7d563bdd4274686245e",
+      "diff": ""
+    },
+    {
+      "file": "joint_batch_ops.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/joint_batch_ops.py",
+      "source_sha256": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "adapter_sha256": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "diff": ""
+    },
+    {
+      "file": "test_gate_v1.py",
+      "source": "/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2/test_gate_v1.py",
+      "source_sha256": "aa1f95cf8db37917ce0bdabf734814628100bd2af57722f566ff171e9e819ca5",
+      "adapter_sha256": "aa1f95cf8db37917ce0bdabf734814628100bd2af57722f566ff171e9e819ca5",
+      "diff": ""
+    },
+    {
+      "file": "expand_room2.py",
+      "source": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/expand_room2.py",
+      "source_sha256": "75898f4ca5aca8bc0ca98b938e6650f6b9b60fc931ba6506d64bac871c87f80b",
+      "adapter_sha256": "97be634f4d168a12e6997d8523f4f0df4429c657ad6dc379cf114566e969d040",
+      "diff": "--- /home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/expand_room2.py\n+++ /home/chenkejun/CVPR/experiments/e1_auto90_repair_20261015/expand_room2.py\n@@ -9,7 +9,7 @@\n import run_history_core as h\n from adaptive_core import choose_core\n from observation_ops import visible_samples,mask_support,choose_view_representatives,connected_expansion,resolve_claims\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room2_observation_repair_20261012');O=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2');A=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2/modified_repair/room2')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015/e1');O=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015');A=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015/modified_repair/room2')\n read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()\n def dump(p,x):h.f.atomic_json(p,x)\n def foreground(pid,fid):\n@@ -33,10 +33,10 @@\n def main():\n  global scene,groups,dec,info,obj,coreowner\n  R.mkdir(parents=True,exist_ok=True);assert not (R/'region.npz').exists()\n- policy={'method':'room2_all_annotated_observation_expansion_v1','control':str(A),'scope':'all 38 selected masks, 32 frozen persistent identities','same_identity_aliases':'erode each accepted member mask then union, count each frame once','core':'largest erosion radius 10 down to 1 giving max(20,ceil(0.2*seed projected unique points)); preserve existing core claims; conflicts ambiguous','depth_tolerance_m':.02,'mask_erosion_pixels':1,'minimum_support_frames':3,'minimum_supporting_camera_representatives':2,'camera_separation_m':.05,'minimum_visible_positive_fraction':.8,'growth_radius_m':.02,'support':'depth-visible TSDF reverse projection into accepted mask; frozen forward vote projection unchanged','cross_target_growth':'simultaneous claims, different IDs ambiguous, remove ambiguous bridges then reconnect to core','history':'retained original sampled source observations only; same visible point relabel to unique confirmed region identity, unrestricted historical IDs','E1':'expanded history only','SAM2_and_mask_gate':'frozen V2 reused','final_commit':'only points with aggregate vote counts changed vs control','GT_read_by_mapper':False,'GT_used_for_thresholds':False,'threshold_sweep':False,'architecture_frozen':True}\n+ policy={'method':'room2_all_annotated_observation_expansion_v1','control':str(A),'scope':'all 90 approved unique primary masks, 90 frozen persistent identities','same_identity_aliases':'erode each accepted member mask then union, count each frame once','core':'largest erosion radius 10 down to 1 giving max(20,ceil(0.2*seed projected unique points)); preserve existing core claims; conflicts ambiguous','depth_tolerance_m':.02,'mask_erosion_pixels':1,'minimum_support_frames':3,'minimum_supporting_camera_representatives':2,'camera_separation_m':.05,'minimum_visible_positive_fraction':.8,'growth_radius_m':.02,'support':'depth-visible TSDF reverse projection into accepted mask; frozen forward vote projection unchanged','cross_target_growth':'simultaneous claims, different IDs ambiguous, remove ambiguous bridges then reconnect to core','history':'retained original sampled source observations only; same visible point relabel to unique confirmed region identity, unrestricted historical IDs','E1':'expanded history only','SAM2_and_mask_gate':'same V2 gate applied to new SAM2.1 tracks','final_commit':'only points with aggregate vote counts changed vs control','GT_read_by_mapper':False,'GT_used_for_thresholds':False,'threshold_sweep':False,'architecture_frozen':True}\n  dump(R/'policy.json',policy);scene=h.r.Scene('room2');cases,assoc,obj,info,canonical,fixed=h.catalog(O);groups={}\n  for tid,can in canonical.items():groups.setdefault(int(fixed[can]),[]).append(int(tid))\n- groups={k:sorted(v) for k,v in groups.items()};assert sum(map(len,groups.values()))==38 and len(groups)==32\n+ groups={k:sorted(v) for k,v in groups.items()};assert sum(map(len,groups.values()))==90 and len(groups)==90\n  dec={x['frame']:x for x in read(O/'validated/full_track/frame_decisions.json')['frames']};priorz=dict(np.load(A/'core_claims.npz'));prior=np.full(len(scene.xyz),-1,np.int32);prior[priorz['surface_point_index']]=priorz['claimed_persistent_id'];coreclaims=[];coreids=[];objects=[]\n  for case in read(O/'seed_manifest.json')['seeds']:\n   if case['status']!='READY':continue\n"
+    },
+    {
+      "file": "run_observation_repair.py",
+      "source": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/run_observation_repair.py",
+      "source_sha256": "82b3e40e6ea23c44d71000ccce89ca9af1e37b8703f820baa41e8ac2078b607c",
+      "adapter_sha256": "8675015b9fd2f93ef57c53551148d0b41d7eb3417d9e48ca8fac091de1f22f71",
+      "diff": "--- /home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/run_observation_repair.py\n+++ /home/chenkejun/CVPR/experiments/e1_auto90_repair_20261015/run_observation_repair.py\n@@ -7,7 +7,7 @@\n sys.path.insert(0,'/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2')\n import run_history_core as h\n from observation_ops import visible_samples,revise_all_history,keyset,strict_frame\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room2_observation_repair_20261012');O=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2');A=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2/modified_repair/room2');B=O/'original_repair/room2/full_track';NAMES=['E1_expanded_history']\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015/e1');O=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015');A=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015/modified_repair/room2');B=O/'original_repair/room2/full_track';NAMES=['E1_expanded_history']\n read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();load=lambda p:dict(np.load(p))\n def dump(p,v):h.f.atomic_json(p,v)\n def emit(stage,**kw):v={'stage':stage,**kw,'unix':time.time()};dump(R/'progress.json',v);print(json.dumps(v),flush=True)\n@@ -23,7 +23,16 @@\n  final0=load(A/'final/instance_surface.npz');native0=load(A/'native/instance_surface.npz');e0=load(A/'native/surface_evidence.npz');pair0=load(A/'native/surface_instance_frame_votes.npz');bk,bv=h.encode(pair0,base);np.testing.assert_array_equal(scene.xyz,final0['xyz_m']);claims=load(A/'core_claims.npz');prior=np.full(len(scene.xyz),-1,np.int32);prior[claims['surface_point_index']]=claims['claimed_persistent_id'];regiondata=load(R/'region.npz');region=regiondata['surface_point_index'];owner=regiondata['owner'];np.testing.assert_array_equal(prior,regiondata['prior_owner']);expanded=owner!=-1\n  allowed=expanded|(prior!=-1);apoints=np.flatnonzero(allowed);all_before=[];all_after=[[]];removed=[[]];added=[[]];receipts=[[]];sources=[];projected=0;skipped=0\n  for j,fid in enumerate(sorted(scene.records)):\n-  btx=load(B/'transactions'/f'f{fid:06d}.npz');path=A/'transactions'/f'f{fid:06d}.npz';atx=load(path) if path.exists() else btx;candidate0=atx['new_candidate_keys'];before=atx['new_frame_keys'];np.testing.assert_array_equal(strict_frame(candidate0,base),before)\n+  # New seeds may have frames with no accepted tracks. Reconstruct their exact\n+  # unchanged original candidate set instead of assuming a transaction exists.\n+  bpath=B/'transactions'/f'f{fid:06d}.npz'\n+  if bpath.exists():btx=load(bpath)\n+  else:\n+   record=scene.records[fid];z=h.load(record['support_file'],record['support_sha256']);pp=z['surface_point_index'];ll=z['mask_local_id'];tt=np.zeros(int(ll.max())+1,np.int64)\n+   for mid0 in np.unique(ll):tt[mid0]=scene.lookup[(fid,int(mid0))]\n+   kk=keyset(pp,tt[ll],base);btx={'new_candidate_keys':kk,'new_frame_keys':strict_frame(kk,base)}\n+   assert not dec[fid]['accepted_track_ids']\n+  path=A/'transactions'/f'f{fid:06d}.npz';atx=load(path) if path.exists() else btx;candidate0=atx['new_candidate_keys'];before=atx['new_frame_keys'];np.testing.assert_array_equal(strict_frame(candidate0,base),before)\n   affected=np.any(expanded[candidate0//base]);after=[before];candidates=[candidate0]\n   if affected:\n    frame=scene.source.load_frame(fid);record=scene.records[fid];original=h.load(record['support_file'],record['support_sha256']);table=np.zeros(int(frame.mask_local.max())+1,np.int64)\n"
+    },
+    {
+      "file": "observation_ops.py",
+      "source": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/observation_ops.py",
+      "source_sha256": "24c019f07ef81580e356fbd85307897bde1230456b5f2fd37ac28dbec5da95c0",
+      "adapter_sha256": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "diff": ""
+    },
+    {
+      "file": "adaptive_core.py",
+      "source": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/adaptive_core.py",
+      "source_sha256": "e75de13d1e21b843237aed50cd2b5713ba7fca430f03e7e7bf59f72deb8961fb",
+      "adapter_sha256": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "diff": ""
+    },
+    {
+      "file": "test_observation_ops.py",
+      "source": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/test_observation_ops.py",
+      "source_sha256": "792e50390fd43e0df90d2191255e066eb6b2228674d56453ab50cd5d2101b3e0",
+      "adapter_sha256": "075ff2dd2d97a8aa257ba9cb3b61dcc6c87c8856952d46e3c457bc7839062f14",
+      "diff": ""
+    },
+    {
+      "file": "test_adaptive_core.py",
+      "source": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/test_adaptive_core.py",
+      "source_sha256": "d98ade291d0050d43e1bac6e985b7e781180b715e27837cbb1899383d84d96c6",
+      "adapter_sha256": "b54436583bcca1ccd833b0707f7d8ff620e67600df67b808d5eb8cae2f126aa8",
+      "diff": ""
+    },
+    {
+      "file": "run_history_core.py",
+      "source": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/dependencies/run_history_core.py",
+      "source_sha256": "233bac8800783b5f9102403dbfef0b586f6a3b60f361a77a719ee3830a1ecbe3",
+      "adapter_sha256": "3fb1c211dc6d1a5207193c94f14d274695c5950f21f175bf48bd31a379743e78",
+      "diff": "--- /home/chenkejun/CVPR/worktrees/v3-r2-main-20261009/instance_repair/frozen_e1_20261012/room2/dependencies/run_history_core.py\n+++ /home/chenkejun/CVPR/experiments/e1_auto90_repair_20261015/run_history_core.py\n@@ -12,8 +12,8 @@\n from history_core_ops import core_claims,retarget_selection,strict_frame\n \n HERE=Path(__file__).resolve().parent\n-OUT=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2/modified_repair')\n-STRICT=Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2/original_repair')\n+OUT=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015/modified_repair')\n+STRICT=Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015/original_repair')\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n BATCH=Path('/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(BATCH))\n@@ -21,7 +21,7 @@\n import fixed_surface_repair as f\n from joint_vote_ops import batch_delta\n from joint_batch_ops import merge_foregrounds\n-ROOTS={'room2':Path('/data/chenkejun/CVPR/results/mask_gate_no_foreign_v2_20261010/room2')}\n+ROOTS={'room2':Path('/data/chenkejun/CVPR/results/e1_auto90_repair_20261015')}\n protected={}\n def protect(path,expected=None):\n     path=Path(path);d=r.sha(path)\n@@ -291,7 +291,7 @@\n     for p in used:protect(p,oldhashes[str(p)])\n     for p in HERE.glob('*.py'):protect(p)\n     dump(OUT/'policy.json',{'status':'FROZEN_BEFORE_TWO_SCENE_MAPPING_AND_NEW_R2_SCORING','method':'history_core_reassociation_v1',\n-        'scenes':['room2'],'repair_cases':{'room2':13},'all_selected_seed_masks':{'room2':38},\n+        'scenes':['room2'],'repair_cases':{'room2':59},'all_selected_seed_masks':{'room2':90},\n         'control':'Frozen strict one-vote+abstention full-track repair',\n         'manual_core_erosion_pixels':10,'empty_core_policy':'No fallback or parameter relaxation',\n         'projection_stride':2,'projection_max_distance_m':.015,'maximum_depth_m':10,\n"
+    },
+    {
+      "file": "run_case.py",
+      "source": "/home/chenkejun/CVPR/experiments/pilot10_repair_20261007/objectwise_repair_20261007/run_case.py",
+      "source_sha256": "7c7727e78ba8cdb05ed8ba852c510e23bd6bcabc22884475a8dd74696d39e68f",
+      "adapter_sha256": "7c7727e78ba8cdb05ed8ba852c510e23bd6bcabc22884475a8dd74696d39e68f",
+      "diff": ""
+    },
+    {
+      "file": "objectwise_ops.py",
+      "source": "/home/chenkejun/CVPR/experiments/pilot10_repair_20261007/objectwise_repair_20261007/objectwise_ops.py",
+      "source_sha256": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "adapter_sha256": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "diff": ""
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+SAM-only source rule correction, revision 2 of the room2 instance seed grouping delivery.
+
+The prior implementation incorrectly allowed TSDF ranking to override the user's existing window/cabinet SAM-only source constraint. Root cause: candidate M0105 was already SEMANTIC_CROPFORMER_REPLACED in one ROI but retained status=selected in another occurrence. Aggregating only selected rows revived it and allowed it to become the primary of old G014.
+
+Correct order: enforce source eligibility globally across all ROI occurrences; then group with ordinary 3D IoU strictly greater than 0.25; then choose the maximum-TSDF-support candidate from those eligible sources. A window/cabinet group contains SAM members only, including auxiliary members. Crop contact remains warning-only. Existing semantic recognition and mask shapes are unchanged.
+
+source_policy.py derives the global replacement ledger from the frozen r3 selection and its original SAM correspondence evidence. A rejected CropFormer candidate cannot re-enter through another ROI. Exact full-mask duplicate aliases retain only SAM if any corresponding CropFormer alias was semantically replaced. A final export assertion checks every member of every semantic group, not only the primary; conflicting CropFormer members stop export.
+
+Result: removed M0105 (frame 885, original CropFormer ID 10, one selected occurrence); all original SAM candidates retained unchanged. 836 eligible masks, 1406 eligible occurrences, 202 groups/unique seeds (83 multi-member, 119 singleton). All 22 recognized semantic groups have zero CropFormer members and zero CropFormer primaries. No grouping threshold, segmentation, semantic score, tracking, map, or evaluation change.
+
+The full grouping is recomputed after source exclusion. Old G014 members now appear in G017, G028 and G029 with SAM-only membership. Mask IDs are retained from the input ordering; group numbering follows the new seed order. Browser review storage is isolated by output hash, so previous review notes are not overwritten or applied to new group numbers.
+
+Regression checks cover a replaced candidate revived from another ROI, an exact duplicate with SAM and CropFormer aliases, preservation of generic-object CropFormer, and rejection of mixed-source semantic groups. Full output checks verify source identities, exported support/mask hashes, grouping replay, all SAM candidates unchanged, and absence of M0105 from active groups, seed export, and published preview assets.
+
+The existing local URL is updated: http://127.0.0.1:8785/room2_E1_instance_seed_groups_20261015/index.html
+Previous immutable result/code archive remains in the unsuffixed instance_seed_grouping_20261015 server directories.
+Corrected code: /home/chenkejun/CVPR/experiments/instance_seed_grouping_20261015_r2
+Corrected data: /data/chenkejun/CVPR/results/instance_seed_grouping_20261015_r2

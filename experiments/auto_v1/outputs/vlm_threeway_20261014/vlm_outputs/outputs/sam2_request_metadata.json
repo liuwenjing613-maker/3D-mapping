@@ -1,0 +1,25 @@
+{
+  "model": "qwen3.6:35b-a3b-mtp-q4_K_M",
+  "messages": [
+    {
+      "role": "user",
+      "content": "请独立检查这张图中的实例分割。左侧是原始 RGB，右侧是同一图像上的 mask 颜色、边界和原始编号。编号只在当前图内有效；0 表示未分配，不是候选。不要参考其他方法的结果。选择能够可靠判为“一个独立物体的完整可见区域”的 mask 编号：一个 mask 只能覆盖一个物体，应覆盖它在当前 RGB 中可见的主体和部件，且没有明显漏分、混入其他物体或背景。自然遮挡的不可见部分不要求补全；只覆盖物体局部、桌腿或瓶盖等部件、合并多个物体、墙面/地面/地毯纹理碎片均不合格。物体被裁剪边缘截断、图像模糊或难以辨认时标为不确定，不猜测。颜色和编号只是分割标记，不代表类别或正确答案。请返回 JSON：accepted_ids（确认完整独立实例的编号列表）、uncertain_ids、rejected_ids，并为每个 accepted 和 uncertain 编号给出 object 与简短 reason。全部候选编号必须恰好归入一个列表，不编造图中不存在的编号。\n本图全部候选 mask 编号：[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]。",
+      "images": [
+        {
+          "file": "/data/chenkejun/CVPR/results/vlm_threeway_20261014/inputs/sam2_vlm_input.png",
+          "sha256": "a1bf98345b1bcf8c08d801d59d1d90c8dc52d616f7e7ada2bc29e85230e66012"
+        }
+      ]
+    }
+  ],
+  "stream": false,
+  "think": false,
+  "format": "json",
+  "options": {
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 32768,
+    "num_predict": 4096
+  },
+  "keep_alive": -1
+}

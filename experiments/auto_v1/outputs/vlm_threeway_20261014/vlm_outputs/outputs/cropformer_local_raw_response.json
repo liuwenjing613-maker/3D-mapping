@@ -1,0 +1,16 @@
+{
+  "model": "qwen3.6:35b-a3b-mtp-q4_K_M",
+  "created_at": "2026-10-14T07:24:07.318656771Z",
+  "message": {
+    "role": "assistant",
+    "content": "```json\n{\n  \"accepted_ids\": [\n    {\n      \"id\": 4,\n      \"object\": \"桌子\",\n      \"reason\": \"Mask 4 完整覆盖了白色圆桌的桌面和支架，是一个结构完整的独立家具实例。\"\n    }\n  ],\n  \"uncertain_ids\": [\n    {\n      \"id\": 6,\n      \"object\": \"桌上的杂物堆（包含瓶子、盒子等）\",\n      \"reason\": \"Mask 6 覆盖了桌面上的一堆物品，但由于这些物体相互堆叠且形态不规则，难以界定是单一物体还是多个物体的混合体。\"\n    }\n  ],\n  \"rejected_ids\": [\n    {\n      \"id\": 1,\n      \"object\": \"地毯\",\n      \"reason\": \"属于背景纹理碎片，非独立前景物体。\"\n    },\n    {\n      \"id\": 2,\n      \"object\": \"沙发/座椅边缘\",\n      \"reason\": \"位于图像边缘，被严重截断且无法辨认完整形态。\"\n    },\n    {\n      \"id\": 3,\n      \"object\": \"墙面\",\n      \"reason\": \"属于背景纹理碎片，非独立前景物体。\"\n    },\n    {\n      \"id\": 5,\n      \"object\": \"桌上的绿色瓶子\",\n      \"reason\": \"Mask 5 仅覆盖了瓶子的局部（瓶颈部分），未能覆盖完整物体。\"\n    },\n    {\n      \"id\": 7,\n      \"object\": \"桌上的白色盒子\",\n      \"reason\": \"Mask 7 仅覆盖了盒子的一个角，属于物体的局部部件，未覆盖完整主体。\"\n    }\n  ]\n}\n```"
+  },
+  "done": true,
+  "done_reason": "stop",
+  "total_duration": 4225389366,
+  "load_duration": 472706347,
+  "prompt_eval_count": 1673,
+  "prompt_eval_duration": 932195000,
+  "eval_count": 383,
+  "eval_duration": 2502361000
+}

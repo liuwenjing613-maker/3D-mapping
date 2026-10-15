@@ -1,0 +1,16 @@
+{
+  "model": "qwen3.6:35b-a3b-mtp-q4_K_M",
+  "created_at": "2026-10-14T07:24:14.742689398Z",
+  "message": {
+    "role": "assistant",
+    "content": "```json\n{\n  \"accepted_ids\": [\n    {\n      \"id\": 10,\n      \"object\": \"绿色椅子\",\n      \"reason\": \"Mask 10 完整覆盖了前景中可见的绿色椅子主体，边界清晰，未混入背景。\"\n    },\n    {\n      \"id\": 18,\n      \"object\": \"桌子腿\",\n      \"reason\": \"Mask 18 准确覆盖了桌子的金属支撑腿部分，属于该独立物体的一个部件。\"\n    }\n  ],\n  \"uncertain_ids\": [\n    {\n      \"id\": 15,\n      \"object\": \"墙面/踢脚线\",\n      \"reason\": \"Mask 15 覆盖了桌子后方的墙面区域，虽然边界清晰，但作为背景纹理碎片，其作为独立物体的属性较弱。\"\n    }\n  ],\n  \"rejected_ids\": [\n    {\n      \"id\": 1,\n      \"object\": \"地毯\",\n      \"reason\": \"Mask 1 仅覆盖了地毯的一小块区域，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 2,\n      \"object\": \"墙面/沙发边缘\",\n      \"reason\": \"Mask 2 位于图像右侧边缘，覆盖的是背景物体（可能是沙发或墙壁）的局部，且被裁剪。\"\n    },\n    {\n      \"id\": 3,\n      \"object\": \"墙面\",\n      \"reason\": \"Mask 3 覆盖了大面积的背景墙面，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 4,\n      \"object\": \"沙发/椅子\",\n      \"reason\": \"Mask 4 位于图像右侧边缘，覆盖的是另一个物体的局部，且被裁剪。\"\n    },\n    {\n      \"id\": 5,\n      \"object\": \"地毯\",\n      \"reason\": \"Mask 5 仅覆盖了地毯的一小块区域，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 6,\n      \"object\": \"地毯\",\n      \"reason\": \"Mask 6 仅覆盖了地毯的一小块区域，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 7,\n      \"object\": \"地毯/角落\",\n      \"reason\": \"Mask 7 位于图像左下角边缘，覆盖的是地毯的极小局部，且被裁剪。\"\n    },\n    {\n      \"id\": 8,\n      \"object\": \"地毯\",\n      \"reason\": \"Mask 8 仅覆盖了地毯的一小块区域，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 9,\n      \"object\": \"椅子腿/缝隙\",\n      \"reason\": \"Mask 9 仅覆盖了绿色椅子腿部与地面接触处的极小缝隙或局部，不是完整物体。\"\n    },\n    {\n      \"id\": 11,\n      \"object\": \"地毯\",\n      \"reason\": \"Mask 11 仅覆盖了地毯的一小块区域，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 12,\n      \"object\": \"墙面/踢脚线\",\n      \"reason\": \"Mask 12 覆盖了桌子左侧的墙面或踢脚线区域，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 13,\n      \"object\": \"瓶子局部\",\n      \"reason\": \"Mask 13 仅覆盖了桌上橙色瓶子的局部，未覆盖完整物体。\"\n    },\n    {\n      \"id\": 14,\n      \"object\": \"绿色瓶子\",\n      \"reason\": \"Mask 14 仅覆盖了桌上绿色瓶子的顶部或局部，未覆盖完整物体。\"\n    },\n    {\n      \"id\": 16,\n      \"object\": \"墙面/踢脚线\",\n      \"reason\": \"Mask 16 覆盖了桌子左侧的墙面或踢脚线区域，属于背景纹理碎片。\"\n    },\n    {\n      \"id\": 17,\n      \"object\": \"蓝色瓶子\",\n      \"reason\": \"Mask 17 仅覆盖了桌上蓝色瓶子的局部，未覆盖完整物体。\"\n    },\n    {\n      \"id\": 19,\n      \"object\": \"瓶子局部\",\n      \"reason\": \"Mask 19 仅覆盖了桌上橙色瓶子的顶部或局部，未覆盖完整物体。\"\n    }\n  ]\n}\n```"
+  },
+  "done": true,
+  "done_reason": "stop",
+  "total_duration": 7401800982,
+  "load_duration": 486495235,
+  "prompt_eval_count": 1719,
+  "prompt_eval_duration": 938891000,
+  "eval_count": 1003,
+  "eval_duration": 5655344000
+}

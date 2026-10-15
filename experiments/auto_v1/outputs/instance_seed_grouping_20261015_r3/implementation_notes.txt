@@ -1,0 +1,17 @@
+Room2 E1 seed selection revision 3 — 2026-10-15
+
+User change: remove masks touching artificial source-crop edges before same-instance grouping and seed selection.
+
+Source eligibility still enforces the global window/cabinet SAM-only route. Previously replaced CropFormer masks cannot re-enter through another ROI occurrence. M0105 remains excluded. The crop filter also applies to semantic SAM masks; there is no CropFormer fallback.
+
+Artificial crop contact means an exact mask bounding-box edge equals a source-crop edge strictly inside the original image. Natural full-image border contact alone is retained. Full-frame original CropFormer masks are not artificial-crop masks. Duplicate aliases are checked together; this input has no mixed-contact duplicate groups.
+
+After source eligibility, 836 masks remain. The crop filter removes 319 masks (261 SAM, 58 local CropFormer), accounting for 371 occurrences. The remaining 517 masks / 1035 occurrences produce 150 primary seeds: 65 multi-member groups and 85 singletons. Of the previous groups, 52 lose every candidate and produce no seed; 56 previous primaries are removed. All 7 remaining semantic groups contain only SAM masks. Active and excluded binary mask pixels and TSDF support sets are unchanged.
+
+Grouping is unchanged: sort by descending unique TSDF support count; take each remaining highest-ranked mask as primary; absorb candidates with full-support ordinary 3D IoU strictly greater than 0.25 against that primary, checked as 4 * intersection > union. No transitive grouping is used.
+
+The existing local review URL is updated in place. The default view contains active groups only. A collapsed gallery exposes all 319 excluded masks with original colors, source IDs, previous group IDs, contact edges, and red dashed crop rectangles. Excluded records are review-only and absent from the seed manifest.
+
+Validation passed: threshold/crop/source-policy checks, exact grouping replay, artifact and mask hashes, exact partition of the previous eligible set, all occurrence accounting, all active masks free from artificial crop contact, all semantic members SAM-only. Browser checks cover counts, exclusion search/pagination, full-image preview, original colors, mask visibility controls, and no console errors.
+
+No tracking, repair, map write, or GT evaluation was run. Existing evaluation protocol and geometry inputs were not changed.

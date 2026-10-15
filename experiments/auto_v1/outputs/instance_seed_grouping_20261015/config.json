@@ -1,0 +1,16 @@
+{
+  "schema": "same-instance-seed-grouping-ordinary-3diou-v2",
+  "scene": "room2",
+  "input_selection": "/data/chenkejun/CVPR/results/semantic_sam_route_20261015/selection.json",
+  "iou": 0.25,
+  "comparison": "strictly greater than",
+  "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",
+  "crop_contact_policy": "warning_only_user_confirmed",
+  "exact_duplicate_key": "frame + identical full-image binary mask; retain every original occurrence",
+  "grouping": "descending TSDF support count; compare remaining masks only to the fixed primary seed; no transitive expansion",
+  "primary_seed": "largest unique TSDF support count",
+  "tie_break": "ascending frame, model index, full-mask digest; no area ranking",
+  "tracking_requested": false,
+  "map_write": false,
+  "GT_used": false
+}

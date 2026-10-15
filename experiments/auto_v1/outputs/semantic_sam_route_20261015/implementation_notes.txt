@@ -1,0 +1,48 @@
+room2 E1: SAM semantic direct routing, 2026-10-15
+
+Scope approved by user: windows including blinds; cabinets with a cabinet body,
+wardrobes, cupboards; exclude open bookshelves and storage racks. Use existing
+SAM partition masks and IDs. A semantic hit is directly selected; corresponding
+CropFormer candidates (intersection / smaller full mask area >= 0.50) are removed
+from ordinary processing and remain display-only alternatives.
+
+Order: existing SAM partition -> image/text recognition -> direct semantic route
+or unchanged overmerge/intersection/noise/version rules. No semantic hit is later
+vetoed by overmerge, lack of anomaly intersection, small size, or whole/part rules.
+Inputs are unfiltered partitions; original masks and TSDF have not been modified.
+
+Recognition: cached OpenCLIP ViT-H-14, laion2b_s32b_b79k, open-clip-torch 2.24.0.
+Own-mask bbox, neutral-gray exterior and square padding, fixed English prompts.
+Cosines computed from normalized float32 vectors after fp16 model inference.
+Target max minus control max >= 0.03. These scores are not probabilities.
+
+Cabinet refinement explicitly authorized by user after reviewing initial failure:
+all 10 mask-only cabinet hits were small unrelated fragments. Add an independent
+RGB context observation for cabinet classification, using the same frozen model
+and vocabulary. Expand each bbox side by max(80 native pixels, bbox width/height),
+clip to the same ROI input. The context must also favor cabinet-family terms over
+ALL other terms by >= 0.03. There is no area/noise threshold in this recognition.
+Context is required for cabinet recognition only; window decisions unchanged.
+
+Final: 337 unique source candidates classified as windows, 398 ROI occurrences;
+0 cabinet candidates pass both semantic observations. The 10 initial cabinet
+hits and both sets of scores remain available for inspection. No positive cabinet
+mask is confirmed in this batch, so cabinet recall has not been validated.
+The thresholds and context size are initial experiment settings, not calibrated
+confidence guarantees. Broad context may favor nearby objects; partial windows,
+mask shape biases and correlated errors still require human quality review.
+
+Final routing: 1407 selected occurrences (398 semantic + 1009 ordinary),
+457 CropFormer counterparts withdrawn (9 were selected in r2),
+405 crops without semantic hits match all r2 statuses exactly.
+60 ranking slots deduplicate to 32 ROIs, 630 view/crop jobs. Counts are not objects.
+
+Reproduce on server: classify.py, refine_cabinet.py, route.py in this folder.
+The classifier reuses all frozen partitions; no segmentation rerun is needed.
+The refinement preserves semantic_mask_only.json and original masked scores.
+route.py verifies source hashes, recomputes pixel matching, and uses byte-identical
+r2 selection_rules.py. build_page.py restores raw partition assets, original
+colors and existing IDs, then applies status-based display. No GT labels used.
+
+Runtime/data provenance in semantic.json, audit.json, final_validation.json.
+Model source documentation: https://github.com/mlfoundations/open_clip/tree/v2.24.0
