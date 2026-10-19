@@ -1,0 +1,6275 @@
+{
+  "status": "auto_v2_room2_confirmed_35",
+  "tracking_requested": false,
+  "map_write": false,
+  "rule": {
+    "schema": "same-instance-seeds-edge-noise-v5",
+    "scene": "room2",
+    "input_selection": "/data/chenkejun/CVPR/results/semantic_sam_route_20261015/selection.json",
+    "iou": 0.25,
+    "comparison": "strictly greater than",
+    "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",
+    "crop_contact_policy": "exclude any mask touching an artificial source-crop edge before grouping; original image borders alone are allowed",
+    "crop_filter_applies_to": "all source-eligible masks including semantic SAM; no CropFormer fallback for window/cabinet",
+    "previous_grouping": "/data/chenkejun/CVPR/results/instance_seed_grouping_20261015_r3/grouping.json",
+    "exact_duplicate_key": "frame + identical full-image binary mask; retain every original occurrence",
+    "grouping": "descending TSDF support count; compare remaining masks only to the fixed primary seed; no transitive expansion",
+    "source_policy": "window/cabinet SAM-only; any prior semantic CropFormer replacement is global across all ROI occurrences",
+    "policy_order": "SAM-only source eligibility, artificial crop filter, area and edge morphology filter, ordinary 3D IoU grouping, maximum TSDF support count",
+    "primary_seed": "largest unique TSDF support count among source-eligible masks",
+    "tie_break": "ascending frame, model index, full-mask digest; no area ranking",
+    "tracking_requested": false,
+    "map_write": false,
+    "GT_used": false,
+    "noise_filter": {
+      "area_lt": 100,
+      "max_core_fraction": 0.05,
+      "thin_radius": 3,
+      "thin_min_extent": 80,
+      "sparse_radius": 8,
+      "sparse_max_bbox_fill": 0.1,
+      "sparse_min_extent": 80,
+      "large_sparse_radius": 12,
+      "large_sparse_max_bbox_fill": 0.05,
+      "large_sparse_min_extent": 200
+    },
+    "noise_policy": "whole-mask exclusion; no pixel erosion; screen all previous crop-safe eligible masks including SAM"
+  },
+  "groups": [
+    {
+      "id": "G006",
+      "primary": {
+        "frame": 735,
+        "area": 45620,
+        "bbox": [
+          661,
+          107,
+          865,
+          414
+        ],
+        "digest": "c13571b96583845087f2348d9643a12eb0bc9fa8b5fc391e5fd4c04dad214416",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0001_v3_f000735_balanced",
+            "ROI": "ROI-T0001",
+            "uid": "room2-918c0a39ec3a355e",
+            "frame": 735,
+            "model": 2,
+            "label": 4,
+            "candidate_id": "e423cddb00f584c64bf7",
+            "source_index": 302,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-T0001_v3_f000735_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              626
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0001_v3_f000735_balanced",
+          "ROI": "ROI-T0001",
+          "uid": "room2-918c0a39ec3a355e",
+          "frame": 735,
+          "model": 2,
+          "label": 4,
+          "candidate_id": "e423cddb00f584c64bf7",
+          "source_index": 302,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-T0001_v3_f000735_balanced.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            626
+          ],
+          "selection_reason": "SEMANTIC_SAM_DIRECT",
+          "semantic_hit": true,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 31336,
+        "index": 17,
+        "id": "M0023",
+        "group": 5,
+        "mask": "masks/M0023.png",
+        "mask_sha256": "62dc7a86c5b8f9c04c883d995218a5c54fc8b8ea31da347017904158d211858a",
+        "support_sha256": "843d78baefd0081791cadc70aa4567ddba016ca9f177622a6203792d96a9c9d9",
+        "rois": [
+          "room2-918c0a39ec3a355e"
+        ],
+        "candidate_ids": [
+          "e423cddb00f584c64bf7"
+        ],
+        "noise_features": {
+          "area": 45620,
+          "bbox_width": 204,
+          "bbox_height": 307,
+          "bbox_area": 62628,
+          "extent": 307,
+          "bbox_fill": 0.7284281790892253,
+          "components": 1,
+          "largest_component": 45620,
+          "max_radius": 85.0,
+          "p95_radius": 73.97972695272672,
+          "core_pixels": {
+            "2": 43920,
+            "3": 43062,
+            "8": 38880,
+            "12": 35651
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G006",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0024",
+        "M0025",
+        "M0026",
+        "M0027",
+        "M0029",
+        "M0030",
+        "M0031",
+        "M0032",
+        "M0033",
+        "M0101",
+        "M0102",
+        "M0109",
+        "M0122",
+        "M0139",
+        "M0141",
+        "M0145",
+        "M0147",
+        "M0203"
+      ],
+      "validation_frames": [
+        {
+          "frame": 310,
+          "members": [
+            25
+          ],
+          "representative": 25
+        },
+        {
+          "frame": 455,
+          "members": [
+            77
+          ],
+          "representative": 77
+        },
+        {
+          "frame": 580,
+          "members": [
+            87,
+            89,
+            91,
+            92
+          ],
+          "representative": 87
+        },
+        {
+          "frame": 590,
+          "members": [
+            68
+          ],
+          "representative": 68
+        },
+        {
+          "frame": 730,
+          "members": [
+            19,
+            20
+          ],
+          "representative": 19
+        },
+        {
+          "frame": 740,
+          "members": [
+            21,
+            23,
+            24
+          ],
+          "representative": 21
+        },
+        {
+          "frame": 745,
+          "members": [
+            26
+          ],
+          "representative": 26
+        },
+        {
+          "frame": 750,
+          "members": [
+            27
+          ],
+          "representative": 27
+        },
+        {
+          "frame": 830,
+          "members": [
+            64,
+            65
+          ],
+          "representative": 64
+        },
+        {
+          "frame": 870,
+          "members": [
+            127
+          ],
+          "representative": 127
+        }
+      ],
+      "original_track_id": 6
+    },
+    {
+      "id": "G007",
+      "primary": {
+        "frame": 1015,
+        "area": 30399,
+        "bbox": [
+          556,
+          0,
+          779,
+          412
+        ],
+        "digest": "c0a3b6d7abb16375a0a46c478f7f45012786f071dad30ed28a55bfd700742c41",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0020_v2_f001015_context",
+            "ROI": "ROI-T0020",
+            "uid": "room2-2ddf8aed098beb94",
+            "frame": 1015,
+            "model": 2,
+            "label": 5,
+            "candidate_id": "3dfd1179d1b16f72a82e",
+            "source_index": 517,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-T0020_v2_f001015_context.png",
+            "source_box": [
+              550,
+              0,
+              1200,
+              620
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0020_v2_f001015_context",
+          "ROI": "ROI-T0020",
+          "uid": "room2-2ddf8aed098beb94",
+          "frame": 1015,
+          "model": 2,
+          "label": 5,
+          "candidate_id": "3dfd1179d1b16f72a82e",
+          "source_index": 517,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-T0020_v2_f001015_context.png",
+          "source_box": [
+            550,
+            0,
+            1200,
+            620
+          ],
+          "selection_reason": "SEMANTIC_SAM_DIRECT",
+          "semantic_hit": true,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 27657,
+        "index": 29,
+        "id": "M0043",
+        "group": 6,
+        "mask": "masks/M0043.png",
+        "mask_sha256": "2c5cdf593ee6e72b6dd1c4a6155af3a3655efd670d37a42c1786389a0ff40035",
+        "support_sha256": "dce94f47dc4bee4cd5b338fa51ba7bbfbb73a1f5a05cceaa2a8b25bc004f94cb",
+        "rois": [
+          "room2-2ddf8aed098beb94"
+        ],
+        "candidate_ids": [
+          "3dfd1179d1b16f72a82e"
+        ],
+        "noise_features": {
+          "area": 30399,
+          "bbox_width": 223,
+          "bbox_height": 412,
+          "bbox_area": 91876,
+          "extent": 412,
+          "bbox_fill": 0.3308698680830685,
+          "components": 22,
+          "largest_component": 30294,
+          "max_radius": 56.568542494923804,
+          "p95_radius": 50.0,
+          "core_pixels": {
+            "2": 28304,
+            "3": 27336,
+            "8": 23110,
+            "12": 20202
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G007",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0046",
+        "M0047",
+        "M0048",
+        "M0049",
+        "M0050",
+        "M0053",
+        "M0056",
+        "M0058",
+        "M0059",
+        "M0060",
+        "M0061",
+        "M0068",
+        "M0069",
+        "M0158",
+        "M0242",
+        "M0248",
+        "M0258"
+      ],
+      "validation_frames": [
+        {
+          "frame": 990,
+          "members": [
+            30,
+            31
+          ],
+          "representative": 30
+        },
+        {
+          "frame": 1035,
+          "members": [
+            143,
+            147
+          ],
+          "representative": 143
+        },
+        {
+          "frame": 1380,
+          "members": [
+            32,
+            34,
+            37
+          ],
+          "representative": 32
+        },
+        {
+          "frame": 1395,
+          "members": [
+            33,
+            35,
+            39,
+            42
+          ],
+          "representative": 33
+        },
+        {
+          "frame": 1405,
+          "members": [
+            40,
+            41
+          ],
+          "representative": 40
+        },
+        {
+          "frame": 1415,
+          "members": [
+            43,
+            44
+          ],
+          "representative": 43
+        },
+        {
+          "frame": 1590,
+          "members": [
+            99
+          ],
+          "representative": 99
+        },
+        {
+          "frame": 1615,
+          "members": [
+            152
+          ],
+          "representative": 152
+        }
+      ],
+      "original_track_id": 7
+    },
+    {
+      "id": "G009",
+      "primary": {
+        "frame": 590,
+        "area": 32530,
+        "bbox": [
+          310,
+          132,
+          436,
+          537
+        ],
+        "digest": "4b1a74be8dee8d4a1a3a4d123b8be76f0302e7fc3852438d691217b75c852304",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0013_v3_f000590_balanced",
+            "ROI": "ROI-T0013",
+            "uid": "room2-ae199e2c6951e5a3",
+            "frame": 590,
+            "model": 2,
+            "label": 16,
+            "candidate_id": "41c3e54fa129bf534220",
+            "source_index": 245,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-T0013_v3_f000590_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "cabinet",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0013_v3_f000590_context",
+            "ROI": "ROI-T0013",
+            "uid": "room2-ae199e2c6951e5a3",
+            "frame": 590,
+            "model": 2,
+            "label": 16,
+            "candidate_id": "41c3e54fa129bf534220",
+            "source_index": 245,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-T0013_v3_f000590_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "cabinet",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0013_v3_f000590_balanced",
+          "ROI": "ROI-T0013",
+          "uid": "room2-ae199e2c6951e5a3",
+          "frame": 590,
+          "model": 2,
+          "label": 16,
+          "candidate_id": "41c3e54fa129bf534220",
+          "source_index": 245,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-T0013_v3_f000590_balanced.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": "cabinet",
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 23878,
+        "index": 47,
+        "id": "M0075",
+        "group": 8,
+        "mask": "masks/M0075.png",
+        "mask_sha256": "b2b712cf7fe0cfe6940c02fc906c4f13af07911f99fda53c149a269d2e739fc5",
+        "support_sha256": "a18b399af06a49d9fbd97e26af765c8bad4c591ae8868286671ff149146c3ca1",
+        "rois": [
+          "room2-ae199e2c6951e5a3"
+        ],
+        "candidate_ids": [
+          "41c3e54fa129bf534220"
+        ],
+        "noise_features": {
+          "area": 32530,
+          "bbox_width": 126,
+          "bbox_height": 405,
+          "bbox_area": 51030,
+          "extent": 405,
+          "bbox_fill": 0.6374681559866745,
+          "components": 1,
+          "largest_component": 32530,
+          "max_radius": 47.042533945356304,
+          "p95_radius": 41.012193308819754,
+          "core_pixels": {
+            "2": 30735,
+            "3": 29774,
+            "8": 25185,
+            "12": 21702
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G009",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0080",
+        "M0089",
+        "M0179"
+      ],
+      "validation_frames": [
+        {
+          "frame": 465,
+          "members": [
+            51,
+            59
+          ],
+          "representative": 51
+        },
+        {
+          "frame": 1940,
+          "members": [
+            111
+          ],
+          "representative": 111
+        }
+      ],
+      "original_track_id": 9
+    },
+    {
+      "id": "G013",
+      "primary": {
+        "frame": 825,
+        "area": 39932,
+        "bbox": [
+          75,
+          176,
+          432,
+          521
+        ],
+        "digest": "48b35e38711296b1f45640c34db6d89b97a23c5f05436c5cffdca0aa67178756",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0016_v1_f000825_context",
+            "ROI": "ROI-T0016",
+            "uid": "room2-be6d2db8ec4281d7",
+            "frame": 825,
+            "model": 0,
+            "label": 8,
+            "candidate_id": "612b50cfc9c10d4f3ffa",
+            "source_index": 364,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000825.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0016_v1_f000825_context",
+          "ROI": "ROI-T0016",
+          "uid": "room2-be6d2db8ec4281d7",
+          "frame": 825,
+          "model": 0,
+          "label": 8,
+          "candidate_id": "612b50cfc9c10d4f3ffa",
+          "source_index": 364,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000825.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 16491,
+        "index": 71,
+        "id": "M0114",
+        "group": 12,
+        "mask": "masks/M0114.png",
+        "mask_sha256": "c5e76678753f06a820cb22eeab28410bb7da8b4b6d4e16d4d4905c0998f8ee1f",
+        "support_sha256": "fa5272097384ea326a759e14dcfa6bc20ac78859894142ecce29a0f67b92a198",
+        "rois": [
+          "room2-be6d2db8ec4281d7"
+        ],
+        "candidate_ids": [
+          "612b50cfc9c10d4f3ffa"
+        ],
+        "noise_features": {
+          "area": 39932,
+          "bbox_width": 357,
+          "bbox_height": 345,
+          "bbox_area": 123165,
+          "extent": 357,
+          "bbox_fill": 0.3242154832947672,
+          "components": 7,
+          "largest_component": 39770,
+          "max_radius": 29.410882339705484,
+          "p95_radius": 18.439088914585774,
+          "core_pixels": {
+            "2": 32353,
+            "3": 28403,
+            "8": 13573,
+            "12": 7223
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G013",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0115",
+        "M0116",
+        "M0117",
+        "M0119",
+        "M0120",
+        "M0123",
+        "M0126",
+        "M0129",
+        "M0130",
+        "M0131",
+        "M0133",
+        "M0134",
+        "M0140",
+        "M0144",
+        "M0164",
+        "M0167",
+        "M0267"
+      ],
+      "validation_frames": [
+        {
+          "frame": 0,
+          "members": [
+            83
+          ],
+          "representative": 83
+        },
+        {
+          "frame": 5,
+          "members": [
+            81
+          ],
+          "representative": 81
+        },
+        {
+          "frame": 10,
+          "members": [
+            82
+          ],
+          "representative": 82
+        },
+        {
+          "frame": 185,
+          "members": [
+            74
+          ],
+          "representative": 74
+        },
+        {
+          "frame": 210,
+          "members": [
+            88
+          ],
+          "representative": 88
+        },
+        {
+          "frame": 215,
+          "members": [
+            101
+          ],
+          "representative": 101
+        },
+        {
+          "frame": 280,
+          "members": [
+            85
+          ],
+          "representative": 85
+        },
+        {
+          "frame": 300,
+          "members": [
+            103
+          ],
+          "representative": 103
+        },
+        {
+          "frame": 320,
+          "members": [
+            84
+          ],
+          "representative": 84
+        },
+        {
+          "frame": 335,
+          "members": [
+            90
+          ],
+          "representative": 90
+        },
+        {
+          "frame": 455,
+          "members": [
+            160
+          ],
+          "representative": 160
+        },
+        {
+          "frame": 685,
+          "members": [
+            79
+          ],
+          "representative": 79
+        },
+        {
+          "frame": 765,
+          "members": [
+            78
+          ],
+          "representative": 78
+        },
+        {
+          "frame": 785,
+          "members": [
+            75
+          ],
+          "representative": 75
+        },
+        {
+          "frame": 795,
+          "members": [
+            76
+          ],
+          "representative": 76
+        },
+        {
+          "frame": 810,
+          "members": [
+            73
+          ],
+          "representative": 73
+        },
+        {
+          "frame": 830,
+          "members": [
+            72
+          ],
+          "representative": 72
+        }
+      ],
+      "original_track_id": 13
+    },
+    {
+      "id": "G015",
+      "primary": {
+        "frame": 310,
+        "area": 93789,
+        "bbox": [
+          935,
+          0,
+          1200,
+          495
+        ],
+        "digest": "63b12d085f2147d8c595b9c02210ce9cde9a1dac02418a95e45583f25bbe36e8",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0001_v3_f000310_balanced",
+            "ROI": "ROI-C0001",
+            "uid": "room2-918c0a39ec3a355e",
+            "frame": 310,
+            "model": 2,
+            "label": 4,
+            "candidate_id": "6caf1103026881bb7457",
+            "source_index": 112,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0001_v3_f000310_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-C0001_v3_f000310_context",
+            "ROI": "ROI-C0001",
+            "uid": "room2-918c0a39ec3a355e",
+            "frame": 310,
+            "model": 2,
+            "label": 4,
+            "candidate_id": "6caf1103026881bb7457",
+            "source_index": 112,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0001_v3_f000310_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0001_v3_f000310_balanced",
+          "ROI": "ROI-C0001",
+          "uid": "room2-918c0a39ec3a355e",
+          "frame": 310,
+          "model": 2,
+          "label": 4,
+          "candidate_id": "6caf1103026881bb7457",
+          "source_index": 112,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0001_v3_f000310_balanced.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SEMANTIC_SAM_DIRECT",
+          "semantic_hit": true,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 14296,
+        "index": 86,
+        "id": "M0138",
+        "group": 14,
+        "mask": "masks/M0138.png",
+        "mask_sha256": "7cdd4a0610a0ce721460a095cdca99cbf50f7a006ad359cc2b3ba9e4a571e5bf",
+        "support_sha256": "7f1ebcbba2e56668fe6a79fc30bd349ee8d825ffffecc27269ee757438d845ca",
+        "rois": [
+          "room2-918c0a39ec3a355e"
+        ],
+        "candidate_ids": [
+          "6caf1103026881bb7457"
+        ],
+        "noise_features": {
+          "area": 93789,
+          "bbox_width": 265,
+          "bbox_height": 495,
+          "bbox_area": 131175,
+          "extent": 495,
+          "bbox_fill": 0.7149914236706689,
+          "components": 1,
+          "largest_component": 93789,
+          "max_radius": 105.22357150372724,
+          "p95_radius": 94.33981132056604,
+          "core_pixels": {
+            "2": 91217,
+            "3": 89918,
+            "8": 83593,
+            "12": 78651
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G015",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0151",
+        "M0152",
+        "M0153",
+        "M0155",
+        "M0156",
+        "M0157",
+        "M0204",
+        "M0209",
+        "M0216",
+        "M0307"
+      ],
+      "validation_frames": [
+        {
+          "frame": 730,
+          "members": [
+            97,
+            98
+          ],
+          "representative": 97
+        },
+        {
+          "frame": 735,
+          "members": [
+            94,
+            95
+          ],
+          "representative": 94
+        },
+        {
+          "frame": 740,
+          "members": [
+            93,
+            96
+          ],
+          "representative": 93
+        },
+        {
+          "frame": 830,
+          "members": [
+            128
+          ],
+          "representative": 128
+        },
+        {
+          "frame": 945,
+          "members": [
+            171
+          ],
+          "representative": 171
+        },
+        {
+          "frame": 985,
+          "members": [
+            130
+          ],
+          "representative": 130
+        },
+        {
+          "frame": 990,
+          "members": [
+            133
+          ],
+          "representative": 133
+        }
+      ],
+      "original_track_id": 15
+    },
+    {
+      "id": "G017",
+      "primary": {
+        "frame": 985,
+        "area": 23764,
+        "bbox": [
+          660,
+          59,
+          886,
+          384
+        ],
+        "digest": "b289c2c92890188f6b9f43d0d46283e93736f15ca36411a3e0d7933708bce0d4",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0006_v2_f000985_balanced",
+            "ROI": "ROI-U0006",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 985,
+            "model": 2,
+            "label": 10,
+            "candidate_id": "249235deecb61b3e1d14",
+            "source_index": 475,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-U0006_v2_f000985_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0006_v2_f000985_context",
+            "ROI": "ROI-U0006",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 985,
+            "model": 2,
+            "label": 10,
+            "candidate_id": "249235deecb61b3e1d14",
+            "source_index": 475,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-U0006_v2_f000985_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0002_v2_f000985_context",
+            "ROI": "ROI-T0002",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 985,
+            "model": 2,
+            "label": 10,
+            "candidate_id": "249235deecb61b3e1d14",
+            "source_index": 475,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-U0006_v2_f000985_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0002_v2_f000985_context",
+          "ROI": "ROI-T0002",
+          "uid": "room2-cc78ce4b4393bb15",
+          "frame": 985,
+          "model": 2,
+          "label": 10,
+          "candidate_id": "249235deecb61b3e1d14",
+          "source_index": 475,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-U0006_v2_f000985_balanced.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SEMANTIC_SAM_DIRECT",
+          "semantic_hit": true,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 12571,
+        "index": 104,
+        "id": "M0168",
+        "group": 16,
+        "mask": "masks/M0168.png",
+        "mask_sha256": "6a294eaf1e6c6bf6bd788c0ce7d24ca24f2ddc452583c7697313350ba415d1db",
+        "support_sha256": "e85871e979e3f6897a70bb4095edd2c1fef903cdbd35ac72addd7c5c86307185",
+        "rois": [
+          "room2-cc78ce4b4393bb15"
+        ],
+        "candidate_ids": [
+          "249235deecb61b3e1d14"
+        ],
+        "noise_features": {
+          "area": 23764,
+          "bbox_width": 226,
+          "bbox_height": 325,
+          "bbox_area": 73450,
+          "extent": 325,
+          "bbox_fill": 0.32353982300884954,
+          "components": 2,
+          "largest_component": 23759,
+          "max_radius": 39.11521443121589,
+          "p95_radius": 36.0,
+          "core_pixels": {
+            "2": 22258,
+            "3": 21515,
+            "8": 17886,
+            "12": 15113
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G017",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0169",
+        "M0171",
+        "M0172",
+        "M0210",
+        "M0211",
+        "M0218",
+        "M0222",
+        "M0224",
+        "M0229",
+        "M0243",
+        "M0247",
+        "M0251",
+        "M0254",
+        "M0259",
+        "M0290",
+        "M0297",
+        "M0380",
+        "M0382",
+        "M0411",
+        "M0415"
+      ],
+      "validation_frames": [
+        {
+          "frame": 940,
+          "members": [
+            167
+          ],
+          "representative": 167
+        },
+        {
+          "frame": 945,
+          "members": [
+            162
+          ],
+          "representative": 162
+        },
+        {
+          "frame": 990,
+          "members": [
+            107,
+            108
+          ],
+          "representative": 107
+        },
+        {
+          "frame": 1015,
+          "members": [
+            153
+          ],
+          "representative": 153
+        },
+        {
+          "frame": 1035,
+          "members": [
+            236,
+            240
+          ],
+          "representative": 236
+        },
+        {
+          "frame": 1380,
+          "members": [
+            131,
+            132
+          ],
+          "representative": 131
+        },
+        {
+          "frame": 1390,
+          "members": [
+            135
+          ],
+          "representative": 135
+        },
+        {
+          "frame": 1395,
+          "members": [
+            137,
+            138
+          ],
+          "representative": 137
+        },
+        {
+          "frame": 1405,
+          "members": [
+            141,
+            144
+          ],
+          "representative": 141
+        },
+        {
+          "frame": 1415,
+          "members": [
+            146,
+            148,
+            150
+          ],
+          "representative": 146
+        },
+        {
+          "frame": 1590,
+          "members": [
+            210,
+            212
+          ],
+          "representative": 210
+        }
+      ],
+      "original_track_id": 17
+    },
+    {
+      "id": "G018",
+      "primary": {
+        "frame": 1590,
+        "area": 27702,
+        "bbox": [
+          194,
+          226,
+          377,
+          489
+        ],
+        "digest": "0635f5c62516e6c4fa06a534b71e12346c84a856e1b3bba55775f46c7d77fbad",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0009_v1_f001590_balanced",
+            "ROI": "ROI-C0009",
+            "uid": "room2-9a0c4db1de376f2b",
+            "frame": 1590,
+            "model": 2,
+            "label": 15,
+            "candidate_id": "a7eb9c140eba6e4b1426",
+            "source_index": 893,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0009_v1_f001590_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-C0009_v1_f001590_context",
+            "ROI": "ROI-C0009",
+            "uid": "room2-9a0c4db1de376f2b",
+            "frame": 1590,
+            "model": 2,
+            "label": 15,
+            "candidate_id": "a7eb9c140eba6e4b1426",
+            "source_index": 893,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0009_v1_f001590_balanced.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0009_v1_f001590_balanced",
+          "ROI": "ROI-C0009",
+          "uid": "room2-9a0c4db1de376f2b",
+          "frame": 1590,
+          "model": 2,
+          "label": 15,
+          "candidate_id": "a7eb9c140eba6e4b1426",
+          "source_index": 893,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0009_v1_f001590_balanced.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SEMANTIC_SAM_DIRECT",
+          "semantic_hit": true,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 12494,
+        "index": 106,
+        "id": "M0170",
+        "group": 17,
+        "mask": "masks/M0170.png",
+        "mask_sha256": "4e35b2c98a308b0eb5f1d2ea04f8134f9e1bd03f647942d865c0efea7b593935",
+        "support_sha256": "85cc0d9011aa3139c2fc53ad76e58e52d7b516250cadf85a1dd789c22dd071f4",
+        "rois": [
+          "room2-9a0c4db1de376f2b"
+        ],
+        "candidate_ids": [
+          "a7eb9c140eba6e4b1426"
+        ],
+        "noise_features": {
+          "area": 27702,
+          "bbox_width": 183,
+          "bbox_height": 263,
+          "bbox_area": 48129,
+          "extent": 263,
+          "bbox_fill": 0.5755781337655052,
+          "components": 1,
+          "largest_component": 27702,
+          "max_radius": 75.17978451685,
+          "p95_radius": 60.728905802755904,
+          "core_pixels": {
+            "2": 26466,
+            "3": 25750,
+            "8": 22526,
+            "12": 20112
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G018",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0180",
+        "M0183",
+        "M0184",
+        "M0185",
+        "M0188",
+        "M0190",
+        "M0194",
+        "M0196",
+        "M0197",
+        "M0207",
+        "M0227",
+        "M0353",
+        "M0357",
+        "M0358",
+        "M0386",
+        "M0390",
+        "M0391",
+        "M0392",
+        "M0396"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1035,
+          "members": [
+            139
+          ],
+          "representative": 139
+        },
+        {
+          "frame": 1065,
+          "members": [
+            193,
+            195,
+            196
+          ],
+          "representative": 193
+        },
+        {
+          "frame": 1070,
+          "members": [
+            215,
+            218,
+            219,
+            220,
+            223
+          ],
+          "representative": 215
+        },
+        {
+          "frame": 1380,
+          "members": [
+            114,
+            118,
+            122
+          ],
+          "representative": 114
+        },
+        {
+          "frame": 1395,
+          "members": [
+            120,
+            123,
+            124
+          ],
+          "representative": 120
+        },
+        {
+          "frame": 1415,
+          "members": [
+            129
+          ],
+          "representative": 129
+        },
+        {
+          "frame": 1615,
+          "members": [
+            112,
+            116
+          ],
+          "representative": 112
+        }
+      ],
+      "original_track_id": 18
+    },
+    {
+      "id": "G020",
+      "primary": {
+        "frame": 1950,
+        "area": 62495,
+        "bbox": [
+          926,
+          140,
+          1193,
+          680
+        ],
+        "digest": "578d58d4621d017d05752a1d1b5111325e26710397d3c25c2736293d8b301d3e",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0016_v3_f001950_balanced",
+            "ROI": "ROI-U0016",
+            "uid": "room2-ae199e2c6951e5a3",
+            "frame": 1950,
+            "model": 1,
+            "label": 3,
+            "candidate_id": "5d963e87aa79e4eba46f",
+            "source_index": 1132,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/cropformer/room2_ROI-U0016_v3_f001950_balanced.png",
+            "source_box": [
+              800,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "ONE_CROPFORMER_WITH_SAM",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0013_v1_f001950_balanced",
+            "ROI": "ROI-T0013",
+            "uid": "room2-ae199e2c6951e5a3",
+            "frame": 1950,
+            "model": 1,
+            "label": 3,
+            "candidate_id": "5d963e87aa79e4eba46f",
+            "source_index": 1132,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/cropformer/room2_ROI-U0016_v3_f001950_balanced.png",
+            "source_box": [
+              800,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "ONE_CROPFORMER_WITH_SAM",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0013_v1_f001950_balanced",
+          "ROI": "ROI-T0013",
+          "uid": "room2-ae199e2c6951e5a3",
+          "frame": 1950,
+          "model": 1,
+          "label": 3,
+          "candidate_id": "5d963e87aa79e4eba46f",
+          "source_index": 1132,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/cropformer/room2_ROI-U0016_v3_f001950_balanced.png",
+          "source_box": [
+            800,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "ONE_CROPFORMER_WITH_SAM",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 8649,
+        "index": 154,
+        "id": "M0261",
+        "group": 19,
+        "mask": "masks/M0261.png",
+        "mask_sha256": "e58bddda1b4bf2975479a79cb245fe4f5336546930f088497e25dd188947cce7",
+        "support_sha256": "730bb419a7089808dface793612849fa796a33a5ca8aed630ac591f5e196e3b5",
+        "rois": [
+          "room2-ae199e2c6951e5a3"
+        ],
+        "candidate_ids": [
+          "5d963e87aa79e4eba46f"
+        ],
+        "noise_features": {
+          "area": 62495,
+          "bbox_width": 267,
+          "bbox_height": 540,
+          "bbox_area": 144180,
+          "extent": 540,
+          "bbox_fill": 0.433451241503676,
+          "components": 1,
+          "largest_component": 62495,
+          "max_radius": 59.90826320300064,
+          "p95_radius": 53.14132102234569,
+          "core_pixels": {
+            "2": 59930,
+            "3": 58657,
+            "8": 52403,
+            "12": 47384
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G020",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0262",
+        "M0263",
+        "M0264",
+        "M0288",
+        "M0291",
+        "M0398"
+      ],
+      "validation_frames": [
+        {
+          "frame": 0,
+          "members": [
+            225
+          ],
+          "representative": 225
+        },
+        {
+          "frame": 465,
+          "members": [
+            161,
+            163
+          ],
+          "representative": 161
+        },
+        {
+          "frame": 590,
+          "members": [
+            156
+          ],
+          "representative": 156
+        },
+        {
+          "frame": 615,
+          "members": [
+            155
+          ],
+          "representative": 155
+        },
+        {
+          "frame": 645,
+          "members": [
+            157
+          ],
+          "representative": 157
+        }
+      ],
+      "original_track_id": 20
+    },
+    {
+      "id": "G022",
+      "primary": {
+        "frame": 730,
+        "area": 9006,
+        "bbox": [
+          627,
+          11,
+          927,
+          73
+        ],
+        "digest": "9f53996b38736308488599486aa59fa004ac4ea2a9d60530921b3bff7797e356",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0004_v3_f000730_balanced",
+            "ROI": "ROI-U0004",
+            "uid": "room2-918c0a39ec3a355e",
+            "frame": 730,
+            "model": 0,
+            "label": 22,
+            "candidate_id": "fb4feba2715d12002ff4",
+            "source_index": 273,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000730.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0004_v3_f000730_context",
+            "ROI": "ROI-U0004",
+            "uid": "room2-918c0a39ec3a355e",
+            "frame": 730,
+            "model": 0,
+            "label": 22,
+            "candidate_id": "fb4feba2715d12002ff4",
+            "source_index": 273,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000730.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0004_v3_f000730_tile2",
+            "ROI": "ROI-U0004",
+            "uid": "room2-918c0a39ec3a355e",
+            "frame": 730,
+            "model": 0,
+            "label": 22,
+            "candidate_id": "fb4feba2715d12002ff4",
+            "source_index": 273,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000730.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0004_v3_f000730_tile3",
+            "ROI": "ROI-U0004",
+            "uid": "room2-918c0a39ec3a355e",
+            "frame": 730,
+            "model": 0,
+            "label": 22,
+            "candidate_id": "fb4feba2715d12002ff4",
+            "source_index": 273,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000730.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-U0004_v3_f000730_balanced",
+          "ROI": "ROI-U0004",
+          "uid": "room2-918c0a39ec3a355e",
+          "frame": 730,
+          "model": 0,
+          "label": 22,
+          "candidate_id": "fb4feba2715d12002ff4",
+          "source_index": 273,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000730.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 6969,
+        "index": 164,
+        "id": "M0292",
+        "group": 21,
+        "mask": "masks/M0292.png",
+        "mask_sha256": "c07fe0469abfc14e3650c2015ab9ee001bfb75ebb6e6c41b0e6b04b3cd9fa4fa",
+        "support_sha256": "af8a822c066c0df347e7e7ac82fa4ed248c0b4a43397f1dff4e4e7338034a73a",
+        "rois": [
+          "room2-918c0a39ec3a355e"
+        ],
+        "candidate_ids": [
+          "fb4feba2715d12002ff4"
+        ],
+        "noise_features": {
+          "area": 9006,
+          "bbox_width": 300,
+          "bbox_height": 62,
+          "bbox_area": 18600,
+          "extent": 300,
+          "bbox_fill": 0.4841935483870968,
+          "components": 1,
+          "largest_component": 9006,
+          "max_radius": 23.0,
+          "p95_radius": 19.4164878389476,
+          "core_pixels": {
+            "2": 7819,
+            "3": 7250,
+            "8": 4680,
+            "12": 2931
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G022",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0295",
+        "M0298"
+      ],
+      "validation_frames": [
+        {
+          "frame": 735,
+          "members": [
+            166
+          ],
+          "representative": 166
+        },
+        {
+          "frame": 740,
+          "members": [
+            168
+          ],
+          "representative": 168
+        }
+      ],
+      "original_track_id": 22
+    },
+    {
+      "id": "G024",
+      "primary": {
+        "frame": 940,
+        "area": 27930,
+        "bbox": [
+          389,
+          421,
+          669,
+          680
+        ],
+        "digest": "6de42ac60f10f37fd7d09261920f0203972412c709d31bdc103f1e1c4cfb8c6f",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0003_v2_f000940_balanced",
+            "ROI": "ROI-T0003",
+            "uid": "room2-4fb8768bf9c4ac8e",
+            "frame": 940,
+            "model": 0,
+            "label": 5,
+            "candidate_id": "c00310b0f8b0cbd23ae3",
+            "source_index": 439,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000940.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0003_v2_f000940_context",
+            "ROI": "ROI-T0003",
+            "uid": "room2-4fb8768bf9c4ac8e",
+            "frame": 940,
+            "model": 0,
+            "label": 5,
+            "candidate_id": "c00310b0f8b0cbd23ae3",
+            "source_index": 439,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000940.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0003_v2_f000940_tile2",
+            "ROI": "ROI-T0003",
+            "uid": "room2-4fb8768bf9c4ac8e",
+            "frame": 940,
+            "model": 0,
+            "label": 5,
+            "candidate_id": "c00310b0f8b0cbd23ae3",
+            "source_index": 439,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000940.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0003_v2_f000940_balanced",
+          "ROI": "ROI-T0003",
+          "uid": "room2-4fb8768bf9c4ac8e",
+          "frame": 940,
+          "model": 0,
+          "label": 5,
+          "candidate_id": "c00310b0f8b0cbd23ae3",
+          "source_index": 439,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000940.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 6474,
+        "index": 169,
+        "id": "M0301",
+        "group": 23,
+        "mask": "masks/M0301.png",
+        "mask_sha256": "a755d14c284606b62c8605e99810b45343741a510027a68e018db8ae89f4de03",
+        "support_sha256": "4b06689f42c43918831d32ef2f19717bc32844f88b50c424bb1e19a51c80a74f",
+        "rois": [
+          "room2-4fb8768bf9c4ac8e"
+        ],
+        "candidate_ids": [
+          "c00310b0f8b0cbd23ae3"
+        ],
+        "noise_features": {
+          "area": 27930,
+          "bbox_width": 280,
+          "bbox_height": 259,
+          "bbox_area": 72520,
+          "extent": 280,
+          "bbox_fill": 0.38513513513513514,
+          "components": 4,
+          "largest_component": 14974,
+          "max_radius": 51.419840528729765,
+          "p95_radius": 36.229131273840125,
+          "core_pixels": {
+            "2": 25714,
+            "3": 24628,
+            "8": 19462,
+            "12": 15605
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G024",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0306"
+      ],
+      "validation_frames": [
+        {
+          "frame": 945,
+          "members": [
+            170
+          ],
+          "representative": 170
+        }
+      ],
+      "original_track_id": 24
+    },
+    {
+      "id": "G025",
+      "primary": {
+        "frame": 1590,
+        "area": 44739,
+        "bbox": [
+          0,
+          312,
+          235,
+          647
+        ],
+        "digest": "116a5d5d20cbf7e457486beb7e2c38ad20f3f17444c57d056f3570041a775c57",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0009_v1_f001590_tile7",
+            "ROI": "ROI-C0009",
+            "uid": "room2-9a0c4db1de376f2b",
+            "frame": 1590,
+            "model": 2,
+            "label": 1,
+            "candidate_id": "143628df3f8cb386408e",
+            "source_index": 903,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0009_v1_f001590_tile7.png",
+            "source_box": [
+              0,
+              300,
+              600,
+              680
+            ],
+            "selection_reason": "SEMANTIC_SAM_DIRECT",
+            "semantic_hit": true,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0009_v1_f001590_tile7",
+          "ROI": "ROI-C0009",
+          "uid": "room2-9a0c4db1de376f2b",
+          "frame": 1590,
+          "model": 2,
+          "label": 1,
+          "candidate_id": "143628df3f8cb386408e",
+          "source_index": 903,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0009_v1_f001590_tile7.png",
+          "source_box": [
+            0,
+            300,
+            600,
+            680
+          ],
+          "selection_reason": "SEMANTIC_SAM_DIRECT",
+          "semantic_hit": true,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 6178,
+        "index": 172,
+        "id": "M0309",
+        "group": 24,
+        "mask": "masks/M0309.png",
+        "mask_sha256": "bcd4004c8d59b84c69e279ff40cfc761b1cc6c476e1c2dfe23e694413b0e68b2",
+        "support_sha256": "f7e0854d04591c584060f521caa423acb06efb47e48f4734937ebf426c7117ec",
+        "rois": [
+          "room2-9a0c4db1de376f2b"
+        ],
+        "candidate_ids": [
+          "143628df3f8cb386408e"
+        ],
+        "noise_features": {
+          "area": 44739,
+          "bbox_width": 235,
+          "bbox_height": 335,
+          "bbox_area": 78725,
+          "extent": 335,
+          "bbox_fill": 0.5682946967291204,
+          "components": 2,
+          "largest_component": 44735,
+          "max_radius": 95.50916186418976,
+          "p95_radius": 78.39005038906404,
+          "core_pixels": {
+            "2": 43104,
+            "3": 42204,
+            "8": 38104,
+            "12": 34992
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G025",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0313",
+        "M0328",
+        "M0329",
+        "M0332",
+        "M0339",
+        "M0345",
+        "M0347",
+        "M0349",
+        "M0350",
+        "M0374",
+        "M0376",
+        "M0377",
+        "M0381",
+        "M0399",
+        "M0401",
+        "M0402",
+        "M0403",
+        "M0405",
+        "M0406",
+        "M0410",
+        "M0412",
+        "M0413",
+        "M0425",
+        "M0500",
+        "M0548",
+        "M0549",
+        "M0562",
+        "M0566",
+        "M0567",
+        "M0571",
+        "M0573"
+      ],
+      "validation_frames": [
+        {
+          "frame": 885,
+          "members": [
+            208
+          ],
+          "representative": 208
+        },
+        {
+          "frame": 940,
+          "members": [
+            207,
+            209
+          ],
+          "representative": 207
+        },
+        {
+          "frame": 945,
+          "members": [
+            211
+          ],
+          "representative": 211
+        },
+        {
+          "frame": 985,
+          "members": [
+            301,
+            302
+          ],
+          "representative": 301
+        },
+        {
+          "frame": 990,
+          "members": [
+            308,
+            311,
+            312,
+            314,
+            316
+          ],
+          "representative": 308
+        },
+        {
+          "frame": 1015,
+          "members": [
+            283
+          ],
+          "representative": 283
+        },
+        {
+          "frame": 1035,
+          "members": [
+            191,
+            192
+          ],
+          "representative": 191
+        },
+        {
+          "frame": 1065,
+          "members": [
+            226,
+            229,
+            231
+          ],
+          "representative": 226
+        },
+        {
+          "frame": 1070,
+          "members": [
+            228,
+            230,
+            232,
+            235,
+            237,
+            238
+          ],
+          "representative": 228
+        },
+        {
+          "frame": 1380,
+          "members": [
+            180,
+            181,
+            182
+          ],
+          "representative": 180
+        },
+        {
+          "frame": 1395,
+          "members": [
+            186
+          ],
+          "representative": 186
+        },
+        {
+          "frame": 1405,
+          "members": [
+            189,
+            190
+          ],
+          "representative": 189
+        },
+        {
+          "frame": 1435,
+          "members": [
+            249
+          ],
+          "representative": 249
+        }
+      ],
+      "original_track_id": 25
+    },
+    {
+      "id": "G026",
+      "primary": {
+        "frame": 1395,
+        "area": 8709,
+        "bbox": [
+          524,
+          0,
+          697,
+          67
+        ],
+        "digest": "0e185c55ab834c21ef0a9e7abe1b009d2ef1264b8f0d2c50e7f27d6803c7ba23",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0006_v1_f001395_balanced",
+            "ROI": "ROI-U0006",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 1395,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "84eee1ebc87fa4a1ff3e",
+            "source_index": 735,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001395.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0006_v1_f001395_context",
+            "ROI": "ROI-U0006",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 1395,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "84eee1ebc87fa4a1ff3e",
+            "source_index": 735,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001395.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0002_v1_f001395_balanced",
+            "ROI": "ROI-T0002",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 1395,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "84eee1ebc87fa4a1ff3e",
+            "source_index": 735,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001395.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0002_v1_f001395_context",
+            "ROI": "ROI-T0002",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 1395,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "84eee1ebc87fa4a1ff3e",
+            "source_index": 735,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001395.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0002_v1_f001395_tile1",
+            "ROI": "ROI-T0002",
+            "uid": "room2-cc78ce4b4393bb15",
+            "frame": 1395,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "84eee1ebc87fa4a1ff3e",
+            "source_index": 735,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001395.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0002_v1_f001395_balanced",
+          "ROI": "ROI-T0002",
+          "uid": "room2-cc78ce4b4393bb15",
+          "frame": 1395,
+          "model": 0,
+          "label": 19,
+          "candidate_id": "84eee1ebc87fa4a1ff3e",
+          "source_index": 735,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001395.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 6148,
+        "index": 173,
+        "id": "M0310",
+        "group": 25,
+        "mask": "masks/M0310.png",
+        "mask_sha256": "9e96b42d818554b5e6889588489a0da74e708736ce5009f8da16936e0554aecc",
+        "support_sha256": "856b87bd93de090e87e08f8b7ff352f095c6fa043534c3bdc716d38028ee0cce",
+        "rois": [
+          "room2-cc78ce4b4393bb15"
+        ],
+        "candidate_ids": [
+          "84eee1ebc87fa4a1ff3e"
+        ],
+        "noise_features": {
+          "area": 8709,
+          "bbox_width": 173,
+          "bbox_height": 67,
+          "bbox_area": 11591,
+          "extent": 173,
+          "bbox_fill": 0.7513588128720559,
+          "components": 1,
+          "largest_component": 8709,
+          "max_radius": 33.734255586866,
+          "p95_radius": 30.0,
+          "core_pixels": {
+            "2": 7935,
+            "3": 7502,
+            "8": 5660,
+            "12": 4374
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G026",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0311",
+        "M0334",
+        "M0361",
+        "M0434",
+        "M0438"
+      ],
+      "validation_frames": [
+        {
+          "frame": 985,
+          "members": [
+            252
+          ],
+          "representative": 252
+        },
+        {
+          "frame": 990,
+          "members": [
+            251
+          ],
+          "representative": 251
+        },
+        {
+          "frame": 1380,
+          "members": [
+            198
+          ],
+          "representative": 198
+        },
+        {
+          "frame": 1405,
+          "members": [
+            174
+          ],
+          "representative": 174
+        },
+        {
+          "frame": 1415,
+          "members": [
+            183
+          ],
+          "representative": 183
+        }
+      ],
+      "original_track_id": 26
+    },
+    {
+      "id": "G027",
+      "primary": {
+        "frame": 1750,
+        "area": 32284,
+        "bbox": [
+          247,
+          404,
+          490,
+          680
+        ],
+        "digest": "34b6280db505cea6db4af0ce871140494e7c98ed0e698a921d6c60d19477d851",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0012_v2_f001750_context",
+            "ROI": "ROI-C0012",
+            "uid": "room2-32a207d6993dcb14",
+            "frame": 1750,
+            "model": 0,
+            "label": 2,
+            "candidate_id": "596dba1fbb610056f44b",
+            "source_index": 996,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001750.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0006_v3_f001750_balanced",
+            "ROI": "ROI-T0006",
+            "uid": "room2-32a207d6993dcb14",
+            "frame": 1750,
+            "model": 0,
+            "label": 2,
+            "candidate_id": "596dba1fbb610056f44b",
+            "source_index": 996,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001750.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0006_v3_f001750_context",
+            "ROI": "ROI-T0006",
+            "uid": "room2-32a207d6993dcb14",
+            "frame": 1750,
+            "model": 0,
+            "label": 2,
+            "candidate_id": "596dba1fbb610056f44b",
+            "source_index": 996,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001750.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0019_v2_f001750_balanced",
+            "ROI": "ROI-T0019",
+            "uid": "room2-79b63467911537e5",
+            "frame": 1750,
+            "model": 0,
+            "label": 2,
+            "candidate_id": "596dba1fbb610056f44b",
+            "source_index": 996,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001750.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0012_v2_f001750_context",
+          "ROI": "ROI-C0012",
+          "uid": "room2-32a207d6993dcb14",
+          "frame": 1750,
+          "model": 0,
+          "label": 2,
+          "candidate_id": "596dba1fbb610056f44b",
+          "source_index": 996,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001750.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 5634,
+        "index": 177,
+        "id": "M0319",
+        "group": 26,
+        "mask": "masks/M0319.png",
+        "mask_sha256": "fb71acf93b74fd1dd2c341700dd590656a35c3b55210d5eaedce38c08868a826",
+        "support_sha256": "9bf655ee17f860d30af783d87a2a0ee27a2febbee0173be2f7bfd35e0c23dbe4",
+        "rois": [
+          "room2-32a207d6993dcb14",
+          "room2-79b63467911537e5"
+        ],
+        "candidate_ids": [
+          "596dba1fbb610056f44b"
+        ],
+        "noise_features": {
+          "area": 32284,
+          "bbox_width": 243,
+          "bbox_height": 276,
+          "bbox_area": 67068,
+          "extent": 276,
+          "bbox_fill": 0.4813621995586569,
+          "components": 1,
+          "largest_component": 32284,
+          "max_radius": 75.82216034906945,
+          "p95_radius": 64.20280367709809,
+          "core_pixels": {
+            "2": 31075,
+            "3": 30197,
+            "8": 26646,
+            "12": 24093
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G027",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0321",
+        "M0326",
+        "M0371",
+        "M0372",
+        "M0442",
+        "M0447",
+        "M0449",
+        "M0460",
+        "M0474",
+        "M0476",
+        "M0482",
+        "M0485",
+        "M0579"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1015,
+          "members": [
+            319
+          ],
+          "representative": 319
+        },
+        {
+          "frame": 1345,
+          "members": [
+            255,
+            257,
+            258
+          ],
+          "representative": 255
+        },
+        {
+          "frame": 1465,
+          "members": [
+            270
+          ],
+          "representative": 270
+        },
+        {
+          "frame": 1475,
+          "members": [
+            265,
+            273,
+            275
+          ],
+          "representative": 265
+        },
+        {
+          "frame": 1490,
+          "members": [
+            271
+          ],
+          "representative": 271
+        },
+        {
+          "frame": 1660,
+          "members": [
+            206
+          ],
+          "representative": 206
+        },
+        {
+          "frame": 1680,
+          "members": [
+            205
+          ],
+          "representative": 205
+        },
+        {
+          "frame": 1735,
+          "members": [
+            179
+          ],
+          "representative": 179
+        },
+        {
+          "frame": 1745,
+          "members": [
+            178
+          ],
+          "representative": 178
+        }
+      ],
+      "original_track_id": 27
+    },
+    {
+      "id": "G031",
+      "primary": {
+        "frame": 1070,
+        "area": 17796,
+        "bbox": [
+          537,
+          0,
+          653,
+          283
+        ],
+        "digest": "64d44db9363eba6922a67109cb39d9274ccfd1858bd422c1a960ec01140fd4c1",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0003_v3_f001070_balanced",
+            "ROI": "ROI-T0003",
+            "uid": "room2-4fb8768bf9c4ac8e",
+            "frame": 1070,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "3605b22b0baacbd3f29d",
+            "source_index": 586,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001070.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0003_v3_f001070_context",
+            "ROI": "ROI-T0003",
+            "uid": "room2-4fb8768bf9c4ac8e",
+            "frame": 1070,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "3605b22b0baacbd3f29d",
+            "source_index": 586,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001070.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0003_v3_f001070_tile3",
+            "ROI": "ROI-T0003",
+            "uid": "room2-4fb8768bf9c4ac8e",
+            "frame": 1070,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "3605b22b0baacbd3f29d",
+            "source_index": 586,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001070.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0003_v3_f001070_balanced",
+          "ROI": "ROI-T0003",
+          "uid": "room2-4fb8768bf9c4ac8e",
+          "frame": 1070,
+          "model": 0,
+          "label": 7,
+          "candidate_id": "3605b22b0baacbd3f29d",
+          "source_index": 586,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001070.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 4407,
+        "index": 194,
+        "id": "M0356",
+        "group": 30,
+        "mask": "masks/M0356.png",
+        "mask_sha256": "1c76c5408b07a394446bbcfba3af43fc85c6f73e17c2bae5c2f035d93eb2274a",
+        "support_sha256": "7c3da889b09970519d61cc1f1927862c1e8b84893deafdec3b0b19a7a7659cbf",
+        "rois": [
+          "room2-4fb8768bf9c4ac8e"
+        ],
+        "candidate_ids": [
+          "3605b22b0baacbd3f29d"
+        ],
+        "noise_features": {
+          "area": 17796,
+          "bbox_width": 116,
+          "bbox_height": 283,
+          "bbox_area": 32828,
+          "extent": 283,
+          "bbox_fill": 0.5420982088461069,
+          "components": 1,
+          "largest_component": 17796,
+          "max_radius": 41.7612260356422,
+          "p95_radius": 34.73109600202772,
+          "core_pixels": {
+            "2": 16584,
+            "3": 15940,
+            "8": 12931,
+            "12": 10647
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G031",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0363",
+        "M0419",
+        "M0429",
+        "M0490",
+        "M0492",
+        "M0558"
+      ],
+      "validation_frames": [
+        {
+          "frame": 885,
+          "members": [
+            306
+          ],
+          "representative": 306
+        },
+        {
+          "frame": 940,
+          "members": [
+            277
+          ],
+          "representative": 277
+        },
+        {
+          "frame": 945,
+          "members": [
+            278
+          ],
+          "representative": 278
+        },
+        {
+          "frame": 1035,
+          "members": [
+            243
+          ],
+          "representative": 243
+        },
+        {
+          "frame": 1065,
+          "members": [
+            199
+          ],
+          "representative": 199
+        },
+        {
+          "frame": 1510,
+          "members": [
+            250
+          ],
+          "representative": 250
+        }
+      ],
+      "original_track_id": 31
+    },
+    {
+      "id": "G032",
+      "primary": {
+        "frame": 385,
+        "area": 57855,
+        "bbox": [
+          351,
+          272,
+          625,
+          672
+        ],
+        "digest": "03851ca75eb8812a7d115debb8a9c90b4746ddaa385aa7be66a817e533b6d4f1",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0012_v3_f000385_balanced",
+            "ROI": "ROI-T0012",
+            "uid": "room2-0930fd24a110f5be",
+            "frame": 385,
+            "model": 0,
+            "label": 12,
+            "candidate_id": "99e6fdbbc94fdf2f60d5",
+            "source_index": 159,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000385.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0012_v3_f000385_balanced",
+          "ROI": "ROI-T0012",
+          "uid": "room2-0930fd24a110f5be",
+          "frame": 385,
+          "model": 0,
+          "label": 12,
+          "candidate_id": "99e6fdbbc94fdf2f60d5",
+          "source_index": 159,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000385.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 4346,
+        "index": 197,
+        "id": "M0360",
+        "group": 31,
+        "mask": "masks/M0360.png",
+        "mask_sha256": "e8808a89761514cf012c86c93c645d044454e69c551bafcb2cd657efc15b90fa",
+        "support_sha256": "b1103c495d5a73acc3d9d16bca41b42fa3f8e346a5bf4331dd5f1dd598f96131",
+        "rois": [
+          "room2-0930fd24a110f5be"
+        ],
+        "candidate_ids": [
+          "99e6fdbbc94fdf2f60d5"
+        ],
+        "noise_features": {
+          "area": 57855,
+          "bbox_width": 274,
+          "bbox_height": 400,
+          "bbox_area": 109600,
+          "extent": 400,
+          "bbox_fill": 0.5278740875912409,
+          "components": 1,
+          "largest_component": 57855,
+          "max_radius": 106.77546534667971,
+          "p95_radius": 87.66413177577246,
+          "core_pixels": {
+            "2": 56204,
+            "3": 55112,
+            "8": 50382,
+            "12": 46821
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G032",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0550",
+        "M0551"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1990,
+          "members": [
+            303,
+            304
+          ],
+          "representative": 303
+        }
+      ],
+      "original_track_id": 32
+    },
+    {
+      "id": "G033",
+      "primary": {
+        "frame": 1400,
+        "area": 8668,
+        "bbox": [
+          970,
+          0,
+          1200,
+          60
+        ],
+        "digest": "9aa6fe0588bdf39ff167d6d5dbb245fd3eb178173c94a661ac2784ad1328bf81",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0010_v1_f001400_balanced",
+            "ROI": "ROI-T0010",
+            "uid": "room2-3779323d1b73b6d8",
+            "frame": 1400,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "f46f2388cb8919e02344",
+            "source_index": 766,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001400.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0010_v1_f001400_context",
+            "ROI": "ROI-T0010",
+            "uid": "room2-3779323d1b73b6d8",
+            "frame": 1400,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "f46f2388cb8919e02344",
+            "source_index": 766,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001400.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0010_v1_f001400_balanced",
+          "ROI": "ROI-T0010",
+          "uid": "room2-3779323d1b73b6d8",
+          "frame": 1400,
+          "model": 0,
+          "label": 19,
+          "candidate_id": "f46f2388cb8919e02344",
+          "source_index": 766,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001400.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 4281,
+        "index": 200,
+        "id": "M0365",
+        "group": 32,
+        "mask": "masks/M0365.png",
+        "mask_sha256": "ff3a4e5f02a0d02dce09d0a93c4ff1f6ce30a678df083e750c67c75b47e25b2c",
+        "support_sha256": "b38dae8eafb8832238619f7c8f70159509ec94d1b92a3a45b47e49f51052168d",
+        "rois": [
+          "room2-3779323d1b73b6d8"
+        ],
+        "candidate_ids": [
+          "f46f2388cb8919e02344"
+        ],
+        "noise_features": {
+          "area": 8668,
+          "bbox_width": 230,
+          "bbox_height": 60,
+          "bbox_area": 13800,
+          "extent": 230,
+          "bbox_fill": 0.6281159420289855,
+          "components": 1,
+          "largest_component": 8668,
+          "max_radius": 28.0,
+          "p95_radius": 24.331050121192877,
+          "core_pixels": {
+            "2": 7742,
+            "3": 7237,
+            "8": 5032,
+            "12": 3544
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G033",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0366",
+        "M0367",
+        "M0400",
+        "M0470",
+        "M0595"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1380,
+          "members": [
+            331
+          ],
+          "representative": 331
+        },
+        {
+          "frame": 1390,
+          "members": [
+            227
+          ],
+          "representative": 227
+        },
+        {
+          "frame": 1395,
+          "members": [
+            201
+          ],
+          "representative": 201
+        },
+        {
+          "frame": 1405,
+          "members": [
+            202
+          ],
+          "representative": 202
+        },
+        {
+          "frame": 1415,
+          "members": [
+            268
+          ],
+          "representative": 268
+        }
+      ],
+      "original_track_id": 33
+    },
+    {
+      "id": "G035",
+      "primary": {
+        "frame": 1995,
+        "area": 19260,
+        "bbox": [
+          299,
+          73,
+          428,
+          358
+        ],
+        "digest": "01da760d87c7b5a5366d0b080dcfcaa14c8a4699fbaf53006fa6283cef97b9fc",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0007_v2_f001995_tile1",
+            "ROI": "ROI-C0007",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1995,
+            "model": 0,
+            "label": 9,
+            "candidate_id": "01167efc6a279c5d3512",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROSS_MODEL_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-C0007_v2_f001995_tile2",
+            "ROI": "ROI-C0007",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1995,
+            "model": 0,
+            "label": 9,
+            "candidate_id": "01167efc6a279c5d3512",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROSS_MODEL_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0005_v3_f001995_tile1",
+            "ROI": "ROI-U0005",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1995,
+            "model": 0,
+            "label": 9,
+            "candidate_id": "01167efc6a279c5d3512",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROSS_MODEL_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0005_v3_f001995_tile2",
+            "ROI": "ROI-U0005",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1995,
+            "model": 0,
+            "label": 9,
+            "candidate_id": "01167efc6a279c5d3512",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROSS_MODEL_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0007_v1_f001995_tile1",
+            "ROI": "ROI-T0007",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1995,
+            "model": 0,
+            "label": 9,
+            "candidate_id": "01167efc6a279c5d3512",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROSS_MODEL_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0007_v1_f001995_tile2",
+            "ROI": "ROI-T0007",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1995,
+            "model": 0,
+            "label": 9,
+            "candidate_id": "01167efc6a279c5d3512",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROSS_MODEL_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0007_v2_f001995_tile1",
+          "ROI": "ROI-C0007",
+          "uid": "room2-846561f1dce70f69",
+          "frame": 1995,
+          "model": 0,
+          "label": 9,
+          "candidate_id": "01167efc6a279c5d3512",
+          "source_index": 1173,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROSS_MODEL_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 4165,
+        "index": 204,
+        "id": "M0370",
+        "group": 34,
+        "mask": "masks/M0370.png",
+        "mask_sha256": "9b922a1b6ca4178ab2874905cc0984f0cec06a912603d504834c270e1f94263c",
+        "support_sha256": "9b3fe127cde7a9d3c3f53c7e4d4ed9040591991061066447863bd1277abd918a",
+        "rois": [
+          "room2-846561f1dce70f69"
+        ],
+        "candidate_ids": [
+          "01167efc6a279c5d3512"
+        ],
+        "noise_features": {
+          "area": 19260,
+          "bbox_width": 129,
+          "bbox_height": 285,
+          "bbox_area": 36765,
+          "extent": 285,
+          "bbox_fill": 0.5238678090575275,
+          "components": 1,
+          "largest_component": 19260,
+          "max_radius": 39.92492955535426,
+          "p95_radius": 34.17601498127012,
+          "core_pixels": {
+            "2": 17955,
+            "3": 17213,
+            "8": 13910,
+            "12": 11468
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G035",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0388",
+        "M0394",
+        "M0395",
+        "M0397",
+        "M0455",
+        "M0457",
+        "M0458",
+        "M0459",
+        "M0462",
+        "M0466",
+        "M0483",
+        "M0506",
+        "M0577",
+        "M0605"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1340,
+          "members": [
+            216
+          ],
+          "representative": 216
+        },
+        {
+          "frame": 1615,
+          "members": [
+            318
+          ],
+          "representative": 318
+        },
+        {
+          "frame": 1735,
+          "members": [
+            261
+          ],
+          "representative": 261
+        },
+        {
+          "frame": 1750,
+          "members": [
+            262,
+            263,
+            264,
+            335
+          ],
+          "representative": 262
+        },
+        {
+          "frame": 1755,
+          "members": [
+            266
+          ],
+          "representative": 266
+        },
+        {
+          "frame": 1760,
+          "members": [
+            267
+          ],
+          "representative": 267
+        },
+        {
+          "frame": 1775,
+          "members": [
+            274
+          ],
+          "representative": 274
+        },
+        {
+          "frame": 1795,
+          "members": [
+            286
+          ],
+          "representative": 286
+        },
+        {
+          "frame": 1990,
+          "members": [
+            221,
+            222,
+            224
+          ],
+          "representative": 221
+        }
+      ],
+      "original_track_id": 35
+    },
+    {
+      "id": "G037",
+      "primary": {
+        "frame": 1070,
+        "area": 33900,
+        "bbox": [
+          1063,
+          109,
+          1200,
+          531
+        ],
+        "digest": "37ef1b00cb2536c9e80304260cf542b8dd30064e5748ce6286c67b3453e4c434",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0013_v2_f001070_balanced",
+            "ROI": "ROI-C0013",
+            "uid": "room2-ab47e0ea0626b9de",
+            "frame": 1070,
+            "model": 0,
+            "label": 9,
+            "candidate_id": "cf19606f481f25e120c4",
+            "source_index": 586,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001070.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0013_v2_f001070_balanced",
+          "ROI": "ROI-C0013",
+          "uid": "room2-ab47e0ea0626b9de",
+          "frame": 1070,
+          "model": 0,
+          "label": 9,
+          "candidate_id": "cf19606f481f25e120c4",
+          "source_index": 586,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001070.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 3966,
+        "index": 214,
+        "id": "M0385",
+        "group": 36,
+        "mask": "masks/M0385.png",
+        "mask_sha256": "b91c71d4e217adb7313584570060357d48345aae25de693b181fa37cb67be60f",
+        "support_sha256": "e992f265a6042b39f7f68753ed9a5c82901f99236b23bf8016afbdb09f1082ad",
+        "rois": [
+          "room2-ab47e0ea0626b9de"
+        ],
+        "candidate_ids": [
+          "cf19606f481f25e120c4"
+        ],
+        "noise_features": {
+          "area": 33900,
+          "bbox_width": 137,
+          "bbox_height": 422,
+          "bbox_area": 57814,
+          "extent": 422,
+          "bbox_fill": 0.5863631646314041,
+          "components": 1,
+          "largest_component": 33900,
+          "max_radius": 64.0,
+          "p95_radius": 50.0,
+          "core_pixels": {
+            "2": 32138,
+            "3": 31181,
+            "8": 26719,
+            "12": 23276
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G037",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0389",
+        "M0414",
+        "M0416",
+        "M0421",
+        "M0423",
+        "M0440",
+        "M0446",
+        "M0497",
+        "M0501",
+        "M0514"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1110,
+          "members": [
+            253
+          ],
+          "representative": 253
+        },
+        {
+          "frame": 1340,
+          "members": [
+            290
+          ],
+          "representative": 290
+        },
+        {
+          "frame": 1735,
+          "members": [
+            256
+          ],
+          "representative": 256
+        },
+        {
+          "frame": 1795,
+          "members": [
+            281,
+            284
+          ],
+          "representative": 281
+        },
+        {
+          "frame": 1990,
+          "members": [
+            217,
+            239,
+            241,
+            245,
+            247
+          ],
+          "representative": 217
+        }
+      ],
+      "original_track_id": 37
+    },
+    {
+      "id": "G038",
+      "primary": {
+        "frame": 465,
+        "area": 9195,
+        "bbox": [
+          320,
+          0,
+          393,
+          440
+        ],
+        "digest": "7a4371e30fd2653bf9f48a105f5f68ad37339e874eba7e28658ed35033aab659",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0004_v3_f000465_balanced",
+            "ROI": "ROI-C0004",
+            "uid": "room2-ae199e2c6951e5a3",
+            "frame": 465,
+            "model": 2,
+            "label": 13,
+            "candidate_id": "babecb8c896fea77cea1",
+            "source_index": 202,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0004_v3_f000465_balanced.png",
+            "source_box": [
+              56,
+              0,
+              636,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "cabinet",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0004_v3_f000465_balanced",
+          "ROI": "ROI-C0004",
+          "uid": "room2-ae199e2c6951e5a3",
+          "frame": 465,
+          "model": 2,
+          "label": 13,
+          "candidate_id": "babecb8c896fea77cea1",
+          "source_index": 202,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0004_v3_f000465_balanced.png",
+          "source_box": [
+            56,
+            0,
+            636,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": "cabinet",
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 3803,
+        "index": 233,
+        "id": "M0407",
+        "group": 37,
+        "mask": "masks/M0407.png",
+        "mask_sha256": "30a805111759793cd79dffb14fdec869be5a5f877255d7a109696f3e49ed68e3",
+        "support_sha256": "86dd4006008cc8fd1fba90fa2e9d26cbc84c660edfc83dc18c3fb35855d225c1",
+        "rois": [
+          "room2-ae199e2c6951e5a3"
+        ],
+        "candidate_ids": [
+          "babecb8c896fea77cea1"
+        ],
+        "noise_features": {
+          "area": 9195,
+          "bbox_width": 73,
+          "bbox_height": 440,
+          "bbox_area": 32120,
+          "extent": 440,
+          "bbox_fill": 0.28627023661270234,
+          "components": 2,
+          "largest_component": 9194,
+          "max_radius": 12.0,
+          "p95_radius": 11.0,
+          "core_pixels": {
+            "2": 7412,
+            "3": 6535,
+            "8": 2421,
+            "12": 0
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G039",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0409"
+      ],
+      "validation_frames": [],
+      "original_track_id": 38
+    },
+    {
+      "id": "G040",
+      "primary": {
+        "frame": 1035,
+        "area": 6886,
+        "bbox": [
+          663,
+          158,
+          787,
+          319
+        ],
+        "digest": "35aa7ebf6872ef2b49eef99a14098a9e82084e9a3234a41bf1545c092a2ca627",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0002_v3_f001035_tile3",
+            "ROI": "ROI-C0002",
+            "uid": "room2-4fb8768bf9c4ac8e",
+            "frame": 1035,
+            "model": 2,
+            "label": 11,
+            "candidate_id": "13f42fac79055bd0ad75",
+            "source_index": 539,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0002_v3_f001035_tile3.png",
+            "source_box": [
+              600,
+              0,
+              1200,
+              380
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0002_v3_f001035_tile3",
+          "ROI": "ROI-C0002",
+          "uid": "room2-4fb8768bf9c4ac8e",
+          "frame": 1035,
+          "model": 2,
+          "label": 11,
+          "candidate_id": "13f42fac79055bd0ad75",
+          "source_index": 539,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0002_v3_f001035_tile3.png",
+          "source_box": [
+            600,
+            0,
+            1200,
+            380
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 3358,
+        "index": 259,
+        "id": "M0450",
+        "group": 39,
+        "mask": "masks/M0450.png",
+        "mask_sha256": "15405a3f04f5f818d02bd5eea2ea125e8aef2154165318d19e86b3b4a7ae3745",
+        "support_sha256": "57715c1a6e109c5ca3a3b3ee4d5c97cdf3e5e46ace90cdc323ba143b0107903c",
+        "rois": [
+          "room2-4fb8768bf9c4ac8e"
+        ],
+        "candidate_ids": [
+          "13f42fac79055bd0ad75"
+        ],
+        "noise_features": {
+          "area": 6886,
+          "bbox_width": 124,
+          "bbox_height": 161,
+          "bbox_area": 19964,
+          "extent": 161,
+          "bbox_fill": 0.34492085754357843,
+          "components": 3,
+          "largest_component": 6879,
+          "max_radius": 26.0,
+          "p95_radius": 24.0,
+          "core_pixels": {
+            "2": 6167,
+            "3": 5795,
+            "8": 4119,
+            "12": 2939
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G041",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0451"
+      ],
+      "validation_frames": [],
+      "original_track_id": 40
+    },
+    {
+      "id": "G044",
+      "primary": {
+        "frame": 1995,
+        "area": 34743,
+        "bbox": [
+          530,
+          295,
+          997,
+          680
+        ],
+        "digest": "f154df757a280ffd06ba80a4399894ab2824b49bf0550315abfabb81d1417d8b",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0008_v2_f001995_tile1",
+            "ROI": "ROI-U0008",
+            "uid": "room2-0930fd24a110f5be",
+            "frame": 1995,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "e4cbdcc2377e43f0f9de",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0008_v2_f001995_tile2",
+            "ROI": "ROI-U0008",
+            "uid": "room2-0930fd24a110f5be",
+            "frame": 1995,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "e4cbdcc2377e43f0f9de",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0008_v2_f001995_tile3",
+            "ROI": "ROI-U0008",
+            "uid": "room2-0930fd24a110f5be",
+            "frame": 1995,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "e4cbdcc2377e43f0f9de",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "AGREED_MAIN_KEEP",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0008_v2_f001995_tile4",
+            "ROI": "ROI-U0008",
+            "uid": "room2-0930fd24a110f5be",
+            "frame": 1995,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "e4cbdcc2377e43f0f9de",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0012_v2_f001995_context",
+            "ROI": "ROI-T0012",
+            "uid": "room2-0930fd24a110f5be",
+            "frame": 1995,
+            "model": 0,
+            "label": 7,
+            "candidate_id": "e4cbdcc2377e43f0f9de",
+            "source_index": 1173,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0012_v2_f001995_context",
+          "ROI": "ROI-T0012",
+          "uid": "room2-0930fd24a110f5be",
+          "frame": 1995,
+          "model": 0,
+          "label": 7,
+          "candidate_id": "e4cbdcc2377e43f0f9de",
+          "source_index": 1173,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001995.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 2537,
+        "index": 292,
+        "id": "M0517",
+        "group": 43,
+        "mask": "masks/M0517.png",
+        "mask_sha256": "aec1906d50e5adb088b2f49c2cf8f73237d401b4b61444421de11a343d13a0d3",
+        "support_sha256": "666ef39f3d82944b3fd2fa0dd6b0de589287277d8a9e5f2a4e35639d73c151d6",
+        "rois": [
+          "room2-0930fd24a110f5be"
+        ],
+        "candidate_ids": [
+          "e4cbdcc2377e43f0f9de"
+        ],
+        "noise_features": {
+          "area": 34743,
+          "bbox_width": 467,
+          "bbox_height": 385,
+          "bbox_area": 179795,
+          "extent": 467,
+          "bbox_fill": 0.19323674184487888,
+          "components": 4,
+          "largest_component": 32632,
+          "max_radius": 75.27283706623525,
+          "p95_radius": 58.0,
+          "core_pixels": {
+            "2": 32364,
+            "3": 31081,
+            "8": 25915,
+            "12": 22818
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G047",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [],
+      "validation_frames": [],
+      "original_track_id": 44
+    },
+    {
+      "id": "G046",
+      "primary": {
+        "frame": 465,
+        "area": 50247,
+        "bbox": [
+          123,
+          441,
+          478,
+          680
+        ],
+        "digest": "955b02026b08ac548799a9c13a4888e771e36e80972ec57b3ec6711a931413bc",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0004_v3_f000465_context",
+            "ROI": "ROI-C0004",
+            "uid": "room2-ae199e2c6951e5a3",
+            "frame": 465,
+            "model": 0,
+            "label": 4,
+            "candidate_id": "b667763c6d2c7d501ced",
+            "source_index": 200,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000465.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0004_v3_f000465_context",
+          "ROI": "ROI-C0004",
+          "uid": "room2-ae199e2c6951e5a3",
+          "frame": 465,
+          "model": 0,
+          "label": 4,
+          "candidate_id": "b667763c6d2c7d501ced",
+          "source_index": 200,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000465.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 2205,
+        "index": 297,
+        "id": "M0536",
+        "group": 45,
+        "mask": "masks/M0536.png",
+        "mask_sha256": "64cb4a8dcd1bb00b99cf638ee4c068541862c376c55b8e4445c61ea85c2b30a5",
+        "support_sha256": "a1e58d3b060e43c44c054929252a863bac9de6507f97911e5beb3e1bc371dcb8",
+        "rois": [
+          "room2-ae199e2c6951e5a3"
+        ],
+        "candidate_ids": [
+          "b667763c6d2c7d501ced"
+        ],
+        "noise_features": {
+          "area": 50247,
+          "bbox_width": 355,
+          "bbox_height": 239,
+          "bbox_area": 84845,
+          "extent": 355,
+          "bbox_fill": 0.5922211090812658,
+          "components": 1,
+          "largest_component": 50247,
+          "max_radius": 95.77577981932593,
+          "p95_radius": 75.0,
+          "core_pixels": {
+            "2": 48315,
+            "3": 47170,
+            "8": 42315,
+            "12": 38802
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G049",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [],
+      "validation_frames": [],
+      "original_track_id": 46
+    },
+    {
+      "id": "G047",
+      "primary": {
+        "frame": 1475,
+        "area": 11138,
+        "bbox": [
+          827,
+          470,
+          997,
+          664
+        ],
+        "digest": "05b48222989dedf5a1d861805a3dc06d88cefe3433d77147fe99a251ca01e204",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0007_v1_f001475_context",
+            "ROI": "ROI-U0007",
+            "uid": "room2-bddeed0280eaf0a7",
+            "frame": 1475,
+            "model": 1,
+            "label": 9,
+            "candidate_id": "d041acfa84124b9712b6",
+            "source_index": 846,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/cropformer/room2_ROI-U0007_v1_f001475_context.png",
+            "source_box": [
+              392,
+              76,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-U0007_v1_f001475_context",
+          "ROI": "ROI-U0007",
+          "uid": "room2-bddeed0280eaf0a7",
+          "frame": 1475,
+          "model": 1,
+          "label": 9,
+          "candidate_id": "d041acfa84124b9712b6",
+          "source_index": 846,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/cropformer/room2_ROI-U0007_v1_f001475_context.png",
+          "source_box": [
+            392,
+            76,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 2077,
+        "index": 298,
+        "id": "M0544",
+        "group": 46,
+        "mask": "masks/M0544.png",
+        "mask_sha256": "b64eb21bc8a0199ba7bf741b7ebe0309d51f824968892b9495961fe8722e9716",
+        "support_sha256": "86bbb44e0ae6c11f2ea79b44fae95100a805b9c1b7d69416974feb025c68d817",
+        "rois": [
+          "room2-bddeed0280eaf0a7"
+        ],
+        "candidate_ids": [
+          "d041acfa84124b9712b6"
+        ],
+        "noise_features": {
+          "area": 11138,
+          "bbox_width": 170,
+          "bbox_height": 194,
+          "bbox_area": 32980,
+          "extent": 194,
+          "bbox_fill": 0.3377198302001213,
+          "components": 2,
+          "largest_component": 7493,
+          "max_radius": 32.0,
+          "p95_radius": 25.495097567963924,
+          "core_pixels": {
+            "2": 9534,
+            "3": 8725,
+            "8": 5201,
+            "12": 3583
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G051",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0546",
+        "M0557",
+        "M0559"
+      ],
+      "validation_frames": [],
+      "original_track_id": 47
+    },
+    {
+      "id": "G049",
+      "primary": {
+        "frame": 855,
+        "area": 6054,
+        "bbox": [
+          110,
+          192,
+          240,
+          278
+        ],
+        "digest": "dbd1302c34a574d69b4b4ba994b4842dd4fa7b99f5861548bd3313eda3446aea",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0017_v1_f000855_balanced",
+            "ROI": "ROI-T0017",
+            "uid": "room2-ddfccdee5d22298c",
+            "frame": 855,
+            "model": 0,
+            "label": 3,
+            "candidate_id": "c6c71195ea37de14bddc",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000855.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0017_v1_f000855_context",
+            "ROI": "ROI-T0017",
+            "uid": "room2-ddfccdee5d22298c",
+            "frame": 855,
+            "model": 0,
+            "label": 3,
+            "candidate_id": "c6c71195ea37de14bddc",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000855.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0017_v1_f000855_balanced",
+          "ROI": "ROI-T0017",
+          "uid": "room2-ddfccdee5d22298c",
+          "frame": 855,
+          "model": 0,
+          "label": 3,
+          "candidate_id": "c6c71195ea37de14bddc",
+          "source_index": 411,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000855.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 1741,
+        "index": 309,
+        "id": "M0563",
+        "group": 48,
+        "mask": "masks/M0563.png",
+        "mask_sha256": "7b968e1f2ff6a81bdf310d508dc990b733423d9e9a2dc712e5b80feb6586111d",
+        "support_sha256": "e094693895c15bb2c3eadb13ebdd4cca859a2a3e6688ce22907a64d990057eac",
+        "rois": [
+          "room2-ddfccdee5d22298c"
+        ],
+        "candidate_ids": [
+          "c6c71195ea37de14bddc"
+        ],
+        "noise_features": {
+          "area": 6054,
+          "bbox_width": 130,
+          "bbox_height": 86,
+          "bbox_area": 11180,
+          "extent": 130,
+          "bbox_fill": 0.5415026833631484,
+          "components": 1,
+          "largest_component": 6054,
+          "max_radius": 35.34119409414458,
+          "p95_radius": 27.730849247724095,
+          "core_pixels": {
+            "2": 5406,
+            "3": 5052,
+            "8": 3486,
+            "12": 2498
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G053",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0565",
+        "M0569",
+        "M0574",
+        "M0611",
+        "M0613",
+        "M0614"
+      ],
+      "validation_frames": [
+        {
+          "frame": 0,
+          "members": [
+            339
+          ],
+          "representative": 339
+        },
+        {
+          "frame": 5,
+          "members": [
+            340
+          ],
+          "representative": 340
+        },
+        {
+          "frame": 10,
+          "members": [
+            337
+          ],
+          "representative": 337
+        },
+        {
+          "frame": 845,
+          "members": [
+            310
+          ],
+          "representative": 310
+        },
+        {
+          "frame": 850,
+          "members": [
+            313
+          ],
+          "representative": 313
+        },
+        {
+          "frame": 870,
+          "members": [
+            317
+          ],
+          "representative": 317
+        }
+      ],
+      "original_track_id": 49
+    },
+    {
+      "id": "G050",
+      "primary": {
+        "frame": 810,
+        "area": 5827,
+        "bbox": [
+          287,
+          0,
+          457,
+          210
+        ],
+        "digest": "4aa9f620e5d2d9dceda2941f00a3a427c4f1670981b101242a719385e8529778",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0011_v1_f000810_balanced",
+            "ROI": "ROI-T0011",
+            "uid": "room2-c9343a4583d29b1d",
+            "frame": 810,
+            "model": 1,
+            "label": 18,
+            "candidate_id": "d5709216bdcb80b27413",
+            "source_index": 353,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/cropformer/room2_ROI-U0002_v1_f000810_balanced.png",
+            "source_box": [
+              132,
+              0,
+              532,
+              597
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0011_v1_f000810_balanced",
+          "ROI": "ROI-T0011",
+          "uid": "room2-c9343a4583d29b1d",
+          "frame": 810,
+          "model": 1,
+          "label": 18,
+          "candidate_id": "d5709216bdcb80b27413",
+          "source_index": 353,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/cropformer/room2_ROI-U0002_v1_f000810_balanced.png",
+          "source_box": [
+            132,
+            0,
+            532,
+            597
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 1682,
+        "index": 315,
+        "id": "M0572",
+        "group": 49,
+        "mask": "masks/M0572.png",
+        "mask_sha256": "64cb1f228d1ce4929a2774bd0809a0e928aa42d420309e26578d7b2eacea9219",
+        "support_sha256": "3fdda2917832b63a9430a4c21f73ea4c7f27472d19c6150f567eef4a70516f64",
+        "rois": [
+          "room2-c9343a4583d29b1d"
+        ],
+        "candidate_ids": [
+          "d5709216bdcb80b27413"
+        ],
+        "noise_features": {
+          "area": 5827,
+          "bbox_width": 170,
+          "bbox_height": 210,
+          "bbox_area": 35700,
+          "extent": 210,
+          "bbox_fill": 0.16322128851540615,
+          "components": 28,
+          "largest_component": 5778,
+          "max_radius": 31.0,
+          "p95_radius": 24.07072157841199,
+          "core_pixels": {
+            "2": 4840,
+            "3": 4461,
+            "8": 3014,
+            "12": 2116
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G054",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0593",
+        "M0604"
+      ],
+      "validation_frames": [
+        {
+          "frame": 795,
+          "members": [
+            329,
+            334
+          ],
+          "representative": 329
+        }
+      ],
+      "original_track_id": 50
+    },
+    {
+      "id": "G055",
+      "primary": {
+        "frame": 1475,
+        "area": 3975,
+        "bbox": [
+          828,
+          346,
+          890,
+          551
+        ],
+        "digest": "0281b21fae3fa50770050088588753bfc45e2b9a3ea54d945019f16fd4706977",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0007_v1_f001475_balanced",
+            "ROI": "ROI-U0007",
+            "uid": "room2-bddeed0280eaf0a7",
+            "frame": 1475,
+            "model": 0,
+            "label": 14,
+            "candidate_id": "d0087417c528f8c256a4",
+            "source_index": 843,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001475.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0007_v1_f001475_context",
+            "ROI": "ROI-U0007",
+            "uid": "room2-bddeed0280eaf0a7",
+            "frame": 1475,
+            "model": 0,
+            "label": 14,
+            "candidate_id": "d0087417c528f8c256a4",
+            "source_index": 843,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001475.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0004_v1_f001475_context",
+            "ROI": "ROI-T0004",
+            "uid": "room2-bddeed0280eaf0a7",
+            "frame": 1475,
+            "model": 0,
+            "label": 14,
+            "candidate_id": "d0087417c528f8c256a4",
+            "source_index": 843,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001475.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0004_v1_f001475_context",
+          "ROI": "ROI-T0004",
+          "uid": "room2-bddeed0280eaf0a7",
+          "frame": 1475,
+          "model": 0,
+          "label": 14,
+          "candidate_id": "d0087417c528f8c256a4",
+          "source_index": 843,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame001475.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 1358,
+        "index": 341,
+        "id": "M0615",
+        "group": 54,
+        "mask": "masks/M0615.png",
+        "mask_sha256": "b861decf0a05306b3583a644b307c3de4310d2ca0593355e0bae6d2b5d473233",
+        "support_sha256": "62844b38fa5d658488d90684cde8b64313504f9798eaad62aeff3b3bd1c9abe6",
+        "rois": [
+          "room2-bddeed0280eaf0a7"
+        ],
+        "candidate_ids": [
+          "d0087417c528f8c256a4"
+        ],
+        "noise_features": {
+          "area": 3975,
+          "bbox_width": 62,
+          "bbox_height": 205,
+          "bbox_area": 12710,
+          "extent": 205,
+          "bbox_fill": 0.3127458693941778,
+          "components": 1,
+          "largest_component": 3975,
+          "max_radius": 15.811388300841896,
+          "p95_radius": 12.083045973594572,
+          "core_pixels": {
+            "2": 3111,
+            "3": 2667,
+            "8": 856,
+            "12": 212
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G060",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0618",
+        "M0629",
+        "M0632",
+        "M0647"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1465,
+          "members": [
+            365
+          ],
+          "representative": 365
+        },
+        {
+          "frame": 1470,
+          "members": [
+            343
+          ],
+          "representative": 343
+        },
+        {
+          "frame": 1480,
+          "members": [
+            349
+          ],
+          "representative": 349
+        },
+        {
+          "frame": 1490,
+          "members": [
+            352
+          ],
+          "representative": 352
+        }
+      ],
+      "original_track_id": 55
+    },
+    {
+      "id": "G057",
+      "primary": {
+        "frame": 810,
+        "area": 3264,
+        "bbox": [
+          360,
+          134,
+          415,
+          215
+        ],
+        "digest": "e016f952fb9efdc2582f6f8bf9e5da3b0dc8e1e507691e5da3ddd0549a2c3548",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-T0011_v1_f000810_balanced",
+            "ROI": "ROI-T0011",
+            "uid": "room2-c9343a4583d29b1d",
+            "frame": 810,
+            "model": 0,
+            "label": 21,
+            "candidate_id": "631df7a1548d2f4b308f",
+            "source_index": 352,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000810.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0011_v1_f000810_context",
+            "ROI": "ROI-T0011",
+            "uid": "room2-c9343a4583d29b1d",
+            "frame": 810,
+            "model": 0,
+            "label": 21,
+            "candidate_id": "631df7a1548d2f4b308f",
+            "source_index": 352,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000810.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-T0011_v1_f000810_balanced",
+          "ROI": "ROI-T0011",
+          "uid": "room2-c9343a4583d29b1d",
+          "frame": 810,
+          "model": 0,
+          "label": 21,
+          "candidate_id": "631df7a1548d2f4b308f",
+          "source_index": 352,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000810.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 1254,
+        "index": 344,
+        "id": "M0622",
+        "group": 56,
+        "mask": "masks/M0622.png",
+        "mask_sha256": "9c811f2b7ffe6cc8fece94010f5351ae1f8b9cd05f067e4fa95dd3394ad7eb9f",
+        "support_sha256": "90efdfcf3a24e841cf5a27fe1daf94f578839f7b299b134a5fccc582b6665ff8",
+        "rois": [
+          "room2-c9343a4583d29b1d"
+        ],
+        "candidate_ids": [
+          "631df7a1548d2f4b308f"
+        ],
+        "noise_features": {
+          "area": 3264,
+          "bbox_width": 55,
+          "bbox_height": 81,
+          "bbox_area": 4455,
+          "extent": 81,
+          "bbox_fill": 0.7326599326599327,
+          "components": 1,
+          "largest_component": 3264,
+          "max_radius": 22.47220505424423,
+          "p95_radius": 18.023592920721953,
+          "core_pixels": {
+            "2": 2806,
+            "3": 2583,
+            "8": 1584,
+            "12": 909
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G062",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0623",
+        "M0625",
+        "M0628",
+        "M0631",
+        "M0634",
+        "M0637",
+        "M0638",
+        "M0644"
+      ],
+      "validation_frames": [
+        {
+          "frame": 0,
+          "members": [
+            357
+          ],
+          "representative": 357
+        },
+        {
+          "frame": 300,
+          "members": [
+            356
+          ],
+          "representative": 356
+        },
+        {
+          "frame": 320,
+          "members": [
+            351
+          ],
+          "representative": 351
+        },
+        {
+          "frame": 575,
+          "members": [
+            363
+          ],
+          "representative": 363
+        },
+        {
+          "frame": 685,
+          "members": [
+            353
+          ],
+          "representative": 353
+        },
+        {
+          "frame": 795,
+          "members": [
+            345,
+            346
+          ],
+          "representative": 345
+        },
+        {
+          "frame": 825,
+          "members": [
+            348
+          ],
+          "representative": 348
+        }
+      ],
+      "original_track_id": 57
+    },
+    {
+      "id": "G058",
+      "primary": {
+        "frame": 865,
+        "area": 5141,
+        "bbox": [
+          32,
+          410,
+          162,
+          491
+        ],
+        "digest": "249711672ff7c6c0ca0136191a0919df18d72684fe0893409bde5cf60f316dd1",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0019_v1_f000865_balanced",
+            "ROI": "ROI-U0019",
+            "uid": "room2-c30fd86dc9258ed1",
+            "frame": 865,
+            "model": 0,
+            "label": 17,
+            "candidate_id": "f5b612b73334f3c9c206",
+            "source_index": 424,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000865.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-U0019_v1_f000865_balanced",
+          "ROI": "ROI-U0019",
+          "uid": "room2-c30fd86dc9258ed1",
+          "frame": 865,
+          "model": 0,
+          "label": 17,
+          "candidate_id": "f5b612b73334f3c9c206",
+          "source_index": 424,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000865.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 1154,
+        "index": 350,
+        "id": "M0630",
+        "group": 57,
+        "mask": "masks/M0630.png",
+        "mask_sha256": "87757bedde58179aa6ef5fd9a5079dccc02e4889b2586211a980a7ab2e351dfa",
+        "support_sha256": "50a12077a1cca79ae3190c344fc0979fb4839789a75338229fc1b74be82c59b3",
+        "rois": [
+          "room2-c30fd86dc9258ed1"
+        ],
+        "candidate_ids": [
+          "f5b612b73334f3c9c206"
+        ],
+        "noise_features": {
+          "area": 5141,
+          "bbox_width": 130,
+          "bbox_height": 81,
+          "bbox_area": 10530,
+          "extent": 130,
+          "bbox_fill": 0.48822412155745487,
+          "components": 1,
+          "largest_component": 5141,
+          "max_radius": 24.596747752497688,
+          "p95_radius": 19.924858845171276,
+          "core_pixels": {
+            "2": 4518,
+            "3": 4161,
+            "8": 2683,
+            "12": 1688
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G063",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0636",
+        "M0662",
+        "M0724"
+      ],
+      "validation_frames": [
+        {
+          "frame": 10,
+          "members": [
+            375
+          ],
+          "representative": 375
+        },
+        {
+          "frame": 315,
+          "members": [
+            418
+          ],
+          "representative": 418
+        },
+        {
+          "frame": 855,
+          "members": [
+            355
+          ],
+          "representative": 355
+        }
+      ],
+      "original_track_id": 58
+    },
+    {
+      "id": "G064",
+      "primary": {
+        "frame": 320,
+        "area": 1967,
+        "bbox": [
+          378,
+          423,
+          441,
+          462
+        ],
+        "digest": "5ca5115e50bada8f2326d42639e588e30c95796ed58f70b58904b98cec73db3e",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0020_v2_f000320_balanced",
+            "ROI": "ROI-U0020",
+            "uid": "room2-16d06b992339dac7",
+            "frame": 320,
+            "model": 0,
+            "label": 12,
+            "candidate_id": "ebc21ca6e6ce92b14aec",
+            "source_index": 140,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000320.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0020_v2_f000320_context",
+            "ROI": "ROI-U0020",
+            "uid": "room2-16d06b992339dac7",
+            "frame": 320,
+            "model": 0,
+            "label": 12,
+            "candidate_id": "ebc21ca6e6ce92b14aec",
+            "source_index": 140,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000320.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-U0020_v2_f000320_balanced",
+          "ROI": "ROI-U0020",
+          "uid": "room2-16d06b992339dac7",
+          "frame": 320,
+          "model": 0,
+          "label": 12,
+          "candidate_id": "ebc21ca6e6ce92b14aec",
+          "source_index": 140,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000320.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 911,
+        "index": 370,
+        "id": "M0654",
+        "group": 63,
+        "mask": "masks/M0654.png",
+        "mask_sha256": "8488c3b91d28cfbc0d0b221b2b5354a81aaa62b5ee1c7210e17a1e2f9fbba12c",
+        "support_sha256": "47f57132a5f062e6289c367a411bcb777bc704b112c58d2c1f74589efa229179",
+        "rois": [
+          "room2-16d06b992339dac7"
+        ],
+        "candidate_ids": [
+          "ebc21ca6e6ce92b14aec"
+        ],
+        "noise_features": {
+          "area": 1967,
+          "bbox_width": 63,
+          "bbox_height": 39,
+          "bbox_area": 2457,
+          "extent": 63,
+          "bbox_fill": 0.8005698005698005,
+          "components": 1,
+          "largest_component": 1967,
+          "max_radius": 16.1245154965971,
+          "p95_radius": 14.142135623730951,
+          "core_pixels": {
+            "2": 1627,
+            "3": 1462,
+            "8": 733,
+            "12": 281
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G070",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0663",
+        "M0676"
+      ],
+      "validation_frames": [
+        {
+          "frame": 395,
+          "members": [
+            385
+          ],
+          "representative": 385
+        },
+        {
+          "frame": 825,
+          "members": [
+            376
+          ],
+          "representative": 376
+        }
+      ],
+      "original_track_id": 64
+    },
+    {
+      "id": "G067",
+      "primary": {
+        "frame": 835,
+        "area": 2436,
+        "bbox": [
+          130,
+          283,
+          233,
+          338
+        ],
+        "digest": "65939bd06305c5609a92f9e957cbe85dd1b6d2d26c2a1aae777e98ea98490541",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0017_v1_f000835_balanced",
+            "ROI": "ROI-U0017",
+            "uid": "room2-be6d2db8ec4281d7",
+            "frame": 835,
+            "model": 0,
+            "label": 15,
+            "candidate_id": "274948413dd1b4bb1107",
+            "source_index": 392,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000835.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0017_v1_f000835_context",
+            "ROI": "ROI-U0017",
+            "uid": "room2-be6d2db8ec4281d7",
+            "frame": 835,
+            "model": 0,
+            "label": 15,
+            "candidate_id": "274948413dd1b4bb1107",
+            "source_index": 392,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000835.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-U0017_v1_f000835_balanced",
+          "ROI": "ROI-U0017",
+          "uid": "room2-be6d2db8ec4281d7",
+          "frame": 835,
+          "model": 0,
+          "label": 15,
+          "candidate_id": "274948413dd1b4bb1107",
+          "source_index": 392,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000835.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 627,
+        "index": 386,
+        "id": "M0679",
+        "group": 66,
+        "mask": "masks/M0679.png",
+        "mask_sha256": "dff0c44a3000f43008f48ab3cee1fd42f90e2fffe0768f55bc15db9cb87d2434",
+        "support_sha256": "24fe4b49c5af85c66f22086a614be5686d3a05877cbf2afa77ad810cd592ea50",
+        "rois": [
+          "room2-be6d2db8ec4281d7"
+        ],
+        "candidate_ids": [
+          "274948413dd1b4bb1107"
+        ],
+        "noise_features": {
+          "area": 2436,
+          "bbox_width": 103,
+          "bbox_height": 55,
+          "bbox_area": 5665,
+          "extent": 103,
+          "bbox_fill": 0.430008826125331,
+          "components": 2,
+          "largest_component": 2198,
+          "max_radius": 15.524174696260024,
+          "p95_radius": 11.661903789690601,
+          "core_pixels": {
+            "2": 1834,
+            "3": 1518,
+            "8": 504,
+            "12": 107
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G075",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0692",
+        "M0695",
+        "M0699"
+      ],
+      "validation_frames": [
+        {
+          "frame": 10,
+          "members": [
+            402
+          ],
+          "representative": 402
+        },
+        {
+          "frame": 215,
+          "members": [
+            399
+          ],
+          "representative": 399
+        },
+        {
+          "frame": 310,
+          "members": [
+            396
+          ],
+          "representative": 396
+        }
+      ],
+      "original_track_id": 67
+    },
+    {
+      "id": "G068",
+      "primary": {
+        "frame": 810,
+        "area": 1072,
+        "bbox": [
+          260,
+          268,
+          338,
+          327
+        ],
+        "digest": "73f5325b2bd7ca373d0fe3946680b4d230c786957561a3fd8377326c811554c1",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-U0002_v1_f000810_context",
+            "ROI": "ROI-U0002",
+            "uid": "room2-58d12c89e9465050",
+            "frame": 810,
+            "model": 0,
+            "label": 16,
+            "candidate_id": "c891fe8416013e32f1cb",
+            "source_index": 352,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000810.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-U0002_v1_f000810_context",
+          "ROI": "ROI-U0002",
+          "uid": "room2-58d12c89e9465050",
+          "frame": 810,
+          "model": 0,
+          "label": 16,
+          "candidate_id": "c891fe8416013e32f1cb",
+          "source_index": 352,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000810.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 611,
+        "index": 388,
+        "id": "M0681",
+        "group": 67,
+        "mask": "masks/M0681.png",
+        "mask_sha256": "d1b8679fd7f13910ad1c4abafbada225df2cf18d27fd908f0d42722d08905711",
+        "support_sha256": "9438b4aef1ca5f503f52dd3a1a46b56089382b8e44bbeee418375ce8e6c1faf8",
+        "rois": [
+          "room2-58d12c89e9465050"
+        ],
+        "candidate_ids": [
+          "c891fe8416013e32f1cb"
+        ],
+        "noise_features": {
+          "area": 1072,
+          "bbox_width": 78,
+          "bbox_height": 59,
+          "bbox_area": 4602,
+          "extent": 78,
+          "bbox_fill": 0.23294219904389396,
+          "components": 1,
+          "largest_component": 1072,
+          "max_radius": 7.615773105863909,
+          "p95_radius": 6.324555320336759,
+          "core_pixels": {
+            "2": 647,
+            "3": 446,
+            "8": 0,
+            "12": 0
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G076",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0686",
+        "M0687",
+        "M0691",
+        "M0693",
+        "M0696",
+        "M0700",
+        "M0702",
+        "M0703",
+        "M0707",
+        "M0708",
+        "M0710",
+        "M0711"
+      ],
+      "validation_frames": [
+        {
+          "frame": 5,
+          "members": [
+            407
+          ],
+          "representative": 407
+        },
+        {
+          "frame": 10,
+          "members": [
+            410
+          ],
+          "representative": 410
+        },
+        {
+          "frame": 215,
+          "members": [
+            400
+          ],
+          "representative": 400
+        },
+        {
+          "frame": 310,
+          "members": [
+            411
+          ],
+          "representative": 411
+        },
+        {
+          "frame": 335,
+          "members": [
+            404
+          ],
+          "representative": 404
+        },
+        {
+          "frame": 455,
+          "members": [
+            403,
+            405,
+            408
+          ],
+          "representative": 403
+        },
+        {
+          "frame": 820,
+          "members": [
+            393
+          ],
+          "representative": 393
+        },
+        {
+          "frame": 825,
+          "members": [
+            392
+          ],
+          "representative": 392
+        },
+        {
+          "frame": 830,
+          "members": [
+            395
+          ],
+          "representative": 395
+        },
+        {
+          "frame": 835,
+          "members": [
+            397
+          ],
+          "representative": 397
+        }
+      ],
+      "original_track_id": 68
+    },
+    {
+      "id": "G076",
+      "primary": {
+        "frame": 225,
+        "area": 1119,
+        "bbox": [
+          100,
+          177,
+          158,
+          208
+        ],
+        "digest": "1c2d8f933ec36c5ef9dff818baa79ecca6a30041e343ec2d10cc6dbede17cf07",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0020_v1_f000225_context",
+            "ROI": "ROI-C0020",
+            "uid": "room2-f0d4f5e7f367750b",
+            "frame": 225,
+            "model": 2,
+            "label": 19,
+            "candidate_id": "b26d366d251b6e15e883",
+            "source_index": 89,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0020_v1_f000225_context.png",
+            "source_box": [
+              0,
+              0,
+              650,
+              441
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "cabinet",
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0020_v1_f000225_context",
+          "ROI": "ROI-C0020",
+          "uid": "room2-f0d4f5e7f367750b",
+          "frame": 225,
+          "model": 2,
+          "label": 19,
+          "candidate_id": "b26d366d251b6e15e883",
+          "source_index": 89,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0020_v1_f000225_context.png",
+          "source_box": [
+            0,
+            0,
+            650,
+            441
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": "cabinet",
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 299,
+        "index": 417,
+        "id": "M0723",
+        "group": 75,
+        "mask": "masks/M0723.png",
+        "mask_sha256": "dc54e377a0430c68cafe77de8b1067aaa512652cb4db230c2655a30492397cd2",
+        "support_sha256": "44f44110e2fc98893bddc776beb218f0a8f4279c74abb8fbc0de797ec9a16fcf",
+        "rois": [
+          "room2-f0d4f5e7f367750b"
+        ],
+        "candidate_ids": [
+          "b26d366d251b6e15e883"
+        ],
+        "noise_features": {
+          "area": 1119,
+          "bbox_width": 58,
+          "bbox_height": 31,
+          "bbox_area": 1798,
+          "extent": 58,
+          "bbox_fill": 0.6223581757508343,
+          "components": 1,
+          "largest_component": 1119,
+          "max_radius": 12.36931687685298,
+          "p95_radius": 10.770329614269007,
+          "core_pixels": {
+            "2": 876,
+            "3": 750,
+            "8": 256,
+            "12": 10
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G088",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0725",
+        "M0726",
+        "M0727",
+        "M0733",
+        "M0738"
+      ],
+      "validation_frames": [
+        {
+          "frame": 0,
+          "members": [
+            420
+          ],
+          "representative": 420
+        },
+        {
+          "frame": 5,
+          "members": [
+            419
+          ],
+          "representative": 419
+        },
+        {
+          "frame": 395,
+          "members": [
+            428
+          ],
+          "representative": 428
+        },
+        {
+          "frame": 855,
+          "members": [
+            421
+          ],
+          "representative": 421
+        }
+      ],
+      "original_track_id": 76
+    },
+    {
+      "id": "G078",
+      "primary": {
+        "frame": 0,
+        "area": 531,
+        "bbox": [
+          636,
+          320,
+          681,
+          338
+        ],
+        "digest": "72401d27424b4851e9f98c64652c033af8969f5b44511d2e72d4d04aa7f3a454",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0020_v2_f000000_balanced",
+            "ROI": "ROI-C0020",
+            "uid": "room2-f0d4f5e7f367750b",
+            "frame": 0,
+            "model": 0,
+            "label": 21,
+            "candidate_id": "815d8da59ed1d710ad22",
+            "source_index": 0,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000000.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-C0020_v2_f000000_context",
+            "ROI": "ROI-C0020",
+            "uid": "room2-f0d4f5e7f367750b",
+            "frame": 0,
+            "model": 0,
+            "label": 21,
+            "candidate_id": "815d8da59ed1d710ad22",
+            "source_index": 0,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000000.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0020_v2_f000000_balanced",
+          "ROI": "ROI-C0020",
+          "uid": "room2-f0d4f5e7f367750b",
+          "frame": 0,
+          "model": 0,
+          "label": 21,
+          "candidate_id": "815d8da59ed1d710ad22",
+          "source_index": 0,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000000.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 253,
+        "index": 426,
+        "id": "M0736",
+        "group": 77,
+        "mask": "masks/M0736.png",
+        "mask_sha256": "8d6952db9f9af207967ce13f87c7c1e97db060e00b601c4be3ebaf6f3c0fd80e",
+        "support_sha256": "f809f4b2559b6edb2507e558087b3826b403e3beee83dd5c36ce62e635a0708e",
+        "rois": [
+          "room2-f0d4f5e7f367750b"
+        ],
+        "candidate_ids": [
+          "815d8da59ed1d710ad22"
+        ],
+        "noise_features": {
+          "area": 531,
+          "bbox_width": 45,
+          "bbox_height": 18,
+          "bbox_area": 810,
+          "extent": 45,
+          "bbox_fill": 0.6555555555555556,
+          "components": 1,
+          "largest_component": 531,
+          "max_radius": 6.708203932499369,
+          "p95_radius": 5.830951894845301,
+          "core_pixels": {
+            "2": 321,
+            "3": 222,
+            "8": 0,
+            "12": 0
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G092",
+        "previous_primary": true,
+        "noise_review_control": true
+      },
+      "auxiliary_ids": [
+        "M0740",
+        "M0744",
+        "M0749"
+      ],
+      "validation_frames": [
+        {
+          "frame": 5,
+          "members": [
+            429
+          ],
+          "representative": 429
+        },
+        {
+          "frame": 185,
+          "members": [
+            433
+          ],
+          "representative": 433
+        },
+        {
+          "frame": 395,
+          "members": [
+            431
+          ],
+          "representative": 431
+        }
+      ],
+      "original_track_id": 78
+    },
+    {
+      "id": "G079",
+      "primary": {
+        "frame": 0,
+        "area": 622,
+        "bbox": [
+          635,
+          335,
+          684,
+          352
+        ],
+        "digest": "773e3fd98994c4384f830a77e7877dfe50b7d820d2bf2f2d1ee7e724ad6433e9",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0020_v2_f000000_context",
+            "ROI": "ROI-C0020",
+            "uid": "room2-f0d4f5e7f367750b",
+            "frame": 0,
+            "model": 0,
+            "label": 19,
+            "candidate_id": "bf1e42b27072522bca0e",
+            "source_index": 0,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000000.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0020_v2_f000000_context",
+          "ROI": "ROI-C0020",
+          "uid": "room2-f0d4f5e7f367750b",
+          "frame": 0,
+          "model": 0,
+          "label": 19,
+          "candidate_id": "bf1e42b27072522bca0e",
+          "source_index": 0,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/room2/frame000000.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false,
+          "crop_edges": []
+        },
+        "support_count": 251,
+        "index": 427,
+        "id": "M0737",
+        "group": 78,
+        "mask": "masks/M0737.png",
+        "mask_sha256": "1ceaea88af35fc74e94b84c51b7f1f3ca991cb5fbb846fa6f8bcbf296d382444",
+        "support_sha256": "6f5fa2b9575d27a2d261cb87561ce5593051ffe68fbe8c84162f220ec116621f",
+        "rois": [
+          "room2-f0d4f5e7f367750b"
+        ],
+        "candidate_ids": [
+          "bf1e42b27072522bca0e"
+        ],
+        "noise_features": {
+          "area": 622,
+          "bbox_width": 49,
+          "bbox_height": 17,
+          "bbox_area": 833,
+          "extent": 49,
+          "bbox_fill": 0.7466986794717887,
+          "components": 1,
+          "largest_component": 622,
+          "max_radius": 7.0,
+          "p95_radius": 6.0,
+          "core_pixels": {
+            "2": 396,
+            "3": 291,
+            "8": 0,
+            "12": 0
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G093",
+        "previous_primary": true,
+        "noise_review_control": true
+      },
+      "auxiliary_ids": [],
+      "validation_frames": [],
+      "original_track_id": 79
+    },
+    {
+      "id": "G084",
+      "primary": {
+        "frame": 1990,
+        "area": 1792,
+        "bbox": [
+          309,
+          627,
+          390,
+          680
+        ],
+        "digest": "7e1327686d24e850caa65eca5ba6d8e4995a4f1a8576084f5bdc561b41054ff2",
+        "aliases": [
+          {
+            "crop_key": "room2_ROI-C0007_v3_f001990_context",
+            "ROI": "ROI-C0007",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1990,
+            "model": 2,
+            "label": 10,
+            "candidate_id": "1925536b437e0a5eb59b",
+            "source_index": 1150,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0007_v3_f001990_context.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-U0005_v1_f001990_context",
+            "ROI": "ROI-U0005",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1990,
+            "model": 2,
+            "label": 10,
+            "candidate_id": "1925536b437e0a5eb59b",
+            "source_index": 1150,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0007_v3_f001990_context.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          },
+          {
+            "crop_key": "room2_ROI-T0007_v2_f001990_context",
+            "ROI": "ROI-T0007",
+            "uid": "room2-846561f1dce70f69",
+            "frame": 1990,
+            "model": 2,
+            "label": 10,
+            "candidate_id": "1925536b437e0a5eb59b",
+            "source_index": 1150,
+            "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0007_v3_f001990_context.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": "window",
+            "touches_crop": false,
+            "touches_frame": true,
+            "crop_edges": []
+          }
+        ],
+        "representative": {
+          "crop_key": "room2_ROI-C0007_v3_f001990_context",
+          "ROI": "ROI-C0007",
+          "uid": "room2-846561f1dce70f69",
+          "frame": 1990,
+          "model": 2,
+          "label": 10,
+          "candidate_id": "1925536b437e0a5eb59b",
+          "source_index": 1150,
+          "source_path": "/data/chenkejun/CVPR/results/e1_roi_top20_20261015/sam2_1/room2_ROI-C0007_v3_f001990_context.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": "window",
+          "touches_crop": false,
+          "touches_frame": true,
+          "crop_edges": []
+        },
+        "support_count": 160,
+        "index": 436,
+        "id": "M0759",
+        "group": 83,
+        "mask": "masks/M0759.png",
+        "mask_sha256": "165653aa3dd2d59cee68f73a670c75efc1e5b64fc6b3731da5f438e17be43dc8",
+        "support_sha256": "73d17b32640d9522be4bdb0d7434184374c626a3cd19c806a40c8af829b4a7e5",
+        "rois": [
+          "room2-846561f1dce70f69"
+        ],
+        "candidate_ids": [
+          "1925536b437e0a5eb59b"
+        ],
+        "noise_features": {
+          "area": 1792,
+          "bbox_width": 81,
+          "bbox_height": 53,
+          "bbox_area": 4293,
+          "extent": 81,
+          "bbox_fill": 0.4174237130211973,
+          "components": 1,
+          "largest_component": 1792,
+          "max_radius": 13.892443989449804,
+          "p95_radius": 12.041594578792296,
+          "core_pixels": {
+            "2": 1462,
+            "3": 1242,
+            "8": 494,
+            "12": 121
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G105",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0761",
+        "M0762",
+        "M0763"
+      ],
+      "validation_frames": [],
+      "original_track_id": 84
+    }
+  ],
+  "original_track_ids_preserved": true,
+  "source_manifest_sha256": "bc02522e9bc83d880e99397ea9154ace33ede26ffa4c6abdb18384d5a68a0b22",
+  "selection_sha256": "bc00e2549fb3fec6fc47992d120276c7bfaf0f9234e661670eb0e945e0f83285",
+  "auto_v2_config": {
+    "schema": "auto-v2-accepted-room2-replay-v1",
+    "case_id": "room2_auto_v2_20261019",
+    "date": "2026-10-19",
+    "base_branch": "auto-v1",
+    "base_commit": "35bff6768579c7ad2cd4d4b42246ae9a6a291384",
+    "inputs": "fixtures/room2_20261019",
+    "original_manifest": "../auto_v1/outputs/instance_seed_grouping_20261015_r4/seed_manifest.json",
+    "rules": {
+      "semantic": {
+        "excluded_classes": [
+          "wall",
+          "floor",
+          "ceiling",
+          "rug"
+        ],
+        "pixel_confidence_gte": 0.7,
+        "mask_fraction_gte": 0.9
+      },
+      "covisible_dedup": {
+        "iou_gte": 0.8,
+        "minimum_individual_visibility": null,
+        "minimum_visible_points": null,
+        "grouping": "fixed_primary_direct_edges"
+      },
+      "skip_repair_B": {
+        "p_gte": 0.95,
+        "r_gte": 0.95,
+        "source_frame_only": true,
+        "conflict_gate": false,
+        "minimum_support": null
+      },
+      "containment": {
+        "full_support_fraction_gt": 0.7,
+        "exclude": "smaller_TSDF_support",
+        "equal_size_or_chain": "require_user_review"
+      },
+      "pr_filter": {
+        "p_gt": 0.1,
+        "r_lt": 0.2,
+        "operator": "AND"
+      }
+    },
+    "manual_override": "fixtures/room2_20261019/manual_overrides.json",
+    "scope": "Replay accepted filters on the original 90 final auto-v1 room2 seeds. Reuse immutable measurements; no inference, tracking, image rendering, GT or E1 execution.",
+    "original_mask_pixels_and_track_ids_preserved": true,
+    "E1_architecture": "P1-A1-strict-vote-E1-20261012",
+    "evaluation_workspace": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009",
+    "evaluation_protocol": "object_observed_repair / revision 2"
+  },
+  "mask_source_directory": "/data/chenkejun/CVPR/results/instance_seed_grouping_20261015_r4",
+  "E1_run": false,
+  "manual_overrides": {
+    "schema": "auto-v2-case-manual-override-v1",
+    "case_id": "room2_auto_v2_20261019",
+    "date": "2026-10-19",
+    "stage": "pr_filter",
+    "scope": "Only this room2 42-seed input, not a general automatic rule",
+    "user_quote": "等一下，刚才的筛选保留017和025其他的都排除之后用保留的做E1之后的修复",
+    "input_manifest_sha256": "3b09418cc2e9180316f35012b167aebdc9bc87a155a7a6abca683c6165e2aae3",
+    "input_group_ids": [
+      "G006",
+      "G007",
+      "G009",
+      "G013",
+      "G015",
+      "G017",
+      "G018",
+      "G020",
+      "G022",
+      "G024",
+      "G025",
+      "G026",
+      "G027",
+      "G031",
+      "G032",
+      "G033",
+      "G035",
+      "G037",
+      "G038",
+      "G040",
+      "G044",
+      "G046",
+      "G047",
+      "G049",
+      "G050",
+      "G055",
+      "G057",
+      "G058",
+      "G064",
+      "G067",
+      "G068",
+      "G069",
+      "G071",
+      "G074",
+      "G075",
+      "G076",
+      "G077",
+      "G078",
+      "G079",
+      "G082",
+      "G084",
+      "G086"
+    ],
+    "automatic_excluded_group_ids": [
+      "G017",
+      "G025",
+      "G069",
+      "G071",
+      "G074",
+      "G075",
+      "G077",
+      "G082",
+      "G086"
+    ],
+    "retain": [
+      {
+        "group_id": "G017",
+        "original_track_id": 17,
+        "mask_id": "M0168",
+        "frame": 985,
+        "mask_sha256": "6a294eaf1e6c6bf6bd788c0ce7d24ca24f2ddc452583c7697313350ba415d1db"
+      },
+      {
+        "group_id": "G025",
+        "original_track_id": 25,
+        "mask_id": "M0309",
+        "frame": 1590,
+        "mask_sha256": "bcd4004c8d59b84c69e279ff40cfc761b1cc6c476e1c2dfe23e694413b0e68b2"
+      }
+    ],
+    "final_excluded_group_ids": [
+      "G069",
+      "G071",
+      "G074",
+      "G075",
+      "G077",
+      "G082",
+      "G086"
+    ]
+  }
+}

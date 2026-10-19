@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>整图语义分割 · 种子筛选对比</title><link rel="stylesheet" href="review.css"></head>
+<body><main><header><p class="eyebrow">AUTO-V1 · ROOM2 · SEGFORMER-B5</p><h1>整图语义分割，检查每个种子</h1><p>在原始 RGB 上分割，再统计原 Mask 内类别占比。墙、地板、天花板和地毯纳入排除范围。</p><p class="rule">本轮规则：置信度 ≥ 0.7 的墙／地／顶／地毯像素，占原 Mask ≥ 90% 则排除；其余全部保留。</p></header>
+<div id="stats" class="stats" aria-label="筛选统计"></div>
+<section class="clip-groups" aria-label="本轮 SegFormer 筛选分组"><div class="clip-heading"><h2>本轮 SegFormer 筛选：排除与保留</h2><button id="decision-all" type="button">查看全部 90 个</button></div><div id="decision-groups" class="clip-cards"></div></section>
+<section class="toolbar"><label>筛选 <select id="filter"><option value="all">全部种子</option><option value="exclude">本轮排除</option><option value="retain">本轮保留</option></select></label><label>定位 <input id="search" type="search" placeholder="G002 / wall / 帧号" aria-label="搜索种子"></label><span id="count"></span><a href="selection_binary.json" download>下载两组清单</a></section>
+<div class="workspace"><nav id="seedlist" aria-label="种子列表"></nav><article id="detail" aria-live="polite"></article></div>
+<details class="technical"><summary>查看本轮规则与运行记录</summary><div id="technical"></div></details>
+<details class="technical"><summary>查看与人工、上一轮 CLIP 的数量对比</summary><div id="summary"></div></details>
+<footer>所有决策在读取人工清单前已固定。原 Mask 像素与编号保持一致。本页为筛选实验，尚未运行 E1。</footer></main><script src="review.js"></script></body></html>

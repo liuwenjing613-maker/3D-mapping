@@ -1,5 +1,9 @@
 # auto-v1：room2 自动种子与 E1 修复快照
 
+2026-10-19：本分支的后续筛选整合入口见 [auto-v2](../auto_v2/README.md)。本目录新增五项实际采用筛选的原始实现与页面源码；下面的90种子结果和暂停说明为2026-10-15历史归档，不代表当前35种子的运行状态。
+
+已采用：[`seed_semantic_filter`](seed_semantic_filter/README.md) → [`seed_covisible_dedup` 的 IoU-only 版](seed_covisible_dedup/README.md) → [`seed_skip_repair_b`](seed_skip_repair_b/README.md) → [`seed_containment_filter`](seed_containment_filter/README.md) → [`seed_pr_filter`](seed_pr_filter/README.md)。纯自动33个，本轮人工恢复G017/G025后35个；统一入口保留人工例外与自动规则的分别记录。
+
 归档日期：2026-10-15。此分支保存本轮从 ROI 提议到 90 个唯一种子追踪修复的实现、实验记录、完整交互页面和实例 PLY。算法开发在本分支归档；main 的冻结 E1、评分实现及协议不变。
 
 **已完成的修复结果整体退化，不应作为成功修复。用户已暂停继续修改与重跑。最新“仅实际采用的新 Mask 内允许撤票”的要求尚未接入运行，现有页面和 PLY 仍是旧 E1 结果。**

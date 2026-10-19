@@ -1,0 +1,22 @@
+{
+  "schema": "auto-v2-accepted-room2-replay-v1",
+  "case_id": "room2_auto_v2_20261019",
+  "date": "2026-10-19",
+  "base_branch": "auto-v1",
+  "base_commit": "35bff6768579c7ad2cd4d4b42246ae9a6a291384",
+  "inputs": "fixtures/room2_20261019",
+  "original_manifest": "../auto_v1/outputs/instance_seed_grouping_20261015_r4/seed_manifest.json",
+  "rules": {
+    "semantic": {"excluded_classes": ["wall", "floor", "ceiling", "rug"], "pixel_confidence_gte": 0.7, "mask_fraction_gte": 0.9},
+    "covisible_dedup": {"iou_gte": 0.8, "minimum_individual_visibility": null, "minimum_visible_points": null, "grouping": "fixed_primary_direct_edges"},
+    "skip_repair_B": {"p_gte": 0.95, "r_gte": 0.95, "source_frame_only": true, "conflict_gate": false, "minimum_support": null},
+    "containment": {"full_support_fraction_gt": 0.7, "exclude": "smaller_TSDF_support", "equal_size_or_chain": "require_user_review"},
+    "pr_filter": {"p_gt": 0.1, "r_lt": 0.2, "operator": "AND"}
+  },
+  "manual_override": "fixtures/room2_20261019/manual_overrides.json",
+  "scope": "Replay accepted filters on the original 90 final auto-v1 room2 seeds. Reuse immutable measurements; no inference, tracking, image rendering, GT or E1 execution.",
+  "original_mask_pixels_and_track_ids_preserved": true,
+  "E1_architecture": "P1-A1-strict-vote-E1-20261012",
+  "evaluation_workspace": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009",
+  "evaluation_protocol": "object_observed_repair / revision 2"
+}

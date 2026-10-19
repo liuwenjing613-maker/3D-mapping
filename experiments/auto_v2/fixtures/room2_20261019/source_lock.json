@@ -1,0 +1,78 @@
+{
+  "schema": "auto-v2-room2-sources-v1",
+  "case_id": "room2_auto_v2_20261019",
+  "original_manifest": {
+    "server_path": "/data/chenkejun/CVPR/results/instance_seed_grouping_20261015_r4/seed_manifest.json",
+    "sha256": "bc02522e9bc83d880e99397ea9154ace33ede26ffa4c6abdb18384d5a68a0b22"
+  },
+  "sources": {
+    "seed_semantic_filter_20261018/classification.json": {
+      "sha256": "157a20cde738aefc35dd9711c0804a9c437b1f18131ed9f9dc7295ac0bacd61d",
+      "bytes": 2923325,
+      "server_path": "/data/chenkejun/CVPR/results/seed_semantic_filter_20261018/classification.json"
+    },
+    "seed_covisible_dedup_iou_only_20261018/pair_results.json": {
+      "sha256": "f969cbbc96d268095781d6bdf0dae38dca4f96b99a28ee3ea803c8861fb59760",
+      "bytes": 1590106,
+      "server_path": "/data/chenkejun/CVPR/results/seed_covisible_dedup_iou_only_20261018/pair_results.json"
+    },
+    "seed_skip_repair_B_20261019/measurements.json": {
+      "sha256": "e4a171bff6f42fbe5282976925e6c2720d3598c6f798e720afceaa631137caac",
+      "bytes": 434007,
+      "server_path": "/data/chenkejun/CVPR/results/seed_skip_repair_B_20261019/measurements.json"
+    },
+    "seed_skip_repair_B_20261019/measurement_verification.json": {
+      "sha256": "325aa334931a9086bec333603afc07badb2804d5880b6ab8a9f4f45f8538f7c1",
+      "bytes": 87727,
+      "server_path": "/data/chenkejun/CVPR/results/seed_skip_repair_B_20261019/measurement_verification.json"
+    },
+    "seed_containment_filter_20261019/pair_results.json": {
+      "sha256": "16db8a447c24c52e9e4fa903f6f27f287487aa119b8200d6a4daa2e6034bf16a",
+      "bytes": 476976,
+      "server_path": "/data/chenkejun/CVPR/results/seed_containment_filter_20261019/pair_results.json"
+    },
+    "seed_containment_filter_20261019/seed_manifest.json": {
+      "sha256": "3b09418cc2e9180316f35012b167aebdc9bc87a155a7a6abca683c6165e2aae3",
+      "bytes": 208588,
+      "server_path": "/data/chenkejun/CVPR/results/seed_containment_filter_20261019/seed_manifest.json"
+    },
+    "seed_semantic_filter_20261018/selection_binary.json": {
+      "sha256": "ab6fa50ccfc29d18f0751a1ba89826b39ad9cfb0e90cf2cde0470edf3609512d",
+      "bytes": 25482,
+      "server_path": "/data/chenkejun/CVPR/results/seed_semantic_filter_20261018/selection_binary.json"
+    },
+    "seed_covisible_dedup_iou_only_20261018/selection_binary.json": {
+      "sha256": "9989f8c47264d361b32593a1cb3c6c9702ad9609b99249a706bafc1461c770dc",
+      "bytes": 33010,
+      "server_path": "/data/chenkejun/CVPR/results/seed_covisible_dedup_iou_only_20261018/selection_binary.json"
+    },
+    "seed_skip_repair_B_20261019/selection_binary.json": {
+      "sha256": "5fd2a22f94b2812b246b1ce14b45e759b70e9ad295c1c421c90502310bbbd2f1",
+      "bytes": 59120,
+      "server_path": "/data/chenkejun/CVPR/results/seed_skip_repair_B_20261019/selection_binary.json"
+    },
+    "seed_containment_filter_20261019/selection_binary.json": {
+      "sha256": "556c8dfb78dfb0facc4593a97c52e4aac7cffae06388f0d0d3d42597d1644f34",
+      "bytes": 25288,
+      "server_path": "/data/chenkejun/CVPR/results/seed_containment_filter_20261019/selection_binary.json"
+    },
+    "seed_pr_filter_20261019/selection_binary.json": {
+      "sha256": "34e602f39a73f27bd26f393c374fac5b700b26b6825d4ff38e9df06d7241e353",
+      "bytes": 90886,
+      "server_path": "/data/chenkejun/CVPR/results/seed_pr_filter_20261019/selection_binary.json"
+    }
+  },
+  "baseline": {
+    "path": "/data/chenkejun/CVPR/results/p1a1_one_vote_20261009/ablation/room2/abstain/final/instance_surface.npz",
+    "sha256": "3f611dfe701a68259c71b94962ae6bae3c13fbac9c24f1e3eca5b414b8d2d4f3"
+  },
+  "evidence": {
+    "path": "/data/chenkejun/CVPR/results/p1a1_one_vote_20261009/ablation/room2/abstain/surface_evidence.npz",
+    "sha256": "b106b99741a4cb115d9ceed0ea3604ed46e0cc9a48d1feb865c2a0a60661c992"
+  },
+  "local_files_sha256": {
+    "measurements.json": "f40f8241d46a0fbaaed94e926e93326ace8d2a2103be292ffd62a26ce865291c",
+    "manual_overrides.json": "6694f23643048b01e8749c9b4299a8ad6503cfdf91b0f5279ce518bf653ef8e9",
+    "reference_decisions.json": "6ef550b859f470ebc6677218594a85d445a980e8ceb7209fb7326da07178f291"
+  }
+}

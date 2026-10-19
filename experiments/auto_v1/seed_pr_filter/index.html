@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>42 个种子的 p / r 筛选 · Room2</title><link rel="stylesheet" href="review.css"></head>
+<body><main>
+  <div class="eyebrow">AUTO-V1 · ROOM2 · 2026-10-19</div>
+  <h1>42 个种子的 p / r 筛选</h1>
+  <p class="intro">在上一轮保留的 42 个种子上继续筛选，查看本轮排除和继续保留的 Mask。</p>
+  <div class="rule">排除条件：<b>p ＞ 10% 且 r ＜ 20%</b>。两个条件必须同时满足；p 恰好为 10% 或 r 恰好为 20% 时保留。</div>
+  <section id="stats" class="stats" aria-label="本轮统计"></section>
+  <section class="groups" aria-label="两组结果"><button id="exclude" class="exclude" aria-pressed="false"></button><button id="retain" class="retain" aria-pressed="false"></button></section>
+  <div class="toolbar">
+    <label>分组 <select id="filter" aria-label="显示分组"><option value="exclude">本轮排除</option><option value="retain">继续保留</option><option value="all">全部 42 个</option></select></label>
+    <label>图像 <select id="mode" aria-label="图像显示方式"><option value="full">仅种子 Mask</option><option value="overlay">全部分割 Mask</option><option value="mask">全部分割色块</option><option value="rgb">原始 RGB</option></select></label>
+    <label>搜索 <input id="search" type="search" aria-label="搜索种子" placeholder="种子编号 / 帧号"></label>
+    <button id="view-toggle">逐个查看</button><span id="count"></span>
+  </div>
+  <p id="image-hint" class="muted"></p>
+  <div id="error" class="error" role="alert" hidden></div>
+  <section id="gallery" class="gallery" aria-label="Mask 总览"></section>
+  <section id="workspace" class="workspace" hidden><nav id="list" aria-label="种子列表"></nav><article id="detail"></article></section>
+  <details class="definitions"><summary>p、r 的含义与计算来源</summary><p>取种子来源帧中，与该种子重合点数最多的原地图实例。p = 重合点数 ÷ 种子的全部 TSDF 支持点数；r = 重合点数 ÷ 该原地图实例在这一帧可见的全部 TSDF 点数。</p><p>复用 B 阶段相对于“严格一票、未进行 E1 修复”的地图计算结果，只用种子来源的一帧。按原始整数点数判断阈值，页面百分比的四舍五入不影响筛选。</p><p>上轮已排除的 G080、G081、G085 不在本轮 42 个输入内。此页仅展示本轮筛选结果，尚未重跑 E1。</p></details>
+  <div class="downloads"><a href="selection_binary.json" download>下载本轮两组清单</a><a href="seed_manifest.json" download>下载继续保留的种子清单</a></div>
+</main><script src="review.js"></script></body></html>

@@ -1,0 +1,23 @@
+{
+  "schema": "semantic-filter-post-run-visual-audit-v1",
+  "author": "assistant visual review",
+  "classification_sha256": "157a20cde738aefc35dd9711c0804a9c437b1f18131ed9f9dc7295ac0bacd61d",
+  "used_for_filtering": false,
+  "not_human_reason_labels": true,
+  "scope": "All 90 context/masked previews inspected; selected cases enlarged. Visual review is not an independent annotated semantic benchmark. Original automatic decisions remain unchanged.",
+  "summary": "大面积墙／地／顶筛选明显改善，但附着物存在高置信误判，细碎地毯仍会漏筛。18 个自动排除建议不能直接视作 18 个正确删除。",
+  "suggested_exclusions_visually_consistent": ["G001", "G002", "G003", "G004", "G005", "G008", "G011", "G014", "G016", "G019", "G023", "G034", "G053", "G054"],
+  "suggested_exclusions_with_object_risk": ["G030", "G063", "G065"],
+  "suggested_exclusions_visually_uncertain": ["G088"],
+  "cases": [
+    {"group_id":"G030","kind":"object_risk","title":"与人工保留目标冲突","note":"挂画上方的长条板状物，你在 revision 67 中保留。模型将全部 10,583 个像素高置信判为 wall，自动建议排除。对你的保留目标属于误删；提高占比阈值到 95% 也无法修复这一案例。"},
+    {"group_id":"G063","kind":"object_risk","title":"通风口被并入天花板","note":"图像可见格栅状通风口。全部 Mask 像素被高置信判为 ceiling。虽然人工也排除此种子，但人工原因未记录，不能把双方都排除视为语义判断正确。"},
+    {"group_id":"G065","kind":"object_risk","title":"另一通风口被并入天花板","note":"图像可见通风格栅；模型将全部 Mask 像素高置信判为 ceiling。与人工删除一致并不能证明模型正确区分了天花板和附着物。"},
+    {"group_id":"G088","kind":"uncertain","title":"小条带仍需人工定类","note":"仅 172 像素，外观是贴近墙面的细小弯曲条带。模型全判 wall，但仅凭当前预览无法可靠确认其真实类别，不能记作已验证的正确删除。"},
+    {"group_id":"G016","kind":"scope_change","title":"本轮允许排除地毯","note":"这是原人工保留的花纹地毯；你随后明确允许排除地毯。模型主要判为 floor，细分类并不准确，但排除决定符合本轮范围。"},
+    {"group_id":"G024","kind":"missed_rug","title":"地毯碎片暂未筛出","note":"真实 RGB 可见地毯纹理。模型预测 floor 占 50.7%，高置信排除类仅 23.3%；其余主要被分为 chair/table，当前规则保留待复核。"},
+    {"group_id":"G044","kind":"missed_rug","title":"地毯大部分被判成椅子","note":"地毯碎片的 93.3% 像素被预测为 chair，高置信排除类只有 0.8%。这不只是 90% 占比门槛严格，而是像素类别本身预测错了。"},
+    {"group_id":"G059","kind":"missed_rug","title":"细碎地毯同样漏筛","note":"模型把约 92.8% 像素判为 chair，高置信排除类约 1.4%，当前保留待复核。"},
+    {"group_id":"G050","kind":"near_threshold","title":"接近删除阈值的人工保留项","note":"该 Mask 覆盖花枝附近区域；高置信 wall 占比 88.9%，当前保留。将门槛降至 80% 或像素置信度降至 0.6 会把它加入删除，因此不能为增加删除量而直接放宽阈值。"}
+  ]
+}

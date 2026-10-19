@@ -1,0 +1,9 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>共同可见表面 · 种子去重</title><link rel="stylesheet" href="review.css"></head><body><main>
+<header><p class="eyebrow">AUTO-V1 · ROOM2 · 语义过滤后的 72 个种子</p><h1>共同可见表面，检查重复种子</h1><p>在双方来源视角中比较同一批三维表面点。原 Mask、种子编号和上一轮语义筛选保持不变。</p><p class="rule">双方可见比例 ≥ 30%，各至少 20 个点，且共同可见区域 IoU ≥ 0.8 → 判为重复。重复组保留支持点最多的代表；未满足条件的种子继续保留。</p></header>
+<div class="toolbar"><a href="../room2_seed_covisible_dedup_20261018/index.html">原规则：排除 2 / 保留 70</a><a href="../room2_seed_covisible_dedup_iou_only_20261018/index.html?group=G061&compare=G032&decision=exclude">仅共同可见 IoU：排除 16 / 保留 56</a></div><section id="stats" class="stats"></section><section class="decisions" aria-label="本轮去重分组"><button id="excluded" class="group excluded" type="button"></button><button id="retained" class="group retained" type="button"></button></section>
+<div class="toolbar"><label>显示 <select id="filter"><option value="all">全部 72 个</option><option value="exclude">去重排除</option><option value="retain">保留</option></select></label><label>搜索 <input id="search" type="search" placeholder="G045 / 帧号" aria-label="搜索种子"></label><span id="count"></span><a href="selection_binary.json" download>下载两组清单</a><a href="pair_results.json" download>下载全部逐对证据</a></div>
+<section class="workspace"><nav id="list" aria-label="种子列表"></nav><article id="detail" aria-live="polite"></article></section>
+<details open><summary>本轮判为重复的全部种子对</summary><div id="accepted"></div></details>
+<details><summary>高重合但未达到本轮条件的案例</summary><p>这些种子仍然保留。分数高但可见范围不足，不能跳过 30% 和 20 点的门槛。</p><div id="near"></div></details>
+<details><summary>与人工筛选清单的数量对比</summary><div id="human"></div></details><details><summary>规则与验证记录</summary><div id="verification"></div></details>
+<footer>这是本轮去重判断实验，尚未运行 E1。未通过去重条件仅表示本轮不删除，不代表已经证明它们是不同物体。</footer></main><script src="review.js"></script></body></html>
