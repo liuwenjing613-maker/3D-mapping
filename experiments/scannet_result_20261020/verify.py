@@ -11,6 +11,10 @@ for rel,record in manifest['files'].items():
 inventory=json.loads((P/'source_inventory.json').read_text(encoding='utf-8'))
 for record in inventory['records']:
     assert sha(REPO/record['repository_path'])==record['sha256'],record['runtime_relative_path']
+p=P/'external_dependencies_inventory.json'
+if p.exists():
+    for record in json.loads(p.read_text(encoding='utf-8'))['records']:
+        assert sha(REPO/record['repository_path'])==record['sha256'],record['server_source']
 summary=json.loads((P/'results/comparison_all.json').read_text(encoding='utf-8'))
 assert summary['completed_scenes']==manifest['scenes']
 assert summary['primary_baseline']=='strict_one_vote_no_repair'

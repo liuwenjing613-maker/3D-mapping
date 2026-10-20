@@ -1,0 +1,32 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/grouping_r2/compute.py
++++ code/scene0608_00/grouping_r2/compute.py
+@@ -1,4 +1,4 @@
+-"""Read-only grouping of selected office1 masks on the frozen TSDF surface."""
++"""Read-only grouping of selected scene0608_00 masks on the frozen TSDF surface."""
+ from pathlib import Path
+ from collections import OrderedDict
+ import sys, json, hashlib, zipfile, random, time
+@@ -9,10 +9,10 @@
+ from source_policy import replacement_ledger, eligible_aliases, assert_sam_only_groups, mixed_group_source_exclusions
+ 
+ C = Path(__file__).resolve().parent
+-R = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/grouping_r2')
+-F = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge')
+-BASE = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline/ablation/office1/abstain/final/instance_surface.npz')
+-CAMERA = Path('/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/office1/configs/raw.json')
++R = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/grouping_r2')
++F = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/overmerge')
++BASE = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/baseline/ablation/scene0608_00/abstain/final/instance_surface.npz')
++CAMERA = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs/scene0608_00/configs/raw.json')
+ COMMON = Path('/home/chenkejun/CVPR/experiments/strict_vote_annotation_20261010/common.py')
+ R.mkdir(exist_ok=True, parents=True)
+ started = time.time()
+@@ -161,7 +161,7 @@
+ override_path=C/'source_overrides.json'
+ source_sha[str(override_path)]=sha(override_path)
+ source_overrides=json.loads(override_path.read_text())
+-assert source_overrides['scene']=='office1'
++assert source_overrides['scene']=='scene0608_00'
+ for correction in source_overrides['corrections']:
+     target=[members for members in groups_raw if seeds[members[0]]['id']==correction['primary_mask_id']]
+     assert len(target)==1

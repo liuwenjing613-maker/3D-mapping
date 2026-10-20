@@ -1,0 +1,54 @@
+{
+  "status": "FROZEN_BEFORE_INFERENCE",
+  "config": {
+    "schema": "auto-v1-final-seed-semantic-filter-v1",
+    "model_id": "nvidia/segformer-b5-finetuned-ade-640-640",
+    "model_revision": "739f5d4692954e4a185eac280dec1ba5a7d52f1d",
+    "model_directory": "/data/chenkejun/CVPR/models/segformer-b5-finetuned-ade-640-640/739f5d4692954e4a185eac280dec1ba5a7d52f1d",
+    "weight_sha256": "a3dbf2d7a9912203078f304d88df8cfee9fd752ca2d2413f82036bdb02c5e7df",
+    "exclude_classes": [
+      "wall",
+      "floor",
+      "ceiling",
+      "rug"
+    ],
+    "pixel_confidence": 0.7,
+    "mask_fraction": 0.9,
+    "decision_rule": "suggest_exclude when >=90% of unchanged mask pixels have argmax in excluded classes AND softmax max >=0.7; retain when >=90% are confident nonexcluded; otherwise review and operationally retain",
+    "preprocess": "official SegformerImageProcessor config; whole RGB frame resized to 640x640; no crop",
+    "postprocess": "bilinear resize float32 logits to original H,W, align_corners=False, then softmax/argmax; direct model id2label with no label offset",
+    "precision": "float32, TF32 disabled, batch size 1",
+    "sensitivity_pixel_thresholds": [
+      0.6,
+      0.7,
+      0.8
+    ],
+    "sensitivity_mask_thresholds": [
+      0.8,
+      0.9,
+      0.95
+    ],
+    "sensitivity_policy": "descriptive only; original 0.7/0.9 decisions frozen before comparison",
+    "GT_used": false,
+    "human_selection_used": false,
+    "deduplication": false,
+    "tracking_requested": false,
+    "map_write": false
+  },
+  "source_hashes": {
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/v1/seed_manifest.json": "df02060c8d5409436a77bf6306e27cf3f2f2d930629ee7025d099994b6997097",
+    "/home/chenkejun/CVPR/experiments/scannet_e1_swap_partial_20261020/configs/scene0608_00.json": "e6af0fdae95283aee87b826c8440223e59a94ec09d48a2052050976f81631de0",
+    "/home/chenkejun/CVPR/experiments/scannet_e1_swap_partial_20261020/scene0608_00/v2/semantic/config.json": "d008887780abfd24c7033f183f979edb8bd2e11ce8761ffdb4e0ad21179a454c",
+    "/data/chenkejun/CVPR/models/segformer-b5-finetuned-ade-640-640/739f5d4692954e4a185eac280dec1ba5a7d52f1d/pytorch_model.bin": "a3dbf2d7a9912203078f304d88df8cfee9fd752ca2d2413f82036bdb02c5e7df",
+    "/data/chenkejun/CVPR/models/segformer-b5-finetuned-ade-640-640/739f5d4692954e4a185eac280dec1ba5a7d52f1d/config.json": "083fbb6bc7ce4a2fc54bdb08686943cc5a72d14b32e81187b6ae12a58092bc13",
+    "/data/chenkejun/CVPR/models/segformer-b5-finetuned-ade-640-640/739f5d4692954e4a185eac280dec1ba5a7d52f1d/preprocessor_config.json": "2f6a855d3288caa2a34980aafe7353394fdd5582a5049cb4c9875581854597a8",
+    "/data/chenkejun/CVPR/models/segformer-b5-finetuned-ade-640-640/739f5d4692954e4a185eac280dec1ba5a7d52f1d/download_manifest.json": "816653e3105850658efca2498cbe6852625c7173ef5dbdcbcd72717de31abfaa"
+  },
+  "code_hashes": {
+    "/home/chenkejun/CVPR/experiments/scannet_e1_swap_partial_20261020/scene0608_00/v2/semantic/rules.py": "d6886ca0af035e7794696bcd18926310666a7679a3da7e94b37e8b5d670bee09",
+    "/home/chenkejun/CVPR/experiments/scannet_e1_swap_partial_20261020/scene0608_00/v2/semantic/run.py": "02ab006acbdad9489d9ed43e0a03665cc2579a726b575f00b63675abfa968371",
+    "/home/chenkejun/CVPR/experiments/scannet_e1_swap_partial_20261020/scene0608_00/v2/semantic/test_rules.py": "1019475296d1d5ea07397b3b4023182a2f3ae084be8c4bc5ecee639470c649e2"
+  },
+  "GT_used": false,
+  "human_selection_used": false
+}

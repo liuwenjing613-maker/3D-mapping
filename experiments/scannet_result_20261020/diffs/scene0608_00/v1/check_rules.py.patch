@@ -1,0 +1,19 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/v1/check_rules.py
++++ code/scene0608_00/v1/check_rules.py
+@@ -30,12 +30,12 @@
+ print('PASS: global SAM-only source precedence and all-member export guard')
+ 
+ from crop_filter import artificial_crop_edges, has_crop_contact
+-size = (1200,680)
++size = (640,480)
+ assert artificial_crop_edges(2,[100,20,600,500],[100,60,400,490],size)==['left']
+ assert artificial_crop_edges(1,[100,20,600,500],[105,60,600,500],size)==['right','bottom']
+-assert artificial_crop_edges(2,[0,0,1200,680],[0,0,1200,680],size)==[], 'Natural frame border is allowed'
+-assert artificial_crop_edges(2,[100,0,1200,680],[105,0,1200,680],size)==[], 'Only natural edges touched'
+-assert artificial_crop_edges(0,[0,0,1200,680],[0,0,1200,680],size)==[]
++assert artificial_crop_edges(2,[0,0,640,480],[0,0,640,480],size)==[], 'Natural frame border is allowed'
++assert artificial_crop_edges(2,[100,0,640,480],[105,0,640,480],size)==[], 'Only natural edges touched'
++assert artificial_crop_edges(0,[0,0,640,480],[0,0,640,480],size)==[]
+ assert artificial_crop_edges(1,[100,20,600,500],[101,21,599,499],size)==[], 'One-pixel gap is not contact'
+ assert has_crop_contact([{'touches_crop':False},{'touches_crop':True}])
+ assert not has_crop_contact([{'touches_crop':False}])

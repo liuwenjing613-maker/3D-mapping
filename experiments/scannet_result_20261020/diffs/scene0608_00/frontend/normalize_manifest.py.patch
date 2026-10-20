@@ -1,0 +1,25 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/frontend/normalize_manifest.py
++++ code/scene0608_00/frontend/normalize_manifest.py
+@@ -1,11 +1,11 @@
+ """Make frozen point membership agree with the 34 displayed unique ROIs."""
+ import numpy as np
+ from prepare_inputs import ROOT,SOURCE,read,write,sha
+-p=SOURCE/'office1';manifest=read(p/'manifest.json');inputs=read(ROOT/'input_manifest.json')
++p=SOURCE/'scene0608_00';manifest=read(p/'manifest.json');inputs=read(ROOT/'input_manifest.json')
+ if len(manifest['items'])==len(inputs['cases']):
+  print('MANIFEST_ALREADY_UNIQUE',flush=True)
+ else:
+- assert len(manifest['items'])==60
++ assert len(manifest['items'])==inputs['ranked_entries']
+  byuid={};cores=[];contexts=[];items=[]
+  with np.load(p/'membership.npz') as z:
+   for i,item in enumerate(manifest['items']):
+@@ -33,7 +33,7 @@
+   merged.append(dict(sourceitems[0],fixed_order=case['order'],all_aliases=case['aliases'],rankings=case['rankings'],views=views))
+  summary['scenes'][0]['items']=merged;write(SOURCE/'selection_summary.json',summary)
+  hashes=read(SOURCE/'files_sha256.json')
+- for name in ['office1/manifest.json','office1/membership.npz','selection_summary.json']:hashes[name]=sha(SOURCE/name)
++ for name in ['scene0608_00/manifest.json','scene0608_00/membership.npz','selection_summary.json']:hashes[name]=sha(SOURCE/name)
+  write(SOURCE/'files_sha256.json',hashes)
+  inputs['source_summary_sha256']=sha(SOURCE/'selection_summary.json');write(ROOT/'input_manifest.json',inputs)
+  print('MANIFEST_NORMALIZED',len(items),sum(len(x['entries']) for x in items),flush=True)

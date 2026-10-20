@@ -1,0 +1,12 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/grouping_r2/config.json
++++ code/scene0608_00/grouping_r2/config.json
+@@ -1,7 +1,7 @@
+ {
+   "schema": "same-instance-seed-grouping-sam-route-v3",
+-  "scene": "office1",
+-  "input_selection": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/semantic_route/selection.json",
++  "scene": "scene0608_00",
++  "input_selection": "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/semantic_route/selection.json",
+   "iou": 0.25,
+   "comparison": "strictly greater than",
+   "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",

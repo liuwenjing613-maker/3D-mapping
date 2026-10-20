@@ -77,6 +77,24 @@ for name,data in sorted(source.items()):
     unchanged=sum(r['disposition']=='unchanged_inherited' for r in inventory),
     added_or_changed=sum(r['disposition']=='added_or_changed' for r in inventory)),ensure_ascii=False,indent=2),encoding='utf-8',newline='\n')
 (PKG/'evidence_snapshot_manifest.json').write_text(json.dumps(snapshots,ensure_ascii=False,indent=2),encoding='utf-8',newline='\n')
+dependencies=[]
+dep_archive=O/'github_download/external_dependencies.zip'
+if dep_archive.exists():
+    with zipfile.ZipFile(dep_archive) as z:
+        dep_manifest=json.loads(z.read('dependency_manifest.json'))
+        for name,record in sorted(dep_manifest['files'].items()):
+            data=z.read('external_sources/'+name);assert sha(data)==record['sha256']
+            blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+            row=dict(record,external_relative_path=name)
+            if blob in tracked:
+                inherited=tracked[blob][0]
+                row.update(disposition='unchanged_inherited',repository_path=inherited,base_commit=BASE)
+            else:
+                target=PKG/'code/external'/name;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
+                row.update(disposition='added_or_changed',repository_path=target.relative_to(REPO).as_posix())
+            dependencies.append(row)
+    (PKG/'external_dependencies_inventory.json').write_text(json.dumps(dict(records=dependencies,
+        archive_sha256=sha(dep_archive.read_bytes()),scope=dep_manifest['scope']),ensure_ascii=False,indent=2),encoding='utf-8',newline='\n')
 delivery=json.loads((DELIVERY/'delivery_manifest.json').read_text(encoding='utf-8'))
 assert delivery['completed_scenes']==SCENES
 for rel,digest in delivery['sha256'].items():
@@ -92,7 +110,8 @@ for scene in SCENES:
 for name in ['build.py','patch_regroup.py','build_github_publication.py']:
     dest=PKG/'tools'/name;dest.parent.mkdir(exist_ok=True);shutil.copy2(O/name,dest)
 shutil.copy2(O/'publication_verify.py',PKG/'verify.py')
-shutil.copy2(O/'github_analysis/analyze_scene.py',PKG/'tools/analyze_scene.py')
+for p in (O/'github_analysis').glob('analyze_scene*.py'):
+    shutil.copy2(p,PKG/'tools'/p.name)
 rows=json.loads((DELIVERY/'comparison_all.json').read_text(encoding='utf-8'))
 lines=['# ScanNet：严格一票无修复、E1 与 auto-v3-swap partial','',
        '本分支保存两个既定 ScanNet 场景的实测结果、逐 GT 分析和实现差异。唯一修复收益基线是**严格一票无修复**。历史结果单列，仅供参考。',
@@ -102,6 +121,11 @@ names={'baseline':'严格一票无修复','E1':'E1 whole','swap_partial':'auto-v
 for r in rows['rows']:
     if r['stage']=='final':
         lines.append(f"| {r['scene']} | {names[r['method']]} | {100*r['AP']:.4f} | {100*r['AP50']:.4f} | {100*r['F1']:.4f} | {100*r['PQ']:.4f} | {r['TP']}/{r['FP']}/{r['FN']} |")
+lines+=['','当前已完成场景中，E1与partial的F1、PQ均低于严格一票无修复基线；partial和E1整体接近。以下计数来自固定IoU 0.5评分，不能只按局部IoU改善个数判断总体收益。','']
+for scene in SCENES:
+    current={r['method']:r for r in rows['rows'] if r['scene']==scene and r['stage']=='final'}
+    b,e=current['baseline'],current['E1']
+    lines.append(f"- {scene}：TP {b['TP']}→{e['TP']}，FP {b['FP']}→{e['FP']}；E1相对严格基线F1 {100*(e['F1']-b['F1']):+.4f}、PQ {100*(e['PQ']-b['PQ']):+.4f}个百分点。")
 lines+=['','## 分析与结果','']
 for scene in SCENES:
     lines.append(f"- [{scene} 分析](results/{scene}/analysis_{scene}.md)：逐 GT、结构诊断、E1/partial 差异及局限。")
@@ -114,8 +138,10 @@ lines+=['','[总指标和历史参考](results/comparison_all.json) · [中文�
     '', '## 源码与复核','',
     f'父版本为 auto-v3-swap `{BASE}`。`source_inventory.json`逐文件记录来源、SHA-256和继承路径；与父版本任何已有文件字节完全一致的源码不重复新增。有差异或新增的运行文件放在 `code/`，可对应到原源码的文本差异放在 `diffs/`。冻结 E1、auto-v3注册和父版本源码均未修改。',
     '在仓库根执行 `python -B experiments/scannet_result_20261020/verify.py`，核验全部归档哈希、继承源码和指标一致性。它是只读校验，不重跑模型或改写服务器结果。',
+    '`external_dependencies_inventory.json`补充核对运行来源锁引用的外部第一方依赖与main R2评分文件；已有相同字节仍只引用父版本。',
+    '重做分析图表：`python experiments/scannet_result_20261020/tools/analyze_scene.py --results experiments/scannet_result_20261020/results --scene scene0011_00 --output /tmp/scannet-analysis`；第二场景使用`analyze_scene0608.py`并将scene设为`scene0608_00`。需要numpy与matplotlib。',
     '完整模型重算仍需要服务器原始图像、深度、模型及环境。快照保留原绝对路径用于溯源，切勿直接运行launcher覆盖已完成输出；重跑应使用新的CVPR目录并记录路径适配。',
-    'PLY保留instance_id、state和原始surface_index；三状态文件中0为黑、1为黄、3为红。六个NPZ预测分别对应三方法的native/final输出。大规模中间追踪缓存和模型权重通过来源锁定位，未重复上传。','']
+    'PLY保留instance_id、state和原始surface_index；三状态文件中0为黑、1为黄、3为红。每场景六个NPZ预测分别对应三方法的native/final输出。大规模中间追踪缓存和模型权重通过来源锁定位，未重复上传。','']
 (PKG/'README.md').write_text('\n'.join(lines),encoding='utf-8',newline='\n')
 shutil.copy2(O/'publication_diffs.md',PKG/'IMPLEMENTATION_DIFFS.md')
 allfiles={p.relative_to(PKG).as_posix():dict(sha256=sha(p.read_bytes()),bytes=p.stat().st_size)
@@ -129,4 +155,5 @@ for rel in allfiles:
 (PKG/'archive_manifest.json').write_text(json.dumps(dict(scenes=SCENES,base_commit=BASE,files=allfiles),ensure_ascii=False,indent=2),encoding='utf-8',newline='\n')
 print(json.dumps(dict(scenes=SCENES,files=len(allfiles),source_files=len(inventory),
     source_reused=sum(x['disposition']=='unchanged_inherited' for x in inventory),
+    external_dependencies=len(dependencies),external_dependencies_reused=sum(x['disposition']=='unchanged_inherited' for x in dependencies),
     size_MiB=sum(x['bytes'] for x in allfiles.values())/1024**2),ensure_ascii=False))

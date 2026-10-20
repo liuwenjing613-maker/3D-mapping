@@ -1,0 +1,11 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/v2/semantic/run.py
++++ code/scene0608_00/v2/semantic/run.py
+@@ -139,7 +139,7 @@
+                               'semantic_preview':f'previews/f{fid:06d}_semantic.jpg'})
+         for original_id,g in groups:
+             p=g['primary']; mask_path=root/p['mask']
+-            # office1 reuses the audited masks directory via symlinks.
++            # scene0608_00 reuses the audited masks directory via symlinks.
+             assert Path(p['mask']).parts[0]=='masks'
+             assert mask_path.resolve().is_relative_to((root/'masks').resolve()) or (
+                 mask_path.is_symlink() and mask_path.resolve().parent==(root.parent/'grouping_r3/masks').resolve())

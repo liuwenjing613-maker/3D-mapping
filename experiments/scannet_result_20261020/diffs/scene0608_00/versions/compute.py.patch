@@ -1,0 +1,33 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/versions/compute.py
++++ code/scene0608_00/versions/compute.py
+@@ -4,9 +4,9 @@
+ import cv2
+ from PIL import Image
+ from selection_rules import choose, noise_reason
+-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/versions');R.mkdir(parents=True,exist_ok=True)
+-F=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge')
+-I=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/intersection/web/intersection.json')
++R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/versions');R.mkdir(parents=True,exist_ok=True)
++F=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/overmerge')
++I=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/intersection/web/intersection.json')
+ def read(p):return json.loads(p.read_text())
+ def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,separators=(',',':'))+'\n')
+ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+@@ -18,7 +18,7 @@
+         src=f['sources'][sid];path=Path(src['path'])
+         if str(path) not in verified:assert sha(path)==hashes[str(path)];verified.add(str(path))
+         labels=np.asarray(Image.open(path),np.int32);x0,y0,x1,y1=src['box'];assert labels.shape==(y1-y0,x1-x0)
+-        areas=np.bincount(labels.ravel());full=np.zeros((680,1200),np.int32);full[y0:y1,x0:x1]=labels
++        areas=np.bincount(labels.ravel());full=np.zeros((480,640),np.int32);full[y0:y1,x0:x1]=labels
+         for lid,cid in src['mapping'].items():assert int(areas[int(lid)])==f['candidates'][cid]['pixels']
+         cache[sid]=(full,areas)
+         if len(cache)>18:cache.popitem(last=False)
+@@ -90,7 +90,7 @@
+     out['stats']=dict(stats,unique_ROI_selected_candidate_pairs=len(unique_selected),ROI_with_selected=len(rois_selected),ROI_count=len(f['cases']),crops=len(out['crops']),reason_counts=dict(reasons),group_sizes=dict(group_sizes),unique_noise_candidates=len(unique_noise))
+     save(R/'selection.json',out)
+     assert 'CROP_TRUNCATION_UNCERTAIN' not in reasons
+-    save(R/'revision_changes.json',dict(scope='office1 first run of accepted r2 rules; no historical room2 example audit',current_stats=out['stats']))
++    save(R/'revision_changes.json',dict(scope='scene0608_00 first run of accepted r2 rules; no historical room2 example audit',current_stats=out['stats']))
+     audit=dict(status='PASS',stats=out['stats'],rule=out['rule'],independent_pixel_recounts=checks,verified_source_masks=len(verified),input_files_unchanged=True,no_new_inference=True,no_map_write=True,no_GT_used=True,seconds=round(time.time()-start,2));save(R/'audit.json',audit)
+     with zipfile.ZipFile(R/'selection_data.zip','w',zipfile.ZIP_DEFLATED) as z:
+         for name in ['selection.json','audit.json','revision_changes.json']:z.write(R/name,name)

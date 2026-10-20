@@ -1,0 +1,75 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/run_batch.py
++++ code/scene0608_00/e1_repair/run_batch.py
+@@ -7,7 +7,7 @@
+ from scipy.optimize import linear_sum_assignment
+ 
+ HERE=Path(__file__).resolve().parent
+-ROOT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair')
++ROOT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/e1_repair')
+ REPAIR_ROOT=ROOT/'validated'
+ LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')
+ sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(LEGACY/'objectwise_repair_20261007'))
+@@ -29,7 +29,7 @@
+     print(json.dumps(row),flush=True)
+ 
+ def inputs():
+-    scene=r.Scene('office1')
++    scene=r.Scene('scene0608_00')
+     cases=json.loads((ROOT/'seed_diagnostics.json').read_text())['cases']
+     objects={};case_data={}
+     policy=json.loads((HERE/'gate_policy.json').read_text())
+@@ -93,13 +93,13 @@
+     reports={};proof=[]
+     for uid,data in cases.items():
+         cfg=data['config'];folder=ROOT/'cases'/uid/'tracking';report=json.loads((folder/'complete.json').read_text())
+-        assert report['status']=='PASS' and report['completed_frames']==report['total_frames']==2000
++        assert report['status']=='PASS' and report['completed_frames']==report['total_frames']==339
+         assert report['case_uid']==uid and report['seed_frame']==cfg['seed_frame'] and report['track_ids']==data['ids']
+         assert report['case_config_sha256']==r.sha(data['case']['config_path'])
+         assert report['code_sha256']==initial['tracking_code_sha256']==r.sha(initial['tracking_code_path'])
+         assert report['directions_use_independent_seed_only_states'] and not report['GT_used']
+         assert report['checkpoint_sha256']==cfg['tracking']['checkpoint_sha256']==r.sha(cfg['tracking']['checkpoint'])
+-        frames={row['frame']:row for row in report['frames']};assert sorted(frames)==list(range(2000))
++        frames={row['frame']:row for row in report['frames']};assert sorted(frames)==list(range(0,3381,10))
+         seedpath=ROOT/'cases'/uid/'prepared_seed.png'
+         assert report['seed_sha256']==r.sha(seedpath)
+         for fid,row in frames.items():
+@@ -107,9 +107,9 @@
+             if fid!=cfg['seed_frame']:assert row['direction']==('reverse' if fid<cfg['seed_frame'] else 'forward')
+         np.testing.assert_array_equal(np.array(Image.open(frames[cfg['seed_frame']]['label_file'])),data['seed'])
+         reports[uid]=frames
+-        proof.append({'case_uid':uid,'track_ids':data['ids'],'verified_raw_frames':2000,'tracking_seconds':report['elapsed_seconds'],
++        proof.append({'case_uid':uid,'track_ids':data['ids'],'verified_raw_frames':339,'tracking_seconds':report['elapsed_seconds'],
+                       'independent_forward_and_reverse':True,'seed_exact':True,'report_sha256':r.sha(folder/'complete.json')})
+-    f.atomic_json(ROOT/'tracking_validation.json',{'status':'PASS','GT_used':False,'raw_RGB_files_checked':2000,'label_files_checked':2000*len(cases),'cases':proof})
++    f.atomic_json(ROOT/'tracking_validation.json',{'status':'PASS','GT_used':False,'raw_RGB_files_checked':339,'label_files_checked':339*len(cases),'cases':proof})
+     return reports
+ 
+ def metrics_for(oid,mask,points,visible,objects,data,frame,family_local,scene,policy):
+@@ -147,7 +147,7 @@
+     keys=scene.pair['surface_point_index'].astype(np.int64)*base+scene.pair['instance_id'];order=np.argsort(keys,kind='stable')
+     original_keys=keys[order];original_votes=scene.pair['frame_votes'][order].astype(np.int64)
+     old_frames=[];new_frames=[];removed=[];added=[];scopes=[];retired_points=[];decisions=[];observations=[]
+-    counts={'mapping_frames':400,'updated_frames':0,'whole_observations':0,'partial_observations':0,
++    counts={'mapping_frames':339,'updated_frames':0,'whole_observations':0,'partial_observations':0,
+             'cross_case_conflict_pixels':0,'accepted_frames_by_track':{str(oid):0 for oid in objects},
+             'updated_frames_by_case':{uid:0 for uid in cases}}
+     family_targets={pid:{canonical[oid] for oid,obj in objects.items() if obj['old_family_id']==pid}
+@@ -269,7 +269,7 @@
+             out/'native/surface_evidence.npz',out/'native/surface_instance_frame_votes.npz',out/'allowed_surface_ids.npz',
+             out/'retired_surface_ids.npz',out/'blocked_outside_changes.npz',out/'frame_decisions.json']}
+     retired=f.load_arrays(out/'retired_surface_ids.npz')['surface_point_index']
+-    report={'status':'PASS','condition':condition,'scene':'office1','GT_used_for_repair':False,'predictions_frozen_before_any_GT_evaluation':True,
++    report={'status':'PASS','condition':condition,'scene':'scene0608_00','GT_used_for_repair':False,'predictions_frozen_before_any_GT_evaluation':True,
+             'complete_frame_replay_bit_identical_to_delta_ledger':True,'exact_rollback_pass':True,
+             'unretired_old_observation_supports_preserved_exactly':True,'each_original_frame_rebuilt_once':True,
+             'counts':counts,'strict_commit':{**commit,**proof},'scope_definition':'retired observation-region support union accepted new support; no geometric expansion',
+@@ -293,7 +293,7 @@
+ def main(identity_only=False):
+     scene,cases,objects,canonical,policy=inputs()
+     original_final=scene.final
+-    strictpath=Path("/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline/ablation/office1/abstain/final/instance_surface.npz")
++    strictpath=Path("/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/baseline/ablation/scene0608_00/abstain/final/instance_surface.npz")
+     strict=r.load_npz(strictpath);np.testing.assert_array_equal(strict["xyz_m"],scene.xyz)
+     scene.final=strict["instance_id"]
+     association=freeze_global_association(scene,cases,objects,canonical)

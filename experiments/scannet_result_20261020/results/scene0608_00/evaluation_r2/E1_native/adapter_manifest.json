@@ -1,0 +1,111 @@
+{
+  "adapter_statistics": {
+    "assigned_ref_vertices": 77911,
+    "conflict_unassigned_ref_vertices": 0,
+    "conflicting_exact_coordinate_group_count": 1,
+    "correspondence_sha256": "6425d1825d662c8ba841a7a524db95f0c60fc86c16d1c195f86ac6e8a4292b59",
+    "duplicate_coordinate_policy": "unanimous_owner_else_unassigned",
+    "empty_native_exports": 0,
+    "empty_projected_predictions": 65,
+    "exact_duplicate_coordinate_group_count": 5,
+    "exported_prediction_count": 220,
+    "geometry_point_count": 1458730,
+    "geometry_xyz_sha256": "47f27101267e3714a7b232ecf7cb86b464053f5bee0aa173b1806a734f68fd3f",
+    "no_geometry_ref_vertices": 71114,
+    "nonpositive_native_state_counts": {
+      "-1": 842508
+    },
+    "positive_native_label_count": 616222,
+    "unassigned_with_geometry_ref_vertices": 37554
+  },
+  "canonical_prediction_sha256": "91f895527dcec13e5fc3d1e9d327314437f5ef912451f706210a282d4520fefc",
+  "correspondence_cache": "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/evaluation_r2/fixed_correspondence.npz",
+  "correspondence_file_sha256": "245c5566e25bda0f17aa1849bf36750b8d01448b4fc613c9dea55e4c9514a417",
+  "correspondence_sha256": "6425d1825d662c8ba841a7a524db95f0c60fc86c16d1c195f86ac6e8a4292b59",
+  "diagnostic_prediction_sha256": "9e07cb93f67e5d934142e24a8570f5758d980c68e6a086a2cc95206c2cb41942",
+  "evaluation_profile": "object_observed_repair",
+  "evaluator_code_sha256": {
+    "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+    "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+    "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+    "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+    "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+    "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+    "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+  },
+  "geometry_xyz_sha256": "47f27101267e3714a7b232ecf7cb86b464053f5bee0aa173b1806a734f68fd3f",
+  "gt_file": "/data/chenkejun/CVPR/evaluation_results/scannet_v3_r2_reeval_20261009/scene0608_00/ground_truth/gt.npz",
+  "gt_file_sha256": "5312bf7688b91ee8ca71f1401e50fd05f05415929d5f5f3f07556b63656bd525",
+  "gt_observed_support_sha256": "84796a329cef65e9ec28f77e14be28490307cc575138b337a263958f5ce9ae8b",
+  "gt_scope_sha256": "1d50135ee87fbab7ac865726c24d1b19c9da814565cc7b2b1e41e85e0788e14d",
+  "method_commit": "source_sha256:44b853dfae5beded7ca55002147ccbbca9b55e43122e9547d79c1d5b9de86ddf",
+  "method_name": "E1_native",
+  "prediction_type_source": "explicit_native_declaration_if_provided_otherwise_unknown_no_GT_completion",
+  "profile_config": {
+    "ap_policy": "replica_ca_101",
+    "baseline_commit": "05f6bb0d6c9a2491a51e990d217fd7f1397f5f6b",
+    "confidence_mode": "uniform",
+    "dataset": "ScanNet200",
+    "dataset_adaptation": "Same audited scorer and thresholds; ScanNet source annotations and fixed original stride10 input frames; no Replica scope reuse.",
+    "diagnostic_mapping": {
+      "max_distance_m": 0.02,
+      "method": "pairwise_geometry_support"
+    },
+    "evaluation_profile": "object_observed_repair",
+    "frozen": false,
+    "geometry_mapping": {
+      "duplicate_coordinate_policy": "unanimous_owner_else_unassigned",
+      "max_distance_m": 0.01,
+      "method": "fixed_surface_correspondence"
+    },
+    "ignore_policy": {
+      "background_only_without_object_semantics": "ignore_and_report",
+      "method": "explicit_reference_regions"
+    },
+    "instance_filter": {
+      "min_prediction_vertices": 0,
+      "min_valid_instance_vertices": 1
+    },
+    "name": "Replica-CA-v3",
+    "observation": {
+      "depth_tolerance_m": 0.02,
+      "minimum_trusted_observation_count": 1,
+      "pixel_size_filter": null
+    },
+    "profile_revision": 2,
+    "review_required_gt_ids": {},
+    "scenes": [
+      "scene0011_00",
+      "scene0608_00"
+    ],
+    "significant_overlap": {
+      "min_gt_fraction": 0.05,
+      "min_intersection_vertices": 10
+    },
+    "source_policy": "Fixed GT qualification and RGB-D observation evidence, complete immutable geometry, positive native instance IDs; all distances and structure thresholds remain development values.",
+    "status": "DEVELOPMENT_REVIEW_REVISION_NOT_OFFICIAL",
+    "structure_metrics": {
+      "auxiliary_source": "pairwise_geometry_support",
+      "source": "main_partition_intersection",
+      "status": "DEVELOPMENT_AUDIT_PENDING_REAL_CASE_REVIEW"
+    }
+  },
+  "profile_config_sha256": "5381604a393abc94bf2e0fd0ee45188741008a0f832add3a873bc1633cdc23b9",
+  "profile_revision": 2,
+  "profile_semantics_sha256": "558d85c7e909e7fa7470824d3b696342d5225d2c1997c393bb7b33839630d8ad",
+  "protocol": "Replica-CA-v3",
+  "source_provenance": {
+    "GT_used_for_mapping": false,
+    "adaptation": "main cd260569 locked scoring functions; archived ScanNet R2 27/34 GT; explicit approved dataset adapter",
+    "frame_count": 339,
+    "frame_list_sha256": "725318f252e87336b9049081b08912d7d0b594638662693cdb977747ebff7538",
+    "input_config_sha256": "e6af0fdae95283aee87b826c8440223e59a94ec09d48a2052050976f81631de0",
+    "input_scope_verified": true,
+    "prediction_freeze_sha256": "f7234da2e84c310e3cf8e6668e618b133fe9363b6bc4c61dd5746bdb2cdd1780",
+    "prediction_frozen_before_GT": true
+  },
+  "source_surface": "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/e1_repair/e1/E1_expanded_history/scene0608_00/native/instance_surface.npz",
+  "source_surface_sha256": "44b853dfae5beded7ca55002147ccbbca9b55e43122e9547d79c1d5b9de86ddf",
+  "status": "DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN",
+  "structure_source": "main_partition_intersection"
+}

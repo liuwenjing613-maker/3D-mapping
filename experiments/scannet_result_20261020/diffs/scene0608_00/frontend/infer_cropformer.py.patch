@@ -1,0 +1,45 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/frontend/infer_cropformer.py
++++ code/scene0608_00/frontend/infer_cropformer.py
+@@ -4,7 +4,7 @@
+ import numpy as np, torch, cv2
+ from scipy.optimize import linear_sum_assignment
+ 
+-ROOT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/frontend')
++ROOT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/frontend')
+ CODE=Path('/home/chenkejun/CVPR/repos/CropFormer')
+ sys.path.insert(0,str(CODE));sys.path.insert(0,str(CODE/'demo_cropformer'))
+ from demo_from_dirs import setup_cfg
+@@ -45,6 +45,11 @@
+   else:
+    assert sha(job['input_file'])==job['RGB_sha256']
+    rgb=read_image(job['input_file'],format='BGR');t=time.perf_counter();duplicate=job['same_RGB_as']
++   if job['kind']=='control':
++    original_config=json.loads(Path('/home/chenkejun/CVPR/experiments/p1a1_scannet_engineering_fix_20261008/configs/scene0608_00_engineering.json').read_text())
++    original_root=Path(original_config['source']['scene_root'])
++    original_RGB=original_root/original_config['source']['rgb_pattern'].format(frame=job['frame'])
++    rgb=read_image(str(original_RGB),format='BGR')
+    cached_duplicate=ROOT/'cropformer'/(str(duplicate)+'.json')
+    if duplicate and (duplicate in done or cached_duplicate.exists()):
+     source_rec=done.get(duplicate) or json.loads(cached_duplicate.read_text())
+@@ -55,6 +60,12 @@
+     scores=instances.scores[selected];masks=instances.pred_masks[selected]
+     labels=np.zeros(rgb.shape[:2],np.uint16)
+     for ix in torch.argsort(scores):labels[masks[ix].cpu().numpy().astype(bool)]=int(ix)+1
++    if job['kind']=='control':
++     intrinsic=original_root/'intrinsic'
++     kd=np.loadtxt(intrinsic/'intrinsic_depth.txt')[:3,:3];kc=np.loadtxt(intrinsic/'intrinsic_color.txt')[:3,:3]
++     vv,uu=np.indices(tuple(job['shape']),dtype=np.float64)
++     rays=np.stack((uu,vv,np.ones_like(uu)),axis=-1)@(kc@np.linalg.inv(kd)).T
++     labels=cv2.remap(labels,(rays[:,:,0]/rays[:,:,2]).astype(np.float32),(rays[:,:,1]/rays[:,:,2]).astype(np.float32),cv2.INTER_NEAREST,borderMode=cv2.BORDER_CONSTANT)
+     assert cv2.imwrite(str(png),labels)
+     transform=model.predictor.generate_img_augs()[0][0].get_transform(rgb);resized=transform.apply_image(rgb)
+     # Save actual full-image-branch input once for every crop; internal CropFormer crops stay native.
+@@ -67,6 +78,8 @@
+     visible_mask_count=int(len(np.unique(labels[labels>0]))),effective_zoom=job['effective_zoom'])
+    if job['kind']=='control':
+     rec['frozen_cache_comparison']=agreement(cv2.imread(job['baseline_file'],cv2.IMREAD_UNCHANGED),labels)
++    rec['original_RGB_sha256']=sha(original_RGB)
++    rec['control_path']='Original full color inference followed by calibrated nearest-label sampling, identical to historical ScanNet frontend'
+    write(recpath,rec)
+   if job['kind']=='control':
+    rec['frozen_cache_comparison']=agreement(cv2.imread(job['baseline_file'],cv2.IMREAD_UNCHANGED),cv2.imread(str(png),cv2.IMREAD_UNCHANGED))

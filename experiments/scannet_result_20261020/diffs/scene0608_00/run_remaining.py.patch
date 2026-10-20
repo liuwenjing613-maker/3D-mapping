@@ -1,0 +1,17 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/run_remaining.py
++++ code/scene0608_00/run_remaining.py
+@@ -1,4 +1,4 @@
+-"""Continue the authorized office1 experiment after the upstream run succeeds."""
++"""Continue the authorized scene0608_00 experiment after the upstream run succeeds."""
+ from pathlib import Path
+ import json,subprocess,time,traceback,sys
+ from run_v1 import C,R,PY,ENV,gpu
+@@ -23,7 +23,7 @@
+  start=sys.argv[1] if len(sys.argv)>1 else 'v2_semantic'
+  assert start in ['v2_semantic','v2_measure_and_select','e1_controller']
+  if start=='v2_semantic':
+-  run('v2_semantic',[C/'v2/semantic/run.py','--manifest',R/'v1/seed_manifest.json','--raw-config','/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/office1/configs/raw.json','--out',R/'v2/semantic','--config',C/'v2/semantic/config.json'],device=gpu())
++  run('v2_semantic',[C/'v2/semantic/run.py','--manifest',R/'v1/seed_manifest.json','--raw-config','/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs/scene0608_00/configs/raw.json','--out',R/'v2/semantic','--config',C/'v2/semantic/config.json'],device=gpu())
+  if start in ['v2_semantic','v2_measure_and_select']:run('v2_measure_and_select',[C/'v2/measure_and_select.py'],cwd=C/'v2')
+  (R/'e1_repair').mkdir(exist_ok=True)
+  run('e1_controller',[C/'e1_repair/run_selected.py'],cwd=C/'e1_repair')

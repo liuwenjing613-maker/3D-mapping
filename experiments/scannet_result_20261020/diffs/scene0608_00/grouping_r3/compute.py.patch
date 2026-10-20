@@ -1,0 +1,73 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/grouping_r3/compute.py
++++ code/scene0608_00/grouping_r3/compute.py
+@@ -1,4 +1,4 @@
+-"""Read-only grouping of selected office1 masks on the frozen TSDF surface."""
++"""Read-only grouping of selected scene0608_00 masks on the frozen TSDF surface."""
+ from pathlib import Path
+ from collections import OrderedDict
+ import sys, json, hashlib, zipfile, random, time
+@@ -9,11 +9,14 @@
+ from source_policy import replacement_ledger, eligible_aliases, assert_sam_only_groups
+ from crop_filter import artificial_crop_edges, has_crop_contact
+ 
+-C = Path(__file__).resolve().parent
+-R = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/grouping_r3')
+-F = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge')
+-BASE = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline/ablation/office1/abstain/final/instance_surface.npz')
+-CAMERA = Path('/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/office1/configs/raw.json')
++C=Path(__file__).resolve().parent
++import sys
++sys.path.insert(0,str(C.parent))
++from regroup_policy import resolve, POLICY_PATH
++R = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/grouping_r3')
++F = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/overmerge')
++BASE = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/baseline/ablation/scene0608_00/abstain/final/instance_surface.npz')
++CAMERA = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs/scene0608_00/configs/raw.json')
+ COMMON = Path('/home/chenkejun/CVPR/experiments/strict_vote_annotation_20261010/common.py')
+ R.mkdir(exist_ok=True, parents=True)
+ started = time.time()
+@@ -187,6 +190,19 @@
+ passes = (union > 0) & (4 * inter > union)
+ assert np.array_equal(inter, inter.T) and np.array_equal(np.diag(inter), counts)
+ groups_raw = group_seeds(range(len(seeds)), lambda a, b: bool(passes[a, b]))
++seeds, inter, groups_raw, retained_indices, regroup_exclusions, semantic_dropped, regroup_passes = resolve(seeds, inter, group_seeds, 'post_crop')
++for p in [C.parent/'regroup_policy.py', POLICY_PATH, C/'compute.py']:
++    source_sha[str(p)] = sha(p)
++counts = np.asarray([s['support_count'] for s in seeds], dtype=np.int64)
++offsets = np.concatenate(([0], np.cumsum(counts)))
++indices = np.concatenate([s['support'] for s in seeds]).astype(np.int32)
++excluded.extend(regroup_exclusions)
++assert {s['digest'] for s in seeds+crop_excluded+semantic_dropped} == {s['digest'] for s in previous['seeds']}
++assert len(seeds)+len(crop_excluded)+len(semantic_dropped) == len(previous['seeds'])
++union = counts[:,None] + counts[None,:] - inter
++iou = np.divide(inter,union,out=np.zeros(inter.shape,float),where=union>0)
++passes = (union>0)&(4*inter>union)
++print('REGROUP_SAM_ONLY', json.dumps(regroup_passes), flush=True)
+ assert_sam_only_groups(groups_raw, seeds)
+ group_of = {s: gi for gi, members in enumerate(groups_raw) for s in members}
+ groups = []
+@@ -256,6 +272,7 @@
+     excluded_cf_masks=sum(e['entire_mask_excluded'] for e in excluded),
+     excluded_cf_occurrences=sum(len(e['removed_aliases']) for e in excluded),
+     before_crop_filter_masks=source_eligible_masks,
++    post_crop_source_excluded_masks=len(semantic_dropped), post_crop_source_excluded_aliases=sum(len(e['removed_aliases']) for e in regroup_exclusions),
+     excluded_crop_masks=len(crop_excluded), excluded_crop_occurrences=sum(len(s['aliases']) for s in crop_excluded),
+     previous_groups_emptied=len(emptied_groups), previous_primaries_removed=sum(s['previous_primary'] for s in flat_excluded),
+     exact_duplicate_occurrences_removed=sum(len(s['aliases']) for s in seeds)-len(seeds), frames=len(frames), rois=len({a['uid'] for s in seeds for a in s['aliases']}),
+@@ -274,6 +291,7 @@
+ save('crop_exclusions.json', dict(policy=rule['crop_contact_policy'], stats=stats, excluded=flat_excluded,
+     previous_groups_emptied=emptied_groups))
+ save('semantic_exclusions.json', dict(policy=rule['source_policy'], excluded=excluded,
++    post_crop_regroup_passes=regroup_passes, post_crop_exclusions=regroup_exclusions,
+     previously_replaced_candidate_count=len(replacements),manual_source_corrections=source_report.get('manual_source_corrections'),source_resolution_passes=source_report.get('source_resolution_passes'),stats=stats))
+ save('seed_manifest.json', dict(status='awaiting_visual_review', tracking_requested=False, map_write=False, rule=rule,
+     groups=[dict(id=g['id'], primary=flat[g['primary']], auxiliary_ids=[flat[j]['id'] for j in g['members'][1:]],
+@@ -296,7 +314,7 @@
+             'semantic CropFormer replacement propagated across all ROI aliases',
+             'zero CropFormer members and primaries in all window/cabinet groups',
+             'zero artificial-crop-contact members or primaries',
+-            'active plus crop-excluded masks exactly reproduce previous source-eligible input'],
++            'active plus crop-excluded plus post-crop source-excluded masks exactly partition previous source-eligible input'],
+     output_sha256={n: sha(R/n) for n in ['grouping.json','seed_manifest.json','surface_supports.npz','pair_metrics.npz','semantic_exclusions.json','crop_exclusions.json']})
+ save('audit.json', audit)
+ with zipfile.ZipFile(R/'grouping_data.zip', 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=2) as z:

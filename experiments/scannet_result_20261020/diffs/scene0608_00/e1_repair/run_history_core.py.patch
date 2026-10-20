@@ -1,0 +1,73 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/run_history_core.py
++++ code/scene0608_00/e1_repair/run_history_core.py
+@@ -1,4 +1,4 @@
+-"""Fixed manual-core history reassociation on office1 and office1.
++"""Fixed manual-core history reassociation on scene0608_00 and scene0608_00.
+ 
+ Adds only source-pixel reassociation to frozen strict full-track repair. Does
+ not read GT, change masks/tracking/gates/associations, or overwrite controls.
+@@ -12,8 +12,8 @@
+ from history_core_ops import core_claims,retarget_selection,strict_frame
+ 
+ HERE=Path(__file__).resolve().parent
+-OUT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair/modified_repair')
+-STRICT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair/original_repair')
++OUT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/e1_repair/modified_repair')
++STRICT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/e1_repair/original_repair')
+ LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')
+ BATCH=Path('/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room0')
+ sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(BATCH))
+@@ -21,7 +21,7 @@
+ import fixed_surface_repair as f
+ from joint_vote_ops import batch_delta
+ from joint_batch_ops import merge_foregrounds
+-ROOTS={'office1':Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair')}
++ROOTS={'scene0608_00':Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/e1_repair')}
+ protected={}
+ def protect(path,expected=None):
+     path=Path(path);d=r.sha(path)
+@@ -67,7 +67,7 @@
+     for case in cases:
+         uid=case['case_uid'];cfg=read(case['config_path']);complete=read(root/'cases'/uid/'tracking/complete.json')
+         assert complete['GT_used'] is False and complete['status']=='PASS'
+-        assert complete['completed_frames']==complete['total_frames']==2000
++        assert complete['completed_frames']==complete['total_frames']==339
+         protect(case['config_path'],complete['case_config_sha256'])
+         seedpath=root/'cases'/uid/'prepared_seed.png';protect(seedpath,complete['seed_sha256'])
+         info[uid]={'config':cfg,'frames':{row['frame']:row for row in complete['frames']},'seedpath':seedpath}
+@@ -135,7 +135,7 @@
+                 'seed_points':len(seedp),'core_points':len(p),'empty_core':not len(p),
+                 'before_seed':region_summary(evidence,control['instance_id'],seedp,pid),
+                 'before_core':region_summary(evidence,control['instance_id'],p,pid)})
+-            if scene_id=='office1' and uid=='office1-971efdbf3ec0d694' and tid==1:
++            if scene_id=='scene0608_00' and uid=='scene0608_00-971efdbf3ec0d694' and tid==1:
+                 regression_core=np.zeros(len(scene.xyz),bool);regression_core[p]=True;assert len(p)==20872 and pid==796
+     owner,claimkeys=core_claims(core_arrays,target_ids,len(scene.xyz),base)
+     unique_core=np.flatnonzero(owner>0);ambiguous=np.flatnonzero(owner==-2);core_union=np.flatnonzero(owner!=-1)
+@@ -255,7 +255,7 @@
+     allS=np.unique(np.concatenate(allseed))
+     complete={'status':'PASS','GT_read_by_mapper':False,'scene':scene_id,'cases':len(cases),'seed_objects':len(objects),'canonical_objects':len(fixed),
+         'core_union_points':len(core_union),'unique_core_points':len(unique_core),'ambiguous_core_points':len(ambiguous),'empty_core_objects':sum(o['empty_core'] for o in objects),
+-        'mapping_frames':400,'fresh_original_and_current_repair_projection_frames':projection_checked,'reassociated_frames':len(receipts),
++        'mapping_frames':339,'fresh_original_and_current_repair_projection_frames':projection_checked,'reassociated_frames':len(receipts),
+         'frozen_frames_without_accepted_new_masks':sum(not row['accepted_track_ids'] for row in decisions.values()),
+         'reassociated_source_pixels':sum(row['reassociated_source_pixels'] for row in receipts),
+         'raw_retired_candidate_keys':sum(row['retired_original_candidate_keys'] for row in receipts),
+@@ -291,7 +291,7 @@
+     for p in used:protect(p,oldhashes[str(p)])
+     for p in HERE.glob('*.py'):protect(p)
+     dump(OUT/'policy.json',{'status':'FROZEN_BEFORE_TWO_SCENE_MAPPING_AND_NEW_R2_SCORING','method':'history_core_reassociation_v1',
+-        'scenes':['office1'],'repair_cases':{'office1':len(read(ROOTS['office1']/'seed_diagnostics.json')['cases'])},'all_selected_seed_masks':{'office1':len(read(ROOTS['office1']/'seed_id_map.json')['objects'])},
++        'scenes':['scene0608_00'],'repair_cases':{'scene0608_00':len(read(ROOTS['scene0608_00']/'seed_diagnostics.json')['cases'])},'all_selected_seed_masks':{'scene0608_00':len(read(ROOTS['scene0608_00']/'seed_id_map.json')['objects'])},
+         'control':'Frozen strict one-vote+abstention full-track repair',
+         'manual_core_erosion_pixels':10,'empty_core_policy':'No fallback or parameter relaxation',
+         'projection_stride':2,'projection_max_distance_m':.015,'maximum_depth_m':10,
+@@ -304,7 +304,7 @@
+         'GT_used_for_masks_frames_IDs_or_thresholds':False,'GT_read_by_mapper':False,'diagnosis_informed_method':True,
+         'pre_registered_benchmark':False,'baseline_modified':False,'SAM_tracking_reused':True})
+     result={}
+-    for scene in ('office1',):result[scene]=scene_run(scene,freeze);gc.collect()
++    for scene in ('scene0608_00',):result[scene]=scene_run(scene,freeze);gc.collect()
+     for p,d in protected.items():assert r.sha(p)==d,p
+     outputs={str(p):r.sha(p) for p in OUT.rglob('*.npz')}
+     dump(OUT/'predictions_freeze.json',{'status':'TWO_SCENE_PREDICTIONS_FROZEN_BEFORE_NEW_R2_SCORING','GT_read_by_mapper':False,
