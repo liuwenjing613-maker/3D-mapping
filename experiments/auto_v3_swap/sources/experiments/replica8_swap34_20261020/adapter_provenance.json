@@ -1,0 +1,51 @@
+{
+  "request": "8场景都跑新顺序看效果",
+  "only_filter_change": "containment before coverage skip",
+  "stage5_window_cabinet_exemption": true,
+  "preserved_room2_historical_exceptions": [
+    "G017",
+    "G025"
+  ],
+  "original_E1_numerical_source_sha256": {
+    "office1": {
+      "track_case.py": "c81602318824bd95039bcfe68cb206b3033bcf3cb849d006e3a9b4f69217de10",
+      "observation_ops.py": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "adaptive_core.py": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "gate_v1.py": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "strict_vote_ops.py": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "joint_batch_ops.py": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "objectwise_ops.py": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "one_vote.py": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc"
+    },
+    "office3": {
+      "track_case.py": "c81602318824bd95039bcfe68cb206b3033bcf3cb849d006e3a9b4f69217de10",
+      "observation_ops.py": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "adaptive_core.py": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "gate_v1.py": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "strict_vote_ops.py": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "joint_batch_ops.py": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "objectwise_ops.py": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "one_vote.py": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc"
+    },
+    "office4": {
+      "track_case.py": "c81602318824bd95039bcfe68cb206b3033bcf3cb849d006e3a9b4f69217de10",
+      "observation_ops.py": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "adaptive_core.py": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "gate_v1.py": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "strict_vote_ops.py": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "joint_batch_ops.py": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "objectwise_ops.py": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "one_vote.py": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc"
+    }
+  },
+  "changed_scenes": [
+    "office1",
+    "office3",
+    "office4"
+  ],
+  "reuse_rule": "exact same selected source masks, IDs and downstream settings; room1 completed swap reused",
+  "tracking_reuse": "entire identical cases only",
+  "tracking_schedulers": "serialized across scenes",
+  "maximum_scene_workers": 2,
+  "evaluation": "main default object_observed_repair revision 2; fixed 350 GT; frozen=false"
+}

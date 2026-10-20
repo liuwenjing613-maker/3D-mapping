@@ -1,0 +1,12 @@
+{
+  "scene": "room0",
+  "kind": "source_policy_correction_only",
+  "user_quote": "M0466不采用SAM结果，因为不是柜子",
+  "corrections": [{
+    "primary_mask_id": "M0466",
+    "primary_digest": "924b75f3d916cc9c59a9cf679d53e2b5da2de03e5bd4e6b1d3851d8edab21b14",
+    "fixed_group_mask_ids": ["M0466", "M0679", "M0729", "M0904", "M0920", "M0946"],
+    "action": "Use the ordinary fixed-primary branch for this object; retain CropFormer M0466 rather than enforce SAM priority.",
+    "scope": "Only this verified auto-v1 group; later v2 rules still apply."
+  }]
+}

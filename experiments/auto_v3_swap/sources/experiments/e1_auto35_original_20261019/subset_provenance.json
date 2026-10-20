@@ -1,0 +1,214 @@
+{
+  "status": "PREPARED",
+  "source_run": "e1_user28_original_20261017_r67",
+  "selected_track_ids": [
+    6,
+    7,
+    9,
+    13,
+    15,
+    17,
+    18,
+    20,
+    22,
+    24,
+    25,
+    26,
+    27,
+    31,
+    32,
+    33,
+    35,
+    37,
+    38,
+    40,
+    44,
+    46,
+    47,
+    49,
+    50,
+    55,
+    57,
+    58,
+    64,
+    67,
+    68,
+    76,
+    78,
+    79,
+    84
+  ],
+  "selection_sha256": "b7188a47abf40974e87f317f3b489d1fe45c4f42fe60bf6b26b9e15196a22ae0",
+  "numerical_E1_rules_unchanged": true,
+  "tracking_code_byte_identical": true,
+  "changes": [
+    {
+      "file": "bootstrap.py",
+      "source_sha256": "7cc4ce49a5c07336b8dafd7ad03b8defca64a65ab04d672d1217926bcaef6387",
+      "run_sha256": "ec4e0c496a1de91485785bb579c43e9c7edf5b16579506ebba636d708dc64767",
+      "diff": "--- user28/bootstrap.py\n+++ auto35/bootstrap.py\n@@ -3,7 +3,7 @@\n import json,sys\n MAIN=Path('/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009')\n C=Path(__file__).resolve().parent\n-R=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67')\n+R=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019')\n S=Path('/data/chenkejun/CVPR/results/instance_seed_grouping_20261015_r4')\n sys.path.insert(0,str(MAIN))\n from instance_repair.cli import verify_sources,LockedModules,load_script,digest\n"
+    },
+    {
+      "file": "prepare_auto_seeds.py",
+      "source_sha256": "dea1f3448be7dc77aa2401d662b10f63980132b6f1b40de28310ab78743ff214",
+      "run_sha256": "1ba27d839d62e0fbe6c503ed0af96d9ea64665c01c399928e0bad809b32a568e",
+      "diff": "--- user28/prepare_auto_seeds.py\n+++ auto35/prepare_auto_seeds.py\n@@ -15,12 +15,17 @@\n  assert digest(src)=='bc02522e9bc83d880e99397ea9154ace33ede26ffa4c6abdb18384d5a68a0b22'\n  source=json.loads(src.read_text());groups=source['groups'];assert len(groups)==90\n  selection_path=C/'confirmed_selection.json'\n- assert digest(selection_path)=='e98f55e00b1f0f667a954b6c8ef540269edbdc900f9abba4cdb45318b260301c'\n+ assert digest(selection_path)=='b7188a47abf40974e87f317f3b489d1fe45c4f42fe60bf6b26b9e15196a22ae0'\n  selection=json.loads(selection_path.read_text())\n- assert selection['status']=='confirmed' and selection['revision']==67 and not selection['qa_only']\n+ assert selection['status']=='confirmed' and selection['version']=='auto35-20261019' and not selection['qa_only']\n  assert selection['manifest_sha256']==digest(src)\n+ assert digest(Path(selection['selected_source_manifest']))==selection['selected_source_manifest_sha256']\n+ assert digest(Path(selection['selected_source_decisions']))==selection['selected_source_decisions_sha256']\n+ chosen=json.loads(Path(selection['selected_source_manifest']).read_text())\n+ assert {g['id'] for g in chosen['groups']}-set(selection['excluded_this_round'])=={x['group_id'] for x in selection['included']}\n+ assert selection['pr_filter_applied'] and selection['user_retained_exceptions']==['G017','G025']\n  selected={x['original_track_id']:x for x in selection['included']}\n- assert len(selected)==28 and len(selection['excluded'])==62\n+ assert len(selected)==35 and len(selection['excluded'])==55\n  assert set(selected)|{x['original_track_id'] for x in selection['excluded']}==set(range(1,91))\n  group_by_tid={tid:g for tid,g in enumerate(groups,1) if tid in selected}\n  for tid,g in group_by_tid.items():\n@@ -32,7 +37,7 @@\n  assert digest(strictpath)=='3f611dfe701a68259c71b94962ae6bae3c13fbac9c24f1e3eca5b414b8d2d4f3'\n  strict=r.load_npz(strictpath);np.testing.assert_array_equal(strict['xyz_m'],scene.xyz)\n  scene.final=strict['instance_id'];scene.source_hashes[str(strictpath)]=digest(strictpath)\n- batches={};sourcehash={str(src):digest(src),str(selection_path):digest(selection_path)};masks={};seedmap=[]\n+ batches={};sourcehash={str(src):digest(src),str(selection_path):digest(selection_path),selection['selected_source_manifest']:selection['selected_source_manifest_sha256'],selection['selected_source_decisions']:selection['selected_source_decisions_sha256']};masks={};seedmap=[]\n  for tid,g in group_by_tid.items():\n   p=g['primary'];path=S/p['mask'];sourcehash[str(path)]=digest(path);assert digest(path)==p['mask_sha256']\n   m=np.asarray(Image.open(path))>0;assert m.shape==(680,1200) and int(m.sum())==p['area']\n@@ -47,7 +52,7 @@\n  for fid,slots in sorted(batches.items()):\n   original=scene.source.load_frame(fid)\n   for bi,ids in enumerate(slots,1):\n-   uid=f'user28-f{fid:06d}-b{bi:02d}';out=R/'cases'/uid;out.mkdir(parents=True,exist_ok=True)\n+   uid=f'auto35-f{fid:06d}-b{bi:02d}';out=R/'cases'/uid;out.mkdir(parents=True,exist_ok=True)\n    selected=np.zeros((680,1200),np.uint16)\n    for tid in ids:\n     assert not selected[masks[tid]].any();selected[masks[tid]]=tid\n@@ -72,17 +77,17 @@\n    cfg={'schema_version':1,'scene':'room2','case_uid':uid,'experiment_mode':'offline_retrospective','seed_mode':'new_mask_reassociate','seed_frame':fid,'seed_manifest':str(R/'seed_manifest.json'),\n     'objects':[{'track_id':tid} for tid in ids],'old_family_ids':sorted(families),'policy_file':str(C/'tracking_policy.json'),'output_dir':str(out),\n     'tracking':{'checkpoint':'/data/chenkejun/CVPR/models/sam2.1_hiera_large.pt','checkpoint_sha256':'2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318',\n-     'repo':'/home/chenkejun/CVPR/repos/sam2_1','python':'/data/chenkejun/CVPR/runtime/sam2_1_env/bin/python','cuda_visible_devices':'assigned_by_queue_from_verified_idle_GPU_0_1_2','directions':['forward','reverse']}}\n+     'repo':'/home/chenkejun/CVPR/repos/sam2_1','python':'/data/chenkejun/CVPR/runtime/sam2_1_env/bin/python','cuda_visible_devices':'assigned_by_queue_from_verified_idle_GPU_0_1_2_6','directions':['forward','reverse']}}\n    cp=C/'cases'/(uid+'.json');f.atomic_json(cp,cfg)\n    f.atomic_json(out/'frozen_association.json',{'status':'PREPARED_FOR_TRACKING_ONLY','scene':'room2','case_uid':uid,'seed_frame':fid,'seed_file':str(seedfile),'seed_sha256':digest(seedfile),'objects':objects,'GT_used':False,'persistent_identity_assignment_pending_global_review':True})\n    row={'status':'READY','scene':'room2','case_uid':uid,'source_choice':choice,'objects':objects,'seed_file':str(seedfile.relative_to(R)),'seed_sha256':digest(seedfile)}\n    manifest.append(row);diagnostics.append({'case_uid':uid,'source_choice':choice,'objects':objects,'old_family_ids':sorted(families),'projection':stats,'seed_sha256':digest(seedfile),'config_path':str(cp)})\n    for path in [cp,seedfile,out/'frozen_association.json',out/'seed_projected_support.npz']:seedhash[str(path)]=digest(path)\n- assert sum(len(c['objects']) for c in diagnostics)==28\n- authorization={'user_requested_tracking_and_E1_repair':True,'source_manifest':str(src),'source_sha256':digest(src),'selected_primary_masks':28,'confirmed_selection_sha256':digest(selection_path),'confirmed_revision':67,'source_policy':'window/cabinet SAM only; no removed masks restored','batching':'same frame and exactly disjoint seed masks only; overlapping masks run separately','GT_used':False}\n+ assert sum(len(c['objects']) for c in diagnostics)==35\n+ authorization={'user_requested_tracking_and_E1_repair':True,'source_manifest':str(src),'source_sha256':digest(src),'selected_primary_masks':35,'confirmed_selection_sha256':digest(selection_path),'confirmed_version':selection['version'],'source_policy':'window/cabinet SAM only; no removed masks restored','batching':'same frame and exactly disjoint seed masks only; overlapping masks run separately','GT_used':False}\n  f.atomic_json(R/'inputs/input_selection.json',authorization)\n  f.atomic_json(R/'inputs/local_ingest.json',{'no_reliable_seed_cases':[],'unannotated_cases':[],'annotation_sha256':digest(src)})\n- f.atomic_json(R/'seed_manifest.json',{'status':'PASS','scene':'room2','annotation_sha256':digest(src),'repair_cases':len(diagnostics),'selected_masks':28,'seeds':manifest,'GT_used':False})\n+ f.atomic_json(R/'seed_manifest.json',{'status':'PASS','scene':'room2','annotation_sha256':digest(src),'repair_cases':len(diagnostics),'selected_masks':35,'seeds':manifest,'GT_used':False})\n  pairs=[]\n  for a,pa in support.items():\n   for b,pb in support.items():\n@@ -91,12 +96,12 @@\n    if n:pairs.append({'track_a':a,'track_b':b,'intersection':n,'dice':2*n/(len(pa)+len(pb)),'coverage_a':n/len(pa),'coverage_b':n/len(pb)})\n  f.atomic_json(R/'seed_diagnostics.json',{'status':'PASS','GT_used':False,'cases':diagnostics,'cross_case_surface_overlap':pairs})\n  f.atomic_json(R/'seed_id_map.json',{'source_manifest':str(src),'objects':seedmap})\n- f.atomic_json(R/'alias_review.json',{'status':'FROZEN','GT_used':False,'aliases':{},'rule':'28 retained already-grouped unique primaries; do not merge again','source_manifest_sha256':digest(src)})\n+ f.atomic_json(R/'alias_review.json',{'status':'FROZEN','GT_used':False,'aliases':{},'rule':'35 retained already-grouped unique primaries; do not merge again','source_manifest_sha256':digest(src)})\n  raw=json.loads((r.INPUT/'room2/configs/raw.json').read_text())['source'];rr=Path(raw['scene_root'])\n  rgbhash={str(rr/raw['rgb_pattern'].format(frame=fid)):digest(rr/raw['rgb_pattern'].format(frame=fid)) for fid in range(2000)}\n  for p in [R/'seed_manifest.json',R/'seed_diagnostics.json',R/'seed_id_map.json',R/'alias_review.json',R/'inputs/input_selection.json']:seedhash[str(p)]=digest(p)\n  f.atomic_json(R/'input_freeze.json',{'status':'FROZEN_BEFORE_INFERENCE','original_baseline_source_hashes':scene.source_hashes,'annotation_sha256':digest(src),'raw_rgb_hashes':rgbhash,'seed_and_config_hashes':{**seedhash,**sourcehash},'prepare_code_sha256':digest(__file__),'tracking_code_path':str(C/'track_case.py'),'tracking_code_sha256':digest(C/'track_case.py'),'GT_used':False})\n  scene.verify_unchanged()\n- summary={'status':'PASS','cases':len(diagnostics),'objects':28,'seed_pixels_exact':True,'min_E1_projected_points':min(len(x) for x in support.values()),'same_frame_overlap_split':True,'windows_cabinets_SAM_only':True}\n+ summary={'status':'PASS','cases':len(diagnostics),'objects':35,'seed_pixels_exact':True,'min_E1_projected_points':min(len(x) for x in support.values()),'same_frame_overlap_split':True,'windows_cabinets_SAM_only':True}\n  f.atomic_json(R/'prepare_complete.json',summary);print(json.dumps(summary),flush=True)\n if __name__=='__main__':main()\n"
+    },
+    {
+      "file": "run_selected.py",
+      "source_sha256": "264f3645ae180ce49fdcf74e1ecbcd51a7cdc44af2977d9d1c9c8204c0f6bf7b",
+      "run_sha256": "5835c34a08ccc31a1b2f44715f716ba30a5bf2b1985f9768cc322df96e5f5d2f",
+      "diff": "--- user28/run_selected.py\n+++ auto35/run_selected.py\n@@ -1,7 +1,7 @@\n from pathlib import Path\n import os,json,subprocess,time,traceback\n C=Path(__file__).resolve().parent\n-R=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67')\n+R=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019')\n PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'\n env={**os.environ,'OPENBLAS_NUM_THREADS':'4','OMP_NUM_THREADS':'4','PYTHONDONTWRITEBYTECODE':'1'}\n def save(name,v):\n@@ -14,6 +14,8 @@\n def main():\n  run('prepare',[C/'prepare_auto_seeds.py'])\n  run('tests',[C/'run_stage.py','tests'])\n+ run('input_audit',[C/'audit_selected_inputs.py'])\n+ run('reuse_tracking',[C/'reuse_exact_tracking.py'])\n  save('queue_v2_adoption.json',{'jobs':[]})\n  with (R/'tracking_queue.controller.log').open('xb') as f:\n   q=subprocess.Popen([PY,'-u',str(C/'tracking_queue_v2.py')],cwd=C,env=env,stdin=subprocess.DEVNULL,stdout=f,stderr=subprocess.STDOUT)\n@@ -21,7 +23,7 @@\n   run('pipeline',[C/'pipeline.py'])\n   assert q.wait()==0\n  run('evaluation',[C/'evaluate_r2.py'])\n- save('run_complete.json',{'status':'PASS','time':time.time(),'selected_seeds':28,'excluded_seeds':62,'variant':'original_E1'})\n+ save('run_complete.json',{'status':'PASS','time':time.time(),'selected_seeds':35,'excluded_seeds':55,'variant':'original_E1'})\n  save('run_status.json',{'status':'PASS','stage':'complete','time':time.time()})\n if __name__=='__main__':\n  try:main()\n"
+    },
+    {
+      "file": "pipeline.py",
+      "source_sha256": "8a55bcb1c83904678551e864b917d92c37d5aaaf6c5110a028116c883fef915b",
+      "run_sha256": "76cbcb704707e9a75fd9c895a4959fd8d286bfc685b05854cfe17a5ae51be90a",
+      "diff": "--- user28/pipeline.py\n+++ auto35/pipeline.py\n@@ -1,6 +1,6 @@\n from pathlib import Path\n import json,subprocess,os,time,hashlib,traceback\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019')\n PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'\n def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\n def save(n,x):\n"
+    },
+    {
+      "file": "run_stage.py",
+      "source_sha256": "d97807a81bc73aeaa6eb5b311dbc4235276596971f68c1c5316c7fead58283bb",
+      "run_sha256": "d97807a81bc73aeaa6eb5b311dbc4235276596971f68c1c5316c7fead58283bb",
+      "diff": ""
+    },
+    {
+      "file": "tracking_queue_v2.py",
+      "source_sha256": "94a39c0a8642f56deb84126a978fbc8f9726f675bba5d6450db3fe558a6f1c72",
+      "run_sha256": "be91c43707f0294b8cb9e434edbbc1c5e064de9b973ab863505be1587a6e2f88",
+      "diff": "--- user28/tracking_queue_v2.py\n+++ auto35/tracking_queue_v2.py\n@@ -1,7 +1,7 @@\n \"\"\"Two independent E1 workers per available GPU; safely adopt existing jobs.\"\"\"\n from pathlib import Path\n import os,json,time,subprocess,hashlib,shutil,traceback\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019')\n def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()\n def save(n,x):\n  p=R/n;t=p.with_suffix('.tmp');t.write_text(json.dumps(x,indent=2));t.replace(p)\n@@ -13,7 +13,7 @@\n def ram():return int(next(x.split()[1] for x in Path('/proc/meminfo').read_text().splitlines() if x.startswith('MemAvailable:')))/1024**2\n def gpu_state():\n  txt=subprocess.check_output(['nvidia-smi','--query-gpu=index,uuid,memory.used,memory.free,utilization.gpu','--format=csv,noheader,nounits'],text=True)\n- rows=[dict(index=int(a),uuid=b,used=int(c),free=int(d),util=int(e)) for a,b,c,d,e in [x.split(', ') for x in txt.strip().splitlines()] if int(a) in (0,1,2)]\n+ rows=[dict(index=int(a),uuid=b,used=int(c),free=int(d),util=int(e)) for a,b,c,d,e in [x.split(', ') for x in txt.strip().splitlines()] if int(a) in (0,1,2,6)]\n  txt=subprocess.check_output(['nvidia-smi','--query-compute-apps=pid,gpu_uuid,used_gpu_memory','--format=csv,noheader,nounits'],text=True)\n  apps=[dict(pid=int(a),gpu=b,memory=int(c)) for a,b,c in [x.split(', ') for x in txt.strip().splitlines()] if a.isdigit() and c.isdigit()]\n  return rows,apps\n"
+    },
+    {
+      "file": "track_case.py",
+      "source_sha256": "c81602318824bd95039bcfe68cb206b3033bcf3cb849d006e3a9b4f69217de10",
+      "run_sha256": "c81602318824bd95039bcfe68cb206b3033bcf3cb849d006e3a9b4f69217de10",
+      "diff": ""
+    },
+    {
+      "file": "run_batch.py",
+      "source_sha256": "1381bc0b612fbcaf584c2970c162a00d3f270e9cefd8ac16cb6168a1a9dd1b15",
+      "run_sha256": "04dcd8ce35cfd58f9587eb35b76807ae91025536e9575639f2728b8f7204290e",
+      "diff": "--- user28/run_batch.py\n+++ auto35/run_batch.py\n@@ -7,7 +7,7 @@\n from scipy.optimize import linear_sum_assignment\n \n HERE=Path(__file__).resolve().parent\n-ROOT=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67')\n+ROOT=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019')\n REPAIR_ROOT=ROOT/'validated'\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(LEGACY/'objectwise_repair_20261007'))\n"
+    },
+    {
+      "file": "run_case.py",
+      "source_sha256": "7c7727e78ba8cdb05ed8ba852c510e23bd6bcabc22884475a8dd74696d39e68f",
+      "run_sha256": "7c7727e78ba8cdb05ed8ba852c510e23bd6bcabc22884475a8dd74696d39e68f",
+      "diff": ""
+    },
+    {
+      "file": "joint_batch_ops.py",
+      "source_sha256": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "run_sha256": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "diff": ""
+    },
+    {
+      "file": "objectwise_ops.py",
+      "source_sha256": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "run_sha256": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "diff": ""
+    },
+    {
+      "file": "gate_v1.py",
+      "source_sha256": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "run_sha256": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "diff": ""
+    },
+    {
+      "file": "strict_vote_ops.py",
+      "source_sha256": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "run_sha256": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "diff": ""
+    },
+    {
+      "file": "one_vote.py",
+      "source_sha256": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc",
+      "run_sha256": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc",
+      "diff": ""
+    },
+    {
+      "file": "run_strict_repair.py",
+      "source_sha256": "ba0075f32d66dfa264b301efc509b45c3d751b36e70002efb10c50e88354c83e",
+      "run_sha256": "b6126fbfbfdaa5a1f46a637a66d03c601f7dbcf9b0322df7b9514bcbbf00342e",
+      "diff": "--- user28/run_strict_repair.py\n+++ auto35/run_strict_repair.py\n@@ -7,14 +7,14 @@\n from strict_vote_ops import strict_frame_keys,frame_delta\n \n HERE=Path(__file__).resolve().parent\n-OUT=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67/original_repair')\n+OUT=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019/original_repair')\n PRIOR=Path('/data/chenkejun/CVPR/results/p1a1_one_vote_20261009')\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'))\n import run_repairs as r\n import fixed_surface_repair as f\n from joint_vote_ops import batch_delta\n-ROOTS={'room2':Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67')}\n+ROOTS={'room2':Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019')}\n CONDITIONS=('full_track',)\n FIELDS=r.FIELDS\n hashes={}\n"
+    },
+    {
+      "file": "run_history_core.py",
+      "source_sha256": "d0208e8b6d7e7f08e99b27685f78a15c786e33f6b871d868c6a12bb402335832",
+      "run_sha256": "ac8350c67650ee483ce9337d39d97bfc31363bda60a3e87caa5a5a7b3ac06eba",
+      "diff": "--- user28/run_history_core.py\n+++ auto35/run_history_core.py\n@@ -12,8 +12,8 @@\n from history_core_ops import core_claims,retarget_selection,strict_frame\n \n HERE=Path(__file__).resolve().parent\n-OUT=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67/modified_repair')\n-STRICT=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67/original_repair')\n+OUT=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019/modified_repair')\n+STRICT=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019/original_repair')\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n BATCH=Path('/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(BATCH))\n@@ -21,7 +21,7 @@\n import fixed_surface_repair as f\n from joint_vote_ops import batch_delta\n from joint_batch_ops import merge_foregrounds\n-ROOTS={'room2':Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67')}\n+ROOTS={'room2':Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019')}\n protected={}\n def protect(path,expected=None):\n     path=Path(path);d=r.sha(path)\n@@ -291,7 +291,7 @@\n     for p in used:protect(p,oldhashes[str(p)])\n     for p in HERE.glob('*.py'):protect(p)\n     dump(OUT/'policy.json',{'status':'FROZEN_BEFORE_TWO_SCENE_MAPPING_AND_NEW_R2_SCORING','method':'history_core_reassociation_v1',\n-        'scenes':['room2'],'repair_cases':{'room2':len(read(ROOTS['room2']/'seed_diagnostics.json')['cases'])},'all_selected_seed_masks':{'room2':28},\n+        'scenes':['room2'],'repair_cases':{'room2':len(read(ROOTS['room2']/'seed_diagnostics.json')['cases'])},'all_selected_seed_masks':{'room2':35},\n         'control':'Frozen strict one-vote+abstention full-track repair',\n         'manual_core_erosion_pixels':10,'empty_core_policy':'No fallback or parameter relaxation',\n         'projection_stride':2,'projection_max_distance_m':.015,'maximum_depth_m':10,\n"
+    },
+    {
+      "file": "expand_room2.py",
+      "source_sha256": "3f024c278f425c930c73606969a56dfeb5db3da4a49341ea6967ae3b9bf5609a",
+      "run_sha256": "8ce9c7241bb557dc2b20d20b071931261369c80dc3ca73b1ddbdf52ed7bb4064",
+      "diff": "--- user28/expand_room2.py\n+++ auto35/expand_room2.py\n@@ -9,7 +9,7 @@\n import run_history_core as h\n from adaptive_core import choose_core\n from observation_ops import visible_samples,mask_support,choose_view_representatives,connected_expansion,resolve_claims\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67/e1');O=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67');A=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67/modified_repair/room2')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019/e1');O=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019');A=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019/modified_repair/room2')\n read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()\n def dump(p,x):h.f.atomic_json(p,x)\n def foreground(pid,fid):\n@@ -33,10 +33,10 @@\n def main():\n  global scene,groups,dec,info,obj,coreowner\n  R.mkdir(parents=True,exist_ok=True);assert not (R/'region.npz').exists()\n- policy={'method':'room2_all_annotated_observation_expansion_v1','control':str(A),'scope':'all 28 retained primary masks, 28 frozen persistent identities','same_identity_aliases':'erode each accepted member mask then union, count each frame once','core':'largest erosion radius 10 down to 1 giving max(20,ceil(0.2*seed projected unique points)); preserve existing core claims; conflicts ambiguous','depth_tolerance_m':.02,'mask_erosion_pixels':1,'minimum_support_frames':3,'minimum_supporting_camera_representatives':2,'camera_separation_m':.05,'minimum_visible_positive_fraction':.8,'growth_radius_m':.02,'support':'depth-visible TSDF reverse projection into accepted mask; frozen forward vote projection unchanged','cross_target_growth':'simultaneous claims, different IDs ambiguous, remove ambiguous bridges then reconnect to core','history':'retained original sampled source observations only; same visible point relabel to unique confirmed region identity, unrestricted historical IDs','E1':'expanded history only','SAM2_and_mask_gate':'same V2 gate applied to new SAM2.1 tracks','final_commit':'only points with aggregate vote counts changed vs control','GT_read_by_mapper':False,'GT_used_for_thresholds':False,'threshold_sweep':False,'architecture_frozen':True}\n+ policy={'method':'room2_all_annotated_observation_expansion_v1','control':str(A),'scope':'all 35 retained primary masks, 35 frozen persistent identities','same_identity_aliases':'erode each accepted member mask then union, count each frame once','core':'largest erosion radius 10 down to 1 giving max(20,ceil(0.2*seed projected unique points)); preserve existing core claims; conflicts ambiguous','depth_tolerance_m':.02,'mask_erosion_pixels':1,'minimum_support_frames':3,'minimum_supporting_camera_representatives':2,'camera_separation_m':.05,'minimum_visible_positive_fraction':.8,'growth_radius_m':.02,'support':'depth-visible TSDF reverse projection into accepted mask; frozen forward vote projection unchanged','cross_target_growth':'simultaneous claims, different IDs ambiguous, remove ambiguous bridges then reconnect to core','history':'retained original sampled source observations only; same visible point relabel to unique confirmed region identity, unrestricted historical IDs','E1':'expanded history only','SAM2_and_mask_gate':'same V2 gate applied to new SAM2.1 tracks','final_commit':'only points with aggregate vote counts changed vs control','GT_read_by_mapper':False,'GT_used_for_thresholds':False,'threshold_sweep':False,'architecture_frozen':True}\n  dump(R/'policy.json',policy);scene=h.r.Scene('room2');cases,assoc,obj,info,canonical,fixed=h.catalog(O);groups={}\n  for tid,can in canonical.items():groups.setdefault(int(fixed[can]),[]).append(int(tid))\n- groups={k:sorted(v) for k,v in groups.items()};assert sum(map(len,groups.values()))==28 and len(groups)==28\n+ groups={k:sorted(v) for k,v in groups.items()};assert sum(map(len,groups.values()))==35 and len(groups)==35\n  dec={x['frame']:x for x in read(O/'validated/full_track/frame_decisions.json')['frames']};priorz=dict(np.load(A/'core_claims.npz'));prior=np.full(len(scene.xyz),-1,np.int32);prior[priorz['surface_point_index']]=priorz['claimed_persistent_id'];coreclaims=[];coreids=[];objects=[]\n  for case in read(O/'seed_manifest.json')['seeds']:\n   if case['status']!='READY':continue\n"
+    },
+    {
+      "file": "observation_ops.py",
+      "source_sha256": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "run_sha256": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "diff": ""
+    },
+    {
+      "file": "adaptive_core.py",
+      "source_sha256": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "run_sha256": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "diff": ""
+    },
+    {
+      "file": "run_observation_repair.py",
+      "source_sha256": "00b054fc1c2958382214158bf8b5784a58061efcb2a89d7955ae24fca5cb55e7",
+      "run_sha256": "0db7bb021807273cac20ec32ae51443e369dfb92f6bab9b3593dfe7aa0ec5728",
+      "diff": "--- user28/run_observation_repair.py\n+++ auto35/run_observation_repair.py\n@@ -7,7 +7,7 @@\n sys.path.insert(0,'/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room2')\n import run_history_core as h\n from observation_ops import visible_samples,revise_all_history,keyset,strict_frame\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67/e1');O=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67');A=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67/modified_repair/room2');B=O/'original_repair/room2/full_track';NAMES=['E1_expanded_history']\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019/e1');O=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019');A=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019/modified_repair/room2');B=O/'original_repair/room2/full_track';NAMES=['E1_expanded_history']\n read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();load=lambda p:dict(np.load(p))\n def dump(p,v):h.f.atomic_json(p,v)\n def emit(stage,**kw):v={'stage':stage,**kw,'unix':time.time()};dump(R/'progress.json',v);print(json.dumps(v),flush=True)\n"
+    },
+    {
+      "file": "evaluate_r2.py",
+      "source_sha256": "c18905a7b54ed4dc5cc5f88c92bfe2168aa94b4618abbee2ff38d95ecb88dc7f",
+      "run_sha256": "6525e7841ad35ca78cf4d8146f0d50b8d25d5d832a02e6d8f2c7358b337abcd7",
+      "diff": "--- user28/evaluate_r2.py\n+++ auto35/evaluate_r2.py\n@@ -2,7 +2,7 @@\n from pathlib import Path\n import json,sys,hashlib,subprocess,time\n import numpy as np\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_user28_original_20261017_r67');MAIN=Path('/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/e1_auto35_original_20261019');MAIN=Path('/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009')\n sys.path.insert(0,str(MAIN))\n from instance_repair.cli import verify_sources\n from unified_eval.current_protocol import CURRENT_PROTOCOL,CURRENT_CONFIG,REGISTRY_PATH,require_current_protocol,require_current_gt\n@@ -39,9 +39,9 @@\n    z=np.load(surface);reference=np.load(baseline['strict_baseline_'+stage]['path']);np.testing.assert_array_equal(z['xyz_m'],reference['xyz_m']);np.testing.assert_array_equal(z['rgb'],reference['rgb'])\n    load_fixed_surface_correspondence(cache,z['xyz_m'],gt.xyz_ref)\n    provenance={'input_scope_verified':True,'frame_list_sha256':fsha,'frame_count':400,'input_config_sha256':sha256_file(config),'materialization_report_sha256':sha256_file(materialpath),'association_report_sha256':sha256_file(associationpath),\n-    'prediction_freeze_sha256':sha256_file(finalroot/'predictions_freeze.json'),'prediction_frozen_before_GT':True,'GT_used_for_mapping':False,'condition':variant,'selected_primary_masks':28,'batch':str(R),'surface_sha256':sha256_file(surface)}\n+    'prediction_freeze_sha256':sha256_file(finalroot/'predictions_freeze.json'),'prediction_frozen_before_GT':True,'GT_used_for_mapping':False,'condition':variant,'selected_primary_masks':35,'batch':str(R),'surface_sha256':sha256_file(surface)}\n    pp=out/'provenance'/(variant+'_'+stage+'.json');dump(pp,provenance);dest=out/(variant+'_'+stage)\n-   cli(['adapt-surface','--gt',gtpath,'--surface',surface,'--fixed-correspondence',cache,'--source-provenance',pp,'--method-name','P1-A1_strict_room2_user28_E1_'+variant+'_'+stage,'--method-commit',sha256_file(C/'run_observation_repair.py'),'--out',dest],out/(variant+'_'+stage+'.log'))\n+   cli(['adapt-surface','--gt',gtpath,'--surface',surface,'--fixed-correspondence',cache,'--source-provenance',pp,'--method-name','P1-A1_strict_room2_auto35_E1_'+variant+'_'+stage,'--method-commit',sha256_file(C/'run_observation_repair.py'),'--out',dest],out/(variant+'_'+stage+'.log'))\n    am=read(dest/'adapter_manifest.json');manifests.append(am)\n    sm=read(dest/'metrics.json')['summary'];labels=z['instance_id'];e=np.load('/data/chenkejun/CVPR/results/p1a1_one_vote_20261009/ablation/room2/abstain/surface_evidence.npz') if variant=='before' else np.load(finalroot/'room2/native/surface_evidence.npz')\n    counts={n:int(np.sum((labels<=0)&(e['state']==v))) for n,v in [('U',0),('T',1),('C',3)]}\n"
+    },
+    {
+      "file": "test_strict_repair.py",
+      "source_sha256": "831bb4f7e82361bbe201a4f5d9f3066a45d855bcce450148432de16ee56d2ffe",
+      "run_sha256": "831bb4f7e82361bbe201a4f5d9f3066a45d855bcce450148432de16ee56d2ffe",
+      "diff": ""
+    },
+    {
+      "file": "test_history_core.py",
+      "source_sha256": "052170a9cec7b6b0b36ab9e2810c6f655c35efa47c55c7d563bdd4274686245e",
+      "run_sha256": "052170a9cec7b6b0b36ab9e2810c6f655c35efa47c55c7d563bdd4274686245e",
+      "diff": ""
+    },
+    {
+      "file": "test_observation_ops.py",
+      "source_sha256": "075ff2dd2d97a8aa257ba9cb3b61dcc6c87c8856952d46e3c457bc7839062f14",
+      "run_sha256": "075ff2dd2d97a8aa257ba9cb3b61dcc6c87c8856952d46e3c457bc7839062f14",
+      "diff": ""
+    },
+    {
+      "file": "test_adaptive_core.py",
+      "source_sha256": "b54436583bcca1ccd833b0707f7d8ff620e67600df67b808d5eb8cae2f126aa8",
+      "run_sha256": "b54436583bcca1ccd833b0707f7d8ff620e67600df67b808d5eb8cae2f126aa8",
+      "diff": ""
+    },
+    {
+      "file": "test_gate_v1.py",
+      "source_sha256": "aa1f95cf8db37917ce0bdabf734814628100bd2af57722f566ff171e9e819ca5",
+      "run_sha256": "aa1f95cf8db37917ce0bdabf734814628100bd2af57722f566ff171e9e819ca5",
+      "diff": ""
+    },
+    {
+      "file": "gate_policy.json",
+      "source_sha256": "69fa69e870bcd93b2c452df5bc3f7fc4af41d1033709c04d9c2ced224d0a61c1",
+      "run_sha256": "69fa69e870bcd93b2c452df5bc3f7fc4af41d1033709c04d9c2ced224d0a61c1",
+      "diff": ""
+    },
+    {
+      "file": "tracking_policy.json",
+      "source_sha256": "13cdb79dc3ff6d49df87850de7aafc0df8f50b878790c448035c9e526988c2a7",
+      "run_sha256": "13cdb79dc3ff6d49df87850de7aafc0df8f50b878790c448035c9e526988c2a7",
+      "diff": ""
+    }
+  ]
+}

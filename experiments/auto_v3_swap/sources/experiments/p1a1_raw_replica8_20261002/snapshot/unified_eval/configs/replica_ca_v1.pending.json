@@ -1,0 +1,20 @@
+{
+  "name": "Replica-CA-v1",
+  "dataset": "Replica",
+  "frozen": false,
+  "scenes": ["room0", "room1", "room2", "office0", "office1", "office2", "office3", "office4"],
+  "reference_source": "user_provided_replica_reference_mesh",
+  "confidence_mode": "uniform",
+  "ap_policy": "replica_ca_101",
+  "geometry_mapping": {
+    "method": "nearest_neighbor_reference_to_prediction",
+    "max_distance_m": null
+  },
+  "instance_filter": {
+    "min_valid_instance_vertices": null
+  },
+  "ignore_policy": {
+    "unmatched_prediction_void_fraction_gt": 0.5
+  },
+  "source_policy": "Use the same reference mesh and input manifests for all compared methods"
+}

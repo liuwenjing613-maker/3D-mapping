@@ -1,0 +1,174 @@
+{
+  "status": "READY_FOR_HUMAN_CHOICES",
+  "scene_scope": "room0",
+  "source_selection": "selection-20261006-f49eb927",
+  "case_count": 14,
+  "view_count": 42,
+  "candidate_crop_count": 143,
+  "models": [
+    "original",
+    "cropformer_local",
+    "sam2_1_local"
+  ],
+  "cases": [
+    {
+      "uid": "room0-971efdbf3ec0d694",
+      "ROI": "ROI-C0001",
+      "frames": [
+        1995,
+        890,
+        1855
+      ]
+    },
+    {
+      "uid": "room0-e69e11d7edf3f35c",
+      "ROI": "ROI-C0002",
+      "frames": [
+        190,
+        325,
+        1745
+      ]
+    },
+    {
+      "uid": "room0-cfa818bb7488e504",
+      "ROI": "ROI-C0005",
+      "frames": [
+        580,
+        300,
+        485
+      ]
+    },
+    {
+      "uid": "room0-580118f842261de9",
+      "ROI": "ROI-C0007",
+      "frames": [
+        1630,
+        225,
+        1025
+      ]
+    },
+    {
+      "uid": "room0-a5635309720ef8a2",
+      "ROI": "ROI-C0010",
+      "frames": [
+        1660,
+        520,
+        620
+      ]
+    },
+    {
+      "uid": "room0-2567eed0660d43bf",
+      "ROI": "ROI-C0011",
+      "frames": [
+        1860,
+        1510,
+        1235
+      ]
+    },
+    {
+      "uid": "room0-d30fc01b2b51d42f",
+      "ROI": "ROI-C0015",
+      "frames": [
+        0,
+        515,
+        400
+      ]
+    },
+    {
+      "uid": "room0-467cac824a423a0d",
+      "ROI": "ROI-C0020",
+      "frames": [
+        1870,
+        1250,
+        1220
+      ]
+    },
+    {
+      "uid": "room0-2f1a29ddc32cd41f",
+      "ROI": "ROI-C0021",
+      "frames": [
+        945,
+        1840,
+        1780
+      ]
+    },
+    {
+      "uid": "room0-5262f00ca0047746",
+      "ROI": "ROI-C0027",
+      "frames": [
+        625,
+        445,
+        10
+      ]
+    },
+    {
+      "uid": "room0-f427ae3ae4f22bb5",
+      "ROI": "ROI-C0030",
+      "frames": [
+        1225,
+        1555,
+        1040
+      ]
+    },
+    {
+      "uid": "room0-ea8fc9547564a3ba",
+      "ROI": "ROI-U0002",
+      "frames": [
+        785,
+        1785,
+        1570
+      ]
+    },
+    {
+      "uid": "room0-525a1f6167384561",
+      "ROI": "ROI-U0017",
+      "frames": [
+        1555,
+        1050,
+        1335
+      ]
+    },
+    {
+      "uid": "room0-24846d27fc3b2012",
+      "ROI": "ROI-U0019",
+      "frames": [
+        780,
+        655,
+        795
+      ]
+    }
+  ],
+  "existing_assets_reused": 1556,
+  "missing_assets": [],
+  "isolated_storage_key": "cvpr-room0-selection-f49eb927-20261007-v1",
+  "previous_choices_are_reference_only": true,
+  "previous_reference_count": 3,
+  "human_records_created": 0,
+  "model_inference_rerun": false,
+  "tracking_started": false,
+  "map_modified": false,
+  "export_filename": "room0_修复候选选择_20261007.json",
+  "original_files_sha256": {
+    "results\\固定案例_三模型对比_20261006\\select.html": "0fc98a69758a735b9578fb05eda8f30a77d29528b6fbccc9719206c63f12b1e3",
+    "results\\固定案例_三模型对比_20261006\\viewer_data.json": "afd75ea3a0a76972a8bf98ed824c75a004a60b494f82213c14a6148f769f853b",
+    "results\\固定案例_三模型对比_20261006\\projection_annotations.json": "1ac33c547b27981d863862e9b5218778c3c53af54dd88d0c34ab7d6be87ea9ad",
+    "修复候选选择_20261006.json": "20ad6139511b71d146687d22d160fc7d8fd4baedc6d9cf6d0765ddf699681d61",
+    "outputs\\room2_selection_20261007\\room2_selection_template.html": "d814b654b4ddf9a1e7d9cc6488a7a551a7d30f34cdf69a8e6a6c1de008a6ae54",
+    "results\\固定案例_三模型对比_20261006\\room2_selection_20261007\\index.html": "342e7f40c728c927137182aefa2ffddf8a5b6fa098e28599c96baee83538dc7e",
+    "room2_修复候选选择_20261007.json": "8e890bff216d8b656e234120515e746e8f86f2fbe84aca013e63234804666316"
+  },
+  "crop_border_policy": "allow save; retain touching mask IDs for seed validation",
+  "next": [
+    "wait for new human selections",
+    "validate seed masks and cross-ROI identities without GT",
+    "SAM2.1 independent forward and reverse tracking over 2000 raw frames",
+    "joint replacement on original 400 mapping-frame votes",
+    "verify full replay, exact rollback and zero outside-region changes",
+    "compare baseline, seed-only and full-track repair with unchanged unified v3",
+    "show stable-camera colored PLY with individually visible instance IDs"
+  ],
+  "evaluation_protocol": "unified v3; same parameters for all conditions; pending diagnostic protocol",
+  "output_directory": "D:\\Users\\刘雯静\\Downloads\\CVPR\\results\\固定案例_三模型对比_20261006\\room0_selection_20261007",
+  "page_sha256": "954e459e51c0ab489fd111ce78488b071f4b139430439404493e3baf5c9c2528",
+  "original_files_unchanged": true
+}

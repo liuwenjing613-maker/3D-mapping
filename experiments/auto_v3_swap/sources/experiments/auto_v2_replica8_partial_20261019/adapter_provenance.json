@@ -1,0 +1,42 @@
+{
+  "source": "validated e1_partial_autov2_20261019",
+  "only_algorithm_change": "old_observation_plans whole -> partial",
+  "scope": "Current room0 35, existing room2 35, and six newly completed automatic E1 scenes; no changes to seeds, gate decisions, trusted regions, geometry or scoring.",
+  "changes": [
+    {
+      "file": "partial_policy.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\e1_partial_autov2_20261019\\code\\partial_policy.py",
+      "source_sha256": "66f3d76b3e89048abca8dd78e39687cdf852f57d1c789bef41c83016df66c941",
+      "output_sha256": "935b5ddf042d18ac34367e187a2ebf429318c1a5567cec08a54eb935edb33ee0",
+      "diff": ""
+    },
+    {
+      "file": "test_partial_policy.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\e1_partial_autov2_20261019\\code\\test_partial_policy.py",
+      "source_sha256": "231efb54299c786c8dcab0e8c98d1476f59e8f329d19a1ba659c7e8f5d30b3fe",
+      "output_sha256": "deaaa3812a83fd14a5736ce7ba1d9d4b02f8b74b32167566658ff4c913e95093",
+      "diff": ""
+    },
+    {
+      "file": "controller.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\e1_partial_autov2_20261019\\code\\controller.py",
+      "source_sha256": "1d9f49f87f597cd5c7175c0b8d06386f6b44e47ee58c4e48a1de4609f95d916c",
+      "output_sha256": "cadb47052da674f1d4c3e06e6eea8545238a5ca3ea08c2b4141e096861d8640b",
+      "diff": ""
+    },
+    {
+      "file": "run_partial_replay.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\e1_partial_autov2_20261019\\code\\run_partial_replay.py",
+      "source_sha256": "d0ab297d302ee1984d2ca1b3b68cfa200d8100351aeeed05381a0ffd2691ee06",
+      "output_sha256": "4854133a608acd1243fb2be02d87cb9f508b62c366cdbea472fa0370a1d1f6ab",
+      "diff": "--- \n+++ \n@@ -137,7 +137,7 @@\n     np.testing.assert_array_equal(prior, prior_expected)\n     apoints = np.flatnonzero((prior != -1) | (owner != -1))\n     baseline_records = h.read(SOURCE / 'original_repair/predictions_freeze.json')['scenes'][SCENE]['predictions']\n-    baseline_dir = Path('/data/chenkejun/CVPR/results/p1a1_one_vote_20261009/ablation') / SCENE / 'abstain'\n+    baseline_dir = Path(baseline_records['strict_baseline_final']['path']).parent.parent\n     baseline_pair = h.load(baseline_dir / 'surface_instance_frame_votes.npz')\n     baseline_evidence = h.load(baseline_dir / 'surface_evidence.npz')\n     baseline = h.load(baseline_records['strict_baseline_final']['path'], baseline_records['strict_baseline_final']['sha256'])\n"
+    },
+    {
+      "file": "evaluate_r2.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\outputs\\e1_partial_autov2_20261019\\code\\evaluate_r2.py",
+      "source_sha256": "c68898454cb800309057151a1e74d3e4a0db025a58d7e5194e2f9788c22e4b2b",
+      "output_sha256": "c28a3a051d10279050017da233300b17e58b3c359b26e6e68ea6aa634e3ca000",
+      "diff": "--- \n+++ \n@@ -1,4 +1,4 @@\n-\"\"\"Score baseline, original auto-v2 E1, A, and whole-to-partial using main R2.\"\"\"\n+\"\"\"Score baseline, original auto-v2 E1, and whole-to-partial using main R2.\"\"\"\n from bootstrap import C, R, SOURCE, MAIN, SCENE, COUNT, verify_sources\n from pathlib import Path\n import csv\n@@ -54,14 +54,15 @@\n     assert fsha == gt.metadata['observation_metadata']['frame_list_sha256']\n     config = Path(f'/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/{SCENE}/configs/raw.json')\n     assert sha256_file(config) == material['config_sha256'] == association['config_sha256']\n-    cache = Path(f'/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/geometry_cache/{SCENE}/fixed_gt_to_tsdf_r2.npz')\n+    cache_root=Path('/data/chenkejun/CVPR/results/p1a1_strict_repair_20261009/evaluation_r2/geometry_cache') if SCENE in ['room0','room2'] else Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/geometry_cache')\n+    cache=cache_root/SCENE/'fixed_gt_to_tsdf_r2.npz'\n+    assert sha256_file(cache)==read(SOURCE/'evaluation_r2/protocol_freeze.json')['fixed_correspondence_sha256']\n     dump(OUT / 'protocol_freeze.json', {'current_protocol': CURRENT_PROTOCOL,\n         'registry_sha256': sha256_file(REGISTRY_PATH), 'default_main_CLI': True,\n         'entry_commit': subprocess.check_output(['git', '-C', str(MAIN), 'rev-parse', 'HEAD'], text=True).strip(),\n         'fixed_correspondence_sha256': sha256_file(cache), 'predictions_frozen_before_GT': True})\n     baseline = read(SOURCE / 'original_repair/predictions_freeze.json')['scenes'][SCENE]['predictions']\n     roots = {'old_auto_v2': SOURCE / 'e1/E1_expanded_history' / SCENE,\n-             'A_core_everywhere': Path('/data/chenkejun/CVPR/results/e1_a_autov2_20261019') / SCENE / 'A_core_everywhere' / SCENE,\n              'whole_to_partial': R / 'whole_to_partial' / SCENE}\n     variants = ('baseline', *roots)\n     rows, manifests = [], []\n@@ -89,7 +90,7 @@\n             manifests.append(read(dest / 'adapter_manifest.json'))\n             sm = read(dest / 'metrics.json')['summary']\n             labels = z['instance_id']\n-            epath = Path(f'/data/chenkejun/CVPR/results/p1a1_one_vote_20261009/ablation/{SCENE}/abstain/surface_evidence.npz') if variant == 'baseline' else roots[variant] / 'native/surface_evidence.npz'\n+            epath = Path(baseline['strict_baseline_final']['path']).parent.parent/'surface_evidence.npz' if variant == 'baseline' else roots[variant] / 'native/surface_evidence.npz'\n             evidence = np.load(epath)\n             row = {'variant': variant, 'stage': stage, 'F1': sm['CA_PRF1_0_5']['F1'],\n                    'PQ': sm['CA_PQ']['PQ'], 'AP': sm['CA_AP_uniform'], 'AP50': sm['CA_AP50_uniform'],\n@@ -115,12 +116,6 @@\n             old = next(x for x in old_rows if x['variant'] == source_variant and x['stage'] == stage)\n             for key in ('F1', 'PQ', 'AP', 'AP50', 'mCov', 'TP', 'FP', 'FN', 'gray_total'):\n                 assert abs(new[key] - old[key]) < 1e-12, (stage, current, key)\n-    previous_A = read(Path('/data/chenkejun/CVPR/results/e1_a_autov2_20261019') / SCENE / 'evaluation_r2/comparison.json')\n-    for stage in ('native', 'final'):\n-        current_A = next(x for x in rows if x['variant'] == 'A_core_everywhere' and x['stage'] == stage)\n-        old_A = next(x for x in previous_A['rows'] if x['variant'] == 'A_core_everywhere' and x['stage'] == stage)\n-        for key in ('F1', 'PQ', 'AP', 'AP50', 'mCov', 'TP', 'FP', 'FN', 'gray_total'):\n-            assert abs(current_A[key] - old_A[key]) < 1e-12, (stage, key)\n     scope = {int(x['raw_gt_id']): x for x in read(gtpath.parent / 'gt_scope.json')['objects']}\n     overlaps = {v: dict(np.load(OUT / (v + '_final') / 'overlap_matrix.npz')) for v in variants}\n     gids = overlaps['baseline']['gt_ids']\n@@ -131,7 +126,6 @@\n             assert set(z['gt_ids']) == set(gids)\n             index = int(np.flatnonzero(z['gt_ids'] == gid)[0])\n             row[v] = float(z['iou'][:, index].max(initial=0))\n-        row['A_minus_old'] = row['A_core_everywhere'] - row['old_auto_v2']\n         row['partial_minus_old'] = row['whole_to_partial'] - row['old_auto_v2']\n         pergt.append(row)\n     dump(OUT / 'per_GT.json', pergt)\n@@ -148,7 +142,7 @@\n               'GT_changes': {key: {'improved': sum(x[key] > 1e-12 for x in pergt),\n                                     'worsened': sum(x[key] < -1e-12 for x in pergt),\n                                     'unchanged': sum(abs(x[key]) <= 1e-12 for x in pergt)}\n-                             for key in ('A_minus_old', 'partial_minus_old')}}\n+                             for key in ('partial_minus_old',)}}\n     dump(OUT / 'comparison.json', result)\n     dump(R / 'evaluation_complete.json', result)\n     verify_sources()\n"
+    }
+  ]
+}

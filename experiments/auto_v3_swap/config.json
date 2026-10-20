@@ -1,0 +1,58 @@
+{
+  "name": "auto-v3-swap",
+  "frozen": true,
+  "base_commit": "2ac64f37ffd9f376ac1e3f4a40b2d333db01439a",
+  "date": "2026-10-20",
+  "default_repair": "original_E1_whole",
+  "comparison_variant": "whole_to_partial",
+  "stages": [
+    "semantic_background",
+    "covisible_IoU_dedup",
+    "full_support_containment",
+    "skip_repair_B",
+    "pr_filter_with_semantic_exemption"
+  ],
+  "semantic_stage5_exempt": [
+    "windowpane",
+    "cabinet"
+  ],
+  "room0_source_override": {
+    "group_id": "G030",
+    "mask_id": "M0466",
+    "source": "CropFormer whole-frame",
+    "mask_sha256": "aa312039fa7b94998f7807f5e39f3557aa152366eba35d121bae853174c2471c"
+  },
+  "room2_manual_overrides": [
+    "G017",
+    "G025"
+  ],
+  "counts": {
+    "room0": 35,
+    "room1": 22,
+    "room2": 35,
+    "office0": 19,
+    "office1": 22,
+    "office2": 23,
+    "office3": 22,
+    "office4": 18
+  },
+  "v1_total": 637,
+  "retained_total": 196,
+  "same_mask_track_same_ID": true,
+  "identity_assignment": "once at source-view Dice; stable original_track_id; no per-frame new ID",
+  "E1_kernel": "P1-A1-strict-vote-E1-20261012",
+  "evaluation": {
+    "protocol": "object_observed_repair",
+    "revision": 2,
+    "frozen": false,
+    "evaluable_GT": 350,
+    "workspace": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009",
+    "config": "unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json",
+    "config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+    "scoring_commit": "cd260569e89de1e9525f82c45ee10842b80616b0",
+    "audit_commit": "d035f68770cefab27c9751e97062c72faa07367c"
+  },
+  "validated_result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020",
+  "entry": "python -B experiments/auto_v3_swap/verify.py",
+  "source_layout": "Byte-exact deployed snapshots; server absolute paths retained intentionally. Do not execute archived historical launchers against existing result directories."
+}

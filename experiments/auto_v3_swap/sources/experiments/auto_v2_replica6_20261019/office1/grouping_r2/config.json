@@ -1,0 +1,18 @@
+{
+  "schema": "same-instance-seed-grouping-sam-route-v3",
+  "scene": "office1",
+  "input_selection": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/semantic_route/selection.json",
+  "iou": 0.25,
+  "comparison": "strictly greater than",
+  "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",
+  "crop_contact_policy": "warning_only_user_confirmed",
+  "exact_duplicate_key": "frame + identical full-image binary mask; retain every original occurrence",
+  "grouping": "descending TSDF support count; compare remaining masks only to the fixed primary seed; no transitive expansion",
+  "source_policy": "window/cabinet SAM-only; any prior semantic CropFormer replacement is global across all ROI occurrences",
+  "policy_order": "source eligibility first, then ordinary 3D IoU grouping, then maximum TSDF support count",
+  "primary_seed": "largest unique TSDF support count among source-eligible masks",
+  "tie_break": "ascending frame, model index, full-mask digest; no area ranking",
+  "tracking_requested": false,
+  "map_write": false,
+  "GT_used": false
+}

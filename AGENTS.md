@@ -14,3 +14,9 @@
 - E1 使用自适应可信范围扩展、历史观察重关联、严格一票歧义弃权；不启用 E2 的局部新 Mask 约束。
 - `instance_repair/frozen_e1_20261012` 和其源码锁为冻结记录。后续算法开发使用新版本/新输出，不直接覆盖冻结实现及参考结果。用户明确要求升级冻结版本时，应重新验证并更新注册。
 - 算法 `frozen=true` 不改变评价协议 `frozen=false`。评价继续从 main 的 unified_eval 默认 R2 入口执行。
+
+## auto-v3-swap 冻结流程
+
+- 当前自动种子到修复的组合流程见 `instance_repair/configs/current_auto_pipeline.json` 与 `experiments/auto_v3_swap/README.md`。已验证八场景637个原始种子、196个保留种子；完整支持包含先于覆盖充分筛选，窗户/柜子仅豁免第五步。
+- 原 E1 内核注册仍由 current_architecture.json 管理，不改变原冻结数值核。默认原版 E1 whole，partial 是独立对照；保留 room0 M0466 来源修正及 room2 G017/G025 历史人工例外。
+- 修改本流程须建立新版本，不覆盖本次源码锁与结果；评价仍使用 main R2，frozen=false。

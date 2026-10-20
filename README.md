@@ -108,3 +108,7 @@ The `repair.py` module remains unchanged. Repair Success, False Repair, and Repa
 ## 历史统一 v3 评估（2026-10-07）
 
 已核验 P1-A1、OVI-MAP、OVO 和 OpenVox 六种方法／版本共 48 组场景评估，补充 19 项覆盖、召回和结构指标。完整数值、逐场景数据、定义和核验见[历史评估报告](docs/evaluation_reports/20261007/README.md)。OVO、OpenVox 的原生输入预算与主比较不同，作为参考；全部保持 `DEBUG_ONLY / NON_OFFICIAL` 标记。这些历史分数不属于当前 revision 2，不能和 350-GT 当前结果直接混用。
+
+## auto-v3-swap (2026-10-20)
+
+八场景新顺序完整流程已冻结，参见 [流程、核验入口与结果来源](experiments/auto_v3_swap/README.md)。默认原版 E1，保留 partial 对照；评价继续使用 main R2。

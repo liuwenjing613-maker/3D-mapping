@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scene": "office4",
+  "case_uid": "office4v2-f001055-b01",
+  "experiment_mode": "offline_retrospective",
+  "seed_mode": "new_mask_reassociate",
+  "seed_frame": 1055,
+  "seed_manifest": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office4/e1_repair/seed_manifest.json",
+  "objects": [
+    {
+      "track_id": 36
+    },
+    {
+      "track_id": 44
+    },
+    {
+      "track_id": 45
+    }
+  ],
+  "old_family_ids": [
+    2,
+    4,
+    21
+  ],
+  "policy_file": "/home/chenkejun/CVPR/experiments/auto_v2_replica6_20261019/office4/e1_repair/tracking_policy.json",
+  "output_dir": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office4/e1_repair/cases/office4v2-f001055-b01",
+  "tracking": {
+    "checkpoint": "/data/chenkejun/CVPR/models/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "repo": "/home/chenkejun/CVPR/repos/sam2_1",
+    "python": "/data/chenkejun/CVPR/runtime/sam2_1_env/bin/python",
+    "cuda_visible_devices": "assigned_by_queue_from_verified_idle_GPU_0_1_2_6",
+    "directions": [
+      "forward",
+      "reverse"
+    ]
+  }
+}

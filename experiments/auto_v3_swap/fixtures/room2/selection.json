@@ -1,0 +1,4667 @@
+{
+  "schema": "auto-v2-stage-selection-v1",
+  "case_id": "room2_auto_v2_20261019",
+  "automatic_retained_group_ids": [
+    "G006",
+    "G007",
+    "G009",
+    "G013",
+    "G015",
+    "G018",
+    "G020",
+    "G022",
+    "G024",
+    "G026",
+    "G027",
+    "G031",
+    "G032",
+    "G033",
+    "G035",
+    "G037",
+    "G038",
+    "G040",
+    "G044",
+    "G046",
+    "G047",
+    "G049",
+    "G050",
+    "G055",
+    "G057",
+    "G058",
+    "G064",
+    "G067",
+    "G068",
+    "G076",
+    "G078",
+    "G079",
+    "G084"
+  ],
+  "retained_group_ids": [
+    "G006",
+    "G007",
+    "G009",
+    "G013",
+    "G015",
+    "G017",
+    "G018",
+    "G020",
+    "G022",
+    "G024",
+    "G025",
+    "G026",
+    "G027",
+    "G031",
+    "G032",
+    "G033",
+    "G035",
+    "G037",
+    "G038",
+    "G040",
+    "G044",
+    "G046",
+    "G047",
+    "G049",
+    "G050",
+    "G055",
+    "G057",
+    "G058",
+    "G064",
+    "G067",
+    "G068",
+    "G076",
+    "G078",
+    "G079",
+    "G084"
+  ],
+  "manual_restored_group_ids": [
+    "G017",
+    "G025"
+  ],
+  "final_pr_excluded_group_ids": [
+    "G069",
+    "G071",
+    "G074",
+    "G075",
+    "G077",
+    "G082",
+    "G086"
+  ],
+  "stages": [
+    {
+      "stage": "semantic",
+      "input": 90,
+      "removed": 18,
+      "retained": 72,
+      "removed_group_ids": [
+        "G001",
+        "G002",
+        "G003",
+        "G004",
+        "G005",
+        "G008",
+        "G011",
+        "G014",
+        "G016",
+        "G019",
+        "G023",
+        "G030",
+        "G034",
+        "G053",
+        "G054",
+        "G063",
+        "G065",
+        "G088"
+      ],
+      "retained_group_ids": [
+        "G006",
+        "G007",
+        "G009",
+        "G010",
+        "G012",
+        "G013",
+        "G015",
+        "G017",
+        "G018",
+        "G020",
+        "G021",
+        "G022",
+        "G024",
+        "G025",
+        "G026",
+        "G027",
+        "G028",
+        "G029",
+        "G031",
+        "G032",
+        "G033",
+        "G035",
+        "G036",
+        "G037",
+        "G038",
+        "G039",
+        "G040",
+        "G041",
+        "G042",
+        "G043",
+        "G044",
+        "G045",
+        "G046",
+        "G047",
+        "G048",
+        "G049",
+        "G050",
+        "G051",
+        "G052",
+        "G055",
+        "G056",
+        "G057",
+        "G058",
+        "G059",
+        "G060",
+        "G061",
+        "G062",
+        "G064",
+        "G066",
+        "G067",
+        "G068",
+        "G069",
+        "G070",
+        "G071",
+        "G072",
+        "G073",
+        "G074",
+        "G075",
+        "G076",
+        "G077",
+        "G078",
+        "G079",
+        "G080",
+        "G081",
+        "G082",
+        "G083",
+        "G084",
+        "G085",
+        "G086",
+        "G087",
+        "G089",
+        "G090"
+      ]
+    },
+    {
+      "stage": "covisible_iou_only",
+      "input": 72,
+      "removed": 16,
+      "retained": 56,
+      "removed_group_ids": [
+        "G021",
+        "G036",
+        "G039",
+        "G042",
+        "G045",
+        "G052",
+        "G056",
+        "G059",
+        "G061",
+        "G066",
+        "G070",
+        "G073",
+        "G083",
+        "G087",
+        "G089",
+        "G090"
+      ],
+      "retained_group_ids": [
+        "G006",
+        "G007",
+        "G009",
+        "G010",
+        "G012",
+        "G013",
+        "G015",
+        "G017",
+        "G018",
+        "G020",
+        "G022",
+        "G024",
+        "G025",
+        "G026",
+        "G027",
+        "G028",
+        "G029",
+        "G031",
+        "G032",
+        "G033",
+        "G035",
+        "G037",
+        "G038",
+        "G040",
+        "G041",
+        "G043",
+        "G044",
+        "G046",
+        "G047",
+        "G048",
+        "G049",
+        "G050",
+        "G051",
+        "G055",
+        "G057",
+        "G058",
+        "G060",
+        "G062",
+        "G064",
+        "G067",
+        "G068",
+        "G069",
+        "G071",
+        "G072",
+        "G074",
+        "G075",
+        "G076",
+        "G077",
+        "G078",
+        "G079",
+        "G080",
+        "G081",
+        "G082",
+        "G084",
+        "G085",
+        "G086"
+      ]
+    },
+    {
+      "stage": "full_support_containment",
+      "input": 56,
+      "removed": 3,
+      "retained": 53,
+      "removed_group_ids": [
+        "G080",
+        "G081",
+        "G085"
+      ],
+      "retained_group_ids": [
+        "G006",
+        "G007",
+        "G009",
+        "G010",
+        "G012",
+        "G013",
+        "G015",
+        "G017",
+        "G018",
+        "G020",
+        "G022",
+        "G024",
+        "G025",
+        "G026",
+        "G027",
+        "G028",
+        "G029",
+        "G031",
+        "G032",
+        "G033",
+        "G035",
+        "G037",
+        "G038",
+        "G040",
+        "G041",
+        "G043",
+        "G044",
+        "G046",
+        "G047",
+        "G048",
+        "G049",
+        "G050",
+        "G051",
+        "G055",
+        "G057",
+        "G058",
+        "G060",
+        "G062",
+        "G064",
+        "G067",
+        "G068",
+        "G069",
+        "G071",
+        "G072",
+        "G074",
+        "G075",
+        "G076",
+        "G077",
+        "G078",
+        "G079",
+        "G082",
+        "G084",
+        "G086"
+      ]
+    },
+    {
+      "stage": "skip_repair_B",
+      "input": 53,
+      "removed": 11,
+      "retained": 42,
+      "removed_group_ids": [
+        "G010",
+        "G012",
+        "G028",
+        "G029",
+        "G041",
+        "G043",
+        "G048",
+        "G051",
+        "G060",
+        "G062",
+        "G072"
+      ],
+      "retained_group_ids": [
+        "G006",
+        "G007",
+        "G009",
+        "G013",
+        "G015",
+        "G017",
+        "G018",
+        "G020",
+        "G022",
+        "G024",
+        "G025",
+        "G026",
+        "G027",
+        "G031",
+        "G032",
+        "G033",
+        "G035",
+        "G037",
+        "G038",
+        "G040",
+        "G044",
+        "G046",
+        "G047",
+        "G049",
+        "G050",
+        "G055",
+        "G057",
+        "G058",
+        "G064",
+        "G067",
+        "G068",
+        "G069",
+        "G071",
+        "G074",
+        "G075",
+        "G076",
+        "G077",
+        "G078",
+        "G079",
+        "G082",
+        "G084",
+        "G086"
+      ]
+    },
+    {
+      "stage": "pr_filter",
+      "input": 42,
+      "removed": 7,
+      "retained": 35,
+      "removed_group_ids": [
+        "G069",
+        "G071",
+        "G074",
+        "G075",
+        "G077",
+        "G082",
+        "G086"
+      ],
+      "retained_group_ids": [
+        "G006",
+        "G007",
+        "G009",
+        "G013",
+        "G015",
+        "G017",
+        "G018",
+        "G020",
+        "G022",
+        "G024",
+        "G025",
+        "G026",
+        "G027",
+        "G031",
+        "G032",
+        "G033",
+        "G035",
+        "G037",
+        "G038",
+        "G040",
+        "G044",
+        "G046",
+        "G047",
+        "G049",
+        "G050",
+        "G055",
+        "G057",
+        "G058",
+        "G064",
+        "G067",
+        "G068",
+        "G076",
+        "G078",
+        "G079",
+        "G084"
+      ],
+      "semantic_exempt_group_ids": [
+        "G006",
+        "G018"
+      ],
+      "manual_restored_group_ids": [
+        "G017",
+        "G025"
+      ]
+    }
+  ],
+  "dedup_groups": [
+    [
+      "G006"
+    ],
+    [
+      "G007"
+    ],
+    [
+      "G009",
+      "G036"
+    ],
+    [
+      "G010"
+    ],
+    [
+      "G012",
+      "G021"
+    ],
+    [
+      "G013"
+    ],
+    [
+      "G015",
+      "G056"
+    ],
+    [
+      "G017"
+    ],
+    [
+      "G018"
+    ],
+    [
+      "G020"
+    ],
+    [
+      "G022"
+    ],
+    [
+      "G024"
+    ],
+    [
+      "G025"
+    ],
+    [
+      "G026"
+    ],
+    [
+      "G027"
+    ],
+    [
+      "G028",
+      "G039"
+    ],
+    [
+      "G029",
+      "G045"
+    ],
+    [
+      "G031",
+      "G052",
+      "G089"
+    ],
+    [
+      "G032",
+      "G061"
+    ],
+    [
+      "G033",
+      "G073"
+    ],
+    [
+      "G035",
+      "G070"
+    ],
+    [
+      "G037"
+    ],
+    [
+      "G038"
+    ],
+    [
+      "G040",
+      "G042",
+      "G066"
+    ],
+    [
+      "G041"
+    ],
+    [
+      "G043"
+    ],
+    [
+      "G044",
+      "G059"
+    ],
+    [
+      "G046"
+    ],
+    [
+      "G047"
+    ],
+    [
+      "G048"
+    ],
+    [
+      "G049"
+    ],
+    [
+      "G050"
+    ],
+    [
+      "G051"
+    ],
+    [
+      "G055"
+    ],
+    [
+      "G057"
+    ],
+    [
+      "G058"
+    ],
+    [
+      "G060",
+      "G083"
+    ],
+    [
+      "G062"
+    ],
+    [
+      "G064"
+    ],
+    [
+      "G067"
+    ],
+    [
+      "G068"
+    ],
+    [
+      "G069"
+    ],
+    [
+      "G071"
+    ],
+    [
+      "G072"
+    ],
+    [
+      "G074"
+    ],
+    [
+      "G075"
+    ],
+    [
+      "G076"
+    ],
+    [
+      "G077",
+      "G087"
+    ],
+    [
+      "G078"
+    ],
+    [
+      "G079"
+    ],
+    [
+      "G080"
+    ],
+    [
+      "G081"
+    ],
+    [
+      "G082"
+    ],
+    [
+      "G084"
+    ],
+    [
+      "G085"
+    ],
+    [
+      "G086",
+      "G090"
+    ]
+  ],
+  "records": [
+    {
+      "group_id": "G001",
+      "original_track_id": 1,
+      "mask_id": "M0001",
+      "frame": 1340,
+      "mask_sha256": "ea38a9f9449785cef85daec1d0f251b9a974bb2bdc962b99ceb7273f0354a4a0",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 452937,
+            "area": 458795
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G002",
+      "original_track_id": 2,
+      "mask_id": "M0002",
+      "frame": 1990,
+      "mask_sha256": "fbfcc42263f0b11de215024ec111558dd90be9e484379a60fe02f0927d272ef4",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 607205,
+            "area": 613761
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G003",
+      "original_track_id": 3,
+      "mask_id": "M0004",
+      "frame": 855,
+      "mask_sha256": "f198f7765f0cddfa75f8307ab4de93b04edaf07eb3220559529f04a0ac683c46",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 305481,
+            "area": 328684
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G004",
+      "original_track_id": 4,
+      "mask_id": "M0006",
+      "frame": 5,
+      "mask_sha256": "01c91443ce969fd5bdb01ec259a197d3bf067fb4fce454ab2eb30f89fcf1e643",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 210403,
+            "area": 212235
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G005",
+      "original_track_id": 5,
+      "mask_id": "M0010",
+      "frame": 1095,
+      "mask_sha256": "fd5cf4567a42a2ada00cdfce8859b2e1a626c344e71838eb3bab17caa0528afc",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 117800,
+            "area": 121122
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G006",
+      "original_track_id": 6,
+      "mask_id": "M0023",
+      "frame": 735,
+      "mask_sha256": "62dc7a86c5b8f9c04c883d995218a5c54fc8b8ea31da347017904158d211858a",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 45620
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G006"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G006",
+            "original_track_id": 6,
+            "mask_id": "M0023",
+            "frame": 735,
+            "mask_sha256": "62dc7a86c5b8f9c04c883d995218a5c54fc8b8ea31da347017904158d211858a",
+            "support_count": 31336,
+            "instance_id": 10,
+            "intersection": 31320,
+            "instance_visible_count": 47861,
+            "semantic_exemption": {
+              "class_name": "windowpane",
+              "rule": "SegFormer top class windowpane/cabinet; exempt stage 5 only"
+            }
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G006",
+            "original_track_id": 6,
+            "mask_id": "M0023",
+            "frame": 735,
+            "mask_sha256": "62dc7a86c5b8f9c04c883d995218a5c54fc8b8ea31da347017904158d211858a",
+            "support_count": 31336,
+            "instance_id": 10,
+            "intersection": 31320,
+            "instance_visible_count": 47861,
+            "semantic_exemption": {
+              "class_name": "windowpane",
+              "rule": "SegFormer top class windowpane/cabinet; exempt stage 5 only"
+            }
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G007",
+      "original_track_id": 7,
+      "mask_id": "M0043",
+      "frame": 1015,
+      "mask_sha256": "2c5cdf593ee6e72b6dd1c4a6155af3a3655efd670d37a42c1786389a0ff40035",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 22,
+            "area": 30399
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G007"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G007",
+            "original_track_id": 7,
+            "mask_id": "M0043",
+            "frame": 1015,
+            "mask_sha256": "2c5cdf593ee6e72b6dd1c4a6155af3a3655efd670d37a42c1786389a0ff40035",
+            "support_count": 27657,
+            "instance_id": 10,
+            "intersection": 27626,
+            "instance_visible_count": 50173
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G007",
+            "original_track_id": 7,
+            "mask_id": "M0043",
+            "frame": 1015,
+            "mask_sha256": "2c5cdf593ee6e72b6dd1c4a6155af3a3655efd670d37a42c1786389a0ff40035",
+            "support_count": 27657,
+            "instance_id": 10,
+            "intersection": 27626,
+            "instance_visible_count": 50173
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G008",
+      "original_track_id": 8,
+      "mask_id": "M0057",
+      "frame": 945,
+      "mask_sha256": "8caaa0fe8273a9d919eca3344804a3d9c1bafbc66abc352758bb7beff093b0b6",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 117245,
+            "area": 119207
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G009",
+      "original_track_id": 9,
+      "mask_id": "M0075",
+      "frame": 590,
+      "mask_sha256": "b2b712cf7fe0cfe6940c02fc906c4f13af07911f99fda53c149a269d2e739fc5",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 15741,
+            "area": 32530
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G009"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G009",
+            "original_track_id": 9,
+            "mask_id": "M0075",
+            "frame": 590,
+            "mask_sha256": "b2b712cf7fe0cfe6940c02fc906c4f13af07911f99fda53c149a269d2e739fc5",
+            "support_count": 23878,
+            "instance_id": 9,
+            "intersection": 23811,
+            "instance_visible_count": 25488
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G009",
+            "original_track_id": 9,
+            "mask_id": "M0075",
+            "frame": 590,
+            "mask_sha256": "b2b712cf7fe0cfe6940c02fc906c4f13af07911f99fda53c149a269d2e739fc5",
+            "support_count": 23878,
+            "instance_id": 9,
+            "intersection": 23811,
+            "instance_visible_count": 25488
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G010",
+      "original_track_id": 10,
+      "mask_id": "M0077",
+      "frame": 1345,
+      "mask_sha256": "da10874fae7d058d15b245ec18038ca72e51f4f5f1215db0568fbb3a6ec01079",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 465,
+            "area": 50314
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G010"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G010",
+            "original_track_id": 10,
+            "mask_id": "M0077",
+            "frame": 1345,
+            "mask_sha256": "da10874fae7d058d15b245ec18038ca72e51f4f5f1215db0568fbb3a6ec01079",
+            "support_count": 23160,
+            "instance_id": 216,
+            "intersection": 22933,
+            "instance_visible_count": 23164
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G011",
+      "original_track_id": 11,
+      "mask_id": "M0081",
+      "frame": 1745,
+      "mask_sha256": "35c8304eecbdda3582c149d1f13abbd0824203420135d94f962867e9e29c2ab7",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 54852,
+            "area": 58119
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G012",
+      "original_track_id": 12,
+      "mask_id": "M0093",
+      "frame": 1070,
+      "mask_sha256": "bf03687dcfe56250e225d2fb27d9ae99d82166d4faa7aa3ebae93fba2bef1418",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 400,
+            "area": 202987
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G012"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G012",
+            "original_track_id": 12,
+            "mask_id": "M0093",
+            "frame": 1070,
+            "mask_sha256": "bf03687dcfe56250e225d2fb27d9ae99d82166d4faa7aa3ebae93fba2bef1418",
+            "support_count": 20711,
+            "instance_id": 43,
+            "intersection": 20145,
+            "instance_visible_count": 20262
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G013",
+      "original_track_id": 13,
+      "mask_id": "M0114",
+      "frame": 825,
+      "mask_sha256": "c5e76678753f06a820cb22eeab28410bb7da8b4b6d4e16d4d4905c0998f8ee1f",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 69,
+            "area": 39932
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G013"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G013",
+            "original_track_id": 13,
+            "mask_id": "M0114",
+            "frame": 825,
+            "mask_sha256": "c5e76678753f06a820cb22eeab28410bb7da8b4b6d4e16d4d4905c0998f8ee1f",
+            "support_count": 16491,
+            "instance_id": 4,
+            "intersection": 14735,
+            "instance_visible_count": 15007
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G013",
+            "original_track_id": 13,
+            "mask_id": "M0114",
+            "frame": 825,
+            "mask_sha256": "c5e76678753f06a820cb22eeab28410bb7da8b4b6d4e16d4d4905c0998f8ee1f",
+            "support_count": 16491,
+            "instance_id": 4,
+            "intersection": 14735,
+            "instance_visible_count": 15007
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G014",
+      "original_track_id": 14,
+      "mask_id": "M0128",
+      "frame": 1960,
+      "mask_sha256": "b5695fcfc63fe6ed57c11297c8018c071d3e3715225f14512f060dcad94e24ca",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 76276,
+            "area": 76717
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G015",
+      "original_track_id": 15,
+      "mask_id": "M0138",
+      "frame": 310,
+      "mask_sha256": "7cdd4a0610a0ce721460a095cdca99cbf50f7a006ad359cc2b3ba9e4a571e5bf",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 93789
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G015"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G015",
+            "original_track_id": 15,
+            "mask_id": "M0138",
+            "frame": 310,
+            "mask_sha256": "7cdd4a0610a0ce721460a095cdca99cbf50f7a006ad359cc2b3ba9e4a571e5bf",
+            "support_count": 14296,
+            "instance_id": 10,
+            "intersection": 14235,
+            "instance_visible_count": 48344
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G015",
+            "original_track_id": 15,
+            "mask_id": "M0138",
+            "frame": 310,
+            "mask_sha256": "7cdd4a0610a0ce721460a095cdca99cbf50f7a006ad359cc2b3ba9e4a571e5bf",
+            "support_count": 14296,
+            "instance_id": 10,
+            "intersection": 14235,
+            "instance_visible_count": 48344
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G016",
+      "original_track_id": 16,
+      "mask_id": "M0165",
+      "frame": 1110,
+      "mask_sha256": "0e05182e6570fc91af5a2d749a06cdbba51edb9420c3020595db3a62c71a4514",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 72811,
+            "area": 76826
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G017",
+      "original_track_id": 17,
+      "mask_id": "M0168",
+      "frame": 985,
+      "mask_sha256": "6a294eaf1e6c6bf6bd788c0ce7d24ca24f2ddc452583c7697313350ba415d1db",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 15,
+            "area": 23764
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G017"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G017",
+            "original_track_id": 17,
+            "mask_id": "M0168",
+            "frame": 985,
+            "mask_sha256": "6a294eaf1e6c6bf6bd788c0ce7d24ca24f2ddc452583c7697313350ba415d1db",
+            "support_count": 12571,
+            "instance_id": 10,
+            "intersection": 12571,
+            "instance_visible_count": 65241
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G017",
+            "original_track_id": 17,
+            "mask_id": "M0168",
+            "frame": 985,
+            "mask_sha256": "6a294eaf1e6c6bf6bd788c0ce7d24ca24f2ddc452583c7697313350ba415d1db",
+            "support_count": 12571,
+            "instance_id": 10,
+            "intersection": 12571,
+            "instance_visible_count": 65241
+          }
+        },
+        {
+          "stage": "manual_room2_override",
+          "decision": "retain",
+          "evidence": {
+            "user_quote": "等一下，刚才的筛选保留017和025其他的都排除之后用保留的做E1之后的修复"
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "manual_room2_override"
+    },
+    {
+      "group_id": "G018",
+      "original_track_id": 18,
+      "mask_id": "M0170",
+      "frame": 1590,
+      "mask_sha256": "4e35b2c98a308b0eb5f1d2ea04f8134f9e1bd03f647942d865c0efea7b593935",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 27702
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G018"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G018",
+            "original_track_id": 18,
+            "mask_id": "M0170",
+            "frame": 1590,
+            "mask_sha256": "4e35b2c98a308b0eb5f1d2ea04f8134f9e1bd03f647942d865c0efea7b593935",
+            "support_count": 12494,
+            "instance_id": 10,
+            "intersection": 12494,
+            "instance_visible_count": 40852,
+            "semantic_exemption": {
+              "class_name": "windowpane",
+              "rule": "SegFormer top class windowpane/cabinet; exempt stage 5 only"
+            }
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G018",
+            "original_track_id": 18,
+            "mask_id": "M0170",
+            "frame": 1590,
+            "mask_sha256": "4e35b2c98a308b0eb5f1d2ea04f8134f9e1bd03f647942d865c0efea7b593935",
+            "support_count": 12494,
+            "instance_id": 10,
+            "intersection": 12494,
+            "instance_visible_count": 40852,
+            "semantic_exemption": {
+              "class_name": "windowpane",
+              "rule": "SegFormer top class windowpane/cabinet; exempt stage 5 only"
+            }
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G019",
+      "original_track_id": 19,
+      "mask_id": "M0177",
+      "frame": 1475,
+      "mask_sha256": "4bb4ef08c678dd8f8966fa144ea890708844094791d59e0f28c7a6e80343f28d",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 36611,
+            "area": 37301
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G020",
+      "original_track_id": 20,
+      "mask_id": "M0261",
+      "frame": 1950,
+      "mask_sha256": "e58bddda1b4bf2975479a79cb245fe4f5336546930f088497e25dd188947cce7",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 62495
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G020"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G020",
+            "original_track_id": 20,
+            "mask_id": "M0261",
+            "frame": 1950,
+            "mask_sha256": "e58bddda1b4bf2975479a79cb245fe4f5336546930f088497e25dd188947cce7",
+            "support_count": 8649,
+            "instance_id": 20,
+            "intersection": 8525,
+            "instance_visible_count": 9113
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G020",
+            "original_track_id": 20,
+            "mask_id": "M0261",
+            "frame": 1950,
+            "mask_sha256": "e58bddda1b4bf2975479a79cb245fe4f5336546930f088497e25dd188947cce7",
+            "support_count": 8649,
+            "instance_id": 20,
+            "intersection": 8525,
+            "instance_visible_count": 9113
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G021",
+      "original_track_id": 21,
+      "mask_id": "M0265",
+      "frame": 1750,
+      "mask_sha256": "560930448fe3b4101880b981746644c74ecc030e602b15f4b63d6588096daed1",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 97875
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G012",
+            "intersection": 5798,
+            "union": 5912
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G022",
+      "original_track_id": 22,
+      "mask_id": "M0292",
+      "frame": 730,
+      "mask_sha256": "c07fe0469abfc14e3650c2015ab9ee001bfb75ebb6e6c41b0e6b04b3cd9fa4fa",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 3658,
+            "area": 9006
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G022"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G022",
+            "original_track_id": 22,
+            "mask_id": "M0292",
+            "frame": 730,
+            "mask_sha256": "c07fe0469abfc14e3650c2015ab9ee001bfb75ebb6e6c41b0e6b04b3cd9fa4fa",
+            "support_count": 6969,
+            "instance_id": 173,
+            "intersection": 4562,
+            "instance_visible_count": 4612
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G022",
+            "original_track_id": 22,
+            "mask_id": "M0292",
+            "frame": 730,
+            "mask_sha256": "c07fe0469abfc14e3650c2015ab9ee001bfb75ebb6e6c41b0e6b04b3cd9fa4fa",
+            "support_count": 6969,
+            "instance_id": 173,
+            "intersection": 4562,
+            "instance_visible_count": 4612
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G023",
+      "original_track_id": 23,
+      "mask_id": "M0294",
+      "frame": 1990,
+      "mask_sha256": "864ce83d55e12442c17b133a5c352d0460b3140ca66e5f03be7bc35cfa552cbf",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 42517,
+            "area": 44010
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G024",
+      "original_track_id": 24,
+      "mask_id": "M0301",
+      "frame": 940,
+      "mask_sha256": "a755d14c284606b62c8605e99810b45343741a510027a68e018db8ae89f4de03",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 6504,
+            "area": 27930
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G024"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G024",
+            "original_track_id": 24,
+            "mask_id": "M0301",
+            "frame": 940,
+            "mask_sha256": "a755d14c284606b62c8605e99810b45343741a510027a68e018db8ae89f4de03",
+            "support_count": 6474,
+            "instance_id": 1,
+            "intersection": 501,
+            "instance_visible_count": 4522
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G024",
+            "original_track_id": 24,
+            "mask_id": "M0301",
+            "frame": 940,
+            "mask_sha256": "a755d14c284606b62c8605e99810b45343741a510027a68e018db8ae89f4de03",
+            "support_count": 6474,
+            "instance_id": 1,
+            "intersection": 501,
+            "instance_visible_count": 4522
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G025",
+      "original_track_id": 25,
+      "mask_id": "M0309",
+      "frame": 1590,
+      "mask_sha256": "bcd4004c8d59b84c69e279ff40cfc761b1cc6c476e1c2dfe23e694413b0e68b2",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 979,
+            "area": 44739
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G025"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G025",
+            "original_track_id": 25,
+            "mask_id": "M0309",
+            "frame": 1590,
+            "mask_sha256": "bcd4004c8d59b84c69e279ff40cfc761b1cc6c476e1c2dfe23e694413b0e68b2",
+            "support_count": 6178,
+            "instance_id": 10,
+            "intersection": 5812,
+            "instance_visible_count": 40852
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G025",
+            "original_track_id": 25,
+            "mask_id": "M0309",
+            "frame": 1590,
+            "mask_sha256": "bcd4004c8d59b84c69e279ff40cfc761b1cc6c476e1c2dfe23e694413b0e68b2",
+            "support_count": 6178,
+            "instance_id": 10,
+            "intersection": 5812,
+            "instance_visible_count": 40852
+          }
+        },
+        {
+          "stage": "manual_room2_override",
+          "decision": "retain",
+          "evidence": {
+            "user_quote": "等一下，刚才的筛选保留017和025其他的都排除之后用保留的做E1之后的修复"
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "manual_room2_override"
+    },
+    {
+      "group_id": "G026",
+      "original_track_id": 26,
+      "mask_id": "M0310",
+      "frame": 1395,
+      "mask_sha256": "9e96b42d818554b5e6889588489a0da74e708736ce5009f8da16936e0554aecc",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 1695,
+            "area": 8709
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G026"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G026",
+            "original_track_id": 26,
+            "mask_id": "M0310",
+            "frame": 1395,
+            "mask_sha256": "9e96b42d818554b5e6889588489a0da74e708736ce5009f8da16936e0554aecc",
+            "support_count": 6148,
+            "instance_id": 223,
+            "intersection": 5700,
+            "instance_visible_count": 5745
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G026",
+            "original_track_id": 26,
+            "mask_id": "M0310",
+            "frame": 1395,
+            "mask_sha256": "9e96b42d818554b5e6889588489a0da74e708736ce5009f8da16936e0554aecc",
+            "support_count": 6148,
+            "instance_id": 223,
+            "intersection": 5700,
+            "instance_visible_count": 5745
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G027",
+      "original_track_id": 27,
+      "mask_id": "M0319",
+      "frame": 1750,
+      "mask_sha256": "fb71acf93b74fd1dd2c341700dd590656a35c3b55210d5eaedce38c08868a826",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 141,
+            "area": 32284
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G027"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G027",
+            "original_track_id": 27,
+            "mask_id": "M0319",
+            "frame": 1750,
+            "mask_sha256": "fb71acf93b74fd1dd2c341700dd590656a35c3b55210d5eaedce38c08868a826",
+            "support_count": 5634,
+            "instance_id": 215,
+            "intersection": 5489,
+            "instance_visible_count": 5782
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G027",
+            "original_track_id": 27,
+            "mask_id": "M0319",
+            "frame": 1750,
+            "mask_sha256": "fb71acf93b74fd1dd2c341700dd590656a35c3b55210d5eaedce38c08868a826",
+            "support_count": 5634,
+            "instance_id": 215,
+            "intersection": 5489,
+            "instance_visible_count": 5782
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G028",
+      "original_track_id": 28,
+      "mask_id": "M0337",
+      "frame": 280,
+      "mask_sha256": "7c5b8047292557a2e7722e2b3123c6f3657c6b085b7e327fc5825535b57fa238",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 16,
+            "area": 55537
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G028"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G028",
+            "original_track_id": 28,
+            "mask_id": "M0337",
+            "frame": 280,
+            "mask_sha256": "7c5b8047292557a2e7722e2b3123c6f3657c6b085b7e327fc5825535b57fa238",
+            "support_count": 5035,
+            "instance_id": 1,
+            "intersection": 4935,
+            "instance_visible_count": 4939
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G029",
+      "original_track_id": 29,
+      "mask_id": "M0338",
+      "frame": 1070,
+      "mask_sha256": "d8f41487786cb2c27175e4ac33b00ce4675630afd826369ec4488e77191aad18",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 177,
+            "area": 32117
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G029"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G029",
+            "original_track_id": 29,
+            "mask_id": "M0338",
+            "frame": 1070,
+            "mask_sha256": "d8f41487786cb2c27175e4ac33b00ce4675630afd826369ec4488e77191aad18",
+            "support_count": 4992,
+            "instance_id": 44,
+            "intersection": 4797,
+            "instance_visible_count": 4836
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G030",
+      "original_track_id": 30,
+      "mask_id": "M0340",
+      "frame": 1380,
+      "mask_sha256": "9c49514d9a966f54379d9f58962a451728eb2bee2afb02d4e2ca522ebb7a962a",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 10583,
+            "area": 10583
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G031",
+      "original_track_id": 31,
+      "mask_id": "M0356",
+      "frame": 1070,
+      "mask_sha256": "1c76c5408b07a394446bbcfba3af43fc85c6f73e17c2bae5c2f035d93eb2274a",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 17796
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G031"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G031",
+            "original_track_id": 31,
+            "mask_id": "M0356",
+            "frame": 1070,
+            "mask_sha256": "1c76c5408b07a394446bbcfba3af43fc85c6f73e17c2bae5c2f035d93eb2274a",
+            "support_count": 4407,
+            "instance_id": 52,
+            "intersection": 4326,
+            "instance_visible_count": 7363
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G031",
+            "original_track_id": 31,
+            "mask_id": "M0356",
+            "frame": 1070,
+            "mask_sha256": "1c76c5408b07a394446bbcfba3af43fc85c6f73e17c2bae5c2f035d93eb2274a",
+            "support_count": 4407,
+            "instance_id": 52,
+            "intersection": 4326,
+            "instance_visible_count": 7363
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G032",
+      "original_track_id": 32,
+      "mask_id": "M0360",
+      "frame": 385,
+      "mask_sha256": "e8808a89761514cf012c86c93c645d044454e69c551bafcb2cd657efc15b90fa",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 57855
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G032"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G032",
+            "original_track_id": 32,
+            "mask_id": "M0360",
+            "frame": 385,
+            "mask_sha256": "e8808a89761514cf012c86c93c645d044454e69c551bafcb2cd657efc15b90fa",
+            "support_count": 4346,
+            "instance_id": 1,
+            "intersection": 4320,
+            "instance_visible_count": 10853
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G032",
+            "original_track_id": 32,
+            "mask_id": "M0360",
+            "frame": 385,
+            "mask_sha256": "e8808a89761514cf012c86c93c645d044454e69c551bafcb2cd657efc15b90fa",
+            "support_count": 4346,
+            "instance_id": 1,
+            "intersection": 4320,
+            "instance_visible_count": 10853
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G033",
+      "original_track_id": 33,
+      "mask_id": "M0365",
+      "frame": 1400,
+      "mask_sha256": "ff3a4e5f02a0d02dce09d0a93c4ff1f6ce30a678df083e750c67c75b47e25b2c",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 351,
+            "area": 8668
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G033"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G033",
+            "original_track_id": 33,
+            "mask_id": "M0365",
+            "frame": 1400,
+            "mask_sha256": "ff3a4e5f02a0d02dce09d0a93c4ff1f6ce30a678df083e750c67c75b47e25b2c",
+            "support_count": 4281,
+            "instance_id": 271,
+            "intersection": 3702,
+            "instance_visible_count": 3714
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G033",
+            "original_track_id": 33,
+            "mask_id": "M0365",
+            "frame": 1400,
+            "mask_sha256": "ff3a4e5f02a0d02dce09d0a93c4ff1f6ce30a678df083e750c67c75b47e25b2c",
+            "support_count": 4281,
+            "instance_id": 271,
+            "intersection": 3702,
+            "instance_visible_count": 3714
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G034",
+      "original_track_id": 34,
+      "mask_id": "M0369",
+      "frame": 1635,
+      "mask_sha256": "4681d5ac3b4c045e28f6013ae640f2397bd91163e3d1d4041ff6edc6ef99be77",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 20756,
+            "area": 22553
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G035",
+      "original_track_id": 35,
+      "mask_id": "M0370",
+      "frame": 1995,
+      "mask_sha256": "9b922a1b6ca4178ab2874905cc0984f0cec06a912603d504834c270e1f94263c",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 1,
+            "area": 19260
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G035"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G035",
+            "original_track_id": 35,
+            "mask_id": "M0370",
+            "frame": 1995,
+            "mask_sha256": "9b922a1b6ca4178ab2874905cc0984f0cec06a912603d504834c270e1f94263c",
+            "support_count": 4165,
+            "instance_id": 228,
+            "intersection": 3357,
+            "instance_visible_count": 3400
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G035",
+            "original_track_id": 35,
+            "mask_id": "M0370",
+            "frame": 1995,
+            "mask_sha256": "9b922a1b6ca4178ab2874905cc0984f0cec06a912603d504834c270e1f94263c",
+            "support_count": 4165,
+            "instance_id": 228,
+            "intersection": 3357,
+            "instance_visible_count": 3400
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G036",
+      "original_track_id": 36,
+      "mask_id": "M0383",
+      "frame": 1950,
+      "mask_sha256": "58d7c17cf53731dcd24881b49cd5e438a2fad887f4af1a42e9a934e9ec17aed6",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 28349
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G009",
+            "intersection": 3956,
+            "union": 4117
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G037",
+      "original_track_id": 37,
+      "mask_id": "M0385",
+      "frame": 1070,
+      "mask_sha256": "b91c71d4e217adb7313584570060357d48345aae25de693b181fa37cb67be60f",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 989,
+            "area": 33900
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G037"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G037",
+            "original_track_id": 37,
+            "mask_id": "M0385",
+            "frame": 1070,
+            "mask_sha256": "b91c71d4e217adb7313584570060357d48345aae25de693b181fa37cb67be60f",
+            "support_count": 3966,
+            "instance_id": 1,
+            "intersection": 3054,
+            "instance_visible_count": 8535
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G037",
+            "original_track_id": 37,
+            "mask_id": "M0385",
+            "frame": 1070,
+            "mask_sha256": "b91c71d4e217adb7313584570060357d48345aae25de693b181fa37cb67be60f",
+            "support_count": 3966,
+            "instance_id": 1,
+            "intersection": 3054,
+            "instance_visible_count": 8535
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G038",
+      "original_track_id": 38,
+      "mask_id": "M0407",
+      "frame": 465,
+      "mask_sha256": "30a805111759793cd79dffb14fdec869be5a5f877255d7a109696f3e49ed68e3",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 1551,
+            "area": 9195
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G038"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G038",
+            "original_track_id": 38,
+            "mask_id": "M0407",
+            "frame": 465,
+            "mask_sha256": "30a805111759793cd79dffb14fdec869be5a5f877255d7a109696f3e49ed68e3",
+            "support_count": 3803,
+            "instance_id": 9,
+            "intersection": 109,
+            "instance_visible_count": 23730
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G038",
+            "original_track_id": 38,
+            "mask_id": "M0407",
+            "frame": 465,
+            "mask_sha256": "30a805111759793cd79dffb14fdec869be5a5f877255d7a109696f3e49ed68e3",
+            "support_count": 3803,
+            "instance_id": 9,
+            "intersection": 109,
+            "instance_visible_count": 23730
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G039",
+      "original_track_id": 39,
+      "mask_id": "M0420",
+      "frame": 940,
+      "mask_sha256": "58b4ea0404dcc116ab1ce7ea2594627cdb8e33e0240676af484b7cc160245289",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 38014
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G028",
+            "intersection": 1475,
+            "union": 1513
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G040",
+      "original_track_id": 40,
+      "mask_id": "M0450",
+      "frame": 1035,
+      "mask_sha256": "15405a3f04f5f818d02bd5eea2ea125e8aef2154165318d19e86b3b4a7ae3745",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 4,
+            "area": 6886
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G040"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G040",
+            "original_track_id": 40,
+            "mask_id": "M0450",
+            "frame": 1035,
+            "mask_sha256": "15405a3f04f5f818d02bd5eea2ea125e8aef2154165318d19e86b3b4a7ae3745",
+            "support_count": 3358,
+            "instance_id": 52,
+            "intersection": 3341,
+            "instance_visible_count": 6846
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G040",
+            "original_track_id": 40,
+            "mask_id": "M0450",
+            "frame": 1035,
+            "mask_sha256": "15405a3f04f5f818d02bd5eea2ea125e8aef2154165318d19e86b3b4a7ae3745",
+            "support_count": 3358,
+            "instance_id": 52,
+            "intersection": 3341,
+            "instance_visible_count": 6846
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G041",
+      "original_track_id": 41,
+      "mask_id": "M0473",
+      "frame": 805,
+      "mask_sha256": "fe101481c8ff0d68c447122ce023d8524a22c7c011de14720fa01e42f1c05786",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 4,
+            "area": 7833
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G041"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G041",
+            "original_track_id": 41,
+            "mask_id": "M0473",
+            "frame": 805,
+            "mask_sha256": "fe101481c8ff0d68c447122ce023d8524a22c7c011de14720fa01e42f1c05786",
+            "support_count": 3103,
+            "instance_id": 2,
+            "intersection": 2983,
+            "instance_visible_count": 2988
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G042",
+      "original_track_id": 42,
+      "mask_id": "M0509",
+      "frame": 1510,
+      "mask_sha256": "f28525ebb8da1ed9c64f668606cf94d3289d1d889e81ca94b0af1137ebb5c42f",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 62,
+            "area": 7600
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G040",
+            "intersection": 1095,
+            "union": 1331
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G043",
+      "original_track_id": 43,
+      "mask_id": "M0513",
+      "frame": 1350,
+      "mask_sha256": "9ccf1d4a0d31ea0fe16ac2a1768869998447471bd45502c6523c1f03f4dbc346",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 14631
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G043"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G043",
+            "original_track_id": 43,
+            "mask_id": "M0513",
+            "frame": 1350,
+            "mask_sha256": "9ccf1d4a0d31ea0fe16ac2a1768869998447471bd45502c6523c1f03f4dbc346",
+            "support_count": 2675,
+            "instance_id": 54,
+            "intersection": 2584,
+            "instance_visible_count": 2593
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G044",
+      "original_track_id": 44,
+      "mask_id": "M0517",
+      "frame": 1995,
+      "mask_sha256": "aec1906d50e5adb088b2f49c2cf8f73237d401b4b61444421de11a343d13a0d3",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 267,
+            "area": 34743
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G044"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G044",
+            "original_track_id": 44,
+            "mask_id": "M0517",
+            "frame": 1995,
+            "mask_sha256": "aec1906d50e5adb088b2f49c2cf8f73237d401b4b61444421de11a343d13a0d3",
+            "support_count": 2537,
+            "instance_id": 1,
+            "intersection": 2322,
+            "instance_visible_count": 10513
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G044",
+            "original_track_id": 44,
+            "mask_id": "M0517",
+            "frame": 1995,
+            "mask_sha256": "aec1906d50e5adb088b2f49c2cf8f73237d401b4b61444421de11a343d13a0d3",
+            "support_count": 2537,
+            "instance_id": 1,
+            "intersection": 2322,
+            "instance_visible_count": 10513
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G045",
+      "original_track_id": 45,
+      "mask_id": "M0530",
+      "frame": 1470,
+      "mask_sha256": "5be3a86e3eeca92c86d71a5297a150cff8af124f8c962d14972de5bb61d57c7b",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 4545,
+            "area": 16340
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G029",
+            "intersection": 1372,
+            "union": 1541
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G046",
+      "original_track_id": 46,
+      "mask_id": "M0536",
+      "frame": 465,
+      "mask_sha256": "64cb4a8dcd1bb00b99cf638ee4c068541862c376c55b8e4445c61ea85c2b30a5",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 258,
+            "area": 50247
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G046"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G046",
+            "original_track_id": 46,
+            "mask_id": "M0536",
+            "frame": 465,
+            "mask_sha256": "64cb4a8dcd1bb00b99cf638ee4c068541862c376c55b8e4445c61ea85c2b30a5",
+            "support_count": 2205,
+            "instance_id": 1,
+            "intersection": 2162,
+            "instance_visible_count": 9551
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G046",
+            "original_track_id": 46,
+            "mask_id": "M0536",
+            "frame": 465,
+            "mask_sha256": "64cb4a8dcd1bb00b99cf638ee4c068541862c376c55b8e4445c61ea85c2b30a5",
+            "support_count": 2205,
+            "instance_id": 1,
+            "intersection": 2162,
+            "instance_visible_count": 9551
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G047",
+      "original_track_id": 47,
+      "mask_id": "M0544",
+      "frame": 1475,
+      "mask_sha256": "b64eb21bc8a0199ba7bf741b7ebe0309d51f824968892b9495961fe8722e9716",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 817,
+            "area": 11138
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G047"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G047",
+            "original_track_id": 47,
+            "mask_id": "M0544",
+            "frame": 1475,
+            "mask_sha256": "b64eb21bc8a0199ba7bf741b7ebe0309d51f824968892b9495961fe8722e9716",
+            "support_count": 2077,
+            "instance_id": 52,
+            "intersection": 1713,
+            "instance_visible_count": 5321
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G047",
+            "original_track_id": 47,
+            "mask_id": "M0544",
+            "frame": 1475,
+            "mask_sha256": "b64eb21bc8a0199ba7bf741b7ebe0309d51f824968892b9495961fe8722e9716",
+            "support_count": 2077,
+            "instance_id": 52,
+            "intersection": 1713,
+            "instance_visible_count": 5321
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G048",
+      "original_track_id": 48,
+      "mask_id": "M0545",
+      "frame": 1510,
+      "mask_sha256": "ef3092f5aab8ff165fcb313621597c0e264c1f2eae01b22d4c57ebd9d1e2d7cd",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 10471
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G048"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G048",
+            "original_track_id": 48,
+            "mask_id": "M0545",
+            "frame": 1510,
+            "mask_sha256": "ef3092f5aab8ff165fcb313621597c0e264c1f2eae01b22d4c57ebd9d1e2d7cd",
+            "support_count": 2063,
+            "instance_id": 211,
+            "intersection": 2007,
+            "instance_visible_count": 2022
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G049",
+      "original_track_id": 49,
+      "mask_id": "M0563",
+      "frame": 855,
+      "mask_sha256": "7b968e1f2ff6a81bdf310d508dc990b733423d9e9a2dc712e5b80feb6586111d",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 6054
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G049"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G049",
+            "original_track_id": 49,
+            "mask_id": "M0563",
+            "frame": 855,
+            "mask_sha256": "7b968e1f2ff6a81bdf310d508dc990b733423d9e9a2dc712e5b80feb6586111d",
+            "support_count": 1741,
+            "instance_id": 5,
+            "intersection": 1599,
+            "instance_visible_count": 1616
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G049",
+            "original_track_id": 49,
+            "mask_id": "M0563",
+            "frame": 855,
+            "mask_sha256": "7b968e1f2ff6a81bdf310d508dc990b733423d9e9a2dc712e5b80feb6586111d",
+            "support_count": 1741,
+            "instance_id": 5,
+            "intersection": 1599,
+            "instance_visible_count": 1616
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G050",
+      "original_track_id": 50,
+      "mask_id": "M0572",
+      "frame": 810,
+      "mask_sha256": "64cb1f228d1ce4929a2774bd0809a0e928aa42d420309e26578d7b2eacea9219",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 5179,
+            "area": 5827
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G050"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G050",
+            "original_track_id": 50,
+            "mask_id": "M0572",
+            "frame": 810,
+            "mask_sha256": "64cb1f228d1ce4929a2774bd0809a0e928aa42d420309e26578d7b2eacea9219",
+            "support_count": 1682,
+            "instance_id": 7,
+            "intersection": 1254,
+            "instance_visible_count": 4214
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G050",
+            "original_track_id": 50,
+            "mask_id": "M0572",
+            "frame": 810,
+            "mask_sha256": "64cb1f228d1ce4929a2774bd0809a0e928aa42d420309e26578d7b2eacea9219",
+            "support_count": 1682,
+            "instance_id": 7,
+            "intersection": 1254,
+            "instance_visible_count": 4214
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G051",
+      "original_track_id": 51,
+      "mask_id": "M0581",
+      "frame": 0,
+      "mask_sha256": "4a3090198d822567228316c7d247f121c9ea115341a4fa755e9636ef80f0e693",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 2731
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G051"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G051",
+            "original_track_id": 51,
+            "mask_id": "M0581",
+            "frame": 0,
+            "mask_sha256": "4a3090198d822567228316c7d247f121c9ea115341a4fa755e9636ef80f0e693",
+            "support_count": 1621,
+            "instance_id": 3,
+            "intersection": 1596,
+            "instance_visible_count": 1640
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G052",
+      "original_track_id": 52,
+      "mask_id": "M0596",
+      "frame": 1620,
+      "mask_sha256": "3796b81d6a819f9a27be23cceb4b6e6032226c420ecd51aa8e2694c2213078b6",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 80,
+            "area": 29998
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G031",
+            "intersection": 1145,
+            "union": 1305
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G053",
+      "original_track_id": 53,
+      "mask_id": "M0603",
+      "frame": 1935,
+      "mask_sha256": "9b3b9756f1faa06615982f4256836fdf0e7b639af36929cfd7ea4e7d51246300",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 5172,
+            "area": 5327
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G054",
+      "original_track_id": 54,
+      "mask_id": "M0609",
+      "frame": 1660,
+      "mask_sha256": "99f2bc2cdc07bc4d1b5529dc96071102fef44e537f2d3c5aa02f04be80597b47",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 7654,
+            "area": 7934
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G055",
+      "original_track_id": 55,
+      "mask_id": "M0615",
+      "frame": 1475,
+      "mask_sha256": "b861decf0a05306b3583a644b307c3de4310d2ca0593355e0bae6d2b5d473233",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 31,
+            "area": 3975
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G055"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G055",
+            "original_track_id": 55,
+            "mask_id": "M0615",
+            "frame": 1475,
+            "mask_sha256": "b861decf0a05306b3583a644b307c3de4310d2ca0593355e0bae6d2b5d473233",
+            "support_count": 1358,
+            "instance_id": 52,
+            "intersection": 1171,
+            "instance_visible_count": 5321
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G055",
+            "original_track_id": 55,
+            "mask_id": "M0615",
+            "frame": 1475,
+            "mask_sha256": "b861decf0a05306b3583a644b307c3de4310d2ca0593355e0bae6d2b5d473233",
+            "support_count": 1358,
+            "instance_id": 52,
+            "intersection": 1171,
+            "instance_visible_count": 5321
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G056",
+      "original_track_id": 56,
+      "mask_id": "M0617",
+      "frame": 1035,
+      "mask_sha256": "c85bcc1df8d59187787fbe9ccbf92d7a041ec07213c576bcccb66f2126317d72",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 22285
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G015",
+            "intersection": 866,
+            "union": 1022
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G057",
+      "original_track_id": 57,
+      "mask_id": "M0622",
+      "frame": 810,
+      "mask_sha256": "9c811f2b7ffe6cc8fece94010f5351ae1f8b9cd05f067e4fa95dd3394ad7eb9f",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 5,
+            "area": 3264
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G057"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G057",
+            "original_track_id": 57,
+            "mask_id": "M0622",
+            "frame": 810,
+            "mask_sha256": "9c811f2b7ffe6cc8fece94010f5351ae1f8b9cd05f067e4fa95dd3394ad7eb9f",
+            "support_count": 1254,
+            "instance_id": 18,
+            "intersection": 1122,
+            "instance_visible_count": 1126
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G057",
+            "original_track_id": 57,
+            "mask_id": "M0622",
+            "frame": 810,
+            "mask_sha256": "9c811f2b7ffe6cc8fece94010f5351ae1f8b9cd05f067e4fa95dd3394ad7eb9f",
+            "support_count": 1254,
+            "instance_id": 18,
+            "intersection": 1122,
+            "instance_visible_count": 1126
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G058",
+      "original_track_id": 58,
+      "mask_id": "M0630",
+      "frame": 865,
+      "mask_sha256": "87757bedde58179aa6ef5fd9a5079dccc02e4889b2586211a980a7ab2e351dfa",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 5141
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G058"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G058",
+            "original_track_id": 58,
+            "mask_id": "M0630",
+            "frame": 865,
+            "mask_sha256": "87757bedde58179aa6ef5fd9a5079dccc02e4889b2586211a980a7ab2e351dfa",
+            "support_count": 1154,
+            "instance_id": 16,
+            "intersection": 871,
+            "instance_visible_count": 887
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G058",
+            "original_track_id": 58,
+            "mask_id": "M0630",
+            "frame": 865,
+            "mask_sha256": "87757bedde58179aa6ef5fd9a5079dccc02e4889b2586211a980a7ab2e351dfa",
+            "support_count": 1154,
+            "instance_id": 16,
+            "intersection": 871,
+            "instance_visible_count": 887
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G059",
+      "original_track_id": 59,
+      "mask_id": "M0635",
+      "frame": 390,
+      "mask_sha256": "41da985f2a4346671d840c05f2f54363fb948ac761090773528cf4b89083ab44",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 148,
+            "area": 10487
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G044",
+            "intersection": 60,
+            "union": 71
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G060",
+      "original_track_id": 60,
+      "mask_id": "M0639",
+      "frame": 785,
+      "mask_sha256": "5f75caef2f379e43a621492206714d1f4b6c152e6ac33cad31a7b33944dbd228",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 1299
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G060"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G060",
+            "original_track_id": 60,
+            "mask_id": "M0639",
+            "frame": 785,
+            "mask_sha256": "5f75caef2f379e43a621492206714d1f4b6c152e6ac33cad31a7b33944dbd228",
+            "support_count": 1037,
+            "instance_id": 13,
+            "intersection": 988,
+            "instance_visible_count": 1010
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G061",
+      "original_track_id": 61,
+      "mask_id": "M0641",
+      "frame": 1735,
+      "mask_sha256": "6a2e4a91df3a44a4a4e6ddd2d675af62d0e57d245c25d2cf5599646240e79593",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 10,
+            "area": 14477
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G032",
+            "intersection": 997,
+            "union": 1004
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G062",
+      "original_track_id": 62,
+      "mask_id": "M0651",
+      "frame": 1875,
+      "mask_sha256": "5168063d6e41538296104bbea28e3d551ac3ea17d6c347407f46874af9f71f06",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 29816
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G062"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G062",
+            "original_track_id": 62,
+            "mask_id": "M0651",
+            "frame": 1875,
+            "mask_sha256": "5168063d6e41538296104bbea28e3d551ac3ea17d6c347407f46874af9f71f06",
+            "support_count": 977,
+            "instance_id": 44,
+            "intersection": 937,
+            "instance_visible_count": 940
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G063",
+      "original_track_id": 63,
+      "mask_id": "M0653",
+      "frame": 735,
+      "mask_sha256": "523f5a26770262ff087b56dfcb7f1814fe46098d7197fead44c50e7c2fe21101",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 2026,
+            "area": 2026
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G064",
+      "original_track_id": 64,
+      "mask_id": "M0654",
+      "frame": 320,
+      "mask_sha256": "8488c3b91d28cfbc0d0b221b2b5354a81aaa62b5ee1c7210e17a1e2f9fbba12c",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 1967
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G064"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G064",
+            "original_track_id": 64,
+            "mask_id": "M0654",
+            "frame": 320,
+            "mask_sha256": "8488c3b91d28cfbc0d0b221b2b5354a81aaa62b5ee1c7210e17a1e2f9fbba12c",
+            "support_count": 911,
+            "instance_id": 17,
+            "intersection": 817,
+            "instance_visible_count": 851
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G064",
+            "original_track_id": 64,
+            "mask_id": "M0654",
+            "frame": 320,
+            "mask_sha256": "8488c3b91d28cfbc0d0b221b2b5354a81aaa62b5ee1c7210e17a1e2f9fbba12c",
+            "support_count": 911,
+            "instance_id": 17,
+            "intersection": 817,
+            "instance_visible_count": 851
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G065",
+      "original_track_id": 65,
+      "mask_id": "M0664",
+      "frame": 1415,
+      "mask_sha256": "eaa1069c55f205b00766d4fcb7219c3117516db8c6ad13975966fc066c916b2c",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 777,
+            "area": 777
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G066",
+      "original_track_id": 66,
+      "mask_id": "M0670",
+      "frame": 1480,
+      "mask_sha256": "c5cee980faec26bcae5227a233bb6aa8db7f87561546b8f2006404e2eeedc855",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 23,
+            "area": 1241
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G040",
+            "intersection": 585,
+            "union": 621
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G067",
+      "original_track_id": 67,
+      "mask_id": "M0679",
+      "frame": 835,
+      "mask_sha256": "dff0c44a3000f43008f48ab3cee1fd42f90e2fffe0768f55bc15db9cb87d2434",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 2436
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G067"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G067",
+            "original_track_id": 67,
+            "mask_id": "M0679",
+            "frame": 835,
+            "mask_sha256": "dff0c44a3000f43008f48ab3cee1fd42f90e2fffe0768f55bc15db9cb87d2434",
+            "support_count": 627,
+            "instance_id": 15,
+            "intersection": 498,
+            "instance_visible_count": 517
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G067",
+            "original_track_id": 67,
+            "mask_id": "M0679",
+            "frame": 835,
+            "mask_sha256": "dff0c44a3000f43008f48ab3cee1fd42f90e2fffe0768f55bc15db9cb87d2434",
+            "support_count": 627,
+            "instance_id": 15,
+            "intersection": 498,
+            "instance_visible_count": 517
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G068",
+      "original_track_id": 68,
+      "mask_id": "M0681",
+      "frame": 810,
+      "mask_sha256": "d1b8679fd7f13910ad1c4abafbada225df2cf18d27fd908f0d42722d08905711",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 1072
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G068"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G068",
+            "original_track_id": 68,
+            "mask_id": "M0681",
+            "frame": 810,
+            "mask_sha256": "d1b8679fd7f13910ad1c4abafbada225df2cf18d27fd908f0d42722d08905711",
+            "support_count": 611,
+            "instance_id": 14,
+            "intersection": 388,
+            "instance_visible_count": 403
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G068",
+            "original_track_id": 68,
+            "mask_id": "M0681",
+            "frame": 810,
+            "mask_sha256": "d1b8679fd7f13910ad1c4abafbada225df2cf18d27fd908f0d42722d08905711",
+            "support_count": 611,
+            "instance_id": 14,
+            "intersection": 388,
+            "instance_visible_count": 403
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G069",
+      "original_track_id": 69,
+      "mask_id": "M0682",
+      "frame": 1735,
+      "mask_sha256": "209f2a4ff27b67652a37d9520bf95afafb53b84e09dc1e2b1d0403b2cc4e0166",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 7,
+            "area": 1362
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G069"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G069",
+            "original_track_id": 69,
+            "mask_id": "M0682",
+            "frame": 1735,
+            "mask_sha256": "209f2a4ff27b67652a37d9520bf95afafb53b84e09dc1e2b1d0403b2cc4e0166",
+            "support_count": 610,
+            "instance_id": 228,
+            "intersection": 321,
+            "instance_visible_count": 3715
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G069",
+            "original_track_id": 69,
+            "mask_id": "M0682",
+            "frame": 1735,
+            "mask_sha256": "209f2a4ff27b67652a37d9520bf95afafb53b84e09dc1e2b1d0403b2cc4e0166",
+            "support_count": 610,
+            "instance_id": 228,
+            "intersection": 321,
+            "instance_visible_count": 3715
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "pr_filter"
+    },
+    {
+      "group_id": "G070",
+      "original_track_id": 70,
+      "mask_id": "M0694",
+      "frame": 1510,
+      "mask_sha256": "45782ef41c013405de03a3755275c414c9ed9d0f018525662645c5449cb603d0",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 2226
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G035",
+            "intersection": 332,
+            "union": 361
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G071",
+      "original_track_id": 71,
+      "mask_id": "M0697",
+      "frame": 940,
+      "mask_sha256": "85624daf1b36f5ae087e1360b640ea088c302e092e59d9593e2ccc707b83241b",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 2969
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G071"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G071",
+            "original_track_id": 71,
+            "mask_id": "M0697",
+            "frame": 940,
+            "mask_sha256": "85624daf1b36f5ae087e1360b640ea088c302e092e59d9593e2ccc707b83241b",
+            "support_count": 528,
+            "instance_id": 1,
+            "intersection": 193,
+            "instance_visible_count": 4522
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G071",
+            "original_track_id": 71,
+            "mask_id": "M0697",
+            "frame": 940,
+            "mask_sha256": "85624daf1b36f5ae087e1360b640ea088c302e092e59d9593e2ccc707b83241b",
+            "support_count": 528,
+            "instance_id": 1,
+            "intersection": 193,
+            "instance_visible_count": 4522
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "pr_filter"
+    },
+    {
+      "group_id": "G072",
+      "original_track_id": 72,
+      "mask_id": "M0712",
+      "frame": 0,
+      "mask_sha256": "2ca2ecd85be0984fd55038d396e7a5f9c61ec975c866ef5c54ae740447ccdbbd",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 791
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G072"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "skip_repair",
+          "evidence": {
+            "group_id": "G072",
+            "original_track_id": 72,
+            "mask_id": "M0712",
+            "frame": 0,
+            "mask_sha256": "2ca2ecd85be0984fd55038d396e7a5f9c61ec975c866ef5c54ae740447ccdbbd",
+            "support_count": 448,
+            "instance_id": 11,
+            "intersection": 430,
+            "instance_visible_count": 442
+          }
+        }
+      ],
+      "decision": "skip_repair",
+      "terminal_stage": "skip_repair_B"
+    },
+    {
+      "group_id": "G073",
+      "original_track_id": 73,
+      "mask_id": "M0714",
+      "frame": 1960,
+      "mask_sha256": "4b990c6be28ede22acf7c9994eb5dc75cc35120ce87418f6da9ea712f9a48610",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 1365,
+            "area": 3793
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G033",
+            "intersection": 370,
+            "union": 382
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G074",
+      "original_track_id": 74,
+      "mask_id": "M0715",
+      "frame": 945,
+      "mask_sha256": "566feb89b1df77611d16a228d8ce108b910159cb926048441b194ec6a09611c8",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 1664
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G074"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G074",
+            "original_track_id": 74,
+            "mask_id": "M0715",
+            "frame": 945,
+            "mask_sha256": "566feb89b1df77611d16a228d8ce108b910159cb926048441b194ec6a09611c8",
+            "support_count": 385,
+            "instance_id": 1,
+            "intersection": 70,
+            "instance_visible_count": 4300
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G074",
+            "original_track_id": 74,
+            "mask_id": "M0715",
+            "frame": 945,
+            "mask_sha256": "566feb89b1df77611d16a228d8ce108b910159cb926048441b194ec6a09611c8",
+            "support_count": 385,
+            "instance_id": 1,
+            "intersection": 70,
+            "instance_visible_count": 4300
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "pr_filter"
+    },
+    {
+      "group_id": "G075",
+      "original_track_id": 75,
+      "mask_id": "M0717",
+      "frame": 1935,
+      "mask_sha256": "01b02f1be5d9fdccd866916451026640c35a1eeff8e00e5b7314bfbec317c636",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 55,
+            "area": 2157
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G075"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G075",
+            "original_track_id": 75,
+            "mask_id": "M0717",
+            "frame": 1935,
+            "mask_sha256": "01b02f1be5d9fdccd866916451026640c35a1eeff8e00e5b7314bfbec317c636",
+            "support_count": 381,
+            "instance_id": 6,
+            "intersection": 257,
+            "instance_visible_count": 90438
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G075",
+            "original_track_id": 75,
+            "mask_id": "M0717",
+            "frame": 1935,
+            "mask_sha256": "01b02f1be5d9fdccd866916451026640c35a1eeff8e00e5b7314bfbec317c636",
+            "support_count": 381,
+            "instance_id": 6,
+            "intersection": 257,
+            "instance_visible_count": 90438
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "pr_filter"
+    },
+    {
+      "group_id": "G076",
+      "original_track_id": 76,
+      "mask_id": "M0723",
+      "frame": 225,
+      "mask_sha256": "dc54e377a0430c68cafe77de8b1067aaa512652cb4db230c2655a30492397cd2",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 1119
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G076"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G076",
+            "original_track_id": 76,
+            "mask_id": "M0723",
+            "frame": 225,
+            "mask_sha256": "dc54e377a0430c68cafe77de8b1067aaa512652cb4db230c2655a30492397cd2",
+            "support_count": 299,
+            "instance_id": 24,
+            "intersection": 280,
+            "instance_visible_count": 293
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G076",
+            "original_track_id": 76,
+            "mask_id": "M0723",
+            "frame": 225,
+            "mask_sha256": "dc54e377a0430c68cafe77de8b1067aaa512652cb4db230c2655a30492397cd2",
+            "support_count": 299,
+            "instance_id": 24,
+            "intersection": 280,
+            "instance_visible_count": 293
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G077",
+      "original_track_id": 77,
+      "mask_id": "M0728",
+      "frame": 1990,
+      "mask_sha256": "b5ef0a796c677dfe5873c3305ef872a5d185caf8e22460a543c0204de2464ba8",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 3556
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G077"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G077",
+            "original_track_id": 77,
+            "mask_id": "M0728",
+            "frame": 1990,
+            "mask_sha256": "b5ef0a796c677dfe5873c3305ef872a5d185caf8e22460a543c0204de2464ba8",
+            "support_count": 279,
+            "instance_id": 228,
+            "intersection": 111,
+            "instance_visible_count": 3684
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G077",
+            "original_track_id": 77,
+            "mask_id": "M0728",
+            "frame": 1990,
+            "mask_sha256": "b5ef0a796c677dfe5873c3305ef872a5d185caf8e22460a543c0204de2464ba8",
+            "support_count": 279,
+            "instance_id": 228,
+            "intersection": 111,
+            "instance_visible_count": 3684
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "pr_filter"
+    },
+    {
+      "group_id": "G078",
+      "original_track_id": 78,
+      "mask_id": "M0736",
+      "frame": 0,
+      "mask_sha256": "8d6952db9f9af207967ce13f87c7c1e97db060e00b601c4be3ebaf6f3c0fd80e",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 531
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G078"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G078",
+            "original_track_id": 78,
+            "mask_id": "M0736",
+            "frame": 0,
+            "mask_sha256": "8d6952db9f9af207967ce13f87c7c1e97db060e00b601c4be3ebaf6f3c0fd80e",
+            "support_count": 253,
+            "instance_id": 21,
+            "intersection": 192,
+            "instance_visible_count": 192
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G078",
+            "original_track_id": 78,
+            "mask_id": "M0736",
+            "frame": 0,
+            "mask_sha256": "8d6952db9f9af207967ce13f87c7c1e97db060e00b601c4be3ebaf6f3c0fd80e",
+            "support_count": 253,
+            "instance_id": 21,
+            "intersection": 192,
+            "instance_visible_count": 192
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G079",
+      "original_track_id": 79,
+      "mask_id": "M0737",
+      "frame": 0,
+      "mask_sha256": "1ceaea88af35fc74e94b84c51b7f1f3ca991cb5fbb846fa6f8bcbf296d382444",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 622
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G079"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G079",
+            "original_track_id": 79,
+            "mask_id": "M0737",
+            "frame": 0,
+            "mask_sha256": "1ceaea88af35fc74e94b84c51b7f1f3ca991cb5fbb846fa6f8bcbf296d382444",
+            "support_count": 251,
+            "instance_id": 19,
+            "intersection": 231,
+            "instance_visible_count": 235
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G079",
+            "original_track_id": 79,
+            "mask_id": "M0737",
+            "frame": 0,
+            "mask_sha256": "1ceaea88af35fc74e94b84c51b7f1f3ca991cb5fbb846fa6f8bcbf296d382444",
+            "support_count": 251,
+            "instance_id": 19,
+            "intersection": 231,
+            "instance_visible_count": 235
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G080",
+      "original_track_id": 80,
+      "mask_id": "M0743",
+      "frame": 0,
+      "mask_sha256": "d703dc972380c75e07339c5aed3317b717227cf095ba1d983ea4f1d531b2c87e",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 423,
+            "area": 808
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G080"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "exclude",
+          "evidence": [
+            {
+              "larger_group_id": "G050",
+              "intersection": 208,
+              "small_count": 232
+            }
+          ]
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "full_support_containment"
+    },
+    {
+      "group_id": "G081",
+      "original_track_id": 81,
+      "mask_id": "M0746",
+      "frame": 210,
+      "mask_sha256": "fee9df7b47cb5cf96eee57d6151bb2b466ee95dbecc270f343539cd0d4ea1106",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 469
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G081"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "exclude",
+          "evidence": [
+            {
+              "larger_group_id": "G058",
+              "intersection": 209,
+              "small_count": 210
+            }
+          ]
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "full_support_containment"
+    },
+    {
+      "group_id": "G082",
+      "original_track_id": 82,
+      "mask_id": "M0753",
+      "frame": 830,
+      "mask_sha256": "653f41e2b7a35b1637bf932b6199483c1911e25b74cfc059a9b576a8b8dccb70",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 802
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G082"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G082",
+            "original_track_id": 82,
+            "mask_id": "M0753",
+            "frame": 830,
+            "mask_sha256": "653f41e2b7a35b1637bf932b6199483c1911e25b74cfc059a9b576a8b8dccb70",
+            "support_count": 178,
+            "instance_id": 6,
+            "intersection": 130,
+            "instance_visible_count": 91584
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G082",
+            "original_track_id": 82,
+            "mask_id": "M0753",
+            "frame": 830,
+            "mask_sha256": "653f41e2b7a35b1637bf932b6199483c1911e25b74cfc059a9b576a8b8dccb70",
+            "support_count": 178,
+            "instance_id": 6,
+            "intersection": 130,
+            "instance_visible_count": 91584
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "pr_filter"
+    },
+    {
+      "group_id": "G083",
+      "original_track_id": 83,
+      "mask_id": "M0755",
+      "frame": 225,
+      "mask_sha256": "dd54cc29beadf90ffb1253f9e45e65af7c1515aecc1b27f6fa29351869bf86c3",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 580
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G060",
+            "intersection": 141,
+            "union": 162
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G084",
+      "original_track_id": 84,
+      "mask_id": "M0759",
+      "frame": 1990,
+      "mask_sha256": "165653aa3dd2d59cee68f73a670c75efc1e5b64fc6b3731da5f438e17be43dc8",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 1792
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G084"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G084",
+            "original_track_id": 84,
+            "mask_id": "M0759",
+            "frame": 1990,
+            "mask_sha256": "165653aa3dd2d59cee68f73a670c75efc1e5b64fc6b3731da5f438e17be43dc8",
+            "support_count": 160,
+            "instance_id": 1,
+            "intersection": 8,
+            "instance_visible_count": 5694
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G084",
+            "original_track_id": 84,
+            "mask_id": "M0759",
+            "frame": 1990,
+            "mask_sha256": "165653aa3dd2d59cee68f73a670c75efc1e5b64fc6b3731da5f438e17be43dc8",
+            "support_count": 160,
+            "instance_id": 1,
+            "intersection": 8,
+            "instance_visible_count": 5694
+          }
+        }
+      ],
+      "decision": "retain",
+      "terminal_stage": "automatic_complete"
+    },
+    {
+      "group_id": "G085",
+      "original_track_id": 85,
+      "mask_id": "M0772",
+      "frame": 1490,
+      "mask_sha256": "fc36128de7659ec763a35701eceab7829d234f9b64955072fb6c5775a5ebc343",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 203,
+            "area": 474
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G085"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "exclude",
+          "evidence": [
+            {
+              "larger_group_id": "G047",
+              "intersection": 136,
+              "small_count": 144
+            }
+          ]
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "full_support_containment"
+    },
+    {
+      "group_id": "G086",
+      "original_track_id": 86,
+      "mask_id": "M0780",
+      "frame": 1025,
+      "mask_sha256": "c3b33a82229fcb87af3d5c877a08de7d008e2bcda9a348de583cb2a5308e8aec",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 137,
+            "area": 593
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "retain",
+          "evidence": {
+            "primary_group_id": "G086"
+          }
+        },
+        {
+          "stage": "full_support_containment",
+          "decision": "retain",
+          "evidence": null
+        },
+        {
+          "stage": "skip_repair_B",
+          "decision": "retain",
+          "evidence": {
+            "group_id": "G086",
+            "original_track_id": 86,
+            "mask_id": "M0780",
+            "frame": 1025,
+            "mask_sha256": "c3b33a82229fcb87af3d5c877a08de7d008e2bcda9a348de583cb2a5308e8aec",
+            "support_count": 109,
+            "instance_id": 43,
+            "intersection": 13,
+            "instance_visible_count": 17633
+          }
+        },
+        {
+          "stage": "pr_filter",
+          "decision": "exclude",
+          "evidence": {
+            "group_id": "G086",
+            "original_track_id": 86,
+            "mask_id": "M0780",
+            "frame": 1025,
+            "mask_sha256": "c3b33a82229fcb87af3d5c877a08de7d008e2bcda9a348de583cb2a5308e8aec",
+            "support_count": 109,
+            "instance_id": 43,
+            "intersection": 13,
+            "instance_visible_count": 17633
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "pr_filter"
+    },
+    {
+      "group_id": "G087",
+      "original_track_id": 87,
+      "mask_id": "M0788",
+      "frame": 1755,
+      "mask_sha256": "c314d0dc9b8fe9a5dd15ebaf5d14c965942256b0e9aec864b0e4bbbb49de471c",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 196
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G077",
+            "intersection": 53,
+            "union": 61
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G088",
+      "original_track_id": 88,
+      "mask_id": "M0797",
+      "frame": 320,
+      "mask_sha256": "8adb6fcd34662ab0ae75a0c57407292751ee6371e8d51f3eefecd21a5419837f",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "exclude",
+          "evidence": {
+            "high_excluded_pixels": 172,
+            "area": 172
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "semantic"
+    },
+    {
+      "group_id": "G089",
+      "original_track_id": 89,
+      "mask_id": "M0801",
+      "frame": 1875,
+      "mask_sha256": "79dd3d68b2b78fd0713289c1013adb5155da7c13e936f0752795bb2791dc4774",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 0,
+            "area": 11868
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G031",
+            "intersection": 53,
+            "union": 53
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    },
+    {
+      "group_id": "G090",
+      "original_track_id": 90,
+      "mask_id": "M0821",
+      "frame": 1035,
+      "mask_sha256": "d3d71a07bff09808627fb3ecb2c131b213e45eec2a99bf06933b529c0bafd0a0",
+      "stage_decisions": [
+        {
+          "stage": "semantic",
+          "decision": "retain",
+          "evidence": {
+            "high_excluded_pixels": 6,
+            "area": 149
+          }
+        },
+        {
+          "stage": "covisible_iou_only",
+          "decision": "exclude",
+          "evidence": {
+            "primary_group_id": "G086",
+            "intersection": 26,
+            "union": 30
+          }
+        }
+      ],
+      "decision": "exclude",
+      "terminal_stage": "covisible_iou_only"
+    }
+  ],
+  "semantic_pr_exempt_group_ids": [
+    "G006",
+    "G018"
+  ],
+  "added_group_ids": [],
+  "original_pr_excluded_group_ids": [
+    "G017",
+    "G025",
+    "G069",
+    "G071",
+    "G074",
+    "G075",
+    "G077",
+    "G082",
+    "G086"
+  ],
+  "selection_variant": "containment_before_coverage_with_unchanged_exceptions",
+  "historical_exception_note": "G017/G025 retained exactly as the old room2 run; not a new semantic exemption."
+}

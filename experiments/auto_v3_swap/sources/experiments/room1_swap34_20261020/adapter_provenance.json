@@ -1,0 +1,289 @@
+{
+  "user_request": "room1: swap stages 3 and 4, compare E1",
+  "scope": "room1 only",
+  "numerical_E1_kernels_unchanged": [
+    "track_case.py",
+    "observation_ops.py",
+    "adaptive_core.py",
+    "gate_v1.py",
+    "strict_vote_ops.py",
+    "joint_batch_ops.py",
+    "objectwise_ops.py",
+    "one_vote.py"
+  ],
+  "changes": [
+    {
+      "file": "v2/filter_rules.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\v2\\filter_rules.py",
+      "source_sha256": "e4791c1122ca80a46394928092cd6a5d77c21d52c161393c0cbde5e00e5f1955",
+      "output_sha256": "64d06d5c87df0649f05ce2fc89bae673cfcf45e86cc0087e55eeb0995a11854b",
+      "diff": "--- \n+++ \n@@ -158,9 +158,6 @@\n                 'Invalid matched baseline instance')\n     args = lambda gid: tuple(coverage[gid][key] for key in\n                             ('intersection', 'support_count', 'instance_visible_count'))\n-    current = finish_stage('skip_repair_B', current,\n-                           [gid for gid in current if skip_repair(*args(gid))], coverage)\n-\n     witnesses = {}\n     for a, b in combinations(current, 2):\n         pair = pairs[a, b]\n@@ -173,6 +170,8 @@\n     require(not any(w['larger_group_id'] in witnesses for rows in witnesses.values() for w in rows),\n             'Chained qualifying containment needs user review; no hidden ancestor policy')\n     current = finish_stage('full_support_containment', current, witnesses, witnesses)\n+    current = finish_stage('skip_repair_B', current,\n+                           [gid for gid in current if skip_repair(*args(gid))], coverage)\n     before_pr = current[:]\n     automatic_removed = [gid for gid in current if pr_excluded(*args(gid))]\n     current = finish_stage('pr_filter', current, automatic_removed, coverage)\n"
+    },
+    {
+      "file": "v2/semantic_exemption.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\v2\\semantic_exemption.py",
+      "source_sha256": "12645a987eead39e1c4c8e5385d19e7ec86119b81a40badeb2a06c288867bd08",
+      "output_sha256": "12645a987eead39e1c4c8e5385d19e7ec86119b81a40badeb2a06c288867bd08",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/adaptive_core.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\adaptive_core.py",
+      "source_sha256": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "output_sha256": "ae85757dd513645af3c0a28056e6057e9fd1f2ede8da3b99047a6b0d7e60984c",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/audit_selected_inputs.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\audit_selected_inputs.py",
+      "source_sha256": "7a889ada3418567b67bd6f8f00904139f416e48d175454d7261386448912d972",
+      "output_sha256": "7a889ada3418567b67bd6f8f00904139f416e48d175454d7261386448912d972",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/bootstrap.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\bootstrap.py",
+      "source_sha256": "0639bec8ea763268f159a808b0e11b99603cfad076b0e40cd29e674aa0963d17",
+      "output_sha256": "11d32acf3867f6d0a4c873d1076094adcf1351c17c9f1ce1546339eeaab8de66",
+      "diff": "--- \n+++ \n@@ -3,8 +3,8 @@\n import json,sys\n MAIN=Path('/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009')\n C=Path(__file__).resolve().parent\n-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')\n-S=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/v1')\n+R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')\n+S=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/v1')\n sys.path.insert(0,str(MAIN))\n from instance_repair.cli import verify_sources,LockedModules,load_script,digest\n verify_sources()\n"
+    },
+    {
+      "file": "e1_repair/evaluate_r2.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\evaluate_r2.py",
+      "source_sha256": "a67bf42bb814f7b7b5cbe5684afa8380881aedb274d0c8d6a6413f4197ea95f8",
+      "output_sha256": "d166843d060418576d121a58d61c122c38a735de8d95b2f0dfd08edce8df23ab",
+      "diff": "--- \n+++ \n@@ -2,7 +2,7 @@\n from pathlib import Path\n import json,sys,hashlib,subprocess,time\n import numpy as np\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair');MAIN=Path('/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair');MAIN=Path('/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009')\n sys.path.insert(0,str(MAIN))\n from instance_repair.cli import verify_sources\n from unified_eval.current_protocol import CURRENT_PROTOCOL,CURRENT_CONFIG,REGISTRY_PATH,require_current_protocol,require_current_gt\n"
+    },
+    {
+      "file": "e1_repair/expand_room1.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\expand_room1.py",
+      "source_sha256": "96f301d36702fe620bfe66def5cd67450fb4e252e9824b01479ca7966453eec3",
+      "output_sha256": "324d372b1dcef9755bbd2676a0daba292f63161d504dc58e04b28e078eb4f3f7",
+      "diff": "--- \n+++ \n@@ -9,7 +9,7 @@\n import run_history_core as h\n from adaptive_core import choose_core\n from observation_ops import visible_samples,mask_support,choose_view_representatives,connected_expansion,resolve_claims\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair/e1');O=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair');A=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair/modified_repair/room1')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair/e1');O=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair');A=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair/modified_repair/room1')\n read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()\n def dump(p,x):h.f.atomic_json(p,x)\n def foreground(pid,fid):\n"
+    },
+    {
+      "file": "e1_repair/gate_policy.json",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\gate_policy.json",
+      "source_sha256": "69fa69e870bcd93b2c452df5bc3f7fc4af41d1033709c04d9c2ced224d0a61c1",
+      "output_sha256": "69fa69e870bcd93b2c452df5bc3f7fc4af41d1033709c04d9c2ced224d0a61c1",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/gate_v1.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\gate_v1.py",
+      "source_sha256": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "output_sha256": "00e715e1e3fb78236aa7be815908cc09d2b5c88a802a29193146f4d3bee02906",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/joint_batch_ops.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\joint_batch_ops.py",
+      "source_sha256": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "output_sha256": "c3c956071eea48ae0b13db33363eccb2d5bc05cfdf87d05f416301d975f0b19b",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/objectwise_ops.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\objectwise_ops.py",
+      "source_sha256": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "output_sha256": "c2812c207bb14a0f904992ee2d1fdda387397e9d5c4857f4b5b1fb70c5f4d0b3",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/observation_ops.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\observation_ops.py",
+      "source_sha256": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "output_sha256": "21727a10a9c21dde4a3aae62370985f31ed2249945ba450c4135dc849447f5e7",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/one_vote.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\one_vote.py",
+      "source_sha256": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc",
+      "output_sha256": "73da28b3dc2841d1d811b5f03fc847def31abd8e6e39085c4a2c0b82d36633cc",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/pipeline.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\pipeline.py",
+      "source_sha256": "e8b2500dffef951f04e11ec1e32a76016cbd1fad8ebd64a91a41d7a391836b37",
+      "output_sha256": "65915535025dcbabe88e47c321891e9a2d3b16f46363f0cdb0c6561ec47d9181",
+      "diff": "--- \n+++ \n@@ -1,6 +1,6 @@\n from pathlib import Path\n import json,subprocess,os,time,hashlib,traceback\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')\n PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'\n def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()\n def save(n,x):\n"
+    },
+    {
+      "file": "e1_repair/prepare_auto_seeds.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\prepare_auto_seeds.py",
+      "source_sha256": "982c99c6aa0850c79b3d253ac8b9944df64eb4d3377c0b3e0ed73a37c95ee39d",
+      "output_sha256": "571eae8da6532588dd2a63c1baf75d279833f488620339d4155436772d3cad27",
+      "diff": "--- \n+++ \n@@ -16,7 +16,7 @@\n  selection_path=C/'confirmed_selection.json';selection=json.loads(selection_path.read_text())\n  complete=json.loads((R.parent/'v2/complete.json').read_text())\n  assert complete['status']=='PASS'\n- assert selection['status']=='confirmed' and selection['version']=='auto-v2-room1-semantic-pr-20261019' and not selection['qa_only']\n+ assert selection['status']=='confirmed' and selection['version']=='auto-v2-room1-swap34-20261020' and not selection['qa_only']\n  assert selection['manifest_sha256']==digest(src)\n  assert digest(Path(selection['selected_source_manifest']))==selection['selected_source_manifest_sha256']==complete['manifest_sha256']\n  assert digest(Path(selection['selected_source_decisions']))==selection['selected_source_decisions_sha256']==complete['selection_sha256']\n@@ -83,7 +83,7 @@\n    manifest.append(row);diagnostics.append({'case_uid':uid,'source_choice':choice,'objects':objects,'old_family_ids':sorted(families),'projection':stats,'seed_sha256':digest(seedfile),'config_path':str(cp)})\n    for path in [cp,seedfile,out/'frozen_association.json',out/'seed_projected_support.npz']:seedhash[str(path)]=digest(path)\n  assert sum(len(c['objects']) for c in diagnostics)==N\n- authorization={'user_requested_tracking_and_E1_repair':True,'source_manifest':str(src),'source_sha256':digest(src),'selected_primary_masks':N,'confirmed_selection_sha256':digest(selection_path),'confirmed_version':selection['version'],'source_policy':'Approved stage-5 semantic-class exemption; 35 original primary masks; M0466 source correction preserved','batching':'same frame and exactly disjoint seed masks only; overlapping masks run separately','GT_used':False}\n+ authorization={'user_requested_tracking_and_E1_repair':True,'source_manifest':str(src),'source_sha256':digest(src),'selected_primary_masks':N,'confirmed_selection_sha256':digest(selection_path),'confirmed_version':selection['version'],'source_policy':'Approved stage-5 semantic-class exemption; room1 retained original primary masks; containment before coverage','batching':'same frame and exactly disjoint seed masks only; overlapping masks run separately','GT_used':False}\n  f.atomic_json(R/'inputs/input_selection.json',authorization)\n  f.atomic_json(R/'inputs/local_ingest.json',{'no_reliable_seed_cases':[],'unannotated_cases':[],'annotation_sha256':digest(src)})\n  f.atomic_json(R/'seed_manifest.json',{'status':'PASS','scene':'room1','annotation_sha256':digest(src),'repair_cases':len(diagnostics),'selected_masks':N,'seeds':manifest,'GT_used':False})\n"
+    },
+    {
+      "file": "e1_repair/prepare_selection.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\prepare_selection.py",
+      "source_sha256": "7ace5db1607d6af3287802fbba2cc2128d22ece384c0b06731d7426dbd6a23ed",
+      "output_sha256": "3998cf9f255221bba2d94040be1297ab88f9c0d522f4304fc9c06b044a42ce03",
+      "diff": "--- \n+++ \n@@ -2,7 +2,7 @@\n from pathlib import Path\n import hashlib,json\n C=Path(__file__).resolve().parent\n-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1')\n+R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020')\n read=lambda p:json.loads(p.read_text())\n sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()\n def main():\n@@ -14,7 +14,7 @@\n  for tid,g in enumerate(source['groups'],1):\n   p=g['primary'];row=dict(group_id=g['id'],original_track_id=tid,mask_id=p['id'],frame=p['frame'],mask_sha256=p['mask_sha256'],mask_relative_path=p['mask'])\n   (inc if g['id'] in kept else exc).append(row)\n- selection=dict(schema='automatic-room1-original-E1-v1',status='confirmed',version='auto-v2-room1-semantic-pr-20261019',qa_only=False,scene='room1',user_request='User-approved latest automatic scheme: exempt window/cabinet SegFormer top classes from stage 5 only; rerun original E1 and main R2',included=inc,excluded=exc,manifest_sha256=sha(R/'v1/seed_manifest.json'),selected_source_manifest=str(R/'v2/seed_manifest.json'),selected_source_manifest_sha256=complete['manifest_sha256'],selected_source_decisions=str(R/'v2/selection.json'),selected_source_decisions_sha256=complete['selection_sha256'],pr_filter_applied=True,semantic_pr_exempt_group_ids=decision['semantic_pr_exempt_group_ids'],user_retained_exceptions=[],baseline_sha256=read(R/'v2/measurements.json')['baseline_sha256'])\n+ selection=dict(schema='automatic-room1-original-E1-v1',status='confirmed',version='auto-v2-room1-swap34-20261020',qa_only=False,scene='room1',user_request='User-approved swap containment before coverage; exempt window/cabinet SegFormer top classes from stage 5 only; rerun original E1 and main R2',included=inc,excluded=exc,manifest_sha256=sha(R/'v1/seed_manifest.json'),selected_source_manifest=str(R/'v2/seed_manifest.json'),selected_source_manifest_sha256=complete['manifest_sha256'],selected_source_decisions=str(R/'v2/selection.json'),selected_source_decisions_sha256=complete['selection_sha256'],pr_filter_applied=True,semantic_pr_exempt_group_ids=decision['semantic_pr_exempt_group_ids'],user_retained_exceptions=[],baseline_sha256=read(R/'v2/measurements.json')['baseline_sha256'])\n  assert inc\n  p=C/'confirmed_selection.json';assert not p.exists();p.write_text(json.dumps(selection,ensure_ascii=False,indent=2)+'\\n')\n  (R/'e1_repair').mkdir(exist_ok=True);(R/'e1_repair/confirmed_selection.json').write_bytes(p.read_bytes())\n"
+    },
+    {
+      "file": "e1_repair/run_batch.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\run_batch.py",
+      "source_sha256": "a6b58007f699bb09526d22bcbf2df84b2e794344997292faddda393618f0d1f7",
+      "output_sha256": "a3073e751f88813cac39b7b965f8fc875679d337ec1c6705e37e52f118459d11",
+      "diff": "--- \n+++ \n@@ -7,7 +7,7 @@\n from scipy.optimize import linear_sum_assignment\n \n HERE=Path(__file__).resolve().parent\n-ROOT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')\n+ROOT=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')\n REPAIR_ROOT=ROOT/'validated'\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(LEGACY/'objectwise_repair_20261007'))\n"
+    },
+    {
+      "file": "e1_repair/run_case.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\run_case.py",
+      "source_sha256": "7c7727e78ba8cdb05ed8ba852c510e23bd6bcabc22884475a8dd74696d39e68f",
+      "output_sha256": "7c7727e78ba8cdb05ed8ba852c510e23bd6bcabc22884475a8dd74696d39e68f",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/run_history_core.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\run_history_core.py",
+      "source_sha256": "e294a07a564a2e5ed4f5dc8e315388c5e0a09fc1528ceadbb0d9d3869739f989",
+      "output_sha256": "3934fceb2034bd0467a9eee37a286ec07b80195afd26a320f421b02c49bc3f6d",
+      "diff": "--- \n+++ \n@@ -12,8 +12,8 @@\n from history_core_ops import core_claims,retarget_selection,strict_frame\n \n HERE=Path(__file__).resolve().parent\n-OUT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair/modified_repair')\n-STRICT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair/original_repair')\n+OUT=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair/modified_repair')\n+STRICT=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair/original_repair')\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n BATCH=Path('/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room0')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'));sys.path.insert(0,str(BATCH))\n@@ -21,7 +21,7 @@\n import fixed_surface_repair as f\n from joint_vote_ops import batch_delta\n from joint_batch_ops import merge_foregrounds\n-ROOTS={'room1':Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')}\n+ROOTS={'room1':Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')}\n protected={}\n def protect(path,expected=None):\n     path=Path(path);d=r.sha(path)\n"
+    },
+    {
+      "file": "e1_repair/run_observation_repair.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\run_observation_repair.py",
+      "source_sha256": "e63130e42dea6cbb35cd3466ab4475a9c6c40a7e3aeb457165885ade34ba73e1",
+      "output_sha256": "ce335576d89af8f924801df69e4f77e54369e2dbeec41c912f2d9e9a39066eaa",
+      "diff": "--- \n+++ \n@@ -7,7 +7,7 @@\n sys.path.insert(0,'/home/chenkejun/CVPR/experiments/mask_gate_no_foreign_v2_20261010/room0')\n import run_history_core as h\n from observation_ops import visible_samples,revise_all_history,keyset,strict_frame\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair/e1');O=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair');A=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair/modified_repair/room1');B=O/'original_repair/room1/full_track';NAMES=['E1_expanded_history']\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair/e1');O=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair');A=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair/modified_repair/room1');B=O/'original_repair/room1/full_track';NAMES=['E1_expanded_history']\n read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest();load=lambda p:dict(np.load(p))\n def dump(p,v):h.f.atomic_json(p,v)\n def emit(stage,**kw):v={'stage':stage,**kw,'unix':time.time()};dump(R/'progress.json',v);print(json.dumps(v),flush=True)\n"
+    },
+    {
+      "file": "e1_repair/run_selected.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\run_selected.py",
+      "source_sha256": "0eacc9721e0b34d62325a3bb64dad6bd1dc4558e7240e08322e00bbb386ba274",
+      "output_sha256": "6c3294deda5d7fae7bcc4807e3cc20029f04f0208d2a3721fb961631df4f9211",
+      "diff": "--- \n+++ \n@@ -1,7 +1,7 @@\n from pathlib import Path\n import os,json,subprocess,time,traceback\n C=Path(__file__).resolve().parent\n-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')\n+R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')\n PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'\n env={**os.environ,'OPENBLAS_NUM_THREADS':'4','OMP_NUM_THREADS':'4','PYTHONDONTWRITEBYTECODE':'1'}\n def save(name,v):\n@@ -16,6 +16,7 @@\n  run('prepare',[C/'prepare_auto_seeds.py'])\n  run('tests',[C/'run_stage.py','tests'])\n  run('input_audit',[C/'audit_selected_inputs.py'])\n+ run('reuse_tracking',[C/'reuse_exact_tracking.py'])\n \n \n  save('queue_v2_adoption.json',{'jobs':[]})\n"
+    },
+    {
+      "file": "e1_repair/run_stage.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\run_stage.py",
+      "source_sha256": "c7cecf56062ca74b5b2a0f862ffda6cfaddfefedbbaa9df42cfe0f540e32ada3",
+      "output_sha256": "c7cecf56062ca74b5b2a0f862ffda6cfaddfefedbbaa9df42cfe0f540e32ada3",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/run_strict_repair.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\run_strict_repair.py",
+      "source_sha256": "b7d60bbc63d762940dc6a3ab164c0bfa98708ac19e06390efd310a25fd1646a9",
+      "output_sha256": "002b9d931424db082529b283401a8313650fcf3657b32788041457e0b270b711",
+      "diff": "--- \n+++ \n@@ -7,14 +7,14 @@\n from strict_vote_ops import strict_frame_keys,frame_delta\n \n HERE=Path(__file__).resolve().parent\n-OUT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair/original_repair')\n+OUT=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair/original_repair')\n PRIOR=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline')\n LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')\n sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'))\n import run_repairs as r\n import fixed_surface_repair as f\n from joint_vote_ops import batch_delta\n-ROOTS={'room1':Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')}\n+ROOTS={'room1':Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')}\n CONDITIONS=('full_track',)\n FIELDS=r.FIELDS\n hashes={}\n"
+    },
+    {
+      "file": "e1_repair/strict_vote_ops.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\strict_vote_ops.py",
+      "source_sha256": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "output_sha256": "3b992383da39e56b44f8fdf8a8097250dbe50e2c44205a0290e3d28fa202e271",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/test_adaptive_core.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\test_adaptive_core.py",
+      "source_sha256": "b54436583bcca1ccd833b0707f7d8ff620e67600df67b808d5eb8cae2f126aa8",
+      "output_sha256": "b54436583bcca1ccd833b0707f7d8ff620e67600df67b808d5eb8cae2f126aa8",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/test_gate_v1.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\test_gate_v1.py",
+      "source_sha256": "aa1f95cf8db37917ce0bdabf734814628100bd2af57722f566ff171e9e819ca5",
+      "output_sha256": "aa1f95cf8db37917ce0bdabf734814628100bd2af57722f566ff171e9e819ca5",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/test_history_core.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\test_history_core.py",
+      "source_sha256": "052170a9cec7b6b0b36ab9e2810c6f655c35efa47c55c7d563bdd4274686245e",
+      "output_sha256": "052170a9cec7b6b0b36ab9e2810c6f655c35efa47c55c7d563bdd4274686245e",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/test_observation_ops.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\test_observation_ops.py",
+      "source_sha256": "075ff2dd2d97a8aa257ba9cb3b61dcc6c87c8856952d46e3c457bc7839062f14",
+      "output_sha256": "075ff2dd2d97a8aa257ba9cb3b61dcc6c87c8856952d46e3c457bc7839062f14",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/test_strict_repair.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\test_strict_repair.py",
+      "source_sha256": "831bb4f7e82361bbe201a4f5d9f3066a45d855bcce450148432de16ee56d2ffe",
+      "output_sha256": "831bb4f7e82361bbe201a4f5d9f3066a45d855bcce450148432de16ee56d2ffe",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/tracking_policy.json",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\tracking_policy.json",
+      "source_sha256": "13cdb79dc3ff6d49df87850de7aafc0df8f50b878790c448035c9e526988c2a7",
+      "output_sha256": "13cdb79dc3ff6d49df87850de7aafc0df8f50b878790c448035c9e526988c2a7",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/tracking_queue_v2.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\tracking_queue_v2.py",
+      "source_sha256": "bdba9cc10ea66fedc75bdf784ba4471c551f9f37fd673a12c975dd9293477fea",
+      "output_sha256": "c71fb865fea74644774b17cdce42aaf1052fb4785b7d64b964ec90e2e325f49b",
+      "diff": "--- \n+++ \n@@ -1,7 +1,7 @@\n \"\"\"Two independent E1 workers per available GPU; safely adopt existing jobs.\"\"\"\n from pathlib import Path\n import os,json,time,subprocess,hashlib,shutil,traceback\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')\n def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()\n def save(n,x):\n  p=R/n;t=p.with_suffix('.tmp');t.write_text(json.dumps(x,indent=2));t.replace(p)\n"
+    },
+    {
+      "file": "e1_repair/track_case.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica6_20261019\\room1\\e1_repair\\track_case.py",
+      "source_sha256": "c81602318824bd95039bcfe68cb206b3033bcf3cb849d006e3a9b4f69217de10",
+      "output_sha256": "c81602318824bd95039bcfe68cb206b3033bcf3cb849d006e3a9b4f69217de10",
+      "diff": ""
+    },
+    {
+      "file": "e1_repair/reuse_exact_tracking.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\room0_pr35_20261019\\e1_repair\\reuse_exact_tracking.py",
+      "source_sha256": "5b1823edebaaf28ad43d56c14ebf401c251c106b02b3f5b99692c5bf5dc72e10",
+      "output_sha256": "b75a6ef4ce41948b6cea70abd41c4c7d8a9bd6f8567c82cb37e21ee8e4276027",
+      "diff": "--- \n+++ \n@@ -3,8 +3,8 @@\n import copy,hashlib,json,time\n import numpy as np\n from PIL import Image\n-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_room0_pr35_20261019/e1_repair')\n-SOURCES=[Path('/data/chenkejun/CVPR/results/auto_v2_room0_20261019/e1_repair')]\n+C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')\n+SOURCES=[Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/room1/e1_repair')]\n read=lambda p:json.loads(Path(p).read_text())\n sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()\n def save(p,v):p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\\n')\n"
+    },
+    {
+      "file": "partial/partial_policy.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica8_partial_20261019\\partial_policy.py",
+      "source_sha256": "935b5ddf042d18ac34367e187a2ebf429318c1a5567cec08a54eb935edb33ee0",
+      "output_sha256": "935b5ddf042d18ac34367e187a2ebf429318c1a5567cec08a54eb935edb33ee0",
+      "diff": ""
+    },
+    {
+      "file": "partial/test_partial_policy.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica8_partial_20261019\\test_partial_policy.py",
+      "source_sha256": "deaaa3812a83fd14a5736ce7ba1d9d4b02f8b74b32167566658ff4c913e95093",
+      "output_sha256": "deaaa3812a83fd14a5736ce7ba1d9d4b02f8b74b32167566658ff4c913e95093",
+      "diff": ""
+    },
+    {
+      "file": "partial/controller.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica8_partial_20261019\\controller.py",
+      "source_sha256": "cadb47052da674f1d4c3e06e6eea8545238a5ca3ea08c2b4141e096861d8640b",
+      "output_sha256": "cadb47052da674f1d4c3e06e6eea8545238a5ca3ea08c2b4141e096861d8640b",
+      "diff": ""
+    },
+    {
+      "file": "partial/run_partial_replay.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica8_partial_20261019\\run_partial_replay.py",
+      "source_sha256": "4854133a608acd1243fb2be02d87cb9f508b62c366cdbea472fa0370a1d1f6ab",
+      "output_sha256": "4854133a608acd1243fb2be02d87cb9f508b62c366cdbea472fa0370a1d1f6ab",
+      "diff": ""
+    },
+    {
+      "file": "partial/evaluate_r2.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica8_partial_20261019\\evaluate_r2.py",
+      "source_sha256": "c28a3a051d10279050017da233300b17e58b3c359b26e6e68ea6aa634e3ca000",
+      "output_sha256": "c28a3a051d10279050017da233300b17e58b3c359b26e6e68ea6aa634e3ca000",
+      "diff": ""
+    },
+    {
+      "file": "partial/bootstrap.py",
+      "source": "D:\\Users\\刘雯静\\Downloads\\CVPR\\worktrees\\auto-v2\\experiments\\auto_v2\\replica8_partial_20261019\\bootstrap.py",
+      "source_sha256": "214827a14b3053aeda50082928dfd25ec4ce6fe1540ca0de3bf223e98b949550",
+      "output_sha256": "50251555b4d801dc5744bf1ba2b0453bed33b6de1207b917108b6b55046b1a66",
+      "diff": "--- \n+++ \n@@ -2,16 +2,11 @@\n from pathlib import Path\n import json,os,sys\n C=Path(__file__).resolve().parent\n-SCENE=os.environ['PARTIAL_SCENE']\n-SCENES=['room0','room1','room2','office0','office1','office2','office3','office4']\n-assert SCENE in SCENES\n-if SCENE=='room0':source_result=source_code='auto_v2_room0_pr35_20261019/e1_repair'\n-elif SCENE=='room2':source_result=source_code='e1_auto35_original_20261019'\n-else:source_result=source_code='auto_v2_replica6_20261019/'+SCENE+'/e1_repair'\n-SOURCE=Path('/data/chenkejun/CVPR/results')/source_result\n-SOURCE_CODE=Path('/home/chenkejun/CVPR/experiments')/source_code\n+SCENE='room1'\n+SOURCE=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/e1_repair')\n+SOURCE_CODE=Path('/home/chenkejun/CVPR/experiments/room1_swap34_20261020/e1_repair')\n COUNT=len(json.loads((SOURCE/'confirmed_selection.json').read_text())['included'])\n-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019')/SCENE\n+R=Path('/data/chenkejun/CVPR/results/room1_swap34_20261020/partial')\n MAIN=Path('/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009')\n sys.path.insert(0,str(MAIN))\n from instance_repair.cli import verify_sources,LockedModules\n"
+    }
+  ]
+}

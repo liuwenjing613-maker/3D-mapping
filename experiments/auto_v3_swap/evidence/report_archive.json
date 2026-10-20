@@ -1,0 +1,332 @@
+{
+  "status": "PASS",
+  "code_and_report_sha256": {
+    "code": {
+      "archive_report.py": "1b553002ca61363c9d3be53b153eb2286141a747f512270f1001a4cc6d35c0d9",
+      "audit_tracking.py": "6e817f5ac014691106adee2117644dd06ede5bc596a838e31b70a27499174047",
+      "build_experiment.py": "429e862191fa617867e7efe6127235f92d01a0bb53bbc1ac364674622a11ffdb",
+      "build_page.py": "e1d2177a63881d4c67c0460435c9ce9880563c522f4a05ac93a16eaba5a7e0db",
+      "collect_results.py": "2bd615ee0ab724a77b22d025e31a8b80454e9da7f9f590f0362edb5ed4a93765",
+      "control.py": "2578d1e7b8e4c0ead830729fec40928b9613aefbd1b5edc99801f4c2ab4992c8",
+      "controller.py": "481ebe39aa896ab2ed5e929aee75b6a0711ab5a6637f5bacd312e10ffa41253e",
+      "export_ply.py": "efa9eb771b0dc813f9a2f53e1fc9fc188608ff73838b634a6dd5305bb6bf1b23",
+      "finish_delivery.py": "940664faa5cd5373129396fba384b53033f822f44688135bbc6a36caba6490f4",
+      "inspect_sources.py": "c48917b7e85a18c26eba07ebf8c51242128baa5ae52fcb0611b1fc50bebd182c",
+      "live_progress.py": "2f57b1a4b24836925fa09d08d62e0b2cf21475800ef18700db05781463b19bbf",
+      "preflight.py": "174f8f11d95e11e571b974836f0cf44aa7550ecc9d5154e01f8ee61cb3a4de52",
+      "publish.py": "e402b11b7f061a05a50af15211a70fb1a0c27c707c7476fafb4ef0c8c4f34760",
+      "select_all.py": "153803394bb5c468f66219fb005df051739ad20ba6a32e01843571dbd4cd1aff",
+      "start_office4_early.py": "58c87df2bf0a59b2dc95fcc55dce77ade2f861475a25fca3235a213bd0a9748f",
+      "verify_delivery.py": "2b570764561f20b341ea9051b3db36efffb4bc3566468908c1e2199e9c47448b",
+      "verify_selection.py": "b0597669f1a10da44b3a866555f9a588c9788e45daf933dcdce61ebbe5c625ca",
+      "web/app.js": "f2f7b29379c03bc9e35af229c06dbce005419819a6de5803f424199e90fd7b82",
+      "web/index.html": "b78a3d5de57fc3fbd332407be401e316dcbd9e7daab15de3f78e82b08cf667b5",
+      "web/style.css": "9b5bfc4ca307a37ae8c2bcd39ee425e20275fccb35d0112b0532d169092e3021"
+    },
+    "report": {
+      "replica8_swap34.html": "b78a3d5de57fc3fbd332407be401e316dcbd9e7daab15de3f78e82b08cf667b5",
+      "swap34/app.js": "f2f7b29379c03bc9e35af229c06dbce005419819a6de5803f424199e90fd7b82",
+      "swap34/data.json": "8d37567a14ebcc0b9c202921ba53aa54f7fe85d38e6b4ff846d3a827fb5959d6",
+      "swap34/delivery_audit.json": "bec7ec7ab522701a8654e8af6f0e9bc01cacb43b52322618e44396ee3d9e9b36",
+      "swap34/metrics.csv": "aef238f2652872f7033237c1dee711a898f78db166be4f2f30ec1ac0fbb3b9ba",
+      "swap34/reports/office0/association.json": "10328961eb4b0c30b791109fadc2c7ae957444c351747aee1e694e9971038240",
+      "swap34/reports/office0/order.json": "cac5bc8a8f58813a7cd28c565dfc45aa9cf8a65e3dd61148f300a5bfbf939298",
+      "swap34/reports/office0/selection.json": "da653de9c8c5495445746222fd7dcd7440b898e0c406c09b05a370e8dd4516ae",
+      "swap34/reports/office0/source_locks.json": "29e5f07e6e682f2a7123eaf03734efbda09e89543df9e6978a1050516898a746",
+      "swap34/reports/office0/tracking_difference_audit.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "swap34/reports/office1/association.json": "ccbd126c965529ecd7ebd38f014a2e6b8a91a059e60113b8e3a47d38f6c9cefa",
+      "swap34/reports/office1/order.json": "81efd6e7959ab81afb2b58abaa7f62087735caef5f4cb76a11507a3791092923",
+      "swap34/reports/office1/selection.json": "6c852f5947a4548f4b0873362f10ebd2cad1b0543bf394b213738d9bbaa10dbc",
+      "swap34/reports/office1/source_locks.json": "bca778f763a457501b275a295e6f555641d8595ffbaff37332c1e6e63ed42e6a",
+      "swap34/reports/office1/tracking_difference_audit.json": "a10e2f91aaec3bef8aea93bea6a66d2695d0cada5642d0bdf17d85d4ff2917e3",
+      "swap34/reports/office2/association.json": "a2a3f7a2c5c646c017ee28388c94d2a063170ffaba04ad60fdf8c7b61b6214a0",
+      "swap34/reports/office2/order.json": "d3746e20446bf1aa1f13e584dcf823a9b6494c3725a3b7204b1db15d2fc8f239",
+      "swap34/reports/office2/selection.json": "69e47ae6fcd533ed69a6c2868b16a397d5455db88cb6fa5dc63a1093bce967fa",
+      "swap34/reports/office2/source_locks.json": "41b350dbeb7f0227eae1f2d6d2ed979fcad233e4ed23547e4e94d847dbd2e2de",
+      "swap34/reports/office2/tracking_difference_audit.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "swap34/reports/office3/association.json": "7542bff4613a57c81f9e4d1868829ab3130f53c88b886ae9f592ed604a177c3e",
+      "swap34/reports/office3/order.json": "8a0151307e030fade16f947a0aaa9ac94054cc2db9db3d584daff74a5774dda1",
+      "swap34/reports/office3/selection.json": "b50df9d77ca8b920001077d095a1f32d51b643704fd19f90d3e5767b9dbf6697",
+      "swap34/reports/office3/source_locks.json": "799c6f6e76473b6dbdca832626a0252afe73dfed3d497a4ec2488df55a424caa",
+      "swap34/reports/office3/tracking_difference_audit.json": "c069c05a8960799eca291d06adc4aac8088b8ef7477a0972eed256e655c0809b",
+      "swap34/reports/office4/association.json": "92cd7cde4c9e77c4660ca5150726bb41ed022018af8af46ed60d31b47f16fc35",
+      "swap34/reports/office4/order.json": "662aaa7d454e3e4760e28d01c742d2d63a5fdb80b56d2111c5d0a9c849630620",
+      "swap34/reports/office4/selection.json": "eec11a91a66341a4593f264c955aadaee682cbd0ab2073445b94965a20781872",
+      "swap34/reports/office4/source_locks.json": "0bfb46815f255ad4df44ee26142c22dad959958d6c1d39824908ab6f6c35641e",
+      "swap34/reports/office4/tracking_difference_audit.json": "15ea30effd53ad49d77da883cdca30f6e225b437ee1a8a7214ff59ab3a684d61",
+      "swap34/reports/room0/association.json": "ca3a70df6079401359c06a6f75e7c26c3f803ee3070cd36d529ba919419d1699",
+      "swap34/reports/room0/order.json": "17ee8e0fc686644c14a90c916cbe89358698efcdad10c9d7f21db2001ad79ac2",
+      "swap34/reports/room0/selection.json": "1e670b21a06e71dcf011e9593d34f9e0f1bcb5d31de7e160848de73aa4fa56c0",
+      "swap34/reports/room0/source_locks.json": "af83c7e4931413200680b8d22ce75787404d8f54c1af331c9ce29ed8ddf2d990",
+      "swap34/reports/room0/tracking_difference_audit.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "swap34/reports/room1/association.json": "ab696806f99947c9ce6142ca9a53628cefa0c99574d5d198861e7527296f38be",
+      "swap34/reports/room1/order.json": "778f571bac8626d84368991f97d506939814357e265bd5d62e4c1114dec5eb9d",
+      "swap34/reports/room1/selection.json": "b598de8b8ff934f2f6ab5df78842602873e03c8d7be2fd245ae5fa622f44887c",
+      "swap34/reports/room1/source_locks.json": "8558fa61dfc29f4a7dcde47b27cc9f1f529938605c18946263c2bd8bdf13b86a",
+      "swap34/reports/room1/tracking_difference_audit.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "swap34/reports/room2/association.json": "a74bb127919782bda1aa22a103e959b5f42fb1bf2e837bb321524e98d2ccb27d",
+      "swap34/reports/room2/order.json": "7b755a49ab57e6270856d73afda6990c579521b792f3a3e6c0e38f2261c7ce94",
+      "swap34/reports/room2/selection.json": "95ef17751ba8d30ada1d07f87e8e3e1d8a8d5757b4c42f8e7ed30a9f282b1fe6",
+      "swap34/reports/room2/source_locks.json": "0ae36ed104ceaf27ea697945e170ad5bcea68725ca6af984f16ce463466655fa",
+      "swap34/reports/room2/tracking_difference_audit.json": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "swap34/selection_audit.json": "561bc5ff86d97a71722fd32aa052973ba959be17400073f3929806ae7d1548dd",
+      "swap34/style.css": "9b5bfc4ca307a37ae8c2bcd39ee425e20275fccb35d0112b0532d169092e3021"
+    }
+  },
+  "PLY_symlinks": {
+    "swap34/ply/room0/room0_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room0/room0_no_repair_instances.ply",
+      "sha256": "2c5deab28cbb9e27b005086438947ed92f103537edfe913ab408f91fa8066fd6"
+    },
+    "swap34/ply/room0/room0_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room0/room0_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "93ae37ab32beb4497aa160b756da10197edbbe00602c509aaa42c78eb7a0553b"
+    },
+    "swap34/ply/room0/room0_auto35_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room0/room0_auto35_E1_instances.ply",
+      "sha256": "756bc73c8e2c985289ceae67b62933e24f093802593b5e6bc4abdedb7a0c7089"
+    },
+    "swap34/ply/room0/room0_auto35_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room0/room0_auto35_E1_three_states_black_yellow_red.ply",
+      "sha256": "bf3535dd057694da684889cb0a291cd8849f8eb3ec85db5529ff8020d85ddcb1"
+    },
+    "swap34/ply/room0/room0_auto35_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room0/room0_auto35_partial_E1_instances.ply",
+      "sha256": "a1ece2effb02d71c2710ef66a0a2d2a85b4f7c4dfe04045d7249f319f71608fb"
+    },
+    "swap34/ply/room0/room0_auto35_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room0/room0_auto35_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "7068a61d9b8ea4df5c77d809f743034902e501465784a0eda16c5337b48879e4"
+    },
+    "swap34/ply/room1/room1_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_E1_ply_20261020/room1_no_repair_instances.ply",
+      "sha256": "3a2d21d68b0c49afe60634851619a7d4a77629d9238a4d1acf294aaa07532d44"
+    },
+    "swap34/ply/room1/room1_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_E1_ply_20261020/room1_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "72bcda9897999f79dc0d4d47a2212461509ebaf55f9da276e5c9e543abe72764"
+    },
+    "swap34/ply/room1/room1_auto24_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_E1_ply_20261020/room1_auto24_E1_instances.ply",
+      "sha256": "597ea4598b822e88037dc86e9abefcecdc02075b59e36b1ed6fee3673aa2c239"
+    },
+    "swap34/ply/room1/room1_auto24_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_E1_ply_20261020/room1_auto24_E1_three_states_black_yellow_red.ply",
+      "sha256": "4529210b6cc885a1d173a707bd27fb8ef391f97bd6119c7f26546fbf4045234c"
+    },
+    "swap34/ply/room1/room1_auto24_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_partial_E1_ply_20261020/room1_auto24_partial_E1_instances.ply",
+      "sha256": "26865e57058a2c9a5017708142e88b4296d72020200d28545541e0ef4138a06f"
+    },
+    "swap34/ply/room1/room1_auto22_swap34_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_swap34_20261020/ply/room1_auto22_swap34_E1_instances.ply",
+      "sha256": "f8127cca12fe4b630c6f1d6cd9e5f869f1afe2f3c03f6bf41cb39da59e9abba2"
+    },
+    "swap34/ply/room1/room1_auto22_swap34_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_swap34_20261020/ply/room1_auto22_swap34_E1_three_states_black_yellow_red.ply",
+      "sha256": "d17b03bfee6aac648a7582b6a0e74576ade8c0ee395d827e6db8d8d18b4c09b2"
+    },
+    "swap34/ply/room1/room1_auto22_swap34_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_swap34_20261020/ply/room1_auto22_swap34_partial_E1_instances.ply",
+      "sha256": "6206d64cfa1e834f5df8ac630b41ff1011475da233975c0ab834fd57009f9569"
+    },
+    "swap34/ply/room1/room1_auto22_swap34_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/room1_swap34_20261020/ply/room1_auto22_swap34_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "c3509b2af132366f088ad19adc0b45d9e67711a07a2a7bc4f3fbbb3e5e406939"
+    },
+    "swap34/ply/room2/room2_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room2/room2_no_repair_instances.ply",
+      "sha256": "fef24500da6b34b75224e7141210558b314bbe5f7c2673808b5ff42606189a90"
+    },
+    "swap34/ply/room2/room2_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room2/room2_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "f43236cba75d8745e9433b0ea65b4a6e7fad5ca054aaa63166e074e7938056d2"
+    },
+    "swap34/ply/room2/room2_auto35_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room2/room2_auto35_E1_instances.ply",
+      "sha256": "bbecdac65661e65cffd718a5d0b34e2b111c32ce7a8229d453f8f38ef8a6b388"
+    },
+    "swap34/ply/room2/room2_auto35_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room2/room2_auto35_E1_three_states_black_yellow_red.ply",
+      "sha256": "8fc145c244524ee30c8710e767fdca0370c6c29fe412853440374dfda976f779"
+    },
+    "swap34/ply/room2/room2_auto35_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room2/room2_auto35_partial_E1_instances.ply",
+      "sha256": "526388ae0ca6d57482ad6cfeade4ce4de1a720379f6ced956db467358ee6caf0"
+    },
+    "swap34/ply/room2/room2_auto35_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/room2/room2_auto35_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "2f70661a6185eb41eba03b2867874d28606ff50f17c487becbe0f74600de0afc"
+    },
+    "swap34/ply/office0/office0_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office0/office0_no_repair_instances.ply",
+      "sha256": "892dddc8c16f5e6f72c14607a26d88cc4a855262ca4b56c73651d85f088207c5"
+    },
+    "swap34/ply/office0/office0_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office0/office0_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "52ee8f850c61f13695ede4924eebbe938f5e597710b2062f69b4ce73f2488193"
+    },
+    "swap34/ply/office0/office0_auto19_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office0/office0_auto19_E1_instances.ply",
+      "sha256": "b53c6497156253ba8f4017876cb66efaf42bbb8bdc6a4a7373adfa2f0069347d"
+    },
+    "swap34/ply/office0/office0_auto19_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office0/office0_auto19_E1_three_states_black_yellow_red.ply",
+      "sha256": "705b4c7a79fc9e5d8c887839b265d4cc2d98aa187030733fffd30f45048cbcf8"
+    },
+    "swap34/ply/office0/office0_auto19_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office0/office0_auto19_partial_E1_instances.ply",
+      "sha256": "918c8bb44f81b73dd7b29dd7dabef50f47c9ae2050b911ba50bea1818e3465b1"
+    },
+    "swap34/ply/office0/office0_auto19_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office0/office0_auto19_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "c6a821c947d61b94d0653edf0e613659a8eebc408000900123b000d017f64079"
+    },
+    "swap34/ply/office1/office1_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office1/office1_no_repair_instances.ply",
+      "sha256": "95bb6f51b64353db55f1dbab9da76128aeb11654e75b80a2413f2d7c073558e8"
+    },
+    "swap34/ply/office1/office1_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office1/office1_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "12fda09b0f422edff4b727e02a202216b3bf385c9935e5591258ee0bbb1df7b9"
+    },
+    "swap34/ply/office1/office1_auto23_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office1/office1_auto23_E1_instances.ply",
+      "sha256": "1ad279824897dd3181d195ed903fc44446a7b3232c90d1ecee8a45c490e04786"
+    },
+    "swap34/ply/office1/office1_auto23_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office1/office1_auto23_E1_three_states_black_yellow_red.ply",
+      "sha256": "b1bc96ef74127b1c88a1be17f97c17504f807a4f27825dcc54627839878ba2fd"
+    },
+    "swap34/ply/office1/office1_auto23_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office1/office1_auto23_partial_E1_instances.ply",
+      "sha256": "afff2b5f9517f1ca1253ea1835c6c75878b01dda31df38f39752d7d928955359"
+    },
+    "swap34/ply/office1/office1_auto23_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office1/office1_auto23_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "504fda99595e94cc6a0192ba39d8696ac87ba7cd953d8e960c01d80f2a972490"
+    },
+    "swap34/ply/office1/office1_auto22_swap34_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/ply/office1_auto22_swap34_E1_instances.ply",
+      "sha256": "bc3cb88b5bd23e618d6a65f60f31f72616681ec8e37712b4b513758abff84f72"
+    },
+    "swap34/ply/office1/office1_auto22_swap34_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/ply/office1_auto22_swap34_E1_three_states_black_yellow_red.ply",
+      "sha256": "439c0e16f320eb67b8636d60214fe6b29cc2463e6720eda15bb3b51b59fe3e1e"
+    },
+    "swap34/ply/office1/office1_auto22_swap34_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/ply/office1_auto22_swap34_partial_E1_instances.ply",
+      "sha256": "c335d8a5dbf478d80e6616742516f979603fb3d9ab4b2cd84b9f64391abd85e1"
+    },
+    "swap34/ply/office1/office1_auto22_swap34_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/ply/office1_auto22_swap34_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "6c7ee3396d5b80755bf2ded8ef7f7896bbe23b8ec5771e0a2efde9a7046a24be"
+    },
+    "swap34/ply/office2/office2_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office2/office2_no_repair_instances.ply",
+      "sha256": "9aa4dd4f37369be88b749e8471b15206ca4089107f2cb4cf1f5127cfcb4ac991"
+    },
+    "swap34/ply/office2/office2_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office2/office2_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "2cbe92d6e43dd42af598f1283ed1026da2ac959c7532dc7529fe3f1515af4c3f"
+    },
+    "swap34/ply/office2/office2_auto23_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office2/office2_auto23_E1_instances.ply",
+      "sha256": "92ca86bc567c3fc21cc77e7c62f36c64a4ca9620b35b85b7f46319f0089c564f"
+    },
+    "swap34/ply/office2/office2_auto23_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office2/office2_auto23_E1_three_states_black_yellow_red.ply",
+      "sha256": "8728838621b6bcca3e9feb09f3826adbff7ff4f0bb2643318f6c3b67b1c254a6"
+    },
+    "swap34/ply/office2/office2_auto23_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office2/office2_auto23_partial_E1_instances.ply",
+      "sha256": "6eb3b289806cd2f0e14ebfe30e84e8ba6eb8d3065d603672f46fc02eeea593a7"
+    },
+    "swap34/ply/office2/office2_auto23_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office2/office2_auto23_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "8e32fc0f2f19d86b0244b61ae8b1b3cfa5b6051973938b70ff6b8d6803e2ada8"
+    },
+    "swap34/ply/office3/office3_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office3/office3_no_repair_instances.ply",
+      "sha256": "66fa70cfbe3f4ddbbc3da82b4e82e23f1a507f9773b7f151edc4c57d4d615485"
+    },
+    "swap34/ply/office3/office3_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office3/office3_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "58e95b052b7cf6a28122494c9823879413b70d749a4d40ccf258671c83db68ae"
+    },
+    "swap34/ply/office3/office3_auto23_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office3/office3_auto23_E1_instances.ply",
+      "sha256": "9e999fefcb79587d2c0e851454d5595898fd0a44c63e0367df240a06957aa08d"
+    },
+    "swap34/ply/office3/office3_auto23_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office3/office3_auto23_E1_three_states_black_yellow_red.ply",
+      "sha256": "5aca9fc4584d007ccadba43c63acf7aed8f30821945689ea8e47980e812f257f"
+    },
+    "swap34/ply/office3/office3_auto23_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office3/office3_auto23_partial_E1_instances.ply",
+      "sha256": "d0c09a8526f17d91dc0e2bbf026a35e48495c3e353fca72960860fbf8a07ac95"
+    },
+    "swap34/ply/office3/office3_auto23_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office3/office3_auto23_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "29b6387c5ca3f75c09d61d5faa225a14d392b24cb63078ffb3ee0efc22206f1e"
+    },
+    "swap34/ply/office3/office3_auto22_swap34_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/ply/office3_auto22_swap34_E1_instances.ply",
+      "sha256": "bd4ac3737c1048be378d0dc6b3fc622b08717d783c2622ef55f4534e1093cc80"
+    },
+    "swap34/ply/office3/office3_auto22_swap34_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/ply/office3_auto22_swap34_E1_three_states_black_yellow_red.ply",
+      "sha256": "4bd9ec0fca3129c024794ed5be2202b8d12f6e0f09c7d98623391e95a7d1a4b2"
+    },
+    "swap34/ply/office3/office3_auto22_swap34_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/ply/office3_auto22_swap34_partial_E1_instances.ply",
+      "sha256": "bf68bc1793972b9027d4f877b17bd0a419806c1a1c877f0503ba1e12ecc579d0"
+    },
+    "swap34/ply/office3/office3_auto22_swap34_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/ply/office3_auto22_swap34_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "f08f7e78db9ddf45e1092eb72b5e89caa334f4b9617cb050fc1b16555e9cfe7b"
+    },
+    "swap34/ply/office4/office4_no_repair_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office4/office4_no_repair_instances.ply",
+      "sha256": "b3fab4d559538417af74f1e124a43840514de072e3038e77af3ca09afdc8357e"
+    },
+    "swap34/ply/office4/office4_no_repair_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office4/office4_no_repair_three_states_black_yellow_red.ply",
+      "sha256": "10c600ac4e74b637f005c39434851a8576834dd820d1344b0363972e7498ed54"
+    },
+    "swap34/ply/office4/office4_auto19_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office4/office4_auto19_E1_instances.ply",
+      "sha256": "5617ce64da492a09a0c1c4dd3b54fe9c64fd06f3af388359859f45976b8c836d"
+    },
+    "swap34/ply/office4/office4_auto19_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office4/office4_auto19_E1_three_states_black_yellow_red.ply",
+      "sha256": "f4d2587b99ead4e59dad28fca902197b549ce76cdb883e167c4b4f6e1bfc5ad3"
+    },
+    "swap34/ply/office4/office4_auto19_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office4/office4_auto19_partial_E1_instances.ply",
+      "sha256": "e720ba9e6c7a80030563335d4693692b3623663b180f86834c375c0d6f06c686"
+    },
+    "swap34/ply/office4/office4_auto19_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica7_ply_20261020/office4/office4_auto19_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "eccdc273a0df4440ddd72d0614d41d24b44a17c2a7cc885a190d5080a80b0c45"
+    },
+    "swap34/ply/office4/office4_auto18_swap34_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/ply/office4_auto18_swap34_E1_instances.ply",
+      "sha256": "96945f14ab9c4a459797cba249de277bce58ea4ebed3ebfb911f0e0654ab7fcb"
+    },
+    "swap34/ply/office4/office4_auto18_swap34_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/ply/office4_auto18_swap34_E1_three_states_black_yellow_red.ply",
+      "sha256": "f9c44e1cd13225197fe1563cd48e415b6d24f28bd2de5226a441aecd5a2c2e43"
+    },
+    "swap34/ply/office4/office4_auto18_swap34_partial_E1_instances.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/ply/office4_auto18_swap34_partial_E1_instances.ply",
+      "sha256": "6e06a36a2b49dd4419f2727e1e2293bcd712e0e622be7fb8379419fdaa5f0104"
+    },
+    "swap34/ply/office4/office4_auto18_swap34_partial_E1_three_states_black_yellow_red.ply": {
+      "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/ply/office4_auto18_swap34_partial_E1_three_states_black_yellow_red.ply",
+      "sha256": "7d889d8a570e639edc2d35714d478c44e8afc66f99dff84b54486854d57d91e0"
+    }
+  },
+  "original_deployment_unchanged_except_documented_office4_scheduler": true,
+  "orchestration_update_sha256": "6477a725cdd1fe8ac833515af0199bf10f75253f7c83e41478246fe2fc827740"
+}

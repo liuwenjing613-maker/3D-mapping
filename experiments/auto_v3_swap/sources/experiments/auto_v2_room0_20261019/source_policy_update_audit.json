@@ -1,0 +1,18 @@
+{
+  "reason": "Cross-view groups exposed an unenforced pre-existing SAM-only invariant; preserve guard and enforce source precedence, then apply explicit M0466 user correction.",
+  "user_quote": "M0466不采用SAM结果，因为不是柜子",
+  "room2_reference_regression": {
+    "masks": 836,
+    "groups": 202,
+    "new_exclusions": 0
+  },
+  "tests": 4,
+  "files": {
+    "grouping_r2\\compute.py": "974eb23d2f844e912932588f8d02b56abb25cf340262c92c551755da7e1d0214",
+    "grouping_r2\\config.json": "6600d1872227481297118505a1ef738f4a8461bb01d39f6c0e4072fccafcaa84",
+    "grouping_r2\\grouping_rules.py": "138ce66124fadb7622ae47404b34b228c8a5a87959e228b2776f3dad93ddb851",
+    "grouping_r2\\source_overrides.json": "66df10b9d86841aad0b97ca43f54da0a8b2fdb7ab0bee8c1157f57a2a9ef5756",
+    "grouping_r2\\source_policy.py": "d8ac92328d4a1a07866d3671f52b0eedf6105ec91c9a5f111864ad2243ef51df",
+    "grouping_r2\\test_source_precedence.py": "b2b0527853dc85c5d74651ae89cd9f850171b6fb92ca7c319e5e1f297d7ac361"
+  }
+}

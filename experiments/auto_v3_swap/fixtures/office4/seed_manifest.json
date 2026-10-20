@@ -1,0 +1,2816 @@
+{
+  "status": "automatic_v2_complete",
+  "tracking_requested": false,
+  "map_write": false,
+  "rule": {
+    "schema": "same-instance-seeds-edge-noise-v5",
+    "scene": "office4",
+    "input_selection": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office4/semantic_route/selection.json",
+    "iou": 0.25,
+    "comparison": "strictly greater than",
+    "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",
+    "crop_contact_policy": "exclude any mask touching an artificial source-crop edge before grouping; original image borders alone are allowed",
+    "crop_filter_applies_to": "all source-eligible masks including semantic SAM; no CropFormer fallback for window/cabinet",
+    "previous_grouping": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office4/grouping_r3/grouping.json",
+    "exact_duplicate_key": "frame + identical full-image binary mask; retain every original occurrence",
+    "grouping": "descending TSDF support count; compare remaining masks only to the fixed primary seed; no transitive expansion",
+    "source_policy": "window/cabinet SAM-only; any prior semantic CropFormer replacement is global across all ROI occurrences",
+    "policy_order": "SAM-only source eligibility, artificial crop filter, area and edge morphology filter, ordinary 3D IoU grouping, maximum TSDF support count",
+    "primary_seed": "largest unique TSDF support count among source-eligible masks",
+    "tie_break": "ascending frame, model index, full-mask digest; no area ranking",
+    "tracking_requested": false,
+    "map_write": false,
+    "GT_used": false,
+    "noise_filter": {
+      "area_lt": 100,
+      "max_core_fraction": 0.05,
+      "thin_radius": 3,
+      "thin_min_extent": 80,
+      "sparse_radius": 8,
+      "sparse_max_bbox_fill": 0.1,
+      "sparse_min_extent": 80,
+      "large_sparse_radius": 12,
+      "large_sparse_max_bbox_fill": 0.05,
+      "large_sparse_min_extent": 200
+    },
+    "noise_policy": "whole-mask exclusion; no pixel erosion; screen all previous crop-safe eligible masks including SAM"
+  },
+  "manual_source_corrections": {
+    "scene": "office4",
+    "corrections": [],
+    "user_quote": null
+  },
+  "groups": [
+    {
+      "id": "G015",
+      "primary": {
+        "frame": 1010,
+        "area": 94694,
+        "bbox": [
+          252,
+          25,
+          726,
+          268
+        ],
+        "digest": "1c72cd92a2146435be090d827bda9e5465a3515a141b4ebdb86db82fbc8c0adb",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-U0001_v3_f001010_tile1",
+            "ROI": "ROI-U0001",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1010,
+            "model": 0,
+            "label": 12,
+            "candidate_id": "ccef574ae92f21320214",
+            "source_index": 438,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001010.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-U0001_v3_f001010_tile1",
+          "ROI": "ROI-U0001",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1010,
+          "model": 0,
+          "label": 12,
+          "candidate_id": "ccef574ae92f21320214",
+          "source_index": 438,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001010.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 32852,
+        "index": 37,
+        "id": "M0039",
+        "group": 14,
+        "mask": "masks/M0039.png",
+        "mask_sha256": "535b385fb46578ae1915292afc5ea4845c51661f6043551ee9a4bb65008d70ef",
+        "support_sha256": "4a6da012e65f97c0e88ac4fa949bc86e4ed53dadb26b04e4d7bc04ee63d80eac",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "ccef574ae92f21320214"
+        ],
+        "noise_features": {
+          "area": 94694,
+          "bbox_width": 474,
+          "bbox_height": 243,
+          "bbox_area": 115182,
+          "extent": 474,
+          "bbox_fill": 0.8221249848066539,
+          "components": 1,
+          "largest_component": 94694,
+          "max_radius": 113.1591799192624,
+          "p95_radius": 98.0,
+          "core_pixels": {
+            "2": 92056,
+            "3": 90718,
+            "8": 84231,
+            "12": 79182
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G015",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0070"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1055,
+          "members": [
+            64
+          ],
+          "representative": 64
+        }
+      ],
+      "original_track_id": 15
+    },
+    {
+      "id": "G029",
+      "primary": {
+        "frame": 1585,
+        "area": 10809,
+        "bbox": [
+          765,
+          399,
+          880,
+          674
+        ],
+        "digest": "a96b2cf4fe36e18526c4084d335636d73c164385bd9ec1d63c5cf9545c78f248",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-T0020_v1_f001585_context",
+            "ROI": "ROI-T0020",
+            "uid": "office4-98326b8b171016b8",
+            "frame": 1585,
+            "model": 0,
+            "label": 8,
+            "candidate_id": "e94355f8296147db541f",
+            "source_index": 852,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001585.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-T0020_v1_f001585_context",
+          "ROI": "ROI-T0020",
+          "uid": "office4-98326b8b171016b8",
+          "frame": 1585,
+          "model": 0,
+          "label": 8,
+          "candidate_id": "e94355f8296147db541f",
+          "source_index": 852,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001585.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 3832,
+        "index": 87,
+        "id": "M0102",
+        "group": 28,
+        "mask": "masks/M0102.png",
+        "mask_sha256": "76ac1cf8a108b6b0858dbdb2bb90ae8879c003478f583e48dc866bb4df1db60c",
+        "support_sha256": "316030139638305b77f9f32592b4022eccd73df6881a2ef397357ee8faac4ae7",
+        "rois": [
+          "office4-98326b8b171016b8"
+        ],
+        "candidate_ids": [
+          "e94355f8296147db541f"
+        ],
+        "noise_features": {
+          "area": 10809,
+          "bbox_width": 115,
+          "bbox_height": 275,
+          "bbox_area": 31625,
+          "extent": 275,
+          "bbox_fill": 0.34178656126482215,
+          "components": 1,
+          "largest_component": 10809,
+          "max_radius": 24.166091947189145,
+          "p95_radius": 19.894688603614476,
+          "core_pixels": {
+            "2": 9233,
+            "3": 8374,
+            "8": 4976,
+            "12": 2943
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G029",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0103",
+        "M0124",
+        "M0128"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1560,
+          "members": [
+            109
+          ],
+          "representative": 109
+        },
+        {
+          "frame": 1650,
+          "members": [
+            88
+          ],
+          "representative": 88
+        },
+        {
+          "frame": 1660,
+          "members": [
+            113
+          ],
+          "representative": 113
+        }
+      ],
+      "original_track_id": 29
+    },
+    {
+      "id": "G030",
+      "primary": {
+        "frame": 1005,
+        "area": 7439,
+        "bbox": [
+          500,
+          268,
+          594,
+          500
+        ],
+        "digest": "e13f101cea414df91fce6ab64185791523002185ab15587404c167b201f97edd",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-T0002_v2_f001005_balanced",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1005,
+            "model": 0,
+            "label": 6,
+            "candidate_id": "29d53a03d8254bf32d25",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-T0002_v2_f001005_context",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1005,
+            "model": 0,
+            "label": 6,
+            "candidate_id": "29d53a03d8254bf32d25",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-T0002_v2_f001005_tile5",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1005,
+            "model": 0,
+            "label": 6,
+            "candidate_id": "29d53a03d8254bf32d25",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-T0002_v2_f001005_balanced",
+          "ROI": "ROI-T0002",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1005,
+          "model": 0,
+          "label": 6,
+          "candidate_id": "29d53a03d8254bf32d25",
+          "source_index": 411,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 3807,
+        "index": 89,
+        "id": "M0104",
+        "group": 29,
+        "mask": "masks/M0104.png",
+        "mask_sha256": "47a3d21194c38f873cf3027ddabb51ce788929d10d6ea28de200d49bf729c88c",
+        "support_sha256": "678cfeac6181c875ad720591a2e86a313dc893427ddff63a0ac8a2611c5ce518",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "29d53a03d8254bf32d25"
+        ],
+        "noise_features": {
+          "area": 7439,
+          "bbox_width": 94,
+          "bbox_height": 232,
+          "bbox_area": 21808,
+          "extent": 232,
+          "bbox_fill": 0.3411133528980191,
+          "components": 2,
+          "largest_component": 7273,
+          "max_radius": 26.832815729997478,
+          "p95_radius": 19.235384061671343,
+          "core_pixels": {
+            "2": 6121,
+            "3": 5387,
+            "8": 3102,
+            "12": 1948
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G030",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0105",
+        "M0106",
+        "M0110"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1010,
+          "members": [
+            90
+          ],
+          "representative": 90
+        },
+        {
+          "frame": 1055,
+          "members": [
+            91
+          ],
+          "representative": 91
+        },
+        {
+          "frame": 1070,
+          "members": [
+            95
+          ],
+          "representative": 95
+        }
+      ],
+      "original_track_id": 30
+    },
+    {
+      "id": "G032",
+      "primary": {
+        "frame": 505,
+        "area": 6522,
+        "bbox": [
+          18,
+          208,
+          185,
+          341
+        ],
+        "digest": "6cbc99040fca9ba9dc45a012276fcee427ccfee930415042a3448697f4778823",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-U0015_v3_f000505_context",
+            "ROI": "ROI-U0015",
+            "uid": "office4-61cb12e1ecb5bd8a",
+            "frame": 505,
+            "model": 0,
+            "label": 4,
+            "candidate_id": "370a8830f14f33ba1a47",
+            "source_index": 183,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000505.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-U0015_v3_f000505_context",
+          "ROI": "ROI-U0015",
+          "uid": "office4-61cb12e1ecb5bd8a",
+          "frame": 505,
+          "model": 0,
+          "label": 4,
+          "candidate_id": "370a8830f14f33ba1a47",
+          "source_index": 183,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000505.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 3389,
+        "index": 93,
+        "id": "M0108",
+        "group": 31,
+        "mask": "masks/M0108.png",
+        "mask_sha256": "caa82ba964d132ebd052bd4f81c69b94e684ee3e2ece4f94779fe8617c7502f1",
+        "support_sha256": "1d3e1e171a43dd327d3ef846bb53c33cc6e6fdc7412d4c8c55a687650e899eda",
+        "rois": [
+          "office4-61cb12e1ecb5bd8a"
+        ],
+        "candidate_ids": [
+          "370a8830f14f33ba1a47"
+        ],
+        "noise_features": {
+          "area": 6522,
+          "bbox_width": 167,
+          "bbox_height": 133,
+          "bbox_area": 22211,
+          "extent": 167,
+          "bbox_fill": 0.2936382873351042,
+          "components": 1,
+          "largest_component": 6522,
+          "max_radius": 21.95449840010015,
+          "p95_radius": 17.200280145812158,
+          "core_pixels": {
+            "2": 5242,
+            "3": 4520,
+            "8": 2202,
+            "12": 1285
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G032",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0111",
+        "M0112",
+        "M0129",
+        "M0133"
+      ],
+      "validation_frames": [
+        {
+          "frame": 485,
+          "members": [
+            97
+          ],
+          "representative": 97
+        },
+        {
+          "frame": 495,
+          "members": [
+            96
+          ],
+          "representative": 96
+        },
+        {
+          "frame": 730,
+          "members": [
+            118
+          ],
+          "representative": 118
+        },
+        {
+          "frame": 770,
+          "members": [
+            114
+          ],
+          "representative": 114
+        }
+      ],
+      "original_track_id": 32
+    },
+    {
+      "id": "G033",
+      "primary": {
+        "frame": 1205,
+        "area": 14177,
+        "bbox": [
+          398,
+          452,
+          575,
+          680
+        ],
+        "digest": "51a1f60f76f0ae4fb7a9d663996932ea157c9e588305ca51ac6006d7d4a32797",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-U0019_v1_f001205_context",
+            "ROI": "ROI-U0019",
+            "uid": "office4-fa8df41208360003",
+            "frame": 1205,
+            "model": 0,
+            "label": 13,
+            "candidate_id": "be5b4ee407779e53671c",
+            "source_index": 647,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001205.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-U0019_v1_f001205_context",
+          "ROI": "ROI-U0019",
+          "uid": "office4-fa8df41208360003",
+          "frame": 1205,
+          "model": 0,
+          "label": 13,
+          "candidate_id": "be5b4ee407779e53671c",
+          "source_index": 647,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001205.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true
+        },
+        "support_count": 3334,
+        "index": 98,
+        "id": "M0113",
+        "group": 32,
+        "mask": "masks/M0113.png",
+        "mask_sha256": "f4fd316dd2db3189ff4fbb1f2e313866dd10bb5b901e08467a67d3b0132f41a2",
+        "support_sha256": "51d8fab9e6d4270ccb7b85e6c7d5ddd4502f779f515ec8e2b02cf9797bd18949",
+        "rois": [
+          "office4-fa8df41208360003"
+        ],
+        "candidate_ids": [
+          "be5b4ee407779e53671c"
+        ],
+        "noise_features": {
+          "area": 14177,
+          "bbox_width": 177,
+          "bbox_height": 228,
+          "bbox_area": 40356,
+          "extent": 228,
+          "bbox_fill": 0.35129844384973735,
+          "components": 1,
+          "largest_component": 14177,
+          "max_radius": 35.34119409414458,
+          "p95_radius": 27.85677655436824,
+          "core_pixels": {
+            "2": 12664,
+            "3": 11771,
+            "8": 7885,
+            "12": 5203
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G033",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0116",
+        "M0177",
+        "M0185",
+        "M0194"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1170,
+          "members": [
+            174
+          ],
+          "representative": 174
+        },
+        {
+          "frame": 1175,
+          "members": [
+            167
+          ],
+          "representative": 167
+        },
+        {
+          "frame": 1180,
+          "members": [
+            160
+          ],
+          "representative": 160
+        },
+        {
+          "frame": 1200,
+          "members": [
+            101
+          ],
+          "representative": 101
+        }
+      ],
+      "original_track_id": 33
+    },
+    {
+      "id": "G034",
+      "primary": {
+        "frame": 1070,
+        "area": 13260,
+        "bbox": [
+          632,
+          321,
+          797,
+          614
+        ],
+        "digest": "39191db93427e8ee63196171a6320fc02795c3c1ecaac242131abb20fe89593d",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0005_v3_f001070_balanced",
+            "ROI": "ROI-C0005",
+            "uid": "office4-6a0a0a8ae0d2c946",
+            "frame": 1070,
+            "model": 0,
+            "label": 17,
+            "candidate_id": "195cd593caea5b4567b0",
+            "source_index": 550,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001070.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-U0018_v1_f001070_balanced",
+            "ROI": "ROI-U0018",
+            "uid": "office4-a38039077895f4db",
+            "frame": 1070,
+            "model": 0,
+            "label": 17,
+            "candidate_id": "195cd593caea5b4567b0",
+            "source_index": 550,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001070.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-T0007_v3_f001070_balanced",
+            "ROI": "ROI-T0007",
+            "uid": "office4-6a0a0a8ae0d2c946",
+            "frame": 1070,
+            "model": 0,
+            "label": 17,
+            "candidate_id": "195cd593caea5b4567b0",
+            "source_index": 550,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001070.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0005_v3_f001070_balanced",
+          "ROI": "ROI-C0005",
+          "uid": "office4-6a0a0a8ae0d2c946",
+          "frame": 1070,
+          "model": 0,
+          "label": 17,
+          "candidate_id": "195cd593caea5b4567b0",
+          "source_index": 550,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001070.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 3309,
+        "index": 99,
+        "id": "M0114",
+        "group": 33,
+        "mask": "masks/M0114.png",
+        "mask_sha256": "538e4c2e0e30d536759609dbd2d6fec6a6ff261f5fe1dd412e2747a7cda93ed7",
+        "support_sha256": "991d42b602bdc7f8aed5dca36264eefbef95a4a467bc7e6cdc92d4034c7864b9",
+        "rois": [
+          "office4-6a0a0a8ae0d2c946",
+          "office4-a38039077895f4db"
+        ],
+        "candidate_ids": [
+          "195cd593caea5b4567b0"
+        ],
+        "noise_features": {
+          "area": 13260,
+          "bbox_width": 165,
+          "bbox_height": 293,
+          "bbox_area": 48345,
+          "extent": 293,
+          "bbox_fill": 0.2742786224014893,
+          "components": 1,
+          "largest_component": 13260,
+          "max_radius": 35.0,
+          "p95_radius": 26.90724809414742,
+          "core_pixels": {
+            "2": 11526,
+            "3": 10496,
+            "8": 6965,
+            "12": 4896
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G034",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0117",
+        "M0119",
+        "M0120",
+        "M0121",
+        "M0122",
+        "M0127",
+        "M0175"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1010,
+          "members": [
+            159
+          ],
+          "representative": 159
+        },
+        {
+          "frame": 1055,
+          "members": [
+            102
+          ],
+          "representative": 102
+        },
+        {
+          "frame": 1075,
+          "members": [
+            104
+          ],
+          "representative": 104
+        },
+        {
+          "frame": 1085,
+          "members": [
+            105
+          ],
+          "representative": 105
+        },
+        {
+          "frame": 1190,
+          "members": [
+            112
+          ],
+          "representative": 112
+        },
+        {
+          "frame": 1195,
+          "members": [
+            106
+          ],
+          "representative": 106
+        },
+        {
+          "frame": 1200,
+          "members": [
+            107
+          ],
+          "representative": 107
+        }
+      ],
+      "original_track_id": 34
+    },
+    {
+      "id": "G035",
+      "primary": {
+        "frame": 1520,
+        "area": 9834,
+        "bbox": [
+          999,
+          22,
+          1200,
+          96
+        ],
+        "digest": "18318915b56bb9ab7441cd10a1abf5f2cbe0d96b7ccc66e8e905dda665924389",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-U0012_v1_f001520_balanced",
+            "ROI": "ROI-U0012",
+            "uid": "office4-6c53b23d4ddc8b1a",
+            "frame": 1520,
+            "model": 0,
+            "label": 18,
+            "candidate_id": "472d8dc77f0e6bcbf17d",
+            "source_index": 792,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001520.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          },
+          {
+            "crop_key": "office4_ROI-U0012_v1_f001520_context",
+            "ROI": "ROI-U0012",
+            "uid": "office4-6c53b23d4ddc8b1a",
+            "frame": 1520,
+            "model": 0,
+            "label": 18,
+            "candidate_id": "472d8dc77f0e6bcbf17d",
+            "source_index": 792,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001520.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          },
+          {
+            "crop_key": "office4_ROI-U0012_v1_f001520_tile3",
+            "ROI": "ROI-U0012",
+            "uid": "office4-6c53b23d4ddc8b1a",
+            "frame": 1520,
+            "model": 0,
+            "label": 18,
+            "candidate_id": "472d8dc77f0e6bcbf17d",
+            "source_index": 792,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001520.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          },
+          {
+            "crop_key": "office4_ROI-T0003_v1_f001520_balanced",
+            "ROI": "ROI-T0003",
+            "uid": "office4-6c53b23d4ddc8b1a",
+            "frame": 1520,
+            "model": 0,
+            "label": 18,
+            "candidate_id": "472d8dc77f0e6bcbf17d",
+            "source_index": 792,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001520.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          },
+          {
+            "crop_key": "office4_ROI-T0003_v1_f001520_context",
+            "ROI": "ROI-T0003",
+            "uid": "office4-6c53b23d4ddc8b1a",
+            "frame": 1520,
+            "model": 0,
+            "label": 18,
+            "candidate_id": "472d8dc77f0e6bcbf17d",
+            "source_index": 792,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001520.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          },
+          {
+            "crop_key": "office4_ROI-T0003_v1_f001520_tile3",
+            "ROI": "ROI-T0003",
+            "uid": "office4-6c53b23d4ddc8b1a",
+            "frame": 1520,
+            "model": 0,
+            "label": 18,
+            "candidate_id": "472d8dc77f0e6bcbf17d",
+            "source_index": 792,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001520.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-T0003_v1_f001520_balanced",
+          "ROI": "ROI-T0003",
+          "uid": "office4-6c53b23d4ddc8b1a",
+          "frame": 1520,
+          "model": 0,
+          "label": 18,
+          "candidate_id": "472d8dc77f0e6bcbf17d",
+          "source_index": 792,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001520.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true
+        },
+        "support_count": 3278,
+        "index": 100,
+        "id": "M0115",
+        "group": 34,
+        "mask": "masks/M0115.png",
+        "mask_sha256": "52e826c6d9fa3f4a041908d5fbc7889b00a2dd1fbff53f81ee82cc4345cac33b",
+        "support_sha256": "3681aeae8ff958d8ecc2c5c3586ba5530d93f035a831cc5f155b058442a01779",
+        "rois": [
+          "office4-6c53b23d4ddc8b1a"
+        ],
+        "candidate_ids": [
+          "472d8dc77f0e6bcbf17d"
+        ],
+        "noise_features": {
+          "area": 9834,
+          "bbox_width": 201,
+          "bbox_height": 74,
+          "bbox_area": 14874,
+          "extent": 201,
+          "bbox_fill": 0.6611536910044373,
+          "components": 1,
+          "largest_component": 9834,
+          "max_radius": 37.0,
+          "p95_radius": 30.0,
+          "core_pixels": {
+            "2": 8898,
+            "3": 8436,
+            "8": 6274,
+            "12": 4752
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G035",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0118",
+        "M0132"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1525,
+          "members": [
+            103
+          ],
+          "representative": 103
+        },
+        {
+          "frame": 1530,
+          "members": [
+            117
+          ],
+          "representative": 117
+        }
+      ],
+      "original_track_id": 35
+    },
+    {
+      "id": "G036",
+      "primary": {
+        "frame": 1055,
+        "area": 17769,
+        "bbox": [
+          102,
+          400,
+          653,
+          679
+        ],
+        "digest": "d227a0d741ea9fdba894bb1b10af814a69e66fec0db1bb73909a6d85ccd03480",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_balanced",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 17,
+            "candidate_id": "8c470c98a38fc2764fef",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_context",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 17,
+            "candidate_id": "8c470c98a38fc2764fef",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0004_v2_f001055_balanced",
+          "ROI": "ROI-C0004",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1055,
+          "model": 0,
+          "label": 17,
+          "candidate_id": "8c470c98a38fc2764fef",
+          "source_index": 521,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 3080,
+        "index": 110,
+        "id": "M0125",
+        "group": 35,
+        "mask": "masks/M0125.png",
+        "mask_sha256": "8087c8ad2c6362c90d076a4dd374f5ef0bb93185635c164b1595b8810be384b7",
+        "support_sha256": "8ed9c53319ed64ec5811fddc615180074c65e92a7fc8322f52122dcdab279eac",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "8c470c98a38fc2764fef"
+        ],
+        "noise_features": {
+          "area": 17769,
+          "bbox_width": 551,
+          "bbox_height": 279,
+          "bbox_area": 153729,
+          "extent": 551,
+          "bbox_fill": 0.11558651913432079,
+          "components": 7,
+          "largest_component": 16033,
+          "max_radius": 38.01315561749642,
+          "p95_radius": 29.0,
+          "core_pixels": {
+            "2": 15571,
+            "3": 14206,
+            "8": 9479,
+            "12": 6995
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G036",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0167"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1200,
+          "members": [
+            152
+          ],
+          "representative": 152
+        }
+      ],
+      "original_track_id": 36
+    },
+    {
+      "id": "G037",
+      "primary": {
+        "frame": 1530,
+        "area": 4071,
+        "bbox": [
+          608,
+          446,
+          676,
+          659
+        ],
+        "digest": "26fd3f7115f5533b5fb82a936ea707d070a6116413156e91cbb3bd0752adf525",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0011_v2_f001530_tile1",
+            "ROI": "ROI-C0011",
+            "uid": "office4-625277e5b63329b3",
+            "frame": 1530,
+            "model": 0,
+            "label": 16,
+            "candidate_id": "44bcd1ab99af682d6b55",
+            "source_index": 810,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001530.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0011_v2_f001530_tile1",
+          "ROI": "ROI-C0011",
+          "uid": "office4-625277e5b63329b3",
+          "frame": 1530,
+          "model": 0,
+          "label": 16,
+          "candidate_id": "44bcd1ab99af682d6b55",
+          "source_index": 810,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001530.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 3007,
+        "index": 115,
+        "id": "M0130",
+        "group": 36,
+        "mask": "masks/M0130.png",
+        "mask_sha256": "75d17dd555cc7c5b8b898eac88f6ec889e06adec93cd0ec9ee959e7583755b1b",
+        "support_sha256": "6488f5d2d0f540cb4435457bd9f9caafe5345c7a4b464af2be2a2d80b5ac1f8b",
+        "rois": [
+          "office4-625277e5b63329b3"
+        ],
+        "candidate_ids": [
+          "44bcd1ab99af682d6b55"
+        ],
+        "noise_features": {
+          "area": 4071,
+          "bbox_width": 68,
+          "bbox_height": 213,
+          "bbox_area": 14484,
+          "extent": 213,
+          "bbox_fill": 0.28106876553438276,
+          "components": 4,
+          "largest_component": 3488,
+          "max_radius": 19.924858845171276,
+          "p95_radius": 15.132745950421556,
+          "core_pixels": {
+            "2": 3104,
+            "3": 2626,
+            "8": 1154,
+            "12": 484
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G037",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0136",
+        "M0179"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1560,
+          "members": [
+            162
+          ],
+          "representative": 162
+        },
+        {
+          "frame": 1660,
+          "members": [
+            121
+          ],
+          "representative": 121
+        }
+      ],
+      "original_track_id": 37
+    },
+    {
+      "id": "G038",
+      "primary": {
+        "frame": 1240,
+        "area": 8227,
+        "bbox": [
+          1063,
+          497,
+          1200,
+          670
+        ],
+        "digest": "eb0886c5d0ee57f8d5f92db579c3c54e2c0823450249dee1917d8d9ecc6981c3",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0004_v3_f001240_balanced",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1240,
+            "model": 0,
+            "label": 14,
+            "candidate_id": "246ab6057dd0da87c10e",
+            "source_index": 652,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001240.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": true
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0004_v3_f001240_balanced",
+          "ROI": "ROI-C0004",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1240,
+          "model": 0,
+          "label": 14,
+          "candidate_id": "246ab6057dd0da87c10e",
+          "source_index": 652,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001240.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": true
+        },
+        "support_count": 2839,
+        "index": 119,
+        "id": "M0134",
+        "group": 37,
+        "mask": "masks/M0134.png",
+        "mask_sha256": "d6e2c795568caa30354f2297655bf6be42b3edcf3ed085568cd56837615022ab",
+        "support_sha256": "60233cdcf55085df33e7ed4e88e163803e33eedb2d702e853d32bad6567cc212",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "246ab6057dd0da87c10e"
+        ],
+        "noise_features": {
+          "area": 8227,
+          "bbox_width": 137,
+          "bbox_height": 173,
+          "bbox_area": 23701,
+          "extent": 173,
+          "bbox_fill": 0.3471161554364795,
+          "components": 2,
+          "largest_component": 8215,
+          "max_radius": 25.612496949731394,
+          "p95_radius": 20.615528128088304,
+          "core_pixels": {
+            "2": 7087,
+            "3": 6478,
+            "8": 4155,
+            "12": 2635
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G038",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [],
+      "validation_frames": [],
+      "original_track_id": 38
+    },
+    {
+      "id": "G043",
+      "primary": {
+        "frame": 1005,
+        "area": 5660,
+        "bbox": [
+          181,
+          233,
+          290,
+          328
+        ],
+        "digest": "ed7567a50decbb6247bb846d195adf0bf1b3c0f39f3ce356461388cbbadf16a5",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-T0002_v2_f001005_balanced",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1005,
+            "model": 0,
+            "label": 5,
+            "candidate_id": "bd324be0850cab28f729",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "AGREED_MAIN_KEEP",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-T0002_v2_f001005_context",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1005,
+            "model": 0,
+            "label": 5,
+            "candidate_id": "bd324be0850cab28f729",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "AGREED_MAIN_KEEP",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-T0002_v2_f001005_tile1",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1005,
+            "model": 0,
+            "label": 5,
+            "candidate_id": "bd324be0850cab28f729",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-T0002_v2_f001005_tile4",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1005,
+            "model": 0,
+            "label": 5,
+            "candidate_id": "bd324be0850cab28f729",
+            "source_index": 411,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-T0002_v2_f001005_balanced",
+          "ROI": "ROI-T0002",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1005,
+          "model": 0,
+          "label": 5,
+          "candidate_id": "bd324be0850cab28f729",
+          "source_index": 411,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001005.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "AGREED_MAIN_KEEP",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 2560,
+        "index": 128,
+        "id": "M0143",
+        "group": 42,
+        "mask": "masks/M0143.png",
+        "mask_sha256": "183723105ca5a89fe531460c670e105f4a1b2c0b568193e6431b3834e50382cc",
+        "support_sha256": "26476e635f3b30f28582b6b937bd130f873d96cbd40ad09cd39b4c2999422013",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "bd324be0850cab28f729"
+        ],
+        "noise_features": {
+          "area": 5660,
+          "bbox_width": 109,
+          "bbox_height": 95,
+          "bbox_area": 10355,
+          "extent": 109,
+          "bbox_fill": 0.5465958474167069,
+          "components": 1,
+          "largest_component": 5660,
+          "max_radius": 36.6742416417845,
+          "p95_radius": 29.154759474226502,
+          "core_pixels": {
+            "2": 5131,
+            "3": 4839,
+            "8": 3556,
+            "12": 2675
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G043",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0145",
+        "M0148",
+        "M0154",
+        "M0156"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1010,
+          "members": [
+            130
+          ],
+          "representative": 130
+        },
+        {
+          "frame": 1055,
+          "members": [
+            133
+          ],
+          "representative": 133
+        },
+        {
+          "frame": 1200,
+          "members": [
+            141
+          ],
+          "representative": 141
+        },
+        {
+          "frame": 1240,
+          "members": [
+            139
+          ],
+          "representative": 139
+        }
+      ],
+      "original_track_id": 43
+    },
+    {
+      "id": "G044",
+      "primary": {
+        "frame": 1055,
+        "area": 12415,
+        "bbox": [
+          164,
+          153,
+          333,
+          281
+        ],
+        "digest": "8ad2ba114fc67484005a804c5e96ecd5b9ad27c4f7c5d38579f4a8cdabaa1853",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_balanced",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 3,
+            "candidate_id": "060f00b78b4063e110e0",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_context",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 3,
+            "candidate_id": "060f00b78b4063e110e0",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_tile4",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 3,
+            "candidate_id": "060f00b78b4063e110e0",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0004_v2_f001055_balanced",
+          "ROI": "ROI-C0004",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1055,
+          "model": 0,
+          "label": 3,
+          "candidate_id": "060f00b78b4063e110e0",
+          "source_index": 521,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 2530,
+        "index": 132,
+        "id": "M0147",
+        "group": 43,
+        "mask": "masks/M0147.png",
+        "mask_sha256": "2c29b7dfc128b1c3b60993c918afe74ff87a5efcecedcb11822dfce0735b63d2",
+        "support_sha256": "fdd4bf9db5324e40bfdd6095d58db4e821bda6693198ac78ac35bf7d7aefa2e9",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "060f00b78b4063e110e0"
+        ],
+        "noise_features": {
+          "area": 12415,
+          "bbox_width": 169,
+          "bbox_height": 128,
+          "bbox_area": 21632,
+          "extent": 169,
+          "bbox_fill": 0.5739182692307693,
+          "components": 1,
+          "largest_component": 12415,
+          "max_radius": 48.08326112068523,
+          "p95_radius": 41.10960958218893,
+          "core_pixels": {
+            "2": 11626,
+            "3": 11199,
+            "8": 9190,
+            "12": 7681
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G044",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0159",
+        "M0162",
+        "M0163"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1200,
+          "members": [
+            144
+          ],
+          "representative": 144
+        },
+        {
+          "frame": 1240,
+          "members": [
+            147
+          ],
+          "representative": 147
+        },
+        {
+          "frame": 1245,
+          "members": [
+            148
+          ],
+          "representative": 148
+        }
+      ],
+      "original_track_id": 44
+    },
+    {
+      "id": "G045",
+      "primary": {
+        "frame": 1055,
+        "area": 8618,
+        "bbox": [
+          322,
+          98,
+          452,
+          212
+        ],
+        "digest": "d487315410068e78e3540eb1a86e4dcb5fb296ff51de3c2ff2a940a9a0195818",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_balanced",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 4,
+            "candidate_id": "853329cee1137447f2b7",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_context",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 4,
+            "candidate_id": "853329cee1137447f2b7",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_tile1",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 4,
+            "candidate_id": "853329cee1137447f2b7",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROSS_MODEL_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0004_v2_f001055_tile2",
+            "ROI": "ROI-C0004",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1055,
+            "model": 0,
+            "label": 4,
+            "candidate_id": "853329cee1137447f2b7",
+            "source_index": 521,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0004_v2_f001055_balanced",
+          "ROI": "ROI-C0004",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1055,
+          "model": 0,
+          "label": 4,
+          "candidate_id": "853329cee1137447f2b7",
+          "source_index": 521,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001055.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 2500,
+        "index": 134,
+        "id": "M0149",
+        "group": 44,
+        "mask": "masks/M0149.png",
+        "mask_sha256": "ae7e2f0420c27ea7d93825215f09d738c59b1e2309ccda318a89464d4e4666a6",
+        "support_sha256": "5f93900dd79c66a401e712ce6a1644136cd53f8a2be42c15d9e920b7cdd706fa",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "853329cee1137447f2b7"
+        ],
+        "noise_features": {
+          "area": 8618,
+          "bbox_width": 130,
+          "bbox_height": 114,
+          "bbox_area": 14820,
+          "extent": 130,
+          "bbox_fill": 0.5815114709851552,
+          "components": 3,
+          "largest_component": 8614,
+          "max_radius": 42.95346318982906,
+          "p95_radius": 35.77708763999664,
+          "core_pixels": {
+            "2": 7954,
+            "3": 7617,
+            "8": 6020,
+            "12": 4836
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G045",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0153",
+        "M0157",
+        "M0158",
+        "M0160",
+        "M0161",
+        "M0164",
+        "M0165"
+      ],
+      "validation_frames": [
+        {
+          "frame": 15,
+          "members": [
+            143
+          ],
+          "representative": 143
+        },
+        {
+          "frame": 20,
+          "members": [
+            138
+          ],
+          "representative": 138
+        },
+        {
+          "frame": 25,
+          "members": [
+            142
+          ],
+          "representative": 142
+        },
+        {
+          "frame": 1200,
+          "members": [
+            150
+          ],
+          "representative": 150
+        },
+        {
+          "frame": 1240,
+          "members": [
+            146
+          ],
+          "representative": 146
+        },
+        {
+          "frame": 1245,
+          "members": [
+            145
+          ],
+          "representative": 145
+        },
+        {
+          "frame": 1250,
+          "members": [
+            149
+          ],
+          "representative": 149
+        }
+      ],
+      "original_track_id": 45
+    },
+    {
+      "id": "G050",
+      "primary": {
+        "frame": 720,
+        "area": 18031,
+        "bbox": [
+          322,
+          491,
+          804,
+          673
+        ],
+        "digest": "ad56fc7864755390396d934b6b6c9ae772e98e183683a940738105e1eda11e9a",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0002_v2_f000720_tile2",
+            "ROI": "ROI-C0002",
+            "uid": "office4-1fe919a91bcd723c",
+            "frame": 720,
+            "model": 0,
+            "label": 8,
+            "candidate_id": "9ceb9533c1278bc08f8a",
+            "source_index": 303,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000720.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0002_v2_f000720_tile3",
+            "ROI": "ROI-C0002",
+            "uid": "office4-1fe919a91bcd723c",
+            "frame": 720,
+            "model": 0,
+            "label": 8,
+            "candidate_id": "9ceb9533c1278bc08f8a",
+            "source_index": 303,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000720.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0002_v2_f000720_tile4",
+            "ROI": "ROI-C0002",
+            "uid": "office4-1fe919a91bcd723c",
+            "frame": 720,
+            "model": 0,
+            "label": 8,
+            "candidate_id": "9ceb9533c1278bc08f8a",
+            "source_index": 303,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000720.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0002_v2_f000720_tile5",
+            "ROI": "ROI-C0002",
+            "uid": "office4-1fe919a91bcd723c",
+            "frame": 720,
+            "model": 0,
+            "label": 8,
+            "candidate_id": "9ceb9533c1278bc08f8a",
+            "source_index": 303,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000720.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "THREE_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0002_v2_f000720_tile6",
+            "ROI": "ROI-C0002",
+            "uid": "office4-1fe919a91bcd723c",
+            "frame": 720,
+            "model": 0,
+            "label": 8,
+            "candidate_id": "9ceb9533c1278bc08f8a",
+            "source_index": 303,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000720.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0002_v2_f000720_tile2",
+          "ROI": "ROI-C0002",
+          "uid": "office4-1fe919a91bcd723c",
+          "frame": 720,
+          "model": 0,
+          "label": 8,
+          "candidate_id": "9ceb9533c1278bc08f8a",
+          "source_index": 303,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame000720.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "THREE_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 1883,
+        "index": 161,
+        "id": "M0178",
+        "group": 49,
+        "mask": "masks/M0178.png",
+        "mask_sha256": "08e8444561c8af277e6f633cc30f814f412d5ed802dd246fee81e4699ddeab62",
+        "support_sha256": "9db6d2222e34d2f374b65e60cc26614eb50ecbc38fc49282bac533537261713f",
+        "rois": [
+          "office4-1fe919a91bcd723c"
+        ],
+        "candidate_ids": [
+          "9ceb9533c1278bc08f8a"
+        ],
+        "noise_features": {
+          "area": 18031,
+          "bbox_width": 482,
+          "bbox_height": 182,
+          "bbox_area": 87724,
+          "extent": 482,
+          "bbox_fill": 0.20554238292827504,
+          "components": 2,
+          "largest_component": 18026,
+          "max_radius": 51.35172830587107,
+          "p95_radius": 45.89117562233506,
+          "core_pixels": {
+            "2": 16957,
+            "3": 16429,
+            "8": 13900,
+            "12": 11996
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G050",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0181",
+        "M0203",
+        "M0216"
+      ],
+      "validation_frames": [
+        {
+          "frame": 730,
+          "members": [
+            163
+          ],
+          "representative": 163
+        },
+        {
+          "frame": 735,
+          "members": [
+            179
+          ],
+          "representative": 179
+        },
+        {
+          "frame": 1730,
+          "members": [
+            190
+          ],
+          "representative": 190
+        }
+      ],
+      "original_track_id": 50
+    },
+    {
+      "id": "G056",
+      "primary": {
+        "frame": 1650,
+        "area": 2079,
+        "bbox": [
+          629,
+          48,
+          699,
+          284
+        ],
+        "digest": "af4b403122f2b2c1a3241c7f9fd4d5744bc3518b2ed1beff88ddcdc237012a7b",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-T0002_v3_f001650_context",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1650,
+            "model": 0,
+            "label": 14,
+            "candidate_id": "610570e91a68620f0a90",
+            "source_index": 867,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001650.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-T0002_v3_f001650_tile3",
+            "ROI": "ROI-T0002",
+            "uid": "office4-bfa01a5d9fea7948",
+            "frame": 1650,
+            "model": 0,
+            "label": 14,
+            "candidate_id": "610570e91a68620f0a90",
+            "source_index": 867,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001650.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-T0002_v3_f001650_context",
+          "ROI": "ROI-T0002",
+          "uid": "office4-bfa01a5d9fea7948",
+          "frame": 1650,
+          "model": 0,
+          "label": 14,
+          "candidate_id": "610570e91a68620f0a90",
+          "source_index": 867,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001650.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 1424,
+        "index": 175,
+        "id": "M0195",
+        "group": 55,
+        "mask": "masks/M0195.png",
+        "mask_sha256": "f21380111e668c1179915c0811589fb9f8aabe9f5bdf49b2ebd57ea89817cd33",
+        "support_sha256": "f563071d29e41f9705af172f372ce7ba08b61649517dfd27a88a6236cde36c0f",
+        "rois": [
+          "office4-bfa01a5d9fea7948"
+        ],
+        "candidate_ids": [
+          "610570e91a68620f0a90"
+        ],
+        "noise_features": {
+          "area": 2079,
+          "bbox_width": 70,
+          "bbox_height": 236,
+          "bbox_area": 16520,
+          "extent": 236,
+          "bbox_fill": 0.12584745762711863,
+          "components": 11,
+          "largest_component": 1105,
+          "max_radius": 6.708203932499369,
+          "p95_radius": 5.0,
+          "core_pixels": {
+            "2": 1075,
+            "3": 658,
+            "8": 0,
+            "12": 0
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G056",
+        "previous_primary": true,
+        "noise_review_control": true
+      },
+      "auxiliary_ids": [],
+      "validation_frames": [],
+      "original_track_id": 56
+    },
+    {
+      "id": "G064",
+      "primary": {
+        "frame": 1015,
+        "area": 1598,
+        "bbox": [
+          262,
+          357,
+          341,
+          401
+        ],
+        "digest": "61a278e949e1902f1537f671aba9e2cbc4ec884224211802e19af9904adbde58",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0009_v3_f001015_balanced",
+            "ROI": "ROI-C0009",
+            "uid": "office4-b778e2a333fe4634",
+            "frame": 1015,
+            "model": 0,
+            "label": 13,
+            "candidate_id": "221a64984414a84e8a17",
+            "source_index": 463,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001015.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          },
+          {
+            "crop_key": "office4_ROI-C0009_v3_f001015_context",
+            "ROI": "ROI-C0009",
+            "uid": "office4-b778e2a333fe4634",
+            "frame": 1015,
+            "model": 0,
+            "label": 13,
+            "candidate_id": "221a64984414a84e8a17",
+            "source_index": 463,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001015.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0009_v3_f001015_balanced",
+          "ROI": "ROI-C0009",
+          "uid": "office4-b778e2a333fe4634",
+          "frame": 1015,
+          "model": 0,
+          "label": 13,
+          "candidate_id": "221a64984414a84e8a17",
+          "source_index": 463,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001015.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 578,
+        "index": 192,
+        "id": "M0218",
+        "group": 63,
+        "mask": "masks/M0218.png",
+        "mask_sha256": "eebc0ddf2428fc40082b8bc6c2b90a4b2133fd1cd70caaee76400db2ce7fe7fc",
+        "support_sha256": "37fbcde876d43cb70fb1016c1a8b24935d50ac523816a882ba195c55582b4a10",
+        "rois": [
+          "office4-b778e2a333fe4634"
+        ],
+        "candidate_ids": [
+          "221a64984414a84e8a17"
+        ],
+        "noise_features": {
+          "area": 1598,
+          "bbox_width": 79,
+          "bbox_height": 44,
+          "bbox_area": 3476,
+          "extent": 79,
+          "bbox_fill": 0.45972382048331417,
+          "components": 2,
+          "largest_component": 1566,
+          "max_radius": 13.416407864998739,
+          "p95_radius": 11.661903789690601,
+          "core_pixels": {
+            "2": 1262,
+            "3": 1090,
+            "8": 414,
+            "12": 64
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G066",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [],
+      "validation_frames": [],
+      "original_track_id": 64
+    },
+    {
+      "id": "G065",
+      "primary": {
+        "frame": 1280,
+        "area": 2292,
+        "bbox": [
+          1127,
+          521,
+          1199,
+          571
+        ],
+        "digest": "b4b7e2261a76c9bfe56fd36a9d01030b82de34833d34ed1836b2793104f65595",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0009_v2_f001280_balanced",
+            "ROI": "ROI-C0009",
+            "uid": "office4-b778e2a333fe4634",
+            "frame": 1280,
+            "model": 0,
+            "label": 15,
+            "candidate_id": "c5800fc63bc40156db01",
+            "source_index": 749,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001280.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "SINGLE_REMAINING",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0009_v2_f001280_balanced",
+          "ROI": "ROI-C0009",
+          "uid": "office4-b778e2a333fe4634",
+          "frame": 1280,
+          "model": 0,
+          "label": 15,
+          "candidate_id": "c5800fc63bc40156db01",
+          "source_index": 749,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001280.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "SINGLE_REMAINING",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 515,
+        "index": 193,
+        "id": "M0220",
+        "group": 64,
+        "mask": "masks/M0220.png",
+        "mask_sha256": "a77843b2a4b5700a7765879b5cd29e3b4a46d37a20740759e5693e14944270bc",
+        "support_sha256": "6e329683cd6009068d3c0788e922244b39af0d565c1163234dae6837d51fb117",
+        "rois": [
+          "office4-b778e2a333fe4634"
+        ],
+        "candidate_ids": [
+          "c5800fc63bc40156db01"
+        ],
+        "noise_features": {
+          "area": 2292,
+          "bbox_width": 72,
+          "bbox_height": 50,
+          "bbox_area": 3600,
+          "extent": 72,
+          "bbox_fill": 0.6366666666666667,
+          "components": 1,
+          "largest_component": 2292,
+          "max_radius": 19.6468827043885,
+          "p95_radius": 16.278820596099706,
+          "core_pixels": {
+            "2": 1742,
+            "3": 1523,
+            "8": 823,
+            "12": 416
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G068",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0224",
+        "M0235"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1485,
+          "members": [
+            196,
+            205
+          ],
+          "representative": 196
+        }
+      ],
+      "original_track_id": 65
+    },
+    {
+      "id": "G071",
+      "primary": {
+        "frame": 1015,
+        "area": 1738,
+        "bbox": [
+          349,
+          384,
+          398,
+          437
+        ],
+        "digest": "598702bd2cdeca60b75ba35bc767df797572fc7b9b195fccb06a4ec1eba60ce2",
+        "aliases": [
+          {
+            "crop_key": "office4_ROI-C0009_v3_f001015_context",
+            "ROI": "ROI-C0009",
+            "uid": "office4-b778e2a333fe4634",
+            "frame": 1015,
+            "model": 0,
+            "label": 14,
+            "candidate_id": "da1c7fab6301d52d88b2",
+            "source_index": 463,
+            "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001015.png",
+            "source_box": [
+              0,
+              0,
+              1200,
+              680
+            ],
+            "selection_reason": "CROPFORMERS_AGREE",
+            "semantic_hit": false,
+            "semantic_family": null,
+            "touches_crop": false,
+            "touches_frame": false
+          }
+        ],
+        "representative": {
+          "crop_key": "office4_ROI-C0009_v3_f001015_context",
+          "ROI": "ROI-C0009",
+          "uid": "office4-b778e2a333fe4634",
+          "frame": 1015,
+          "model": 0,
+          "label": 14,
+          "candidate_id": "da1c7fab6301d52d88b2",
+          "source_index": 463,
+          "source_path": "/data/chenkejun/CVPR/datasets/cropformer_frozen/office4/frame001015.png",
+          "source_box": [
+            0,
+            0,
+            1200,
+            680
+          ],
+          "selection_reason": "CROPFORMERS_AGREE",
+          "semantic_hit": false,
+          "semantic_family": null,
+          "touches_crop": false,
+          "touches_frame": false
+        },
+        "support_count": 320,
+        "index": 201,
+        "id": "M0231",
+        "group": 70,
+        "mask": "masks/M0231.png",
+        "mask_sha256": "2cc054ef120352a852f98282bf3771c587d05d9651676e50c90fdc1d961356e9",
+        "support_sha256": "41ac851055ef572579da0d8d00d30a0cf5cb5aa6bdc1f0a6f04692bbeb8795c8",
+        "rois": [
+          "office4-b778e2a333fe4634"
+        ],
+        "candidate_ids": [
+          "da1c7fab6301d52d88b2"
+        ],
+        "noise_features": {
+          "area": 1738,
+          "bbox_width": 49,
+          "bbox_height": 53,
+          "bbox_area": 2597,
+          "extent": 53,
+          "bbox_fill": 0.6692337312283404,
+          "components": 1,
+          "largest_component": 1738,
+          "max_radius": 18.867962264113206,
+          "p95_radius": 15.269245675219434,
+          "core_pixels": {
+            "2": 1454,
+            "3": 1303,
+            "8": 676,
+            "12": 305
+          }
+        },
+        "noise_decision": {
+          "exclude": false,
+          "reason": null,
+          "matched_rules": []
+        },
+        "previous_group": "G076",
+        "previous_primary": true,
+        "noise_review_control": false
+      },
+      "auxiliary_ids": [
+        "M0240"
+      ],
+      "validation_frames": [
+        {
+          "frame": 1485,
+          "members": [
+            210
+          ],
+          "representative": 210
+        }
+      ],
+      "original_track_id": 71
+    }
+  ],
+  "scene": "office4",
+  "mask_source_directory": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office4/v1",
+  "original_manifest_sha256": "80b61ecfb88894befb9a71988986ce4aa28adeadbda6745111286eb04fb7d8f9",
+  "selection_sha256": "8ad2c6c3e5a16e651f5a78cce29a42bee32981ab55ba0c5db005ea46e40d5b5b",
+  "manual_overrides": [],
+  "GT_used": false
+}

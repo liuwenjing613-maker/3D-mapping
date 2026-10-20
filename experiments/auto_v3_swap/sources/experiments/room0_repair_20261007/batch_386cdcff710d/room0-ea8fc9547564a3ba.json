@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "scene": "room0",
+  "case_uid": "room0-ea8fc9547564a3ba",
+  "experiment_mode": "offline_retrospective",
+  "seed_mode": "new_mask_reassociate",
+  "seed_frame": 785,
+  "seed_manifest": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/seed_manifest.json",
+  "objects": [
+    {
+      "track_id": 27
+    },
+    {
+      "track_id": 28
+    }
+  ],
+  "old_family_ids": [
+    172,
+    185
+  ],
+  "policy_file": "/home/chenkejun/CVPR/experiments/pilot10_repair_20261007/objectwise_repair_20261007/policy.json",
+  "output_dir": "/data/chenkejun/CVPR/revisable_instance_map/room0_repair_20261007/batch_386cdcff710d/cases/room0-ea8fc9547564a3ba",
+  "tracking": {
+    "checkpoint": "/data/chenkejun/CVPR/models/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "repo": "/home/chenkejun/CVPR/repos/sam2_1",
+    "python": "/data/chenkejun/CVPR/runtime/sam2_1_env/bin/python",
+    "cuda_visible_devices": "GPU-b003c3ac-453c-dd7b-90b0-31ad9adb3163",
+    "directions": [
+      "forward",
+      "reverse"
+    ]
+  }
+}
