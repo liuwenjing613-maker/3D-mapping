@@ -27,6 +27,19 @@
 
 [总指标和历史参考](results/comparison_all.json) · [中文对比说明](results/对比说明.txt) · [实现差异说明](IMPLEMENTATION_DIFFS.md)
 
+## GT 实例 PLY
+
+补充两场景本次评价所用 GT 实例的点云，保持原始 ScanNet 坐标。完整表面版展示这 27/34 个目标的全部参考网格顶点；可见区域版严格对应 R2 的评价点集。完整表面仅供查看形状，不扩大评价范围。
+
+| 场景 | 完整 GT 表面 | 评价可见区域 | 配色依据 |
+|---|---|---|---|
+| scene0011_00 | [113,836 点 / 27 实例](results/scene0011_00/gt_ply/scene0011_00_gt_instances.ply) | [78,514 点](results/scene0011_00/gt_ply/scene0011_00_gt_instances_observed.ply) | [22 个基线色、3 个 E1 色、2 个独立新颜色](results/scene0011_00/gt_ply/README.md) |
+| scene0608_00 | [75,865 点 / 34 实例](results/scene0608_00/gt_ply/scene0608_00_gt_instances.ply) | [54,224 点](results/scene0608_00/gt_ply/scene0608_00_gt_instances_observed.ply) | [33 个基线色、1 个 E1 色](results/scene0608_00/gt_ply/README.md) |
+
+颜色优先沿用严格一票无修复结果，再使用 E1/partial 的已有颜色。采用一对一重叠匹配，防止预测合并时把两个 GT 涂成同色。scene0011_00 的 GT 20、27 使用独立颜色；两场景分别有 8、2 个弱重叠颜色对应，详见各目录的 `color_mapping.json`。这些是可视化对应，不代表预测正确，原预测 PLY 和评分不变。
+
+PLY 的 `instance_id` 保留 GT ID（官方 objectId+1），借色来源另存 `color_prediction_id`；保留原始顶点索引和评价区域标记。新文件哈希和验证记录见 [GT 交付清单](results/gt_ply_delivery_manifest.json)，服务器导出实现见 [export_gt_ply.py](tools/export_gt_ply.py)。
+
 ## 固定评价口径
 
 scene0011_00 为 238 帧 / 27 GT；scene0608_00 为 339 帧 / 34 GT。使用服务器现有步长10序列，保留原始帧号。新三组共用相同 TSDF、关联、GT范围和对应索引。

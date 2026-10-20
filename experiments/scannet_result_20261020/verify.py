@@ -27,3 +27,19 @@ for s in manifest['scenes']:
         assert abs(row['F1']-expected)<1e-12
 print(json.dumps(dict(status='PASS',scenes=manifest['scenes'],files=len(manifest['files']),
                       source_files=len(inventory['records']),inherited_sources=inventory['unchanged'])))
+
+gt_path=P/'results/gt_ply_delivery_manifest.json'
+if gt_path.exists():
+    gt_manifest=json.loads(gt_path.read_text(encoding='utf-8'))
+    assert gt_manifest['status']=='PASS'
+    assert sha(P/'tools/export_gt_ply.py')==gt_manifest['exporter_sha256']
+    assert {r['scene'] for r in gt_manifest['summaries']}==set(manifest['scenes'])
+    for rel,record in gt_manifest['files'].items():
+        assert sha(P/'results'/rel)==record['sha256'],rel
+        assert (P/'results'/rel).stat().st_size==record['bytes'],rel
+    for item in gt_manifest['summaries']:
+        validation=json.loads((P/'results'/item['scene']/'gt_ply/validation.json').read_text(encoding='utf-8'))
+        assert validation['status']=='PASS' and validation['summary']==item
+        assert validation['exporter_sha256']==gt_manifest['exporter_sha256']
+    print(json.dumps(dict(gt_ply_status='PASS',gt_supplement_files=len(gt_manifest['files']),
+                          summaries=gt_manifest['summaries'])))

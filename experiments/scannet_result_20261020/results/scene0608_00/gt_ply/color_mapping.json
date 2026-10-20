@@ -1,0 +1,1325 @@
+{
+  "summary": {
+    "scene": "scene0608_00",
+    "gt_instances": 34,
+    "full_reference_vertices": 75865,
+    "evaluated_observed_vertices": 54224,
+    "colors_from": {
+      "baseline": 33,
+      "E1": 1,
+      "swap_partial": 0,
+      "new_distinct_color": 0
+    },
+    "low_overlap_visual_matches": 2,
+    "unmatched_gt_ids": []
+  },
+  "purpose": "Visualization only; no evaluation or algorithm changes",
+  "coordinate_transform": "identity; no axisAlignment",
+  "gt_scope_sha256": "1d50135ee87fbab7ac865726c24d1b19c9da814565cc7b2b1e41e85e0788e14d",
+  "gt_observed_support_sha256": "84796a329cef65e9ec28f77e14be28490307cc575138b337a263958f5ce9ae8b",
+  "instance_id_encoding": "raw_gt_instance_id = official_objectId + 1; NOT prediction ID",
+  "scope": "Only the same 27/34 qualified objects used in this run; full means their complete reference mesh surface, not all annotated scene objects.",
+  "color_policy": {
+    "priority": [
+      "baseline",
+      "E1",
+      "swap_partial"
+    ],
+    "one_to_one": true,
+    "objective": "maximum sum of IoU per priority stage",
+    "min_iou": 0.05,
+    "min_intersection_vertices": 10,
+    "min_gt_recall": 0.05,
+    "low_overlap_warning_below_iou": 0.25,
+    "note": "Permissive visualization associations, not semantic identity verification or TP matches. Splits/merges can prevent exact color agreement across all methods.",
+    "reused_colors": "Exact RGB values checked against each existing prediction PLY",
+    "new_colors": "Distinct darker palette when all acceptable candidates are already allocated or absent"
+  },
+  "source_sha256": {
+    "/data/chenkejun/CVPR/evaluation_results/scannet_v3_r2_reeval_20261009/scene0608_00/ground_truth/gt.npz": "5312bf7688b91ee8ca71f1401e50fd05f05415929d5f5f3f07556b63656bd525",
+    "/data/chenkejun/datasets/ScanNet/scans/scene0608_00/scene0608_00.aggregation.json": "351ab1d5054627ce9c82edeb033c753b5d17211c0e4dbab84eeb18d9a319a48d",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/evaluation_r2/baseline_final/overlap_matrix.npz": "170e7d38d79e75877744fb1a46af62cab7672d535adce2013716486354e2e1a7",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/evaluation_r2/baseline_final/adapter_manifest.json": "c15f2d3a4df207658c7f0b131c0f2e44949ff33aff1c306d7d17925b2e0cc0f8",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/ply/scene0608_00_baseline_instances.ply": "1cc8c6d941f3cfca6041bc003467c9f13a0e61ac6ddb50ebfb5b84d21cce0a5e",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/evaluation_r2/E1_final/overlap_matrix.npz": "7017b2709a027ef0f7eb9b829658cbb9212c79547d27a419ed559c5583a989af",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/evaluation_r2/E1_final/adapter_manifest.json": "c113b977347765e9f4bcf02917ecbe54f1e2c1657a62aa8e06e2e0ba207ebd4f",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/ply/scene0608_00_E1_instances.ply": "c3f24074cc79b7c4f1aa440cf297a718a73b3bc37d409e22cabb46efb64bc408",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/evaluation_r2/swap_partial_final/overlap_matrix.npz": "0dd3a70706d811ba0737045d677dccb65b7870f61c8a849694541a61efd0b197",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/evaluation_r2/swap_partial_final/adapter_manifest.json": "b4ff7f6b6d41dbb86b94448a13de896355bb0181652f99d9f22b99e9d1292e78",
+    "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0608_00/ply/scene0608_00_swap_partial_instances.ply": "98bd172e50e6591c8299b0df14f64ac7ee098df5e843dcfb98e8a4fcd22678e4"
+  },
+  "instances": [
+    {
+      "color_prediction_id": 12,
+      "color_source": "baseline",
+      "matching_iou": 0.6843373493975904,
+      "matching_intersection": 568,
+      "matching_gt_recall": 0.7038413878562577,
+      "rgb": [
+        79,
+        239,
+        159
+      ],
+      "raw_gt_instance_id": 1,
+      "official_object_id": 0,
+      "category": "guitar",
+      "full_reference_vertices": 1033,
+      "evaluated_observed_vertices": 807,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 12,
+          "iou": 0.6843373493975904,
+          "intersection": 568
+        },
+        "E1": {
+          "prediction_id": 12,
+          "iou": 0.6831325301204819,
+          "intersection": 567
+        },
+        "swap_partial": {
+          "prediction_id": 12,
+          "iou": 0.6831325301204819,
+          "intersection": 567
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 267,
+      "color_source": "baseline",
+      "matching_iou": 0.6392190152801358,
+      "matching_intersection": 1506,
+      "matching_gt_recall": 0.6608161474330847,
+      "rgb": [
+        239,
+        93,
+        79
+      ],
+      "raw_gt_instance_id": 3,
+      "official_object_id": 2,
+      "category": "table",
+      "full_reference_vertices": 3439,
+      "evaluated_observed_vertices": 2279,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 267,
+          "iou": 0.6392190152801358,
+          "intersection": 1506
+        },
+        "E1": {
+          "prediction_id": 267,
+          "iou": 0.6577815993121238,
+          "intersection": 1530
+        },
+        "swap_partial": {
+          "prediction_id": 267,
+          "iou": 0.6564918314703353,
+          "intersection": 1527
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 1025,
+      "color_source": "baseline",
+      "matching_iou": 0.6261467889908257,
+      "matching_intersection": 546,
+      "matching_gt_recall": 0.6408450704225352,
+      "rgb": [
+        79,
+        239,
+        225
+      ],
+      "raw_gt_instance_id": 4,
+      "official_object_id": 3,
+      "category": "keyboard piano",
+      "full_reference_vertices": 1788,
+      "evaluated_observed_vertices": 852,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 1025,
+          "iou": 0.6261467889908257,
+          "intersection": 546
+        },
+        "E1": {
+          "prediction_id": 1025,
+          "iou": 0.6700913242009132,
+          "intersection": 587
+        },
+        "swap_partial": {
+          "prediction_id": 1025,
+          "iou": 0.6700913242009132,
+          "intersection": 587
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 2,
+      "color_source": "baseline",
+      "matching_iou": 0.5416058394160584,
+      "matching_intersection": 371,
+      "matching_gt_recall": 0.5815047021943573,
+      "rgb": [
+        172,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 5,
+      "official_object_id": 4,
+      "category": "plant",
+      "full_reference_vertices": 1019,
+      "evaluated_observed_vertices": 638,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 2,
+          "iou": 0.5416058394160584,
+          "intersection": 371
+        },
+        "E1": {
+          "prediction_id": 2,
+          "iou": 0.3373313343328336,
+          "intersection": 225
+        },
+        "swap_partial": {
+          "prediction_id": 2,
+          "iou": 0.3373313343328336,
+          "intersection": 225
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 600,
+      "color_source": "baseline",
+      "matching_iou": 0.7168674698795181,
+      "matching_intersection": 476,
+      "matching_gt_recall": 0.7357032457496137,
+      "rgb": [
+        227,
+        79,
+        239
+      ],
+      "raw_gt_instance_id": 6,
+      "official_object_id": 5,
+      "category": "lamp",
+      "full_reference_vertices": 900,
+      "evaluated_observed_vertices": 647,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 600,
+          "iou": 0.7168674698795181,
+          "intersection": 476
+        },
+        "E1": {
+          "prediction_id": 600,
+          "iou": 0.7168674698795181,
+          "intersection": 476
+        },
+        "swap_partial": {
+          "prediction_id": 600,
+          "iou": 0.7168674698795181,
+          "intersection": 476
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 18,
+      "color_source": "baseline",
+      "matching_iou": 0.759493670886076,
+      "matching_intersection": 1680,
+      "matching_gt_recall": 0.7824871914299022,
+      "rgb": [
+        239,
+        199,
+        79
+      ],
+      "raw_gt_instance_id": 7,
+      "official_object_id": 6,
+      "category": "coffee table",
+      "full_reference_vertices": 2580,
+      "evaluated_observed_vertices": 2147,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 18,
+          "iou": 0.759493670886076,
+          "intersection": 1680
+        },
+        "E1": {
+          "prediction_id": 18,
+          "iou": 0.7638575935105903,
+          "intersection": 1695
+        },
+        "swap_partial": {
+          "prediction_id": 18,
+          "iou": 0.7638575935105903,
+          "intersection": 1695
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 336,
+      "color_source": "baseline",
+      "matching_iou": 0.4978165938864629,
+      "matching_intersection": 456,
+      "matching_gt_recall": 0.5106382978723404,
+      "rgb": [
+        79,
+        86,
+        239
+      ],
+      "raw_gt_instance_id": 9,
+      "official_object_id": 8,
+      "category": "ottoman",
+      "full_reference_vertices": 1251,
+      "evaluated_observed_vertices": 893,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 336,
+          "iou": 0.4978165938864629,
+          "intersection": 456
+        },
+        "E1": {
+          "prediction_id": 336,
+          "iou": 0.4945414847161572,
+          "intersection": 453
+        },
+        "swap_partial": {
+          "prediction_id": 336,
+          "iou": 0.4945414847161572,
+          "intersection": 453
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 391,
+      "color_source": "baseline",
+      "matching_iou": 0.6242840778923253,
+      "matching_intersection": 545,
+      "matching_gt_recall": 0.6654456654456654,
+      "rgb": [
+        79,
+        93,
+        239
+      ],
+      "raw_gt_instance_id": 10,
+      "official_object_id": 9,
+      "category": "ottoman",
+      "full_reference_vertices": 1010,
+      "evaluated_observed_vertices": 819,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 391,
+          "iou": 0.6242840778923253,
+          "intersection": 545
+        },
+        "E1": {
+          "prediction_id": 391,
+          "iou": 0.6182432432432432,
+          "intersection": 549
+        },
+        "swap_partial": {
+          "prediction_id": 391,
+          "iou": 0.6182432432432432,
+          "intersection": 549
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 5,
+      "color_source": "baseline",
+      "matching_iou": 0.38304552590266877,
+      "matching_intersection": 488,
+      "matching_gt_recall": 0.43963963963963965,
+      "rgb": [
+        239,
+        165,
+        79
+      ],
+      "raw_gt_instance_id": 11,
+      "official_object_id": 10,
+      "category": "tv stand",
+      "full_reference_vertices": 2375,
+      "evaluated_observed_vertices": 1110,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 5,
+          "iou": 0.38304552590266877,
+          "intersection": 488
+        },
+        "E1": {
+          "prediction_id": 5,
+          "iou": 0.31414868105515587,
+          "intersection": 393
+        },
+        "swap_partial": {
+          "prediction_id": 5,
+          "iou": 0.31414868105515587,
+          "intersection": 393
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 316,
+      "color_source": "baseline",
+      "matching_iou": 0.5634280865507001,
+      "matching_intersection": 1328,
+      "matching_gt_recall": 0.5634280865507001,
+      "rgb": [
+        112,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 13,
+      "official_object_id": 12,
+      "category": "door",
+      "full_reference_vertices": 2398,
+      "evaluated_observed_vertices": 2357,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 316,
+          "iou": 0.5634280865507001,
+          "intersection": 1328
+        },
+        "E1": {
+          "prediction_id": 316,
+          "iou": 0.5634280865507001,
+          "intersection": 1328
+        },
+        "swap_partial": {
+          "prediction_id": 316,
+          "iou": 0.5634280865507001,
+          "intersection": 1328
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 223,
+      "color_source": "baseline",
+      "matching_iou": 0.7570149253731343,
+      "matching_intersection": 1268,
+      "matching_gt_recall": 0.7675544794188862,
+      "rgb": [
+        228,
+        79,
+        239
+      ],
+      "raw_gt_instance_id": 14,
+      "official_object_id": 13,
+      "category": "picture",
+      "full_reference_vertices": 1659,
+      "evaluated_observed_vertices": 1652,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 223,
+          "iou": 0.7570149253731343,
+          "intersection": 1268
+        },
+        "E1": {
+          "prediction_id": 223,
+          "iou": 0.7570149253731343,
+          "intersection": 1268
+        },
+        "swap_partial": {
+          "prediction_id": 223,
+          "iou": 0.7570149253731343,
+          "intersection": 1268
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 119,
+      "color_source": "E1",
+      "matching_iou": 0.05619004111466423,
+      "matching_intersection": 123,
+      "matching_gt_recall": 0.056292906178489706,
+      "rgb": [
+        79,
+        195,
+        239
+      ],
+      "raw_gt_instance_id": 15,
+      "official_object_id": 14,
+      "category": "plant",
+      "full_reference_vertices": 4266,
+      "evaluated_observed_vertices": 2185,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 3,
+          "iou": 0.08208232445520582,
+          "intersection": 339
+        },
+        "E1": {
+          "prediction_id": 3,
+          "iou": 0.08119970738844184,
+          "intersection": 333
+        },
+        "swap_partial": {
+          "prediction_id": 3,
+          "iou": 0.08252190847127557,
+          "intersection": 339
+        }
+      },
+      "low_overlap_visual_match": true,
+      "color_differs_from_best_id_for_methods": [
+        "baseline",
+        "E1",
+        "swap_partial"
+      ],
+      "baseline_best_color_competing_gt_ids": [
+        44
+      ]
+    },
+    {
+      "color_prediction_id": 8,
+      "color_source": "baseline",
+      "matching_iou": 0.13384276948014356,
+      "matching_intersection": 2312,
+      "matching_gt_recall": 0.3907385499408484,
+      "rgb": [
+        239,
+        79,
+        132
+      ],
+      "raw_gt_instance_id": 17,
+      "official_object_id": 16,
+      "category": "curtain",
+      "full_reference_vertices": 7838,
+      "evaluated_observed_vertices": 5917,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 8,
+          "iou": 0.13384276948014356,
+          "intersection": 2312
+        },
+        "E1": {
+          "prediction_id": 8,
+          "iou": 0.13400509613157285,
+          "intersection": 2314
+        },
+        "swap_partial": {
+          "prediction_id": 8,
+          "iou": 0.13400509613157285,
+          "intersection": 2314
+        }
+      },
+      "low_overlap_visual_match": true,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 7,
+      "color_source": "baseline",
+      "matching_iou": 0.33806957373836355,
+      "matching_intersection": 690,
+      "matching_gt_recall": 0.3520408163265306,
+      "rgb": [
+        85,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 18,
+      "official_object_id": 17,
+      "category": "window",
+      "full_reference_vertices": 3075,
+      "evaluated_observed_vertices": 1960,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 7,
+          "iou": 0.33806957373836355,
+          "intersection": 690
+        },
+        "E1": {
+          "prediction_id": 1965,
+          "iou": 0.27190786179268905,
+          "intersection": 543
+        },
+        "swap_partial": {
+          "prediction_id": 1965,
+          "iou": 0.271407110665999,
+          "intersection": 542
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [
+        "E1",
+        "swap_partial"
+      ],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 1087,
+      "color_source": "baseline",
+      "matching_iou": 0.5297441998810232,
+      "matching_intersection": 3562,
+      "matching_gt_recall": 0.5366074118710455,
+      "rgb": [
+        210,
+        79,
+        239
+      ],
+      "raw_gt_instance_id": 19,
+      "official_object_id": 18,
+      "category": "plant",
+      "full_reference_vertices": 12196,
+      "evaluated_observed_vertices": 6638,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 1087,
+          "iou": 0.5297441998810232,
+          "intersection": 3562
+        },
+        "E1": {
+          "prediction_id": 1087,
+          "iou": 0.5146511973821211,
+          "intersection": 3460
+        },
+        "swap_partial": {
+          "prediction_id": 1087,
+          "iou": 0.5146511973821211,
+          "intersection": 3460
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 1358,
+      "color_source": "baseline",
+      "matching_iou": 0.4465875370919881,
+      "matching_intersection": 301,
+      "matching_gt_recall": 0.46236559139784944,
+      "rgb": [
+        120,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 21,
+      "official_object_id": 20,
+      "category": "clock",
+      "full_reference_vertices": 741,
+      "evaluated_observed_vertices": 651,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 1358,
+          "iou": 0.4465875370919881,
+          "intersection": 301
+        },
+        "E1": {
+          "prediction_id": 1358,
+          "iou": 0.47041420118343197,
+          "intersection": 318
+        },
+        "swap_partial": {
+          "prediction_id": 1358,
+          "iou": 0.47041420118343197,
+          "intersection": 318
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 689,
+      "color_source": "baseline",
+      "matching_iou": 0.6528925619834711,
+      "matching_intersection": 79,
+      "matching_gt_recall": 0.6810344827586207,
+      "rgb": [
+        232,
+        79,
+        239
+      ],
+      "raw_gt_instance_id": 22,
+      "official_object_id": 21,
+      "category": "picture",
+      "full_reference_vertices": 118,
+      "evaluated_observed_vertices": 116,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 689,
+          "iou": 0.6528925619834711,
+          "intersection": 79
+        },
+        "E1": {
+          "prediction_id": 689,
+          "iou": 0.6557377049180327,
+          "intersection": 80
+        },
+        "swap_partial": {
+          "prediction_id": 689,
+          "iou": 0.6557377049180327,
+          "intersection": 80
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 676,
+      "color_source": "baseline",
+      "matching_iou": 0.5454545454545454,
+      "matching_intersection": 24,
+      "matching_gt_recall": 0.5853658536585366,
+      "rgb": [
+        198,
+        79,
+        239
+      ],
+      "raw_gt_instance_id": 23,
+      "official_object_id": 22,
+      "category": "picture",
+      "full_reference_vertices": 42,
+      "evaluated_observed_vertices": 41,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 676,
+          "iou": 0.5454545454545454,
+          "intersection": 24
+        },
+        "E1": {
+          "prediction_id": 676,
+          "iou": 0.6,
+          "intersection": 27
+        },
+        "swap_partial": {
+          "prediction_id": 676,
+          "iou": 0.6,
+          "intersection": 27
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 610,
+      "color_source": "baseline",
+      "matching_iou": 0.32142857142857145,
+      "matching_intersection": 144,
+      "matching_gt_recall": 0.32286995515695066,
+      "rgb": [
+        239,
+        79,
+        79
+      ],
+      "raw_gt_instance_id": 24,
+      "official_object_id": 23,
+      "category": "end table",
+      "full_reference_vertices": 681,
+      "evaluated_observed_vertices": 446,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 610,
+          "iou": 0.32142857142857145,
+          "intersection": 144
+        },
+        "E1": {
+          "prediction_id": 609,
+          "iou": 0.21153846153846154,
+          "intersection": 99
+        },
+        "swap_partial": {
+          "prediction_id": 609,
+          "iou": 0.21153846153846154,
+          "intersection": 99
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [
+        "E1",
+        "swap_partial"
+      ],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 244,
+      "color_source": "baseline",
+      "matching_iou": 0.5609243697478992,
+      "matching_intersection": 267,
+      "matching_gt_recall": 0.5680851063829787,
+      "rgb": [
+        207,
+        79,
+        239
+      ],
+      "raw_gt_instance_id": 26,
+      "official_object_id": 25,
+      "category": "pillow",
+      "full_reference_vertices": 607,
+      "evaluated_observed_vertices": 470,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 244,
+          "iou": 0.5609243697478992,
+          "intersection": 267
+        },
+        "E1": {
+          "prediction_id": 244,
+          "iou": 0.600418410041841,
+          "intersection": 287
+        },
+        "swap_partial": {
+          "prediction_id": 244,
+          "iou": 0.606694560669456,
+          "intersection": 290
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 209,
+      "color_source": "baseline",
+      "matching_iou": 0.6748754842280023,
+      "matching_intersection": 4878,
+      "matching_gt_recall": 0.6875264270613107,
+      "rgb": [
+        237,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 27,
+      "official_object_id": 26,
+      "category": "couch",
+      "full_reference_vertices": 8510,
+      "evaluated_observed_vertices": 7095,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 209,
+          "iou": 0.6748754842280023,
+          "intersection": 4878
+        },
+        "E1": {
+          "prediction_id": 209,
+          "iou": 0.6744571981745263,
+          "intersection": 4877
+        },
+        "swap_partial": {
+          "prediction_id": 209,
+          "iou": 0.6744153867441539,
+          "intersection": 4874
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 298,
+      "color_source": "baseline",
+      "matching_iou": 0.6740506329113924,
+      "matching_intersection": 213,
+      "matching_gt_recall": 0.6983606557377049,
+      "rgb": [
+        232,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 28,
+      "official_object_id": 27,
+      "category": "pillow",
+      "full_reference_vertices": 352,
+      "evaluated_observed_vertices": 305,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 298,
+          "iou": 0.6740506329113924,
+          "intersection": 213
+        },
+        "E1": {
+          "prediction_id": 298,
+          "iou": 0.6740506329113924,
+          "intersection": 213
+        },
+        "swap_partial": {
+          "prediction_id": 298,
+          "iou": 0.6740506329113924,
+          "intersection": 213
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 455,
+      "color_source": "baseline",
+      "matching_iou": 0.7091106290672451,
+      "matching_intersection": 3269,
+      "matching_gt_recall": 0.7257992895204263,
+      "rgb": [
+        202,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 29,
+      "official_object_id": 28,
+      "category": "sofa chair",
+      "full_reference_vertices": 5442,
+      "evaluated_observed_vertices": 4504,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 455,
+          "iou": 0.7091106290672451,
+          "intersection": 3269
+        },
+        "E1": {
+          "prediction_id": 455,
+          "iou": 0.7210514881598957,
+          "intersection": 3319
+        },
+        "swap_partial": {
+          "prediction_id": 455,
+          "iou": 0.7210514881598957,
+          "intersection": 3319
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 377,
+      "color_source": "baseline",
+      "matching_iou": 0.4381078691423519,
+      "matching_intersection": 1982,
+      "matching_gt_recall": 0.43898117386489477,
+      "rgb": [
+        239,
+        79,
+        80
+      ],
+      "raw_gt_instance_id": 30,
+      "official_object_id": 29,
+      "category": "sofa chair",
+      "full_reference_vertices": 5750,
+      "evaluated_observed_vertices": 4515,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 377,
+          "iou": 0.4381078691423519,
+          "intersection": 1982
+        },
+        "E1": {
+          "prediction_id": 377,
+          "iou": 0.43931019235021,
+          "intersection": 1987
+        },
+        "swap_partial": {
+          "prediction_id": 377,
+          "iou": 0.43908910015476454,
+          "intersection": 1986
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 683,
+      "color_source": "baseline",
+      "matching_iou": 0.384,
+      "matching_intersection": 48,
+      "matching_gt_recall": 0.3870967741935484,
+      "rgb": [
+        239,
+        192,
+        79
+      ],
+      "raw_gt_instance_id": 33,
+      "official_object_id": 32,
+      "category": "picture",
+      "full_reference_vertices": 126,
+      "evaluated_observed_vertices": 124,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 683,
+          "iou": 0.384,
+          "intersection": 48
+        },
+        "E1": {
+          "prediction_id": 683,
+          "iou": 0.384,
+          "intersection": 48
+        },
+        "swap_partial": {
+          "prediction_id": 683,
+          "iou": 0.384,
+          "intersection": 48
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 690,
+      "color_source": "baseline",
+      "matching_iou": 0.6268656716417911,
+      "matching_intersection": 84,
+      "matching_gt_recall": 0.6268656716417911,
+      "rgb": [
+        79,
+        239,
+        185
+      ],
+      "raw_gt_instance_id": 34,
+      "official_object_id": 33,
+      "category": "picture",
+      "full_reference_vertices": 139,
+      "evaluated_observed_vertices": 134,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 690,
+          "iou": 0.6268656716417911,
+          "intersection": 84
+        },
+        "E1": {
+          "prediction_id": 690,
+          "iou": 0.6268656716417911,
+          "intersection": 84
+        },
+        "swap_partial": {
+          "prediction_id": 690,
+          "iou": 0.6268656716417911,
+          "intersection": 84
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 674,
+      "color_source": "baseline",
+      "matching_iou": 0.5833333333333334,
+      "matching_intersection": 63,
+      "matching_gt_recall": 0.5833333333333334,
+      "rgb": [
+        79,
+        186,
+        239
+      ],
+      "raw_gt_instance_id": 35,
+      "official_object_id": 34,
+      "category": "picture",
+      "full_reference_vertices": 109,
+      "evaluated_observed_vertices": 108,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 674,
+          "iou": 0.5833333333333334,
+          "intersection": 63
+        },
+        "E1": {
+          "prediction_id": 674,
+          "iou": 0.5925925925925926,
+          "intersection": 64
+        },
+        "swap_partial": {
+          "prediction_id": 674,
+          "iou": 0.5925925925925926,
+          "intersection": 64
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 673,
+      "color_source": "baseline",
+      "matching_iou": 0.7155172413793104,
+      "matching_intersection": 83,
+      "matching_gt_recall": 0.7155172413793104,
+      "rgb": [
+        239,
+        79,
+        139
+      ],
+      "raw_gt_instance_id": 36,
+      "official_object_id": 35,
+      "category": "picture",
+      "full_reference_vertices": 117,
+      "evaluated_observed_vertices": 116,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 673,
+          "iou": 0.7155172413793104,
+          "intersection": 83
+        },
+        "E1": {
+          "prediction_id": 673,
+          "iou": 0.7155172413793104,
+          "intersection": 83
+        },
+        "swap_partial": {
+          "prediction_id": 673,
+          "iou": 0.7155172413793104,
+          "intersection": 83
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 720,
+      "color_source": "baseline",
+      "matching_iou": 0.5280898876404494,
+      "matching_intersection": 94,
+      "matching_gt_recall": 0.5280898876404494,
+      "rgb": [
+        239,
+        79,
+        94
+      ],
+      "raw_gt_instance_id": 37,
+      "official_object_id": 36,
+      "category": "picture",
+      "full_reference_vertices": 182,
+      "evaluated_observed_vertices": 178,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 720,
+          "iou": 0.5280898876404494,
+          "intersection": 94
+        },
+        "E1": {
+          "prediction_id": 720,
+          "iou": 0.5337078651685393,
+          "intersection": 95
+        },
+        "swap_partial": {
+          "prediction_id": 720,
+          "iou": 0.5337078651685393,
+          "intersection": 95
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 721,
+      "color_source": "baseline",
+      "matching_iou": 0.5842696629213483,
+      "matching_intersection": 52,
+      "matching_gt_recall": 0.5842696629213483,
+      "rgb": [
+        79,
+        140,
+        239
+      ],
+      "raw_gt_instance_id": 38,
+      "official_object_id": 37,
+      "category": "picture",
+      "full_reference_vertices": 96,
+      "evaluated_observed_vertices": 89,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 721,
+          "iou": 0.5842696629213483,
+          "intersection": 52
+        },
+        "E1": {
+          "prediction_id": 721,
+          "iou": 0.5842696629213483,
+          "intersection": 52
+        },
+        "swap_partial": {
+          "prediction_id": 721,
+          "iou": 0.5842696629213483,
+          "intersection": 52
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 702,
+      "color_source": "baseline",
+      "matching_iou": 0.40789473684210525,
+      "matching_intersection": 31,
+      "matching_gt_recall": 0.40789473684210525,
+      "rgb": [
+        239,
+        79,
+        214
+      ],
+      "raw_gt_instance_id": 39,
+      "official_object_id": 38,
+      "category": "picture",
+      "full_reference_vertices": 77,
+      "evaluated_observed_vertices": 76,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 702,
+          "iou": 0.40789473684210525,
+          "intersection": 31
+        },
+        "E1": {
+          "prediction_id": 702,
+          "iou": 0.40789473684210525,
+          "intersection": 31
+        },
+        "swap_partial": {
+          "prediction_id": 702,
+          "iou": 0.40789473684210525,
+          "intersection": 31
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 677,
+      "color_source": "baseline",
+      "matching_iou": 0.4807692307692308,
+      "matching_intersection": 25,
+      "matching_gt_recall": 0.5208333333333334,
+      "rgb": [
+        79,
+        239,
+        152
+      ],
+      "raw_gt_instance_id": 40,
+      "official_object_id": 39,
+      "category": "picture",
+      "full_reference_vertices": 50,
+      "evaluated_observed_vertices": 48,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 677,
+          "iou": 0.4807692307692308,
+          "intersection": 25
+        },
+        "E1": {
+          "prediction_id": 677,
+          "iou": 0.5192307692307693,
+          "intersection": 27
+        },
+        "swap_partial": {
+          "prediction_id": 677,
+          "iou": 0.5192307692307693,
+          "intersection": 27
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 688,
+      "color_source": "baseline",
+      "matching_iou": 0.46236559139784944,
+      "matching_intersection": 43,
+      "matching_gt_recall": 0.671875,
+      "rgb": [
+        200,
+        239,
+        79
+      ],
+      "raw_gt_instance_id": 41,
+      "official_object_id": 40,
+      "category": "picture",
+      "full_reference_vertices": 67,
+      "evaluated_observed_vertices": 64,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 688,
+          "iou": 0.46236559139784944,
+          "intersection": 43
+        },
+        "E1": {
+          "prediction_id": 688,
+          "iou": 0.46236559139784944,
+          "intersection": 43
+        },
+        "swap_partial": {
+          "prediction_id": 688,
+          "iou": 0.46236559139784944,
+          "intersection": 43
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": []
+    },
+    {
+      "color_prediction_id": 3,
+      "color_source": "baseline",
+      "matching_iou": 0.36234606553955334,
+      "matching_intersection": 1736,
+      "matching_gt_recall": 0.4091444732500589,
+      "rgb": [
+        239,
+        79,
+        219
+      ],
+      "raw_gt_instance_id": 44,
+      "official_object_id": 43,
+      "category": "tv",
+      "full_reference_vertices": 5832,
+      "evaluated_observed_vertices": 4243,
+      "best_overlap_per_method": {
+        "baseline": {
+          "prediction_id": 3,
+          "iou": 0.36234606553955334,
+          "intersection": 1736
+        },
+        "E1": {
+          "prediction_id": 3,
+          "iou": 0.36731255265374896,
+          "intersection": 1744
+        },
+        "swap_partial": {
+          "prediction_id": 3,
+          "iou": 0.36688379911746166,
+          "intersection": 1746
+        }
+      },
+      "low_overlap_visual_match": false,
+      "color_differs_from_best_id_for_methods": [],
+      "baseline_best_color_competing_gt_ids": [
+        15
+      ]
+    }
+  ]
+}
