@@ -40,6 +40,15 @@
 
 PLY 的 `instance_id` 保留 GT ID（官方 objectId+1），借色来源另存 `color_prediction_id`；保留原始顶点索引和评价区域标记。新文件哈希和验证记录见 [GT 交付清单](results/gt_ply_delivery_manifest.json)，服务器导出实现见 [export_gt_ply.py](tools/export_gt_ply.py)。
 
+## 建图与 GT 的坐标、窗口深度诊断
+
+[完整诊断说明](diagnostics/geometry_gt_20261020/错位与反光诊断.txt) · [统计与 PLY 坐标核验](diagnostics/geometry_gt_20261020/diagnosis_summary.json)
+
+两场景三方法的固定 XYZ 完全一致，577 帧适配深度和位姿逐一核对通过。窗口范围内深度缺失约 69.7% / 88.0%，但这些数据不能单独证明反光是主要原因；帧间重投影同时证实局部观测残差。GT 实例 PLY 只含评价目标，预测 PLY 还含墙面/地面，需避免把显示范围差异当成整体错位。所有配准与窗口平面仅用于诊断，未改动几何、mask、人工标注或评分。
+
+- scene0011_00：[同坐标对照](diagnostics/geometry_gt_20261020/scene0011_00/same_coordinates_comparison.png)、[窗口原始深度](diagnostics/geometry_gt_20261020/scene0011_00/window_aperture_diagnostic.png)、[逐帧深度对照](diagnostics/geometry_gt_20261020/scene0011_00/raw_depth_examples.png)。
+- scene0608_00：[同坐标对照](diagnostics/geometry_gt_20261020/scene0608_00/same_coordinates_comparison.png)、[窗口原始深度](diagnostics/geometry_gt_20261020/scene0608_00/window_aperture_diagnostic.png)、[逐帧深度对照](diagnostics/geometry_gt_20261020/scene0608_00/raw_depth_examples.png)。
+
 ## 固定评价口径
 
 scene0011_00 为 238 帧 / 27 GT；scene0608_00 为 339 帧 / 34 GT。使用服务器现有步长10序列，保留原始帧号。新三组共用相同 TSDF、关联、GT范围和对应索引。

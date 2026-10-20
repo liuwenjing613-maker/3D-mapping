@@ -1,0 +1,176 @@
+{
+  "scopes": "Frozen-map diagnostic, not official instance scoring",
+  "scenes": {
+    "scene0011_00": {
+      "whole_map_median_GT_distance_mm": 6.540936883538961,
+      "rigid_adjustment_translation_mm": 2.163457096487932,
+      "rigid_adjustment_rotation_deg": 0.029898456507545114,
+      "window_missing_fraction": 0.6970968377777153,
+      "window_accepted_behind_10cm_fraction": 0.13710874257960065,
+      "window_ghost_trace": {
+        "over10cm_from_GT": 17756,
+        "measured_depth_supported": 15230,
+        "window_aperture_any": 449,
+        "behind_window_any": 347,
+        "window_aperture_majority": 406
+      },
+      "published": {
+        "published": 732859,
+        "near_GT_floor": 243519,
+        "near_GT_wall": 118277,
+        "over_10cm_from_full_GT": 27451
+      },
+      "published_floor_wall_fraction": 0.49367750140204325,
+      "exact_source_frames": 238,
+      "adapter_depth_mismatch": [],
+      "adapter_pose_error": 0.0,
+      "frame_pair_summary": {
+        "adjacent_10": {
+          "pairs": 50,
+          "n": 96558,
+          "abs_point_plane_mm_p50_p90_p99": [
+            2.6493700613699662,
+            10.294443400055785,
+            27.57129423758392
+          ],
+          "over15mm": 0.04699765943785082,
+          "over30mm": 0.0076223616893473355
+        },
+        "revisit_ge300": {
+          "pairs": 20,
+          "n": 17129,
+          "abs_point_plane_mm_p50_p90_p99": [
+            3.4929578020780676,
+            13.47055895111116,
+            34.53425617741181
+          ],
+          "over15mm": 0.08149921186292253,
+          "over30mm": 0.015470838928133574
+        }
+      }
+    },
+    "scene0608_00": {
+      "whole_map_median_GT_distance_mm": 16.98202919214964,
+      "rigid_adjustment_translation_mm": 3.6715328283749304,
+      "rigid_adjustment_rotation_deg": 0.037583222323889595,
+      "window_missing_fraction": 0.8800694410956261,
+      "window_accepted_behind_10cm_fraction": 0.009717196086315508,
+      "window_ghost_trace": {
+        "over10cm_from_GT": 50749,
+        "measured_depth_supported": 41731,
+        "window_aperture_any": 36,
+        "behind_window_any": 0,
+        "window_aperture_majority": 31
+      },
+      "published": {
+        "published": 623425,
+        "near_GT_floor": 88032,
+        "near_GT_wall": 106586,
+        "over_10cm_from_full_GT": 39007
+      },
+      "published_floor_wall_fraction": 0.31217548221518227,
+      "exact_source_frames": 339,
+      "adapter_depth_mismatch": [],
+      "adapter_pose_error": 0.0,
+      "frame_pair_summary": {
+        "adjacent_10": {
+          "pairs": 69,
+          "n": 276673,
+          "abs_point_plane_mm_p50_p90_p99": [
+            4.769118161717989,
+            17.37869440048742,
+            39.28041151348374
+          ],
+          "over15mm": 0.13089459397917397,
+          "over30mm": 0.02484521438665862
+        },
+        "revisit_ge300": {
+          "pairs": 30,
+          "n": 30512,
+          "abs_point_plane_mm_p50_p90_p99": [
+            4.5497054320997865,
+            15.601569140299,
+            38.739614739374446
+          ],
+          "over15mm": 0.10730204509701101,
+          "over30mm": 0.022646827477713686
+        }
+      }
+    }
+  },
+  "ply_coordinate_checks": [
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0011_00\\ply\\scene0011_00_baseline_instances.ply",
+      "kind": "prediction",
+      "checked_vertices": 74708,
+      "coordinate_match_exact": true,
+      "full_vertices": 747246
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0011_00\\ply\\scene0011_00_E1_instances.ply",
+      "kind": "prediction",
+      "checked_vertices": 73225,
+      "coordinate_match_exact": true,
+      "full_vertices": 732845
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0011_00\\ply\\scene0011_00_swap_partial_instances.ply",
+      "kind": "prediction",
+      "checked_vertices": 73228,
+      "coordinate_match_exact": true,
+      "full_vertices": 732859
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0011_00\\gt_ply\\scene0011_00_gt_instances.ply",
+      "kind": "GT",
+      "checked_vertices": 113836,
+      "coordinate_match_exact": true,
+      "full_vertices": 113836
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0011_00\\gt_ply\\scene0011_00_gt_instances_observed.ply",
+      "kind": "GT",
+      "checked_vertices": 78514,
+      "coordinate_match_exact": true,
+      "full_vertices": 78514
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0608_00\\ply\\scene0608_00_baseline_instances.ply",
+      "kind": "prediction",
+      "checked_vertices": 62127,
+      "coordinate_match_exact": true,
+      "full_vertices": 621009
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0608_00\\ply\\scene0608_00_E1_instances.ply",
+      "kind": "prediction",
+      "checked_vertices": 62398,
+      "coordinate_match_exact": true,
+      "full_vertices": 623772
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0608_00\\ply\\scene0608_00_swap_partial_instances.ply",
+      "kind": "prediction",
+      "checked_vertices": 62369,
+      "coordinate_match_exact": true,
+      "full_vertices": 623425
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0608_00\\gt_ply\\scene0608_00_gt_instances.ply",
+      "kind": "GT",
+      "checked_vertices": 75865,
+      "coordinate_match_exact": true,
+      "full_vertices": 75865
+    },
+    {
+      "file": "results\\ScanNet_E1_auto-v3-swap_partial_20261020\\scene0608_00\\gt_ply\\scene0608_00_gt_instances_observed.ply",
+      "kind": "GT",
+      "checked_vertices": 54224,
+      "coordinate_match_exact": true,
+      "full_vertices": 54224
+    }
+  ],
+  "maps_changed": false,
+  "selection_masks_changed": false,
+  "annotations_changed": false
+}
