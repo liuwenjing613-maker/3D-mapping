@@ -1,0 +1,27 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/tracking_queue_v2.py
++++ code/scene0011_00/e1_repair/tracking_queue_v2.py
+@@ -1,7 +1,7 @@
+ """Two independent E1 workers per available GPU; safely adopt existing jobs."""
+ from pathlib import Path
+ import os,json,time,subprocess,hashlib,shutil,traceback
+-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair')
++C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/e1_repair')
+ def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+ def save(n,x):
+  p=R/n;t=p.with_suffix('.tmp');t.write_text(json.dumps(x,indent=2));t.replace(p)
+@@ -36,13 +36,13 @@
+     assert job['process'].returncode==0,('tracking failed',uid)
+    elif alive(job):continue
+    p=R/'cases'/uid/'tracking/complete.json';assert p.exists(),('tracking did not complete',uid)
+-   d=json.loads(p.read_text());assert d['status']=='PASS' and d['completed_frames']==d['total_frames']==2000
++   d=json.loads(p.read_text());assert d['status']=='PASS' and d['completed_frames']==d['total_frames']==238
+    assert d['case_config_sha256']==sha(job['row']['config_path']) and d['directions_use_independent_seed_only_states'] and not d['GT_used']
+    done.append({'case_uid':uid,'seconds':d['elapsed_seconds'],'report_sha256':sha(p),'gpu':job['gpu']});del active[uid];print('COMPLETE',uid,flush=True)
+   gpus,apps=gpu_state();ourpids={j['pid'] for j in active.values()}
+   for gpu in gpus:
+    uuid=gpu['uuid'];ours=sum(j['gpu']==uuid for j in active.values());foreign=[x for x in apps if x['gpu']==uuid and x['pid'] not in ourpids and x['memory']>=128]
+-   if not pending or ours>=2 or foreign or gpu['free']<16000 or ram()<70:continue
++   if not pending or ours>=2 or sum(x['memory'] for x in foreign)>=1024 or gpu['free']<24000 or ram()<70:continue
+    if not ours and (gpu['used']>=1024 or gpu['util']>=10):continue
+    if not ours:
+     env={**os.environ,'CUDA_VISIBLE_DEVICES':uuid,'LD_LIBRARY_PATH':'/data/chenkejun/CVPR/libs/p1a1_roi_cropformer_zoom_20261003/nvidia_580_126_09'}

@@ -1,0 +1,39 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/track_case.py
++++ code/scene0011_00/e1_repair/track_case.py
+@@ -51,13 +51,15 @@
+         return
+     sys.path.insert(0, cfg['tracking']['repo'])
+     from sam2.build_sam import build_sam2_video_predictor
+-    raw = json.loads(Path('/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main', cfg['scene'], 'configs/raw.json').read_text())
++    raw = json.loads(Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs', cfg['scene'], 'configs/raw.json').read_text())
+     source = raw['source']
+     rgbroot = Path(source['scene_root'])
+     poses = np.loadtxt(rgbroot / source['trajectory']).reshape(-1, 4, 4)
+-    total = len(poses)
++    raw_ids = raw['frame_ids']
++    total = len(raw_ids)
+     fid = cfg['seed_frame']
+-    assert 0 <= fid < total
++    assert fid in raw_ids
++    position = raw_ids.index(fid)
+     torch.manual_seed(0); np.random.seed(0); torch.set_num_threads(4)
+     torch.backends.cuda.matmul.allow_tf32 = True
+     torch.backends.cudnn.allow_tf32 = True
+@@ -73,7 +75,7 @@
+               'GPU_visible': os.environ.get('CUDA_VISIBLE_DEVICES')}
+     dump(out / 'status.json', status)
+     with torch.inference_mode(), torch.autocast('cuda', dtype=torch.bfloat16):
+-        for reverse, rawframes in [(False, list(range(fid, total))), (True, list(range(fid + 1)))]:
++        for reverse, rawframes in [(False, raw_ids[position:]), (True, raw_ids[:position + 1])]:
+             video = out / ('rgb_reverse' if reverse else 'rgb_forward')
+             video.mkdir(exist_ok=True)
+             for index, raw_id in enumerate(rawframes):
+@@ -112,7 +114,7 @@
+                     print(json.dumps({k: status[k] for k in ['completed_frames', 'total_frames', 'elapsed_seconds']}), flush=True)
+             del state
+             gc.collect(); torch.cuda.empty_cache()
+-    assert sorted(records) == list(range(total))
++    assert sorted(records) == raw_ids
+     np.testing.assert_array_equal(np.array(Image.open(out / ('f%06d.png' % fid))), immutable)
+     assert sha(file) == association['seed_sha256']
+     report = {**status, 'status': 'PASS', 'completed_frames': total,

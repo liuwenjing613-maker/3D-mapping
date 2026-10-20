@@ -1,0 +1,23 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/grouping_r3/compute.py
++++ code/scene0011_00/grouping_r3/compute.py
+@@ -1,4 +1,4 @@
+-"""Read-only grouping of selected office1 masks on the frozen TSDF surface."""
++"""Read-only grouping of selected scene0011_00 masks on the frozen TSDF surface."""
+ from pathlib import Path
+ from collections import OrderedDict
+ import sys, json, hashlib, zipfile, random, time
+@@ -10,10 +10,10 @@
+ from crop_filter import artificial_crop_edges, has_crop_contact
+ 
+ C = Path(__file__).resolve().parent
+-R = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/grouping_r3')
+-F = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge')
+-BASE = Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline/ablation/office1/abstain/final/instance_surface.npz')
+-CAMERA = Path('/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/office1/configs/raw.json')
++R = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/grouping_r3')
++F = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/overmerge')
++BASE = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/baseline/ablation/scene0011_00/abstain/final/instance_surface.npz')
++CAMERA = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs/scene0011_00/configs/raw.json')
+ COMMON = Path('/home/chenkejun/CVPR/experiments/strict_vote_annotation_20261010/common.py')
+ R.mkdir(exist_ok=True, parents=True)
+ started = time.time()

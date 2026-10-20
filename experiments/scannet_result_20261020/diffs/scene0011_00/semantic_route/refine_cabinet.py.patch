@@ -1,0 +1,15 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/semantic_route/refine_cabinet.py
++++ code/scene0011_00/semantic_route/refine_cabinet.py
+@@ -12,9 +12,9 @@
+ import open_clip
+ from safetensors.torch import load_file
+ 
+-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/semantic_route')
+-S=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/frontend')
+-O=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge/web/data.json')
++R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/semantic_route')
++S=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/frontend')
++O=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/overmerge/web/data.json')
+ def read(p):return json.loads(p.read_text())
+ def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,separators=(',',':'))+'\n')
+ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()

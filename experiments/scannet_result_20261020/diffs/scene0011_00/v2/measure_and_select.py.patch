@@ -1,0 +1,51 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/v2/measure_and_select.py
++++ code/scene0011_00/v2/measure_and_select.py
+@@ -1,4 +1,4 @@
+-"""Measure office1 evidence, then call the byte-identical accepted v2 rules."""
++"""Measure scene0011_00 evidence, then call the byte-identical accepted v2 rules."""
+ from pathlib import Path
+ from itertools import combinations
+ import copy,hashlib,json,sys,time,traceback
+@@ -8,9 +8,9 @@
+ from coverage import measure
+ from semantic_exemption import apply_semantic_exemption
+ C=Path(__file__).resolve().parent
+-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1')
+-V=R/'v1';O=R/'v2';CASE='office1_auto_v2_20261019'
+-BASE=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline/ablation/office1/abstain')
++R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00')
++V=R/'v1';O=R/'v2';CASE='scene0011_00_auto_v2_20261019'
++BASE=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/baseline/ablation/scene0011_00/abstain')
+ sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+ read=lambda p:json.loads(Path(p).read_text())
+ def save(name,value):
+@@ -29,9 +29,9 @@
+  assert sem['config']['pixel_confidence']==.7 and sem['config']['mask_fraction']==.9
+  assert sem['config']['exclude_classes']==['wall','floor','ceiling','rug']
+  for p,h in sem['input_hashes'].items():lock(p,h)
+- catalog=read('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/catalog/office1/candidate_manifest.json')
++ catalog=read('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/catalog/scene0011_00/candidate_manifest.json')
+  lock(BASE/'final/instance_surface.npz',catalog['surface_sha256']);lock(BASE/'surface_evidence.npz',catalog['evidence_sha256'])
+- camera_path=Path('/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/office1/configs/raw.json')
++ camera_path=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs/scene0011_00/configs/raw.json')
+  lock(camera_path,catalog['camera_config_sha256']);cfg=read(camera_path);scene=Path(cfg['source']['scene_root']);camera=cfg['camera']
+  trajectory=scene/cfg['source']['trajectory'];lock(trajectory,old['source_sha256'][str(trajectory)]);poses=np.loadtxt(trajectory).reshape(-1,4,4)
+  module=Path('/home/chenkejun/CVPR/experiments/strict_vote_annotation_20261010/common.py');lock(module,old['source_sha256'][str(module)])
+@@ -46,7 +46,7 @@
+  for tid,g in enumerate(manifest['groups'],1):
+   p=g['primary'];q=sr[g['id']];a=indices[offsets[p['index']]:offsets[p['index']+1]]
+   lock(V/p['mask'],p['mask_sha256']);mask=np.asarray(Image.open(V/p['mask']))>0
+-  assert int(mask.sum())==p['area'] and mask.shape==(680,1200)
++  assert int(mask.sum())==p['area'] and mask.shape==(480,640)
+   assert hashlib.sha256(p['frame'].to_bytes(4,'little')+np.packbits(mask.ravel()).tobytes()).hexdigest()==p['digest']
+   assert len(a)==p['support_count'] and hashlib.sha256(a.tobytes()).hexdigest()==p['support_sha256']
+   assert q['original_track_id']==tid and q['mask_id']==p['id'] and q['mask_sha256']==p['mask_sha256']
+@@ -93,7 +93,7 @@
+  kept=set(selection['retained_group_ids']);selected=copy.deepcopy(manifest);selected['groups']=[]
+  for tid,g in enumerate(manifest['groups'],1):
+   if g['id'] in kept:selected['groups'].append(dict(copy.deepcopy(g),original_track_id=tid))
+- selected.update(status='automatic_v2_complete',scene='office1',mask_source_directory=str(V),original_manifest_sha256=sha(V/'seed_manifest.json'),selection_sha256=sha(O/'selection.json'),manual_overrides=[],GT_used=False)
++ selected.update(status='automatic_v2_complete',scene='scene0011_00',mask_source_directory=str(V),original_manifest_sha256=sha(V/'seed_manifest.json'),selection_sha256=sha(O/'selection.json'),manual_overrides=[],GT_used=False)
+  save('seed_manifest.json',selected)
+  link=O/'masks'
+  if not link.exists():link.symlink_to(V/'masks',target_is_directory=True)

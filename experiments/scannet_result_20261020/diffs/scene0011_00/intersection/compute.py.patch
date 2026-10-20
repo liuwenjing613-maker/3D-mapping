@@ -1,0 +1,35 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/intersection/compute.py
++++ code/scene0011_00/intersection/compute.py
+@@ -5,17 +5,17 @@
+ from scipy.spatial import cKDTree
+ from PIL import Image
+ 
+-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/intersection');W=R/'web';(W/'assets').mkdir(parents=True,exist_ok=True)
+-SRC=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/frontend');FILTER=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge')
+-BASE=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline/ablation/office1/abstain')
+-GEOM=Path('/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main/office1/geometry/geometry_full400.json')
++R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/intersection');W=R/'web';(W/'assets').mkdir(parents=True,exist_ok=True)
++SRC=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/frontend');FILTER=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/overmerge')
++BASE=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/baseline/ablation/scene0011_00/abstain')
++GEOM=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs/scene0011_00/geometry/geometry_full400.json')
+ def read(p):return json.loads(p.read_text())
+ def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,separators=(',',':'))+'\n')
+ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+ 
+ def main():
+- start=time.time();d=read(SRC/'review/viewer_data.json');a=read(FILTER/'web/data.json');man=read(SRC/'source/office1/manifest.json')
+- paths=[BASE/'final/instance_surface.npz',BASE/'surface_evidence.npz',SRC/'source/office1/membership.npz',FILTER/'web/data.json',GEOM]
++ start=time.time();d=read(SRC/'review/viewer_data.json');a=read(FILTER/'web/data.json');man=read(SRC/'source/scene0011_00/manifest.json')
++ paths=[BASE/'final/instance_surface.npz',BASE/'surface_evidence.npz',SRC/'source/scene0011_00/membership.npz',FILTER/'web/data.json',GEOM]
+  before={str(p):sha(p) for p in paths};assert before[str(paths[0])]==a['source_hashes'][str(paths[0])]
+  assert before[str(paths[1])]==a['source_hashes'][str(paths[1])];assert before[str(paths[2])]==man['fixed_membership_sha256']
+  v=float(read(GEOM)['voxel_size_m']);radius=2*v;assert v==.01
+@@ -41,7 +41,7 @@
+   for frame,keys in byframe.items():
+    with np.load(FILTER/f'frame{frame:06d}_visible.npz') as z:idx=z['vertex_index'];uv=z['uv']
+    assert len(np.unique(idx))==len(idx);insidecore=coremask[idx];insideplus=expanded[idx]
+-   rgb=np.zeros((680,1200,4),np.uint8);add=uv[insideplus&~insidecore];rgb[add[:,1],add[:,0]]=[0,212,238,255]
++   rgb=np.zeros((480,640,4),np.uint8);add=uv[insideplus&~insidecore];rgb[add[:,1],add[:,0]]=[0,212,238,255]
+    cp=uv[insidecore];rgb[cp[:,1],cp[:,0]]=0
+    rel=f'assets/{uid}_f{frame:06d}_expansion.png';Image.fromarray(rgb).save(W/rel)
+    fk=uid+':'+str(frame);out['frames'][fk]=dict(expansion=rel,core_visible=int(insidecore.sum()),expanded_visible=int(insideplus.sum()),added_visible=int((insideplus&~insidecore).sum()))

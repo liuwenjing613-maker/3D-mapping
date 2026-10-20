@@ -1,0 +1,11 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/frontend/infer_sam.py
++++ code/scene0011_00/frontend/infer_sam.py
+@@ -7,7 +7,7 @@
+ from sam2.build_sam import build_sam2
+ from prepare_inputs import sha,write,link_verified
+ 
+-ROOT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/frontend')
++ROOT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/frontend')
+ CHECKPOINT=Path('/data/chenkejun/CVPR/models/sam2.1_hiera_large.pt')
+ PARAMS=dict(points_per_side=32,points_per_batch=64,pred_iou_thresh=.8,stability_score_thresh=.95,
+  stability_score_offset=1.,mask_threshold=0.,box_nms_thresh=.7,crop_n_layers=0,crop_nms_thresh=.7,

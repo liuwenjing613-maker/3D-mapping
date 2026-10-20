@@ -1,0 +1,11 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/run_selected.py
++++ code/scene0011_00/e1_repair/run_selected.py
+@@ -1,7 +1,7 @@
+ from pathlib import Path
+ import os,json,subprocess,time,traceback
+ C=Path(__file__).resolve().parent
+-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair')
++R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/e1_repair')
+ PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'
+ env={**os.environ,'OPENBLAS_NUM_THREADS':'4','OMP_NUM_THREADS':'4','PYTHONDONTWRITEBYTECODE':'1'}
+ def save(name,v):

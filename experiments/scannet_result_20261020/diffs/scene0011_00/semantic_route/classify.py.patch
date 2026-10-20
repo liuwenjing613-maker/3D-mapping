@@ -1,0 +1,15 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/semantic_route/classify.py
++++ code/scene0011_00/semantic_route/classify.py
+@@ -9,9 +9,9 @@
+ from safetensors.torch import load_file
+ 
+ CODE=Path(__file__).resolve().parent
+-ROOT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/semantic_route')
+-SOURCE=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/frontend')
+-FILTER=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge')
++ROOT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/semantic_route')
++SOURCE=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/frontend')
++FILTER=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/overmerge')
+ 
+ def read(p):return json.loads(p.read_text())
+ def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,separators=(',',':'))+'\n')

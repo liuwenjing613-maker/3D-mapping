@@ -1,0 +1,44 @@
+--- experiments/auto_v3_swap/sources/experiments/replica8_swap34_20261020/office1/partial/run_partial_replay.py
++++ code/scene0011_00/partial/run_partial_replay.py
+@@ -95,6 +95,14 @@
+                       if SCENE == 'room2' else SOURCE.parent / 'v2/seed_manifest.json')
+     selected = h.read(selection_path)
+     groups = {g['id']: g for g in selected['groups']}
++    skipped = selection.get('execution_skipped_seeds', [])
++    included_ids = {x['group_id'] for x in selection['included']}
++    skipped_ids = {x['group_id'] for x in skipped}
++    assert set(groups) == included_ids | skipped_ids and not included_ids & skipped_ids
++    for item in skipped:
++        assert item['reason'] == 'ZERO_VALID_FORWARD_PROJECTED_SURFACE_SUPPORT'
++        assert selection['execution_seed_forward_support'][item['group_id']] == 0
++    groups = {k: v for k, v in groups.items() if k in included_ids}
+     assert len(groups) == len(selection['included']) == COUNT
+     assert set(groups) == {x['group_id'] for x in selection['included']}
+     for item in selection['included']:
+@@ -105,7 +113,7 @@
+         assert item['mask_sha256'] == primary['mask_sha256']
+         assert item['original_track_id'] == group.get('original_track_id', int(group['id'][1:]))
+     dump(R / 'input_selection_audit.json', {'status': 'PASS', 'scene': SCENE,
+-         'count': COUNT, 'auto_v2_manifest': str(selection_path),
++         'count': COUNT, 'execution_skipped_seeds': skipped, 'execution_seeds_identical_to_E1': True, 'auto_v2_manifest': str(selection_path),
+          'auto_v2_manifest_sha256': sha(selection_path),
+          'original_E1_selection_sha256': sha(SOURCE / 'confirmed_selection.json'),
+          'all_groups_frames_masks_and_original_track_ids_match': True,
+@@ -127,7 +135,7 @@
+     assert len(obj) == COUNT
+     base = assoc['instance_base']
+     scene = h.r.Scene(SCENE)
+-    assert sorted(scene.records) == list(range(0, 2000, 5))
++    assert sorted(scene.records) == list(range(0, 2371, 10))
+     decisions = {d['frame']: d for d in h.read(SOURCE / 'validated/full_track/frame_decisions.json')['frames']}
+     region = h.load(SOURCE / 'e1/region.npz')
+     prior, owner = region['prior_owner'], region['owner']
+@@ -258,7 +266,7 @@
+         receipts.append({'frame': fid, **frame_stats,
+             'whole_plans_converted': sum(x == 'whole' for x in decisions[fid].get('old_observation_plans', {}).values())})
+         if (index + 1) % 20 == 0:
+-            emit('replay', frames=index + 1, total_frames=400)
++            emit('replay', frames=index + 1, total_frames=238)
+     # Verify the original complete pipeline before accepting the new predictions.
+     previous_pair = (bk, bv)
+     for name in STAGES:

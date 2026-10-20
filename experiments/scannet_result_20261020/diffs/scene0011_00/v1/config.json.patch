@@ -1,0 +1,19 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/v1/config.json
++++ code/scene0011_00/v1/config.json
+@@ -1,13 +1,13 @@
+ {
+   "schema": "same-instance-seeds-edge-noise-v5",
+-  "scene": "office1",
+-  "input_selection": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/semantic_route/selection.json",
++  "scene": "scene0011_00",
++  "input_selection": "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/semantic_route/selection.json",
+   "iou": 0.25,
+   "comparison": "strictly greater than",
+   "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",
+   "crop_contact_policy": "exclude any mask touching an artificial source-crop edge before grouping; original image borders alone are allowed",
+   "crop_filter_applies_to": "all source-eligible masks including semantic SAM; no CropFormer fallback for window/cabinet",
+-  "previous_grouping": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/grouping_r3/grouping.json",
++  "previous_grouping": "/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/grouping_r3/grouping.json",
+   "exact_duplicate_key": "frame + identical full-image binary mask; retain every original occurrence",
+   "grouping": "descending TSDF support count; compare remaining masks only to the fixed primary seed; no transitive expansion",
+   "source_policy": "window/cabinet SAM-only; any prior semantic CropFormer replacement is global across all ROI occurrences",

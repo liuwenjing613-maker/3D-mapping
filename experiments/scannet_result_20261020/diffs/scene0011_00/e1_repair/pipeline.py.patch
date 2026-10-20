@@ -1,0 +1,10 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/pipeline.py
++++ code/scene0011_00/e1_repair/pipeline.py
+@@ -1,6 +1,6 @@
+ from pathlib import Path
+ import json,subprocess,os,time,hashlib,traceback
+-C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair')
++C=Path(__file__).resolve().parent;R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/e1_repair')
+ PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'
+ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+ def save(n,x):

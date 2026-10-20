@@ -1,0 +1,27 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/run_v1.py
++++ code/scene0011_00/run_v1.py
+@@ -1,12 +1,12 @@
+-"""Execute the accepted upstream sequence in an isolated office1 experiment."""
++"""Execute the accepted upstream sequence in an isolated scene0011_00 experiment."""
+ from pathlib import Path
+ import os,json,subprocess,time,traceback
+ C=Path(__file__).resolve().parent
+-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1')
++R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00')
+ PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'
+ SAM='/data/chenkejun/CVPR/runtime/sam2_1_env/bin/python'
+ CROP='/data/chenkejun/CVPR/runtime/cropformer_env/bin/python'
+-ENV={**os.environ,'CUDA_DEVICE_ORDER':'PCI_BUS_ID','OPENBLAS_NUM_THREADS':'4','OMP_NUM_THREADS':'4','PYTHONDONTWRITEBYTECODE':'1','PYTHONPATH':'/home/chenkejun/CVPR/repos/sam2_1','HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1','XDG_CACHE_HOME':str(R/'runtime_cache'),'CUDA_CACHE_PATH':str(R/'cuda_cache'),'LD_LIBRARY_PATH':'/data/chenkejun/CVPR/libs/p1a1_roi_cropformer_zoom_20261003/nvidia_580_126_09'}
++ENV={**os.environ,'CUDA_DEVICE_ORDER':'PCI_BUS_ID','OPENBLAS_NUM_THREADS':'4','OMP_NUM_THREADS':'4','PYTHONDONTWRITEBYTECODE':'1','PYTHONPATH':'/home/chenkejun/CVPR/experiments/scannet_e1_swap_partial_20261020/shared:/home/chenkejun/CVPR/repos/sam2_1','HF_HUB_OFFLINE':'1','TRANSFORMERS_OFFLINE':'1','XDG_CACHE_HOME':str(R/'runtime_cache'),'CUDA_CACHE_PATH':str(R/'cuda_cache'),'LD_LIBRARY_PATH':'/data/chenkejun/CVPR/libs/p1a1_roi_cropformer_zoom_20261003/nvidia_580_126_09'}
+ def save(name,v):
+  p=R/(name+'.json');q=p.with_suffix('.tmp');q.write_text(json.dumps(v,indent=2));q.replace(p)
+ def run(stage,script,python=PY,gpu=None):
+@@ -24,7 +24,7 @@
+   busy={line.split(',')[0].strip() for line in subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid','--format=csv,noheader,nounits'],text=True).splitlines() if line.strip()}
+   for line in subprocess.check_output(['nvidia-smi','--query-gpu=index,uuid,memory.free,utilization.gpu','--format=csv,noheader,nounits'],text=True).splitlines():
+    index,uid,free,util=[x.strip() for x in line.split(',')]
+-   if uid not in excluded and uid not in busy and int(free)>12000:rows.append((int(free),-int(util),uid,int(index)))
++   if uid not in excluded and int(free)>24000 and int(util)<35:rows.append((int(free),-int(util),uid,int(index)))
+   for free,util,uid,index in sorted(rows,reverse=True):
+    env={**ENV,'CUDA_VISIBLE_DEVICES':uid}
+    test=subprocess.run([SAM,'-B','-c','import torch; x=torch.zeros(1,device="cuda"); print(torch.cuda.get_device_name(0))'],env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,timeout=45)

@@ -1,0 +1,35 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/semantic_route/route.py
++++ code/scene0011_00/semantic_route/route.py
+@@ -5,10 +5,10 @@
+ from PIL import Image
+ from selection_rules import choose
+ 
+-ROOT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/semantic_route')
+-FILTER=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/overmerge')
+-INTER=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/intersection/web/intersection.json')
+-PREVIOUS=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/versions/selection.json')
++ROOT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/semantic_route')
++FILTER=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/overmerge')
++INTER=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/intersection/web/intersection.json')
++PREVIOUS=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/versions/selection.json')
+ def read(p):return json.loads(p.read_text())
+ def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,separators=(',',':'))+'\n')
+ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+@@ -26,7 +26,7 @@
+         src=f['sources'][sid];p=Path(src['path'])
+         if str(p) not in verified:assert sha(p)==hashes[str(p)];verified.add(str(p))
+         a=np.asarray(Image.open(p),np.int32);x0,y0,x1,y1=src['box'];assert a.shape==(y1-y0,x1-x0)
+-        counts=np.bincount(a.ravel());full=np.zeros((680,1200),np.int32);full[y0:y1,x0:x1]=a;cache[sid]=(full,counts)
++        counts=np.bincount(a.ravel());full=np.zeros((480,640),np.int32);full[y0:y1,x0:x1]=a;cache[sid]=(full,counts)
+         if len(cache)>18:cache.popitem(last=False)
+         return full,counts
+     rule=copy.deepcopy(previous['rule']);rule['no_semantic_module']=False;rule['semantic_route']=semantic['config']
+@@ -114,7 +114,7 @@
+     stats['semantic_selected_occurrences']=sum(families.values());stats['generic_selected_occurrences']=stats['selected_occurrences']-sum(families.values());stats['semantic_replaced_CF_occurrences']=sum(len(m['semantic_replaced_ids']) for c in out['crops'].values() for m in c['models'])
+     out['stats']=dict(stats,semantic_family_occurrences=dict(families),semantic_unique_candidates=len(unique_semantic),unique_ROI_selected_candidate_pairs=len(unique_selected),ROI_with_selected=len(roi_selected),ROI_count=len(f['cases']),crops=len(out['crops']),reason_counts=dict(reasons),semantic_bypassed_prior_rules=dict(bypasses),previous_selected_statuses=dict(old_selected_changes),unchanged_crops_without_semantic_hit=unchanged_crops)
+     save(ROOT/'selection.json',out)
+-    audit=dict(status='PASS',stats=out['stats'],all_SAM_classified_before_downstream_filters=True,semantic_hits_all_selected=True,cropformer_matches_removed_from_generic_processing=True,ordinary_rules_source_sha256=sha(Path(__file__).parent/'selection_rules.py'),ordinary_rules_reference_sha256=sha(Path('/home/chenkejun/CVPR/experiments/auto_v2_replica6_20261019/office1/versions/selection_rules.py')),independent_replacement_pixel_recounts=checks,verified_source_masks=len(verified),source_files_unchanged=True,no_GT_used=True,no_map_write=True,no_new_segmentation_inference=True,seconds=round(time.time()-started,2))
++    audit=dict(status='PASS',stats=out['stats'],all_SAM_classified_before_downstream_filters=True,semantic_hits_all_selected=True,cropformer_matches_removed_from_generic_processing=True,ordinary_rules_source_sha256=sha(Path(__file__).parent/'selection_rules.py'),ordinary_rules_reference_sha256=sha(Path('/home/chenkejun/CVPR/experiments/scannet_e1_swap_partial_20261020/scene0011_00/versions/selection_rules.py')),independent_replacement_pixel_recounts=checks,verified_source_masks=len(verified),source_files_unchanged=True,no_GT_used=True,no_map_write=True,no_new_segmentation_inference=True,seconds=round(time.time()-started,2))
+     assert audit['ordinary_rules_source_sha256']==audit['ordinary_rules_reference_sha256'];save(ROOT/'audit.json',audit)
+     with zipfile.ZipFile(ROOT/'route_data.zip','w',zipfile.ZIP_DEFLATED) as z:
+         for name in ['selection.json','semantic.json','audit.json']:z.write(ROOT/name,name)

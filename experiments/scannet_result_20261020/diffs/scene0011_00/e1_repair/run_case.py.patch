@@ -1,0 +1,20 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/run_case.py
++++ code/scene0011_00/e1_repair/run_case.py
+@@ -125,7 +125,7 @@
+         assert report['code_sha256'] == r.sha(HERE / 'track_case.py')
+     raw_count = len(scene_frame_ids(cfg['scene']))
+     frames = {row['frame']: row for row in report['frames']}
+-    assert sorted(frames) == list(range(raw_count))
++    assert sorted(frames) == list(scene_frame_ids(cfg['scene']))
+     assert report['total_frames'] == report['completed_frames'] == raw_count
+     selected = np.array(Image.open(association['seed_file']))
+     np.testing.assert_array_equal(np.array(Image.open(frames[cfg['seed_frame']]['label_file'])), selected)
+@@ -146,7 +146,7 @@
+     raw = json.loads((r.INPUT / scene / 'configs/raw.json').read_text())
+     source = raw['source']
+     poses = np.loadtxt(Path(source['scene_root']) / source['trajectory']).reshape(-1, 4, 4)
+-    return range(len(poses))
++    return raw['frame_ids']
+ 
+ 
+ def visible_seed(scene, frame, points, policy):

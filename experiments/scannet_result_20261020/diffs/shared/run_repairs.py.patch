@@ -1,0 +1,22 @@
+--- instance_repair/frozen_e1_20261012/room0/dependencies/run_repairs.py
++++ code/shared/run_repairs.py
+@@ -11,8 +11,8 @@
+ 
+ ROOT = Path('/data/chenkejun/CVPR/revisable_instance_map/pilot10_repair_20261007')
+ SEEDS = ROOT / 'human_seeds_20ad6139511b'
+-BASE = Path('/data/chenkejun/CVPR/revisable_instance_map/p1a1_raw_replica8_20261002')
+-INPUT = Path('/data/chenkejun/CVPR/revisable_instance_map/replica8_p0_main')
++BASE = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/compat')
++INPUT = Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/inputs')
+ SNAPSHOT = Path('/home/chenkejun/CVPR/experiments/p1a1_raw_replica8_20261002/snapshot')
+ sys.path.insert(0, str(SNAPSHOT / 'revisable_instance_map/src'))
+ from revisable_instance_map.surface_evidence import project_frame_regions, frame_instance_keys, reduce_surface_votes, CONFIRMED
+@@ -54,7 +54,7 @@
+         self.final_source = BASE / f'final/{scene}/P1-A1/diffusion/holes_geodesic/instance_surface.npz'
+         self.report = json.loads((self.native / 'materialization_report.json').read_text())
+         self.records = {r['frame_id']: r for r in self.report['frame_records']}
+-        assert sorted(self.records) == list(range(0, 2000, 5))
++        assert sorted(self.records) == json.loads((INPUT / scene / 'configs/raw.json').read_text())['frame_ids']
+         self.evidence = load_npz(self.native / 'surface_evidence.npz')
+         self.pair = load_npz(self.native / 'surface_instance_frame_votes.npz')
+         native_map = load_npz(self.native / 'instance_surface.npz')

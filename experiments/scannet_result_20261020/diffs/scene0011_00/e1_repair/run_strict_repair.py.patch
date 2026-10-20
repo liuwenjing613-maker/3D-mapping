@@ -1,0 +1,81 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/run_strict_repair.py
++++ code/scene0011_00/e1_repair/run_strict_repair.py
+@@ -7,14 +7,14 @@
+ from strict_vote_ops import strict_frame_keys,frame_delta
+ 
+ HERE=Path(__file__).resolve().parent
+-OUT=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair/original_repair')
+-PRIOR=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/baseline')
++OUT=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/e1_repair/original_repair')
++PRIOR=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/baseline')
+ LEGACY=Path('/home/chenkejun/CVPR/experiments/pilot10_repair_20261007')
+ sys.path.insert(0,str(LEGACY));sys.path.insert(0,str(LEGACY/'strict_local_repair_20261007'))
+ import run_repairs as r
+ import fixed_surface_repair as f
+ from joint_vote_ops import batch_delta
+-ROOTS={'office1':Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/e1_repair')}
++ROOTS={'scene0011_00':Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/e1_repair')}
+ CONDITIONS=('full_track',)
+ FIELDS=r.FIELDS
+ hashes={}
+@@ -70,7 +70,7 @@
+     for case in cases:
+         uid=case['case_uid'];cfg=read(case['config_path'])
+         track=read(root/'cases'/uid/'tracking/complete.json')
+-        assert track['status']=='PASS' and track['completed_frames']==track['total_frames']==2000
++        assert track['status']=='PASS' and track['completed_frames']==track['total_frames']==238
+         assert track['GT_used'] is False and track['directions_use_independent_seed_only_states']
+         assert track['case_config_sha256']==r.sha(case['config_path'])
+         record(initial['tracking_code_path'],track['code_sha256'])
+@@ -195,7 +195,7 @@
+                 old_frame_keys=oldstrict,new_frame_keys=eff,retained_old_candidate_keys=tx['retained_old_frame_keys'],
+                 retired_surface_local_pairs=tx['retired_surface_local_pairs'],allowed_surface_point_index=scope,
+                 instance_base=np.asarray([base],np.int64))
+-        if (index+1)%40==0:emit('reproject_frozen_observations',scene=scene_id,frames_done=index+1,total_frames=400)
++        if (index+1)%40==0:emit('reproject_frozen_observations',scene=scene_id,frames_done=index+1,total_frames=238)
+     original_keys,original_votes=reencode(scene.pair,base)
+     k,v=aggregate(before_frames);np.testing.assert_array_equal(k,original_keys);np.testing.assert_array_equal(v,original_votes)
+     bk,bv=aggregate(strict_before)
+@@ -205,7 +205,7 @@
+     baseline_recomputed=r.reduce_surface_votes(bk,bv,len(scene.xyz),base,scene.report['min_confirmed_votes'],scene.report['min_confirmed_ratio'])
+     compare_evidence(baseline_recomputed,strict_evidence)
+     strict_final=load(priorfreeze['scenes'][scene_id]['predictions']['abstain_final']['path'])['instance_id']
+-    result={'status':'PASS','scene':scene_id,'base':base,'raw_frames_verified':400,'GT_used_for_mapping':False,
++    result={'status':'PASS','scene':scene_id,'base':base,'raw_frames_verified':238,'GT_used_for_mapping':False,
+             'strict_baseline_matches_prior_exactly':True,'conditions':{},'predictions':{}}
+     for semantic,freeze_name in (('original','original'),('strict','abstain')):
+         for stage in ('native','final'):
+@@ -273,18 +273,18 @@
+ 
+ def main():
+     assert not (OUT/'predictions_freeze.json').exists(),'Predictions already frozen'
+-    priorfreeze=read(PRIOR/'office1_predictions_freeze.json')
++    priorfreeze=read(PRIOR/'scene0011_00_predictions_freeze.json')
+     assert priorfreeze['status']=='PREDICTIONS_FROZEN_BEFORE_GT'
+-    for path,digest in priorfreeze['code_sha256'].items():record(path,digest)
++    for path,digest in read(PRIOR/'ablation/scene0011_00/mapping_complete.json')['code_sha256'].items():record(path,digest)
+     for path in (HERE/'one_vote.py',HERE/'strict_vote_ops.py',Path(__file__),HERE/'test_strict_repair.py'):record(path)
+     for path in (LEGACY/'run_repairs.py',LEGACY/'joint_vote_ops.py',LEGACY/'evidence_replacement.py',LEGACY/'strict_local_repair_20261007/fixed_surface_repair.py'):record(path)
+     tests=read(OUT/'tests_complete.json');assert tests['status']=='PASS' and tests['tests']==10
+     policy={'status':'FROZEN_BEFORE_NEW_PREDICTIONS_AND_GT','vote_rule':'one frame one point at most one ID; unresolved multi-ID abstention',
+-        'cases':{'office1':len(read(ROOTS['office1']/'seed_diagnostics.json')['cases'])},'conditions':list(CONDITIONS),'repair_source_roots':{s:str(p) for s,p in ROOTS.items()},
++        'cases':{'scene0011_00':len(read(ROOTS['scene0011_00']/'seed_diagnostics.json')['cases'])},'conditions':list(CONDITIONS),'repair_source_roots':{s:str(p) for s,p in ROOTS.items()},
+         'changed':'effective vote reduction after rebuilding the complete raw candidate frame',
+         'fixed':['human masks','SAM tracking','identity association','accepted objects and observation plans','numeric thresholds','raw support projection','geometry/RGB','allowed repair scope','bounded final commit','postprocessing settings','v3 evaluation scope/config'],
+         'inventory_policy':'Strict condition retains its original-semantic counterpart exported stage IDs, appends newly activated existing IDs; no disappeared ID is silently dropped',
+-        'decisions':['Evaluate latest office1 and office1 batches with both seed-only and full-track conditions.',
++        'decisions':['Evaluate latest scene0011_00 and scene0011_00 batches with both seed-only and full-track conditions.',
+           'Replay frozen raw edits and verify every saved transaction using fresh residual/new mask projections.',
+           'Reduce retained old and new candidate support together, so same-ID sharing remains once and different-ID support abstains.',
+           'Use strict no-repair baseline for strict repair effect; original semantic controls use original no-repair baseline.',
+@@ -302,8 +302,8 @@
+         'generated_output_sha256':{p:d for value in results.values() for p,d in value['generated_output_sha256'].items()},
+         'source_sha256':hashes,'policy_sha256':r.sha(OUT/'policy.json'),'new_code_sha256':{str(p):r.sha(p) for p in HERE.glob('*.py')}}
+     dump(OUT/'predictions_freeze.json',freeze)
+-    dump(OUT/'mapping_complete.json',{'status':'PASS','original_raw_frames_checked':400,
+-        'repair_conditions_replayed_frames':400,'fresh_projection_transactions':sum(v['conditions'][c]['projection_checked_transactions'] for v in results.values() for c in CONDITIONS),
++    dump(OUT/'mapping_complete.json',{'status':'PASS','original_raw_frames_checked':238,
++        'repair_conditions_replayed_frames':238,'fresh_projection_transactions':sum(v['conditions'][c]['projection_checked_transactions'] for v in results.values() for c in CONDITIONS),
+         'full_replay_delta_rollback_and_scope_pass':True,'predictions_frozen_before_GT':True,'input_files_verified':len(hashes)})
+     emit('mapping_complete',status='PASS')
+ 

@@ -1,0 +1,22 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/v1/compute.py
++++ code/scene0011_00/v1/compute.py
+@@ -11,8 +11,8 @@
+ from noise_filter import shape_features, classify, is_review_control, RULE
+ 
+ C=Path(__file__).resolve().parent
+-P=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/grouping_r3')
+-R=Path('/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office1/v1')
++P=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/grouping_r3')
++R=Path('/data/chenkejun/CVPR/results/scannet_e1_swap_partial_20261020/scene0011_00/v1')
+ R.mkdir(parents=True,exist_ok=True)
+ started=time.time()
+ def sha(p):
+@@ -42,7 +42,7 @@
+     a=np.asarray(Image.open(P/s['mask']))>0
+     assert sha(P/s['mask'])==s['mask_sha256']
+     assert hashlib.sha256(s['frame'].to_bytes(4,'little')+np.packbits(a.reshape(-1)).tobytes()).hexdigest()==s['digest']
+-    assert a.shape==(680,1200) and int(a.sum())==s['area']
++    assert a.shape==(480,640) and int(a.sum())==s['area']
+     f=shape_features(a);decision=classify(f)
+     s['noise_features']=f;s['noise_decision']=decision
+     s['previous_group']=old['groups'][s['group']]['id']

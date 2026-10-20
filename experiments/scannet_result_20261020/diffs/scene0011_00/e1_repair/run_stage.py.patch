@@ -1,0 +1,11 @@
+--- experiments/auto_v3_swap/sources/experiments/auto_v2_replica6_20261019/office1/e1_repair/run_stage.py
++++ code/scene0011_00/e1_repair/run_stage.py
+@@ -23,7 +23,7 @@
+  elif stage=='history_core':
+   import run_history_core as h
+   h.main()
+- elif stage=='expand':load_script('_auto_expand',C/'expand_office1.py').main()
++ elif stage=='expand':load_script('_auto_expand',C/'expand_scene0011_00.py').main()
+  elif stage=='E1':load_script('_auto_E1',C/'run_observation_repair.py').main()
+  else:raise ValueError(stage)
+  verify_sources()

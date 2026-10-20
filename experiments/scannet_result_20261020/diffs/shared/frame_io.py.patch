@@ -1,0 +1,21 @@
+--- instance_repair/frozen_e1_20261012/room0/dependencies/revisable_instance_map/frame_io.py
++++ code/shared/frame_io.py
+@@ -54,8 +54,8 @@
+ class ReplicaFrameSource:
+     def __init__(self, config_path: str | Path):
+         config = json.loads(Path(config_path).read_text(encoding="utf-8"))
+-        if config["dataset"] != "Replica":
+-            raise ValueError("This source only supports the fixed Replica contract")
++        if config["dataset"] != "ScanNet":
++            raise ValueError("Expected calibrated ScanNet input")
+         self.config = config
+         self.scene_root = Path(config["source"]["scene_root"])
+         self.mask_root = Path(config["source"]["mask_root"])
+@@ -100,6 +100,7 @@
+         if mask.dtype not in (np.uint8, np.uint16):
+             raise ValueError(f"Frame {frame_id} mask is {mask.dtype}, expected uint8 or uint16")
+         depth_m = raw_depth.astype(np.float32) / self.camera.depth_png_units_per_meter
++        depth_m = np.where((depth_m > 0) & (depth_m < self.config["depth_policy"]["max_depth_m"]), depth_m, 0).astype(np.float32)
+         pose = self._poses[frame_id].copy()
+         for array in (rgb, depth_m, mask, pose):
+             array.setflags(write=False)
