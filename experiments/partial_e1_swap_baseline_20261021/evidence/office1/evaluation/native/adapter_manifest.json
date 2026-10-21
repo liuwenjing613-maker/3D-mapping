@@ -1,0 +1,136 @@
+{
+  "adapter_statistics": {
+    "assigned_ref_vertices": 288916,
+    "conflict_unassigned_ref_vertices": 0,
+    "conflicting_exact_coordinate_group_count": 0,
+    "correspondence_sha256": "f13155ffc46677569418842617e25ca0c3f82eddcbd3be3c148e12f5e65c8756",
+    "duplicate_coordinate_policy": "unanimous_owner_else_unassigned",
+    "empty_native_exports": 0,
+    "empty_projected_predictions": 1,
+    "exact_duplicate_coordinate_group_count": 0,
+    "exported_prediction_count": 36,
+    "geometry_point_count": 662689,
+    "geometry_xyz_sha256": "8dadb7d5fc611e89ea145530b9751fa5bb7bfd093221e37095b7f2f7120bf5f9",
+    "no_geometry_ref_vertices": 116821,
+    "nonpositive_native_state_counts": {
+      "-1": 55303
+    },
+    "positive_native_label_count": 607386,
+    "unassigned_with_geometry_ref_vertices": 17270
+  },
+  "canonical_prediction_sha256": "eca8c9df7f2f5cd55dc62f21e47967e1e99826a942f3912d0a5492121ea6aef3",
+  "correspondence_cache": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/geometry_cache/office1/fixed_gt_to_tsdf_r2.npz",
+  "correspondence_file_sha256": "2dd1e69ede9646936674a3daec00d41b25d97e92eda42b0991673063863072e7",
+  "correspondence_sha256": "f13155ffc46677569418842617e25ca0c3f82eddcbd3be3c148e12f5e65c8756",
+  "diagnostic_prediction_sha256": "9c6788e24da615d3455e907b1e774b6c5646240ee74097c517078083e11a657e",
+  "evaluation_profile": "object_observed_repair",
+  "evaluator_code_sha256": {
+    "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+    "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+    "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+    "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+    "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+    "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+    "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+  },
+  "geometry_xyz_sha256": "8dadb7d5fc611e89ea145530b9751fa5bb7bfd093221e37095b7f2f7120bf5f9",
+  "gt_file": "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/office1/gt.npz",
+  "gt_file_sha256": "b0d86309c11b59ed502294439610f800e7b9727a2fc415190c534dccd88c6fdf",
+  "gt_observed_support_sha256": "400f28766877a74e3deb4165aea5e757983cb9528e327ffd1f7061a06c9cf5bd",
+  "gt_scope_sha256": "ba87d4cc5ad32d35ea807055300bdc70c1bf26d92316cb6c9ae518a21360b9fc",
+  "method_commit": "4854133a608acd1243fb2be02d87cb9f508b62c366cdbea472fa0370a1d1f6ab",
+  "method_name": "autov2_partial_office1_whole_to_partial_native",
+  "prediction_type_source": "explicit_native_declaration_if_provided_otherwise_unknown_no_GT_completion",
+  "profile_config": {
+    "ap_policy": "replica_ca_101",
+    "baseline_commit": "05f6bb0d6c9a2491a51e990d217fd7f1397f5f6b",
+    "confidence_mode": "uniform",
+    "dataset": "Replica",
+    "diagnostic_mapping": {
+      "max_distance_m": 0.02,
+      "method": "pairwise_geometry_support"
+    },
+    "evaluation_profile": "object_observed_repair",
+    "frozen": false,
+    "geometry_mapping": {
+      "duplicate_coordinate_policy": "unanimous_owner_else_unassigned",
+      "max_distance_m": 0.01,
+      "method": "fixed_surface_correspondence"
+    },
+    "ignore_policy": {
+      "background_only_without_object_semantics": "ignore_and_report",
+      "method": "explicit_reference_regions"
+    },
+    "instance_filter": {
+      "min_prediction_vertices": 0,
+      "min_valid_instance_vertices": 1
+    },
+    "name": "Replica-CA-v3",
+    "observation": {
+      "depth_tolerance_m": 0.02,
+      "minimum_trusted_observation_count": 1,
+      "pixel_size_filter": null
+    },
+    "profile_revision": 2,
+    "review_required_gt_ids": {
+      "office0": [
+        43
+      ],
+      "office1": [
+        10
+      ],
+      "office3": [
+        20,
+        35,
+        109
+      ],
+      "room0": [
+        76
+      ]
+    },
+    "scenes": [
+      "room0",
+      "room1",
+      "room2",
+      "office0",
+      "office1",
+      "office2",
+      "office3",
+      "office4"
+    ],
+    "significant_overlap": {
+      "min_gt_fraction": 0.05,
+      "min_intersection_vertices": 10
+    },
+    "source_policy": "Fixed GT qualification and RGB-D observation evidence, complete immutable geometry, positive native instance IDs; all distances and structure thresholds remain development values.",
+    "status": "DEVELOPMENT_REVIEW_REVISION_NOT_OFFICIAL",
+    "structure_metrics": {
+      "auxiliary_source": "pairwise_geometry_support",
+      "source": "main_partition_intersection",
+      "status": "DEVELOPMENT_AUDIT_PENDING_REAL_CASE_REVIEW"
+    }
+  },
+  "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+  "profile_revision": 2,
+  "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+  "protocol": "Replica-CA-v3",
+  "source_provenance": {
+    "GT_used_for_mapping": false,
+    "association_report_sha256": "4b9df309536a03a74ee7139e18f4c3c883853e96588c6aead562487c16b75cf9",
+    "batch": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial",
+    "condition": "whole_to_partial",
+    "frame_count": 400,
+    "frame_list_sha256": "937af0bde6876c9b8fc9fdccbef609641a0ec95b68b867f33720c2be678a1215",
+    "input_config_sha256": "4a469badbb2b95e6009a846199677fda60a9f7d92b6f3229f2b44063c173506f",
+    "input_scope_verified": true,
+    "materialization_report_sha256": "e79211b9f6d7b710a71a829f2baa15b0dbf3ffb2a3b883da39eb24e52b6e10e8",
+    "prediction_freeze_sha256": "efd52f3967432dfe48a89169aa5b14defa34f6afd2c200832991edbdf6dd024b",
+    "prediction_frozen_before_GT": true,
+    "selected_primary_masks": 22,
+    "surface_sha256": "8a67693ae985398d91943dee4105ad9e16fdfce41f4c692858724cbe07271c73"
+  },
+  "source_surface": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial/whole_to_partial/office1/native/instance_surface.npz",
+  "source_surface_sha256": "8a67693ae985398d91943dee4105ad9e16fdfce41f4c692858724cbe07271c73",
+  "status": "DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN",
+  "structure_source": "main_partition_intersection"
+}

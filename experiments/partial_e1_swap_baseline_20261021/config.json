@@ -1,0 +1,65 @@
+{
+  "name": "partial-e1-swap-20261021",
+  "frozen": true,
+  "date": "2026-10-21",
+  "source_commit": "1103d8196a980874ef743f572d3b4c0748a4fdab",
+  "upstream_config": "experiments/auto_v3_swap/config.json",
+  "default_repair": "partial_plus_E1",
+  "result_variant": "whole_to_partial",
+  "default_output_stage": "final",
+  "execution_order": [
+    "partial_direct",
+    "core_all_history",
+    "E1_expanded_history",
+    "original_final_postprocess"
+  ],
+  "counts": {
+    "room0": 35,
+    "room1": 22,
+    "room2": 35,
+    "office0": 19,
+    "office1": 22,
+    "office2": 23,
+    "office3": 22,
+    "office4": 18
+  },
+  "v1_total": 637,
+  "retained_total": 196,
+  "seed_filter_order": [
+    "semantic_background",
+    "covisible_IoU_dedup",
+    "full_support_containment",
+    "skip_repair_B",
+    "pr_filter_with_semantic_exemption"
+  ],
+  "room0_source_override": {
+    "group_id": "G030",
+    "mask_id": "M0466",
+    "source": "CropFormer whole-frame",
+    "mask_sha256": "aa312039fa7b94998f7807f5e39f3557aa152366eba35d121bae853174c2471c"
+  },
+  "room2_manual_overrides": [
+    "G017",
+    "G025"
+  ],
+  "E1_kernel": "P1-A1-strict-vote-E1-20261012",
+  "E1_kernel_registry": "instance_repair/configs/current_architecture.json",
+  "evaluation": {
+    "protocol": "object_observed_repair",
+    "revision": 2,
+    "frozen": false,
+    "evaluable_GT": 350,
+    "workspace": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009",
+    "config": "unified_eval/configs/replica_ca_v3.object_observed_repair.audit_r2.json",
+    "config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+    "scoring_commit": "cd260569e89de1e9525f82c45ee10842b80616b0",
+    "audit_commit": "d035f68770cefab27c9751e97062c72faa07367c"
+  },
+  "GT_used_by_mapper": false,
+  "onebyone_included": false,
+  "manual76_included": false,
+  "new_protection_rules": false,
+  "result_lock": "experiments/partial_e1_swap_baseline_20261021/result_lock.json",
+  "entry": "python -B experiments/partial_e1_swap_baseline_20261021/verify.py",
+  "server_verification_root": "/data/chenkejun/CVPR/results/partial_e1_swap_baseline_20261021"
+}

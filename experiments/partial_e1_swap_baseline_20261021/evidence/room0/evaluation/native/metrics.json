@@ -1,0 +1,3065 @@
+{
+  "per_scene": [
+    {
+      "AP_by_threshold": {
+        "0.25": {
+          "FN": 18,
+          "FP": 20,
+          "TP": 54,
+          "ap": 0.5491035590045491,
+          "status": "ok"
+        },
+        "0.50": {
+          "FN": 22,
+          "FP": 24,
+          "TP": 50,
+          "ap": 0.4682900722504682,
+          "status": "ok"
+        },
+        "0.55": {
+          "FN": 24,
+          "FP": 26,
+          "TP": 48,
+          "ap": 0.43029167781643035,
+          "status": "ok"
+        },
+        "0.60": {
+          "FN": 28,
+          "FP": 30,
+          "TP": 44,
+          "ap": 0.36499866202836506,
+          "status": "ok"
+        },
+        "0.65": {
+          "FN": 31,
+          "FP": 33,
+          "TP": 41,
+          "ap": 0.31268397109981266,
+          "status": "ok"
+        },
+        "0.70": {
+          "FN": 31,
+          "FP": 33,
+          "TP": 41,
+          "ap": 0.31268397109981266,
+          "status": "ok"
+        },
+        "0.75": {
+          "FN": 36,
+          "FP": 38,
+          "TP": 36,
+          "ap": 0.24565159218624566,
+          "status": "ok"
+        },
+        "0.80": {
+          "FN": 40,
+          "FP": 42,
+          "TP": 32,
+          "ap": 0.19266791544019268,
+          "status": "ok"
+        },
+        "0.85": {
+          "FN": 45,
+          "FP": 47,
+          "TP": 27,
+          "ap": 0.13727588975113728,
+          "status": "ok"
+        },
+        "0.90": {
+          "FN": 52,
+          "FP": 54,
+          "TP": 20,
+          "ap": 0.07492641156007493,
+          "status": "ok"
+        },
+        "0.95": {
+          "FN": 65,
+          "FP": 67,
+          "TP": 7,
+          "ap": 0.009365801445009366,
+          "status": "ok"
+        }
+      },
+      "CA_AP25_uniform": 0.5491035590045491,
+      "CA_AP50_uniform": 0.4682900722504682,
+      "CA_AP_uniform": 0.2548835964677549,
+      "CA_PQ": {
+        "FN": 22,
+        "FP": 24,
+        "PQ": 0.5612951892489144,
+        "RQ": 0.684931506849315,
+        "SQ": 0.8194909763034152,
+        "TP": 50,
+        "ignored_prediction_count": 14,
+        "status": "ok"
+      },
+      "CA_PRF1_0_5": {
+        "F1": 0.684931506849315,
+        "FN": 22,
+        "FP": 24,
+        "P": 0.6756756756756757,
+        "R": 0.6944444444444444,
+        "TP": 50,
+        "ignored_prediction_count": 14,
+        "status": "ok"
+      },
+      "auxiliary_geometry_structure": {
+        "diagnostic_gt_count": 72,
+        "diagnostic_prediction_count": 75,
+        "duplicate_gt_count": 0,
+        "duplicate_prediction_count": 0,
+        "duplicate_prediction_rate": 0.0,
+        "merge_prediction_count": 33,
+        "merge_prediction_rate": 0.44,
+        "significant_gt_per_prediction": [
+          1,
+          17,
+          3,
+          1,
+          1,
+          1,
+          5,
+          1,
+          0,
+          2,
+          0,
+          1,
+          4,
+          5,
+          1,
+          3,
+          1,
+          2,
+          1,
+          1,
+          0,
+          1,
+          6,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          3,
+          0,
+          1,
+          0,
+          2,
+          1,
+          0,
+          1,
+          1,
+          3,
+          2,
+          8,
+          2,
+          2,
+          0,
+          0,
+          6,
+          3,
+          0,
+          1,
+          1,
+          2,
+          1,
+          1,
+          4,
+          4,
+          3,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          0,
+          0,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          0,
+          1
+        ],
+        "significant_min_gt_fraction": 0.05,
+        "significant_min_intersection_vertices": 10,
+        "significant_predictions_per_gt": [
+          1,
+          3,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          7,
+          1,
+          2,
+          2,
+          1,
+          2,
+          4,
+          2,
+          1,
+          1,
+          1,
+          2,
+          4,
+          5,
+          5,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1,
+          2,
+          1,
+          4,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          2,
+          4,
+          5,
+          2,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1,
+          2,
+          1,
+          4,
+          2,
+          1,
+          2,
+          4,
+          2,
+          3
+        ],
+        "split_gt_count": 46,
+        "split_gt_rate": 0.6388888888888888
+      },
+      "diagnostics": {
+        "Correct_owner_Coverage": 0.8552064403416823,
+        "Unpredicted_Coverage": 0.07002496188411014,
+        "Wrong_owner_Coverage": 0.0747685977742076,
+        "background_only_prediction_count": 10,
+        "best_gt_iou_histogram": {
+          "[0,0.25)": 16,
+          "[0.25,0.50)": 6,
+          "[0.50,0.75)": 14,
+          "[0.75,1]": 36
+        },
+        "correct_owner_vertices": 292242,
+        "dropped_prediction_uids": [],
+        "empty_native_prediction_count": 1,
+        "gt_instance_count": 72,
+        "gt_surface_coverage": 0.9299750381158899,
+        "ignored_small_gt_ids": [],
+        "macro_best_gt_recall": 0.7925632300077478,
+        "macro_prediction_purity": 0.8759065126137239,
+        "mean_best_gt_iou": 0.6213606798687936,
+        "median_best_gt_iou": 0.7568410831658428,
+        "overlapping_gt_per_prediction": [
+          2,
+          19,
+          4,
+          2,
+          1,
+          1,
+          5,
+          3,
+          0,
+          2,
+          0,
+          1,
+          18,
+          6,
+          4,
+          3,
+          1,
+          3,
+          4,
+          2,
+          0,
+          2,
+          6,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          5,
+          0,
+          2,
+          2,
+          4,
+          1,
+          0,
+          1,
+          2,
+          3,
+          2,
+          12,
+          4,
+          2,
+          0,
+          0,
+          8,
+          3,
+          0,
+          1,
+          1,
+          2,
+          2,
+          1,
+          5,
+          4,
+          4,
+          0,
+          1,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1
+        ],
+        "overlapping_predictions_per_gt": [
+          8,
+          3,
+          1,
+          2,
+          1,
+          2,
+          2,
+          5,
+          7,
+          3,
+          2,
+          3,
+          1,
+          2,
+          4,
+          3,
+          1,
+          1,
+          2,
+          2,
+          5,
+          6,
+          7,
+          2,
+          2,
+          4,
+          2,
+          1,
+          3,
+          3,
+          3,
+          2,
+          3,
+          5,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          1,
+          2,
+          2,
+          2,
+          6,
+          4,
+          7,
+          2,
+          1,
+          2,
+          2,
+          2,
+          3,
+          3,
+          2,
+          3,
+          2,
+          3,
+          6,
+          2,
+          2,
+          2,
+          1,
+          2,
+          2,
+          4,
+          4,
+          1,
+          2,
+          5,
+          2,
+          4
+        ],
+        "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+        "prediction_instance_count": 88,
+        "prediction_scope_audit": [
+          {
+            "ignored_reference_fraction": 0.008569739952718676,
+            "instance_uid": "1",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0014980987504711377,
+            "instance_uid": "2",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.04234527687296417,
+            "instance_uid": "3",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.014686248331108143,
+            "instance_uid": "4",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.004687885516901061,
+            "instance_uid": "5",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.015267175572519083,
+            "instance_uid": "6",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.020265003897116135,
+            "instance_uid": "7",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.003205128205128205,
+            "instance_uid": "8",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 1.0,
+            "instance_uid": "9",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_NATIVE_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "10",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 1.0,
+            "instance_uid": "11",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0003762227238525207,
+            "instance_uid": "12",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.001339487320795732,
+            "instance_uid": "13",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0060998054372403635,
+            "instance_uid": "14",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0035280282242257936,
+            "instance_uid": "15",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.012779552715654952,
+            "instance_uid": "16",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "17",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.028462998102466792,
+            "instance_uid": "18",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.8763927576601671,
+            "instance_uid": "19",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "20",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "21",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "28",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0012888380339247318,
+            "instance_uid": "33",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.995243757431629,
+            "instance_uid": "34",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0002518257365902795,
+            "instance_uid": "37",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.006191950464396285,
+            "instance_uid": "39",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "50",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.963963963963964,
+            "instance_uid": "51",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 1.0,
+            "instance_uid": "52",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+          },
+          {
+            "ignored_reference_fraction": 0.007722007722007722,
+            "instance_uid": "55",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 6.67334000667334e-05,
+            "instance_uid": "57",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "66",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.003169572107765452,
+            "instance_uid": "77",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "79",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.004247411733474914,
+            "instance_uid": "80",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "153",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "154",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0015026296018031556,
+            "instance_uid": "160",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.002435064935064935,
+            "instance_uid": "162",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.01573404390305799,
+            "instance_uid": "172",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.09806629834254144,
+            "instance_uid": "174",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "179",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.019055509527754765,
+            "instance_uid": "181",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.007215668308326652,
+            "instance_uid": "182",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": null,
+            "instance_uid": "183",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_EMPTY_NATIVE_EXPORT"
+          },
+          {
+            "ignored_reference_fraction": 1.0,
+            "instance_uid": "185",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+          },
+          {
+            "ignored_reference_fraction": 0.0003168567807351077,
+            "instance_uid": "186",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.022123893805309734,
+            "instance_uid": "187",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "189",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "190",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "195",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.011712531271321356,
+            "instance_uid": "206",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0069767441860465115,
+            "instance_uid": "209",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "210",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0037157977705213376,
+            "instance_uid": "216",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.010395010395010396,
+            "instance_uid": "218",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.022931206380857428,
+            "instance_uid": "219",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "223",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.024675324675324677,
+            "instance_uid": "224",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0016168148746968471,
+            "instance_uid": "225",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 1.0,
+            "instance_uid": "226",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "227",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 1.0,
+            "instance_uid": "232",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+          },
+          {
+            "ignored_reference_fraction": null,
+            "instance_uid": "234",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_NATIVE_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.9918032786885246,
+            "instance_uid": "277",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.012048192771084338,
+            "instance_uid": "300",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.013199817933545745,
+            "instance_uid": "322",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "346",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "348",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0037593984962406013,
+            "instance_uid": "349",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0018099547511312218,
+            "instance_uid": "792",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "806",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "807",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "810",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "820",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "821",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0017701725918277031,
+            "instance_uid": "822",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "826",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "853",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "858",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "864",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "866",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "870",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "878",
+            "matched_iou_gt_0_5": true,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "886",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "896",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "897",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          },
+          {
+            "ignored_reference_fraction": 0.0,
+            "instance_uid": "898",
+            "matched_iou_gt_0_5": false,
+            "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+          }
+        ],
+        "scoring_owner_alignment": [
+          {
+            "instance_uid": "1",
+            "raw_gt_id": 41
+          },
+          {
+            "instance_uid": "2",
+            "raw_gt_id": 84
+          },
+          {
+            "instance_uid": "3",
+            "raw_gt_id": 79
+          },
+          {
+            "instance_uid": "4",
+            "raw_gt_id": 45
+          },
+          {
+            "instance_uid": "5",
+            "raw_gt_id": 39
+          },
+          {
+            "instance_uid": "6",
+            "raw_gt_id": 6
+          },
+          {
+            "instance_uid": "7",
+            "raw_gt_id": 2
+          },
+          {
+            "instance_uid": "8",
+            "raw_gt_id": 71
+          },
+          {
+            "instance_uid": "10",
+            "raw_gt_id": 36
+          },
+          {
+            "instance_uid": "12",
+            "raw_gt_id": 63
+          },
+          {
+            "instance_uid": "13",
+            "raw_gt_id": 60
+          },
+          {
+            "instance_uid": "14",
+            "raw_gt_id": 9
+          },
+          {
+            "instance_uid": "16",
+            "raw_gt_id": 4
+          },
+          {
+            "instance_uid": "17",
+            "raw_gt_id": 16
+          },
+          {
+            "instance_uid": "18",
+            "raw_gt_id": 7
+          },
+          {
+            "instance_uid": "19",
+            "raw_gt_id": 29
+          },
+          {
+            "instance_uid": "20",
+            "raw_gt_id": 65
+          },
+          {
+            "instance_uid": "28",
+            "raw_gt_id": 18
+          },
+          {
+            "instance_uid": "33",
+            "raw_gt_id": 64
+          },
+          {
+            "instance_uid": "37",
+            "raw_gt_id": 40
+          },
+          {
+            "instance_uid": "50",
+            "raw_gt_id": 31
+          },
+          {
+            "instance_uid": "55",
+            "raw_gt_id": 68
+          },
+          {
+            "instance_uid": "57",
+            "raw_gt_id": 30
+          },
+          {
+            "instance_uid": "77",
+            "raw_gt_id": 32
+          },
+          {
+            "instance_uid": "80",
+            "raw_gt_id": 86
+          },
+          {
+            "instance_uid": "160",
+            "raw_gt_id": 70
+          },
+          {
+            "instance_uid": "162",
+            "raw_gt_id": 8
+          },
+          {
+            "instance_uid": "172",
+            "raw_gt_id": 11
+          },
+          {
+            "instance_uid": "174",
+            "raw_gt_id": 43
+          },
+          {
+            "instance_uid": "179",
+            "raw_gt_id": 19
+          },
+          {
+            "instance_uid": "181",
+            "raw_gt_id": 35
+          },
+          {
+            "instance_uid": "182",
+            "raw_gt_id": 74
+          },
+          {
+            "instance_uid": "186",
+            "raw_gt_id": 91
+          },
+          {
+            "instance_uid": "187",
+            "raw_gt_id": 59
+          },
+          {
+            "instance_uid": "190",
+            "raw_gt_id": 69
+          },
+          {
+            "instance_uid": "195",
+            "raw_gt_id": 83
+          },
+          {
+            "instance_uid": "206",
+            "raw_gt_id": 73
+          },
+          {
+            "instance_uid": "209",
+            "raw_gt_id": 72
+          },
+          {
+            "instance_uid": "210",
+            "raw_gt_id": 78
+          },
+          {
+            "instance_uid": "216",
+            "raw_gt_id": 77
+          },
+          {
+            "instance_uid": "218",
+            "raw_gt_id": 93
+          },
+          {
+            "instance_uid": "219",
+            "raw_gt_id": 5
+          },
+          {
+            "instance_uid": "224",
+            "raw_gt_id": 87
+          },
+          {
+            "instance_uid": "225",
+            "raw_gt_id": 13
+          },
+          {
+            "instance_uid": "227",
+            "raw_gt_id": 80
+          },
+          {
+            "instance_uid": "300",
+            "raw_gt_id": 10
+          },
+          {
+            "instance_uid": "322",
+            "raw_gt_id": 75
+          },
+          {
+            "instance_uid": "346",
+            "raw_gt_id": 44
+          },
+          {
+            "instance_uid": "348",
+            "raw_gt_id": 56
+          },
+          {
+            "instance_uid": "349",
+            "raw_gt_id": 90
+          },
+          {
+            "instance_uid": "792",
+            "raw_gt_id": 49
+          },
+          {
+            "instance_uid": "806",
+            "raw_gt_id": 15
+          },
+          {
+            "instance_uid": "807",
+            "raw_gt_id": 58
+          },
+          {
+            "instance_uid": "810",
+            "raw_gt_id": 22
+          },
+          {
+            "instance_uid": "820",
+            "raw_gt_id": 50
+          },
+          {
+            "instance_uid": "821",
+            "raw_gt_id": 21
+          },
+          {
+            "instance_uid": "822",
+            "raw_gt_id": 34
+          },
+          {
+            "instance_uid": "826",
+            "raw_gt_id": 61
+          },
+          {
+            "instance_uid": "864",
+            "raw_gt_id": 42
+          },
+          {
+            "instance_uid": "866",
+            "raw_gt_id": 62
+          },
+          {
+            "instance_uid": "878",
+            "raw_gt_id": 92
+          },
+          {
+            "instance_uid": "886",
+            "raw_gt_id": 85
+          },
+          {
+            "instance_uid": "896",
+            "raw_gt_id": 27
+          },
+          {
+            "instance_uid": "898",
+            "raw_gt_id": 28
+          }
+        ],
+        "total_valid_gt_vertices": 341721,
+        "unknown_or_unobserved_prediction_count": 4,
+        "unmatched_gt_count_iou_gt_0_5": 22,
+        "unmatched_prediction_count_iou_gt_0_5": 38,
+        "unpredicted_target_vertices": 23929,
+        "unverifiable_prediction_count": 0,
+        "wrong_owner_vertices": 25550
+      },
+      "scene_id": "room0",
+      "structure": {
+        "diagnostic_gt_count": 72,
+        "diagnostic_prediction_count": 71,
+        "duplicate_gt_count": 0,
+        "duplicate_prediction_count": 0,
+        "duplicate_prediction_rate": 0.0,
+        "merge_prediction_count": 28,
+        "merge_prediction_rate": 0.39436619718309857,
+        "significant_gt_per_prediction": [
+          1,
+          7,
+          1,
+          1,
+          1,
+          1,
+          3,
+          1,
+          0,
+          2,
+          0,
+          1,
+          2,
+          1,
+          1,
+          2,
+          1,
+          2,
+          1,
+          1,
+          0,
+          1,
+          2,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          3,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          2,
+          1,
+          7,
+          2,
+          2,
+          0,
+          0,
+          3,
+          2,
+          0,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          4,
+          2,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          1,
+          0,
+          0,
+          2,
+          2,
+          0,
+          2,
+          2,
+          0,
+          0,
+          1
+        ],
+        "significant_min_gt_fraction": 0.05,
+        "significant_min_intersection_vertices": 10,
+        "significant_predictions_per_gt": [
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          4,
+          1,
+          2,
+          2,
+          1,
+          2,
+          2,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          4,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          3,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          3,
+          3,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          4,
+          2,
+          2
+        ],
+        "split_gt_count": 24,
+        "split_gt_rate": 0.3333333333333333
+      },
+      "structure_source": "main_partition_intersection"
+    }
+  ],
+  "summary": {
+    "AP_by_threshold": {
+      "0.25": {
+        "FN": 18,
+        "FP": 20,
+        "TP": 54,
+        "ap": 0.5491035590045491,
+        "status": "ok"
+      },
+      "0.50": {
+        "FN": 22,
+        "FP": 24,
+        "TP": 50,
+        "ap": 0.4682900722504682,
+        "status": "ok"
+      },
+      "0.55": {
+        "FN": 24,
+        "FP": 26,
+        "TP": 48,
+        "ap": 0.43029167781643035,
+        "status": "ok"
+      },
+      "0.60": {
+        "FN": 28,
+        "FP": 30,
+        "TP": 44,
+        "ap": 0.36499866202836506,
+        "status": "ok"
+      },
+      "0.65": {
+        "FN": 31,
+        "FP": 33,
+        "TP": 41,
+        "ap": 0.31268397109981266,
+        "status": "ok"
+      },
+      "0.70": {
+        "FN": 31,
+        "FP": 33,
+        "TP": 41,
+        "ap": 0.31268397109981266,
+        "status": "ok"
+      },
+      "0.75": {
+        "FN": 36,
+        "FP": 38,
+        "TP": 36,
+        "ap": 0.24565159218624566,
+        "status": "ok"
+      },
+      "0.80": {
+        "FN": 40,
+        "FP": 42,
+        "TP": 32,
+        "ap": 0.19266791544019268,
+        "status": "ok"
+      },
+      "0.85": {
+        "FN": 45,
+        "FP": 47,
+        "TP": 27,
+        "ap": 0.13727588975113728,
+        "status": "ok"
+      },
+      "0.90": {
+        "FN": 52,
+        "FP": 54,
+        "TP": 20,
+        "ap": 0.07492641156007493,
+        "status": "ok"
+      },
+      "0.95": {
+        "FN": 65,
+        "FP": 67,
+        "TP": 7,
+        "ap": 0.009365801445009366,
+        "status": "ok"
+      }
+    },
+    "CA_AP25_uniform": 0.5491035590045491,
+    "CA_AP50_uniform": 0.4682900722504682,
+    "CA_AP_uniform": 0.2548835964677549,
+    "CA_PQ": {
+      "FN": 22,
+      "FP": 24,
+      "PQ": 0.5612951892489144,
+      "RQ": 0.684931506849315,
+      "SQ": 0.8194909763034152,
+      "TP": 50,
+      "ignored_prediction_count": 14,
+      "status": "ok"
+    },
+    "CA_PRF1_0_5": {
+      "F1": 0.684931506849315,
+      "FN": 22,
+      "FP": 24,
+      "P": 0.6756756756756757,
+      "R": 0.6944444444444444,
+      "TP": 50,
+      "ignored_prediction_count": 14,
+      "status": "ok"
+    },
+    "CA_mCov": 0.6213606798687936,
+    "aggregation": "top-level pooled predictions/GT; macro_per_scene is unweighted scene mean",
+    "auxiliary_geometry_structure": {
+      "diagnostic_gt_count": 72,
+      "diagnostic_prediction_count": 75,
+      "duplicate_prediction_count": 0,
+      "duplicate_prediction_rate": 0.0,
+      "merge_prediction_count": 33,
+      "merge_prediction_rate": 0.44,
+      "source": "auxiliary_pairwise_geometry_support_only",
+      "split_gt_count": 46,
+      "split_gt_rate": 0.6388888888888888
+    },
+    "background_only_prediction_count": 10,
+    "confidence_mode": "uniform",
+    "dataset": "Replica",
+    "empty_native_prediction_count": 1,
+    "evaluation_profile": "object_observed_repair",
+    "macro_per_scene": {
+      "CA_AP25_uniform": 0.5491035590045491,
+      "CA_AP50_uniform": 0.4682900722504682,
+      "CA_AP_uniform": 0.2548835964677549,
+      "CA_F1_0_5": 0.684931506849315,
+      "CA_PQ": 0.5612951892489144,
+      "duplicate_prediction_rate": 0.0,
+      "merge_prediction_rate": 0.39436619718309857,
+      "split_gt_rate": 0.3333333333333333
+    },
+    "owner_surface": {
+      "Correct_owner_Coverage": 0.8552064403416823,
+      "No_geometry_Coverage": 0.013929492188071555,
+      "Unassigned_Coverage": 0.05609546969603858,
+      "Wrong_owner_Coverage": 0.0747685977742076,
+      "correct_owner_vertices": 292242,
+      "duplicate_coordinate_conflict_target_vertices": 1,
+      "no_geometry_target_vertices": 4760,
+      "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+      "target_vertices": 341721,
+      "unassigned_with_geometry_target_vertices": 19169,
+      "unpredicted_target_vertices": 23929,
+      "wrong_owner_vertices": 25550
+    },
+    "per_scene": [
+      {
+        "AP_by_threshold": {
+          "0.25": {
+            "FN": 18,
+            "FP": 20,
+            "TP": 54,
+            "ap": 0.5491035590045491,
+            "status": "ok"
+          },
+          "0.50": {
+            "FN": 22,
+            "FP": 24,
+            "TP": 50,
+            "ap": 0.4682900722504682,
+            "status": "ok"
+          },
+          "0.55": {
+            "FN": 24,
+            "FP": 26,
+            "TP": 48,
+            "ap": 0.43029167781643035,
+            "status": "ok"
+          },
+          "0.60": {
+            "FN": 28,
+            "FP": 30,
+            "TP": 44,
+            "ap": 0.36499866202836506,
+            "status": "ok"
+          },
+          "0.65": {
+            "FN": 31,
+            "FP": 33,
+            "TP": 41,
+            "ap": 0.31268397109981266,
+            "status": "ok"
+          },
+          "0.70": {
+            "FN": 31,
+            "FP": 33,
+            "TP": 41,
+            "ap": 0.31268397109981266,
+            "status": "ok"
+          },
+          "0.75": {
+            "FN": 36,
+            "FP": 38,
+            "TP": 36,
+            "ap": 0.24565159218624566,
+            "status": "ok"
+          },
+          "0.80": {
+            "FN": 40,
+            "FP": 42,
+            "TP": 32,
+            "ap": 0.19266791544019268,
+            "status": "ok"
+          },
+          "0.85": {
+            "FN": 45,
+            "FP": 47,
+            "TP": 27,
+            "ap": 0.13727588975113728,
+            "status": "ok"
+          },
+          "0.90": {
+            "FN": 52,
+            "FP": 54,
+            "TP": 20,
+            "ap": 0.07492641156007493,
+            "status": "ok"
+          },
+          "0.95": {
+            "FN": 65,
+            "FP": 67,
+            "TP": 7,
+            "ap": 0.009365801445009366,
+            "status": "ok"
+          }
+        },
+        "CA_AP25_uniform": 0.5491035590045491,
+        "CA_AP50_uniform": 0.4682900722504682,
+        "CA_AP_uniform": 0.2548835964677549,
+        "CA_PQ": {
+          "FN": 22,
+          "FP": 24,
+          "PQ": 0.5612951892489144,
+          "RQ": 0.684931506849315,
+          "SQ": 0.8194909763034152,
+          "TP": 50,
+          "ignored_prediction_count": 14,
+          "status": "ok"
+        },
+        "CA_PRF1_0_5": {
+          "F1": 0.684931506849315,
+          "FN": 22,
+          "FP": 24,
+          "P": 0.6756756756756757,
+          "R": 0.6944444444444444,
+          "TP": 50,
+          "ignored_prediction_count": 14,
+          "status": "ok"
+        },
+        "auxiliary_geometry_structure": {
+          "diagnostic_gt_count": 72,
+          "diagnostic_prediction_count": 75,
+          "duplicate_gt_count": 0,
+          "duplicate_prediction_count": 0,
+          "duplicate_prediction_rate": 0.0,
+          "merge_prediction_count": 33,
+          "merge_prediction_rate": 0.44,
+          "significant_gt_per_prediction": [
+            1,
+            17,
+            3,
+            1,
+            1,
+            1,
+            5,
+            1,
+            0,
+            2,
+            0,
+            1,
+            4,
+            5,
+            1,
+            3,
+            1,
+            2,
+            1,
+            1,
+            0,
+            1,
+            6,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            3,
+            0,
+            1,
+            0,
+            2,
+            1,
+            0,
+            1,
+            1,
+            3,
+            2,
+            8,
+            2,
+            2,
+            0,
+            0,
+            6,
+            3,
+            0,
+            1,
+            1,
+            2,
+            1,
+            1,
+            4,
+            4,
+            3,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            0,
+            0,
+            2,
+            2,
+            1,
+            2,
+            2,
+            1,
+            0,
+            1
+          ],
+          "significant_min_gt_fraction": 0.05,
+          "significant_min_intersection_vertices": 10,
+          "significant_predictions_per_gt": [
+            1,
+            3,
+            1,
+            2,
+            1,
+            2,
+            2,
+            1,
+            7,
+            1,
+            2,
+            2,
+            1,
+            2,
+            4,
+            2,
+            1,
+            1,
+            1,
+            2,
+            4,
+            5,
+            5,
+            1,
+            2,
+            2,
+            1,
+            1,
+            1,
+            3,
+            1,
+            2,
+            1,
+            4,
+            2,
+            2,
+            2,
+            1,
+            2,
+            1,
+            2,
+            2,
+            1,
+            2,
+            2,
+            4,
+            5,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            1,
+            2,
+            1,
+            4,
+            2,
+            1,
+            2,
+            4,
+            2,
+            3
+          ],
+          "split_gt_count": 46,
+          "split_gt_rate": 0.6388888888888888
+        },
+        "diagnostics": {
+          "Correct_owner_Coverage": 0.8552064403416823,
+          "Unpredicted_Coverage": 0.07002496188411014,
+          "Wrong_owner_Coverage": 0.0747685977742076,
+          "background_only_prediction_count": 10,
+          "best_gt_iou_histogram": {
+            "[0,0.25)": 16,
+            "[0.25,0.50)": 6,
+            "[0.50,0.75)": 14,
+            "[0.75,1]": 36
+          },
+          "correct_owner_vertices": 292242,
+          "dropped_prediction_uids": [],
+          "empty_native_prediction_count": 1,
+          "gt_instance_count": 72,
+          "gt_surface_coverage": 0.9299750381158899,
+          "ignored_small_gt_ids": [],
+          "macro_best_gt_recall": 0.7925632300077478,
+          "macro_prediction_purity": 0.8759065126137239,
+          "mean_best_gt_iou": 0.6213606798687936,
+          "median_best_gt_iou": 0.7568410831658428,
+          "overlapping_gt_per_prediction": [
+            2,
+            19,
+            4,
+            2,
+            1,
+            1,
+            5,
+            3,
+            0,
+            2,
+            0,
+            1,
+            18,
+            6,
+            4,
+            3,
+            1,
+            3,
+            4,
+            2,
+            0,
+            2,
+            6,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            5,
+            0,
+            2,
+            2,
+            4,
+            1,
+            0,
+            1,
+            2,
+            3,
+            2,
+            12,
+            4,
+            2,
+            0,
+            0,
+            8,
+            3,
+            0,
+            1,
+            1,
+            2,
+            2,
+            1,
+            5,
+            4,
+            4,
+            0,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            2,
+            1,
+            1,
+            2,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            1,
+            1,
+            2,
+            2,
+            1,
+            2,
+            2,
+            1,
+            1,
+            1
+          ],
+          "overlapping_predictions_per_gt": [
+            8,
+            3,
+            1,
+            2,
+            1,
+            2,
+            2,
+            5,
+            7,
+            3,
+            2,
+            3,
+            1,
+            2,
+            4,
+            3,
+            1,
+            1,
+            2,
+            2,
+            5,
+            6,
+            7,
+            2,
+            2,
+            4,
+            2,
+            1,
+            3,
+            3,
+            3,
+            2,
+            3,
+            5,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            1,
+            2,
+            2,
+            2,
+            6,
+            4,
+            7,
+            2,
+            1,
+            2,
+            2,
+            2,
+            3,
+            3,
+            2,
+            3,
+            2,
+            3,
+            6,
+            2,
+            2,
+            2,
+            1,
+            2,
+            2,
+            4,
+            4,
+            1,
+            2,
+            5,
+            2,
+            4
+          ],
+          "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+          "prediction_instance_count": 88,
+          "prediction_scope_audit": [
+            {
+              "ignored_reference_fraction": 0.008569739952718676,
+              "instance_uid": "1",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0014980987504711377,
+              "instance_uid": "2",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.04234527687296417,
+              "instance_uid": "3",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.014686248331108143,
+              "instance_uid": "4",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.004687885516901061,
+              "instance_uid": "5",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.015267175572519083,
+              "instance_uid": "6",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.020265003897116135,
+              "instance_uid": "7",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.003205128205128205,
+              "instance_uid": "8",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 1.0,
+              "instance_uid": "9",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_NATIVE_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "10",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 1.0,
+              "instance_uid": "11",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0003762227238525207,
+              "instance_uid": "12",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.001339487320795732,
+              "instance_uid": "13",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0060998054372403635,
+              "instance_uid": "14",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0035280282242257936,
+              "instance_uid": "15",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.012779552715654952,
+              "instance_uid": "16",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "17",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.028462998102466792,
+              "instance_uid": "18",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.8763927576601671,
+              "instance_uid": "19",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "20",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "21",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "28",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0012888380339247318,
+              "instance_uid": "33",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.995243757431629,
+              "instance_uid": "34",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0002518257365902795,
+              "instance_uid": "37",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.006191950464396285,
+              "instance_uid": "39",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "50",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.963963963963964,
+              "instance_uid": "51",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 1.0,
+              "instance_uid": "52",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+            },
+            {
+              "ignored_reference_fraction": 0.007722007722007722,
+              "instance_uid": "55",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 6.67334000667334e-05,
+              "instance_uid": "57",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "66",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.003169572107765452,
+              "instance_uid": "77",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "79",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.004247411733474914,
+              "instance_uid": "80",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "153",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "154",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0015026296018031556,
+              "instance_uid": "160",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.002435064935064935,
+              "instance_uid": "162",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.01573404390305799,
+              "instance_uid": "172",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.09806629834254144,
+              "instance_uid": "174",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "179",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.019055509527754765,
+              "instance_uid": "181",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.007215668308326652,
+              "instance_uid": "182",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": null,
+              "instance_uid": "183",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_EMPTY_NATIVE_EXPORT"
+            },
+            {
+              "ignored_reference_fraction": 1.0,
+              "instance_uid": "185",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+            },
+            {
+              "ignored_reference_fraction": 0.0003168567807351077,
+              "instance_uid": "186",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.022123893805309734,
+              "instance_uid": "187",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "189",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "190",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "195",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.011712531271321356,
+              "instance_uid": "206",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0069767441860465115,
+              "instance_uid": "209",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "210",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0037157977705213376,
+              "instance_uid": "216",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.010395010395010396,
+              "instance_uid": "218",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.022931206380857428,
+              "instance_uid": "219",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "223",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.024675324675324677,
+              "instance_uid": "224",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0016168148746968471,
+              "instance_uid": "225",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 1.0,
+              "instance_uid": "226",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "227",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 1.0,
+              "instance_uid": "232",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_UNKNOWN_OR_UNOBSERVED"
+            },
+            {
+              "ignored_reference_fraction": null,
+              "instance_uid": "234",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_NATIVE_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.9918032786885246,
+              "instance_uid": "277",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "IGNORE_BACKGROUND_ONLY_REPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.012048192771084338,
+              "instance_uid": "300",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.013199817933545745,
+              "instance_uid": "322",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "346",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "348",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0037593984962406013,
+              "instance_uid": "349",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0018099547511312218,
+              "instance_uid": "792",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "806",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "807",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "810",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "820",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "821",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0017701725918277031,
+              "instance_uid": "822",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "826",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "853",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "858",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "864",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "866",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "870",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "878",
+              "matched_iou_gt_0_5": true,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "886",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "896",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "897",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            },
+            {
+              "ignored_reference_fraction": 0.0,
+              "instance_uid": "898",
+              "matched_iou_gt_0_5": false,
+              "unmatched_policy": "FP_IF_UNMATCHED_TARGET_SUPPORT"
+            }
+          ],
+          "scoring_owner_alignment": [
+            {
+              "instance_uid": "1",
+              "raw_gt_id": 41
+            },
+            {
+              "instance_uid": "2",
+              "raw_gt_id": 84
+            },
+            {
+              "instance_uid": "3",
+              "raw_gt_id": 79
+            },
+            {
+              "instance_uid": "4",
+              "raw_gt_id": 45
+            },
+            {
+              "instance_uid": "5",
+              "raw_gt_id": 39
+            },
+            {
+              "instance_uid": "6",
+              "raw_gt_id": 6
+            },
+            {
+              "instance_uid": "7",
+              "raw_gt_id": 2
+            },
+            {
+              "instance_uid": "8",
+              "raw_gt_id": 71
+            },
+            {
+              "instance_uid": "10",
+              "raw_gt_id": 36
+            },
+            {
+              "instance_uid": "12",
+              "raw_gt_id": 63
+            },
+            {
+              "instance_uid": "13",
+              "raw_gt_id": 60
+            },
+            {
+              "instance_uid": "14",
+              "raw_gt_id": 9
+            },
+            {
+              "instance_uid": "16",
+              "raw_gt_id": 4
+            },
+            {
+              "instance_uid": "17",
+              "raw_gt_id": 16
+            },
+            {
+              "instance_uid": "18",
+              "raw_gt_id": 7
+            },
+            {
+              "instance_uid": "19",
+              "raw_gt_id": 29
+            },
+            {
+              "instance_uid": "20",
+              "raw_gt_id": 65
+            },
+            {
+              "instance_uid": "28",
+              "raw_gt_id": 18
+            },
+            {
+              "instance_uid": "33",
+              "raw_gt_id": 64
+            },
+            {
+              "instance_uid": "37",
+              "raw_gt_id": 40
+            },
+            {
+              "instance_uid": "50",
+              "raw_gt_id": 31
+            },
+            {
+              "instance_uid": "55",
+              "raw_gt_id": 68
+            },
+            {
+              "instance_uid": "57",
+              "raw_gt_id": 30
+            },
+            {
+              "instance_uid": "77",
+              "raw_gt_id": 32
+            },
+            {
+              "instance_uid": "80",
+              "raw_gt_id": 86
+            },
+            {
+              "instance_uid": "160",
+              "raw_gt_id": 70
+            },
+            {
+              "instance_uid": "162",
+              "raw_gt_id": 8
+            },
+            {
+              "instance_uid": "172",
+              "raw_gt_id": 11
+            },
+            {
+              "instance_uid": "174",
+              "raw_gt_id": 43
+            },
+            {
+              "instance_uid": "179",
+              "raw_gt_id": 19
+            },
+            {
+              "instance_uid": "181",
+              "raw_gt_id": 35
+            },
+            {
+              "instance_uid": "182",
+              "raw_gt_id": 74
+            },
+            {
+              "instance_uid": "186",
+              "raw_gt_id": 91
+            },
+            {
+              "instance_uid": "187",
+              "raw_gt_id": 59
+            },
+            {
+              "instance_uid": "190",
+              "raw_gt_id": 69
+            },
+            {
+              "instance_uid": "195",
+              "raw_gt_id": 83
+            },
+            {
+              "instance_uid": "206",
+              "raw_gt_id": 73
+            },
+            {
+              "instance_uid": "209",
+              "raw_gt_id": 72
+            },
+            {
+              "instance_uid": "210",
+              "raw_gt_id": 78
+            },
+            {
+              "instance_uid": "216",
+              "raw_gt_id": 77
+            },
+            {
+              "instance_uid": "218",
+              "raw_gt_id": 93
+            },
+            {
+              "instance_uid": "219",
+              "raw_gt_id": 5
+            },
+            {
+              "instance_uid": "224",
+              "raw_gt_id": 87
+            },
+            {
+              "instance_uid": "225",
+              "raw_gt_id": 13
+            },
+            {
+              "instance_uid": "227",
+              "raw_gt_id": 80
+            },
+            {
+              "instance_uid": "300",
+              "raw_gt_id": 10
+            },
+            {
+              "instance_uid": "322",
+              "raw_gt_id": 75
+            },
+            {
+              "instance_uid": "346",
+              "raw_gt_id": 44
+            },
+            {
+              "instance_uid": "348",
+              "raw_gt_id": 56
+            },
+            {
+              "instance_uid": "349",
+              "raw_gt_id": 90
+            },
+            {
+              "instance_uid": "792",
+              "raw_gt_id": 49
+            },
+            {
+              "instance_uid": "806",
+              "raw_gt_id": 15
+            },
+            {
+              "instance_uid": "807",
+              "raw_gt_id": 58
+            },
+            {
+              "instance_uid": "810",
+              "raw_gt_id": 22
+            },
+            {
+              "instance_uid": "820",
+              "raw_gt_id": 50
+            },
+            {
+              "instance_uid": "821",
+              "raw_gt_id": 21
+            },
+            {
+              "instance_uid": "822",
+              "raw_gt_id": 34
+            },
+            {
+              "instance_uid": "826",
+              "raw_gt_id": 61
+            },
+            {
+              "instance_uid": "864",
+              "raw_gt_id": 42
+            },
+            {
+              "instance_uid": "866",
+              "raw_gt_id": 62
+            },
+            {
+              "instance_uid": "878",
+              "raw_gt_id": 92
+            },
+            {
+              "instance_uid": "886",
+              "raw_gt_id": 85
+            },
+            {
+              "instance_uid": "896",
+              "raw_gt_id": 27
+            },
+            {
+              "instance_uid": "898",
+              "raw_gt_id": 28
+            }
+          ],
+          "total_valid_gt_vertices": 341721,
+          "unknown_or_unobserved_prediction_count": 4,
+          "unmatched_gt_count_iou_gt_0_5": 22,
+          "unmatched_prediction_count_iou_gt_0_5": 38,
+          "unpredicted_target_vertices": 23929,
+          "unverifiable_prediction_count": 0,
+          "wrong_owner_vertices": 25550
+        },
+        "scene_id": "room0",
+        "structure": {
+          "diagnostic_gt_count": 72,
+          "diagnostic_prediction_count": 71,
+          "duplicate_gt_count": 0,
+          "duplicate_prediction_count": 0,
+          "duplicate_prediction_rate": 0.0,
+          "merge_prediction_count": 28,
+          "merge_prediction_rate": 0.39436619718309857,
+          "significant_gt_per_prediction": [
+            1,
+            7,
+            1,
+            1,
+            1,
+            1,
+            3,
+            1,
+            0,
+            2,
+            0,
+            1,
+            2,
+            1,
+            1,
+            2,
+            1,
+            2,
+            1,
+            1,
+            0,
+            1,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            3,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1,
+            2,
+            1,
+            7,
+            2,
+            2,
+            0,
+            0,
+            3,
+            2,
+            0,
+            1,
+            1,
+            2,
+            1,
+            1,
+            2,
+            4,
+            2,
+            0,
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            1,
+            0,
+            0,
+            2,
+            2,
+            0,
+            2,
+            2,
+            0,
+            0,
+            1
+          ],
+          "significant_min_gt_fraction": 0.05,
+          "significant_min_intersection_vertices": 10,
+          "significant_predictions_per_gt": [
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            4,
+            1,
+            2,
+            2,
+            1,
+            2,
+            2,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            4,
+            3,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            3,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            3,
+            3,
+            1,
+            1,
+            2,
+            2,
+            2,
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            1,
+            2,
+            1,
+            1,
+            2,
+            4,
+            2,
+            2
+          ],
+          "split_gt_count": 24,
+          "split_gt_rate": 0.3333333333333333
+        },
+        "structure_source": "main_partition_intersection"
+      }
+    ],
+    "profile_revision": 2,
+    "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+    "protocol": "Replica-CA-v3",
+    "reference_scope": [
+      {
+        "evaluation_region_sha256": "1fe391abdf05bb6607a3795258d0b3fd3ec1e830bb5a4ab32bdccb45b0d25ff8",
+        "gt_observed_support_sha256": "0deefd6c71a0f8703eddac590d7e4483b770b316078998a27d6ed2c8556c1394",
+        "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+        "scene_id": "room0"
+      }
+    ],
+    "scene_count": 1,
+    "status": "DEVELOPMENT / NON_OFFICIAL / PROFILE_NOT_FROZEN",
+    "structure": {
+      "diagnostic_gt_count": 72,
+      "diagnostic_prediction_count": 71,
+      "duplicate_prediction_count": 0,
+      "duplicate_prediction_rate": 0.0,
+      "merge_prediction_count": 28,
+      "merge_prediction_rate": 0.39436619718309857,
+      "split_gt_count": 24,
+      "split_gt_rate": 0.3333333333333333
+    },
+    "structure_source": "main_partition_intersection",
+    "structure_status": "ok",
+    "unknown_or_unobserved_prediction_count": 4,
+    "unverifiable_prediction_count": 0
+  }
+}

@@ -1,12 +1,22 @@
 # 3D-mapping
 
-## auto-v2：种子筛选链（2026-10-19）
+## 当前冻结基线：partial＋E1＋swap（2026-10-21）
+
+main 当前默认算法为 **partial-e1-swap-20261021**：沿用 auto-v3-swap 的八场景196个种子，采用既有 partial 直接撤换，接原核心历史重关联和 E1 自适应历史扩展。最终结果是 `whole_to_partial / final`。配置、逐场景结果、SHA-256 来源锁和核验方法见 [冻结基线说明](experiments/partial_e1_swap_baseline_20261021/README.md)；当前注册见 [current_auto_pipeline.json](instance_repair/configs/current_auto_pipeline.json)。
+
+```bash
+python -B experiments/partial_e1_swap_baseline_20261021/verify.py
+```
+
+算法已冻结；评价仍使用下述 main R2 开发基准、350个固定 GT、`frozen=false`。原 whole/E1 和 auto-v3-swap 快照保留为历史版本，onebyone 实验不纳入此基线。
+
+## 历史 auto-v2：种子筛选链（2026-10-19）
 
 本分支在 auto-v1 的最终主种子上加入已确认的整图语义过滤、仅共同可见 IoU 去重、B 单帧双覆盖率跳过、完整 TSDF 包含率和 p/r 筛选。room2 纯自动为 90→72→56→45→42→33；按本轮人工确认保留 G017、G025，实际送原 E1 的清单为35个。运行入口、来源锁、逐项验证和人工例外边界见 [auto-v2 说明](experiments/auto_v2/README.md)。冻结 E1 和 main 评价协议保持原样。
 
-## 当前冻结算法架构（2026-10-12）
+## 冻结 E1 数值内核（2026-10-12）
 
-**P1-A1-strict-vote-E1** 为当前冻结修复架构：自适应可信物体范围扩展、历史原始观察重关联、严格一帧一点一票与歧义弃权。E2 不纳入默认版本。
+**P1-A1-strict-vote-E1** 为当前基线沿用的冻结修复内核：自适应可信物体范围扩展、历史原始观察重关联、严格一帧一点一票与歧义弃权。E2 不纳入默认版本。
 运行 `python -m instance_repair.cli current-architecture` 查看源码锁定的注册信息；参数、两场景复现入口与指标见 [冻结 E1 说明](docs/FROZEN_E1.md)。
 算法已冻结；下述 R2 评价协议仍为开发基准，`frozen=false`。
 

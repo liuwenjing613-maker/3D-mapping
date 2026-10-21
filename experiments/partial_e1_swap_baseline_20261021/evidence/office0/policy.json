@@ -1,0 +1,28 @@
+{
+  "status": "FROZEN_BEFORE_MAPPING_AND_NEW_SCORING",
+  "source": "/data/chenkejun/CVPR/results/auto_v2_replica6_20261019/office0/e1_repair",
+  "scene": "office0",
+  "selected_masks": 19,
+  "GT_read_by_mapper": false,
+  "only_algorithm_change": "old_observation_plans values whole -> partial",
+  "whole_retirement": false,
+  "direct": "Original partial retirement: retain old_family_ids eligibility; remove only eligible adopted-mask overlap",
+  "history": "Unchanged E1 core and expanded-region revision of retained original observations",
+  "accepted_masks": "Unchanged; old observations outside old_family_ids remain separate candidates and may abstain",
+  "no_observation": "No synthetic historical fallback vote",
+  "geometry": "Original source projection, prior-core rule and expanded-region 2cm visibility",
+  "fixed": [
+    "seeds",
+    "SAM2 tracking",
+    "gate",
+    "adopted masks",
+    "old_family_ids",
+    "identity association",
+    "core and expanded regions",
+    "TSDF",
+    "confirmation thresholds",
+    "postprocessing",
+    "stage commit rules"
+  ],
+  "control": "Original E1 source candidates, frame votes, aggregate votes, evidence and stage scopes reproduced"
+}

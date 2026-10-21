@@ -1,0 +1,1061 @@
+{
+  "baseline": "partial-e1-swap-20261021",
+  "frozen": true,
+  "evaluation_frozen": false,
+  "default_stage": "final",
+  "variant": "whole_to_partial",
+  "scenes": [
+    {
+      "scene": "room0",
+      "selected_seeds": 35,
+      "GT_count": 72,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room0/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/room0",
+      "freeze_checks": {
+        "source_sha256": 5773,
+        "code_sha256": 9,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/room0/whole_to_partial/room0/native/instance_surface.npz",
+          "source_sha256": "d98f106bcebf9fd7a41c5332272a5a1fe2b576d210e10455ff9a7af362c3c19f",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room0/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "4ccc156041e2286a59f4c074e502f2f9305c40bb8b68b19b09f1d5fb7e5e8f2c",
+          "alignment": {
+            "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+            "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+            "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+            "gt_observed_support_sha256": "0deefd6c71a0f8703eddac590d7e4483b770b316078998a27d6ed2c8556c1394",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.684931506849315,
+            "PQ": 0.5612951892489144,
+            "AP": 0.2548835964677549,
+            "AP50": 0.4682900722504682,
+            "mCov": 0.6213606798687936,
+            "TP": 50,
+            "FP": 24,
+            "FN": 22,
+            "gray_total": 138615,
+            "gray_states": {
+              "U": 86884,
+              "T": 16541,
+              "C": 35190
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.8552064403416823,
+              "No_geometry_Coverage": 0.013929492188071555,
+              "Unassigned_Coverage": 0.05609546969603858,
+              "Wrong_owner_Coverage": 0.0747685977742076,
+              "correct_owner_vertices": 292242,
+              "duplicate_coordinate_conflict_target_vertices": 1,
+              "no_geometry_target_vertices": 4760,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 341721,
+              "unassigned_with_geometry_target_vertices": 19169,
+              "unpredicted_target_vertices": 23929,
+              "wrong_owner_vertices": 25550
+            },
+            "selected": 35
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/room0/whole_to_partial/room0/final/instance_surface.npz",
+          "source_sha256": "0f680153b250e9c03130f329466e095d94abbf3f753dd24c50ee8c69af1152fa",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room0/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "158525c34e339dbc8ba4002756cd9165bdbe1a2763bae26f5850466103ff2adc",
+          "alignment": {
+            "geometry_xyz_sha256": "babbdad44362ec893f05a923eb28aadc5df39dfa858d94fab7074c78996827e5",
+            "correspondence_sha256": "b921a395ac9df77214e82fc0fead6d1f7ed7b990ecac81fdfe992c52b63d6476",
+            "gt_scope_sha256": "9af138067d2569e22d2f312f7f62f0d7f8283b8e8e48b4716a22714ddabf64a2",
+            "gt_observed_support_sha256": "0deefd6c71a0f8703eddac590d7e4483b770b316078998a27d6ed2c8556c1394",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.684931506849315,
+            "PQ": 0.5695556992442475,
+            "AP": 0.26747390955311745,
+            "AP50": 0.4682900722504682,
+            "mCov": 0.6303872178683977,
+            "TP": 50,
+            "FP": 24,
+            "FN": 22,
+            "gray_total": 118498,
+            "gray_states": {
+              "U": 75850,
+              "T": 10252,
+              "C": 32396
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.8625603928350906,
+              "No_geometry_Coverage": 0.013929492188071555,
+              "Unassigned_Coverage": 0.047562192548892226,
+              "Wrong_owner_Coverage": 0.07594792242794561,
+              "correct_owner_vertices": 294755,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 4760,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 341721,
+              "unassigned_with_geometry_target_vertices": 16253,
+              "unpredicted_target_vertices": 21013,
+              "wrong_owner_vertices": 25953
+            },
+            "selected": 35
+          }
+        }
+      }
+    },
+    {
+      "scene": "room1",
+      "selected_seeds": 22,
+      "GT_count": 45,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room1/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/room1_swap34_20261020/partial",
+      "freeze_checks": {
+        "source_sha256": 4131,
+        "code_sha256": 6,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/room1_swap34_20261020/partial/whole_to_partial/room1/native/instance_surface.npz",
+          "source_sha256": "7b3cf5be3d28ac41deda472a9bd2937173e62fb79808e13624952e5a876e25d3",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room1/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "0be59e9b525b09bd3a449b58e924d1e73a729e00c5be0caf5f9b6f3fccbe9eea",
+          "alignment": {
+            "geometry_xyz_sha256": "6fee3729a4123695de4975ccad350cd3c8bebdd60db9d04d6bba84700c993559",
+            "correspondence_sha256": "e41070f2ac40bea4359795c34fb51d943c5aa176bac3f76128d374bf847f842a",
+            "gt_scope_sha256": "feecc4a265810201e0d345c46f52049c1c39df5e294aa6f01e87773ce5cd216e",
+            "gt_observed_support_sha256": "b6c44372bf81575c0f75a7a94202138163bc62dfae708c24f46a1dfe546562b8",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.6451612903225806,
+            "PQ": 0.515020720617948,
+            "AP": 0.20655940594059405,
+            "AP50": 0.4146039603960396,
+            "mCov": 0.6093550492165207,
+            "TP": 30,
+            "FP": 18,
+            "FN": 15,
+            "gray_total": 87648,
+            "gray_states": {
+              "U": 55565,
+              "T": 6527,
+              "C": 25556
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.7283100550943434,
+              "No_geometry_Coverage": 0.016965240843139322,
+              "Unassigned_Coverage": 0.04630536429062894,
+              "Wrong_owner_Coverage": 0.2084193397718883,
+              "correct_owner_vertices": 145016,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 3378,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 199113,
+              "unassigned_with_geometry_target_vertices": 9220,
+              "unpredicted_target_vertices": 12598,
+              "wrong_owner_vertices": 41499
+            },
+            "selected": 22
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/room1_swap34_20261020/partial/whole_to_partial/room1/final/instance_surface.npz",
+          "source_sha256": "b807e39f8d3ef1ef8d9d38a98da708cf12efcc1371c04d90a344cea186dc9ec4",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room1/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "fcb21e5d969fc9954a03c3da51114b823b1206dbbf30b2a644cfa9a8b01fd1cf",
+          "alignment": {
+            "geometry_xyz_sha256": "6fee3729a4123695de4975ccad350cd3c8bebdd60db9d04d6bba84700c993559",
+            "correspondence_sha256": "e41070f2ac40bea4359795c34fb51d943c5aa176bac3f76128d374bf847f842a",
+            "gt_scope_sha256": "feecc4a265810201e0d345c46f52049c1c39df5e294aa6f01e87773ce5cd216e",
+            "gt_observed_support_sha256": "b6c44372bf81575c0f75a7a94202138163bc62dfae708c24f46a1dfe546562b8",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.6666666666666666,
+            "PQ": 0.5326393734899034,
+            "AP": 0.2189356435643564,
+            "AP50": 0.4412128712871287,
+            "mCov": 0.6166228556104766,
+            "TP": 31,
+            "FP": 17,
+            "FN": 14,
+            "gray_total": 76899,
+            "gray_states": {
+              "U": 48952,
+              "T": 4195,
+              "C": 23752
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.7349545233108837,
+              "No_geometry_Coverage": 0.016965240843139322,
+              "Unassigned_Coverage": 0.03707944734899278,
+              "Wrong_owner_Coverage": 0.21100078849698412,
+              "correct_owner_vertices": 146339,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 3378,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 199113,
+              "unassigned_with_geometry_target_vertices": 7383,
+              "unpredicted_target_vertices": 10761,
+              "wrong_owner_vertices": 42013
+            },
+            "selected": 22
+          }
+        }
+      }
+    },
+    {
+      "scene": "room2",
+      "selected_seeds": 35,
+      "GT_count": 52,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room2/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/room2",
+      "freeze_checks": {
+        "source_sha256": 5804,
+        "code_sha256": 6,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/room2/whole_to_partial/room2/native/instance_surface.npz",
+          "source_sha256": "1df4c4b5ebc687a8e8aebfb8f25dcc16c7acf03bebfd0e7c0512574a23b97adc",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room2/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "5dda18bbe17618aafa0687ebbaa005d952651bd672c22afcda7ec3fd0eff7a2e",
+          "alignment": {
+            "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+            "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+            "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+            "gt_observed_support_sha256": "b8b581affe231f624cfea45b863c39964939a6c21659aef8ce6e99b143d59e70",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.7207207207207207,
+            "PQ": 0.5445077802120818,
+            "AP": 0.21872797449236447,
+            "AP50": 0.5168652458466185,
+            "mCov": 0.622172915777512,
+            "TP": 40,
+            "FP": 19,
+            "FN": 12,
+            "gray_total": 166418,
+            "gray_states": {
+              "U": 87620,
+              "T": 27034,
+              "C": 51764
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.7419982277112396,
+              "No_geometry_Coverage": 0.028841491620641032,
+              "Unassigned_Coverage": 0.10757458381866922,
+              "Wrong_owner_Coverage": 0.1215856968494502,
+              "correct_owner_vertices": 133136,
+              "duplicate_coordinate_conflict_target_vertices": 2,
+              "no_geometry_target_vertices": 5175,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 179429,
+              "unassigned_with_geometry_target_vertices": 19302,
+              "unpredicted_target_vertices": 24477,
+              "wrong_owner_vertices": 21816
+            },
+            "selected": 35
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/room2/whole_to_partial/room2/final/instance_surface.npz",
+          "source_sha256": "765ce8874f46134b89ae138fe5c9f46ea8bf51a114174e0fbc7c1da6d3e77d7a",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/room2/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "3e63d17dff78ed84aef27f959451858f59a93ad27b4f671a76a7329378e7be75",
+          "alignment": {
+            "geometry_xyz_sha256": "e566a317cd07f6288935fe3fc38ae142ad5e6a2b52c3a23cce9868bb31dce7f6",
+            "correspondence_sha256": "90de008bf94f812714e06fb7b4fb51a826376583d6742677662b6f45cfe2b036",
+            "gt_scope_sha256": "82d2a433d707a6177eddf1abed60a467af5eb84b17839cb277055ca2c45537c1",
+            "gt_observed_support_sha256": "b8b581affe231f624cfea45b863c39964939a6c21659aef8ce6e99b143d59e70",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.7207207207207207,
+            "PQ": 0.5585159996704576,
+            "AP": 0.23713710354086254,
+            "AP50": 0.5168652458466185,
+            "mCov": 0.6370694652174694,
+            "TP": 40,
+            "FP": 19,
+            "FN": 12,
+            "gray_total": 145098,
+            "gray_states": {
+              "U": 78753,
+              "T": 18204,
+              "C": 48141
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.7527991573268535,
+              "No_geometry_Coverage": 0.028841491620641032,
+              "Unassigned_Coverage": 0.09442732222773353,
+              "Wrong_owner_Coverage": 0.12393202882477192,
+              "correct_owner_vertices": 135074,
+              "duplicate_coordinate_conflict_target_vertices": 1,
+              "no_geometry_target_vertices": 5175,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 179429,
+              "unassigned_with_geometry_target_vertices": 16943,
+              "unpredicted_target_vertices": 22118,
+              "wrong_owner_vertices": 22237
+            },
+            "selected": 35
+          }
+        }
+      }
+    },
+    {
+      "scene": "office0",
+      "selected_seeds": 19,
+      "GT_count": 31,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office0/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/office0",
+      "freeze_checks": {
+        "source_sha256": 4004,
+        "code_sha256": 9,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/office0/whole_to_partial/office0/native/instance_surface.npz",
+          "source_sha256": "d28379626d82c93c578fea7b76e480f67c26674817dec0560ba5f2be61763de2",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office0/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "13b9ecd2c47ff860dd0f415c3b3ae4e323a29b58e0f349ac2a189cbca0727841",
+          "alignment": {
+            "geometry_xyz_sha256": "1043b7da9304419f1a1e07bf5f5b2686fdd472fa71915029fe2ff94bc10b1e72",
+            "correspondence_sha256": "a05be0774b37486e877af552ba89858870dccc88369028962a1eb9f209d73909",
+            "gt_scope_sha256": "4eff9e78b2a9cba1803f67ac415b67f7208c38f43a07e8ab56e409542e7bc308",
+            "gt_observed_support_sha256": "24a75ddcb73236c8807b5c125f9f67b914af63c95f0768d662081b076fa54bb9",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.43478260869565216,
+            "PQ": 0.3524634805749499,
+            "AP": 0.10448150078165712,
+            "AP50": 0.19150599270453364,
+            "mCov": 0.4782837722117844,
+            "TP": 15,
+            "FP": 23,
+            "FN": 16,
+            "gray_total": 130584,
+            "gray_states": {
+              "U": 72304,
+              "T": 8943,
+              "C": 49337
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.8115249952858316,
+              "No_geometry_Coverage": 0.01238934445027699,
+              "Unassigned_Coverage": 0.05389441281846119,
+              "Wrong_owner_Coverage": 0.12219124744543032,
+              "correct_owner_vertices": 159235,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 2431,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 196217,
+              "unassigned_with_geometry_target_vertices": 10575,
+              "unpredicted_target_vertices": 13006,
+              "wrong_owner_vertices": 23976
+            },
+            "selected": 19
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/office0/whole_to_partial/office0/final/instance_surface.npz",
+          "source_sha256": "c3cba063c2dc6e2be4a7184a66327743fbe7353cad63e8c335d5870feafac09b",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office0/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "9a64775d9ad10fb8d46f2fad02109acc491190be29db687eda55f23d1d030b87",
+          "alignment": {
+            "geometry_xyz_sha256": "1043b7da9304419f1a1e07bf5f5b2686fdd472fa71915029fe2ff94bc10b1e72",
+            "correspondence_sha256": "a05be0774b37486e877af552ba89858870dccc88369028962a1eb9f209d73909",
+            "gt_scope_sha256": "4eff9e78b2a9cba1803f67ac415b67f7208c38f43a07e8ab56e409542e7bc308",
+            "gt_observed_support_sha256": "24a75ddcb73236c8807b5c125f9f67b914af63c95f0768d662081b076fa54bb9",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.43478260869565216,
+            "PQ": 0.3580599964508711,
+            "AP": 0.10987493486190725,
+            "AP50": 0.19150599270453364,
+            "mCov": 0.48507302523069856,
+            "TP": 15,
+            "FP": 23,
+            "FN": 16,
+            "gray_total": 119066,
+            "gray_states": {
+              "U": 66226,
+              "T": 5652,
+              "C": 47188
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.8183388799135651,
+              "No_geometry_Coverage": 0.01238934445027699,
+              "Unassigned_Coverage": 0.0461682728815546,
+              "Wrong_owner_Coverage": 0.12310350275460333,
+              "correct_owner_vertices": 160572,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 2431,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 196217,
+              "unassigned_with_geometry_target_vertices": 9059,
+              "unpredicted_target_vertices": 11490,
+              "wrong_owner_vertices": 24155
+            },
+            "selected": 19
+          }
+        }
+      }
+    },
+    {
+      "scene": "office1",
+      "selected_seeds": 22,
+      "GT_count": 23,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial",
+      "freeze_checks": {
+        "source_sha256": 4532,
+        "code_sha256": 6,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial/whole_to_partial/office1/native/instance_surface.npz",
+          "source_sha256": "8a67693ae985398d91943dee4105ad9e16fdfce41f4c692858724cbe07271c73",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "b9f54994ec6d092d15ec2b335bcb23c50916b23d7a0ad5fdeabfc4fa9f8ba492",
+          "alignment": {
+            "geometry_xyz_sha256": "8dadb7d5fc611e89ea145530b9751fa5bb7bfd093221e37095b7f2f7120bf5f9",
+            "correspondence_sha256": "f13155ffc46677569418842617e25ca0c3f82eddcbd3be3c148e12f5e65c8756",
+            "gt_scope_sha256": "ba87d4cc5ad32d35ea807055300bdc70c1bf26d92316cb6c9ae518a21360b9fc",
+            "gt_observed_support_sha256": "400f28766877a74e3deb4165aea5e757983cb9528e327ffd1f7061a06c9cf5bd",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.6296296296296297,
+            "PQ": 0.47009307293933134,
+            "AP": 0.160938997125519,
+            "AP50": 0.4017885659533695,
+            "mCov": 0.6155289568173193,
+            "TP": 17,
+            "FP": 14,
+            "FN": 6,
+            "gray_total": 55303,
+            "gray_states": {
+              "U": 36266,
+              "T": 4919,
+              "C": 14118
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.778364548824089,
+              "No_geometry_Coverage": 0.011357299832715584,
+              "Unassigned_Coverage": 0.06398628923803588,
+              "Wrong_owner_Coverage": 0.14629186210515957,
+              "correct_owner_vertices": 94920,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 1385,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 121948,
+              "unassigned_with_geometry_target_vertices": 7803,
+              "unpredicted_target_vertices": 9188,
+              "wrong_owner_vertices": 17840
+            },
+            "selected": 22
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial/whole_to_partial/office1/final/instance_surface.npz",
+          "source_sha256": "d86ca05abef9e8bcbac4b815800ac339d07722373487255331417b56f756204e",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office1/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "3f8c252e296ef587963921bbc51354bf84b4ca44833a5bad81c8ecf06fe62ca3",
+          "alignment": {
+            "geometry_xyz_sha256": "8dadb7d5fc611e89ea145530b9751fa5bb7bfd093221e37095b7f2f7120bf5f9",
+            "correspondence_sha256": "f13155ffc46677569418842617e25ca0c3f82eddcbd3be3c148e12f5e65c8756",
+            "gt_scope_sha256": "ba87d4cc5ad32d35ea807055300bdc70c1bf26d92316cb6c9ae518a21360b9fc",
+            "gt_observed_support_sha256": "400f28766877a74e3deb4165aea5e757983cb9528e327ffd1f7061a06c9cf5bd",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.6296296296296297,
+            "PQ": 0.4767246356960332,
+            "AP": 0.17288406259980835,
+            "AP50": 0.4017885659533695,
+            "mCov": 0.6237070719906679,
+            "TP": 17,
+            "FP": 14,
+            "FN": 6,
+            "gray_total": 49202,
+            "gray_states": {
+              "U": 32419,
+              "T": 3641,
+              "C": 13142
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.785588939548004,
+              "No_geometry_Coverage": 0.011357299832715584,
+              "Unassigned_Coverage": 0.054974251320234854,
+              "Wrong_owner_Coverage": 0.1480795092990455,
+              "correct_owner_vertices": 95801,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 1385,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 121948,
+              "unassigned_with_geometry_target_vertices": 6704,
+              "unpredicted_target_vertices": 8089,
+              "wrong_owner_vertices": 18058
+            },
+            "selected": 22
+          }
+        }
+      }
+    },
+    {
+      "scene": "office2",
+      "selected_seeds": 23,
+      "GT_count": 41,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office2/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/office2",
+      "freeze_checks": {
+        "source_sha256": 3914,
+        "code_sha256": 9,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/office2/whole_to_partial/office2/native/instance_surface.npz",
+          "source_sha256": "77cb3fd38e90822b6a531051622f81f66890c9854a68230430646106504e6922",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office2/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "ff50c381f75ce82c46b387ba8b9d9570835e67da218f60986e4d20d431627d16",
+          "alignment": {
+            "geometry_xyz_sha256": "2ffe8ad3af8c572220af9bce7ba648084badf1f283ef83d4d5e246efcc962276",
+            "correspondence_sha256": "8b09d806c867638a094110b6ba0d150657e24e9c8e00b006de40bbe746afb81d",
+            "gt_scope_sha256": "8451c48e5e571b2eabe2875161a9f21057b87a27bb8bd5492444bb5f3d5c2e48",
+            "gt_observed_support_sha256": "43a176fc0de052f80b230881d9b8c8abb42bc25847d295fcd44f495f453b0bbd",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.6741573033707865,
+            "PQ": 0.5206795921197162,
+            "AP": 0.2248968646864687,
+            "AP50": 0.45792079207920794,
+            "mCov": 0.626614943466833,
+            "TP": 30,
+            "FP": 18,
+            "FN": 11,
+            "gray_total": 147984,
+            "gray_states": {
+              "U": 107969,
+              "T": 27705,
+              "C": 12310
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.7980374889923261,
+              "No_geometry_Coverage": 0.03549503082148698,
+              "Unassigned_Coverage": 0.07812303434394263,
+              "Wrong_owner_Coverage": 0.08834444584224431,
+              "correct_owner_vertices": 126872,
+              "duplicate_coordinate_conflict_target_vertices": 2,
+              "no_geometry_target_vertices": 5643,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 158980,
+              "unassigned_with_geometry_target_vertices": 12420,
+              "unpredicted_target_vertices": 18063,
+              "wrong_owner_vertices": 14045
+            },
+            "selected": 23
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/auto_v2_replica8_partial_20261019/office2/whole_to_partial/office2/final/instance_surface.npz",
+          "source_sha256": "b9c19d1ad4f9ef6a60cf725bbe1336a4994bfb6577f21406a54e6277ce02ad08",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office2/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "d75d2e466d056a6c1717e39fa0f736737f6f1cf76378933ab32aec42fd6420df",
+          "alignment": {
+            "geometry_xyz_sha256": "2ffe8ad3af8c572220af9bce7ba648084badf1f283ef83d4d5e246efcc962276",
+            "correspondence_sha256": "8b09d806c867638a094110b6ba0d150657e24e9c8e00b006de40bbe746afb81d",
+            "gt_scope_sha256": "8451c48e5e571b2eabe2875161a9f21057b87a27bb8bd5492444bb5f3d5c2e48",
+            "gt_observed_support_sha256": "43a176fc0de052f80b230881d9b8c8abb42bc25847d295fcd44f495f453b0bbd",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.6741573033707865,
+            "PQ": 0.534026999174863,
+            "AP": 0.23494224422442245,
+            "AP50": 0.45792079207920794,
+            "mCov": 0.6415364914712699,
+            "TP": 30,
+            "FP": 18,
+            "FN": 11,
+            "gray_total": 119188,
+            "gray_states": {
+              "U": 93584,
+              "T": 15058,
+              "C": 10546
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.8170398792300918,
+              "No_geometry_Coverage": 0.03549503082148698,
+              "Unassigned_Coverage": 0.057177003396653665,
+              "Wrong_owner_Coverage": 0.09028808655176752,
+              "correct_owner_vertices": 129893,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 5643,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 158980,
+              "unassigned_with_geometry_target_vertices": 9090,
+              "unpredicted_target_vertices": 14733,
+              "wrong_owner_vertices": 14354
+            },
+            "selected": 23
+          }
+        }
+      }
+    },
+    {
+      "scene": "office3",
+      "selected_seeds": 22,
+      "GT_count": 58,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/partial",
+      "freeze_checks": {
+        "source_sha256": 3967,
+        "code_sha256": 6,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/partial/whole_to_partial/office3/native/instance_surface.npz",
+          "source_sha256": "8eadfa38c3bd33f3b90eff8c136b452b046b9c7ab4463e9996aec4bd511477f1",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "0d4e08b345fe734869e7e65611f62c95b3250a6c5370f383d8f399363d671754",
+          "alignment": {
+            "geometry_xyz_sha256": "80728af2fe7594083778118d5878a5dd53a6214f07e5e7e8dd097a8b9c21cdc5",
+            "correspondence_sha256": "3d3f22e9710bb30c0289e975df50c5f12a342b15244bb74e746ad698cf4394fc",
+            "gt_scope_sha256": "5f7408e2f5782aa87c0c80b77d57a93c75cc7dbbb8602fa3d16b0eabc3383f3f",
+            "gt_observed_support_sha256": "f2af5d9fbe74675dae2f7938b336b2806e026b1bc38678dc52f35cf89c9a2b94",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.5950413223140496,
+            "PQ": 0.4565946793419747,
+            "AP": 0.15689140342605687,
+            "AP50": 0.3564356435643563,
+            "mCov": 0.5640132202602642,
+            "TP": 36,
+            "FP": 27,
+            "FN": 22,
+            "gray_total": 269079,
+            "gray_states": {
+              "U": 187832,
+              "T": 39261,
+              "C": 41986
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.6781183218538732,
+              "No_geometry_Coverage": 0.044189963218062074,
+              "Unassigned_Coverage": 0.10300928684350596,
+              "Wrong_owner_Coverage": 0.17468242808455875,
+              "correct_owner_vertices": 170719,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 11125,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 251754,
+              "unassigned_with_geometry_target_vertices": 25933,
+              "unpredicted_target_vertices": 37058,
+              "wrong_owner_vertices": 43977
+            },
+            "selected": 22
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/partial/whole_to_partial/office3/final/instance_surface.npz",
+          "source_sha256": "5e81a90d1da79ec19692e8eae92c060b2be15f9fdae96d26c248241c489d0454",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "f81583f0c34a1cde3e68c6e41e55ef834e04916c03cd88f8bc2a1c7cbff3892b",
+          "alignment": {
+            "geometry_xyz_sha256": "80728af2fe7594083778118d5878a5dd53a6214f07e5e7e8dd097a8b9c21cdc5",
+            "correspondence_sha256": "3d3f22e9710bb30c0289e975df50c5f12a342b15244bb74e746ad698cf4394fc",
+            "gt_scope_sha256": "5f7408e2f5782aa87c0c80b77d57a93c75cc7dbbb8602fa3d16b0eabc3383f3f",
+            "gt_observed_support_sha256": "f2af5d9fbe74675dae2f7938b336b2806e026b1bc38678dc52f35cf89c9a2b94",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.6115702479338843,
+            "PQ": 0.47785508832273493,
+            "AP": 0.16881973911676884,
+            "AP50": 0.37215150086437215,
+            "mCov": 0.5791453630600352,
+            "TP": 37,
+            "FP": 26,
+            "FN": 21,
+            "gray_total": 223013,
+            "gray_states": {
+              "U": 162965,
+              "T": 22040,
+              "C": 38008
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.6960366071641364,
+              "No_geometry_Coverage": 0.044189963218062074,
+              "Unassigned_Coverage": 0.07932346655862468,
+              "Wrong_owner_Coverage": 0.18044996305917682,
+              "correct_owner_vertices": 175230,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 11125,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 251754,
+              "unassigned_with_geometry_target_vertices": 19970,
+              "unpredicted_target_vertices": 31095,
+              "wrong_owner_vertices": 45429
+            },
+            "selected": 22
+          }
+        }
+      }
+    },
+    {
+      "scene": "office4",
+      "selected_seeds": 18,
+      "GT_count": 28,
+      "result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/partial",
+      "resolved_result_root": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/partial",
+      "freeze_checks": {
+        "source_sha256": 2981,
+        "code_sha256": 6,
+        "output_sha256": 5
+      },
+      "stages": {
+        "native": {
+          "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/partial/whole_to_partial/office4/native/instance_surface.npz",
+          "source_sha256": "08321ffbbd7b0549dd6c953949c7837974b5f12a57548ca045466c4526e8afb1",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/partial/evaluation_r2/whole_to_partial_native",
+          "adapter_manifest_sha256": "d04750711dfb514f9aa97b2cd9ffc7c17e16eb04768ea66101b4c01fcdea6138",
+          "alignment": {
+            "geometry_xyz_sha256": "b81d8e6bfe67eb5a21b60491a2711ee86b28322302c647676414c2b01aeac553",
+            "correspondence_sha256": "e20a53645b190c8e6d0e7498c78a84dd8b88c448edb0ddcb733ae779c3f55811",
+            "gt_scope_sha256": "2caa859eec3f71070ff5ecb14479f495263ce1b6a27ed07981077a9ebaf18c0c",
+            "gt_observed_support_sha256": "6856935dac3cfd28b2f3fd78896f2d75ab1f19c80ec10e2c582e0d4ac4f1bd77",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "native",
+            "F1": 0.5757575757575758,
+            "PQ": 0.45682904471013447,
+            "AP": 0.1741010943199583,
+            "AP50": 0.33663366336633666,
+            "mCov": 0.6312288849735804,
+            "TP": 19,
+            "FP": 19,
+            "FN": 9,
+            "gray_total": 213010,
+            "gray_states": {
+              "U": 126138,
+              "T": 21048,
+              "C": 65824
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.8183172047157665,
+              "No_geometry_Coverage": 0.03894601313626951,
+              "Unassigned_Coverage": 0.06115425920102527,
+              "Wrong_owner_Coverage": 0.08158252294693873,
+              "correct_owner_vertices": 137920,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 6564,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 168541,
+              "unassigned_with_geometry_target_vertices": 10307,
+              "unpredicted_target_vertices": 16871,
+              "wrong_owner_vertices": 13750
+            },
+            "selected": 18
+          }
+        },
+        "final": {
+          "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/partial/whole_to_partial/office4/final/instance_surface.npz",
+          "source_sha256": "0d84a0995a9b9702c23d40d13794308302bdd7dacece89c89dd29dd418f59c8e",
+          "evaluation": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office4/partial/evaluation_r2/whole_to_partial_final",
+          "adapter_manifest_sha256": "05315180e3a4470398eeda43fd9187317a38fcb88513437aeb587f51af4dfe56",
+          "alignment": {
+            "geometry_xyz_sha256": "b81d8e6bfe67eb5a21b60491a2711ee86b28322302c647676414c2b01aeac553",
+            "correspondence_sha256": "e20a53645b190c8e6d0e7498c78a84dd8b88c448edb0ddcb733ae779c3f55811",
+            "gt_scope_sha256": "2caa859eec3f71070ff5ecb14479f495263ce1b6a27ed07981077a9ebaf18c0c",
+            "gt_observed_support_sha256": "6856935dac3cfd28b2f3fd78896f2d75ab1f19c80ec10e2c582e0d4ac4f1bd77",
+            "profile_config_sha256": "6668792cbbeff3b6a6b6f2302ad8baa1b202f463ae26306350d4617c07f601a0",
+            "profile_semantics_sha256": "4e51ab7d1be8d8a96a7b77d4c1d8bddd629e1b6f21b45a5ec4760101150e501e",
+            "evaluator_code_sha256": {
+              "evaluate.py": "a86bc1eb2d77d7c4a724afc5bd2e9d24fa81ada1633758145e8ada747820da4a",
+              "geometry.py": "848d5a64cbe50ec8837cabc86a78a771ff9349875cb54800015f6e58ec0bae15",
+              "gt_scope.py": "f302b68bd8adfaa7d22cc7d9b143d482d639bd55a4640d90efb9acaa0006a916",
+              "io.py": "fe765a15199d2513fab3725087d9f9be86d628f36707e4829c6c96824dba2874",
+              "metrics.py": "b9d1091ac13bf190af31cfbcace9cbfc6e83daadaf48237593de76a74a986cee",
+              "repair_profile.py": "8d0778819456ca009bee5e8a2a0428226b5f2e121fa5c81d5264eec5f025b17a",
+              "schema.py": "cc499cc8fa96ffffbfbe45c327fd3d42e25425a92c77f2f8c86ed71b4bfadc39"
+            }
+          },
+          "metrics": {
+            "variant": "new_partial",
+            "stage": "final",
+            "F1": 0.5757575757575758,
+            "PQ": 0.4679838625319783,
+            "AP": 0.1830901511203752,
+            "AP50": 0.33663366336633666,
+            "mCov": 0.6451197732203134,
+            "TP": 19,
+            "FP": 19,
+            "FN": 9,
+            "gray_total": 189807,
+            "gray_states": {
+              "U": 114559,
+              "T": 12836,
+              "C": 62412
+            },
+            "owner_surface": {
+              "Correct_owner_Coverage": 0.8297506244771302,
+              "No_geometry_Coverage": 0.03894601313626951,
+              "Unassigned_Coverage": 0.04764419340101222,
+              "Wrong_owner_Coverage": 0.08365916898558808,
+              "correct_owner_vertices": 139847,
+              "duplicate_coordinate_conflict_target_vertices": 0,
+              "no_geometry_target_vertices": 6564,
+              "owner_alignment": "optimal_one_to_one_maximum_intersection_for_scoring_only",
+              "target_vertices": 168541,
+              "unassigned_with_geometry_target_vertices": 8030,
+              "unpredicted_target_vertices": 14594,
+              "wrong_owner_vertices": 14100
+            },
+            "selected": 18
+          }
+        }
+      }
+    }
+  ],
+  "summary": [
+    {
+      "stage": "native",
+      "variant": "new_partial",
+      "scenes": 8,
+      "GT_count": 350,
+      "F1": 0.6200227447075388,
+      "PQ": 0.4846854449706314,
+      "AP": 0.18768510465504668,
+      "AP50": 0.3930054920201163,
+      "mCov": 0.5960698028240761,
+      "TP": 237,
+      "FP": 162,
+      "FN": 113,
+      "gray_total": 1208641,
+      "gray_states": {
+        "U": 760578,
+        "T": 151978,
+        "C": 296085
+      },
+      "micro_F1": 0.6328437917222964
+    },
+    {
+      "stage": "final",
+      "variant": "new_partial",
+      "scenes": 8,
+      "GT_count": 350,
+      "F1": 0.624777032453029,
+      "PQ": 0.49692020682263616,
+      "AP": 0.1991447235727023,
+      "AP50": 0.39829608804400446,
+      "mCov": 0.6073326579586662,
+      "TP": 239,
+      "FP": 160,
+      "FN": 111,
+      "gray_total": 1040771,
+      "gray_states": {
+        "U": 673308,
+        "T": 91878,
+        "C": 275585
+      },
+      "micro_F1": 0.6381842456608812
+    }
+  ]
+}

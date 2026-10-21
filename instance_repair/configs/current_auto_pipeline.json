@@ -1,7 +1,13 @@
 {
-  "pipeline": "auto-v3-swap",
+  "pipeline": "partial-e1-swap-20261021",
   "frozen": true,
-  "config": "experiments/auto_v3_swap/config.json",
+  "config": "experiments/partial_e1_swap_baseline_20261021/config.json",
+  "default_repair": "partial_plus_E1",
+  "result_variant": "whole_to_partial",
+  "seed_pipeline": "auto-v3-swap",
+  "seed_pipeline_config": "experiments/auto_v3_swap/config.json",
+  "source_commit": "1103d8196a980874ef743f572d3b4c0748a4fdab",
+  "verification_entry": "python -B experiments/partial_e1_swap_baseline_20261021/verify.py",
   "E1_kernel_registry": "instance_repair/configs/current_architecture.json",
   "evaluation_frozen": false
 }
