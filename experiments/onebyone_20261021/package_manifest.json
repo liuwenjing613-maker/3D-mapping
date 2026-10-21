@@ -1,0 +1,743 @@
+{
+  "base_commit": "1103d8196a980874ef743f572d3b4c0748a4fdab",
+  "branch": "onebyone",
+  "server_code": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021",
+  "server_results": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021",
+  "original_archive": {
+    "path": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/code_and_receipts.zip",
+    "sha256": "95f89dfafeca953674c417a005e9f2967fffc049dba555291c4531dac44b6151"
+  },
+  "external_large_artifacts": "Retained on the server; paths and SHA-256 are recorded in evidence.",
+  "files": {
+    ".gitattributes": {
+      "sha256": "308a40fa1d89ae5ea4390b4c9b46a0108b09f171f07898f25d451fa0c69c4e9f",
+      "bytes": 72,
+      "origin": "authored_for_branch"
+    },
+    "evidence/all_runs_complete.json": {
+      "sha256": "08e54bc1b87aae4bcb8ea5b3213889b5daac70bcdb89bd79981d13c845d2f3d6",
+      "bytes": 1478,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/all_runs_complete.json"
+    },
+    "evidence/automatic/office0/direct_controls_r2/prediction_lock.json": {
+      "sha256": "da7f2f8f3741843ae447ff2305237b73cc57fb89a8139c84b89c42e0abe9b5a4",
+      "bytes": 1089,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office0/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/office0/evaluation_complete.json": {
+      "sha256": "bd40b3bcf858300ce74dfb0b9ef4d9e92f17bbde4452f1ec14d480f14e3d6dcb",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office0/evaluation_complete.json"
+    },
+    "evidence/automatic/office0/evaluation_r2/protocol_freeze.json": {
+      "sha256": "2dc7ac2d4aeff10f002f45fb8e3977485704a9e09feab39f208908b7943f1d8a",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office0/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/office0/mapping_complete.json": {
+      "sha256": "a47adbdaf0b02bc243127020902d716c85687b463ade36896e185730896d115f",
+      "bytes": 19767,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office0/mapping_complete.json"
+    },
+    "evidence/automatic/office0/policy.json": {
+      "sha256": "e1d4733aaa3b4bb7ebe7e862d5b78f4b90ed8d79fb2934d8ffcedf4fcf270779",
+      "bytes": 993,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office0/policy.json"
+    },
+    "evidence/automatic/office0/predictions_freeze.json": {
+      "sha256": "26b94ac4e1536b92293e761c44fc4509b1b0e8f478dd211602e37b5f75c07f20",
+      "bytes": 693876,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office0/predictions_freeze.json"
+    },
+    "evidence/automatic/office1/direct_controls_r2/prediction_lock.json": {
+      "sha256": "1af500cd457bb3871b5f414f0ff94f4b0b93368b56ab3602b964239e2a6133ca",
+      "bytes": 1085,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office1/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/office1/evaluation_complete.json": {
+      "sha256": "5988fcf1db3b8d8b8213ab6e217c0bcd2159ac6d39ca962047f95d46b52dbfa2",
+      "bytes": 70,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office1/evaluation_complete.json"
+    },
+    "evidence/automatic/office1/evaluation_r2/protocol_freeze.json": {
+      "sha256": "a05efea7de482600ee5c565a95c63f311161a596d28964e65cc2944b4e420629",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office1/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/office1/mapping_complete.json": {
+      "sha256": "b90075c72acb4a5d9bc338a800b064700e6b5a10edea5e509273cd7b6995eead",
+      "bytes": 19252,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office1/mapping_complete.json"
+    },
+    "evidence/automatic/office1/policy.json": {
+      "sha256": "fa672bf4dab43e17755a0f1477fe673e18d451ceae630e462158704e0ee47c9c",
+      "bytes": 992,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office1/policy.json"
+    },
+    "evidence/automatic/office1/predictions_freeze.json": {
+      "sha256": "c65d9bca48d827b0124d48669a38416cb0f43af09e0ffa4f3d5892894bcd1c43",
+      "bytes": 799335,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office1/predictions_freeze.json"
+    },
+    "evidence/automatic/office2/direct_controls_r2/prediction_lock.json": {
+      "sha256": "4dd2127eddf569d42efb87b1edaaa87f510f7de6c94f79ae0549b637431212e0",
+      "bytes": 1089,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office2/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/office2/evaluation_complete.json": {
+      "sha256": "fe987c313f1fa8ad661f69e7c3bc9459ab82272692fcdee4a0d6fae24a0a17ec",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office2/evaluation_complete.json"
+    },
+    "evidence/automatic/office2/evaluation_r2/protocol_freeze.json": {
+      "sha256": "0ffc51198d1fcca157e25583d27eee128c219cf9a765cb1a33c0934561552bd7",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office2/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/office2/mapping_complete.json": {
+      "sha256": "abcc891420d1a25d60a8aee6274323ba770e341df0c43b4619b76af1af987fd4",
+      "bytes": 20857,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office2/mapping_complete.json"
+    },
+    "evidence/automatic/office2/policy.json": {
+      "sha256": "9bcc6dfe8c93b18696c5d59f93e260270f7e8847b86098b3cf784279397c21be",
+      "bytes": 993,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office2/policy.json"
+    },
+    "evidence/automatic/office2/predictions_freeze.json": {
+      "sha256": "be9f5e97824bcf977af2b3322d10191dcda3ad976d7fb4bfed5e55f0f80ddce8",
+      "bytes": 697038,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office2/predictions_freeze.json"
+    },
+    "evidence/automatic/office3/direct_controls_r2/prediction_lock.json": {
+      "sha256": "40b87ad47230c6937d77f94f34df1a6f56c92859a4c26935cad5f5b79850ba54",
+      "bytes": 1085,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office3/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/office3/evaluation_complete.json": {
+      "sha256": "2a803098a46aeeb8e3b1942d689b5b248d132ceae70569fd238f0f6d0d213d95",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office3/evaluation_complete.json"
+    },
+    "evidence/automatic/office3/evaluation_r2/protocol_freeze.json": {
+      "sha256": "5ca4e7635a53f8c48655acb86eab8665d2827d076828161f886ed88b2c725ee4",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office3/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/office3/mapping_complete.json": {
+      "sha256": "da0ad495f38248961ff568663674dc1c65a99e3dda9dced63e6e6b035494fb21",
+      "bytes": 22205,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office3/mapping_complete.json"
+    },
+    "evidence/automatic/office3/policy.json": {
+      "sha256": "585ea8f19f96ffa6f8bd236df4c0766976358e43c3f1a3b20b7e342c4d9ce97a",
+      "bytes": 992,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office3/policy.json"
+    },
+    "evidence/automatic/office3/predictions_freeze.json": {
+      "sha256": "d0a6ba6da96972d9d63b63524270d97d1f744c1cf4b53f0f3318330771e5150b",
+      "bytes": 716505,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office3/predictions_freeze.json"
+    },
+    "evidence/automatic/office4/direct_controls_r2/prediction_lock.json": {
+      "sha256": "c68225d90c898f61b41cccca574ef561fc6d413b56def211a695b2d2467814e0",
+      "bytes": 1085,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office4/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/office4/evaluation_complete.json": {
+      "sha256": "38bbed5f7120748555dbb0feddf5b9602e37c227353d074508d99e2f3c4b1097",
+      "bytes": 70,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office4/evaluation_complete.json"
+    },
+    "evidence/automatic/office4/evaluation_r2/protocol_freeze.json": {
+      "sha256": "235965b19304980ec113943ee3c3aabe9fd267ea475df18d1159f16a4cfe448f",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office4/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/office4/mapping_complete.json": {
+      "sha256": "462d8740f63986ba1884521e35d62514ed9b195425f83e9fc89b03169f4508e1",
+      "bytes": 20543,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office4/mapping_complete.json"
+    },
+    "evidence/automatic/office4/policy.json": {
+      "sha256": "625e6a2854bab08c8cb713d62b1dd76906f3e51146cbf61bda3855515986fb6d",
+      "bytes": 992,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office4/policy.json"
+    },
+    "evidence/automatic/office4/predictions_freeze.json": {
+      "sha256": "cf03509f458665e2102b94d97954ee3d316974decb38f6aa51a9e658cc6b4e13",
+      "bytes": 539360,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/office4/predictions_freeze.json"
+    },
+    "evidence/automatic/room0/direct_controls_r2/prediction_lock.json": {
+      "sha256": "c7976e68d057f2df88f2ad22a7995df6b24e22e576abeabb79c01cf04b1f17b3",
+      "bytes": 1065,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/room0/evaluation_complete.json": {
+      "sha256": "d277cf310378023befef19827b1402b3d6e31e4e6a7938be2e237640c38a1960",
+      "bytes": 70,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/evaluation_complete.json"
+    },
+    "evidence/automatic/room0/evaluation_failure.json": {
+      "sha256": "2414bb08ca7af9ce58fe474592b42fd271d7f0b0f71427ff52bb2acdd7bee86e",
+      "bytes": 999,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/evaluation_failure.json"
+    },
+    "evidence/automatic/room0/evaluation_r2/protocol_freeze.json": {
+      "sha256": "fd805e0616c9176fee1ceb6efdef5225ec6654b9d8af4624df1d25d25fe8db3e",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/room0/evaluation_recovery.json": {
+      "sha256": "39e9fa980cff62e4430c6bd446f8f42eb46a2f781955d40b3bee40ba75bd3f76",
+      "bytes": 260,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/evaluation_recovery.json"
+    },
+    "evidence/automatic/room0/mapping_complete.json": {
+      "sha256": "f20c3225854cc6f812004af04ea443da84439b850feda00f377aff38d2aebd2a",
+      "bytes": 23315,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/mapping_complete.json"
+    },
+    "evidence/automatic/room0/policy.json": {
+      "sha256": "83d6656ee7a9dc91f5e2bf71057dfba4444ca7a713411ef29a3dca793dd21f8a",
+      "bytes": 987,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/policy.json"
+    },
+    "evidence/automatic/room0/predictions_freeze.json": {
+      "sha256": "ab117afb047146dc2eb6efd5db96e5a5bd80c359a8ec18b5f86cf0c3847f2c54",
+      "bytes": 994023,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room0/predictions_freeze.json"
+    },
+    "evidence/automatic/room1/direct_controls_r2/prediction_lock.json": {
+      "sha256": "77bb1d05cd3be71b3f424be419a5a37d8a7614d5d5f4e1b3eeb97fc00c559a4e",
+      "bytes": 1033,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room1/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/room1/evaluation_complete.json": {
+      "sha256": "5866bb96468a2dccffe41c4bd40805ad7a47b17fd3a0bc12d863436778527447",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room1/evaluation_complete.json"
+    },
+    "evidence/automatic/room1/evaluation_r2/protocol_freeze.json": {
+      "sha256": "f25b9d8da2fcc6dc4ea4ed96bfcbabcfc8be469bcaafb1930681187904867d83",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room1/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/room1/mapping_complete.json": {
+      "sha256": "52a3eddd2ee343a75325da30f864335c514d498d2ea6c834aa60173c77b5a4ac",
+      "bytes": 20561,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room1/mapping_complete.json"
+    },
+    "evidence/automatic/room1/policy.json": {
+      "sha256": "3d16b37774395ebbf8dc54dd054e16406847f31d3540b3efbd84c05ee335e384",
+      "bytes": 981,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room1/policy.json"
+    },
+    "evidence/automatic/room1/predictions_freeze.json": {
+      "sha256": "957a947378779829d4b1a082267701a804ff9f546518ce2aabbbdae48c7a1450",
+      "bytes": 711672,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room1/predictions_freeze.json"
+    },
+    "evidence/automatic/room2/direct_controls_r2/prediction_lock.json": {
+      "sha256": "29523d382b45b8c5cf32434d4fee3a94bd091a925186513f594d3e60298e99bc",
+      "bytes": 1031,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room2/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/automatic/room2/evaluation_complete.json": {
+      "sha256": "d51a6ddd5e38fa0545c87128257f9f303d7f8c4d7af63fa9115249f92690aad0",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room2/evaluation_complete.json"
+    },
+    "evidence/automatic/room2/evaluation_r2/protocol_freeze.json": {
+      "sha256": "a200a2383595f5edce493f7ddb0ee9c2c7038570a2200d6b4dd5de483e565838",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room2/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/automatic/room2/mapping_complete.json": {
+      "sha256": "63a4003c8c4bdb9e1f6c2ed9c6374c7e1fa7bdbdfe68dfbc637b052f6ee4d0b0",
+      "bytes": 21753,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room2/mapping_complete.json"
+    },
+    "evidence/automatic/room2/policy.json": {
+      "sha256": "f3af1259280ac5051860bf8b1425c7dd944b58ff573df54fe214d7b5e24908e9",
+      "bytes": 977,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room2/policy.json"
+    },
+    "evidence/automatic/room2/predictions_freeze.json": {
+      "sha256": "16c59356a0dccfc84ed9451c665cbbb4887ccc324b88c4dd84ed3c81605c73e5",
+      "bytes": 971745,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/automatic/room2/predictions_freeze.json"
+    },
+    "evidence/comparison.json": {
+      "sha256": "224e90a08dcc89faf9213864ff256b70760c25a03a931a01dd681e375db20905",
+      "bytes": 1017832,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/comparison.json"
+    },
+    "evidence/control_scores_complete.json": {
+      "sha256": "98753449b7224cccba0b371247a68fe45e648207bb9af78254076b9fcdf7e4ac",
+      "bytes": 989,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/control_scores_complete.json"
+    },
+    "evidence/control_scores_launch.json": {
+      "sha256": "b031745c0efa9f35befdff956343b1cb609f8c9176022fdba5bf3b7f045784d0",
+      "bytes": 44,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/control_scores_launch.json"
+    },
+    "evidence/control_scores_status.json": {
+      "sha256": "80978de004167fb298c7e1b4a9b1bed10225178eb327457dd337c90230422348",
+      "bytes": 1000,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/control_scores_status.json"
+    },
+    "evidence/controller_launch.json": {
+      "sha256": "78146a66ddf7f6a59528d87b7db933066ba8fb0e45e8685005b95054aca7006e",
+      "bytes": 43,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/controller_launch.json"
+    },
+    "evidence/controller_status.json": {
+      "sha256": "945d2ef3c046aa04bbd2ab14c83916d0d2e1aa814f9899a95c5d88111fcaf374",
+      "bytes": 1516,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/controller_status.json"
+    },
+    "evidence/controller_v2_launch.json": {
+      "sha256": "87885b603ac3b6e5f6fd21d0e0bc88867d51dd5012d3da0a72fb086f726f8787",
+      "bytes": 508,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/controller_v2_launch.json"
+    },
+    "evidence/delivery_receipt.json": {
+      "sha256": "c922c4edc0c7f60ff90b08659ae4da50c301997cb006c8cc599dccfa34eda0a5",
+      "bytes": 1086,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/delivery_receipt.json"
+    },
+    "evidence/deployment_code_freeze.json": {
+      "sha256": "38d0272822750fcc0c8a13bb350d575aafd7b04c6995295ce22e84e11870d3cf",
+      "bytes": 1076,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/deployment_code_freeze.json"
+    },
+    "evidence/diagnostics/room0_automatic_regressions.json": {
+      "sha256": "608096ba924312662039ef84176a4ce97218400c4e41d0e040241cbe5b12ea3f",
+      "bytes": 6421,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/diagnostics/room0_automatic_regressions.json"
+    },
+    "evidence/direct_stage_comparison.json": {
+      "sha256": "bea4b8a1e8391e6722b74669986e77c2009ff2b9c463c8688a2554599b843d6e",
+      "bytes": 75968,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/direct_stage_comparison.json"
+    },
+    "evidence/final_complete.json": {
+      "sha256": "f2bc33557c62dc24a0863fa58d68671f5d80072e59c2253ff0fdb58d123c04e0",
+      "bytes": 274,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/final_complete.json"
+    },
+    "evidence/input_lock.json": {
+      "sha256": "67c172c866350710c07ca0021c994c2fe69c2e9f4dab73b237acf86427ce2b8f",
+      "bytes": 13902,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/input_lock.json"
+    },
+    "evidence/manual/office0/direct_controls_r2/prediction_lock.json": {
+      "sha256": "873a105350e20dc7e17540f272735de3d479068128a518f6171447599d76a0d5",
+      "bytes": 1089,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/office0/evaluation_complete.json": {
+      "sha256": "ad7485c99be51f512d7f56968ed835c33d452c85a55e13bf8f2a45f535f718dc",
+      "bytes": 70,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/evaluation_complete.json"
+    },
+    "evidence/manual/office0/evaluation_failure.json": {
+      "sha256": "befff622fddaad50b01e5c2298ed45ed89795e0952bdaac7c7d5a3abcc526136",
+      "bytes": 998,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/evaluation_failure.json"
+    },
+    "evidence/manual/office0/evaluation_r2/protocol_freeze.json": {
+      "sha256": "2dc7ac2d4aeff10f002f45fb8e3977485704a9e09feab39f208908b7943f1d8a",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/office0/evaluation_recovery.json": {
+      "sha256": "248dd4731124053742d669ccf53d61f3ebad86b5423ba05649d88754e58fd2b4",
+      "bytes": 259,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/evaluation_recovery.json"
+    },
+    "evidence/manual/office0/mapping_complete.json": {
+      "sha256": "bc34b4eb77c7c11caba454bc125f76fecdb732673c7180336a0508aea704f200",
+      "bytes": 19168,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/mapping_complete.json"
+    },
+    "evidence/manual/office0/policy.json": {
+      "sha256": "6ea1d9ba90f52143f811786781fb22473392c1c91a01e744edc3bb55025efa27",
+      "bytes": 989,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/policy.json"
+    },
+    "evidence/manual/office0/predictions_freeze.json": {
+      "sha256": "46de70f1907a832c232597f414abe07a40c8081fe2e1356b3bc7bcaa8d124a32",
+      "bytes": 332937,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office0/predictions_freeze.json"
+    },
+    "evidence/manual/office1/direct_controls_r2/prediction_lock.json": {
+      "sha256": "f1b0fc624a19dc78a9931faaf6627708158fef5667f0195c29732a1f49d03393",
+      "bytes": 1089,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office1/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/office1/evaluation_complete.json": {
+      "sha256": "37cb1f94c3f1862964593c8118b53c59843ef5358a4a52693114a6e984893690",
+      "bytes": 70,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office1/evaluation_complete.json"
+    },
+    "evidence/manual/office1/evaluation_r2/protocol_freeze.json": {
+      "sha256": "a05efea7de482600ee5c565a95c63f311161a596d28964e65cc2944b4e420629",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office1/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/office1/mapping_complete.json": {
+      "sha256": "3003d809193fc364d4c22ac6ae664754d8df67dd8fedf4e79229525c5c0786eb",
+      "bytes": 19162,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office1/mapping_complete.json"
+    },
+    "evidence/manual/office1/policy.json": {
+      "sha256": "9d7f9fb89d0c079b338e6536a85ba39fe3622ff072e1f2e17eea8aa25487e714",
+      "bytes": 990,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office1/policy.json"
+    },
+    "evidence/manual/office1/predictions_freeze.json": {
+      "sha256": "eba5b81510a96ee46b83d089a366d9f4cbee38ee94ad876e3f46eea18b94edb6",
+      "bytes": 548681,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office1/predictions_freeze.json"
+    },
+    "evidence/manual/office2/direct_controls_r2/prediction_lock.json": {
+      "sha256": "06330e3c5b1f55a26a3562e650a9aba45bbf65a2511fad8a3715bd738c0477ea",
+      "bytes": 1089,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office2/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/office2/evaluation_complete.json": {
+      "sha256": "d929334d8c82df45387722d4880cb8dcfca3c604b0d5da7be9711e3524b4a0f0",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office2/evaluation_complete.json"
+    },
+    "evidence/manual/office2/evaluation_r2/protocol_freeze.json": {
+      "sha256": "0ffc51198d1fcca157e25583d27eee128c219cf9a765cb1a33c0934561552bd7",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office2/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/office2/mapping_complete.json": {
+      "sha256": "41ef0e70ab70ce5a1d901d0ae5eb4a6395c70ab365e32c405018fa8dc42ce3f5",
+      "bytes": 20773,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office2/mapping_complete.json"
+    },
+    "evidence/manual/office2/policy.json": {
+      "sha256": "d94717f0fbfd15a703383b24e091b44970384fc84536dc0b62352d498af5f34a",
+      "bytes": 989,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office2/policy.json"
+    },
+    "evidence/manual/office2/predictions_freeze.json": {
+      "sha256": "a6132de8405081fbc1211893f59646cc4bdffcaca9979ea79d4606fd184c2b6f",
+      "bytes": 361673,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office2/predictions_freeze.json"
+    },
+    "evidence/manual/office3/direct_controls_r2/prediction_lock.json": {
+      "sha256": "ed698711e4e6bd1b7200baa6f551e4d3a82eba6d217d744f3d26ff03d7f9d482",
+      "bytes": 1089,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office3/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/office3/evaluation_complete.json": {
+      "sha256": "0eda5c4017cddef8e1ed83f81f8e7daa0df8fb3da63cda453c88207f439e8bd2",
+      "bytes": 70,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office3/evaluation_complete.json"
+    },
+    "evidence/manual/office3/evaluation_r2/protocol_freeze.json": {
+      "sha256": "5ca4e7635a53f8c48655acb86eab8665d2827d076828161f886ed88b2c725ee4",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office3/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/office3/mapping_complete.json": {
+      "sha256": "3452c4bbe73d50e30c1a8e90db1689b16298971c65906eb60b3532a33d3fb550",
+      "bytes": 22125,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office3/mapping_complete.json"
+    },
+    "evidence/manual/office3/policy.json": {
+      "sha256": "d1b999dcf8d91e08abaaa3b9688445b854cb44fd5059fa9957f87feaee63be59",
+      "bytes": 989,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office3/policy.json"
+    },
+    "evidence/manual/office3/predictions_freeze.json": {
+      "sha256": "4bef5c8e5f07c85ea36fab2d33b4a6af8d1b6943f6b42858569d14d803a0fae7",
+      "bytes": 526311,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office3/predictions_freeze.json"
+    },
+    "evidence/manual/office4/direct_controls_r2/prediction_lock.json": {
+      "sha256": "bc84a883bbadaf1ce16addf7378ee76ddd2b2668dfb0462c2554c1f0cd74e942",
+      "bytes": 1089,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office4/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/office4/evaluation_complete.json": {
+      "sha256": "dea6d9a09f4f89fd2b0b15e01a04fefaf2eb4ecc61b6a85c49aafb5f09aa6a45",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office4/evaluation_complete.json"
+    },
+    "evidence/manual/office4/evaluation_r2/protocol_freeze.json": {
+      "sha256": "235965b19304980ec113943ee3c3aabe9fd267ea475df18d1159f16a4cfe448f",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office4/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/office4/mapping_complete.json": {
+      "sha256": "3c526f59b5acfbc54581f02ea5e6eb0f21e025c26a99478008db29a3f10664b2",
+      "bytes": 20417,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office4/mapping_complete.json"
+    },
+    "evidence/manual/office4/policy.json": {
+      "sha256": "317c6b55bfb20c5e1d229989a9be85b9fc161db50c390ce9540a225057b9ef56",
+      "bytes": 989,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office4/policy.json"
+    },
+    "evidence/manual/office4/predictions_freeze.json": {
+      "sha256": "2b1285d3d2ecb9a3f0b452b392aae100a375c7ed76ed24a39a3dd7b09f405a2f",
+      "bytes": 389163,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/office4/predictions_freeze.json"
+    },
+    "evidence/manual/room0/direct_controls_r2/prediction_lock.json": {
+      "sha256": "1767ad73ba04c10e1ab4f1cd31273eafbc4a0a11ac3f8c54fbb6730e00f3acc3",
+      "bytes": 1073,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room0/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/room0/evaluation_complete.json": {
+      "sha256": "47321c5f36a2f9122a4c7f2338aa5d705ac0d6810a4de88db165d30df04afc34",
+      "bytes": 70,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room0/evaluation_complete.json"
+    },
+    "evidence/manual/room0/evaluation_r2/protocol_freeze.json": {
+      "sha256": "fd805e0616c9176fee1ceb6efdef5225ec6654b9d8af4624df1d25d25fe8db3e",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room0/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/room0/mapping_complete.json": {
+      "sha256": "635b3b605688935159d1cd5a3feba04c7378b5ba24c81981010940be9056078c",
+      "bytes": 23088,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room0/mapping_complete.json"
+    },
+    "evidence/manual/room0/policy.json": {
+      "sha256": "e5a9baaa7a8a1027f98c45db3c3f8350f2aaac1f5a800a4165267c9733873291",
+      "bytes": 988,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room0/policy.json"
+    },
+    "evidence/manual/room0/predictions_freeze.json": {
+      "sha256": "bc5ac03b99556166bde5d5c235d925dedd94e48e6b3e22f428ca11c71327c0f8",
+      "bytes": 730685,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room0/predictions_freeze.json"
+    },
+    "evidence/manual/room1/direct_controls_r2/prediction_lock.json": {
+      "sha256": "4d105c74e159c361ca3c97b4a3a29a8a7af5590a10fe67d2ddbd7d29b7fc1025",
+      "bytes": 1073,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room1/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/room1/evaluation_complete.json": {
+      "sha256": "2c59b51109dd20785ad4e7a3468b291ba413436ab01130043787e08a7ee73048",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room1/evaluation_complete.json"
+    },
+    "evidence/manual/room1/evaluation_r2/protocol_freeze.json": {
+      "sha256": "f25b9d8da2fcc6dc4ea4ed96bfcbabcfc8be469bcaafb1930681187904867d83",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room1/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/room1/mapping_complete.json": {
+      "sha256": "b94279ba92004e1eb9d77bd7e57ab1ad50f87cab22855d3edea9b54b345f4490",
+      "bytes": 20474,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room1/mapping_complete.json"
+    },
+    "evidence/manual/room1/policy.json": {
+      "sha256": "76134a23ca67ceea9b31f77caef1a07891edc5088c01a1ba07ef33c9f8160bed",
+      "bytes": 987,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room1/policy.json"
+    },
+    "evidence/manual/room1/predictions_freeze.json": {
+      "sha256": "5f430708a2102214b35d6fb5bbc9fd8a19a2c6c72c253a6c9b0f5ccc7d588419",
+      "bytes": 473019,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room1/predictions_freeze.json"
+    },
+    "evidence/manual/room2/direct_controls_r2/prediction_lock.json": {
+      "sha256": "07873c3786eb86ab3f1ea3c79c7b5614b02b6fdf1b43ad07e833141635637abb",
+      "bytes": 1053,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room2/direct_controls_r2/prediction_lock.json"
+    },
+    "evidence/manual/room2/evaluation_complete.json": {
+      "sha256": "b1c68a6c6766b9b9401d28546dbc5f4210a2b34fea7c8ef6003ccfed9d627b23",
+      "bytes": 69,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room2/evaluation_complete.json"
+    },
+    "evidence/manual/room2/evaluation_r2/protocol_freeze.json": {
+      "sha256": "a200a2383595f5edce493f7ddb0ee9c2c7038570a2200d6b4dd5de483e565838",
+      "bytes": 5317,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room2/evaluation_r2/protocol_freeze.json"
+    },
+    "evidence/manual/room2/mapping_complete.json": {
+      "sha256": "486180d1b1a9af16e8e3b98d38cb605a11413dd22baac253bcedbabb6fce8d60",
+      "bytes": 21453,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room2/mapping_complete.json"
+    },
+    "evidence/manual/room2/policy.json": {
+      "sha256": "c3fd9a831a65ef504733c7bae35d8162876219fdbd06216de300527a6f33f80f",
+      "bytes": 978,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room2/policy.json"
+    },
+    "evidence/manual/room2/predictions_freeze.json": {
+      "sha256": "b6792c7b9dab79cc53be79c1c2ce5cd0423835043600cc97d8c6fd429dbfe7b6",
+      "bytes": 966985,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/manual/room2/predictions_freeze.json"
+    },
+    "evidence/per_GT.json": {
+      "sha256": "d8cdd1f093835956e6e2a6ff990a82696a5b4efd94963e00fd86665d79bb836d",
+      "bytes": 669185,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/per_GT.json"
+    },
+    "evidence/tests_complete.json": {
+      "sha256": "40e2adfd61e0d95a5e7074c97b67f4edf433cec597b2fc70d3cece3af0e6d7e6",
+      "bytes": 151,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/tests_complete.json"
+    },
+    "README.md": {
+      "sha256": "b10f5859eb7c7ab9bb93714bb94b18a1c1d16da29ad42b8a2cca47f8f01e0001",
+      "bytes": 7011,
+      "origin": "authored_for_branch"
+    },
+    "reports/metrics.csv": {
+      "sha256": "0c6cbee77c2babcd31d86409e7ecab3bce51a726902e0a9443f248bc315d4ffa",
+      "bytes": 27492,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/metrics.csv"
+    },
+    "reports/关键退化病例.txt": {
+      "sha256": "99cc539158d96d3eb29a17540263b7391b51ac05f932a5a0cd1e4e6d3003995f",
+      "bytes": 868,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/关键退化病例.txt"
+    },
+    "reports/直接阶段对照.txt": {
+      "sha256": "0ec60456d73b18be92ff4c5975818145412425b24b9393e88801b6bd38e967b5",
+      "bytes": 1069,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/直接阶段对照.txt"
+    },
+    "reports/结果说明.txt": {
+      "sha256": "f283c38e41da7e91c40f2b1c161a050b3e53009afd2878e7607e16688d8687cc",
+      "bytes": 4510,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/结果说明.txt"
+    },
+    "reports/逐帧逐点替换对比.html": {
+      "sha256": "82b27baec0dbe415944a6aadb75afb2731385aaedbf16a259e2ebf4705907a84",
+      "bytes": 19100,
+      "origin": "/data/chenkejun/CVPR/results/frame_point_replacement_20261021/逐帧逐点替换对比.html"
+    },
+    "sources/archive.py": {
+      "sha256": "652783178b9cec6b9720c667477fefb27415bfca4ead51469cb3cce5bcfffe69",
+      "bytes": 1657,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/archive.py"
+    },
+    "sources/bootstrap.py": {
+      "sha256": "d9df95503809e244359693881635c09ab0b7080cd086df4cc5754daf9b7da65f",
+      "bytes": 870,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/bootstrap.py"
+    },
+    "sources/check_damage_targets.py": {
+      "sha256": "bd3e52e728b0ddce6a9241433e526041268e8c6b29a0a6af54b7985562d5297c",
+      "bytes": 454,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/check_damage_targets.py"
+    },
+    "sources/collect.py": {
+      "sha256": "230a3fa038b6205fb8f65bda95e92899cc1898082410199891b2e3aa3bcc3abe",
+      "bytes": 11424,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/collect.py"
+    },
+    "sources/config.json": {
+      "sha256": "508875aee1082cf3d3f78753c1cb9138f54cf251f5511a5d238059e06ed05c59",
+      "bytes": 6998,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/config.json"
+    },
+    "sources/control_scores_controller.py": {
+      "sha256": "4968754a60f018e2011e0151b14847d08fbc09939068bd66fc02ff49e98a35bc",
+      "bytes": 1589,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/control_scores_controller.py"
+    },
+    "sources/controller.py": {
+      "sha256": "4864a56151d9aecd90de587e05f3ce0507f8e2239e40c2b82aad01cda3ec94cf",
+      "bytes": 2869,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/controller.py"
+    },
+    "sources/controller_v2.py": {
+      "sha256": "763b9792d3a97633f81cc07a8b45eef7019d4b71dce8c1e2aca5c7da8a4ee492",
+      "bytes": 3641,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/controller_v2.py"
+    },
+    "sources/diagnose_room0_damage.py": {
+      "sha256": "b437616d6f1e39dbbd11592f8b7ba0f256536c1c9a6471ab932107586e650407",
+      "bytes": 2683,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/diagnose_room0_damage.py"
+    },
+    "sources/evaluate.py": {
+      "sha256": "e6e07e06c058fd6b92a8b9d77b85e348be76fb25309cd3803cd2ff7479693940",
+      "bytes": 9147,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/evaluate.py"
+    },
+    "sources/evaluate_v2.py": {
+      "sha256": "37e1510fff24c8e0e2acb9cb35d4933b04769d962f0f4f3e5a751edd31fe00ec",
+      "bytes": 9163,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/evaluate_v2.py"
+    },
+    "sources/finish_reports.py": {
+      "sha256": "b37a765c861c672ca53e71c60fa257d0484fcdf3d3f02e0952d51024badb0a5c",
+      "bytes": 5416,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/finish_reports.py"
+    },
+    "sources/launch_control_scores.py": {
+      "sha256": "549697a5cce3910c630a5aa540f922aede08676ed1b57bf301df9cbcca5571f8",
+      "bytes": 702,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/launch_control_scores.py"
+    },
+    "sources/launch_pilots.py": {
+      "sha256": "4648edebbd3208839d90b4ca64659facd1b9c152bddc123e8363cbccc682fb78",
+      "bytes": 917,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/launch_pilots.py"
+    },
+    "sources/point_replace.py": {
+      "sha256": "0a9ea760a93f1a836b79b786a4c3abd473dff884c7bf8a8fd22d23cdda17167c",
+      "bytes": 591,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/point_replace.py"
+    },
+    "sources/prepare.py": {
+      "sha256": "4ae3afbde73930413158ad196f12e1877af7b9496ec5a7aedf7cd90186183021",
+      "bytes": 2227,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/prepare.py"
+    },
+    "sources/replay.py": {
+      "sha256": "6d14788b9708662506b44722e865fc7423b0c5a3569bcde7b6e229cac843cbcb",
+      "bytes": 15219,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/replay.py"
+    },
+    "sources/resume_v2.py": {
+      "sha256": "6fd9978d8c5fa8e34d07e946075a072625b18fa082eac13e4a115010c0abad7a",
+      "bytes": 1291,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/resume_v2.py"
+    },
+    "sources/score_direct_controls.py": {
+      "sha256": "3f6a8cde1376b38cf50a07d118986f63aa73b14b9d4ab9b7189f8d8c7302583b",
+      "bytes": 4116,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/score_direct_controls.py"
+    },
+    "sources/start_controller.py": {
+      "sha256": "f57acf2afb3974213e0402372adb5ac6c94acba0bbf6ab767ff2b66c75a99a88",
+      "bytes": 672,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/start_controller.py"
+    },
+    "sources/status.py": {
+      "sha256": "3a6a7dc33ecaf62fd340cd6a1c362f5806095355b12cf76ccea784d4ff906e8f",
+      "bytes": 531,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/status.py"
+    },
+    "sources/test_point_replace.py": {
+      "sha256": "b21dd510927e1171d9bdd4560b6f7a5424d119e719508c6aec6d073496a659e7",
+      "bytes": 1762,
+      "origin": "/home/chenkejun/CVPR/experiments/frame_point_replacement_20261021/test_point_replace.py"
+    },
+    "verify_package.py": {
+      "sha256": "6c049f15693a92076bcde3dc8f647205dc828e8b7989e72b023cfec4e02e8e6b",
+      "bytes": 3730,
+      "origin": "authored_for_branch"
+    }
+  }
+}

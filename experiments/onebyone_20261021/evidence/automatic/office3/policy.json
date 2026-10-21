@@ -1,0 +1,30 @@
+{
+  "GT_read_by_mapper": false,
+  "selected": 22,
+  "group": "automatic",
+  "source": "/data/chenkejun/CVPR/results/replica8_swap34_20261020/office3/e1_repair",
+  "replacement": "Unique new persistent ID replaces all old candidates at this frame and projected TSDF point; different new IDs preserve original candidates",
+  "old_family_limits": false,
+  "history": "Unchanged frozen E1 core then expanded-region relabeling of retained original observations; no invented observations",
+  "conflicts": "New-new conflict preserves original evidence in direct stage; unchanged E1 history may subsequently revise it",
+  "fixed": [
+    "seeds",
+    "tracking",
+    "gates",
+    "2D overlap abstention",
+    "association",
+    "core",
+    "expanded region",
+    "visibility",
+    "TSDF",
+    "thresholds",
+    "postprocessing",
+    "R2"
+  ],
+  "stages": [
+    "direct",
+    "core_all",
+    "e1"
+  ],
+  "control": "Frozen baseline/whole/partial retained and checked; no original output overwritten"
+}
