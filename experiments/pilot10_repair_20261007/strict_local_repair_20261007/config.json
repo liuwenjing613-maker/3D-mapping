@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "case_uid": "room2-14047feb0df3aaa5",
+  "scene": "room2",
+  "conditions": {
+    "gated": "joint_mask_replacement_20261007/room2_mask14_mask24",
+    "ungated": "joint_mask_no_quality_gate_20261007/room2_mask14_mask24"
+  },
+  "allowed_set_source": "whole_mask/intervention_surface_points.npy",
+  "allowed_set_definition": "exact union of retired old observation support and new tracked mask support from the existing trial; no spatial expansion or GT selection",
+  "commit_policy": "preserve unrestricted candidate labels inside allowed IDs; restore baseline final labels outside allowed IDs",
+  "diagnostic_max_distance_m": 0.01,
+  "posthoc_target_identity": {"52": 4001, "355": 4002},
+  "target_identity_provenance": "existing seed-based posthoc target diagnosis, retained chair identity 52 and new chair identity 355; never used to generate or commit predictions",
+  "experiment_mode": "fixed_surface_offline_retrospective_repair",
+  "online_causal_claim": false,
+  "tracking_frames_available": [0, 1999],
+  "mapping_frame_stride": 5,
+  "quality_gate_policy_changed": false,
+  "vote_confirmation_policy_changed": false,
+  "v3_protocol_changed": false
+}

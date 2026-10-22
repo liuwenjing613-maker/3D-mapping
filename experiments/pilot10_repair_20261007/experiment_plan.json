@@ -1,0 +1,241 @@
+{
+  "source_selection": "selection-20261006-f49eb927",
+  "pilot_cases": [
+    {
+      "uid": "room0-971efdbf3ec0d694",
+      "scene": "room0",
+      "ROI": "ROI-C0001",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 1995
+        },
+        {
+          "number": 2,
+          "frame": 890
+        },
+        {
+          "number": 3,
+          "frame": 1855
+        }
+      ]
+    },
+    {
+      "uid": "room0-e69e11d7edf3f35c",
+      "scene": "room0",
+      "ROI": "ROI-C0002",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 190
+        },
+        {
+          "number": 2,
+          "frame": 325
+        },
+        {
+          "number": 3,
+          "frame": 1745
+        }
+      ]
+    },
+    {
+      "uid": "room0-ea8fc9547564a3ba",
+      "scene": "room0",
+      "ROI": "ROI-U0002",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 785
+        },
+        {
+          "number": 2,
+          "frame": 1785
+        },
+        {
+          "number": 3,
+          "frame": 1570
+        }
+      ]
+    },
+    {
+      "uid": "room2-14047feb0df3aaa5",
+      "scene": "room2",
+      "ROI": "ROI-C0002",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 1065
+        },
+        {
+          "number": 2,
+          "frame": 945
+        },
+        {
+          "number": 3,
+          "frame": 1035
+        }
+      ]
+    },
+    {
+      "uid": "room1-a72c5ddce1be2176",
+      "scene": "room1",
+      "ROI": "ROI-C0007",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 435
+        },
+        {
+          "number": 2,
+          "frame": 1130
+        },
+        {
+          "number": 3,
+          "frame": 1770
+        }
+      ]
+    },
+    {
+      "uid": "room1-80b67bf6a0e415cc",
+      "scene": "room1",
+      "ROI": "ROI-U0001",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 1440
+        },
+        {
+          "number": 2,
+          "frame": 1665
+        },
+        {
+          "number": 3,
+          "frame": 1765
+        }
+      ]
+    },
+    {
+      "uid": "office0-53e6b1d0975c8ffe",
+      "scene": "office0",
+      "ROI": "ROI-C0001",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 1810
+        },
+        {
+          "number": 2,
+          "frame": 135
+        },
+        {
+          "number": 3,
+          "frame": 1270
+        }
+      ]
+    },
+    {
+      "uid": "office1-400bc4a1696ce3a7",
+      "scene": "office1",
+      "ROI": "ROI-C0001",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 785
+        },
+        {
+          "number": 2,
+          "frame": 410
+        },
+        {
+          "number": 3,
+          "frame": 845
+        }
+      ]
+    },
+    {
+      "uid": "office2-1065fe4d12831d0d",
+      "scene": "office2",
+      "ROI": "ROI-C0002",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 410
+        },
+        {
+          "number": 2,
+          "frame": 45
+        },
+        {
+          "number": 3,
+          "frame": 200
+        }
+      ]
+    },
+    {
+      "uid": "office3-ba231abca8b77e55",
+      "scene": "office3",
+      "ROI": "ROI-C0003",
+      "fixed_views": [
+        {
+          "number": 1,
+          "frame": 1525
+        },
+        {
+          "number": 2,
+          "frame": 1685
+        },
+        {
+          "number": 3,
+          "frame": 1370
+        }
+      ]
+    }
+  ],
+  "human_selection_status": "WAITING_FOR_EXPORT",
+  "server_code": "/home/chenkejun/CVPR/experiments/pilot10_repair_20261007",
+  "server_results": "/data/chenkejun/CVPR/revisable_instance_map/pilot10_repair_20261007",
+  "baseline": "/data/chenkejun/CVPR/revisable_instance_map/p1a1_raw_replica8_20261002",
+  "conditions": [
+    "baseline",
+    "old_evidence_replacement_control",
+    "selected_seed_only",
+    "selected_seed_and_SAM2_1_short_track"
+  ],
+  "replacement": "retract the old votes in the affected frame/surface scope, then add one new vote per frame/surface/identity",
+  "tracking": {
+    "raw_frames_each_direction": 20,
+    "include_seed": true,
+    "vote_only_original_mapping_frames": true,
+    "one_fixed_3D_identity_per_seed_track": true
+  },
+  "fixed": [
+    "TSDF coordinates and point order",
+    "original mapping frame list",
+    "unit frame vote weights",
+    "publication thresholds",
+    "postprocessing code and settings",
+    "v3 code and flags"
+  ],
+  "primary_comparison": "each pilot case independently starts from the frozen baseline",
+  "combined_scene_derivative": "only after overlapping frame/surface transactions and duplicate targets are resolved",
+  "identity_association": "freeze one-to-one seed surface overlap matching before comparing seed-only versus tracking; allocate a distinct ID for unmatched split objects",
+  "skip_policy": "unreliable choices keep the baseline, remain in the denominator of 10",
+  "validation": [
+    "native evidence exact republication",
+    "old-evidence no-op control",
+    "idempotence",
+    "undo restores baseline",
+    "v3 merge/split/duplicate",
+    "target completeness/purity",
+    "scene AP50/F1/PQ",
+    "damage to previously correct and unselected objects"
+  ],
+  "GT_policy": "prediction and choices are frozen before GT is used for post-hoc evaluation only",
+  "interpretation": "human-selected pilot measures repair feasibility, not automatic target selection performance",
+  "source_files_sha256": {
+    "index.html": "3d0e26bc4e5b12d3f75c80a0f4e96f0335cb5a20db3e7184b2e7dff8eb46eeea",
+    "viewer_data.json": "afd75ea3a0a76972a8bf98ed824c75a004a60b494f82213c14a6148f769f853b",
+    "selection_setup.json": "e47cd27f3b5e8e1e5b9239573ece3d03165d848a5d7faa181631753e05550e90"
+  }
+}

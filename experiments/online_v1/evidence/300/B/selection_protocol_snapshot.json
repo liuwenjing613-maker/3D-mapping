@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "source_file": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/selection_protocol_audit.json",
+  "source_sha256_at_read": "e5724df86400cc8bcacb2ca4aecaed57229dcf4914375fc767effcd3b6003809",
+  "row": {
+    "status": "PASS",
+    "checkpoint": 300,
+    "group": "B",
+    "candidate_processed_range": [
+      201,
+      300
+    ],
+    "candidate_raw_range": [
+      1000,
+      1495
+    ],
+    "scoring_history": [
+      1,
+      300
+    ],
+    "dense_tracking_range": [
+      0,
+      1495
+    ],
+    "dense_RGB_count": 1496,
+    "retained": 10,
+    "retained_group_ids": [
+      "A001",
+      "A002",
+      "A003",
+      "A006",
+      "A007",
+      "A009",
+      "A015",
+      "A019",
+      "A020",
+      "A021"
+    ],
+    "stage3_candidates": 22,
+    "original_dual95_excluded": 8,
+    "stage5_excluded": 4,
+    "semantic_exempt_survivors": [
+      "A001",
+      "A002",
+      "A003",
+      "A006",
+      "A007"
+    ],
+    "boundary_entry_audit": {
+      "status": "PASS",
+      "actual_input_mask_arrays_checked": 1079,
+      "source_grouping_sha256": "16919304514e8d581b1daaf222bff1866a9fdea19958b3ed4b315d8c6adcb22f",
+      "boundary_audit_sha256": "295a0a6e852d85bfba465ddffbaffb9db47c33f9c84e8be6148c26b92340877c",
+      "full_frame_and_all_alias_crop_edges_recomputed": true,
+      "edge_masks_removed_before_noise_and_regrouping": true,
+      "survivor_partition_exact": true,
+      "counts": {
+        "input_masks": 1079,
+        "full_frame_removed": 216,
+        "crop_removed": 728,
+        "both_edge_removed": 93,
+        "total_edge_removed": 851,
+        "after_boundary_filter": 228,
+        "noise_removed": 44,
+        "after_noise": 184,
+        "groups": 23
+      },
+      "generic_versions_warning_only_is_not_the_final_selection_gate": true
+    },
+    "all_primary_and_aux_mask_source_frames_valid": true,
+    "edge_free_QA_sha256": "93d4dc36de2f1e83db94de4d69347a1132c30825718877bb4b59b7e15f821b55",
+    "original_rule": "stage4 p>=.95 AND r>=.95 excludes; stage5 p>.1 AND r<.2 except original semantic exemption",
+    "original_seed_mask_sha256_preserved_for_tracking": true,
+    "both_independent_directions_full_arrived_history": true,
+    "map_source_branch_correct": true,
+    "previous_checkpoint": 200,
+    "model_cache": {
+      "cropformer": {
+        "total_jobs": 362,
+        "cache_hits": 217,
+        "inference_jobs": 145
+      },
+      "sam2_1": {
+        "total_jobs": 362,
+        "cache_hits": 117,
+        "inference_jobs": 245
+      }
+    },
+    "inferred_tracking_cases": 9,
+    "reused_tracking_cases": 0
+  }
+}

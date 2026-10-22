@@ -1,0 +1,33 @@
+{
+  "schema": "same-instance-seeds-edge-noise-v5",
+  "scene": "room0",
+  "input_selection": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/candidates/semantic_route/selection.json",
+  "iou": 0.25,
+  "comparison": "strictly greater than",
+  "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",
+  "crop_contact_policy": "exclude any mask touching an artificial source-crop edge before grouping; original image borders alone are allowed",
+  "crop_filter_applies_to": "all source-eligible masks including semantic SAM; no CropFormer fallback for window/cabinet",
+  "previous_grouping": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/candidates/grouping_r3/grouping.json",
+  "exact_duplicate_key": "frame + identical full-image binary mask; retain every original occurrence",
+  "grouping": "descending TSDF support count; compare remaining masks only to the fixed primary seed; no transitive expansion",
+  "source_policy": "window/cabinet SAM-only; any prior semantic CropFormer replacement is global across all ROI occurrences",
+  "policy_order": "SAM-only source eligibility, artificial crop filter, area and edge morphology filter, ordinary 3D IoU grouping, maximum TSDF support count",
+  "primary_seed": "largest unique TSDF support count among source-eligible masks",
+  "tie_break": "ascending frame, model index, full-mask digest; no area ranking",
+  "tracking_requested": false,
+  "map_write": false,
+  "GT_used": false,
+  "noise_filter": {
+    "area_lt": 100,
+    "max_core_fraction": 0.05,
+    "thin_radius": 3,
+    "thin_min_extent": 80,
+    "sparse_radius": 8,
+    "sparse_max_bbox_fill": 0.1,
+    "sparse_min_extent": 80,
+    "large_sparse_radius": 12,
+    "large_sparse_max_bbox_fill": 0.05,
+    "large_sparse_min_extent": 200
+  },
+  "noise_policy": "whole-mask exclusion; no pixel erosion; screen all previous crop-safe eligible masks including SAM"
+}

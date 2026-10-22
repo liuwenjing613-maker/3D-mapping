@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-store"><title>room0 · 20 / 50 帧实际 3D 地图</title><link rel="stylesheet" href="style.css?v=1"></head>
+<body>
+<header><div><div class="eyebrow">ROOM0 · 在线增量建图</div><h1>20 帧 / 50 帧实际 3D 地图</h1><p>独立前缀 TSDF · 严格一票 · 修复前</p></div><a class="back" href="../">返回 50 帧 ROI 与 mask</a></header>
+<div class="scope-note">直接读取实际 PLY，完整加载全部表面点，无降采样。20 帧仅含原始编号 0–95 的已处理帧；50 帧仅含 0–245。坐标单位为米，Z 轴向上。</div>
+<section class="controls" aria-label="3D 查看设置">
+<label>颜色 <select id="mode"><option value="1">实例颜色 + U/T/C</option><option value="0">原始 RGB</option><option value="2">状态颜色（已分配为灰色）</option><option value="3">纯色几何</option></select></label>
+<label>显示范围 <select id="scope"><option value="0">全部表面点</option><option value="1">仅已分配实例</option><option value="2">仅剩余 U/T/C</option><option value="3">仅 U · 无有效票</option><option value="4">仅 T · 证据不足</option><option value="5">仅 C · 冲突</option></select></label>
+<label class="range">点大小 <input id="point-size" type="range" min="1" max="6" step=".25" value="2"><output id="size-value">2</output></label>
+<label class="check"><input id="sync" type="checkbox" checked>同步视角</label>
+<label class="check"><input id="trajectory" type="checkbox">相机轨迹</label>
+<label class="check"><input id="clip" type="checkbox">顶部剖切</label>
+<label class="range">剖切 Z <input id="clip-z" type="range" min="-1.53" max="1.28" step=".01" value=".9" disabled><output id="clip-value">0.90 m</output></label>
+</section>
+<section class="view-tools"><div><button data-view="first">首帧视角</button><button data-view="overview">全景</button><button data-view="top">俯视</button><button data-view="left">左转 30°</button><button data-view="right">右转 30°</button><button id="reset">重置显示</button></div><p>拖动旋转 · 滚轮缩放 · 右键平移 · 双击点云设置观察中心</p></section>
+<main id="maps" class="maps"><p class="loading-main">正在读取地图清单…</p></main>
+<section class="explain"><div><h2>怎么看建图质量</h2><p><b>实例颜色</b>：观察物体是否粘连、碎裂、同一物体是否被分成多个 ID。<b>原始 RGB / 纯色几何</b>：观察空洞、重影和表面完整性。<b>仅剩余 U/T/C</b>：定位当前还没有实例 ID 的区域。</p><p class="legend"><span><i style="background:#101010"></i>U 无有效票</span><span><i style="background:#ffff00"></i>T 证据不足</span><span><i style="background:#ff0000"></i>C 冲突</span></p></div><div><h2>数据范围</h2><p>两个进度分别使用当时的地图，不含后续修复。点云使用相同世界坐标；各阶段 surface_index 仅对应各自地图。实例着色沿用原 PLY 配色。赋予实例 ID 的比例是覆盖率，不是准确率。</p><p>完整 RGB PLY 保留所有坐标、实例 ID、状态和表面点索引。浏览器按需读取服务器数据；不自动下载文件到本地。</p><a href="manifest.json" target="_blank">查看数据来源与哈希</a></div></section>
+<div id="error" role="alert" hidden></div>
+<script type="module" src="app.js?v=1"></script></body></html>

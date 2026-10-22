@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "source_file": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/selection_protocol_audit.json",
+  "source_sha256_at_read": "9ae645410aacc02cabef9c7bd5d4e601add4f1d8758e6052b02677be5d7be2cb",
+  "row": {
+    "status": "PASS",
+    "checkpoint": 200,
+    "group": "B",
+    "candidate_processed_range": [
+      101,
+      200
+    ],
+    "candidate_raw_range": [
+      500,
+      995
+    ],
+    "scoring_history": [
+      1,
+      200
+    ],
+    "dense_tracking_range": [
+      0,
+      995
+    ],
+    "dense_RGB_count": 996,
+    "retained": 22,
+    "retained_group_ids": [
+      "A001",
+      "A002",
+      "A003",
+      "A004",
+      "A006",
+      "A007",
+      "A009",
+      "A010",
+      "A014",
+      "A018",
+      "A020",
+      "A022",
+      "A024",
+      "A026",
+      "A027",
+      "A029",
+      "A031",
+      "A033",
+      "A034",
+      "A036",
+      "A037",
+      "A038"
+    ],
+    "stage3_candidates": 35,
+    "original_dual95_excluded": 10,
+    "stage5_excluded": 3,
+    "semantic_exempt_survivors": [
+      "A002",
+      "A003",
+      "A004",
+      "A006",
+      "A009",
+      "A010",
+      "A038"
+    ],
+    "boundary_entry_audit": {
+      "status": "PASS",
+      "actual_input_mask_arrays_checked": 1576,
+      "source_grouping_sha256": "27857e877fcc4f6fa89b42b7137292a76a46210d5cc813996139dcb65de8d3a2",
+      "boundary_audit_sha256": "0c07bcb650828c72aeaf422fc5c7b5096a1198717efa21235c7a2cb3b9521782",
+      "full_frame_and_all_alias_crop_edges_recomputed": true,
+      "edge_masks_removed_before_noise_and_regrouping": true,
+      "survivor_partition_exact": true,
+      "counts": {
+        "input_masks": 1576,
+        "full_frame_removed": 326,
+        "crop_removed": 939,
+        "both_edge_removed": 127,
+        "total_edge_removed": 1138,
+        "after_boundary_filter": 438,
+        "noise_removed": 39,
+        "after_noise": 399,
+        "groups": 40
+      },
+      "generic_versions_warning_only_is_not_the_final_selection_gate": true
+    },
+    "all_primary_and_aux_mask_source_frames_valid": true,
+    "edge_free_QA_sha256": "ba746fbba297f0e1abb74edee684db713d607401080cb9ca328b28eb16df7922",
+    "original_rule": "stage4 p>=.95 AND r>=.95 excludes; stage5 p>.1 AND r<.2 except original semantic exemption",
+    "original_seed_mask_sha256_preserved_for_tracking": true,
+    "both_independent_directions_full_arrived_history": true,
+    "map_source_branch_correct": true,
+    "previous_checkpoint": 100,
+    "model_cache": {
+      "cropformer": {
+        "total_jobs": 579,
+        "cache_hits": 227,
+        "inference_jobs": 352
+      },
+      "sam2_1": {
+        "total_jobs": 579,
+        "cache_hits": 0,
+        "inference_jobs": 579
+      }
+    },
+    "inferred_tracking_cases": 19,
+    "reused_tracking_cases": 0
+  }
+}

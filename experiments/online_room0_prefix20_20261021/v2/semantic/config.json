@@ -1,0 +1,22 @@
+{
+  "schema": "auto-v1-final-seed-semantic-filter-v1",
+  "model_id": "nvidia/segformer-b5-finetuned-ade-640-640",
+  "model_revision": "739f5d4692954e4a185eac280dec1ba5a7d52f1d",
+  "model_directory": "/data/chenkejun/CVPR/models/segformer-b5-finetuned-ade-640-640/739f5d4692954e4a185eac280dec1ba5a7d52f1d",
+  "weight_sha256": "a3dbf2d7a9912203078f304d88df8cfee9fd752ca2d2413f82036bdb02c5e7df",
+  "exclude_classes": ["wall", "floor", "ceiling", "rug"],
+  "pixel_confidence": 0.7,
+  "mask_fraction": 0.9,
+  "decision_rule": "suggest_exclude when >=90% of unchanged mask pixels have argmax in excluded classes AND softmax max >=0.7; retain when >=90% are confident nonexcluded; otherwise review and operationally retain",
+  "preprocess": "official SegformerImageProcessor config; whole RGB frame resized to 640x640; no crop",
+  "postprocess": "bilinear resize float32 logits to original H,W, align_corners=False, then softmax/argmax; direct model id2label with no label offset",
+  "precision": "float32, TF32 disabled, batch size 1",
+  "sensitivity_pixel_thresholds": [0.6, 0.7, 0.8],
+  "sensitivity_mask_thresholds": [0.8, 0.9, 0.95],
+  "sensitivity_policy": "descriptive only; original 0.7/0.9 decisions frozen before comparison",
+  "GT_used": false,
+  "human_selection_used": false,
+  "deduplication": false,
+  "tracking_requested": false,
+  "map_write": false
+}

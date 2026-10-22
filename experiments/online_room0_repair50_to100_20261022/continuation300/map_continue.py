@@ -1,0 +1,354 @@
+"""Increment geometry and identities; republish strict evidence on each current TSDF."""
+from map_support import *
+from dataclasses import asdict, replace
+import sys
+import time
+import numpy as np
+import open3d as o3d
+from scipy.spatial import cKDTree
+from scipy.sparse import save_npz
+
+sys.path.insert(0, str(SNAPSHOT / 'revisable_instance_map/src'))
+from revisable_instance_map.frame_io import ReplicaFrameSource
+from revisable_instance_map.geometry_tsdf import SparseTSDFGeometry
+from revisable_instance_map.association import OnlineVoxelAssociator
+from revisable_instance_map.observations import extract_frame_observations
+from revisable_instance_map.surface_evidence import project_frame_regions, reduce_surface_votes, STATE_NAMES, CONFIRMED
+from revisable_instance_map.offline_surface_assignment import AssignmentSettings, assign_surface, surface_edges
+sys.path.insert(0,str(BASEC/'prefix100'))
+from one_vote import effective_keys
+
+def cloud_ply(path, xyz, colors):
+    pc = o3d.geometry.PointCloud()
+    pc.points = o3d.utility.Vector3dVector(xyz)
+    pc.colors = o3d.utility.Vector3dVector(colors)
+    path=Path(path);tmp=path.with_name(path.stem+'.tmp.ply')
+    assert o3d.io.write_point_cloud(str(tmp), pc)
+    tmp.replace(path)
+
+def strict_surface(frames, lookup, cloud, count, persist):
+    global LAST_SURFACE_TIMINGS
+    ss_started=time.perf_counter()
+    xyz = np.asarray(cloud.points).astype(np.float32)
+    rgb = np.clip(np.asarray(cloud.colors), 0, 1).astype(np.float32)
+    if len(xyz) == 0:
+        assert not persist, 'No TSDF surface at trigger checkpoint'
+        return dict(processed_frames=count, last_frame_id=frames[-1].frame_id, surface_points=0,
+            state_counts={name:0 for name in STATE_NAMES}, native_assigned_points=0,
+            effective_votes=0, maximum_votes_per_point=0, same_frame_uniqueness_verified=True,
+            observed_frame_ids=[f.frame_id for f in frames], note='No surface passes the unchanged TSDF weight threshold yet')
+    tree = cKDTree(xyz)
+    base = max(max(lookup.values()),REPAIR_MAX_ID) + 1
+    keys_per_frame, audit = [], []
+    for frame in frames:
+        if frame.frame_id<=PRIOR_RAW:
+            layers=JOURNAL[frame.frame_id];all_points=[];all_ids=[]
+            for layer in layers:
+                lp,li,_=project_frame_regions(replace(frame,mask_local=layer),tree,pixel_stride=2,max_distance_m=.015,workers=4)
+                all_points.append(lp);all_ids.append(li)
+            points=np.concatenate(all_points);local=np.concatenate(all_ids);table=np.arange(base,dtype=np.int64)
+            stats=dict(history_layers=len(layers),history_projected_pairs=len(points))
+        else:
+            points,local,stats=project_frame_regions(frame,tree,pixel_stride=2,max_distance_m=.015,workers=4)
+            table=np.full(int(frame.mask_local.max())+1,-1,np.int64)
+            for lid in np.unique(local):table[lid]=lookup[(frame.frame_id,int(lid))]
+        keys = effective_keys(points, table[local], base, 'abstain')
+        # Independent check from raw point/ID candidates, including same-ID duplicates.
+        candidates = np.unique(np.column_stack((points, table[local])), axis=0)
+        point_ids, candidate_counts = np.unique(candidates[:, 0], return_counts=True)
+        valid_points = point_ids[candidate_counts == 1]
+        expected = candidates[np.isin(candidates[:, 0], valid_points)]
+        np.testing.assert_array_equal(keys, np.sort(expected[:, 0] * base + expected[:, 1]))
+        assert len(keys) == len(np.unique(keys // base))
+        keys_per_frame.append(keys)
+        audit.append(dict(frame_id=frame.frame_id, candidate_pairs=len(candidates), effective_votes=len(keys),
+                          ambiguous_points=int(np.sum(candidate_counts > 1)), **stats))
+        if persist:
+            save_npz_atomic(R / 'baseline/frame_support' / f'f{frame.frame_id:06d}.npz',
+                frame_id=np.array([frame.frame_id]), surface_point_index=points, mask_local_id=local,
+                source_mask_sha256=np.array([sha(R / f'inputs/masks/frame{frame.frame_id:06d}.png')]),
+                candidate_persistent_id=table[local], repaired_source_pixel_journal=np.array([frame.frame_id<=PRIOR_RAW]))
+    keys, votes = np.unique(np.concatenate(keys_per_frame), return_counts=True)
+    evidence = reduce_surface_votes(keys, votes, len(xyz), base, 2, .67)
+    assert int(evidence['total_frame_votes'].max()) <= count
+    native = np.where(evidence['state'] == CONFIRMED, evidence['top1_instance_id'], -1).astype(np.int32)
+    pair = dict(surface_point_index=(keys // base).astype(np.int32), instance_id=(keys % base).astype(np.int32),
+                frame_votes=votes.astype(np.int32))
+    summary = dict(processed_frames=count, last_frame_id=frames[-1].frame_id, surface_points=len(xyz),
+                   state_counts={name:int(np.sum(evidence['state'] == i)) for i,name in enumerate(STATE_NAMES)},
+                   native_assigned_points=int(np.sum(native > 0)), effective_votes=int(votes.sum()),
+                   maximum_votes_per_point=int(evidence['total_frame_votes'].max()),
+                   same_frame_uniqueness_verified=True, observed_frame_ids=[f.frame_id for f in frames])
+    evidence_elapsed=time.perf_counter()-ss_started
+    export_started=time.perf_counter()
+    if persist:
+        baseline = R / 'baseline'
+        save_npz_atomic(baseline / 'surface_evidence.npz', xyz_m=xyz, rgb=rgb, **evidence)
+        save_npz_atomic(baseline / 'surface_instance_frame_votes.npz', **pair)
+        save_npz_atomic(baseline / 'native/instance_surface.npz', xyz_m=xyz, rgb=rgb, instance_id=native)
+        write(baseline / 'frame_vote_audit.json', audit)
+        normals = np.asarray(cloud.normals).astype(np.float32)
+        settings = AssignmentSettings()
+        variants, _, stats = assign_surface(xyz, normals, rgb, evidence, pair, native, settings,
+            progress=lambda stage, values: print('FINAL_ASSIGNMENT', stage, values, flush=True))
+        labels = variants['holes_geodesic']
+        save_npz_atomic(baseline / 'final/instance_surface.npz', xyz_m=xyz, rgb=rgb, instance_id=labels,
+                            native_instance_ids=np.unique(labels[labels > 0]))
+        summary.update(final_assigned_points=int(np.sum(labels > 0)), postprocessing_stats=stats,
+                       final_unassigned_states={name:int(np.sum((labels <= 0) & (evidence['state'] == i)))
+                                                for i,name in enumerate(STATE_NAMES)},
+                       assignment_settings=asdict(settings), geometry_sha256=sha(R / 'geometry/surface.ply'))
+        # Preserve the existing n02/p08 review graph definition on prefix geometry.
+        graph_settings = replace(settings, normal_cos=.20, plane_tolerance_scale=.80,
+                                 color_cost_weight=0., normal_cost_weight=0., query_chunk=25000)
+        normalized = normals / np.maximum(np.linalg.norm(normals, axis=1, keepdims=True), 1e-8)
+        dist = tree.query(xyz, k=5, workers=4)[0][:, 4]
+        scale = np.clip(dist, .75 * np.median(dist), 1.25 * np.median(dist))
+        graph, _ = surface_edges(tree, xyz, normalized, rgb, scale, np.arange(len(xyz), dtype=np.int32), graph_settings)
+        graph = graph.maximum(graph.T).tocsr()
+        graph.sort_indices()
+        save_sparse_atomic(R / 'geometry/review_surface_graph_n02_p08.npz', graph)
+        palette = np.random.default_rng(20261009).uniform(.15, .95, (max(base, int(labels.max())+1), 3))
+        colors = np.full((len(xyz), 3), .62)
+        colors[labels > 0] = palette[labels[labels > 0]]
+        cloud_ply(R / f'ply/room0_prefix{TARGET}_instances.ply', xyz, colors)
+        remaining = labels <= 0
+        state_colors = np.array([[0.,0.,0.],[1.,.8,0.],[.2,.8,.2],[1.,0.,0.]])
+        cloud_ply(R / f'ply/room0_prefix{TARGET}_three_states.ply', xyz[remaining], state_colors[evidence['state'][remaining]])
+        write(baseline / 'mapping_summary.json', summary)
+    LAST_SURFACE_TIMINGS=dict(evidence_seconds=evidence_elapsed,checkpoint_export_seconds=time.perf_counter()-export_started if persist else 0.)
+    return summary
+
+
+JOURNAL={}
+REPAIR_MAX_ID=0
+LAST_SURFACE_TIMINGS={}
+def io_counters():
+ return {k:int(v) for k,v in [line.split(':',1) for line in Path('/proc/self/io').read_text().splitlines()]}
+def save_npz_atomic(path,**arrays):
+ path=Path(path);tmp=path.with_name(path.stem+'.tmp.npz');np.savez_compressed(tmp,**arrays);tmp.replace(path)
+def save_sparse_atomic(path,graph):
+ path=Path(path);tmp=path.with_name(path.stem+'.tmp.npz');save_npz(tmp,graph);tmp.replace(path)
+def unique_voxels(vox):
+ return tuple(tuple(int(x) for x in row) for row in np.unique(vox,axis=0))
+def sampled_voxels(frame,pixels,voxel_size):
+ yy,xx=np.divmod(pixels,frame.camera.width);z=frame.depth_m.ravel()[pixels].astype(np.float64)
+ assert np.all(np.isfinite(z)&(z>0)&(z<10))
+ cam=np.column_stack(((xx-frame.camera.cx)*z/frame.camera.fx,(yy-frame.camera.cy)*z/frame.camera.fy,z))
+ xyz=cam@frame.camera_to_world[:3,:3].T+frame.camera_to_world[:3,3]
+ return np.floor(xyz/voxel_size).astype(np.int32)
+def main():
+ global JOURNAL,REPAIR_MAX_ID
+ from PIL import Image
+ import sitecustomize,resource
+ wall_start=time.perf_counter();started_unix=time.time();io_start=io_counters()
+ assert os.environ.get('CVPR_ONLINE_GUARD')==str(R/'input_guard.json')
+ assert sitecustomize.current_cutoff==PRIOR_RAW
+ prior=read(R/'prior_commit.json');plan=read(R/'mapping_plan.json')
+ if (R/'mapping_complete.json').exists():
+  assert read(R/'mapping_complete.json')['status']=='PASS';print('ALREADY_COMPLETE',flush=True);return
+ for relative in ['baseline/frame_support','baseline/native','baseline/final','association','geometry','ply','inputs/scene/results','inputs/masks']:
+  (R/relative).mkdir(parents=True,exist_ok=True)
+ write(R/'mapping_progress.json',dict(status='RUNNING',stage='restore_state',group=GROUP,
+  processed_frames=PRIOR_COUNT,last_frame_id=PRIOR_RAW,target_processed_frames=TARGET,prior_processed_frames=PRIOR_COUNT))
+ fixed_paths=[Path(prior['prior_commit_path']),Path(prior['checkpoint']),Path(prior['journal_manifest']),
+  Path(prior['source_pixel_support']),Path(prior['observation_lineage']),Path(prior['geometry']),Path(prior['final_map'])]
+ fixed_hashes={str(p):sha(p) for p in fixed_paths}
+ for key in ['checkpoint','source_pixel_support','journal_manifest','geometry','final_map']:
+  assert sha(prior[key])==prior[key+'_sha256']
+ assert sha(prior['observation_lineage'])==prior['observation_lineage_sha256']
+ old_root=Path(prior['prior_mapping_root'])
+ associator=OnlineVoxelAssociator.from_checkpoint(prior['checkpoint'])
+ assert associator.last_processed_frame_id==PRIOR_RAW and associator.map_version==prior['map_version']
+ associator.identity_evidence.validate();restored_version=associator.map_version
+ preserved_entries=dict(associator.observation_support)
+ REPAIR_MAX_ID=associator.next_instance_id-1
+ geometry=SparseTSDFGeometry(block_count=100000)
+ geometry.grid=o3d.t.geometry.VoxelBlockGrid.load(prior['geometry'])
+ geometry.integrated_frames=set(FIDS[:PRIOR_COUNT])
+ initial_cloud=geometry.extract_point_cloud(weight_threshold=1.).to_legacy()
+ with np.load(prior['final_map']) as z:old_xyz=z['xyz_m']
+ dist,match=cKDTree(old_xyz).query(np.asarray(initial_cloud.points).astype(np.float32),workers=4)
+ restored_xyz=np.asarray(initial_cloud.points).astype(np.float32)
+ assert len(restored_xyz)==len(old_xyz)
+ old_order=np.lexsort((old_xyz[:,2],old_xyz[:,1],old_xyz[:,0]))
+ new_order=np.lexsort((restored_xyz[:,2],restored_xyz[:,1],restored_xyz[:,0]))
+ np.testing.assert_array_equal(old_xyz[old_order],restored_xyz[new_order])
+ geometry_duplicate_points=len(old_xyz)-len(np.unique(old_xyz,axis=0))
+ grid_restore_error=float(dist.max());assert grid_restore_error==0.
+ del initial_cloud,dist,match,old_xyz,restored_xyz,old_order,new_order
+ manifest=read(prior['journal_manifest'])
+ assert manifest['status']=='PASS'
+ manifest_rows={row['frame_id']:row for row in manifest['frames']}
+ assert sorted(manifest_rows)==list(FIDS[:PRIOR_COUNT])
+ for fid,row in manifest_rows.items():
+  layers=[]
+  for layer in row['layer_files']:
+   assert sha(layer['path'])==layer['sha256']
+   with Image.open(layer['path']) as im:layers.append(np.asarray(im,np.uint16).copy())
+  assert len(layers)==row['old_layer_count']+1
+  JOURNAL[fid]=tuple(layers)
+ decisions=[json.loads(x) for x in (old_root/'association/associations.jsonl').read_text().splitlines()]
+ observations=[json.loads(x) for x in (old_root/'association/observations.jsonl').read_text().splitlines()]
+ assert max(x['frame_id'] for x in decisions)==PRIOR_RAW
+ lookup={(x['frame_id'],x['mask_local_id']):x['instance_id'] for x in decisions}
+ metadata=[];pose_lines=[];input_records=[]
+ config=read(R/'config.json')
+ raw_scene=Path(plan['source_scene']);raw_masks=Path(plan['source_masks']);frozen=Path(plan['frozen_masks'])
+ pose_stream=Path(plan['source_trajectory']).open('rb',buffering=0)
+ metadata_stream=(frozen/'frames.jsonl').open('rb',buffering=0)
+ last_metadata=-1
+ def advance_poses_and_metadata(fid):
+  nonlocal last_metadata
+  while len(pose_lines)<=fid:
+   line=pose_stream.readline();assert line,'Trajectory ended early';pose_lines.append(line.decode('utf-8'))
+  while last_metadata<fid:
+   line=metadata_stream.readline();assert line,'Mask metadata ended early'
+   row=json.loads(line);last_metadata=int(row['frame']);assert last_metadata<=fid,'Unsorted mapping mask metadata'
+   if last_metadata%5==0:metadata.append(row)
+  atomic_text(R/'inputs/scene/traj.txt',''.join(pose_lines))
+  atomic_text(R/'inputs/masks/frames.jsonl',''.join(json.dumps(x)+'\n' for x in metadata))
+  config['frame_selection']['stop_exclusive']=fid+1;write(R/'config.json',config)
+ def prepare_frame(fid):
+  assert fid<=sitecustomize.current_cutoff
+  for kind,src,dst in [
+   ('rgb',raw_scene/f'results/frame{fid:06d}.jpg',R/f'inputs/scene/results/frame{fid:06d}.jpg'),
+   ('depth',raw_scene/f'results/depth{fid:06d}.png',R/f'inputs/scene/results/depth{fid:06d}.png'),
+   ('mask',raw_masks/f'frame{fid:06d}.png',R/f'inputs/masks/frame{fid:06d}.png')]:
+   src=src.resolve(strict=True)
+   if not dst.exists():dst.symlink_to(src)
+   assert dst.resolve()==src
+   digest=sha(src)
+   if kind=='mask':assert digest==sha(frozen/f'frame{fid:06d}.png')
+   input_records.append(dict(frame=fid,kind=kind,path=str(dst),source=str(src),sha256=digest))
+ advance_poses_and_metadata(PRIOR_RAW)
+ assert sha(R/'inputs/scene/traj.txt')==sha(old_root/'inputs/scene/traj.txt')
+ for fid in FIDS[:PRIOR_COUNT]:prepare_frame(fid)
+ source=ReplicaFrameSource(R/'config.json');assert len(source.frame_ids)==PRIOR_COUNT
+ frames=[source.load_frame(fid) for fid in FIDS[:PRIOR_COUNT]]
+ pixels=rload=None
+ with np.load(prior['source_pixel_support']) as z:pixels={key:z[key] for key in z.files}
+ lineage=read(prior['observation_lineage'])['entries']
+ assert len(lineage)==len(pixels['observation_ids'])==len(preserved_entries)
+ offsets=pixels['offsets'];verified=0
+ for j,oid in enumerate(pixels['observation_ids']):
+  oid=str(oid);entry=preserved_entries[oid];row=lineage[j]
+  assert row['observation_id']==oid and row['frame_id']==entry.frame_id
+  fid=int(pixels['frame_ids'][j]);layer_index=int(pixels['layer_index'][j])
+  assert fid==entry.frame_id and int(pixels['instance_ids'][j])==entry.instance_id
+  sl=slice(offsets[j],offsets[j+1]);pix=pixels['flat_source_pixel_index'][sl];vox=pixels['sampled_voxel_coordinates'][sl]
+  np.testing.assert_array_equal(sampled_voxels(frames[fid//5],pix,associator.voxel_size_m),vox)
+  assert unique_voxels(vox)==entry.voxels
+  assert np.all(JOURNAL[fid][layer_index].ravel()[pix]==entry.instance_id)
+  verified+=1
+ del pixels,lineage
+ write(R/'restore_audit.json',dict(status='PASS',group=GROUP,prior_processed_frames=PRIOR_COUNT,
+  checkpoint_sha256=prior['checkpoint_sha256'],restored_map_version=restored_version,
+  restored_entries=verified,all_source_pixel_samples_exact=True,all_journal_PIDs_exact=True,
+  geometry_restore_max_distance_m=grid_restore_error,geometry_coordinate_multiset_exact=True,
+  geometry_duplicate_points=geometry_duplicate_points,source_cutoff=PRIOR_RAW,
+  geometry_integrated_frames=list(FIDS[:PRIOR_COUNT]),all_prior_layers_retained=True))
+ restore_seconds=time.perf_counter()-wall_start
+ timeline_path=old_root/'mapping_timeline.json'
+ timeline=read(timeline_path) if timeline_path.exists() else []
+ continuation=[];frame_times=[]
+ sums=dict(frame_input=0.,association=0.,tsdf_integrate=0.,surface_extract=0.,
+  strict_surface_evidence=0.,checkpoint_export=0.,timeline_write=0.)
+ loop_started=time.perf_counter()
+ for index,fid in enumerate(FIDS[PRIOR_COUNT:],PRIOR_COUNT+1):
+  frame_started=time.perf_counter();sitecustomize.current_cutoff=fid
+  tick=time.perf_counter();advance_poses_and_metadata(fid);prepare_frame(fid)
+  source=ReplicaFrameSource(R/'config.json');assert source.frame_ids[-1]==fid
+  frame=source.load_frame(fid);newobs=extract_frame_observations(frame,'Replica','room0',sha(R/f'inputs/masks/frame{fid:06d}.png'))
+  timing=dict(frame_input=time.perf_counter()-tick)
+  tick=time.perf_counter();before_version=associator.map_version
+  current=associator.process_frame(frame,newobs);assert len(current)==len(newobs)
+  decisions.extend(current);observations.extend(asdict(ob) for ob in newobs)
+  for item in current:lookup[(fid,item['mask_local_id'])]=item['instance_id']
+  timing['association']=time.perf_counter()-tick
+  tick=time.perf_counter();integration=geometry.integrate(frame);timing['tsdf_integrate']=time.perf_counter()-tick
+  frames.append(frame);tick=time.perf_counter()
+  cloud=geometry.extract_point_cloud(weight_threshold=1.).to_legacy();timing['surface_extract']=time.perf_counter()-tick
+  checkpoint_geometry_seconds=0.
+  if index==TARGET:
+   tick=time.perf_counter();temp=R/'geometry/surface.tmp.ply'
+   assert o3d.io.write_point_cloud(str(temp),cloud);temp.replace(R/'geometry/surface.ply')
+   temp=R/'geometry/tsdf_grid.tmp.npz';geometry.save(temp);temp.replace(R/'geometry/tsdf_grid.npz')
+   checkpoint_geometry_seconds=time.perf_counter()-tick
+  summary=strict_surface(frames,lookup,cloud,index,index==TARGET)
+  timing['strict_surface_evidence']=LAST_SURFACE_TIMINGS['evidence_seconds']
+  timing['checkpoint_export']=LAST_SURFACE_TIMINGS['checkpoint_export_seconds']+checkpoint_geometry_seconds
+  summary.update(status='RUNNING',stage='incremental_mapping',group=GROUP,target_processed_frames=TARGET,
+   prior_processed_frames=PRIOR_COUNT,integration=integration,persistent_instances=len(associator.instances),
+   seconds=time.perf_counter()-loop_started,association_map_version_before=before_version,
+   association_map_version_after=associator.map_version,prior_repair_applied=True,
+   history_source=f'all committed journal layers through raw{PRIOR_RAW}',trajectory_rows=len(pose_lines))
+  if index==PRIOR_COUNT+1:
+   assert before_version==restored_version
+   write(R/f'frame{index}_state_audit.json',dict(status='PASS',frame_id=fid,
+    checkpoint_sha256=prior['checkpoint_sha256'],restored_map_version=restored_version,
+    map_version_used_before_association=before_version,repaired_state_used=True))
+  continuation.append(summary);timeline.append(summary)
+  tick=time.perf_counter()
+  write(R/'mapping_progress.json',summary);write(R/'mapping_timeline.json',timeline);write(R/'continuation_timeline.json',continuation)
+  timing['timeline_write']=time.perf_counter()-tick
+  for key,value in timing.items():sums[key]+=value
+  timing.update(frame_id=fid,processed_frames=index,total_seconds=time.perf_counter()-frame_started)
+  frame_times.append(timing)
+  write(R/'mapping_timing.json',dict(status='RUNNING',group=GROUP,target=TARGET,processed_frames=index,
+   restore_seconds=restore_seconds,stage_seconds=sums,frames=frame_times))
+  print('PROCESSED',GROUP,index,fid,summary['surface_points'],summary['state_counts'],flush=True)
+ main_loop_seconds=time.perf_counter()-loop_started
+ pose_stream.close();metadata_stream.close()
+ tick=time.perf_counter()
+ assert geometry.integrated_frames==set(FIDS)
+ assert all(associator.observation_support[key]==entry for key,entry in preserved_entries.items())
+ associator.identity_evidence.validate()
+ associator.save_checkpoint(R/'association/observation_support_3cm.npz')
+ tmp=R/'association/identity_counts.tmp.npz';associator.save_identity_counts(tmp);tmp.replace(R/'association/identity_counts.npz')
+ for name,rows in [('associations',decisions),('observations',observations)]:
+  atomic_text(R/'association'/(name+'.jsonl'),''.join(json.dumps(x)+'\n' for x in rows))
+ association_export_seconds=time.perf_counter()-tick
+ inputs=dict(status='PASS',scene='room0',group=GROUP,frame_ids=list(FIDS),processed_frames=TARGET,
+  last_frame_id=CUTOFF,files=input_records,pose_rows=len(pose_lines),trajectory_sha256=sha(R/'inputs/scene/traj.txt'),
+  config=str(R/'config.json'),config_sha256=sha(R/'config.json'),use_GT=False,use_future_frames=False,
+  causal_streaming_pose_and_metadata=True,mask_cache_provenance='unchanged per-frame frozen CropFormer')
+ write(R/'inputs_manifest.json',inputs)
+ write(R/'geometry'/f'geometry_prefix{TARGET}.json',dict(status='PASS',scene='room0',frame_count=TARGET,
+  frame_ids=list(FIDS),last_frame_id=CUTOFF,surface_points=continuation[-1]['surface_points'],
+  surface_sha256=sha(R/'geometry/surface.ply'),voxel_size_m=.01,no_future_geometry=True,
+  source_config=str(R/'config.json'),config_sha256=sha(R/'config.json')))
+ for path,digest in fixed_hashes.items():assert sha(path)==digest
+ usage=resource.getrusage(resource.RUSAGE_SELF);io_end=io_counters()
+ timings=dict(status='PASS',group=GROUP,target=TARGET,processed_frames=TARGET,
+  total_seconds=time.perf_counter()-wall_start,restore_seconds=restore_seconds,
+  main_mapping_seconds=main_loop_seconds-sums['checkpoint_export'],
+  main_loop_including_checkpoint_seconds=main_loop_seconds,
+  checkpoint_export_seconds=sums['checkpoint_export']+association_export_seconds,
+  association_export_seconds=association_export_seconds,stage_seconds=sums,frames=frame_times,
+  started_unix=started_unix,ended_unix=time.time(),peak_cpu_rss_kib=usage.ru_maxrss,
+  process_io_delta={k:io_end[k]-io_start[k] for k in io_end},GPU_used=False)
+ write(R/'mapping_timing.json',timings)
+ write(ROOT/'inputs_complete.json',inputs)
+ fixed_guard=read(R/'input_guard.json');fixed_guard['initial_cutoff']=CUTOFF
+ write(ROOT/'input_guard.json',fixed_guard)
+ report=dict(status='PASS',group=GROUP,frame_count=TARGET,frame_ids=list(FIDS),last_frame_id=CUTOFF,
+  geometry_incremental=True,association_incremental=True,strict_republication_after_every_frame=True,
+  GT_used=False,future_inputs_used=False,future_baseline_used=False,repair_applied=True,
+  repair_trigger=PRIOR_COUNT,prior_commit_sha256=prior['prior_commit_sha256'],
+  current_checkpoint_repair_applied=False,stopped_before_current_repair=True,main_mapping_paused=True,
+  strict_same_frame_point_at_most_one_vote=True,all_prior_layers_retained=True,
+  historical_committed_entries_unchanged=True,restored_entries=verified,map_version=associator.map_version,
+  final=continuation[-1],input_manifest_sha256=sha(R/'inputs_manifest.json'),
+  timing_path=str(R/'mapping_timing.json'),timing_sha256=sha(R/'mapping_timing.json'),
+  prior_source_hashes_unchanged=True,source_hashes=fixed_hashes)
+ write(R/'mapping_complete.json',report)
+ progress=dict(continuation[-1],status='PASS',stage='paused_for_repair')
+ write(R/'mapping_progress.json',progress)
+ print(json.dumps(dict(status='PASS',group=GROUP,target=TARGET,total_seconds=timings['total_seconds'],map_version=associator.map_version)),flush=True)
+if __name__=='__main__':
+ try:main()
+ except Exception:
+  import traceback
+  write(R/'mapping_failure.json',dict(status='FAILED',group=GROUP,target=TARGET,traceback=traceback.format_exc(),unix=time.time()))
+  raise

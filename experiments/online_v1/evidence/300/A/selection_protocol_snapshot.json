@@ -1,0 +1,108 @@
+{
+  "status": "PASS",
+  "source_file": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/selection_protocol_audit.json",
+  "source_sha256_at_read": "e5724df86400cc8bcacb2ca4aecaed57229dcf4914375fc767effcd3b6003809",
+  "row": {
+    "status": "PASS",
+    "checkpoint": 300,
+    "group": "A",
+    "candidate_processed_range": [
+      1,
+      300
+    ],
+    "candidate_raw_range": [
+      0,
+      1495
+    ],
+    "scoring_history": [
+      1,
+      300
+    ],
+    "dense_tracking_range": [
+      0,
+      1495
+    ],
+    "dense_RGB_count": 1496,
+    "retained": 21,
+    "retained_group_ids": [
+      "A002",
+      "A003",
+      "A004",
+      "A005",
+      "A006",
+      "A010",
+      "A011",
+      "A014",
+      "A015",
+      "A016",
+      "A021",
+      "A022",
+      "A025",
+      "A032",
+      "A038",
+      "A039",
+      "A040",
+      "A041",
+      "A043",
+      "A045",
+      "A046"
+    ],
+    "stage3_candidates": 42,
+    "original_dual95_excluded": 16,
+    "stage5_excluded": 5,
+    "semantic_exempt_survivors": [
+      "A002",
+      "A003",
+      "A004",
+      "A005",
+      "A006",
+      "A010",
+      "A011",
+      "A015",
+      "A039",
+      "A041"
+    ],
+    "boundary_entry_audit": {
+      "status": "PASS",
+      "actual_input_mask_arrays_checked": 1402,
+      "source_grouping_sha256": "16bfa6033f57cb0bbb9902701b2bf6af4dedabafc65e6d94f22dbaaa205cc8a9",
+      "boundary_audit_sha256": "03f890619c358ab5667f2f7178dcb5e28f88d211dae09dec60ad30d32f79a3a0",
+      "full_frame_and_all_alias_crop_edges_recomputed": true,
+      "edge_masks_removed_before_noise_and_regrouping": true,
+      "survivor_partition_exact": true,
+      "counts": {
+        "input_masks": 1402,
+        "full_frame_removed": 311,
+        "crop_removed": 897,
+        "both_edge_removed": 127,
+        "total_edge_removed": 1081,
+        "after_boundary_filter": 321,
+        "noise_removed": 59,
+        "after_noise": 262,
+        "groups": 51
+      },
+      "generic_versions_warning_only_is_not_the_final_selection_gate": true
+    },
+    "all_primary_and_aux_mask_source_frames_valid": true,
+    "edge_free_QA_sha256": "accd113d3ee9b800df522105320726ebbfe94378a0aa57787ee1805ac1fd5174",
+    "original_rule": "stage4 p>=.95 AND r>=.95 excludes; stage5 p>.1 AND r<.2 except original semantic exemption",
+    "original_seed_mask_sha256_preserved_for_tracking": true,
+    "both_independent_directions_full_arrived_history": true,
+    "map_source_branch_correct": true,
+    "previous_checkpoint": 200,
+    "model_cache": {
+      "cropformer": {
+        "total_jobs": 557,
+        "cache_hits": 183,
+        "inference_jobs": 374
+      },
+      "sam2_1": {
+        "total_jobs": 557,
+        "cache_hits": 183,
+        "inference_jobs": 374
+      }
+    },
+    "inferred_tracking_cases": 10,
+    "reused_tracking_cases": 6
+  }
+}

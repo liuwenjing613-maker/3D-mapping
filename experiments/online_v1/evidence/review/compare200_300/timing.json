@@ -1,0 +1,1314 @@
+{
+  "status": "PASS",
+  "generated_unix": 1792667599.985144,
+  "rows": [
+    {
+      "stage": "200 帧 A · 新增 101–200 帧主建图",
+      "seconds": 3190.3719856366515,
+      "note": "本轮真实续建；已扣除单独计时的检查点导出。包含逐帧读取、实例关联、TSDF、表面提取与严格票据。候选、追踪、修复不在此项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping/mapping_timing.json",
+      "field": "main_mapping_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 恢复前序已提交状态",
+      "seconds": 12.754027804359794,
+      "note": "主建图之前的状态/几何/历史层恢复；主建图入口总时间的子项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping/mapping_timing.json",
+      "field": "restore_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 建图检查点导出",
+      "seconds": 39.18784825131297,
+      "note": "包括几何、严格表面结果和最后的关联导出；已从上一行主建图计算项分离。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping/mapping_timing.json",
+      "field": "checkpoint_export_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 建图入口总时间",
+      "seconds": 3242.598335204646,
+      "note": "父项，包含上面的恢复、主建图、检查点导出和其他入口核验，不再与它们相加；不含之后的候选及修复。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping/mapping_timing.json",
+      "field": "total_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 候选入口墙钟",
+      "seconds": 1458.8624259475619,
+      "note": "候选控制器本次调用的真实墙钟，包含本次 GPU 等待、前端、筛选、QA 及候选展示；不含之前的输入准备或历史失败调用。 其中 GPU 等待 17.614 秒。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/candidates/selection_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 候选必要子进程合计",
+      "seconds": 1290.1638722643256,
+      "note": "已记录成功必要子进程合计，排除 GPU 等待、QA 与展示；如有恢复运行，可含先前成功阶段。不是连续墙钟，不与本次候选入口相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/candidates/selection_complete.json",
+      "field": "production_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 追踪队列墙钟",
+      "seconds": 949.2953694034368,
+      "note": "追踪队列墙钟，包含调度和 GPU 等待；案例可并行，不能把各案例推理或子进程时间求和当墙钟。 实际推理案例：20. 精确复用案例：1.",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/tracking_queue_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · Gate 入口墙钟",
+      "seconds": 146.31017692387104,
+      "note": "Gate 入口墙钟，包含关联冻结、追踪完整性验证和 Gate 主体。 内含：关联 0.783 秒；验证 17.013 秒；Gate主体 124.622 秒；这些子项不另加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/gate_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 追踪控制器总墙钟",
+      "seconds": 1102.858858583495,
+      "note": "本次追踪控制器调用墙钟：prepare＋queue＋Gate 执行与等待；其中本次实际执行的 queue/Gate 已包含，不重复相加；如有历史完成缓存，遵循原始 timing_scope。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 核心区域",
+      "seconds": 2.9557608123868704,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/stage_core_region_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · E1 扩展",
+      "seconds": 30.738761005923152,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/stage_expand_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · partial / 核心 / E1 历史改票与后处理",
+      "seconds": 351.51761546358466,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/stage_partial_core_E1_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 修复入口墙钟",
+      "seconds": 385.3599836770445,
+      "note": "父项，含上述核心/E1/历史改票、后处理、入口准备与验证。不含之前候选、追踪和 Gate，也不含后续状态提交或新四图导出。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/repair_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 A · 状态提交",
+      "seconds": 113.42630961164832,
+      "note": "保存本分支实例标签、像素历史、票据和持久身份；300 帧完成后不继续第 301 帧。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/commit_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 新增 101–200 帧主建图",
+      "seconds": 3375.405825417489,
+      "note": "本轮真实续建；已扣除单独计时的检查点导出。包含逐帧读取、实例关联、TSDF、表面提取与严格票据。候选、追踪、修复不在此项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/mapping_timing.json",
+      "field": "main_mapping_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 恢复前序已提交状态",
+      "seconds": 11.237990126013756,
+      "note": "主建图之前的状态/几何/历史层恢复；主建图入口总时间的子项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/mapping_timing.json",
+      "field": "restore_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 建图检查点导出",
+      "seconds": 39.25735589489341,
+      "note": "包括几何、严格表面结果和最后的关联导出；已从上一行主建图计算项分离。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/mapping_timing.json",
+      "field": "checkpoint_export_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 建图入口总时间",
+      "seconds": 3426.2111147437245,
+      "note": "父项，包含上面的恢复、主建图、检查点导出和其他入口核验，不再与它们相加；不含之后的候选及修复。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/mapping_timing.json",
+      "field": "total_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 候选入口墙钟",
+      "seconds": 1329.9501541424543,
+      "note": "候选控制器本次调用的真实墙钟，包含本次 GPU 等待、前端、筛选、QA 及候选展示；不含之前的输入准备或历史失败调用。 其中 GPU 等待 17.387 秒。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/candidates/selection_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 候选必要子进程合计",
+      "seconds": 1167.855586687103,
+      "note": "已记录成功必要子进程合计，排除 GPU 等待、QA 与展示；如有恢复运行，可含先前成功阶段。不是连续墙钟，不与本次候选入口相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/candidates/selection_complete.json",
+      "field": "production_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 追踪队列墙钟",
+      "seconds": 900.6955947224051,
+      "note": "追踪队列墙钟，包含调度和 GPU 等待；案例可并行，不能把各案例推理或子进程时间求和当墙钟。 实际推理案例：19. 精确复用案例：0.",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/tracking_queue_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · Gate 入口墙钟",
+      "seconds": 134.82497950084507,
+      "note": "Gate 入口墙钟，包含关联冻结、追踪完整性验证和 Gate 主体。 内含：关联 1.583 秒；验证 15.388 秒；Gate主体 113.804 秒；这些子项不另加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/gate_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 追踪控制器总墙钟",
+      "seconds": 1042.3369669597596,
+      "note": "本次追踪控制器调用墙钟：prepare＋queue＋Gate 执行与等待；其中本次实际执行的 queue/Gate 已包含，不重复相加；如有历史完成缓存，遵循原始 timing_scope。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 核心区域",
+      "seconds": 2.81849280372262,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/stage_core_region_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · E1 扩展",
+      "seconds": 24.563028005883098,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/stage_expand_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · partial / 核心 / E1 历史改票与后处理",
+      "seconds": 332.5205662306398,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/stage_partial_core_E1_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 修复入口墙钟",
+      "seconds": 360.03549070470035,
+      "note": "父项，含上述核心/E1/历史改票、后处理、入口准备与验证。不含之前候选、追踪和 Gate，也不含后续状态提交或新四图导出。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/repair_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "200 帧 B · 状态提交",
+      "seconds": 135.09044502861798,
+      "note": "保存本分支实例标签、像素历史、票据和持久身份；300 帧完成后不继续第 301 帧。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/commit_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 新增 201–300 帧主建图",
+      "seconds": 5463.906829433516,
+      "note": "本轮真实续建；已扣除单独计时的检查点导出。包含逐帧读取、实例关联、TSDF、表面提取与严格票据。候选、追踪、修复不在此项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping/mapping_timing.json",
+      "field": "main_mapping_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 恢复前序已提交状态",
+      "seconds": 27.38211475685239,
+      "note": "主建图之前的状态/几何/历史层恢复；主建图入口总时间的子项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping/mapping_timing.json",
+      "field": "restore_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 建图检查点导出",
+      "seconds": 50.69110688008368,
+      "note": "包括几何、严格表面结果和最后的关联导出；已从上一行主建图计算项分离。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping/mapping_timing.json",
+      "field": "checkpoint_export_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 建图入口总时间",
+      "seconds": 5542.588875193149,
+      "note": "父项，包含上面的恢复、主建图、检查点导出和其他入口核验，不再与它们相加；不含之后的候选及修复。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping/mapping_timing.json",
+      "field": "total_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 候选入口墙钟",
+      "seconds": 1242.2734323833138,
+      "note": "候选控制器本次调用的真实墙钟，包含本次 GPU 等待、前端、筛选、QA 及候选展示；不含之前的输入准备或历史失败调用。 其中 GPU 等待 18.026 秒。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/candidates/selection_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 候选必要子进程合计",
+      "seconds": 1098.995457328856,
+      "note": "已记录成功必要子进程合计，排除 GPU 等待、QA 与展示；如有恢复运行，可含先前成功阶段。不是连续墙钟，不与本次候选入口相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/candidates/selection_complete.json",
+      "field": "production_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 追踪队列墙钟",
+      "seconds": 746.2839661035687,
+      "note": "追踪队列墙钟，包含调度和 GPU 等待；案例可并行，不能把各案例推理或子进程时间求和当墙钟。 实际推理案例：10. 精确复用案例：6.",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/tracking_queue_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · Gate 入口墙钟",
+      "seconds": 191.19621541537344,
+      "note": "Gate 入口墙钟，包含关联冻结、追踪完整性验证和 Gate 主体。 内含：关联 0.608 秒；验证 14.013 秒；Gate主体 171.191 秒；这些子项不另加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/gate_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 追踪控制器总墙钟",
+      "seconds": 944.924241701141,
+      "note": "本次追踪控制器调用墙钟：prepare＋queue＋Gate 执行与等待；其中本次实际执行的 queue/Gate 已包含，不重复相加；如有历史完成缓存，遵循原始 timing_scope。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 核心区域",
+      "seconds": 2.852865096181631,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/stage_core_region_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · E1 扩展",
+      "seconds": 30.013112688437104,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/stage_expand_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · partial / 核心 / E1 历史改票与后处理",
+      "seconds": 477.67212632671,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/stage_partial_core_E1_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 修复入口墙钟",
+      "seconds": 510.70915508084,
+      "note": "父项，含上述核心/E1/历史改票、后处理、入口准备与验证。不含之前候选、追踪和 Gate，也不含后续状态提交或新四图导出。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/repair_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 A · 状态提交",
+      "seconds": 183.1620136126876,
+      "note": "保存本分支实例标签、像素历史、票据和持久身份；300 帧完成后不继续第 301 帧。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/commit_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 新增 201–300 帧主建图",
+      "seconds": 5939.917905651033,
+      "note": "本轮真实续建；已扣除单独计时的检查点导出。包含逐帧读取、实例关联、TSDF、表面提取与严格票据。候选、追踪、修复不在此项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping/mapping_timing.json",
+      "field": "main_mapping_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 恢复前序已提交状态",
+      "seconds": 25.310121532529593,
+      "note": "主建图之前的状态/几何/历史层恢复；主建图入口总时间的子项。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping/mapping_timing.json",
+      "field": "restore_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 建图检查点导出",
+      "seconds": 50.59746242873371,
+      "note": "包括几何、严格表面结果和最后的关联导出；已从上一行主建图计算项分离。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping/mapping_timing.json",
+      "field": "checkpoint_export_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 建图入口总时间",
+      "seconds": 6016.435926977545,
+      "note": "父项，包含上面的恢复、主建图、检查点导出和其他入口核验，不再与它们相加；不含之后的候选及修复。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping/mapping_timing.json",
+      "field": "total_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 候选入口墙钟",
+      "seconds": 787.3138712514192,
+      "note": "候选控制器本次调用的真实墙钟，包含本次 GPU 等待、前端、筛选、QA 及候选展示；不含之前的输入准备或历史失败调用。 其中 GPU 等待 15.770 秒。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/candidates/selection_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 候选必要子进程合计",
+      "seconds": 676.1108944453299,
+      "note": "已记录成功必要子进程合计，排除 GPU 等待、QA 与展示；如有恢复运行，可含先前成功阶段。不是连续墙钟，不与本次候选入口相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/candidates/selection_complete.json",
+      "field": "production_seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 追踪队列墙钟",
+      "seconds": 669.6289070341736,
+      "note": "追踪队列墙钟，包含调度和 GPU 等待；案例可并行，不能把各案例推理或子进程时间求和当墙钟。 实际推理案例：9. 精确复用案例：0.",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/tracking_queue_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · Gate 入口墙钟",
+      "seconds": 101.35155145823956,
+      "note": "Gate 入口墙钟，包含关联冻结、追踪完整性验证和 Gate 主体。 内含：关联 0.349 秒；验证 8.142 秒；Gate主体 89.238 秒；这些子项不另加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/gate_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 追踪控制器总墙钟",
+      "seconds": 778.4019694775343,
+      "note": "本次追踪控制器调用墙钟：prepare＋queue＋Gate 执行与等待；其中本次实际执行的 queue/Gate 已包含，不重复相加；如有历史完成缓存，遵循原始 timing_scope。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 核心区域",
+      "seconds": 2.7012326512485743,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/stage_core_region_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · E1 扩展",
+      "seconds": 17.76056020706892,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/stage_expand_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · partial / 核心 / E1 历史改票与后处理",
+      "seconds": 506.66900381818414,
+      "note": "本次修复入口的内含子阶段；不与入口墙钟重复相加。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/stage_partial_core_E1_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 修复入口墙钟",
+      "seconds": 527.2415648549795,
+      "note": "父项，含上述核心/E1/历史改票、后处理、入口准备与验证。不含之前候选、追踪和 Gate，也不含后续状态提交或新四图导出。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/repair_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "300 帧 B · 状态提交",
+      "seconds": 186.2221990954131,
+      "note": "保存本分支实例标签、像素历史、票据和持久身份；300 帧完成后不继续第 301 帧。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/commit_complete.json",
+      "field": "seconds",
+      "status": "PASS"
+    },
+    {
+      "stage": "展示 · 八份实例 PLY / 联合色盘 / 逐字段审计",
+      "seconds": 106.65009063109756,
+      "note": "服务器端展示导出独立计时；不计入修复算法。页面开发、浏览器传输与交互渲染未并入此数字。",
+      "source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/review/compare200_300/export_ready.json",
+      "field": "seconds",
+      "status": "PASS"
+    }
+  ],
+  "attempt_rows": [],
+  "tracking_case_timings": {
+    "200_A": [
+      {
+        "case_uid": "room0v2-f000005-b01",
+        "seconds": 84.8366723973304,
+        "gpu_wait_seconds": 3.9893770795315504,
+        "inference_reused": false,
+        "inference_seconds": 81.62,
+        "initialization_seconds": 2.0484236236661673,
+        "direction_seconds": {
+          "forward": 77.42630579508841,
+          "reverse": 0.4655330032110214
+        },
+        "wall_seconds_including_wait": 88.8281936403364
+      },
+      {
+        "case_uid": "room0v2-f000000-b01",
+        "seconds": 105.91798389703035,
+        "gpu_wait_seconds": 1.8346222136169672,
+        "inference_reused": false,
+        "inference_seconds": 102.42,
+        "initialization_seconds": 2.220219563692808,
+        "direction_seconds": {
+          "forward": 98.14769243821502,
+          "reverse": 0.15967925637960434
+        },
+        "wall_seconds_including_wait": 107.7550912629813
+      },
+      {
+        "case_uid": "room0v2-f000025-b01",
+        "seconds": 84.46421832405031,
+        "gpu_wait_seconds": 3.462797787040472,
+        "inference_reused": false,
+        "inference_seconds": 81.6,
+        "initialization_seconds": 2.064001804217696,
+        "direction_seconds": {
+          "forward": 75.72587056830525,
+          "reverse": 1.9524817932397127
+        },
+        "wall_seconds_including_wait": 87.93166829645634
+      },
+      {
+        "case_uid": "room0v2-f000245-b01",
+        "seconds": 84.2284355610609,
+        "gpu_wait_seconds": 3.180771067738533,
+        "inference_reused": false,
+        "inference_seconds": 81.41,
+        "initialization_seconds": 2.20060901530087,
+        "direction_seconds": {
+          "forward": 58.60246661864221,
+          "reverse": 18.69218637049198
+        },
+        "wall_seconds_including_wait": 87.41421541571617
+      },
+      {
+        "case_uid": "room0v2-f000590-b01",
+        "seconds": 84.83434198610485,
+        "gpu_wait_seconds": 3.650939838960767,
+        "inference_reused": false,
+        "inference_seconds": 82.01,
+        "initialization_seconds": 2.371091978624463,
+        "direction_seconds": {
+          "forward": 32.1535973791033,
+          "reverse": 45.58142031729221
+        },
+        "wall_seconds_including_wait": 88.49022338725626
+      },
+      {
+        "case_uid": "room0v2-f000255-b01",
+        "seconds": 110.33838708139956,
+        "gpu_wait_seconds": 3.199404664337635,
+        "inference_reused": false,
+        "inference_seconds": 107.23,
+        "initialization_seconds": 2.1519770808517933,
+        "direction_seconds": {
+          "forward": 78.0753825455904,
+          "reverse": 25.242461735382676
+        },
+        "wall_seconds_including_wait": 113.59945845976472
+      },
+      {
+        "case_uid": "room0v2-f000605-b01",
+        "seconds": 8.054429933428764,
+        "inference_reused": true,
+        "wall_seconds_including_wait": 8.060346655547619
+      },
+      {
+        "case_uid": "room0v2-f000640-b01",
+        "seconds": 84.10012934356928,
+        "gpu_wait_seconds": 3.3973072450608015,
+        "inference_reused": false,
+        "inference_seconds": 81.31,
+        "initialization_seconds": 2.100418722257018,
+        "direction_seconds": {
+          "forward": 27.947069730609655,
+          "reverse": 49.26614783331752
+        },
+        "wall_seconds_including_wait": 87.50221504457295
+      },
+      {
+        "case_uid": "room0v2-f000730-b01",
+        "seconds": 82.57245976477861,
+        "gpu_wait_seconds": 3.5530810598284006,
+        "inference_reused": false,
+        "inference_seconds": 79.64,
+        "initialization_seconds": 2.114911261945963,
+        "direction_seconds": {
+          "forward": 20.66266754642129,
+          "reverse": 54.984422482550144
+        },
+        "wall_seconds_including_wait": 86.12998220138252
+      },
+      {
+        "case_uid": "room0v2-f000750-b01",
+        "seconds": 84.09403571672738,
+        "gpu_wait_seconds": 3.659376733005047,
+        "inference_reused": false,
+        "inference_seconds": 81.02,
+        "initialization_seconds": 2.0695009026676416,
+        "direction_seconds": {
+          "forward": 19.551444763317704,
+          "reverse": 57.61241308413446
+        },
+        "wall_seconds_including_wait": 87.75800048932433
+      },
+      {
+        "case_uid": "room0v2-f000775-b01",
+        "seconds": 94.35429272800684,
+        "gpu_wait_seconds": 2.1513397842645645,
+        "inference_reused": false,
+        "inference_seconds": 91.09,
+        "initialization_seconds": 2.1494856998324394,
+        "direction_seconds": {
+          "forward": 19.64041268825531,
+          "reverse": 67.29323131591082
+        },
+        "wall_seconds_including_wait": 96.50885509699583
+      },
+      {
+        "case_uid": "room0v2-f000795-b01",
+        "seconds": 84.0105603504926,
+        "gpu_wait_seconds": 3.8664640355855227,
+        "inference_reused": false,
+        "inference_seconds": 81.2,
+        "initialization_seconds": 2.1542014591395855,
+        "direction_seconds": {
+          "forward": 16.045253103598952,
+          "reverse": 61.09957455843687
+        },
+        "wall_seconds_including_wait": 87.8815222159028
+      },
+      {
+        "case_uid": "room0v2-f000865-b01",
+        "seconds": 86.2453360427171,
+        "gpu_wait_seconds": 4.560438744723797,
+        "inference_reused": false,
+        "inference_seconds": 83.5,
+        "initialization_seconds": 2.03498019464314,
+        "direction_seconds": {
+          "forward": 10.41246322542429,
+          "reverse": 69.17530556581914
+        },
+        "wall_seconds_including_wait": 90.80988261848688
+      },
+      {
+        "case_uid": "room0v2-f000895-b01",
+        "seconds": 82.46246917173266,
+        "gpu_wait_seconds": 4.309624770656228,
+        "inference_reused": false,
+        "inference_seconds": 79.45,
+        "initialization_seconds": 2.0840964633971453,
+        "direction_seconds": {
+          "forward": 8.278324738144875,
+          "reverse": 67.23266409523785
+        },
+        "wall_seconds_including_wait": 86.77577941119671
+      },
+      {
+        "case_uid": "room0v2-f000885-b01",
+        "seconds": 96.45769001170993,
+        "gpu_wait_seconds": 3.3416437674313784,
+        "inference_reused": false,
+        "inference_seconds": 93.41,
+        "initialization_seconds": 2.072923304513097,
+        "direction_seconds": {
+          "forward": 10.38964730501175,
+          "reverse": 78.99876360967755
+        },
+        "wall_seconds_including_wait": 99.80422520264983
+      },
+      {
+        "case_uid": "room0v2-f000945-b01",
+        "seconds": 87.08027558028698,
+        "gpu_wait_seconds": 3.7119641918689013,
+        "inference_reused": false,
+        "inference_seconds": 83.65,
+        "initialization_seconds": 2.1060566939413548,
+        "direction_seconds": {
+          "forward": 4.358294866979122,
+          "reverse": 75.24732218123972
+        },
+        "wall_seconds_including_wait": 90.79604417271912
+      },
+      {
+        "case_uid": "room0v2-f000955-b01",
+        "seconds": 94.46193455532193,
+        "gpu_wait_seconds": 2.259951153770089,
+        "inference_reused": false,
+        "inference_seconds": 90.78,
+        "initialization_seconds": 2.0774340834468603,
+        "direction_seconds": {
+          "forward": 3.741897774860263,
+          "reverse": 82.90212147682905
+        },
+        "wall_seconds_including_wait": 96.72418143227696
+      },
+      {
+        "case_uid": "room0v2-f000965-b01",
+        "seconds": 83.64758229628205,
+        "gpu_wait_seconds": 3.136223677545786,
+        "inference_reused": false,
+        "inference_seconds": 80.86,
+        "initialization_seconds": 2.0954347029328346,
+        "direction_seconds": {
+          "forward": 2.8933603949844837,
+          "reverse": 73.51744452305138
+        },
+        "wall_seconds_including_wait": 86.78729086741805
+      },
+      {
+        "case_uid": "room0v2-f000980-b01",
+        "seconds": 102.53345955722034,
+        "gpu_wait_seconds": 3.4151296708732843,
+        "inference_reused": false,
+        "inference_seconds": 99.44,
+        "initialization_seconds": 2.0595617927610874,
+        "direction_seconds": {
+          "forward": 2.2037440165877342,
+          "reverse": 93.15585523098707
+        },
+        "wall_seconds_including_wait": 105.95275696367025
+      },
+      {
+        "case_uid": "room0v2-f000985-b01",
+        "seconds": 85.32451427169144,
+        "gpu_wait_seconds": 3.4801432956010103,
+        "inference_reused": false,
+        "inference_seconds": 82.48,
+        "initialization_seconds": 2.12052920460701,
+        "direction_seconds": {
+          "forward": 1.3348719980567694,
+          "reverse": 77.09767981618643
+        },
+        "wall_seconds_including_wait": 88.80862468667328
+      },
+      {
+        "case_uid": "room0v2-f000995-b01",
+        "seconds": 88.29869573749602,
+        "gpu_wait_seconds": 4.727903796359897,
+        "inference_reused": false,
+        "inference_seconds": 84.91,
+        "initialization_seconds": 2.058160312473774,
+        "direction_seconds": {
+          "forward": 0.5304164923727512,
+          "reverse": 80.38689048402011
+        },
+        "wall_seconds_including_wait": 93.03030284121633
+      }
+    ],
+    "200_B": [
+      {
+        "case_uid": "room0v2-f000500-b01",
+        "seconds": 83.71645039878786,
+        "gpu_wait_seconds": 2.029412278905511,
+        "inference_reused": false,
+        "inference_seconds": 80.71,
+        "initialization_seconds": 2.139280177652836,
+        "direction_seconds": {
+          "forward": 39.42126648128033,
+          "reverse": 36.87992316298187
+        },
+        "wall_seconds_including_wait": 85.75380100682378
+      },
+      {
+        "case_uid": "room0v2-f000510-b01",
+        "seconds": 86.58271607942879,
+        "gpu_wait_seconds": 3.7826427202671766,
+        "inference_reused": false,
+        "inference_seconds": 83.86,
+        "initialization_seconds": 2.655876200646162,
+        "direction_seconds": {
+          "forward": 40.161000503227115,
+          "reverse": 38.7305702958256
+        },
+        "wall_seconds_including_wait": 90.37083427235484
+      },
+      {
+        "case_uid": "room0v2-f000545-b01",
+        "seconds": 88.30211978964508,
+        "gpu_wait_seconds": 3.396386094391346,
+        "inference_reused": false,
+        "inference_seconds": 85.34,
+        "initialization_seconds": 2.4093795362859964,
+        "direction_seconds": {
+          "forward": 37.057106943801045,
+          "reverse": 43.949909165501595
+        },
+        "wall_seconds_including_wait": 91.70290328934789
+      },
+      {
+        "case_uid": "room0v2-f000605-b01",
+        "seconds": 87.48561473935843,
+        "gpu_wait_seconds": 3.6717809811234474,
+        "inference_reused": false,
+        "inference_seconds": 84.8,
+        "initialization_seconds": 2.2609198819845915,
+        "direction_seconds": {
+          "forward": 33.52753818035126,
+          "reverse": 47.12582899257541
+        },
+        "wall_seconds_including_wait": 91.16215700469911
+      },
+      {
+        "case_uid": "room0v2-f000620-b01",
+        "seconds": 87.23842195235193,
+        "gpu_wait_seconds": 1.9999656286090612,
+        "inference_reused": false,
+        "inference_seconds": 84.06,
+        "initialization_seconds": 2.2777770161628723,
+        "direction_seconds": {
+          "forward": 31.01753192767501,
+          "reverse": 48.78112056478858
+        },
+        "wall_seconds_including_wait": 89.24277490004897
+      },
+      {
+        "case_uid": "room0v2-f000640-b01",
+        "seconds": 87.94398895092309,
+        "gpu_wait_seconds": 3.40844140201807,
+        "inference_reused": false,
+        "inference_seconds": 85.25,
+        "initialization_seconds": 2.1660285368561745,
+        "direction_seconds": {
+          "forward": 30.680388316512108,
+          "reverse": 50.52465513534844
+        },
+        "wall_seconds_including_wait": 91.35792573727667
+      },
+      {
+        "case_uid": "room0v2-f000730-b01",
+        "seconds": 87.31294803135097,
+        "gpu_wait_seconds": 1.8631797805428505,
+        "inference_reused": false,
+        "inference_seconds": 84.25,
+        "initialization_seconds": 2.1988686323165894,
+        "direction_seconds": {
+          "forward": 21.43350749835372,
+          "reverse": 58.66233281604946
+        },
+        "wall_seconds_including_wait": 89.18079696595669
+      },
+      {
+        "case_uid": "room0v2-f000750-b01",
+        "seconds": 86.22728521935642,
+        "gpu_wait_seconds": 4.433755995705724,
+        "inference_reused": false,
+        "inference_seconds": 82.97,
+        "initialization_seconds": 2.1333777122199535,
+        "direction_seconds": {
+          "forward": 19.99276570044458,
+          "reverse": 58.97377213835716
+        },
+        "wall_seconds_including_wait": 90.66677474416792
+      },
+      {
+        "case_uid": "room0v2-f000795-b01",
+        "seconds": 82.68091892264783,
+        "gpu_wait_seconds": 3.372289115563035,
+        "inference_reused": false,
+        "inference_seconds": 79.94,
+        "initialization_seconds": 2.142038982361555,
+        "direction_seconds": {
+          "forward": 16.250378724187613,
+          "reverse": 59.699507826939225
+        },
+        "wall_seconds_including_wait": 86.05748744681478
+      },
+      {
+        "case_uid": "room0v2-f000775-b01",
+        "seconds": 93.43056719005108,
+        "gpu_wait_seconds": 2.1286133863031864,
+        "inference_reused": false,
+        "inference_seconds": 89.47,
+        "initialization_seconds": 2.147625772282481,
+        "direction_seconds": {
+          "forward": 19.69506960734725,
+          "reverse": 65.76075848564506
+        },
+        "wall_seconds_including_wait": 95.56472483463585
+      },
+      {
+        "case_uid": "room0v2-f000865-b01",
+        "seconds": 88.23813641257584,
+        "gpu_wait_seconds": 3.523273402824998,
+        "inference_reused": false,
+        "inference_seconds": 85.09,
+        "initialization_seconds": 2.43380394205451,
+        "direction_seconds": {
+          "forward": 10.78858327306807,
+          "reverse": 69.95679666288197
+        },
+        "wall_seconds_including_wait": 91.76361920312047
+      },
+      {
+        "case_uid": "room0v2-f000885-b01",
+        "seconds": 102.25083900615573,
+        "gpu_wait_seconds": 1.9510370586067438,
+        "inference_reused": false,
+        "inference_seconds": 98.52,
+        "initialization_seconds": 2.966764533892274,
+        "direction_seconds": {
+          "forward": 11.030293697491288,
+          "reverse": 82.72051665559411
+        },
+        "wall_seconds_including_wait": 104.20713882148266
+      },
+      {
+        "case_uid": "room0v2-f000905-b01",
+        "seconds": 86.79580047540367,
+        "gpu_wait_seconds": 3.680152764543891,
+        "inference_reused": false,
+        "inference_seconds": 83.75,
+        "initialization_seconds": 2.1167393513023853,
+        "direction_seconds": {
+          "forward": 8.016215488314629,
+          "reverse": 71.69311260804534
+        },
+        "wall_seconds_including_wait": 90.48045979999006
+      },
+      {
+        "case_uid": "room0v2-f000945-b01",
+        "seconds": 85.81592650897801,
+        "gpu_wait_seconds": 2.0119912642985582,
+        "inference_reused": false,
+        "inference_seconds": 82.96,
+        "initialization_seconds": 2.575375720858574,
+        "direction_seconds": {
+          "forward": 5.9292422495782375,
+          "reverse": 72.13906737603247
+        },
+        "wall_seconds_including_wait": 87.8327501565218
+      },
+      {
+        "case_uid": "room0v2-f000955-b01",
+        "seconds": 84.96475321985781,
+        "gpu_wait_seconds": 3.5466334130614996,
+        "inference_reused": false,
+        "inference_seconds": 82.09,
+        "initialization_seconds": 2.0848367139697075,
+        "direction_seconds": {
+          "forward": 3.7103450428694487,
+          "reverse": 74.39243373088539
+        },
+        "wall_seconds_including_wait": 88.51536446250975
+      },
+      {
+        "case_uid": "room0v2-f000965-b01",
+        "seconds": 82.73676548711956,
+        "gpu_wait_seconds": 2.1373167484998703,
+        "inference_reused": false,
+        "inference_seconds": 79.84,
+        "initialization_seconds": 2.082289956510067,
+        "direction_seconds": {
+          "forward": 2.868277631700039,
+          "reverse": 73.0112140364945
+        },
+        "wall_seconds_including_wait": 84.87931588664651
+      },
+      {
+        "case_uid": "room0v2-f000985-b01",
+        "seconds": 83.02434277161956,
+        "gpu_wait_seconds": 1.9455511011183262,
+        "inference_reused": false,
+        "inference_seconds": 80.21,
+        "initialization_seconds": 2.555641045793891,
+        "direction_seconds": {
+          "forward": 1.3345028907060623,
+          "reverse": 74.52884780988097
+        },
+        "wall_seconds_including_wait": 84.97411761246622
+      },
+      {
+        "case_uid": "room0v2-f000980-b01",
+        "seconds": 99.00292510166764,
+        "gpu_wait_seconds": 3.2626243885606527,
+        "inference_reused": false,
+        "inference_seconds": 96.07,
+        "initialization_seconds": 2.709372265264392,
+        "direction_seconds": {
+          "forward": 1.9149146750569344,
+          "reverse": 89.55101734027267
+        },
+        "wall_seconds_including_wait": 102.2699910365045
+      },
+      {
+        "case_uid": "room0v2-f000995-b01",
+        "seconds": 84.45674273371696,
+        "gpu_wait_seconds": 2.4605505131185055,
+        "inference_reused": false,
+        "inference_seconds": 81.5,
+        "initialization_seconds": 3.2495955750346184,
+        "direction_seconds": {
+          "forward": 0.5515631791204214,
+          "reverse": 75.17747464030981
+        },
+        "wall_seconds_including_wait": 86.92016324400902
+      }
+    ],
+    "300_A": [
+      {
+        "case_uid": "room0v2-f000000-b02",
+        "seconds": 128.42663590237498,
+        "gpu_wait_seconds": 2.550905417650938,
+        "inference_reused": false,
+        "inference_seconds": 124.9,
+        "initialization_seconds": 2.1775637809187174,
+        "direction_seconds": {
+          "forward": 120.3509636670351,
+          "reverse": 0.1032244935631752
+        },
+        "wall_seconds_including_wait": 130.98018129728734
+      },
+      {
+        "case_uid": "room0v2-f000000-b01",
+        "seconds": 149.01739172451198,
+        "gpu_wait_seconds": 3.6023587118834257,
+        "inference_reused": false,
+        "inference_seconds": 145.87,
+        "initialization_seconds": 2.8497362174093723,
+        "direction_seconds": {
+          "forward": 140.83466882258654,
+          "reverse": 0.08609949611127377
+        },
+        "wall_seconds_including_wait": 152.62143707461655
+      },
+      {
+        "case_uid": "room0v2-f000005-b01",
+        "seconds": 143.1343894507736,
+        "gpu_wait_seconds": 3.7473122868686914,
+        "inference_reused": false,
+        "inference_seconds": 139.94,
+        "initialization_seconds": 2.0701796244829893,
+        "direction_seconds": {
+          "forward": 135.16599062271416,
+          "reverse": 0.5280865877866745
+        },
+        "wall_seconds_including_wait": 146.89004055596888
+      },
+      {
+        "case_uid": "room0v2-f000025-b01",
+        "seconds": 128.07462920807302,
+        "gpu_wait_seconds": 2.276261752471328,
+        "inference_reused": false,
+        "inference_seconds": 124.82,
+        "initialization_seconds": 2.1999998204410076,
+        "direction_seconds": {
+          "forward": 118.11220845580101,
+          "reverse": 2.0153186097741127
+        },
+        "wall_seconds_including_wait": 130.3545200228691
+      },
+      {
+        "case_uid": "room0v2-f000265-b01",
+        "seconds": 126.34944493509829,
+        "gpu_wait_seconds": 3.6244271863251925,
+        "inference_reused": false,
+        "inference_seconds": 123.2,
+        "initialization_seconds": 2.7710972037166357,
+        "direction_seconds": {
+          "forward": 97.74503024481237,
+          "reverse": 20.284000638872385
+        },
+        "wall_seconds_including_wait": 129.97759907320142
+      },
+      {
+        "case_uid": "room0v2-f000315-b01",
+        "seconds": 125.57626869156957,
+        "gpu_wait_seconds": 2.1351638101041317,
+        "inference_reused": false,
+        "inference_seconds": 122.76,
+        "initialization_seconds": 2.5846250113099813,
+        "direction_seconds": {
+          "forward": 92.94605570286512,
+          "reverse": 24.9780726544559
+        },
+        "wall_seconds_including_wait": 127.71406434476376
+      },
+      {
+        "case_uid": "room0v2-f000580-b01",
+        "seconds": 128.76420740038157,
+        "gpu_wait_seconds": 3.64526573009789,
+        "inference_reused": false,
+        "inference_seconds": 125.64,
+        "initialization_seconds": 2.236566012725234,
+        "direction_seconds": {
+          "forward": 75.32143874280155,
+          "reverse": 45.65354150906205
+        },
+        "wall_seconds_including_wait": 132.41289944015443
+      },
+      {
+        "case_uid": "room0v2-f000835-b01",
+        "seconds": 141.5819110814482,
+        "gpu_wait_seconds": 2.203035593032837,
+        "inference_reused": false,
+        "inference_seconds": 138.66,
+        "initialization_seconds": 2.14980885386467,
+        "direction_seconds": {
+          "forward": 58.59528120420873,
+          "reverse": 75.79696321301162
+        },
+        "wall_seconds_including_wait": 143.78737846203148
+      },
+      {
+        "case_uid": "room0v2-f000890-b01",
+        "seconds": 130.0376717709005,
+        "gpu_wait_seconds": 3.6480204965919256,
+        "inference_reused": false,
+        "inference_seconds": 126.74,
+        "initialization_seconds": 2.1868792083114386,
+        "direction_seconds": {
+          "forward": 50.849591948091984,
+          "reverse": 71.04290957935154
+        },
+        "wall_seconds_including_wait": 133.68872030451894
+      },
+      {
+        "case_uid": "room0v2-f001075-b01",
+        "seconds": 12.86142379976809,
+        "inference_reused": true,
+        "wall_seconds_including_wait": 12.866898115724325
+      },
+      {
+        "case_uid": "room0v2-f001185-b01",
+        "seconds": 13.737773155793548,
+        "inference_reused": true,
+        "wall_seconds_including_wait": 13.743540843948722
+      },
+      {
+        "case_uid": "room0v2-f001200-b01",
+        "seconds": 11.630709037184715,
+        "inference_reused": true,
+        "wall_seconds_including_wait": 11.636528961360455
+      },
+      {
+        "case_uid": "room0v2-f001410-b01",
+        "seconds": 11.494965208694339,
+        "inference_reused": true,
+        "wall_seconds_including_wait": 11.500557547435164
+      },
+      {
+        "case_uid": "room0v2-f001055-b01",
+        "seconds": 174.31142967380583,
+        "gpu_wait_seconds": 3.7309361565858126,
+        "inference_reused": false,
+        "inference_seconds": 170.45,
+        "initialization_seconds": 2.175036918371916,
+        "direction_seconds": {
+          "forward": 48.20660344697535,
+          "reverse": 117.54444892704487
+        },
+        "wall_seconds_including_wait": 178.04613361507654
+      },
+      {
+        "case_uid": "room0v2-f001480-b01",
+        "seconds": 11.463704435154796,
+        "inference_reused": true,
+        "wall_seconds_including_wait": 11.470036773011088
+      },
+      {
+        "case_uid": "room0v2-f001495-b01",
+        "seconds": 13.541912911459804,
+        "inference_reused": true,
+        "wall_seconds_including_wait": 13.547232780605555
+      }
+    ],
+    "300_B": [
+      {
+        "case_uid": "room0v2-f001035-b01",
+        "seconds": 135.9463461022824,
+        "gpu_wait_seconds": 2.142416024580598,
+        "inference_reused": false,
+        "inference_seconds": 132.89,
+        "initialization_seconds": 2.2165964003652334,
+        "direction_seconds": {
+          "forward": 41.03586775995791,
+          "reverse": 87.0983204152435
+        },
+        "wall_seconds_including_wait": 138.09615308232605
+      },
+      {
+        "case_uid": "room0v2-f001050-b01",
+        "seconds": 147.4782980158925,
+        "gpu_wait_seconds": 4.064679970964789,
+        "inference_reused": false,
+        "inference_seconds": 144.05,
+        "initialization_seconds": 2.207473276183009,
+        "direction_seconds": {
+          "forward": 43.0665583088994,
+          "reverse": 96.47364589758217
+        },
+        "wall_seconds_including_wait": 151.54788271710277
+      },
+      {
+        "case_uid": "room0v2-f001075-b01",
+        "seconds": 134.1231591682881,
+        "gpu_wait_seconds": 4.051368927583098,
+        "inference_reused": false,
+        "inference_seconds": 130.91,
+        "initialization_seconds": 2.1532235611230135,
+        "direction_seconds": {
+          "forward": 35.688398994505405,
+          "reverse": 90.8022477272898
+        },
+        "wall_seconds_including_wait": 138.17873190902174
+      },
+      {
+        "case_uid": "room0v2-f001090-b01",
+        "seconds": 125.51527391001582,
+        "gpu_wait_seconds": 4.070641977712512,
+        "inference_reused": false,
+        "inference_seconds": 122.54,
+        "initialization_seconds": 2.1387165542691946,
+        "direction_seconds": {
+          "forward": 32.46784437075257,
+          "reverse": 85.84003573097289
+        },
+        "wall_seconds_including_wait": 129.5904089640826
+      },
+      {
+        "case_uid": "room0v2-f001200-b01",
+        "seconds": 126.100277421996,
+        "gpu_wait_seconds": 4.427713545039296,
+        "inference_reused": false,
+        "inference_seconds": 122.9,
+        "initialization_seconds": 2.2598469611257315,
+        "direction_seconds": {
+          "forward": 24.878109039738774,
+          "reverse": 93.68336883187294
+        },
+        "wall_seconds_including_wait": 130.53169722296298
+      },
+      {
+        "case_uid": "room0v2-f001185-b01",
+        "seconds": 138.08464124053717,
+        "gpu_wait_seconds": 3.7142944131046534,
+        "inference_reused": false,
+        "inference_seconds": 135.0,
+        "initialization_seconds": 2.5035829413682222,
+        "direction_seconds": {
+          "forward": 25.885107912123203,
+          "reverse": 104.268927520141
+        },
+        "wall_seconds_including_wait": 141.80286709964275
+      },
+      {
+        "case_uid": "room0v2-f001410-b01",
+        "seconds": 127.9193635750562,
+        "gpu_wait_seconds": 3.7294620350003242,
+        "inference_reused": false,
+        "inference_seconds": 124.7,
+        "initialization_seconds": 2.183168323710561,
+        "direction_seconds": {
+          "forward": 7.21485030464828,
+          "reverse": 112.66042925603688
+        },
+        "wall_seconds_including_wait": 131.6533834449947
+      },
+      {
+        "case_uid": "room0v2-f001480-b01",
+        "seconds": 133.25599631480873,
+        "gpu_wait_seconds": 3.689918039366603,
+        "inference_reused": false,
+        "inference_seconds": 130.09,
+        "initialization_seconds": 2.365441622212529,
+        "direction_seconds": {
+          "forward": 1.8431586362421513,
+          "reverse": 123.74503781087697
+        },
+        "wall_seconds_including_wait": 136.94906667619944
+      },
+      {
+        "case_uid": "room0v2-f001495-b01",
+        "seconds": 123.67038601823151,
+        "gpu_wait_seconds": 2.4767850413918495,
+        "inference_reused": false,
+        "inference_seconds": 120.65,
+        "initialization_seconds": 2.1079993564635515,
+        "direction_seconds": {
+          "forward": 0.5302425511181355,
+          "reverse": 115.80932698585093
+        },
+        "wall_seconds_including_wait": 126.15298051014543
+      }
+    ]
+  },
+  "note": "父阶段已经包含其子阶段，不能重复相加。A/B 共享服务器 CPU/GPU 并可能并行，耗时差不能直接证明算法速度优劣。尚未记录的连续全过程总墙钟保持为空；不从文件时间推算，也不把未完成阶段写成完成。",
+  "continuous_end_to_end_seconds": null,
+  "record_paths": [
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping/mapping_timing.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/candidates/selection_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/tracking_queue_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/gate_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/stage_core_region_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/stage_expand_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/stage_partial_core_E1_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/repair_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/commit_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/mapping_timing.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/candidates/selection_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/tracking_queue_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/gate_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/stage_core_region_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/stage_expand_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/stage_partial_core_E1_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/repair_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/commit_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping/mapping_timing.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/candidates/selection_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/tracking_queue_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/gate_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/stage_core_region_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/stage_expand_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/stage_partial_core_E1_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/repair_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/commit_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping/mapping_timing.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/candidates/selection_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/tracking_queue_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/gate_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/stage_core_region_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/stage_expand_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/stage_partial_core_E1_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/repair_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/commit_complete.json",
+    "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/review/compare200_300/export_ready.json"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "camera": {
+    "cx": 599.5,
+    "cy": 339.5,
+    "depth_png_units_per_meter": 6553.5,
+    "fx": 600.0,
+    "fy": 600.0,
+    "height": 680,
+    "trajectory_matrix": "camera_to_world_4x4_row_major",
+    "width": 1200
+  },
+  "contract_version": 1,
+  "dataset": "Replica",
+  "frame_selection": {
+    "start": 0,
+    "stop_exclusive": 996,
+    "stride": 5
+  },
+  "mask": {
+    "background_id": 0,
+    "encoding": "uint8_instance_id_image",
+    "provenance": "frozen CropFormer cache with per-frame checksums"
+  },
+  "purpose": "causal_room0_B_continuation_100_to_200",
+  "rules": {
+    "allow_repair": false,
+    "input_is_read_only": true,
+    "use_future_frames": false,
+    "use_ground_truth_for_mapping": false
+  },
+  "scene": "room0",
+  "source": {
+    "depth_pattern": "results/depth{frame:06d}.png",
+    "mask_metadata": "frames.jsonl",
+    "mask_pattern": "frame{frame:06d}.png",
+    "mask_root": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/inputs/masks",
+    "rgb_pattern": "results/frame{frame:06d}.jpg",
+    "scene_root": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/inputs/scene",
+    "trajectory": "traj.txt"
+  }
+}

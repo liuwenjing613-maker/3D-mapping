@@ -1,0 +1,293 @@
+{
+  "status": "PASS",
+  "generated_unix": 1792676417.8574405,
+  "runs": [
+    {
+      "checkpoint": 200,
+      "group": "A",
+      "raw_cutoff": 995,
+      "stages": [
+        {
+          "name": "主建图",
+          "status": "PASS",
+          "detail": "200 / 200 个处理帧；raw 995；paused_for_repair",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping/mapping_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping/mapping_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "候选筛选与核验",
+          "status": "PASS",
+          "detail": "complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/candidates/selection_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/candidates/selection_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "稠密双向追踪",
+          "status": "PASS",
+          "detail": "21 · 21",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/tracking_queue_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/tracking_queue_status.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "Gate 门控",
+          "status": "PASS",
+          "detail": "gate",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/gate_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/tracking/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "partial＋核心＋E1 修复",
+          "status": "PASS",
+          "detail": "repair_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/repair_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "状态提交",
+          "status": "PASS",
+          "detail": "commit_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/commit_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/repair/commit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "独立最终核验",
+          "status": "PASS",
+          "detail": "",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/final_audit.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/final_audit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        }
+      ],
+      "message": "全部阶段、状态提交和实例 PLY 发布核验均已完成。"
+    },
+    {
+      "checkpoint": 200,
+      "group": "B",
+      "raw_cutoff": 995,
+      "stages": [
+        {
+          "name": "主建图",
+          "status": "PASS",
+          "detail": "200 / 200 个处理帧；raw 995；paused_for_repair",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/mapping_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping/mapping_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "候选筛选与核验",
+          "status": "PASS",
+          "detail": "complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/candidates/selection_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/candidates/selection_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "稠密双向追踪",
+          "status": "PASS",
+          "detail": "19 · 19",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/tracking_queue_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/tracking_queue_status.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "Gate 门控",
+          "status": "PASS",
+          "detail": "gate",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/gate_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/tracking/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "partial＋核心＋E1 修复",
+          "status": "PASS",
+          "detail": "repair_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/repair_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "状态提交",
+          "status": "PASS",
+          "detail": "commit_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/commit_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/repair/commit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "独立最终核验",
+          "status": "PASS",
+          "detail": "",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/final_audit.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/final_audit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        }
+      ],
+      "message": "全部阶段、状态提交和实例 PLY 发布核验均已完成。"
+    },
+    {
+      "checkpoint": 300,
+      "group": "A",
+      "raw_cutoff": 1495,
+      "stages": [
+        {
+          "name": "主建图",
+          "status": "PASS",
+          "detail": "300 / 300 个处理帧；raw 1495；paused_for_repair",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping/mapping_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping/mapping_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "候选筛选与核验",
+          "status": "PASS",
+          "detail": "complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/candidates/selection_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/candidates/selection_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "稠密双向追踪",
+          "status": "PASS",
+          "detail": "16 · 16",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/tracking_queue_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/tracking_queue_status.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "Gate 门控",
+          "status": "PASS",
+          "detail": "gate",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/gate_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/tracking/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "partial＋核心＋E1 修复",
+          "status": "PASS",
+          "detail": "repair_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/repair_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "状态提交",
+          "status": "PASS",
+          "detail": "commit_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/commit_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/repair/commit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "独立最终核验",
+          "status": "PASS",
+          "detail": "",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/final_audit.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/final_audit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        }
+      ],
+      "message": "全部阶段、状态提交和实例 PLY 发布核验均已完成。"
+    },
+    {
+      "checkpoint": 300,
+      "group": "B",
+      "raw_cutoff": 1495,
+      "stages": [
+        {
+          "name": "主建图",
+          "status": "PASS",
+          "detail": "300 / 300 个处理帧；raw 1495；paused_for_repair",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping/mapping_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping/mapping_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "候选筛选与核验",
+          "status": "PASS",
+          "detail": "complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/candidates/selection_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/candidates/selection_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "稠密双向追踪",
+          "status": "PASS",
+          "detail": "9 · 9",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/tracking_queue_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/tracking_queue_status.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "Gate 门控",
+          "status": "PASS",
+          "detail": "gate",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/gate_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/tracking/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "partial＋核心＋E1 修复",
+          "status": "PASS",
+          "detail": "repair_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/repair_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "状态提交",
+          "status": "PASS",
+          "detail": "commit_complete",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/commit_complete.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/repair/commit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        },
+        {
+          "name": "独立最终核验",
+          "status": "PASS",
+          "detail": "",
+          "completion_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/final_audit.json",
+          "active_source": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/final_audit_progress.json",
+          "completion_status": "PASS",
+          "failure_source": null
+        }
+      ],
+      "message": "全部阶段、状态提交和实例 PLY 发布核验均已完成。"
+    }
+  ],
+  "all_algorithms_completed": true,
+  "visualization_published": true,
+  "note": "仅依据各阶段实际完成/进度记录。目录存在不代表运行；仅生成修复结果不代表状态已提交。"
+}

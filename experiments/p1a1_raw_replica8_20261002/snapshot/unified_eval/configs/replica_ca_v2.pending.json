@@ -1,0 +1,25 @@
+{
+  "name": "Replica-CA-v2",
+  "dataset": "Replica",
+  "frozen": false,
+  "scenes": ["room0", "room1", "room2", "office0", "office1", "office2", "office3", "office4"],
+  "reference_source": "same_reference_mesh_as_Replica-CA-v1",
+  "confidence_mode": "uniform",
+  "ap_policy": "replica_ca_101",
+  "geometry_mapping": {
+    "method": "independent_nearest_neighbor_per_instance",
+    "max_distance_m": null
+  },
+  "instance_filter": {
+    "min_valid_instance_vertices": null,
+    "min_prediction_vertices": 0
+  },
+  "ignore_policy": {
+    "unmatched_prediction_void_fraction_gt": 0.5
+  },
+  "significant_overlap": {
+    "min_intersection_vertices": null,
+    "min_gt_fraction": null
+  },
+  "source_policy": "Use the same GT, frame list, trajectory and input manifests as Replica-CA-v1; calibrate geometry distance, GT size and significant-overlap thresholds before freezing"
+}

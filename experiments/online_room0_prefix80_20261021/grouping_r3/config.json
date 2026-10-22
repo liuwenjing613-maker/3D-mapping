@@ -1,0 +1,20 @@
+{
+  "schema": "same-instance-seed-grouping-no-artificial-crop-contact-v4",
+  "scene": "room0",
+  "input_selection": "/data/chenkejun/CVPR/results/online_room0_prefix80_20261021/semantic_route/selection.json",
+  "iou": 0.25,
+  "comparison": "strictly greater than",
+  "support": "all unique fixed TSDF vertices visible in this frame and inside the complete mask",
+  "crop_contact_policy": "exclude any mask touching an artificial source-crop edge before grouping; original image borders alone are allowed",
+  "crop_filter_applies_to": "all source-eligible masks including semantic SAM; no CropFormer fallback for window/cabinet",
+  "previous_grouping": "/data/chenkejun/CVPR/results/online_room0_prefix80_20261021/grouping_r2/grouping.json",
+  "exact_duplicate_key": "frame + identical full-image binary mask; retain every original occurrence",
+  "grouping": "descending TSDF support count; compare remaining masks only to the fixed primary seed; no transitive expansion",
+  "source_policy": "window/cabinet SAM-only; any prior semantic CropFormer replacement is global across all ROI occurrences",
+  "policy_order": "SAM-only source eligibility, artificial-crop-contact removal, ordinary 3D IoU grouping, maximum TSDF support count",
+  "primary_seed": "largest unique TSDF support count among source-eligible masks",
+  "tie_break": "ascending frame, model index, full-mask digest; no area ranking",
+  "tracking_requested": false,
+  "map_write": false,
+  "GT_used": false
+}

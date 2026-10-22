@@ -1,0 +1,411 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "status": "PASS",
+      "checkpoint": 200,
+      "group": "A",
+      "candidate_processed_range": [
+        1,
+        200
+      ],
+      "candidate_raw_range": [
+        0,
+        995
+      ],
+      "scoring_history": [
+        1,
+        200
+      ],
+      "dense_tracking_range": [
+        0,
+        995
+      ],
+      "dense_RGB_count": 996,
+      "retained": 28,
+      "retained_group_ids": [
+        "A001",
+        "A002",
+        "A003",
+        "A004",
+        "A005",
+        "A006",
+        "A009",
+        "A010",
+        "A013",
+        "A015",
+        "A020",
+        "A021",
+        "A023",
+        "A024",
+        "A025",
+        "A027",
+        "A029",
+        "A031",
+        "A032",
+        "A033",
+        "A035",
+        "A037",
+        "A040",
+        "A041",
+        "A042",
+        "A043",
+        "A044",
+        "A046"
+      ],
+      "stage3_candidates": 43,
+      "original_dual95_excluded": 10,
+      "stage5_excluded": 5,
+      "semantic_exempt_survivors": [
+        "A002",
+        "A003",
+        "A004",
+        "A005",
+        "A009",
+        "A010",
+        "A013",
+        "A023",
+        "A033",
+        "A043"
+      ],
+      "boundary_entry_audit": {
+        "status": "PASS",
+        "actual_input_mask_arrays_checked": 1587,
+        "source_grouping_sha256": "f8e30751bb23ca8786d6eac005b907fc51bd48b91687252e92677661abf258b5",
+        "boundary_audit_sha256": "642d19c3a9cc11bd47c72fb7236bcca0dee2dcfb610a4010d2c0e98fd6292157",
+        "full_frame_and_all_alias_crop_edges_recomputed": true,
+        "edge_masks_removed_before_noise_and_regrouping": true,
+        "survivor_partition_exact": true,
+        "counts": {
+          "input_masks": 1587,
+          "full_frame_removed": 338,
+          "crop_removed": 930,
+          "both_edge_removed": 130,
+          "total_edge_removed": 1138,
+          "after_boundary_filter": 449,
+          "noise_removed": 49,
+          "after_noise": 400,
+          "groups": 49
+        },
+        "generic_versions_warning_only_is_not_the_final_selection_gate": true
+      },
+      "all_primary_and_aux_mask_source_frames_valid": true,
+      "edge_free_QA_sha256": "d061ff5d95d059d97d658197089ba74fd34ef71e2c43a1c87ae0ea4a2d2621b0",
+      "original_rule": "stage4 p>=.95 AND r>=.95 excludes; stage5 p>.1 AND r<.2 except original semantic exemption",
+      "original_seed_mask_sha256_preserved_for_tracking": true,
+      "both_independent_directions_full_arrived_history": true,
+      "map_source_branch_correct": true,
+      "previous_checkpoint": 100,
+      "model_cache": {
+        "cropformer": {
+          "total_jobs": 599,
+          "cache_hits": 75,
+          "inference_jobs": 524
+        },
+        "sam2_1": {
+          "total_jobs": 599,
+          "cache_hits": 75,
+          "inference_jobs": 524
+        }
+      },
+      "inferred_tracking_cases": 20,
+      "reused_tracking_cases": 1
+    },
+    {
+      "status": "PASS",
+      "checkpoint": 200,
+      "group": "B",
+      "candidate_processed_range": [
+        101,
+        200
+      ],
+      "candidate_raw_range": [
+        500,
+        995
+      ],
+      "scoring_history": [
+        1,
+        200
+      ],
+      "dense_tracking_range": [
+        0,
+        995
+      ],
+      "dense_RGB_count": 996,
+      "retained": 22,
+      "retained_group_ids": [
+        "A001",
+        "A002",
+        "A003",
+        "A004",
+        "A006",
+        "A007",
+        "A009",
+        "A010",
+        "A014",
+        "A018",
+        "A020",
+        "A022",
+        "A024",
+        "A026",
+        "A027",
+        "A029",
+        "A031",
+        "A033",
+        "A034",
+        "A036",
+        "A037",
+        "A038"
+      ],
+      "stage3_candidates": 35,
+      "original_dual95_excluded": 10,
+      "stage5_excluded": 3,
+      "semantic_exempt_survivors": [
+        "A002",
+        "A003",
+        "A004",
+        "A006",
+        "A009",
+        "A010",
+        "A038"
+      ],
+      "boundary_entry_audit": {
+        "status": "PASS",
+        "actual_input_mask_arrays_checked": 1576,
+        "source_grouping_sha256": "27857e877fcc4f6fa89b42b7137292a76a46210d5cc813996139dcb65de8d3a2",
+        "boundary_audit_sha256": "0c07bcb650828c72aeaf422fc5c7b5096a1198717efa21235c7a2cb3b9521782",
+        "full_frame_and_all_alias_crop_edges_recomputed": true,
+        "edge_masks_removed_before_noise_and_regrouping": true,
+        "survivor_partition_exact": true,
+        "counts": {
+          "input_masks": 1576,
+          "full_frame_removed": 326,
+          "crop_removed": 939,
+          "both_edge_removed": 127,
+          "total_edge_removed": 1138,
+          "after_boundary_filter": 438,
+          "noise_removed": 39,
+          "after_noise": 399,
+          "groups": 40
+        },
+        "generic_versions_warning_only_is_not_the_final_selection_gate": true
+      },
+      "all_primary_and_aux_mask_source_frames_valid": true,
+      "edge_free_QA_sha256": "ba746fbba297f0e1abb74edee684db713d607401080cb9ca328b28eb16df7922",
+      "original_rule": "stage4 p>=.95 AND r>=.95 excludes; stage5 p>.1 AND r<.2 except original semantic exemption",
+      "original_seed_mask_sha256_preserved_for_tracking": true,
+      "both_independent_directions_full_arrived_history": true,
+      "map_source_branch_correct": true,
+      "previous_checkpoint": 100,
+      "model_cache": {
+        "cropformer": {
+          "total_jobs": 579,
+          "cache_hits": 227,
+          "inference_jobs": 352
+        },
+        "sam2_1": {
+          "total_jobs": 579,
+          "cache_hits": 0,
+          "inference_jobs": 579
+        }
+      },
+      "inferred_tracking_cases": 19,
+      "reused_tracking_cases": 0
+    },
+    {
+      "status": "PASS",
+      "checkpoint": 300,
+      "group": "A",
+      "candidate_processed_range": [
+        1,
+        300
+      ],
+      "candidate_raw_range": [
+        0,
+        1495
+      ],
+      "scoring_history": [
+        1,
+        300
+      ],
+      "dense_tracking_range": [
+        0,
+        1495
+      ],
+      "dense_RGB_count": 1496,
+      "retained": 21,
+      "retained_group_ids": [
+        "A002",
+        "A003",
+        "A004",
+        "A005",
+        "A006",
+        "A010",
+        "A011",
+        "A014",
+        "A015",
+        "A016",
+        "A021",
+        "A022",
+        "A025",
+        "A032",
+        "A038",
+        "A039",
+        "A040",
+        "A041",
+        "A043",
+        "A045",
+        "A046"
+      ],
+      "stage3_candidates": 42,
+      "original_dual95_excluded": 16,
+      "stage5_excluded": 5,
+      "semantic_exempt_survivors": [
+        "A002",
+        "A003",
+        "A004",
+        "A005",
+        "A006",
+        "A010",
+        "A011",
+        "A015",
+        "A039",
+        "A041"
+      ],
+      "boundary_entry_audit": {
+        "status": "PASS",
+        "actual_input_mask_arrays_checked": 1402,
+        "source_grouping_sha256": "16bfa6033f57cb0bbb9902701b2bf6af4dedabafc65e6d94f22dbaaa205cc8a9",
+        "boundary_audit_sha256": "03f890619c358ab5667f2f7178dcb5e28f88d211dae09dec60ad30d32f79a3a0",
+        "full_frame_and_all_alias_crop_edges_recomputed": true,
+        "edge_masks_removed_before_noise_and_regrouping": true,
+        "survivor_partition_exact": true,
+        "counts": {
+          "input_masks": 1402,
+          "full_frame_removed": 311,
+          "crop_removed": 897,
+          "both_edge_removed": 127,
+          "total_edge_removed": 1081,
+          "after_boundary_filter": 321,
+          "noise_removed": 59,
+          "after_noise": 262,
+          "groups": 51
+        },
+        "generic_versions_warning_only_is_not_the_final_selection_gate": true
+      },
+      "all_primary_and_aux_mask_source_frames_valid": true,
+      "edge_free_QA_sha256": "accd113d3ee9b800df522105320726ebbfe94378a0aa57787ee1805ac1fd5174",
+      "original_rule": "stage4 p>=.95 AND r>=.95 excludes; stage5 p>.1 AND r<.2 except original semantic exemption",
+      "original_seed_mask_sha256_preserved_for_tracking": true,
+      "both_independent_directions_full_arrived_history": true,
+      "map_source_branch_correct": true,
+      "previous_checkpoint": 200,
+      "model_cache": {
+        "cropformer": {
+          "total_jobs": 557,
+          "cache_hits": 183,
+          "inference_jobs": 374
+        },
+        "sam2_1": {
+          "total_jobs": 557,
+          "cache_hits": 183,
+          "inference_jobs": 374
+        }
+      },
+      "inferred_tracking_cases": 10,
+      "reused_tracking_cases": 6
+    },
+    {
+      "status": "PASS",
+      "checkpoint": 300,
+      "group": "B",
+      "candidate_processed_range": [
+        201,
+        300
+      ],
+      "candidate_raw_range": [
+        1000,
+        1495
+      ],
+      "scoring_history": [
+        1,
+        300
+      ],
+      "dense_tracking_range": [
+        0,
+        1495
+      ],
+      "dense_RGB_count": 1496,
+      "retained": 10,
+      "retained_group_ids": [
+        "A001",
+        "A002",
+        "A003",
+        "A006",
+        "A007",
+        "A009",
+        "A015",
+        "A019",
+        "A020",
+        "A021"
+      ],
+      "stage3_candidates": 22,
+      "original_dual95_excluded": 8,
+      "stage5_excluded": 4,
+      "semantic_exempt_survivors": [
+        "A001",
+        "A002",
+        "A003",
+        "A006",
+        "A007"
+      ],
+      "boundary_entry_audit": {
+        "status": "PASS",
+        "actual_input_mask_arrays_checked": 1079,
+        "source_grouping_sha256": "16919304514e8d581b1daaf222bff1866a9fdea19958b3ed4b315d8c6adcb22f",
+        "boundary_audit_sha256": "295a0a6e852d85bfba465ddffbaffb9db47c33f9c84e8be6148c26b92340877c",
+        "full_frame_and_all_alias_crop_edges_recomputed": true,
+        "edge_masks_removed_before_noise_and_regrouping": true,
+        "survivor_partition_exact": true,
+        "counts": {
+          "input_masks": 1079,
+          "full_frame_removed": 216,
+          "crop_removed": 728,
+          "both_edge_removed": 93,
+          "total_edge_removed": 851,
+          "after_boundary_filter": 228,
+          "noise_removed": 44,
+          "after_noise": 184,
+          "groups": 23
+        },
+        "generic_versions_warning_only_is_not_the_final_selection_gate": true
+      },
+      "all_primary_and_aux_mask_source_frames_valid": true,
+      "edge_free_QA_sha256": "93d4dc36de2f1e83db94de4d69347a1132c30825718877bb4b59b7e15f821b55",
+      "original_rule": "stage4 p>=.95 AND r>=.95 excludes; stage5 p>.1 AND r<.2 except original semantic exemption",
+      "original_seed_mask_sha256_preserved_for_tracking": true,
+      "both_independent_directions_full_arrived_history": true,
+      "map_source_branch_correct": true,
+      "previous_checkpoint": 200,
+      "model_cache": {
+        "cropformer": {
+          "total_jobs": 362,
+          "cache_hits": 217,
+          "inference_jobs": 145
+        },
+        "sam2_1": {
+          "total_jobs": 362,
+          "cache_hits": 117,
+          "inference_jobs": 245
+        }
+      },
+      "inferred_tracking_cases": 9,
+      "reused_tracking_cases": 0
+    }
+  ],
+  "pending": [],
+  "seconds": 11.156828979030252,
+  "validates_only": true,
+  "models_or_repair_reexecuted": false,
+  "GT_used": false
+}
