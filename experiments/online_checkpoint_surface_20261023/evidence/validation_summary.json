@@ -1,0 +1,879 @@
+{
+  "status": "COMPLETE_WITH_RECORDED_COMPARISON_RESULTS",
+  "scope": "100->200 A full fresh sequential before/after; 200/300 A/B checkpoint-only versus archives; fixed-surface kernel replay",
+  "common_surface": {
+    "old_new": {
+      "status": "PASS",
+      "left": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/common_surface_reference_200_A",
+      "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/common_surface_checkpoint_200_A",
+      "comparisons": 1226,
+      "different": [],
+      "raw_array_order": true,
+      "zero_float_tolerance": true
+    },
+    "original_archive": {
+      "status": "PASS",
+      "left": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping",
+      "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/common_surface_reference_200_A",
+      "comparisons": 1226,
+      "different": [],
+      "raw_array_order": true,
+      "zero_float_tolerance": true
+    },
+    "scope": "fixed identical full surface, all historical input and original strict_surface/assignment; not end-to-end repair"
+  },
+  "independent_runs": [
+    {
+      "name": "fresh_comparison_200_A",
+      "status": "DIFFERENT",
+      "left": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/reference_200_A/mapping",
+      "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/checkpoint_200_A/mapping",
+      "different_checks": [
+        {
+          "name": "surface/raw_order_exact",
+          "exact": false
+        },
+        {
+          "name": "baseline/surface_evidence.npz/confidence",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 6,
+          "different_rows": 6,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/margin",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 6,
+          "different_rows": 6,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/state",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "uint8",
+          "right_dtype": "uint8",
+          "different_elements": 6,
+          "different_rows": 6,
+          "max_abs_difference": 3.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_instance_id",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 6,
+          "different_rows": 6,
+          "max_abs_difference": 265.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 6,
+          "different_rows": 6,
+          "max_abs_difference": 11.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top2_instance_id",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 14.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top2_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 5.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/total_frame_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 6,
+          "different_rows": 6,
+          "max_abs_difference": 17.0
+        },
+        {
+          "name": "baseline/native/instance_surface.npz/instance_id",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 34.0
+        },
+        {
+          "name": "baseline/surface_instance_frame_votes.npz",
+          "exact": false,
+          "left_shape": [
+            1591827,
+            3
+          ],
+          "right_shape": [
+            1591827,
+            3
+          ],
+          "left_dtype": "int64",
+          "right_dtype": "int64",
+          "different_elements": 5,
+          "different_rows": 5,
+          "max_abs_difference": 2.0
+        },
+        {
+          "name": "frame_support/all_projected_candidates_exact",
+          "exact": false
+        }
+      ]
+    },
+    {
+      "name": "original_repeat_comparison_200_A",
+      "status": "DIFFERENT",
+      "left": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/A/mapping",
+      "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/reference_200_A/mapping",
+      "different_checks": [
+        {
+          "name": "surface/raw_order_exact",
+          "exact": false
+        },
+        {
+          "name": "baseline/surface_evidence.npz/confidence",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 0.6470588445663452
+        },
+        {
+          "name": "baseline/surface_evidence.npz/margin",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 0.3529411852359772
+        },
+        {
+          "name": "baseline/surface_evidence.npz/state",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "uint8",
+          "right_dtype": "uint8",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 3.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_instance_id",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 265.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 11.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top2_instance_id",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 14.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top2_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 5.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/total_frame_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 17.0
+        },
+        {
+          "name": "baseline/surface_instance_frame_votes.npz",
+          "exact": false,
+          "left_shape": [
+            1591827,
+            3
+          ],
+          "right_shape": [
+            1591827,
+            3
+          ],
+          "left_dtype": "int64",
+          "right_dtype": "int64",
+          "different_elements": 3,
+          "different_rows": 3,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "frame_support/all_projected_candidates_exact",
+          "exact": false
+        }
+      ]
+    },
+    {
+      "name": "archive_comparison_300_A",
+      "status": "DIFFERENT",
+      "left": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/A/mapping",
+      "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/checkpoint_300_A/mapping",
+      "different_checks": [
+        {
+          "name": "surface/raw_order_exact",
+          "exact": false
+        },
+        {
+          "name": "baseline/surface_evidence.npz/confidence",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 8,
+          "different_rows": 8,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/margin",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 8,
+          "different_rows": 8,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/state",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "uint8",
+          "right_dtype": "uint8",
+          "different_elements": 8,
+          "different_rows": 8,
+          "max_abs_difference": 2.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_instance_id",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 8,
+          "different_rows": 8,
+          "max_abs_difference": 254.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_votes",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 8,
+          "different_rows": 8,
+          "max_abs_difference": 11.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top2_instance_id",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 34.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top2_votes",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 4.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/total_frame_votes",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 8,
+          "different_rows": 8,
+          "max_abs_difference": 13.0
+        },
+        {
+          "name": "baseline/native/instance_surface.npz/instance_id",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 8,
+          "different_rows": 8,
+          "max_abs_difference": 254.0
+        },
+        {
+          "name": "baseline/surface_instance_frame_votes.npz",
+          "exact": false,
+          "left_shape": [
+            2013898,
+            3
+          ],
+          "right_shape": [
+            2013898,
+            3
+          ],
+          "left_dtype": "int64",
+          "right_dtype": "int64",
+          "different_elements": 6,
+          "different_rows": 6,
+          "max_abs_difference": 2.0
+        },
+        {
+          "name": "frame_support/all_projected_candidates_exact",
+          "exact": false
+        }
+      ]
+    },
+    {
+      "name": "archive_comparison_200_B",
+      "status": "DIFFERENT",
+      "left": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/200/B/mapping",
+      "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/checkpoint_200_B/mapping",
+      "different_checks": [
+        {
+          "name": "surface/raw_order_exact",
+          "exact": false
+        },
+        {
+          "name": "baseline/surface_evidence.npz/confidence",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/margin",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/state",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "uint8",
+          "right_dtype": "uint8",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 2.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_instance_id",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 16.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 10.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/total_frame_votes",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 10.0
+        },
+        {
+          "name": "baseline/native/instance_surface.npz/instance_id",
+          "exact": false,
+          "left_shape": [
+            1529866
+          ],
+          "right_shape": [
+            1529866
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 16.0
+        },
+        {
+          "name": "baseline/surface_instance_frame_votes.npz",
+          "exact": false,
+          "left_shape": [
+            1589616,
+            3
+          ],
+          "right_shape": [
+            1589616,
+            3
+          ],
+          "left_dtype": "int64",
+          "right_dtype": "int64",
+          "different_elements": 1,
+          "different_rows": 1,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "frame_support/all_projected_candidates_exact",
+          "exact": false
+        }
+      ]
+    },
+    {
+      "name": "archive_comparison_300_B",
+      "status": "DIFFERENT",
+      "left": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping",
+      "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/checkpoint_300_B/mapping",
+      "different_checks": [
+        {
+          "name": "surface/raw_order_exact",
+          "exact": false
+        },
+        {
+          "name": "baseline/surface_evidence.npz/confidence",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/margin",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "float32",
+          "right_dtype": "float32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/state",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "uint8",
+          "right_dtype": "uint8",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 2.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_instance_id",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 16.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/top1_votes",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 13.0
+        },
+        {
+          "name": "baseline/surface_evidence.npz/total_frame_votes",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 13.0
+        },
+        {
+          "name": "baseline/native/instance_surface.npz/instance_id",
+          "exact": false,
+          "left_shape": [
+            1582282
+          ],
+          "right_shape": [
+            1582282
+          ],
+          "left_dtype": "int32",
+          "right_dtype": "int32",
+          "different_elements": 4,
+          "different_rows": 4,
+          "max_abs_difference": 16.0
+        },
+        {
+          "name": "baseline/surface_instance_frame_votes.npz",
+          "exact": false,
+          "left_shape": [
+            2046075,
+            3
+          ],
+          "right_shape": [
+            2046075,
+            3
+          ],
+          "left_dtype": "int64",
+          "right_dtype": "int64",
+          "different_elements": 2,
+          "different_rows": 2,
+          "max_abs_difference": 1.0
+        },
+        {
+          "name": "frame_support/all_projected_candidates_exact",
+          "exact": false
+        }
+      ]
+    }
+  ],
+  "performance": {
+    "main_mapping_seconds": {
+      "reference_seconds": 3235.884581340477,
+      "checkpoint_seconds": 98.90930508635938,
+      "speedup": 32.71567400574872,
+      "reduction_percent": 96.94336115519343
+    },
+    "total_seconds": {
+      "reference_seconds": 3290.49221152626,
+      "checkpoint_seconds": 158.05048961937428,
+      "speedup": 20.819247187722105,
+      "reduction_percent": 95.19675235620556
+    },
+    "main_loop_including_checkpoint_seconds": {
+      "reference_seconds": 3269.9072725642473,
+      "checkpoint_seconds": 135.61249665915966,
+      "speedup": 24.112138284590664,
+      "reduction_percent": 95.85271124361844
+    }
+  },
+  "contracts": {
+    "status": "PASS",
+    "runs": [
+      {
+        "status": "PASS",
+        "name": "checkpoint_200_A",
+        "policy": "checkpoint",
+        "frames": 100,
+        "all_prior_state_preserved": true,
+        "association_version_chain_exact": true,
+        "skipped_frame_statistics_explicitly_unavailable": true,
+        "audited_file_opens": 3369,
+        "blocked_opens": 0,
+        "source_commit": "b74e8bea78831fefe091fadf404c840cdc86dc89249c4b4a604654efa64d2ba8"
+      },
+      {
+        "status": "PASS",
+        "name": "checkpoint_200_B",
+        "policy": "checkpoint",
+        "frames": 100,
+        "all_prior_state_preserved": true,
+        "association_version_chain_exact": true,
+        "skipped_frame_statistics_explicitly_unavailable": true,
+        "audited_file_opens": 3369,
+        "blocked_opens": 0,
+        "source_commit": "e30034e30e791774cc8f9e50070f0871dafca3b691fd6001f11c0096121c2f7c"
+      },
+      {
+        "status": "PASS",
+        "name": "checkpoint_300_A",
+        "policy": "checkpoint",
+        "frames": 100,
+        "all_prior_state_preserved": true,
+        "association_version_chain_exact": true,
+        "skipped_frame_statistics_explicitly_unavailable": true,
+        "audited_file_opens": 4869,
+        "blocked_opens": 0,
+        "source_commit": "23e156e111f630c5f250cef02649b8de66d87fa014ec4b3fa752410e283d19b9"
+      },
+      {
+        "status": "PASS",
+        "name": "checkpoint_300_B",
+        "policy": "checkpoint",
+        "frames": 100,
+        "all_prior_state_preserved": true,
+        "association_version_chain_exact": true,
+        "skipped_frame_statistics_explicitly_unavailable": true,
+        "audited_file_opens": 4869,
+        "blocked_opens": 0,
+        "source_commit": "fb99ad5bb3a52d744f25c383c8330d25d20a068e98008fd479d817ea30267e1b"
+      },
+      {
+        "status": "PASS",
+        "name": "reference_200_A",
+        "policy": "every_frame",
+        "frames": 100,
+        "all_prior_state_preserved": true,
+        "association_version_chain_exact": true,
+        "skipped_frame_statistics_explicitly_unavailable": false,
+        "audited_file_opens": 3369,
+        "blocked_opens": 0,
+        "source_commit": "b74e8bea78831fefe091fadf404c840cdc86dc89249c4b4a604654efa64d2ba8"
+      }
+    ]
+  },
+  "surface_sorting_added": false,
+  "sampling": "one fresh paired benchmark on shared server; same 4-thread configuration; no downstream repair timing"
+}

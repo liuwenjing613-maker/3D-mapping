@@ -1,4 +1,4 @@
-"""Increment geometry and identities; republish strict evidence on each current TSDF."""
+"""Increment geometry and identities; rebuild strict evidence at checkpoints."""
 from map_support import *
 from dataclasses import asdict, replace
 import sys
@@ -142,11 +142,17 @@ def main():
  from PIL import Image
  import sitecustomize,resource
  wall_start=time.perf_counter();started_unix=time.time();io_start=io_counters()
+ surface_policy=os.environ.get('CVPR_SURFACE_POLICY','checkpoint')
+ if surface_policy not in ('checkpoint','every_frame'):
+  raise ValueError('CVPR_SURFACE_POLICY must be checkpoint or every_frame')
  assert os.environ.get('CVPR_ONLINE_GUARD')==str(R/'input_guard.json')
  assert sitecustomize.current_cutoff==PRIOR_RAW
  prior=read(R/'prior_commit.json');plan=read(R/'mapping_plan.json')
  if (R/'mapping_complete.json').exists():
-  assert read(R/'mapping_complete.json')['status']=='PASS';print('ALREADY_COMPLETE',flush=True);return
+  completed=read(R/'mapping_complete.json')
+  assert completed['status']=='PASS'
+  assert completed.get('surface_policy','every_frame')==surface_policy,'Use a fresh output root for a different surface policy'
+  print('ALREADY_COMPLETE',flush=True);return
  for relative in ['baseline/frame_support','baseline/native','baseline/final','association','geometry','ply','inputs/scene/results','inputs/masks']:
   (R/relative).mkdir(parents=True,exist_ok=True)
  write(R/'mapping_progress.json',dict(status='RUNNING',stage='restore_state',group=GROUP,
@@ -251,7 +257,7 @@ def main():
  restore_seconds=time.perf_counter()-wall_start
  timeline_path=old_root/'mapping_timeline.json'
  timeline=read(timeline_path) if timeline_path.exists() else []
- continuation=[];frame_times=[]
+ continuation=[];frame_times=[];surface_rebuild_frames=[]
  sums=dict(frame_input=0.,association=0.,tsdf_integrate=0.,surface_extract=0.,
   strict_surface_evidence=0.,checkpoint_export=0.,timeline_write=0.)
  loop_started=time.perf_counter()
@@ -267,17 +273,29 @@ def main():
   for item in current:lookup[(fid,item['mask_local_id'])]=item['instance_id']
   timing['association']=time.perf_counter()-tick
   tick=time.perf_counter();integration=geometry.integrate(frame);timing['tsdf_integrate']=time.perf_counter()-tick
-  frames.append(frame);tick=time.perf_counter()
-  cloud=geometry.extract_point_cloud(weight_threshold=1.).to_legacy();timing['surface_extract']=time.perf_counter()-tick
-  checkpoint_geometry_seconds=0.
-  if index==TARGET:
-   tick=time.perf_counter();temp=R/'geometry/surface.tmp.ply'
-   assert o3d.io.write_point_cloud(str(temp),cloud);temp.replace(R/'geometry/surface.ply')
-   temp=R/'geometry/tsdf_grid.tmp.npz';geometry.save(temp);temp.replace(R/'geometry/tsdf_grid.npz')
-   checkpoint_geometry_seconds=time.perf_counter()-tick
-  summary=strict_surface(frames,lookup,cloud,index,index==TARGET)
-  timing['strict_surface_evidence']=LAST_SURFACE_TIMINGS['evidence_seconds']
-  timing['checkpoint_export']=LAST_SURFACE_TIMINGS['checkpoint_export_seconds']+checkpoint_geometry_seconds
+  frames.append(frame)
+  rebuild_surface=surface_policy=='every_frame' or index==TARGET
+  timing.update(surface_extract=0.,strict_surface_evidence=0.,checkpoint_export=0.)
+  if rebuild_surface:
+   tick=time.perf_counter()
+   cloud=geometry.extract_point_cloud(weight_threshold=1.).to_legacy();timing['surface_extract']=time.perf_counter()-tick
+   checkpoint_geometry_seconds=0.
+   if index==TARGET:
+    tick=time.perf_counter();temp=R/'geometry/surface.tmp.ply'
+    assert o3d.io.write_point_cloud(str(temp),cloud);temp.replace(R/'geometry/surface.ply')
+    temp=R/'geometry/tsdf_grid.tmp.npz';geometry.save(temp);temp.replace(R/'geometry/tsdf_grid.npz')
+    checkpoint_geometry_seconds=time.perf_counter()-tick
+   summary=strict_surface(frames,lookup,cloud,index,index==TARGET)
+   timing['strict_surface_evidence']=LAST_SURFACE_TIMINGS['evidence_seconds']
+   timing['checkpoint_export']=LAST_SURFACE_TIMINGS['checkpoint_export_seconds']+checkpoint_geometry_seconds
+   surface_rebuild_frames.append(index)
+  else:
+   # No current surface statistics exist until the checkpoint. Do not reuse stale values.
+   summary=dict(processed_frames=index,last_frame_id=fid,surface_points=None,state_counts=None,
+    native_assigned_points=None,effective_votes=None,maximum_votes_per_point=None,
+    same_frame_uniqueness_verified=None,observed_frame_ids=[f.frame_id for f in frames])
+  summary.update(surface_policy=surface_policy,surface_rebuilt=rebuild_surface,
+   surface_statistics_current=rebuild_surface)
   summary.update(status='RUNNING',stage='incremental_mapping',group=GROUP,target_processed_frames=TARGET,
    prior_processed_frames=PRIOR_COUNT,integration=integration,persistent_instances=len(associator.instances),
    seconds=time.perf_counter()-loop_started,association_map_version_before=before_version,
@@ -296,6 +314,7 @@ def main():
   timing.update(frame_id=fid,processed_frames=index,total_seconds=time.perf_counter()-frame_started)
   frame_times.append(timing)
   write(R/'mapping_timing.json',dict(status='RUNNING',group=GROUP,target=TARGET,processed_frames=index,
+   surface_policy=surface_policy,surface_rebuild_frames=surface_rebuild_frames,
    restore_seconds=restore_seconds,stage_seconds=sums,frames=frame_times))
   print('PROCESSED',GROUP,index,fid,summary['surface_points'],summary['state_counts'],flush=True)
  main_loop_seconds=time.perf_counter()-loop_started
@@ -321,6 +340,7 @@ def main():
  for path,digest in fixed_hashes.items():assert sha(path)==digest
  usage=resource.getrusage(resource.RUSAGE_SELF);io_end=io_counters()
  timings=dict(status='PASS',group=GROUP,target=TARGET,processed_frames=TARGET,
+  surface_policy=surface_policy,surface_rebuild_frames=surface_rebuild_frames,
   total_seconds=time.perf_counter()-wall_start,restore_seconds=restore_seconds,
   main_mapping_seconds=main_loop_seconds-sums['checkpoint_export'],
   main_loop_including_checkpoint_seconds=main_loop_seconds,
@@ -333,7 +353,10 @@ def main():
  fixed_guard=read(R/'input_guard.json');fixed_guard['initial_cutoff']=CUTOFF
  write(ROOT/'input_guard.json',fixed_guard)
  report=dict(status='PASS',group=GROUP,frame_count=TARGET,frame_ids=list(FIDS),last_frame_id=CUTOFF,
-  geometry_incremental=True,association_incremental=True,strict_republication_after_every_frame=True,
+  geometry_incremental=True,association_incremental=True,
+  surface_policy=surface_policy,surface_rebuild_frames=surface_rebuild_frames,
+  strict_republication_after_every_frame=surface_policy=='every_frame',
+  checkpoint_strict_republication_complete=surface_rebuild_frames[-1]==TARGET,
   GT_used=False,future_inputs_used=False,future_baseline_used=False,repair_applied=True,
   repair_trigger=PRIOR_COUNT,prior_commit_sha256=prior['prior_commit_sha256'],
   current_checkpoint_repair_applied=False,stopped_before_current_repair=True,main_mapping_paused=True,
@@ -350,5 +373,6 @@ if __name__=='__main__':
  try:main()
  except Exception:
   import traceback
-  write(R/'mapping_failure.json',dict(status='FAILED',group=GROUP,target=TARGET,traceback=traceback.format_exc(),unix=time.time()))
+  if not (R/'mapping_complete.json').exists():
+   write(R/'mapping_failure.json',dict(status='FAILED',group=GROUP,target=TARGET,traceback=traceback.format_exc(),unix=time.time()))
   raise

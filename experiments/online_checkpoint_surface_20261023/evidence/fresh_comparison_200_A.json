@@ -1,0 +1,857 @@
+{
+  "status": "DIFFERENT",
+  "left": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/reference_200_A/mapping",
+  "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/checkpoint_200_A/mapping",
+  "exact_without_float_tolerance": true,
+  "alignment": "one global permutation by xyz, normals, rgb; identical-geometry ties by full evidence/native/final record; all votes, supports and graph edges checked with the same permutation; TSDF by block key",
+  "duplicate_coordinate_points": [
+    6,
+    6
+  ],
+  "checks": [
+    {
+      "name": "prior_commit.json",
+      "exact": true
+    },
+    {
+      "name": "association/associations.jsonl",
+      "exact": true
+    },
+    {
+      "name": "association/observations.jsonl",
+      "exact": true
+    },
+    {
+      "name": "association/observation_support_3cm.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "association/observation_support_3cm.npz/assignment_versions",
+      "exact": true,
+      "left_shape": [
+        7353
+      ],
+      "right_shape": [
+        7353
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/format_version",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/frame_ids",
+      "exact": true,
+      "left_shape": [
+        7353
+      ],
+      "right_shape": [
+        7353
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/instance_ids",
+      "exact": true,
+      "left_shape": [
+        7353
+      ],
+      "right_shape": [
+        7353
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/last_processed_frame_id",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/map_version",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/next_instance_id",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/observation_ids",
+      "exact": true,
+      "left_shape": [
+        7353
+      ],
+      "right_shape": [
+        7353
+      ],
+      "left_dtype": "<U58",
+      "right_dtype": "<U58"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/offsets",
+      "exact": true,
+      "left_shape": [
+        7354
+      ],
+      "right_shape": [
+        7354
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/parameters_json",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "<U455",
+      "right_dtype": "<U455"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/revision_events_json",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "<U988155",
+      "right_dtype": "<U988155"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/source_mask_sha256",
+      "exact": true,
+      "left_shape": [
+        7353
+      ],
+      "right_shape": [
+        7353
+      ],
+      "left_dtype": "<U64",
+      "right_dtype": "<U64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/voxel_coordinates",
+      "exact": true,
+      "left_shape": [
+        1344862,
+        3
+      ],
+      "right_shape": [
+        1344862,
+        3
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/voxel_size_m",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "association/identity_counts.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "association/identity_counts.npz/frame_votes",
+      "exact": true,
+      "left_shape": [
+        173980
+      ],
+      "right_shape": [
+        173980
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/instance_ids",
+      "exact": true,
+      "left_shape": [
+        173980
+      ],
+      "right_shape": [
+        173980
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/map_version",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/identity_counts.npz/offsets",
+      "exact": true,
+      "left_shape": [
+        146186
+      ],
+      "right_shape": [
+        146186
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/identity_counts.npz/total_frame_instance_votes",
+      "exact": true,
+      "left_shape": [
+        146185
+      ],
+      "right_shape": [
+        146185
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/unique_support_frames",
+      "exact": true,
+      "left_shape": [
+        146185
+      ],
+      "right_shape": [
+        146185
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/voxel_coordinates",
+      "exact": true,
+      "left_shape": [
+        146185,
+        3
+      ],
+      "right_shape": [
+        146185,
+        3
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/voxel_size_m",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "tsdf_grid/keys",
+      "exact": true
+    },
+    {
+      "name": "tsdf_grid/CPU:0",
+      "exact": true,
+      "left_shape": [],
+      "right_shape": [],
+      "left_dtype": "uint8",
+      "right_dtype": "uint8"
+    },
+    {
+      "name": "tsdf_grid/attr_name_color",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/attr_name_tsdf",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/attr_name_weight",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/block_resolution",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "tsdf_grid/key",
+      "exact": true,
+      "left_shape": [
+        59960,
+        3
+      ],
+      "right_shape": [
+        59960,
+        3
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/value_000",
+      "exact": true,
+      "left_shape": [
+        59960,
+        8,
+        8,
+        8,
+        1
+      ],
+      "right_shape": [
+        59960,
+        8,
+        8,
+        8,
+        1
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "tsdf_grid/value_001",
+      "exact": true,
+      "left_shape": [
+        59960,
+        8,
+        8,
+        8,
+        1
+      ],
+      "right_shape": [
+        59960,
+        8,
+        8,
+        8,
+        1
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "tsdf_grid/value_002",
+      "exact": true,
+      "left_shape": [
+        59960,
+        8,
+        8,
+        8,
+        3
+      ],
+      "right_shape": [
+        59960,
+        8,
+        8,
+        8,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "tsdf_grid/voxel_size",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "surface/raw_order_exact",
+      "exact": false
+    },
+    {
+      "name": "surface/xyz_normals_rgb_aligned",
+      "exact": true,
+      "left_shape": [
+        1529866,
+        9
+      ],
+      "right_shape": [
+        1529866,
+        9
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "baseline/surface_evidence.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "baseline/surface_evidence.npz/confidence",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32",
+      "different_elements": 6,
+      "different_rows": 6,
+      "max_abs_difference": 1.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/margin",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32",
+      "different_elements": 6,
+      "different_rows": 6,
+      "max_abs_difference": 1.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/rgb",
+      "exact": true,
+      "left_shape": [
+        1529866,
+        3
+      ],
+      "right_shape": [
+        1529866,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/surface_evidence.npz/state",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "uint8",
+      "right_dtype": "uint8",
+      "different_elements": 6,
+      "different_rows": 6,
+      "max_abs_difference": 3.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top1_instance_id",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 6,
+      "different_rows": 6,
+      "max_abs_difference": 265.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top1_votes",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 6,
+      "different_rows": 6,
+      "max_abs_difference": 11.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top2_instance_id",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 2,
+      "different_rows": 2,
+      "max_abs_difference": 14.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top2_votes",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 2,
+      "different_rows": 2,
+      "max_abs_difference": 5.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/total_frame_votes",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 6,
+      "different_rows": 6,
+      "max_abs_difference": 17.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/xyz_m",
+      "exact": true,
+      "left_shape": [
+        1529866,
+        3
+      ],
+      "right_shape": [
+        1529866,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/instance_id",
+      "exact": false,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 34.0
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/rgb",
+      "exact": true,
+      "left_shape": [
+        1529866,
+        3
+      ],
+      "right_shape": [
+        1529866,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/xyz_m",
+      "exact": true,
+      "left_shape": [
+        1529866,
+        3
+      ],
+      "right_shape": [
+        1529866,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/instance_id",
+      "exact": true,
+      "left_shape": [
+        1529866
+      ],
+      "right_shape": [
+        1529866
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/native_instance_ids",
+      "exact": true,
+      "left_shape": [
+        74
+      ],
+      "right_shape": [
+        74
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/rgb",
+      "exact": true,
+      "left_shape": [
+        1529866,
+        3
+      ],
+      "right_shape": [
+        1529866,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/xyz_m",
+      "exact": true,
+      "left_shape": [
+        1529866,
+        3
+      ],
+      "right_shape": [
+        1529866,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/surface_instance_frame_votes.npz",
+      "exact": false,
+      "left_shape": [
+        1591827,
+        3
+      ],
+      "right_shape": [
+        1591827,
+        3
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64",
+      "different_elements": 5,
+      "different_rows": 5,
+      "max_abs_difference": 2.0
+    },
+    {
+      "name": "frame_support/files",
+      "exact": true
+    },
+    {
+      "name": "frame_support/all_projected_candidates_exact",
+      "exact": false
+    },
+    {
+      "name": "review_graph/data",
+      "exact": true,
+      "left_shape": [
+        13940054
+      ],
+      "right_shape": [
+        13940054
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "review_graph/indices",
+      "exact": true,
+      "left_shape": [
+        13940054
+      ],
+      "right_shape": [
+        13940054
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "review_graph/indptr",
+      "exact": true,
+      "left_shape": [
+        1529867
+      ],
+      "right_shape": [
+        1529867
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/frame_vote_audit.json",
+      "exact": true
+    }
+  ],
+  "different_frame_support_files": [
+    "f000075.npz",
+    "f000080.npz",
+    "f000085.npz",
+    "f000090.npz",
+    "f000095.npz",
+    "f000100.npz",
+    "f000115.npz",
+    "f000185.npz",
+    "f000190.npz",
+    "f000195.npz",
+    "f000200.npz",
+    "f000205.npz",
+    "f000210.npz",
+    "f000215.npz",
+    "f000220.npz",
+    "f000225.npz",
+    "f000230.npz",
+    "f000260.npz",
+    "f000270.npz",
+    "f000725.npz",
+    "f000730.npz",
+    "f000735.npz",
+    "f000740.npz",
+    "f000745.npz",
+    "f000750.npz",
+    "f000765.npz",
+    "f000795.npz",
+    "f000815.npz",
+    "f000825.npz",
+    "f000835.npz",
+    "f000860.npz",
+    "f000920.npz",
+    "f000925.npz",
+    "f000935.npz",
+    "f000970.npz",
+    "f000985.npz"
+  ],
+  "timing": {
+    "left": {
+      "total_seconds": 3290.49221152626,
+      "restore_seconds": 11.699072811752558,
+      "main_mapping_seconds": 3235.884581340477,
+      "main_loop_including_checkpoint_seconds": 3269.9072725642473,
+      "checkpoint_export_seconds": 42.58276682719588,
+      "stage_seconds": {
+        "frame_input": 10.457572950050235,
+        "association": 18.213394915685058,
+        "tsdf_integrate": 14.807381773367524,
+        "surface_extract": 118.70615324564278,
+        "strict_surface_evidence": 3072.1839765422046,
+        "checkpoint_export": 34.02269122377038,
+        "timeline_write": 1.173006935045123
+      }
+    },
+    "right": {
+      "total_seconds": 158.05048961937428,
+      "restore_seconds": 12.734645949676633,
+      "main_mapping_seconds": 98.90930508635938,
+      "main_loop_including_checkpoint_seconds": 135.61249665915966,
+      "checkpoint_export_seconds": 45.37008319608867,
+      "stage_seconds": {
+        "frame_input": 11.6618050057441,
+        "association": 17.5303574167192,
+        "tsdf_integrate": 12.388346824795008,
+        "surface_extract": 1.3126202672719955,
+        "strict_surface_evidence": 54.779698587954044,
+        "checkpoint_export": 36.70319157280028,
+        "timeline_write": 1.0947360787540674
+      }
+    }
+  }
+}

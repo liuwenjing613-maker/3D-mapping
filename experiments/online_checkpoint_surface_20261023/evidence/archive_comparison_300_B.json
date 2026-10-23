@@ -1,0 +1,838 @@
+{
+  "status": "DIFFERENT",
+  "left": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/mapping",
+  "right": "/data/chenkejun/CVPR/results/online_checkpoint_surface_20261023/checkpoint_300_B/mapping",
+  "exact_without_float_tolerance": true,
+  "alignment": "one global permutation by xyz, normals, rgb; identical-geometry ties by full evidence/native/final record; all votes, supports and graph edges checked with the same permutation; TSDF by block key",
+  "duplicate_coordinate_points": [
+    7,
+    7
+  ],
+  "checks": [
+    {
+      "name": "prior_commit.json",
+      "exact": true
+    },
+    {
+      "name": "association/associations.jsonl",
+      "exact": true
+    },
+    {
+      "name": "association/observations.jsonl",
+      "exact": true
+    },
+    {
+      "name": "association/observation_support_3cm.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "association/observation_support_3cm.npz/assignment_versions",
+      "exact": true,
+      "left_shape": [
+        12659
+      ],
+      "right_shape": [
+        12659
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/format_version",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/frame_ids",
+      "exact": true,
+      "left_shape": [
+        12659
+      ],
+      "right_shape": [
+        12659
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/instance_ids",
+      "exact": true,
+      "left_shape": [
+        12659
+      ],
+      "right_shape": [
+        12659
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/last_processed_frame_id",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/map_version",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/next_instance_id",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/observation_ids",
+      "exact": true,
+      "left_shape": [
+        12659
+      ],
+      "right_shape": [
+        12659
+      ],
+      "left_dtype": "<U74",
+      "right_dtype": "<U74"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/offsets",
+      "exact": true,
+      "left_shape": [
+        12660
+      ],
+      "right_shape": [
+        12660
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/parameters_json",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "<U455",
+      "right_dtype": "<U455"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/revision_events_json",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "<U2080889",
+      "right_dtype": "<U2080889"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/source_mask_sha256",
+      "exact": true,
+      "left_shape": [
+        12659
+      ],
+      "right_shape": [
+        12659
+      ],
+      "left_dtype": "<U64",
+      "right_dtype": "<U64"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/voxel_coordinates",
+      "exact": true,
+      "left_shape": [
+        2195928,
+        3
+      ],
+      "right_shape": [
+        2195928,
+        3
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/observation_support_3cm.npz/voxel_size_m",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "association/identity_counts.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "association/identity_counts.npz/frame_votes",
+      "exact": true,
+      "left_shape": [
+        223038
+      ],
+      "right_shape": [
+        223038
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/instance_ids",
+      "exact": true,
+      "left_shape": [
+        223038
+      ],
+      "right_shape": [
+        223038
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/map_version",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/identity_counts.npz/offsets",
+      "exact": true,
+      "left_shape": [
+        160506
+      ],
+      "right_shape": [
+        160506
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "association/identity_counts.npz/total_frame_instance_votes",
+      "exact": true,
+      "left_shape": [
+        160505
+      ],
+      "right_shape": [
+        160505
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/unique_support_frames",
+      "exact": true,
+      "left_shape": [
+        160505
+      ],
+      "right_shape": [
+        160505
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/voxel_coordinates",
+      "exact": true,
+      "left_shape": [
+        160505,
+        3
+      ],
+      "right_shape": [
+        160505,
+        3
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "association/identity_counts.npz/voxel_size_m",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "tsdf_grid/keys",
+      "exact": true
+    },
+    {
+      "name": "tsdf_grid/CPU:0",
+      "exact": true,
+      "left_shape": [],
+      "right_shape": [],
+      "left_dtype": "uint8",
+      "right_dtype": "uint8"
+    },
+    {
+      "name": "tsdf_grid/attr_name_color",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/attr_name_tsdf",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/attr_name_weight",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/block_resolution",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64"
+    },
+    {
+      "name": "tsdf_grid/key",
+      "exact": true,
+      "left_shape": [
+        64707,
+        3
+      ],
+      "right_shape": [
+        64707,
+        3
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "tsdf_grid/value_000",
+      "exact": true,
+      "left_shape": [
+        64707,
+        8,
+        8,
+        8,
+        1
+      ],
+      "right_shape": [
+        64707,
+        8,
+        8,
+        8,
+        1
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "tsdf_grid/value_001",
+      "exact": true,
+      "left_shape": [
+        64707,
+        8,
+        8,
+        8,
+        1
+      ],
+      "right_shape": [
+        64707,
+        8,
+        8,
+        8,
+        1
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "tsdf_grid/value_002",
+      "exact": true,
+      "left_shape": [
+        64707,
+        8,
+        8,
+        8,
+        3
+      ],
+      "right_shape": [
+        64707,
+        8,
+        8,
+        8,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "tsdf_grid/voxel_size",
+      "exact": true,
+      "left_shape": [
+        1
+      ],
+      "right_shape": [
+        1
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "surface/raw_order_exact",
+      "exact": false
+    },
+    {
+      "name": "surface/xyz_normals_rgb_aligned",
+      "exact": true,
+      "left_shape": [
+        1582282,
+        9
+      ],
+      "right_shape": [
+        1582282,
+        9
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "baseline/surface_evidence.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "baseline/surface_evidence.npz/confidence",
+      "exact": false,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 1.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/margin",
+      "exact": false,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 1.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/rgb",
+      "exact": true,
+      "left_shape": [
+        1582282,
+        3
+      ],
+      "right_shape": [
+        1582282,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/surface_evidence.npz/state",
+      "exact": false,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "uint8",
+      "right_dtype": "uint8",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 2.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top1_instance_id",
+      "exact": false,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 16.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top1_votes",
+      "exact": false,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 13.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top2_instance_id",
+      "exact": true,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/surface_evidence.npz/top2_votes",
+      "exact": true,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/surface_evidence.npz/total_frame_votes",
+      "exact": false,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 13.0
+    },
+    {
+      "name": "baseline/surface_evidence.npz/xyz_m",
+      "exact": true,
+      "left_shape": [
+        1582282,
+        3
+      ],
+      "right_shape": [
+        1582282,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/instance_id",
+      "exact": false,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32",
+      "different_elements": 4,
+      "different_rows": 4,
+      "max_abs_difference": 16.0
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/rgb",
+      "exact": true,
+      "left_shape": [
+        1582282,
+        3
+      ],
+      "right_shape": [
+        1582282,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/native/instance_surface.npz/xyz_m",
+      "exact": true,
+      "left_shape": [
+        1582282,
+        3
+      ],
+      "right_shape": [
+        1582282,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/keys",
+      "exact": true
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/instance_id",
+      "exact": true,
+      "left_shape": [
+        1582282
+      ],
+      "right_shape": [
+        1582282
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/native_instance_ids",
+      "exact": true,
+      "left_shape": [
+        81
+      ],
+      "right_shape": [
+        81
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/rgb",
+      "exact": true,
+      "left_shape": [
+        1582282,
+        3
+      ],
+      "right_shape": [
+        1582282,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/final/instance_surface.npz/xyz_m",
+      "exact": true,
+      "left_shape": [
+        1582282,
+        3
+      ],
+      "right_shape": [
+        1582282,
+        3
+      ],
+      "left_dtype": "float32",
+      "right_dtype": "float32"
+    },
+    {
+      "name": "baseline/surface_instance_frame_votes.npz",
+      "exact": false,
+      "left_shape": [
+        2046075,
+        3
+      ],
+      "right_shape": [
+        2046075,
+        3
+      ],
+      "left_dtype": "int64",
+      "right_dtype": "int64",
+      "different_elements": 2,
+      "different_rows": 2,
+      "max_abs_difference": 1.0
+    },
+    {
+      "name": "frame_support/files",
+      "exact": true
+    },
+    {
+      "name": "frame_support/all_projected_candidates_exact",
+      "exact": false
+    },
+    {
+      "name": "review_graph/data",
+      "exact": true,
+      "left_shape": [
+        14417082
+      ],
+      "right_shape": [
+        14417082
+      ],
+      "left_dtype": "float64",
+      "right_dtype": "float64"
+    },
+    {
+      "name": "review_graph/indices",
+      "exact": true,
+      "left_shape": [
+        14417082
+      ],
+      "right_shape": [
+        14417082
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "review_graph/indptr",
+      "exact": true,
+      "left_shape": [
+        1582283
+      ],
+      "right_shape": [
+        1582283
+      ],
+      "left_dtype": "int32",
+      "right_dtype": "int32"
+    },
+    {
+      "name": "baseline/frame_vote_audit.json",
+      "exact": true
+    }
+  ],
+  "different_frame_support_files": [
+    "f000185.npz",
+    "f000190.npz",
+    "f000195.npz",
+    "f000200.npz",
+    "f000205.npz",
+    "f000210.npz",
+    "f000215.npz",
+    "f000220.npz",
+    "f000225.npz",
+    "f000230.npz",
+    "f000730.npz",
+    "f000745.npz",
+    "f000770.npz",
+    "f000920.npz",
+    "f001045.npz",
+    "f001070.npz",
+    "f001095.npz",
+    "f001250.npz",
+    "f001285.npz",
+    "f001290.npz",
+    "f001330.npz",
+    "f001340.npz",
+    "f001490.npz"
+  ],
+  "timing": {
+    "left": {
+      "total_seconds": 6016.435926977545,
+      "restore_seconds": 25.310121532529593,
+      "main_mapping_seconds": 5939.917905651033,
+      "main_loop_including_checkpoint_seconds": 5976.892179645598,
+      "checkpoint_export_seconds": 50.59746242873371,
+      "stage_seconds": {
+        "frame_input": 10.680338414385915,
+        "association": 22.48288068547845,
+        "tsdf_integrate": 13.967647640034556,
+        "surface_extract": 144.6807321794331,
+        "strict_surface_evidence": 5745.612738389522,
+        "checkpoint_export": 36.97427399456501,
+        "timeline_write": 2.011906262487173
+      }
+    },
+    "right": {
+      "total_seconds": 219.47258309088647,
+      "restore_seconds": 26.922313751652837,
+      "main_mapping_seconds": 129.69042800553143,
+      "main_loop_including_checkpoint_seconds": 172.89546365477145,
+      "checkpoint_export_seconds": 62.201372127979994,
+      "stage_seconds": {
+        "frame_input": 10.993621550500393,
+        "association": 21.340936137363315,
+        "tsdf_integrate": 12.139084737747908,
+        "surface_extract": 1.1390715166926384,
+        "strict_surface_evidence": 82.03331302292645,
+        "checkpoint_export": 43.20503564924002,
+        "timeline_write": 1.9488570094108582
+      }
+    }
+  }
+}

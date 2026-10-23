@@ -7,7 +7,13 @@ C=BASEC/'continuation300'
 TARGET=int(os.environ.get('CVPR_CHECKPOINT',os.environ.get('CVPR_TARGET_COUNT','0')))
 GROUP=os.environ.get('CVPR_TRACK_GROUP')
 assert TARGET in (200,300) and GROUP in ('A','B')
-ROOT=TOP/'continuation300'/str(TARGET)/GROUP
+if not os.environ.get('CVPR_MAPPING_RUN_ROOT'):
+ raise ValueError('Set CVPR_MAPPING_RUN_ROOT to a fresh directory under /data/chenkejun/CVPR; archived outputs must not be reused')
+ROOT=Path(os.environ['CVPR_MAPPING_RUN_ROOT']).resolve()
+if not ROOT.is_relative_to(Path('/data/chenkejun/CVPR')) or ROOT==Path('/data/chenkejun/CVPR'):
+ raise ValueError('CVPR_MAPPING_RUN_ROOT must be a subdirectory of /data/chenkejun/CVPR')
+if ROOT.is_relative_to(TOP.resolve()):
+ raise ValueError('CVPR_MAPPING_RUN_ROOT must not be inside the archived experiment')
 R=ROOT/'mapping'
 FIDS=tuple(range(0,TARGET*5,5))
 PRIOR_COUNT=TARGET-100
@@ -32,6 +38,8 @@ def prior_paths():
   return TOP/'repair100'/GROUP/'commit_complete.json',TOP/'prefix100'
  return TOP/'continuation300'/'200'/GROUP/'repair/commit_complete.json',TOP/'continuation300'/'200'/GROUP/'mapping'
 def setup():
+ if (R/'mapping_complete.json').exists():
+  raise FileExistsError('Completed mapping output is immutable; choose a fresh CVPR_MAPPING_RUN_ROOT')
  pointer,previous=prior_paths();prior=read(pointer)
  assert prior['status']=='PASS' and prior['group']==GROUP
  assert prior['processed_frames']==PRIOR_COUNT and prior['last_raw_frame']==PRIOR_RAW
