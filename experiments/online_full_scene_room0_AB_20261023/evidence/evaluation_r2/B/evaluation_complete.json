@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "branch": "B",
+  "checkpoint": 400,
+  "evaluator_worktree": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009",
+  "evaluation_profile": "object_observed_repair",
+  "profile_revision": 2,
+  "frozen": false,
+  "scene_evaluable_GT": 72,
+  "identical_geometry_verified": true,
+  "surface_points": 1633034,
+  "surface_label_changes_at400": 44231,
+  "xyz_sha256": "1912f41aadc5408f9d99ca420cffd17a1f96232d218b20d766969c70ec8d0c24",
+  "before_surface": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/mapping/baseline/final/instance_surface.npz",
+  "before_surface_sha256": "fd2219754b342fe6906cfaf81466eaeac1512685c6acea05680c4c9ebf148a81",
+  "after_surface": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+  "after_surface_sha256": "8c4249c030fd4b178c75c1a7e25863cf0e889250b622bcc1e68dfc1a892f9417",
+  "timings": [
+    {
+      "stage": "before",
+      "seconds": 14.481566214933991,
+      "command": [
+        "/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python",
+        "-B",
+        "-m",
+        "unified_eval.cli",
+        "adapt-surface",
+        "--gt",
+        "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz",
+        "--surface",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/mapping/baseline/final/instance_surface.npz",
+        "--fixed-correspondence",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/fixed_correspondence.npz",
+        "--source-provenance",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/source_provenance.json",
+        "--method-name",
+        "online_checkpoint_room0_B_400_before",
+        "--method-commit",
+        "4e7d3c62c0c6876c1e6c08e988f85d6d53e7604c",
+        "--out",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/before"
+      ]
+    },
+    {
+      "stage": "after",
+      "seconds": 11.664111692458391,
+      "command": [
+        "/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python",
+        "-B",
+        "-m",
+        "unified_eval.cli",
+        "adapt-surface",
+        "--gt",
+        "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz",
+        "--surface",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+        "--fixed-correspondence",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/fixed_correspondence.npz",
+        "--source-provenance",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/source_provenance.json",
+        "--method-name",
+        "online_checkpoint_room0_B_400_after",
+        "--method-commit",
+        "4e7d3c62c0c6876c1e6c08e988f85d6d53e7604c",
+        "--out",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/after"
+      ]
+    },
+    {
+      "stage": "pair",
+      "seconds": 0.5339347999542952,
+      "command": [
+        "/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python",
+        "-B",
+        "-m",
+        "unified_eval.cli",
+        "eval-repair-pair",
+        "--gt",
+        "/data/chenkejun/CVPR/results/v3_object_observed_repair_20261009/mesh/room0/gt.npz",
+        "--before",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/before/canonical_prediction.npz",
+        "--after",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/after/canonical_prediction.npz",
+        "--out",
+        "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/evaluation_r2/B/pair"
+      ]
+    }
+  ]
+}

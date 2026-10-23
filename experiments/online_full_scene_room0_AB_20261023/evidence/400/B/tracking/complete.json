@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "checkpoint": 400,
+  "group": "B",
+  "seconds": 1813.1417169831693,
+  "timing_scope": "this tracking orchestration invocation; includes GPU waiting; subprocess times are nested",
+  "process_timings": [
+    {
+      "stage": "prepare",
+      "checkpoint": 400,
+      "group": "B",
+      "seconds": 5.008373033255339,
+      "gpu_wait_seconds": 0,
+      "started_unix": 1792751488.411441,
+      "ended_unix": 1792751493.4198177,
+      "pid": 2913535,
+      "gpu": null,
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "stage": "queue",
+      "checkpoint": 400,
+      "group": "B",
+      "seconds": 1529.8409020919353,
+      "gpu_wait_seconds": 0,
+      "started_unix": 1792751493.4237192,
+      "ended_unix": 1792753023.2646248,
+      "pid": 2913757,
+      "gpu": null,
+      "returncode": 0,
+      "status": "PASS"
+    },
+    {
+      "stage": "gate",
+      "checkpoint": 400,
+      "group": "B",
+      "seconds": 278.25267850607634,
+      "gpu_wait_seconds": 0,
+      "started_unix": 1792753023.277739,
+      "ended_unix": 1792753301.5304184,
+      "pid": 2985063,
+      "gpu": null,
+      "returncode": 0,
+      "status": "PASS"
+    }
+  ],
+  "cases": 20,
+  "objects": 26,
+  "tracking_queue_seconds": 1528.9986716099083,
+  "inferred_cases": 16,
+  "reused_cases": 4,
+  "gate_seconds": 250.88862334750593,
+  "raw_frames": 1996,
+  "raw_cutoff": 1995,
+  "current_checkpoint_repaired": false
+}
