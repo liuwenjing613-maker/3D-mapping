@@ -1,0 +1,208 @@
+{
+  "status": "DIFFERENT",
+  "each_mode_inherits_its_own_new_commit": true,
+  "same_starting_frame100_commit": true,
+  "starting_frame100_commit_path": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/repair100/A/commit_complete.json",
+  "starting_frame100_commit_sha256": "b74e8bea78831fefe091fadf404c840cdc86dc89249c4b4a604654efa64d2ba8",
+  "frame201_new_association_decisions_exact": true,
+  "inheritance": [
+    {
+      "mode": "reference",
+      "status": "PASS",
+      "processed_frame": 201,
+      "raw_frame": 1000,
+      "new_commit_checkpoint_sha256": "449d157d121b2904beb819a1ca61e16ee38549c2180a6a5001a29e6849492189",
+      "map_version_before": 203,
+      "map_version_after": 204,
+      "frame201_observations": 36,
+      "restored_entries": 9744,
+      "journal_pixel_and_PID_restore_exact": true,
+      "all_committed_entries_preserved_after_frame201": true
+    },
+    {
+      "mode": "checkpoint",
+      "status": "PASS",
+      "processed_frame": 201,
+      "raw_frame": 1000,
+      "new_commit_checkpoint_sha256": "f19f687dee02fa48d04c9809ab93f662091c656242d1573f60f63dc1b31596be",
+      "map_version_before": 203,
+      "map_version_after": 204,
+      "frame201_observations": 36,
+      "restored_entries": 9745,
+      "journal_pixel_and_PID_restore_exact": true,
+      "all_committed_entries_preserved_after_frame201": true
+    }
+  ],
+  "frame201_equivalence": [
+    {
+      "file": "association/associations.jsonl",
+      "exact": true
+    },
+    {
+      "file": "association/observations.jsonl",
+      "exact": true
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "format_version",
+      "exact": true
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "observation_ids",
+      "exact": false
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "frame_ids",
+      "exact": false
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "source_mask_sha256",
+      "exact": false
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "instance_ids",
+      "exact": false
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "assignment_versions",
+      "exact": false
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "offsets",
+      "exact": false
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "voxel_coordinates",
+      "exact": false
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "voxel_size_m",
+      "exact": true
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "next_instance_id",
+      "exact": true
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "last_processed_frame_id",
+      "exact": true
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "map_version",
+      "exact": true
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "parameters_json",
+      "exact": true
+    },
+    {
+      "file": "association/observation_support_3cm.npz",
+      "key": "revision_events_json",
+      "exact": false
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "voxel_coordinates",
+      "exact": true
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "offsets",
+      "exact": false
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "instance_ids",
+      "exact": false
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "frame_votes",
+      "exact": false
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "total_frame_instance_votes",
+      "exact": false
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "unique_support_frames",
+      "exact": false
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "voxel_size_m",
+      "exact": true
+    },
+    {
+      "file": "association/identity_counts.npz",
+      "key": "map_version",
+      "exact": true
+    }
+  ],
+  "immutable_inputs": [
+    {
+      "mode": "reference",
+      "status": "PASS",
+      "mapping_files_verified": 9,
+      "prior100_commit_unchanged": true
+    },
+    {
+      "mode": "checkpoint",
+      "status": "PASS",
+      "mapping_files_verified": 9,
+      "prior100_commit_unchanged": true
+    }
+  ],
+  "causal_access_audit": [
+    {
+      "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/reference",
+      "recorded_nonprobe_opens": 177567,
+      "blocked_nonprobe_opens": 0,
+      "violations": []
+    },
+    {
+      "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/reference/frame201",
+      "recorded_nonprobe_opens": 2988,
+      "blocked_nonprobe_opens": 0,
+      "violations": []
+    },
+    {
+      "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/checkpoint",
+      "recorded_nonprobe_opens": 169404,
+      "blocked_nonprobe_opens": 0,
+      "violations": []
+    },
+    {
+      "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/checkpoint/frame201",
+      "recorded_nonprobe_opens": 2988,
+      "blocked_nonprobe_opens": 0,
+      "violations": []
+    },
+    {
+      "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/fixed_reference",
+      "recorded_nonprobe_opens": 81057,
+      "blocked_nonprobe_opens": 0,
+      "violations": []
+    },
+    {
+      "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/fixed_checkpoint",
+      "recorded_nonprobe_opens": 79423,
+      "blocked_nonprobe_opens": 0,
+      "violations": []
+    }
+  ]
+}

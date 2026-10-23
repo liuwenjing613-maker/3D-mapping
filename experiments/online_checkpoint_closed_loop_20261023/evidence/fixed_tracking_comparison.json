@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "left": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/fixed_reference",
+  "right": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/fixed_checkpoint",
+  "checks": [
+    {
+      "name": "selected_seed_raw_metadata",
+      "exact": false,
+      "counts": [
+        28,
+        28
+      ],
+      "required": false,
+      "note": "Raw ROI UID hashes temporary point indices; source paths contain the isolated run root."
+    },
+    {
+      "name": "selected_seed_sources_spatial_UID_and_path_normalized",
+      "exact": true
+    },
+    {
+      "name": "seed_frame_and_pixel_multiset",
+      "exact": true
+    },
+    {
+      "name": "no_new_exact_duplicate_seeds",
+      "exact": true,
+      "duplicate_counts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ordered_cases_and_full_inference_fingerprints",
+      "exact": true,
+      "counts": [
+        21,
+        21
+      ]
+    },
+    {
+      "name": "source_family_id_and_pixel_overlap",
+      "exact": true
+    },
+    {
+      "name": "dense_SAM2_label_pixels",
+      "exact": true,
+      "files": 20916,
+      "differences": []
+    },
+    {
+      "name": "dense_SAM2_areas",
+      "exact": true,
+      "differences": []
+    },
+    {
+      "name": "Gate_accept_reject_decisions",
+      "exact": true,
+      "differences": []
+    },
+    {
+      "name": "Gate_object_decisions_and_rejection_reasons",
+      "exact": true,
+      "differences": []
+    },
+    {
+      "name": "Gate_accepted_mask_pixels",
+      "exact": true,
+      "differences": []
+    },
+    {
+      "name": "Gate_all_frame_records_including_metrics",
+      "exact": true,
+      "different_frames": []
+    },
+    {
+      "name": "repair_persistent_ID_objects",
+      "exact": true
+    },
+    {
+      "name": "repair_instance_base",
+      "exact": true
+    }
+  ],
+  "candidate_unification_performed": false,
+  "zero_float_tolerance": true,
+  "metadata_alignment": "Run-root paths normalized; ROI UID aligned by exact full coordinate multiset from its original catalog surface. Raw metadata difference retained as diagnostic."
+}

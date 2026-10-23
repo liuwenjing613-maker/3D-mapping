@@ -1,0 +1,950 @@
+{
+  "tracking_comparison": {
+    "status": "DIFFERENT",
+    "comparisons": 14,
+    "required_differences": 4,
+    "key_checks": [
+      {
+        "name": "dense_SAM2_label_pixels",
+        "exact": true,
+        "files": 20916,
+        "differences": []
+      },
+      {
+        "name": "Gate_accept_reject_decisions",
+        "exact": false,
+        "differences": [
+          {
+            "frame": 445,
+            "left": [
+              15,
+              20,
+              23,
+              24,
+              25,
+              33,
+              40,
+              43
+            ],
+            "right": [
+              13,
+              15,
+              20,
+              23,
+              24,
+              25,
+              33,
+              40,
+              43
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Gate_accepted_mask_pixels",
+        "exact": false,
+        "differences": [
+          {
+            "frame": 445,
+            "pixels": 20214
+          }
+        ]
+      },
+      {
+        "name": "repair_persistent_ID_objects",
+        "exact": true
+      }
+    ]
+  },
+  "repair_comparison": {
+    "status": "DIFFERENT",
+    "comparisons": 119,
+    "required_differences": 60,
+    "key_checks": [
+      {
+        "name": "repair/partial/direct/room0/native/instance_surface.npz/instance_id",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 6,
+        "different_rows": 6,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 34.0
+      },
+      {
+        "name": "repair/partial/direct/room0/final/instance_surface.npz/instance_id",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 2,
+        "different_rows": 2,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 8.0
+      },
+      {
+        "name": "repair/partial/direct/room0/native/surface_evidence.npz/state",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 8,
+        "different_rows": 8,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 3.0
+      },
+      {
+        "name": "repair/partial/direct/room0/allowed_surface_ids",
+        "exact": false,
+        "left_shape": [
+          282933
+        ],
+        "right_shape": [
+          282996
+        ]
+      },
+      {
+        "name": "repair/partial/core_all/room0/native/instance_surface.npz/instance_id",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 6,
+        "different_rows": 6,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 34.0
+      },
+      {
+        "name": "repair/partial/core_all/room0/final/instance_surface.npz/instance_id",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 2,
+        "different_rows": 2,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 8.0
+      },
+      {
+        "name": "repair/partial/core_all/room0/native/surface_evidence.npz/state",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 8,
+        "different_rows": 8,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 3.0
+      },
+      {
+        "name": "repair/partial/core_all/room0/allowed_surface_ids",
+        "exact": true,
+        "left_shape": [
+          8411
+        ],
+        "right_shape": [
+          8411
+        ]
+      },
+      {
+        "name": "repair/partial/whole_to_partial/room0/native/instance_surface.npz/instance_id",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 6,
+        "different_rows": 6,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 34.0
+      },
+      {
+        "name": "repair/partial/whole_to_partial/room0/final/instance_surface.npz/instance_id",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 2,
+        "different_rows": 2,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 8.0
+      },
+      {
+        "name": "repair/partial/whole_to_partial/room0/native/surface_evidence.npz/state",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 8,
+        "different_rows": 8,
+        "nonduplicate_different_rows": 2,
+        "max_abs_difference": 3.0
+      },
+      {
+        "name": "repair/partial/whole_to_partial/room0/allowed_surface_ids",
+        "exact": false,
+        "left_shape": [
+          11577
+        ],
+        "right_shape": [
+          11561
+        ]
+      },
+      {
+        "name": "repair/e1/region.npz/keys",
+        "exact": true
+      },
+      {
+        "name": "repair/e1/region.npz/owner",
+        "exact": false,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ],
+        "different_elements": 252,
+        "different_rows": 252,
+        "nonduplicate_different_rows": 252,
+        "max_abs_difference": 8.0
+      },
+      {
+        "name": "repair/e1/region.npz/core_owner",
+        "exact": true,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ]
+      },
+      {
+        "name": "repair/e1/region.npz/surface_point_index",
+        "exact": false,
+        "left_shape": [
+          229671
+        ],
+        "right_shape": [
+          229481
+        ]
+      },
+      {
+        "name": "repair/e1/region.npz/prior_owner",
+        "exact": true,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ]
+      },
+      {
+        "name": "repair/e1/adaptive_cores.npz/keys",
+        "exact": true
+      },
+      {
+        "name": "repair/e1/adaptive_cores.npz/owner",
+        "exact": true,
+        "left_shape": [
+          1529866
+        ],
+        "right_shape": [
+          1529866
+        ]
+      },
+      {
+        "name": "repair/per_frame_transactions",
+        "exact": false,
+        "comparisons": 1600,
+        "differing_fields": 308,
+        "differing_frames": 44
+      },
+      {
+        "name": "commit/history_pixel_layers",
+        "exact": false,
+        "files": 550,
+        "differing_files": 10,
+        "differing_frames": 8,
+        "total_different_pixels": 40268,
+        "detail": [
+          {
+            "frame": 445,
+            "layer": 0,
+            "different_pixels": 2685
+          },
+          {
+            "frame": 445,
+            "layer": 1,
+            "different_pixels": 17174
+          },
+          {
+            "frame": 445,
+            "layer": 2,
+            "different_pixels": 20214
+          },
+          {
+            "frame": 500,
+            "layer": 0,
+            "different_pixels": 9
+          },
+          {
+            "frame": 505,
+            "layer": 0,
+            "different_pixels": 8
+          },
+          {
+            "frame": 510,
+            "layer": 0,
+            "different_pixels": 15
+          },
+          {
+            "frame": 515,
+            "layer": 0,
+            "different_pixels": 17
+          },
+          {
+            "frame": 520,
+            "layer": 0,
+            "different_pixels": 38
+          },
+          {
+            "frame": 525,
+            "layer": 0,
+            "different_pixels": 55
+          },
+          {
+            "frame": 530,
+            "layer": 0,
+            "different_pixels": 53
+          }
+        ]
+      },
+      {
+        "name": "commit/processed_frames",
+        "exact": true
+      },
+      {
+        "name": "commit/last_raw_frame",
+        "exact": true
+      },
+      {
+        "name": "commit/map_version",
+        "exact": true
+      },
+      {
+        "name": "commit/next_instance_id",
+        "exact": true
+      },
+      {
+        "name": "commit/checkpoint/keys",
+        "exact": true
+      },
+      {
+        "name": "commit/checkpoint/voxel_coordinates",
+        "exact": false,
+        "left_shape": [
+          1577586,
+          3
+        ],
+        "right_shape": [
+          1577737,
+          3
+        ]
+      },
+      {
+        "name": "commit/checkpoint/last_processed_frame_id",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/checkpoint/format_version",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/checkpoint/assignment_versions",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/checkpoint/source_mask_sha256",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/checkpoint/frame_ids",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/checkpoint/next_instance_id",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/checkpoint/instance_ids",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/checkpoint/offsets",
+        "exact": false,
+        "left_shape": [
+          9745
+        ],
+        "right_shape": [
+          9746
+        ]
+      },
+      {
+        "name": "commit/checkpoint/voxel_size_m",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/checkpoint/map_version",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/checkpoint/revision_events_json",
+        "exact": false,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ],
+        "different_elements": 1,
+        "different_rows": 1
+      },
+      {
+        "name": "commit/checkpoint/observation_ids",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/checkpoint/parameters_json",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/identity_counts/keys",
+        "exact": true
+      },
+      {
+        "name": "commit/identity_counts/voxel_coordinates",
+        "exact": true,
+        "left_shape": [
+          149082,
+          3
+        ],
+        "right_shape": [
+          149082,
+          3
+        ]
+      },
+      {
+        "name": "commit/identity_counts/frame_votes",
+        "exact": false,
+        "left_shape": [
+          176569
+        ],
+        "right_shape": [
+          176569
+        ],
+        "different_elements": 1801,
+        "different_rows": 1801,
+        "max_abs_difference": 91.0
+      },
+      {
+        "name": "commit/identity_counts/unique_support_frames",
+        "exact": false,
+        "left_shape": [
+          149082
+        ],
+        "right_shape": [
+          149082
+        ],
+        "different_elements": 300,
+        "different_rows": 300,
+        "max_abs_difference": 1.0
+      },
+      {
+        "name": "commit/identity_counts/total_frame_instance_votes",
+        "exact": false,
+        "left_shape": [
+          149082
+        ],
+        "right_shape": [
+          149082
+        ],
+        "different_elements": 314,
+        "different_rows": 314,
+        "max_abs_difference": 1.0
+      },
+      {
+        "name": "commit/identity_counts/offsets",
+        "exact": false,
+        "left_shape": [
+          149083
+        ],
+        "right_shape": [
+          149083
+        ],
+        "different_elements": 1595,
+        "different_rows": 1595,
+        "max_abs_difference": 1.0
+      },
+      {
+        "name": "commit/identity_counts/instance_ids",
+        "exact": false,
+        "left_shape": [
+          176569
+        ],
+        "right_shape": [
+          176569
+        ],
+        "different_elements": 1017,
+        "different_rows": 1017,
+        "max_abs_difference": 409.0
+      },
+      {
+        "name": "commit/identity_counts/voxel_size_m",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/identity_counts/map_version",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/keys",
+        "exact": true
+      },
+      {
+        "name": "commit/source_pixel_support/layer_index",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/frame_ids",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/sampled_voxel_coordinates",
+        "exact": false,
+        "left_shape": [
+          2862166,
+          3
+        ],
+        "right_shape": [
+          2862455,
+          3
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/instance_ids",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/offsets",
+        "exact": false,
+        "left_shape": [
+          9745
+        ],
+        "right_shape": [
+          9746
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/voxel_size_m",
+        "exact": true,
+        "left_shape": [
+          1
+        ],
+        "right_shape": [
+          1
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/observation_ids",
+        "exact": false,
+        "left_shape": [
+          9744
+        ],
+        "right_shape": [
+          9745
+        ]
+      },
+      {
+        "name": "commit/source_pixel_support/flat_source_pixel_index",
+        "exact": false,
+        "left_shape": [
+          2862166
+        ],
+        "right_shape": [
+          2862455
+        ]
+      },
+      {
+        "name": "commit/sampling_source_mapping_input_bytes",
+        "exact": true
+      },
+      {
+        "name": "commit/observation_lineage_entries_path_normalized",
+        "exact": false
+      }
+    ]
+  },
+  "fixed_tracking_comparison": {
+    "status": "PASS",
+    "comparisons": 14,
+    "required_differences": 0
+  },
+  "fixed_repair_comparison": {
+    "status": "PASS",
+    "comparisons": 2470,
+    "required_differences": 0
+  },
+  "reference_commit": {
+    "status": "PASS",
+    "processed_frames": 200,
+    "last_raw_frame": 995,
+    "map_version": 203,
+    "next_instance_id": 423,
+    "checkpoint_sha256": "449d157d121b2904beb819a1ca61e16ee38549c2180a6a5001a29e6849492189",
+    "identity_counts_sha256": "e01ca5d1e971741d7305135e1ca8c85b1840ca2f9e8cdd7a6e90230478013024",
+    "source_pixel_support_sha256": "2fa06b38b56b51a541275fd884bd091f91326270e40c1e59f21611f9727fbe83",
+    "final_map_sha256": "946109f8885a457542f2ee8ae41c05f75b05f744c754d5e17089f5b5a9afcfe0"
+  },
+  "checkpoint_commit": {
+    "status": "PASS",
+    "processed_frames": 200,
+    "last_raw_frame": 995,
+    "map_version": 203,
+    "next_instance_id": 423,
+    "checkpoint_sha256": "f19f687dee02fa48d04c9809ab93f662091c656242d1573f60f63dc1b31596be",
+    "identity_counts_sha256": "8d0c990448c41b17b48a3f295709af80cf61cf924feb1a84b5bb114d2eef9f08",
+    "source_pixel_support_sha256": "c944aff98b54d91fb368d63b0b7a8c6cba01a7640aace0d470f4eae397506180",
+    "final_map_sha256": "011a7d5642138e8085f9a5bf4fd2f74cb4c5be7ca3d112960f389e37d3b46f4b"
+  },
+  "frame201": {
+    "status": "DIFFERENT",
+    "each_mode_inherits_its_own_new_commit": true,
+    "same_starting_frame100_commit": true,
+    "starting_frame100_commit_path": "/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/repair100/A/commit_complete.json",
+    "starting_frame100_commit_sha256": "b74e8bea78831fefe091fadf404c840cdc86dc89249c4b4a604654efa64d2ba8",
+    "frame201_new_association_decisions_exact": true,
+    "inheritance": [
+      {
+        "mode": "reference",
+        "status": "PASS",
+        "processed_frame": 201,
+        "raw_frame": 1000,
+        "new_commit_checkpoint_sha256": "449d157d121b2904beb819a1ca61e16ee38549c2180a6a5001a29e6849492189",
+        "map_version_before": 203,
+        "map_version_after": 204,
+        "frame201_observations": 36,
+        "restored_entries": 9744,
+        "journal_pixel_and_PID_restore_exact": true,
+        "all_committed_entries_preserved_after_frame201": true
+      },
+      {
+        "mode": "checkpoint",
+        "status": "PASS",
+        "processed_frame": 201,
+        "raw_frame": 1000,
+        "new_commit_checkpoint_sha256": "f19f687dee02fa48d04c9809ab93f662091c656242d1573f60f63dc1b31596be",
+        "map_version_before": 203,
+        "map_version_after": 204,
+        "frame201_observations": 36,
+        "restored_entries": 9745,
+        "journal_pixel_and_PID_restore_exact": true,
+        "all_committed_entries_preserved_after_frame201": true
+      }
+    ],
+    "frame201_equivalence": [
+      {
+        "file": "association/associations.jsonl",
+        "exact": true
+      },
+      {
+        "file": "association/observations.jsonl",
+        "exact": true
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "format_version",
+        "exact": true
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "observation_ids",
+        "exact": false
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "frame_ids",
+        "exact": false
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "source_mask_sha256",
+        "exact": false
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "instance_ids",
+        "exact": false
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "assignment_versions",
+        "exact": false
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "offsets",
+        "exact": false
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "voxel_coordinates",
+        "exact": false
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "voxel_size_m",
+        "exact": true
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "next_instance_id",
+        "exact": true
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "last_processed_frame_id",
+        "exact": true
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "map_version",
+        "exact": true
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "parameters_json",
+        "exact": true
+      },
+      {
+        "file": "association/observation_support_3cm.npz",
+        "key": "revision_events_json",
+        "exact": false
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "voxel_coordinates",
+        "exact": true
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "offsets",
+        "exact": false
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "instance_ids",
+        "exact": false
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "frame_votes",
+        "exact": false
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "total_frame_instance_votes",
+        "exact": false
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "unique_support_frames",
+        "exact": false
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "voxel_size_m",
+        "exact": true
+      },
+      {
+        "file": "association/identity_counts.npz",
+        "key": "map_version",
+        "exact": true
+      }
+    ],
+    "immutable_inputs": [
+      {
+        "mode": "reference",
+        "status": "PASS",
+        "mapping_files_verified": 9,
+        "prior100_commit_unchanged": true
+      },
+      {
+        "mode": "checkpoint",
+        "status": "PASS",
+        "mapping_files_verified": 9,
+        "prior100_commit_unchanged": true
+      }
+    ],
+    "causal_access_audit": [
+      {
+        "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/reference",
+        "recorded_nonprobe_opens": 177567,
+        "blocked_nonprobe_opens": 0,
+        "violations": []
+      },
+      {
+        "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/reference/frame201",
+        "recorded_nonprobe_opens": 2988,
+        "blocked_nonprobe_opens": 0,
+        "violations": []
+      },
+      {
+        "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/checkpoint",
+        "recorded_nonprobe_opens": 169404,
+        "blocked_nonprobe_opens": 0,
+        "violations": []
+      },
+      {
+        "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/checkpoint/frame201",
+        "recorded_nonprobe_opens": 2988,
+        "blocked_nonprobe_opens": 0,
+        "violations": []
+      },
+      {
+        "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/fixed_reference",
+        "recorded_nonprobe_opens": 81057,
+        "blocked_nonprobe_opens": 0,
+        "violations": []
+      },
+      {
+        "root": "/data/chenkejun/CVPR/results/online_checkpoint_closed_loop_20261023/fixed_checkpoint",
+        "recorded_nonprobe_opens": 79423,
+        "blocked_nonprobe_opens": 0,
+        "violations": []
+      }
+    ]
+  }
+}
