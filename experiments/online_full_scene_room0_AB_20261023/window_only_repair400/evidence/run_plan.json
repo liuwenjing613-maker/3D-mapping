@@ -1,0 +1,25 @@
+{
+  "status": "READY",
+  "branches": [
+    "A",
+    "B"
+  ],
+  "checkpoint": 400,
+  "scope": "Replay full repair from each original pre-repair400 checkpoint; earlier committed repairs unchanged",
+  "code": "/home/chenkejun/CVPR/worktrees/online-v1-checkpoint-surface-20261023/experiments/online_full_scene_room0_AB_20261023/window_only_repair400",
+  "results": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400",
+  "policy": "window-only SAM source policy; cabinet ordinary selection",
+  "numeric_changes": [],
+  "strict_original_cache_fingerprint_required": true,
+  "tracking_misses_infer_normally": true,
+  "stages": [
+    "source/selection audit",
+    "exact-mask track prepare",
+    "dense SAM2 or exact cache",
+    "original Gate",
+    "partial + core + E1",
+    "durable repair commit",
+    "main default R2",
+    "full-resolution PLY comparison"
+  ]
+}

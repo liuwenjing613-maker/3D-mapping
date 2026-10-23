@@ -1,0 +1,274 @@
+{
+  "status": "PASS",
+  "seconds": 79.30797010846436,
+  "verified_unique_files": 5335,
+  "review": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/review.tar.gz",
+  "review_sha256": "4cf70928c5ea9677fe8c1cf3eb08d8c95cf6fdec003483866d588a6c43e26384",
+  "PLY_files": [
+    {
+      "status": "PASS",
+      "path": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/deliverables/room0_A_400_window_only.ply",
+      "bytes": 50624337,
+      "sha256": "4defecf4342a92ed77165eb0445395aa5352ac6d6f8d9ef0f42bdff68987cbb7",
+      "all_native_points_and_IDs_roundtrip_exact": true,
+      "points": 1633034,
+      "positive_instances": 91,
+      "pairs": [
+        {
+          "key": "A_original_to_new",
+          "checkpoint": 400,
+          "branch": "A",
+          "mode": "original_to_new",
+          "points": 1633034,
+          "changed": 25034,
+          "aligned_changed": 21868,
+          "same_geometry": true,
+          "bounds": [
+            [
+              -0.8793940544128418,
+              -1.1852585077285767,
+              -1.5240404605865479
+            ],
+            [
+              6.884378910064697,
+              3.5096521377563477,
+              1.2699999809265137
+            ]
+          ],
+          "cabinet_bounds": [
+            [
+              -0.8596987724304199,
+              0.05999999865889549,
+              -1.5240404605865479
+            ],
+            [
+              -0.3078230321407318,
+              2.1399998664855957,
+              -0.8219899535179138
+            ]
+          ],
+          "files": [
+            {
+              "stage": "after",
+              "path": "../400_A_after.ply",
+              "sha256": "ac8efecefc5d269b7345c9e842f7b76ff79e454dbcccf6b906e5dbafa003459e",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/A/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+              "source_sha256": "76c5d83fd0468b29a886081c9dd9b31dc45350a21d0463f920afa8d2a9487add",
+              "instances": 91
+            },
+            {
+              "stage": "new",
+              "path": "room0_A_400_window_only.ply",
+              "sha256": "4defecf4342a92ed77165eb0445395aa5352ac6d6f8d9ef0f42bdff68987cbb7",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/400/A/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+              "source_sha256": "cc8776eb769a5d285cea4c651599c5c2208d1d33907895b45499341f16afa59e",
+              "instances": 91
+            }
+          ],
+          "titles": [
+            "原方案修复后",
+            "新方案修复后"
+          ],
+          "display_id_alignment": {
+            "909": 909,
+            "931": 934,
+            "932": 935,
+            "943": 946,
+            "945": 948,
+            "947": 950,
+            "953": 958
+          }
+        },
+        {
+          "key": "A_before_to_new",
+          "checkpoint": 400,
+          "branch": "A",
+          "mode": "before_to_new",
+          "points": 1633034,
+          "changed": 50965,
+          "aligned_changed": 50965,
+          "same_geometry": true,
+          "bounds": [
+            [
+              -0.8793940544128418,
+              -1.1852585077285767,
+              -1.5240404605865479
+            ],
+            [
+              6.884378910064697,
+              3.5096521377563477,
+              1.2699999809265137
+            ]
+          ],
+          "cabinet_bounds": [
+            [
+              -0.8596987724304199,
+              0.05999999865889549,
+              -1.5240404605865479
+            ],
+            [
+              -0.3078230321407318,
+              2.1399998664855957,
+              -0.8219899535179138
+            ]
+          ],
+          "files": [
+            {
+              "stage": "before",
+              "path": "../400_A_before.ply",
+              "sha256": "af3d0ce04189683c22426285f7556187321fdbd6dec45d0683744a4487091dbb",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/A/mapping/baseline/final/instance_surface.npz",
+              "source_sha256": "d30a5655248130647e23f3e068634a0acf4cfb2ae7119e6fb847246e1bb5f83e",
+              "instances": 84
+            },
+            {
+              "stage": "new",
+              "path": "room0_A_400_window_only.ply",
+              "sha256": "4defecf4342a92ed77165eb0445395aa5352ac6d6f8d9ef0f42bdff68987cbb7",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/400/A/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+              "source_sha256": "cc8776eb769a5d285cea4c651599c5c2208d1d33907895b45499341f16afa59e",
+              "instances": 91
+            }
+          ],
+          "titles": [
+            "同一起点：修复前",
+            "新方案修复后"
+          ],
+          "display_id_alignment": {}
+        }
+      ]
+    },
+    {
+      "status": "PASS",
+      "path": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/deliverables/room0_B_400_window_only.ply",
+      "bytes": 50624337,
+      "sha256": "84fcea28832e9ce6a25a63a4c5c13435ba80064f20591e8449d2fc164e4483bf",
+      "all_native_points_and_IDs_roundtrip_exact": true,
+      "points": 1633034,
+      "positive_instances": 90,
+      "pairs": [
+        {
+          "key": "B_original_to_new",
+          "checkpoint": 400,
+          "branch": "B",
+          "mode": "original_to_new",
+          "points": 1633034,
+          "changed": 96,
+          "aligned_changed": 67,
+          "same_geometry": true,
+          "bounds": [
+            [
+              -0.8793940544128418,
+              -1.1852585077285767,
+              -1.5240404605865479
+            ],
+            [
+              6.884378910064697,
+              3.5096521377563477,
+              1.2699999809265137
+            ]
+          ],
+          "cabinet_bounds": [
+            [
+              -0.8596987724304199,
+              0.05999999865889549,
+              -1.5240404605865479
+            ],
+            [
+              -0.3078230321407318,
+              2.1399998664855957,
+              -0.8219899535179138
+            ]
+          ],
+          "files": [
+            {
+              "stage": "after",
+              "path": "../400_B_after.ply",
+              "sha256": "754f45eed46acde02d3aae7aa214ed760a36df3fbbd90da00dbcec3f9145bfc7",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+              "source_sha256": "8c4249c030fd4b178c75c1a7e25863cf0e889250b622bcc1e68dfc1a892f9417",
+              "instances": 91
+            },
+            {
+              "stage": "new",
+              "path": "room0_B_400_window_only.ply",
+              "sha256": "84fcea28832e9ce6a25a63a4c5c13435ba80064f20591e8449d2fc164e4483bf",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+              "source_sha256": "669ae9d2f8a2fd0a98ed80a8f0739bf19545ca1d9a42bb8c65198f8aa3f50c78",
+              "instances": 90
+            }
+          ],
+          "titles": [
+            "原方案修复后",
+            "新方案修复后"
+          ],
+          "display_id_alignment": {
+            "910": 910,
+            "931": 931,
+            "932": 932,
+            "943": 943,
+            "944": 944,
+            "951": 953
+          }
+        },
+        {
+          "key": "B_before_to_new",
+          "checkpoint": 400,
+          "branch": "B",
+          "mode": "before_to_new",
+          "points": 1633034,
+          "changed": 44164,
+          "aligned_changed": 44164,
+          "same_geometry": true,
+          "bounds": [
+            [
+              -0.8793940544128418,
+              -1.1852585077285767,
+              -1.5240404605865479
+            ],
+            [
+              6.884378910064697,
+              3.5096521377563477,
+              1.2699999809265137
+            ]
+          ],
+          "cabinet_bounds": [
+            [
+              -0.8596987724304199,
+              0.05999999865889549,
+              -1.5240404605865479
+            ],
+            [
+              -0.3078230321407318,
+              2.1399998664855957,
+              -0.8219899535179138
+            ]
+          ],
+          "files": [
+            {
+              "stage": "before",
+              "path": "../400_B_before.ply",
+              "sha256": "3a221b733e4cf1d40ebdc84a0c8b3b4444f295411ce33420b6429d9b83b285d3",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/mapping/baseline/final/instance_surface.npz",
+              "source_sha256": "fd2219754b342fe6906cfaf81466eaeac1512685c6acea05680c4c9ebf148a81",
+              "instances": 84
+            },
+            {
+              "stage": "new",
+              "path": "room0_B_400_window_only.ply",
+              "sha256": "84fcea28832e9ce6a25a63a4c5c13435ba80064f20591e8449d2fc164e4483bf",
+              "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+              "source_sha256": "669ae9d2f8a2fd0a98ed80a8f0739bf19545ca1d9a42bb8c65198f8aa3f50c78",
+              "instances": 90
+            }
+          ],
+          "titles": [
+            "同一起点：修复前",
+            "新方案修复后"
+          ],
+          "display_id_alignment": {}
+        }
+      ]
+    }
+  ]
+}

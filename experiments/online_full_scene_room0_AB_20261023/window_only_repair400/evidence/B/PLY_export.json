@@ -1,0 +1,132 @@
+{
+  "status": "PASS",
+  "path": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/deliverables/room0_B_400_window_only.ply",
+  "bytes": 50624337,
+  "sha256": "84fcea28832e9ce6a25a63a4c5c13435ba80064f20591e8449d2fc164e4483bf",
+  "all_native_points_and_IDs_roundtrip_exact": true,
+  "points": 1633034,
+  "positive_instances": 90,
+  "pairs": [
+    {
+      "key": "B_original_to_new",
+      "checkpoint": 400,
+      "branch": "B",
+      "mode": "original_to_new",
+      "points": 1633034,
+      "changed": 96,
+      "aligned_changed": 67,
+      "same_geometry": true,
+      "bounds": [
+        [
+          -0.8793940544128418,
+          -1.1852585077285767,
+          -1.5240404605865479
+        ],
+        [
+          6.884378910064697,
+          3.5096521377563477,
+          1.2699999809265137
+        ]
+      ],
+      "cabinet_bounds": [
+        [
+          -0.8596987724304199,
+          0.05999999865889549,
+          -1.5240404605865479
+        ],
+        [
+          -0.3078230321407318,
+          2.1399998664855957,
+          -0.8219899535179138
+        ]
+      ],
+      "files": [
+        {
+          "stage": "after",
+          "path": "../400_B_after.ply",
+          "sha256": "754f45eed46acde02d3aae7aa214ed760a36df3fbbd90da00dbcec3f9145bfc7",
+          "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+          "source_sha256": "8c4249c030fd4b178c75c1a7e25863cf0e889250b622bcc1e68dfc1a892f9417",
+          "instances": 91
+        },
+        {
+          "stage": "new",
+          "path": "room0_B_400_window_only.ply",
+          "sha256": "84fcea28832e9ce6a25a63a4c5c13435ba80064f20591e8449d2fc164e4483bf",
+          "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+          "source_sha256": "669ae9d2f8a2fd0a98ed80a8f0739bf19545ca1d9a42bb8c65198f8aa3f50c78",
+          "instances": 90
+        }
+      ],
+      "titles": [
+        "原方案修复后",
+        "新方案修复后"
+      ],
+      "display_id_alignment": {
+        "910": 910,
+        "931": 931,
+        "932": 932,
+        "943": 943,
+        "944": 944,
+        "951": 953
+      }
+    },
+    {
+      "key": "B_before_to_new",
+      "checkpoint": 400,
+      "branch": "B",
+      "mode": "before_to_new",
+      "points": 1633034,
+      "changed": 44164,
+      "aligned_changed": 44164,
+      "same_geometry": true,
+      "bounds": [
+        [
+          -0.8793940544128418,
+          -1.1852585077285767,
+          -1.5240404605865479
+        ],
+        [
+          6.884378910064697,
+          3.5096521377563477,
+          1.2699999809265137
+        ]
+      ],
+      "cabinet_bounds": [
+        [
+          -0.8596987724304199,
+          0.05999999865889549,
+          -1.5240404605865479
+        ],
+        [
+          -0.3078230321407318,
+          2.1399998664855957,
+          -0.8219899535179138
+        ]
+      ],
+      "files": [
+        {
+          "stage": "before",
+          "path": "../400_B_before.ply",
+          "sha256": "3a221b733e4cf1d40ebdc84a0c8b3b4444f295411ce33420b6429d9b83b285d3",
+          "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/400/B/mapping/baseline/final/instance_surface.npz",
+          "source_sha256": "fd2219754b342fe6906cfaf81466eaeac1512685c6acea05680c4c9ebf148a81",
+          "instances": 84
+        },
+        {
+          "stage": "new",
+          "path": "room0_B_400_window_only.ply",
+          "sha256": "84fcea28832e9ce6a25a63a4c5c13435ba80064f20591e8449d2fc164e4483bf",
+          "source": "/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023/window_only_repair400/400/B/repair/partial/whole_to_partial/room0/final/instance_surface.npz",
+          "source_sha256": "669ae9d2f8a2fd0a98ed80a8f0739bf19545ca1d9a42bb8c65198f8aa3f50c78",
+          "instances": 90
+        }
+      ],
+      "titles": [
+        "同一起点：修复前",
+        "新方案修复后"
+      ],
+      "display_id_alignment": {}
+    }
+  ]
+}
