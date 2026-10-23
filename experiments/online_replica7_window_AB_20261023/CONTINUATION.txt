@@ -1,0 +1,28 @@
+用户已确认：剩余七场景完整在线A/B，从第1帧空状态开始到400帧，在50/100/200/300/400帧均使用“只有窗户享有SAM特殊来源，柜子走普通来源”的规则。P/R语义豁免仍含窗户和柜子；SAM2、Gate、partial+E1、投票与关联数值算法保持原样。每小时检查，正常无变化保持安静，不逐分钟监督。
+
+自动跟进ID：replica-a-b，ACTIVE，每小时一次。原room0-a-b-400已结束。
+本地目录：outputs/online_replica7_window_AB_20261023
+SSH：python outputs/replica_gt_scope_20261008/ssh_task.py python <本地脚本>，或 exec <远端命令> / put / get。保持原命令前缀，不加-W；某些带不同前缀的命令受本地网络沙箱限制。不要输出凭据。ssh_task.py python 使用系统Python，不可直接导入numpy；数值计算用以下解释器。
+数值Python：/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python
+代码C：/home/chenkejun/CVPR/worktrees/online-v1-checkpoint-surface-20261023/experiments/online_replica7_window_AB_20261023
+结果O：/data/chenkejun/CVPR/results/online_replica7_window_AB_20261023
+实际Git仓库：/home/chenkejun/CVPR/worktrees/online-v1-checkpoint-surface-20261023，本地工作区根不是Git。
+
+初始启动于2026-10-23 13:49 UTC；首批room1A/B与room2A/B，五个office场景排队，最多4条分支并行，GPU仅0、1、2、3并使用原全局协作锁。全批14分支70检查点。每景1996个可用RGB、400个深度及冻结Mask、2000行轨迹已核验；仅使用0,5,...,1995共400个建图帧。
+首轮路径适配报错：prepare仍指向新结果根内catalog/room0。已由fix_catalog_paths.py修正210处为各自场景，保留已完成建图；旧监督进程退出后由launch_batch.py安全续跑。新监督PID3942425，分支PID3942427/28/29/30。该PID仅作历史，当前以/proc和launch.json为准。
+另有70个semantic_exemption.py仅模块说明文字中的room0被改场景名，数值AST未变；restore_frozen_docstring.py恢复原字节，check_adapter_integrity.py检查840个冻结选择/追踪/Gate/投票文件全部PASS。build_batch.py也同步了这两处修正。
+最后看到首批4条分支第50帧建图均完成（约35至38秒），候选CropFormer实际推理正在进行，尚未验证首个完整修复提交。不要把初始启动核验当作整条成功。候选目录已有所有50帧ROI，没有重复用room0地图。
+
+状态入口：python outputs/replica_gt_scope_20261008/ssh_task.py python outputs/online_replica7_window_AB_20261023/status.py
+supervisor日志O/supervisor.log，状态O/batch_status.json；各场景O/scene/status_A.json与driver_A.log。检查点O/scene/n/A，mapping.log / selection_tracking.log / candidates/<stage>.log / repair.log / commit.log。
+run_batch.py遇任何分支失败停止补新分支但等待已有分支；只有确认旧监督退出并修复适配故障后才运行launch_batch.py恢复。run_branch.py只跳过PASS阶段，保留失败时间和重试记录；不重新执行完成的TSDF建图。不能修改数值规则或偷偷统一候选。数值算法变化需要人工确认；普通场景/路径/元数据/运行适配已获授权。
+build_batch.py只可用于首次构建，O/run_plan.json存在时禁止重跑；运行期间修复应是有记录的小范围适配，并同步生成器。需要处理未来重复点/Gate边界差异时保留真实结果，不增加排序。
+
+后处理已启动：finish_batch.py PID3946672（以post_launch.json与/proc为准），每5分钟在服务器查看完整分支是否可处理，不消耗模型轮询。O/post_status.json/post.log；launch_post.py防重复。只有分支400帧完整提交才audit_branch.py，然后evaluate_branch.py，然后export_checkpoint.py导出10份完整PLY。70检查点共140份。等14分支全完成后collect_summary.py收集review/summary.json、REPORT.txt、review.tar.gz、evidence_manifest.json和PLY哈希，post_complete.json才PASS。
+audit_branch.py scene A/B：从0帧初始化、所有历史像素/持久ID/投票/提交、51/101/201/301帧恢复哈希和mapversion；所有数值冻结文件需一致。首次50的repaired_state_used必须False，之后True。audit_completed旧room0脚本不可直接用。
+evaluate_branch.py scene A/B：main当前默认object_observed_repair revision2，评分工作区/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009；全协议350GT，七景278GT：room1 45,room2 52,office0 31,office1 23,office2 41,office3 58,office4 28；frozen=false。仅各自最终400帧修复前后，同几何同fixed_correspondence。绝不能对在线前缀套用400GT。修复前本身已包含此前检查点修复。
+export_checkpoint.py scene A/B n before/after：float64完整xyz、uint8颜色、int32真实ID，完整回读精确验证；O/deliverables/scene/scene_A_50_before.ply等。保留全部点。颜色只是ID显示。
+
+全部完成后下载review.tar.gz和deliverables到本地此目录，安全解压并核验evidence_manifest与PLY哈希。扩展现有本地PLY比较网站（静态根outputs/online_full_scene_room0_AB_20261023/comparison_page；端口8801）增加七场景/A或B/检查点选择页面，不覆盖room0历史页面。借鉴既有export_comparisons.py和本地viewer，完整xyz/真实ID不改变；截图验证各场景、前后点数、加载、指标与下载。现有room0页面http://127.0.0.1:8801/repair_window_only/index.html可保留。当前尚未做七景新页面，不能提前称页面完成。
+交付真实R2改善/退化和逐GT诊断、实际推理与严格缓存复用、失败重试及耗时。A/B不是原版与优化版。room0只是400帧新规则重修、之前50至300仍旧规则，不能凑成同条件八景结果。前次100→200优化等价真实闭环有Gate阈值翻转和2点标签差异；本批不解决这个限制。固定同表面控制精确一致不代表真实闭环精确一致。
+保存本次代码及小型证据到实际Git仓库本地提交，不推送；不要包含别的任务未跟踪文件。最终交付完整七景结果与页面后停用本条自动跟进，不归档聊天。

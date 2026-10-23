@@ -1,0 +1,20 @@
+{
+  "version": "per_object_reliable_observation_replacement_v1",
+  "seed_surface_visibility_depth_tolerance_m": 0.03,
+  "minimum_visible_seed_surface_samples_each_target": 20,
+  "minimum_tracked_coverage_of_visible_seed_samples_each_target": 0.8,
+  "seed_surface_bbox_padding_m": 0.3,
+  "minimum_new_surface_support_fraction_inside_target_bbox": 0.9,
+  "minimum_old_surface_support_fraction_inside_joint_bbox": 0.9,
+  "maximum_new_mask_pixel_overlap_fraction_with_other_old_instance_families": 0.05,
+  "minimum_visible_protected_seed_samples": 20,
+  "maximum_new_union_coverage_of_other_visible_seed_samples": 0.1,
+  "acceptance": "each object independently; other visible target seeds are protected too",
+  "whole_retirement": "all selected targets reliable; this old observation spatially contained; union protects other seed objects",
+  "partial_retirement": "remove only original family pixels covered by reliable target foreground; preserve all other original pixels and their shared supports",
+  "allowed_set": "removed observation surface supports union accepted new surface supports",
+  "vote_unit": "one vote per frame, surface point and persistent ID",
+  "tracking": "offline independent seed-only forward and reverse states; full raw sequence",
+  "confirmation_and_postprocessing": "unchanged native rules and assignment settings",
+  "GT_used_for_repair": false
+}
