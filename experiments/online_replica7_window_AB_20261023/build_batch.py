@@ -38,6 +38,8 @@ def main():
   for name in names:
    source=SRC/name;s=source.read_text()
    if name=='common_continue.py':
+    s=replace(s,'import json,hashlib,os,time\n','import json,hashlib,os,time,threading\n')
+    s=replace(s,"p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);t=p.with_name(p.name+'.tmp')","p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);t=p.with_name(p.name+f'.{os.getpid()}.{threading.get_ident()}.tmp')")
     s=replace(s,'CHECKPOINT in (200,300,400)','CHECKPOINT in (50,100,200,300,400)')
     s=replace(s,'OLD_COUNT=CHECKPOINT-100','OLD_COUNT={50:0,100:50,200:100,300:200,400:300}[CHECKPOINT]')
     s=s.replace(str(SRC),str(c)).replace('/data/chenkejun/CVPR/results/online_full_scene_room0_AB_20261023',str(o))

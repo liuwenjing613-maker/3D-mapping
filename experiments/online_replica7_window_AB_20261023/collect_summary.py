@@ -28,7 +28,15 @@ def main():
    assert sum(pair[k] for k in ['corrected_instances','degraded_instances','unchanged_instances'])==GT[scene]
    timing=O/scene/f'timings_{g}.jsonl'
    attempts=[json.loads(s) for s in timing.read_text().splitlines()]
-   rows.append(dict(scene=scene,branch=g,evaluable_GT=GT[scene],before=before,after=after,repair_pair=pair,
+   origins=[]
+   for n in [50,100,200,300,400]:
+    tracking=O/scene/str(n)/g/'tracking'
+    cases=read(tracking/'seed_diagnostics.json')['cases'];reports=[read(tracking/'cases'/case['case_uid']/'tracking/complete.json') for case in cases]
+    assert all(report['status']=='PASS' for report in reports)
+    origins.append(dict(checkpoint=n,cases=len(reports),actual_inferred_cases=sum(not r.get('inference_reused',False) for r in reports),
+      exact_cache_reused_cases=sum(r.get('inference_reused',False) for r in reports),basis='Final per-case inference origin, including successful work before a queue retry'))
+    for rel in ['tracking_case_timings.jsonl','process_timing_events.jsonl','tracking_queue_failure.json']:collect(tracking/rel)
+   rows.append(dict(scene=scene,branch=g,evaluable_GT=GT[scene],before=before,after=after,repair_pair=pair,tracking_origins=origins,
        checkpoints=audit['checkpoints'],stage_attempts=attempts,
        AP50_delta=after['CA_AP50_uniform']-before['CA_AP50_uniform']))
    collect(timing);collect(O/scene/f'post_{g}_complete.json');collect(O/scene/'verification'/f'{g}_causal_audit.json')
@@ -43,7 +51,7 @@ def main():
      p=O/'deliverables'/scene/f'{scene}_{g}_{n}_{stage}_export.json';e=read(p)
      assert e['status']=='PASS' and sha(e['path'])==e['sha256']
      exports.append(e);collect(p)
- for name in ['run_plan.json','adapter_audit.json','catalog_path_adapter_fix.json','launch.json','batch_status.json','batch_mapping_repair_complete.json']:
+ for name in ['run_plan.json','adapter_audit.json','catalog_path_adapter_fix.json','frozen_kernel_audit.json','status_write_race_fix.json','recovery_launch.json','recovery_status.json','launch.json','batch_status.json','batch_mapping_repair_complete.json']:
   collect(O/name)
  result=dict(status='PASS',scenes=SCENES,branches=['A','B'],scene_GT=GT,seven_scene_GT_total=sum(GT.values()),
    protocol='main object_observed_repair revision 2',protocol_total_GT=350,frozen=False,rows=rows,exports=exports,

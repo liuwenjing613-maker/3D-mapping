@@ -1,6 +1,6 @@
 """Authorized causal continuation of the original A/B checkpoint strategy."""
 from pathlib import Path
-import json,hashlib,os,time
+import json,hashlib,os,time,threading
 CHECKPOINT=int(os.environ.get('CVPR_CHECKPOINT','200'))
 GROUP=os.environ.get('CVPR_TRACK_GROUP','A')
 assert CHECKPOINT in (50,100,200,300,400) and GROUP in ('A','B')
@@ -31,7 +31,7 @@ def digest(p):
  return h.hexdigest()
 def read(p):return json.loads(Path(p).read_text())
 def dump(p,x):
- p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);t=p.with_name(p.name+'.tmp')
+ p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);t=p.with_name(p.name+f'.{os.getpid()}.{threading.get_ident()}.tmp')
  t.write_text(json.dumps(x,ensure_ascii=False,indent=2,allow_nan=False)+'\n');t.replace(p)
 def emit(stage,**x):
  row=dict(status='RUNNING',group=GROUP,checkpoint=CHECKPOINT,stage=stage,unix=time.time(),**x)

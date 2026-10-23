@@ -1,5 +1,10 @@
 用户已确认：剩余七场景完整在线A/B，从第1帧空状态开始到400帧，在50/100/200/300/400帧均使用“只有窗户享有SAM特殊来源，柜子走普通来源”的规则。P/R语义豁免仍含窗户和柜子；SAM2、Gate、partial+E1、投票与关联数值算法保持原样。每小时检查，正常无变化保持安静，不逐分钟监督。
 
+2026-10-23 21:00 UTC维护更新（优先于下面启动时记录）：8/14条已完成400帧、审计、R2和80份PLY：room1、room2、office0、office1的A/B。office0 A400 AP50 29.9061%→24.4531%，B32.3982%→28.4185%，均真实退化，不能隐瞒或调参重跑；office1 A39.6040%→39.6040%，B33.7999%→41.5182%。completed_summary.py是只读摘要。
+office3 A50在tracking/queue.log失败：两个线程并发dump同一个gpu_wait.json.tmp，临时文件被另一个线程rename后FileNotFoundError；不是模型、Gate或投票失败。fix_status_write_race.py将7场景common_continue.dump的临时文件名加入PID与线程ID，其余JSON序列化字节不变。8线程800次同文件写入压测通过，O/status_write_race_fix.json记录。build_batch.py同步。已运行的进程仍持有旧模块，之后启动的阶段加载新模块。
+原supervisor PID3942425已停止新增任务，仍等待office2A/B、office3B完成；不能再次启动run_batch，不能中断正常分支。resume_after_drain.py是一次性自动续跑器：等待原监督进程退出，核验没有任何现存分支进程且唯一失败为本次已诊断office3A50临时文件竞争，然后调用原launch_batch.py恢复office3A及office4A/B。恢复器状态O/recovery_status.json、日志recovery.log、PID在recovery_launch.json；launch_recovery.py防重复。若发现额外失败，恢复器会停止并明确报错，下一次跟进诊断后处理。已完成的建图、种子及追踪结果均保留；不统一候选。status.py已加入RECOVERY状态。
+collect_summary.py新增tracking_origins：从各case的complete.json统计真实推理/缓存来源，涵盖失败队列重试前已完成的推理；保留tracking_case_timings与process_timing_events，不能把恢复后的本次调用计数冒充全任务推理次数。
+
 自动跟进ID：replica-a-b，ACTIVE，每小时一次。原room0-a-b-400已结束。
 本地目录：outputs/online_replica7_window_AB_20261023
 SSH：python outputs/replica_gt_scope_20261008/ssh_task.py python <本地脚本>，或 exec <远端命令> / put / get。保持原命令前缀，不加-W；某些带不同前缀的命令受本地网络沙箱限制。不要输出凭据。ssh_task.py python 使用系统Python，不可直接导入numpy；数值计算用以下解释器。
