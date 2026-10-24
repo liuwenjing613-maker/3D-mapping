@@ -1,0 +1,49 @@
+from pathlib import Path
+p=Path(__file__).with_name('viewer.js')
+s=p.read_text(encoding='utf-8')
+s=s.replace("from './vendor/", "from '../vendor/")
+s=s.replace('current,sync=false;', 'current,selectedGT,sync=false;')
+s=s.replace('unknown:{value:1}', 'unknown:{value:1},local:{value:0},lo:{value:new T.Vector3()},hi:{value:new T.Vector3()}')
+s=s.replace('uniform float size,cut,only,unknown;', 'uniform float size,cut,only,unknown,local;uniform vec3 lo,hi;')
+s=s.replace('visible=0.;gl_Position', 'visible=0.;if(local>.5&&(any(lessThan(position,lo))||any(greaterThan(position,hi))))visible=0.;gl_Position')
+s=s.replace('function focus(top=false){if(!current)return;const lo=new T.Vector3(...current.bounds[0]),hi=new T.Vector3(...current.bounds[1])', 'function focus(top=false,bounds=current?.bounds){if(!bounds)return;const lo=new T.Vector3(...bounds[0]),hi=new T.Vector3(...bounds[1])')
+s=s.replace("u.unknown.value=+$('unknown').checked;", "u.unknown.value=+$('unknown').checked;u.local.value=+($('local').checked&&!!selectedGT);if(selectedGT){u.lo.value.set(...selectedGT.bounds[0]).addScalar(-.12);u.hi.value.set(...selectedGT.bounds[1]).addScalar(.12);}")
+s=s.replace("const manifest=await fetch('manifest.json').then(r=>r.json());", "const [manifest,summary,diagnostics]=await Promise.all(['manifest.json','summary.json','diagnostics.json'].map(f=>fetch(f).then(r=>r.json())));")
+s=s.replace("p.checkpoint===checkpoint&&(checkpoint===50||p.branch===$('branch').value)", "p.checkpoint===checkpoint&&p.branch===$('branch').value&&p.scene===$('scene').value")
+s=s.replace("$('branch').disabled=checkpoint===50;", "selectedGT=null;$('local').checked=false;renderMetrics();")
+s=s.replace('正在加载 ${checkpoint}', '正在加载 ${current.scene} ${checkpoint}')
+s=s.replace('`${checkpoint} 帧 · ${item.branch}', '`${item.scene} · ${checkpoint} 帧 · ${item.branch}')
+s=s[:s.index('for(const n of [50,100,200,300,400])')]+r'''
+const pct=v=>(100*v).toFixed(2)+'%';
+const delta=v=>(v>0?'+':'')+(100*v).toFixed(2);
+const cls=v=>v>1e-12?'good':v< -1e-12?'bad':'';
+function renderMetrics(){
+ const row=summary.rows.find(r=>r.scene===current.scene&&r.branch===current.branch);
+ $('metricTitle').textContent=`${current.scene} / ${current.branch} · 第400帧 R2`;
+ $('metricHint').textContent=checkpoint===400?'相同几何与对应索引，比较本次400帧修复前后。':`当前点云为${checkpoint}帧前缀；不对前缀使用最终GT评分。下面仅列该分支最终400帧指标。`;
+ const fields=[['AP',m=>m.CA_AP_uniform],['AP50',m=>m.CA_AP50_uniform],['AP25',m=>m.CA_AP25_uniform],['F1@0.5',m=>m.CA_PRF1_0_5.F1],['PQ',m=>m.CA_PQ.PQ],['mCov',m=>m.CA_mCov],['Correct owner',m=>m.owner_surface.Correct_owner_Coverage]];
+ $('metrics').innerHTML='<table><thead><tr><th>阶段</th>'+fields.map(f=>'<th>'+f[0]+'</th>').join('')+'<th>TP / FP / FN</th></tr></thead><tbody>'+['before','after'].map((stage,i)=>{const m=row[stage],pr=m.CA_PRF1_0_5;return '<tr><td>'+(i?'修复后':'修复前')+'</td>'+fields.map(f=>'<td>'+pct(f[1](m))+'</td>').join('')+`<td>${pr.TP} / ${pr.FP} / ${pr.FN}</td></tr>`;}).join('')+'<tr><td>变化（pp）</td>'+fields.map(f=>{const d=f[1](row.after)-f[1](row.before);return `<td class="${cls(d)}">${delta(d)}</td>`;}).join('')+'<td>—</td></tr></tbody></table>';
+ $('gtSection').hidden=checkpoint!==400;
+ $('gtRows').replaceChildren();$('detail').textContent='点击实例查看持久ID和覆盖碎片。';$('gtHint').textContent='';
+ const diag=diagnostics.rows.find(r=>r.scene===current.scene&&r.branch===current.branch);
+ for(const o of diag.objects){const tr=document.createElement('tr');tr.className='selectable';tr.dataset.gt=o.raw_gt_id;tr.innerHTML=`<td>GT${o.raw_gt_id} · ${o.class}</td><td>${pct(o.before_best_iou)}</td><td>${pct(o.after_best_iou)}</td><td class="${cls(o.delta_iou)}">${delta(o.delta_iou)}</td><td>${o.lost_match50?'丢失':o.gained_match50?'新增':'保持'}</td>`;tr.onclick=()=>selectGT(o);$('gtRows').append(tr);}
+}
+function selectGT(o){
+ selectedGT=o;$('local').checked=true;$('clip').checked=false;$('changes').checked=false;
+ $('gtHint').textContent=`已定位 GT${o.raw_gt_id} ${o.class}；仅显示GT包围盒外扩12cm内的预测点，可关闭“仅显示选中GT附近”看周围。`;
+ const describe=stage=>{const a=o[stage];return `${stage==='before'?'修复前':'修复后'}：最佳持久ID ${a.pid}，IoU ${pct(a.best_iou)}，50匹配 ${a.matched50?'有':'无'}\n`+a.top_fragments.map(f=>`  ID ${f.pid}：相交 ${f.intersection} / GT ${f.gt_size}，预测大小 ${f.pred_size}，IoU ${pct(f.iou)}`+(f.new_seed.length?'；本次来源 '+f.new_seed.map(t=>`track${t.track_id} ${t.mask_id} raw${t.frame} model${t.model}`).join(' / '):'')).join('\n');};
+ $('detail').textContent=`GT${o.raw_gt_id} ${o.class}\n${describe('before')}\n\n${describe('after')}\n\n相交/大小均为固定R2对应空间的计数，不是原生PLY点数。来源仅表示本次种子对应身份；不能单凭此表归因到Gate或E1某一步。`;
+ update();const bounds=o.bounds.map((a,i)=>a.map(v=>v+(i?.12:-.12)));focus(false,bounds);
+ $('status').scrollIntoView({block:'end',behavior:'smooth'});
+}
+function renderOverview(){
+ $('overview').innerHTML='<table><thead><tr><th>场景 / 分支</th><th>GT</th><th>AP50 前</th><th>AP50 后</th><th>变化 pp</th><th>TP 前→后</th><th>FP 前→后</th></tr></thead><tbody>'+summary.rows.map(r=>`<tr class="selectable" data-scene="${r.scene}" data-branch="${r.branch}"><td>${r.scene} / ${r.branch}</td><td>${r.evaluable_GT}</td><td>${pct(r.before.CA_AP50_uniform)}</td><td>${pct(r.after.CA_AP50_uniform)}</td><td class="${cls(r.AP50_delta)}">${delta(r.AP50_delta)}</td><td>${r.before.CA_PRF1_0_5.TP} → ${r.after.CA_PRF1_0_5.TP}</td><td>${r.before.CA_PRF1_0_5.FP} → ${r.after.CA_PRF1_0_5.FP}</td></tr>`).join('')+'</tbody></table>';
+ for(const tr of $('overview').querySelectorAll('tbody tr'))tr.onclick=()=>{$('scene').value=tr.dataset.scene;$('branch').value=tr.dataset.branch;checkpoint=400;load();window.scrollTo({top:0,behavior:'smooth'});};
+}
+for(const n of [50,100,200,300,400]){const b=document.createElement('button');b.textContent=n+'帧';b.dataset.n=n;b.onclick=()=>{checkpoint=n;load();};$('checkpoints').append(b);}
+$('scene').onchange=load;$('branch').onchange=load;
+$('reset').onclick=()=>{selectedGT=null;$('local').checked=false;update();focus();};$('top').onclick=()=>focus(true);
+for(const id of ['clip','height','size','changes','unknown','local'])$(id).oninput=update;
+renderOverview();load();
+'''
+p.write_text(s,encoding='utf-8')
