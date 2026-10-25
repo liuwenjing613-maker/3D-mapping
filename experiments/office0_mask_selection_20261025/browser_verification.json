@@ -1,0 +1,137 @@
+{
+  "runChecks": [
+    {
+      "key": "50_A",
+      "status": "office0 · 50_A · 已载入16,647个原始候选、293个来源筛选后Mask、6个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "50_B",
+      "status": "office0 · 50_B · 已载入16,596个原始候选、293个来源筛选后Mask、6个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "100_A",
+      "status": "office0 · 100_A · 已载入16,589个原始候选、316个来源筛选后Mask、12个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "100_B",
+      "status": "office0 · 100_B · 已载入6,714个原始候选、117个来源筛选后Mask、7个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "200_A",
+      "status": "office0 · 200_A · 已载入19,862个原始候选、356个来源筛选后Mask、11个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "200_B",
+      "status": "office0 · 200_B · 已载入14,306个原始候选、288个来源筛选后Mask、8个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "300_A",
+      "status": "office0 · 300_A · 已载入19,890个原始候选、471个来源筛选后Mask、10个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "300_B",
+      "status": "office0 · 300_B · 已载入17,902个原始候选、349个来源筛选后Mask、4个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "400_A",
+      "status": "office0 · 400_A · 已载入19,977个原始候选、357个来源筛选后Mask、12个最终种子；来源与最终追踪清单核验通过。"
+    },
+    {
+      "key": "400_B",
+      "status": "office0 · 400_B · 已载入15,896个原始候选、276个来源筛选后Mask、3个最终种子；来源与最终追踪清单核验通过。"
+    }
+  ],
+  "pixelChecks": [
+    "精确Mask像素核验通过：96,256 / 96,256。",
+    "精确Mask像素核验通过：45,622 / 45,622。",
+    "精确Mask像素核验通过：7,372 / 7,372。",
+    "精确Mask像素核验通过：7,026 / 7,026。"
+  ],
+  "edgeExample": "M0001 · 未进入分组\n\n原图 CropFormer · raw 780 / 建图序号157 · 触边淘汰\n\n局部叠加\n全帧叠加\n原图\n二值Mask\n\n下载原始完整二值Mask · 完整原图\n\n像素\n345,817\n支持点\n79,900\n语义\nwall\n来源选中并去重\n1条来源别名，Mask像素未修改\n边界检查：淘汰\n整帧接触像素 {\"left\":561,\"top\":985,\"right\":138,\"bottom\":0}\n人工裁剪边：无\n来源与同组Mask\n来源 d367311cd\n来源别名与选择原因\n完整筛选记录",
+  "noiseExample": "M0287 · 未进入分组\n\n原图 CropFormer · raw 895 / 建图序号180 · 形态噪声\n\n局部叠加\n全帧叠加\n原图\n二值Mask\n\n下载原始完整二值Mask · 完整原图\n\n像素\n2,638\n支持点\n477\n语义\n未分类\n来源选中并去重\n4条来源别名，Mask像素未修改\n边界检查：通过\n整帧接触像素 {\"left\":0,\"top\":0,\"right\":0,\"bottom\":0}\n人工裁剪边：无\n形态噪声：淘汰\nSPARSE_EDGE_OUTLINE\n来源与同组Mask\n来源 0bafb4308\n来源别名与选择原因\n完整筛选记录",
+  "prExample": "M0176 · A014\n\n原图 CropFormer · raw 895 / 建图序号180 · P/R 过滤\n\n局部叠加\n全帧叠加\n原图\n二值Mask\n\n下载原始完整二值Mask · 完整原图\n\n像素\n21,935\n支持点\n4,016\n语义\nfloor\n来源选中并去重\n4条来源别名，Mask像素未修改\n边界检查：通过\n整帧接触像素 {\"left\":0,\"top\":0,\"right\":0,\"bottom\":0}\n人工裁剪边：无\n形态噪声：通过\n分组：A014 · 主种子\n主种子 M0176；2个成员\n背景语义：通过\n背景语义像素 19,104 / 21,935\n该步骤完整数值\n共视 IoU 去重：通过\n对应主组 A014\n该步骤完整数值\n完整支持包含去重：通过\n该步骤未记录附加数值。\n覆盖充分，跳过修复：通过\nP=86.75% · R=4.37% · 关联身份 6 · 表面支持 4,016点\n该步骤完整数值\nP/R 过滤：淘汰\nP=86.75% · R=4.37% · 关联身份 6 · 表面支持 4,016点\n该步骤完整数值\n\nP=86.75% · R=4.37% · 当前关联身份 6\n\n来源与同组Mask\n来源 a69eb2ca9\nM0220\n来源别名与选择原因\n完整筛选记录",
+  "gateExample": "M0095 · A007\n\n局部 SAM · raw 705 / 建图序号142 · 最终保留\n\n局部叠加\n全帧叠加\n原图\n二值Mask\n\n下载原始完整二值Mask · 完整原图\n\n像素\n96,256\n支持点\n12,255\n语义\nseat\n来源选中并去重\n2条来源别名，Mask像素未修改\n边界检查：通过\n整帧接触像素 {\"left\":0,\"top\":0,\"right\":0,\"bottom\":0}\n人工裁剪边：无\n形态噪声：通过\n—\n分组：A007 · 主种子\n主种子 M0095；3个成员\n背景语义：通过\n背景语义像素 0 / 96,256\n该步骤完整数值\n共视 IoU 去重：通过\n对应主组 A007\n该步骤完整数值\n完整支持包含去重：通过\n该步骤未记录附加数值。\n覆盖充分，跳过修复：通过\nP=95.28% · R=30.44% · 关联身份 106 · 表面支持 12,255点\n该步骤完整数值\nP/R 过滤：通过\nP=95.28% · R=30.44% · 关联身份 106 · 表面支持 12,255点\n该步骤完整数值\n\nP=95.28% · R=30.44% · 当前关联身份 106\n\nSAM2 / Gate\n\ntrack 7 → 持久ID 871；Gate通过 99/400 个建图帧。原始追踪非空692/1996帧。\n\n拒绝原因及实际接受帧\n来源与同组Mask\n来源 33a538013\nM0103\nM0104\n来源别名与选择原因\n完整筛选记录",
+  "imageStatus": [
+    {
+      "alt": "M0047 Mask",
+      "height": 420,
+      "loaded": true,
+      "width": 297
+    },
+    {
+      "alt": "M0052 Mask",
+      "height": 191,
+      "loaded": true,
+      "width": 650
+    },
+    {
+      "alt": "M0095 Mask",
+      "height": 420,
+      "loaded": true,
+      "width": 392
+    },
+    {
+      "alt": "M0116 Mask",
+      "height": 420,
+      "loaded": true,
+      "width": 368
+    },
+    {
+      "alt": "M0132 Mask",
+      "height": 222,
+      "loaded": true,
+      "width": 355
+    },
+    {
+      "alt": "M0179 Mask",
+      "height": 142,
+      "loaded": true,
+      "width": 129
+    },
+    {
+      "alt": "M0208 Mask",
+      "height": 134,
+      "loaded": true,
+      "width": 409
+    },
+    {
+      "alt": "M0228 Mask",
+      "height": 182,
+      "loaded": true,
+      "width": 215
+    },
+    {
+      "alt": "M0230 Mask",
+      "height": 162,
+      "loaded": true,
+      "width": 500
+    },
+    {
+      "alt": "M0279 Mask",
+      "height": 98,
+      "loaded": true,
+      "width": 129
+    },
+    {
+      "alt": "M0302 Mask",
+      "height": 82,
+      "loaded": true,
+      "width": 90
+    },
+    {
+      "alt": "M0337 Mask",
+      "height": 70,
+      "loaded": true,
+      "width": 58
+    },
+    {
+      "alt": "M0095 Mask叠加",
+      "height": 420,
+      "loaded": true,
+      "width": 392
+    }
+  ],
+  "peerComparison": "Original CropFormer 6dc91051c7 selected; peer SAM 90c56dcd03 alternative, same balanced crop",
+  "roiCandidateCount": 2689,
+  "browser_console_errors": []
+}
