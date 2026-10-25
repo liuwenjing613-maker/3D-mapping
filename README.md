@@ -1,3 +1,5 @@
+> **online-v2 branch:** [Online implementation, results and limitations](ONLINE_V2.md). Main baseline registration is preserved.
+
 # 3D-mapping
 
 ## 当前冻结基线：partial＋E1＋swap（2026-10-21）
