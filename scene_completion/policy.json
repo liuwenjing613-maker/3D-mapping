@@ -1,0 +1,17 @@
+{
+  "policy": "scene-final-B-20261101",
+  "enabled": true,
+  "entrypoint": "python -m scene_completion run",
+  "stage": "after_entire_scene_and_final_repair_and_export",
+  "scope": "replica400",
+  "workflows": ["no_repair", "main", "auto-v3-swap", "online-v1", "online-v2"],
+  "passes": 1,
+  "online_frames": false,
+  "intermediate_checkpoints": false,
+  "repair_intermediate_outputs": false,
+  "online_state_feedback": false,
+  "recursive_propagation": false,
+  "C_enabled": false,
+  "settings": {"neighbors": 20, "radius_m": 0.025, "normal_cos": 0.92, "plane_tolerance_m": 0.003, "min_dominance": 0.9, "min_same_id": 6, "chunk_size": 10000, "workers": 4},
+  "evaluation": "main current object_observed_repair revision 2; 350 GT; frozen=false"
+}

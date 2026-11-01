@@ -11,10 +11,13 @@ requires-python = ">=3.10"
 dependencies = ["numpy>=1.23", "scipy>=1.9"]
 
 [project.optional-dependencies]
+completion = ["open3d>=0.18"]
 test = ["pytest>=7"]
 
 [tool.setuptools.packages.find]
-include = ["unified_eval*"]
+include = ["unified_eval*", "scene_completion"]
 
 [tool.setuptools.package-data]
 unified_eval = ["configs/*.json"]
+
+scene_completion = ["policy.json"]

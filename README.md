@@ -109,3 +109,8 @@ The `repair.py` module remains unchanged. Repair Success, False Repair, and Repa
 ## 历史统一 v3 评估（2026-10-07）
 
 已核验 P1-A1、OVI-MAP、OVO 和 OpenVox 六种方法／版本共 48 组场景评估，补充 19 项覆盖、召回和结构指标。完整数值、逐场景数据、定义和核验见[历史评估报告](docs/evaluation_reports/20261007/README.md)。OVO、OpenVox 的原生输入预算与主比较不同，作为参考；全部保持 `DEBUG_ONLY / NON_OFFICIAL` 标记。这些历史分数不属于当前 revision 2，不能和 350-GT 当前结果直接混用。
+
+
+## 场景最终发布策略（2026-11-01）
+
+后续无修复、main、auto-v3-swap、online-v1/online-v2 全部采用 `scene-final-B-20261101`：整个场景及全部最终处理/末次修复完成后，统一执行一次 B，再以 B 产物评价和导出实例PLY。新实验默认使用 [统一整场景入口](docs/SCENE_FINAL_B.md)；不得在中间帧、检查点或修复过程中执行 B，不向在线状态回写补全标签，不启用 C。历史归档/结果锁保留 pre-B，当前种子边界策略及 E1/R2 规则不变。
