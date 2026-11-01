@@ -8,5 +8,15 @@
   "seed_boundary_entry": "python -B -m instance_repair.seed_boundary screen",
   "tracking_handoff_guard": "python -B -m instance_repair.seed_boundary validate-selected",
   "verification_entry": "python -B -m unittest discover -s instance_repair/tests -p test_seed_boundary.py -v",
-  "previous_pipeline": "auto-v3-swap"
+  "previous_pipeline": "auto-v3-swap",
+  "final_publication": {
+    "policy": "scene-final-B-20261101",
+    "config": "scene_completion/policy.json",
+    "entrypoint": "python -m scene_completion committed",
+    "stage": "after_entire_scene_and_final_repair_and_export",
+    "passes": 1,
+    "C_enabled": false,
+    "online_state_feedback": false,
+    "documentation": "docs/SCENE_FINAL_B.md"
+  }
 }

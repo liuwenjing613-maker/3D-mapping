@@ -117,3 +117,8 @@ The `repair.py` module remains unchanged. Repair Success, False Repair, and Repa
 ## Current seed boundary policy (2026-11-01)
 
 The current registry requires full-frame-and-crop-edge-20261101. Reject an entire mask if any foreground pixel touches the full-image border or any artificial source-crop border, before noise filtering and grouping; apply this to primary and auxiliary masks. Rerun downstream semantic/v2 selection on the new groups, then validate the final handoff. See [the executable rule and migration guide](experiments/seed_boundary_20261101/README.md). This section supersedes historical crop-only/default-pipeline wording above. Frozen archives and existing experiment outputs remain historical; no new map metrics are implied. E1 and evaluation protocols are unchanged.
+
+
+## 场景最终发布策略（2026-11-01）
+
+后续无修复、main、auto-v3-swap、online-v1/online-v2 全部采用 `scene-final-B-20261101`：整个场景及全部最终处理/末次修复完成后，统一执行一次 B，再以 B 产物评价和导出实例PLY。新实验默认使用 [统一整场景入口](docs/SCENE_FINAL_B.md)；不得在中间帧、检查点或修复过程中执行 B，不向在线状态回写补全标签，不启用 C。历史归档/结果锁保留 pre-B，当前种子边界策略及 E1/R2 规则不变。
