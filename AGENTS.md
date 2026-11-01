@@ -36,3 +36,8 @@ The current registry requires full-frame-and-crop-edge-20261101. Reject an entir
 ## main 当前双向覆盖阈值（2026-11-01）
 
 main 的跳过修复条件更新为 p≥0.90 且 r≥0.90（包含等号），执行入口为 `instance_repair.seed_filter_rules.run_filters`，当前注册指向新版本。详见 [规则、接入和验证范围](experiments/seed_skip90_20261101/README.md)。本规则覆盖上文历史基线中的 0.95；全触边排除、阶段顺序、第五步语义豁免、ID关联、partial＋E1、R2及整场景最终B保持不变。冻结 0.95 快照仅用于历史复现。
+
+
+## 当前最终种子 ABC（2026-11-01）
+
+当前注册要求在原最终筛选、语义豁免与投影预检全部结束后、跟踪之前执行 instance_repair.seed_final_abc finalize。仅删除满足已确认 ABC 判据的确切非窗户 A；windowpane/blind 保持原样，不新增 B/C、不恢复候选、不提升辅助、不重跑后续筛选。跟踪必须读取其输出清单并通过新的 tracking_handoff_guard。已有前置边界规则、main skip90（如适用）、冻结 E1、R2 和整场景最终 B 均保持原样。实现、阈值与接入方式见 [最终 ABC 说明](experiments/seed_final_abc_20261101/README.md)。新实验须接入注册入口，不直接重跑历史 launcher；历史快照及结果锁不覆盖。

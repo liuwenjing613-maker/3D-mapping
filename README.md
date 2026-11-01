@@ -1,5 +1,7 @@
 # 3D-mapping
 
+当前最终种子处理：原最终清单确定后、跟踪前，仅删除非窗户合格 A，不新增 B/C，不恢复候选；窗户保持原样。四个活动算法分支共用 [最终 ABC 入口与验证说明](experiments/seed_final_abc_20261101/README.md)。
+
 ## 当前冻结基线：partial＋E1＋swap（2026-10-21）
 
 main 当前默认算法为 **partial-e1-swap-20261021**：沿用 auto-v3-swap 的八场景196个种子，采用既有 partial 直接撤换，接原核心历史重关联和 E1 自适应历史扩展。最终结果是 `whole_to_partial / final`。配置、逐场景结果、SHA-256 来源锁和核验方法见 [冻结基线说明](experiments/partial_e1_swap_baseline_20261021/README.md)；当前注册见 [current_auto_pipeline.json](instance_repair/configs/current_auto_pipeline.json)。

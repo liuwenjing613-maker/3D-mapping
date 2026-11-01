@@ -12,7 +12,7 @@
   "evaluation_frozen": false,
   "seed_boundary_policy": "full-frame-and-crop-edge-20261101",
   "seed_boundary_entry": "python -B -m instance_repair.seed_boundary screen",
-  "tracking_handoff_guard": "python -B -m instance_repair.seed_boundary validate-selected",
+  "tracking_handoff_guard": "python -B -m instance_repair.seed_final_abc validate-selected",
   "previous_pipeline": "partial-e1-swap-20261021",
   "final_publication": {
     "policy": "scene-final-B-20261101",
@@ -26,5 +26,10 @@
   },
   "seed_boundary_config": "experiments/seed_boundary_20261101/config.json",
   "seed_filter_module": "instance_repair.seed_filter_rules",
-  "seed_skip_repair_policy": "bidirectional-coverage-90-20261101"
+  "seed_skip_repair_policy": "bidirectional-coverage-90-20261101",
+  "final_seed_policy": "final-abc-remove-a-only-keep-windows-20261101",
+  "final_seed_config": "experiments/seed_final_abc_20261101/config.json",
+  "final_seed_entry": "python -B -m instance_repair.seed_final_abc finalize",
+  "pre_abc_handoff_guard": "python -B -m instance_repair.seed_boundary validate-selected",
+  "final_seed_handoff_required": true
 }
