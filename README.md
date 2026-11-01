@@ -124,3 +124,8 @@ The `repair.py` module remains unchanged. Repair Success, False Repair, and Repa
 ## auto-v3-swap (2026-10-20)
 
 八场景新顺序完整流程已冻结，参见 [流程、核验入口与结果来源](experiments/auto_v3_swap/README.md)。默认原版 E1，保留 partial 对照；评价继续使用 main R2。
+
+
+## Current seed boundary policy (2026-11-01)
+
+The current registry requires full-frame-and-crop-edge-20261101. Reject an entire mask if any foreground pixel touches the full-image border or any artificial source-crop border, before noise filtering and grouping; apply this to primary and auxiliary masks. Rerun downstream semantic/v2 selection on the new groups, then validate the final handoff. See [the executable rule and migration guide](experiments/seed_boundary_20261101/README.md). This section supersedes historical crop-only/default-pipeline wording above. Frozen archives and existing experiment outputs remain historical; no new map metrics are implied. E1 and evaluation protocols are unchanged.
