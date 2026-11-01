@@ -1,0 +1,285 @@
+{
+  "status": "PASS",
+  "policy": "scene-final-B-20261101",
+  "regression_cases": 16,
+  "core_sha256": "42ad4d743d011391eeca80c162f97bf182379da84ce06a2c1e69fe1bc7735fe9",
+  "original_core_byte_identical": true,
+  "GT_read": false,
+  "new_metrics_claimed": false,
+  "rows": [
+    {
+      "workflow": "no_repair",
+      "scene": "room0",
+      "points": 1633034,
+      "newly_assigned": 9967,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 8.562430658002995
+    },
+    {
+      "workflow": "no_repair",
+      "scene": "room1",
+      "points": 1136617,
+      "newly_assigned": 2835,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 4.433010398999613
+    },
+    {
+      "workflow": "no_repair",
+      "scene": "room2",
+      "points": 1229303,
+      "newly_assigned": 16984,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 4.894081572001596
+    },
+    {
+      "workflow": "no_repair",
+      "scene": "office0",
+      "points": 952404,
+      "newly_assigned": 3990,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 3.9534931470006995
+    },
+    {
+      "workflow": "no_repair",
+      "scene": "office1",
+      "points": 662689,
+      "newly_assigned": 2075,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 2.3683207069989294
+    },
+    {
+      "workflow": "no_repair",
+      "scene": "office2",
+      "points": 1443420,
+      "newly_assigned": 15778,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 5.614448628999526
+    },
+    {
+      "workflow": "no_repair",
+      "scene": "office3",
+      "points": 2086738,
+      "newly_assigned": 16696,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 8.696729282000888
+    },
+    {
+      "workflow": "no_repair",
+      "scene": "office4",
+      "points": 1684327,
+      "newly_assigned": 12095,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 6.947060129998135
+    },
+    {
+      "workflow": "main",
+      "scene": "room0",
+      "points": 2308084,
+      "newly_assigned": 13194,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 7.668439206001494
+    },
+    {
+      "workflow": "main",
+      "scene": "room1",
+      "points": 1597704,
+      "newly_assigned": 4226,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 4.48753041099917
+    },
+    {
+      "workflow": "main",
+      "scene": "room2",
+      "points": 1708623,
+      "newly_assigned": 50975,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 5.521553339000093
+    },
+    {
+      "workflow": "main",
+      "scene": "office0",
+      "points": 1266057,
+      "newly_assigned": 7322,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 3.819405866001034
+    },
+    {
+      "workflow": "main",
+      "scene": "office1",
+      "points": 920808,
+      "newly_assigned": 4415,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 2.879662080002163
+    },
+    {
+      "workflow": "main",
+      "scene": "office2",
+      "points": 1928804,
+      "newly_assigned": 33353,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 5.704279678000603
+    },
+    {
+      "workflow": "main",
+      "scene": "office3",
+      "points": 2678248,
+      "newly_assigned": 21462,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 7.97950352800035
+    },
+    {
+      "workflow": "main",
+      "scene": "office4",
+      "points": 2235047,
+      "newly_assigned": 23736,
+      "original_fields_exact": true,
+      "diagnostics_exact": true,
+      "evaluator_loader_exact": true,
+      "idempotent": true,
+      "seconds": 6.702292612997553
+    }
+  ],
+  "unit_tests_per_branch": 21,
+  "unit_test_branches": [
+    "main",
+    "auto-v3-swap",
+    "online-v1",
+    "online-v2",
+    "P1-A1-strict-vote"
+  ],
+  "seed_boundary_regression_tests": 8,
+  "seed_policy_preserved": true,
+  "scoring_source_unchanged": true,
+  "packaging_verified": true,
+  "online_terminal_receipt_checks": [
+    {
+      "scene": "room1",
+      "group": "A",
+      "status": "PASS"
+    },
+    {
+      "scene": "room1",
+      "group": "B",
+      "status": "PASS"
+    },
+    {
+      "scene": "room2",
+      "group": "A",
+      "status": "PASS"
+    },
+    {
+      "scene": "room2",
+      "group": "B",
+      "status": "PASS"
+    },
+    {
+      "scene": "office0",
+      "group": "A",
+      "status": "PASS"
+    },
+    {
+      "scene": "office0",
+      "group": "B",
+      "status": "PASS"
+    },
+    {
+      "scene": "office1",
+      "group": "A",
+      "status": "PASS"
+    },
+    {
+      "scene": "office1",
+      "group": "B",
+      "status": "PASS"
+    },
+    {
+      "scene": "office2",
+      "group": "A",
+      "status": "PASS"
+    },
+    {
+      "scene": "office2",
+      "group": "B",
+      "status": "PASS"
+    },
+    {
+      "scene": "office3",
+      "group": "A",
+      "status": "PASS"
+    },
+    {
+      "scene": "office3",
+      "group": "B",
+      "status": "PASS"
+    },
+    {
+      "scene": "office4",
+      "group": "A",
+      "status": "PASS"
+    },
+    {
+      "scene": "office4",
+      "group": "B",
+      "status": "PASS"
+    }
+  ],
+  "shared_code_sha256": {
+    "core.py": "42ad4d743d011391eeca80c162f97bf182379da84ce06a2c1e69fe1bc7735fe9",
+    "policy.json": "1e0428c568ccc900b35caf05e6a8243f7b24279ae2b8403abbcdb8800793e074",
+    "__init__.py": "0ea06445de49169c4a831481e67862d262ce769939e2b7720b3accf1a3bfd4f0",
+    "__main__.py": "9fb9f6e8f2a2f0afa774694ef5495fe43230541b0ff47e8cf3796c3949286d71",
+    "pipeline.py": "26c1a1c53dffd49d5b5f95ee53dfb5c614b074ca98ef0611d631d668e86af3aa"
+  },
+  "base_commits": {
+    "main": "ebbf64ecbec105e3a633ea437739c00ccb70f2f0",
+    "auto-v3-swap": "bc9aed7cb09505cdb3fda303b71f8c4efc5aa80a",
+    "online-v1": "e511cb438543948189d2688d783c8ddca0480c3b",
+    "online-v2": "3c2df590d944648292138f509a8d0fea2b22a50d",
+    "P1-A1-strict-vote": "91ecadfd67312e21fb795cd0ac19478b5a051959"
+  }
+}
