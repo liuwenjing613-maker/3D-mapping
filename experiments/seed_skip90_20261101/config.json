@@ -1,0 +1,23 @@
+{
+  "pipeline": "seed-boundary-skip90-20261101",
+  "branch": "main",
+  "frozen": false,
+  "seed_boundary_config": "experiments/seed_boundary_20261101/config.json",
+  "seed_boundary_policy": "full-frame-and-crop-edge-20261101",
+  "seed_filter_module": "instance_repair.seed_filter_rules",
+  "filter_rules": "instance_repair/seed_filter_rules.py",
+  "semantic_exemption_rules": "experiments/auto_v3_swap/sources/experiments/replica8_swap34_20261020/rules/semantic_exemption.py",
+  "skip_repair": {
+    "policy": "bidirectional-coverage-90-20261101",
+    "precision_min": 0.9,
+    "recall_min": 0.9,
+    "comparison": "both inclusive >=",
+    "requires_positive_instance": true,
+    "integer_numerator": 9,
+    "integer_denominator": 10
+  },
+  "previous_seed_pipeline_config": "experiments/auto_v3_swap/config.json",
+  "verification_entry": "python -B -m unittest discover -s instance_repair/tests -p 'test_seed*.py' -v",
+  "source_lock": "experiments/seed_skip90_20261101/source_lock.json",
+  "result_scope": "Original incremental TSDF crop-only candidates; current full-boundary combination not rerun."
+}

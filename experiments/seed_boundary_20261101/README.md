@@ -39,3 +39,5 @@ main、auto-v3-swap、online-v1、online-v2 共用本规则与验证入口。mai
 原冻结源码、原 E1 数值内核、原评分器及历史结果不覆盖。更新 `current_auto_pipeline.json` 表示新种子策略已登记，**不表示八场景地图已重跑或新指标已产生**。旧冻结包按原提交 checkout 后运行历史验证；不要把旧包对旧注册文件的哈希检查当成新策略验证入口。新入口如上。
 
 2026-11-01 OVIMAP 对齐实验的已交付 main 仍是 crop-only：最终163个种子中58个触原图边缘，room0为9个；ID14的131像素 Mask 触左边和下边。该证据用于回归，不代表全触边重新分组后的最终数量。修正规则后的地图和评分需在独立实验目录重跑；本次 GitHub 同步不热替换正在运行的实验快照。原生 OVIMAP 几何缺失是另一个问题，本改动不增加或删除 TSDF 几何。
+
+当前 main 的后续 v2 筛选必须使用 `instance_repair.seed_filter_rules.run_filters`（双向 ≥0.90），接入和验证见 [skip90 版本](../seed_skip90_20261101/README.md)。归档 filter_rules.py 的 0.95 仅供历史复现。

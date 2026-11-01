@@ -31,3 +31,8 @@ The current registry requires full-frame-and-crop-edge-20261101. Reject an entir
 ## 场景最终发布策略（2026-11-01）
 
 后续无修复、main、auto-v3-swap、online-v1/online-v2 全部采用 `scene-final-B-20261101`：整个场景及全部最终处理/末次修复完成后，统一执行一次 B，再以 B 产物评价和导出实例PLY。新实验默认使用 [统一整场景入口](docs/SCENE_FINAL_B.md)；不得在中间帧、检查点或修复过程中执行 B，不向在线状态回写补全标签，不启用 C。历史归档/结果锁保留 pre-B，当前种子边界策略及 E1/R2 规则不变。
+
+
+## main 当前双向覆盖阈值（2026-11-01）
+
+main 的跳过修复条件更新为 p≥0.90 且 r≥0.90（包含等号），执行入口为 `instance_repair.seed_filter_rules.run_filters`，当前注册指向新版本。详见 [规则、接入和验证范围](experiments/seed_skip90_20261101/README.md)。本规则覆盖上文历史基线中的 0.95；全触边排除、阶段顺序、第五步语义豁免、ID关联、partial＋E1、R2及整场景最终B保持不变。冻结 0.95 快照仅用于历史复现。

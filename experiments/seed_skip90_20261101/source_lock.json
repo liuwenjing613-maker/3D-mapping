@@ -1,0 +1,25 @@
+{
+  "base_commit": "34929208cdd8552608064aa0476b8461a76ba554",
+  "original_rule": {
+    "path": "experiments/auto_v3_swap/sources/experiments/replica8_swap34_20261020/rules/filter_rules.py",
+    "sha256": "64d06d5c87df0649f05ce2fc89bae673cfcf45e86cc0087e55eeb0995a11854b"
+  },
+  "changed_rule": {
+    "path": "instance_repair/seed_filter_rules.py",
+    "sha256": "ba9bacd7fb49e51b10c21e87c9971e8f70e3b89541ce157688311aec3badc902"
+  },
+  "allowed_code_change": {
+    "before": "return i > 0 and 20 * c >= 19 * n and 20 * c >= 19 * i",
+    "after": "return i > 0 and 10 * c >= 9 * n and 10 * c >= 9 * i"
+  },
+  "files": {
+    "instance_repair/seed_filter_rules.py": "ba9bacd7fb49e51b10c21e87c9971e8f70e3b89541ce157688311aec3badc902",
+    "experiments/auto_v3_swap/sources/experiments/replica8_swap34_20261020/rules/semantic_exemption.py": "12645a987eead39e1c4c8e5385d19e7ec86119b81a40badeb2a06c288867bd08",
+    "experiments/seed_skip90_20261101/config.json": "59a8580746f2053aa99e8d664feb4ef2a58857d89db14e237c3f4458e8c487c8"
+  },
+  "experiment_evidence": {
+    "/data/chenkejun/CVPR/results/main_skip90_repair_20261101/comparison.json": "a3b4855419e64cd7698501fa1e8ac58f3b1ab00c42da39e0693ef88954e89569",
+    "/data/chenkejun/CVPR/results/main_skip90_repair_20261101/final_audit.json": "adc8f50401bca823ec0e3add16701ed72438647170eeb25888ce936426f34ee0",
+    "/data/chenkejun/CVPR/results/main_skip90_repair_20261101/delivery_verification.json": "826a0be66fc55773a96e1490b58885a0e7d03691f6e01228e93e107a187585d4"
+  }
+}
