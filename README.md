@@ -1,5 +1,7 @@
 > **online-v2 branch:** [Online implementation, results and limitations](ONLINE_V2.md). Main baseline registration is preserved.
 
+当前最终种子处理：原最终清单确定后、跟踪前，仅删除非窗户合格 A，不新增 B/C，不恢复候选；窗户保持原样。四个活动算法分支共用 [最终 ABC 入口与验证说明](experiments/seed_final_abc_20261101/README.md)。
+
 # 3D-mapping
 
 ## 当前冻结基线：partial＋E1＋swap（2026-10-21）
