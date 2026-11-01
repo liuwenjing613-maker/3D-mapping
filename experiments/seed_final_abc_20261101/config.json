@@ -1,0 +1,37 @@
+{
+  "policy": "final-abc-remove-a-only-keep-windows-20261101",
+  "frozen": false,
+  "stage": "after_original_final_selection_semantic_exemption_and_preflight_before_tracking",
+  "entry": "python -B -m instance_repair.seed_final_abc finalize",
+  "tracking_handoff_guard": "python -B -m instance_repair.seed_final_abc validate-selected",
+  "original_boundary_guard": "python -B -m instance_repair.seed_boundary validate-selected",
+  "input": "original_final_manifest",
+  "output": "ordered_subset_with_exact_original_group_records",
+  "window_classes": [
+    "windowpane",
+    "blind"
+  ],
+  "window_class_source": "per-mask top_class, not ROI semantic_family",
+  "operation": "remove_exact_A_only",
+  "add_BC": false,
+  "restore_candidates": false,
+  "delete_duplicate_aliases": false,
+  "rerun_downstream": false,
+  "new_boundary_filter": false,
+  "thresholds": {
+    "min_visibility_inclusive": 0.8,
+    "forward_coverage_strict": 0.7,
+    "reverse_coverage_strict": 0.7,
+    "BC_overlap_strict": 0.1,
+    "A_largest": true
+  },
+  "evidence": {
+    "pool": "all_legal_v1_semantic_survivors",
+    "representatives": "fixed_primary_direct_covisibility_gt90",
+    "all_BC_pairs": true,
+    "minimum_support": 20,
+    "minimum_shared_support": 20,
+    "minimum_shared_fraction": 0.2
+  },
+  "docs": "experiments/seed_final_abc_20261101/README.md"
+}

@@ -31,3 +31,8 @@ The current registry requires full-frame-and-crop-edge-20261101. Reject an entir
 ## 场景最终发布策略（2026-11-01）
 
 后续无修复、main、auto-v3-swap、online-v1/online-v2 全部采用 `scene-final-B-20261101`：整个场景及全部最终处理/末次修复完成后，统一执行一次 B，再以 B 产物评价和导出实例PLY。新实验默认使用 [统一整场景入口](docs/SCENE_FINAL_B.md)；不得在中间帧、检查点或修复过程中执行 B，不向在线状态回写补全标签，不启用 C。历史归档/结果锁保留 pre-B，当前种子边界策略及 E1/R2 规则不变。
+
+
+## 当前最终种子 ABC（2026-11-01）
+
+当前注册要求在原最终筛选、语义豁免与投影预检全部结束后、跟踪之前执行 instance_repair.seed_final_abc finalize。仅删除满足已确认 ABC 判据的确切非窗户 A；windowpane/blind 保持原样，不新增 B/C、不恢复候选、不提升辅助、不重跑后续筛选。跟踪必须读取其输出清单并通过新的 tracking_handoff_guard。已有前置边界规则、main skip90（如适用）、冻结 E1、R2 和整场景最终 B 均保持原样。实现、阈值与接入方式见 [最终 ABC 说明](experiments/seed_final_abc_20261101/README.md)。新实验须接入注册入口，不直接重跑历史 launcher；历史快照及结果锁不覆盖。
