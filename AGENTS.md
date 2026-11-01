@@ -20,3 +20,8 @@
 - 当前自动种子到修复的组合流程见 `instance_repair/configs/current_auto_pipeline.json` 与 `experiments/auto_v3_swap/README.md`。已验证八场景637个原始种子、196个保留种子；完整支持包含先于覆盖充分筛选，窗户/柜子仅豁免第五步。
 - 原 E1 内核注册仍由 current_architecture.json 管理，不改变原冻结数值核。默认原版 E1 whole，partial 是独立对照；保留 room0 M0466 来源修正及 room2 G017/G025 历史人工例外。
 - 修改本流程须建立新版本，不覆盖本次源码锁与结果；评价仍使用 main R2，frozen=false。
+
+
+## Current seed boundary policy (2026-11-01)
+
+The current registry requires full-frame-and-crop-edge-20261101. Reject an entire mask if any foreground pixel touches the full-image border or any artificial source-crop border, before noise filtering and grouping; apply this to primary and auxiliary masks. Rerun downstream semantic/v2 selection on the new groups, then validate the final handoff. See [the executable rule and migration guide](experiments/seed_boundary_20261101/README.md). This section supersedes historical crop-only/default-pipeline wording above. Frozen archives and existing experiment outputs remain historical; no new map metrics are implied. E1 and evaluation protocols are unchanged.

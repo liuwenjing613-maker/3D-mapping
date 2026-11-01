@@ -1,7 +1,12 @@
 {
-  "pipeline": "auto-v3-swap",
-  "frozen": true,
-  "config": "experiments/auto_v3_swap/config.json",
+  "pipeline": "seed-boundary-20261101",
+  "frozen": false,
+  "config": "experiments/seed_boundary_20261101/config.json",
   "E1_kernel_registry": "instance_repair/configs/current_architecture.json",
-  "evaluation_frozen": false
+  "evaluation_frozen": false,
+  "seed_boundary_policy": "full-frame-and-crop-edge-20261101",
+  "seed_boundary_entry": "python -B -m instance_repair.seed_boundary screen",
+  "tracking_handoff_guard": "python -B -m instance_repair.seed_boundary validate-selected",
+  "verification_entry": "python -B -m unittest discover -s instance_repair/tests -p test_seed_boundary.py -v",
+  "previous_pipeline": "auto-v3-swap"
 }

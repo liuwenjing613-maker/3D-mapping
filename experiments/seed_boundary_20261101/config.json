@@ -1,0 +1,35 @@
+{
+  "pipeline": "seed-boundary-20261101",
+  "branch": "auto-v3-swap",
+  "seed_boundary_policy": "full-frame-and-crop-edge-20261101",
+  "frozen": false,
+  "previous_registry": {
+    "pipeline": "auto-v3-swap",
+    "frozen": true,
+    "config": "experiments/auto_v3_swap/config.json",
+    "E1_kernel_registry": "instance_repair/configs/current_architecture.json",
+    "evaluation_frozen": false
+  },
+  "changes": [
+    "Exclude full-image and artificial crop boundary masks before noise and grouping",
+    "Check all source aliases, primary and auxiliary masks",
+    "Regroup, rerun semantic/v2 selection, and validate at tracking handoff"
+  ],
+  "unchanged": [
+    "Mask pixels",
+    "Projection sampling and thresholds",
+    "E1 numerical kernel",
+    "Evaluation protocol",
+    "Existing online prefix/association policies"
+  ],
+  "required_stages": [
+    "source_routing",
+    "full_boundary_screen",
+    "original_noise_and_grouping",
+    "semantic_and_v2_selection",
+    "validate_selected",
+    "tracking_and_repair"
+  ],
+  "source_rules": "experiments/auto_v3_swap/sources/experiments/auto_v2_room0_20261019/v1",
+  "result_status": "Selection rule updated; existing maps and metrics are historical, not rerun."
+}
