@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Replica · Two-audit 检查页</title>
+<style>
+:root{--ink:#172b35;--muted:#60737b;--line:#d9e2e3;--teal:#116a67;--pale:#e8f4ef;--amber:#956217;--paper:#fff;--bg:#f3f5f2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Microsoft YaHei",system-ui,sans-serif;font-size:14px}
+button,select,input{font:inherit}button,select{cursor:pointer}button{border:1px solid var(--line);background:white;color:var(--ink);border-radius:8px;padding:9px 12px}button:hover{border-color:var(--teal)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #62aaa1;outline-offset:2px}
+a{color:var(--teal)}header{border-bottom:1px solid var(--line);background:#fff;padding:23px max(24px,calc((100vw - 1440px)/2))}
+.topline{display:flex;align-items:center;justify-content:space-between;gap:20px}.eyebrow{font:700 11px/1.4 system-ui;letter-spacing:2px;color:var(--teal);margin-bottom:5px}h1{font-size:29px;letter-spacing:-1px;margin:0 0 8px}header p{color:var(--muted);margin:0;line-height:1.65}.status{white-space:nowrap;border:1px solid #bcddd1;border-radius:30px;background:var(--pale);color:#24664e;padding:9px 14px}.status:before{content:"";display:inline-block;width:7px;height:7px;background:#368969;border-radius:50%;margin-right:7px}
+main{max-width:1488px;margin:auto;padding:20px 24px 36px}.quick{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:17px}.quick span{color:var(--muted);margin-right:4px}.quick button{padding:7px 11px}.quick .accent{background:var(--teal);color:#fff;border-color:var(--teal)}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.metric{border:1px solid var(--line);border-radius:11px;padding:15px 18px;background:white}.metric .label{color:var(--muted);font-size:12px}.metric b{display:block;font-size:29px;font-weight:650;margin:6px 0 3px;letter-spacing:-1px}.metric small{font-size:11px;color:var(--muted)}
+.controls{display:flex;align-items:end;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin-bottom:14px}
+label{display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:12px}select,input{border:1px solid #cbd6d8;border-radius:7px;background:white;color:var(--ink);padding:8px 10px;min-height:37px}#target{min-width:205px}#query{width:170px}.hint{color:var(--muted);font-size:12px;line-height:1.7}
+.scope{margin:0 0 15px;border-left:3px solid #8bb9a3;padding:3px 12px;color:#4d656b;line-height:1.65;font-size:12px}.scope strong{font-weight:600;color:var(--ink)}
+.layout{display:grid;grid-template-columns:370px minmax(0,1fr);gap:16px;align-items:start}.panel{border:1px solid var(--line);border-radius:12px;background:white;overflow:hidden}.panelhead{padding:16px 17px;border-bottom:1px solid var(--line)}h2{font-size:18px;margin:0 0 6px}h3{font-size:15px;margin:0 0 10px}.tablewrap{max-height:720px;overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}th{text-align:left;color:var(--muted);font-weight:500;background:#f7f9f7;padding:10px 8px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:10px 8px;border-bottom:1px solid #edf1ef;vertical-align:middle}td:first-child,th:first-child{padding-left:16px}tr.selected{background:#edf6f2}tr.selected td:first-child{box-shadow:inset 3px 0 var(--teal)}.pairbtn{padding:0;border:0;border-radius:3px;background:transparent;text-align:left;color:var(--ink);width:100%;font-size:12px;line-height:1.65}.pairbtn:hover{color:var(--teal)}.pairbtn span{display:block;font-family:ui-monospace,Consolas,monospace}.badge{display:inline-block;white-space:nowrap;font-size:10px;border-radius:4px;padding:3px 5px;margin-top:4px;background:#edf0f1;color:#62737b}.outside{background:#f9eed7;color:var(--amber)}.hasimage{color:#176a60;background:#e2f2ec}.muted{color:var(--muted)}.empty{padding:30px;color:var(--muted);line-height:1.7;text-align:center}
+.detail{padding:18px}.detailtop{display:flex;justify-content:space-between;gap:12px;align-items:start;margin-bottom:12px}.detailtop h2{font-size:22px}.detailtop .hint{font-family:ui-monospace,Consolas,monospace}.pairfacts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:9px;margin:14px 0 12px;overflow:hidden}.pairfacts div{padding:10px 11px;border-right:1px solid var(--line)}.pairfacts div:last-child{border-right:0}.pairfacts span{display:block;font-size:10px;color:var(--muted);line-height:1.5}.pairfacts b{display:block;font-size:17px;margin-top:4px}.description{font-size:12px;line-height:1.75;color:var(--muted);margin:8px 0 15px}.imagecard{border:1px solid var(--line);border-radius:9px;overflow:hidden;margin:13px 0;background:#f8faf9}.imagecard .caption{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;color:var(--muted);font-size:12px}.imagecard img{display:block;width:100%;height:auto;background:#1a1e22}.imagecard a{display:block}.imagecard .caption a{display:inline;font-size:12px}.notice{padding:14px;border-radius:8px;background:#fff8e9;color:#745b24;line-height:1.7}
+details{margin-top:15px;border-top:1px solid var(--line);padding-top:14px}summary{cursor:pointer;color:var(--teal);font-size:13px}details .tablewrap{max-height:350px;margin-top:10px}.legend{font-size:12px;line-height:1.8;color:var(--muted);padding:12px 16px;border-top:1px solid var(--line)}
+footer{color:var(--muted);font-size:11px;margin-top:20px;line-height:1.8}.error{padding:24px;background:#fff4ef;border:1px solid #e6b7a5;color:#8c432c;border-radius:10px}
+@media(max-width:1050px){.layout{grid-template-columns:320px minmax(0,1fr)}.pairfacts{grid-template-columns:repeat(2,1fr)}.pairfacts div:nth-child(2){border-right:0}.pairfacts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media(max-width:800px){header{padding:18px}.topline{align-items:start}.status{font-size:11px;padding:7px 9px}h1{font-size:24px}main{padding:16px}.metrics{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}.tablewrap{max-height:290px}.controls{gap:10px}#target{min-width:170px}.detail{padding:14px}}
+</style>
+</head>
+<body>
+<header><div class="topline"><div><div class="eyebrow">TWO-AUDIT / REPLICA</div><h1>当前候选复核</h1><p>room0 与 office2 · 各 400 帧 · 原始 Mask 的多视角证据</p></div><div class="status">三个环节已完成</div></div></header>
+<main>
+<div class="quick"><span>优先查看</span><button class="accent" id="quickRoom">room0 · ID 162</button><button id="quickOffice">office2 · ID 94</button><span class="hint">先看高覆盖样例，再检查低覆盖对应。</span></div>
+<div class="metrics" id="metrics"></div>
+<div class="controls">
+<label>场景<select id="scene" aria-label="场景"><option value="room0">room0</option><option value="office2">office2</option></select></label>
+<label>旧实例 ID<select id="target" aria-label="旧实例 ID"></select></label>
+<label>ROI 范围<select id="roi" aria-label="ROI 范围"><option value="all">全部候选</option><option value="outside">仅 ROI 范围外证据</option></select></label>
+<label>簇对排序<select id="sort" aria-label="簇对排序"><option value="priority">优先已有图片与高覆盖</option><option value="views">独立共同视角最多</option><option value="fraction">最低覆盖比例最高</option></select></label>
+<label>查找观测簇<input id="query" type="search" placeholder="例如 T000172" aria-label="查找观测簇"></label>
+</div>
+<p class="scope"><strong>所有候选均待人工判真。</strong>“ROI 范围外”表示这对簇的完整证据与原 ROI 核心及周边范围无重叠，不等于已经确认漏检。原地图未修改，未触发修复。</p>
+<div class="layout">
+<section class="panel"><div class="panelhead"><h2 id="targetTitle">候选簇对</h2><div class="hint" id="pairCount">正在读取结果…</div></div>
+<div class="tablewrap"><table><thead><tr><th>稳定观测簇</th><th>视角组</th><th>最低占比</th></tr></thead><tbody id="pairs"></tbody></table></div>
+<div class="legend">“有代表图”可查看原始 Mask 的两个独立视角。全部候选均列出；没有代表图的簇对可查看逐帧数值证据。</div></section>
+<section class="panel"><div class="detail" id="detail"><div class="empty">正在读取已完成的 Replica 验证结果…</div></div></section>
+</div>
+<footer id="footer">读取中…</footer>
+</main>
+<script>
+(function(){
+'use strict';
+let data=null,currentScene='room0',currentId=162,selectedKey=null,visiblePairs=[];
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pct=v=>{const n=Number(v)*100;return n.toFixed(n<1?3:1)+'%';};
+const num=v=>Number(v).toLocaleString('zh-CN');
+function scene(){return data.scenes.find(s=>s.name===currentScene);}
+function roiName(p){return p.roi_outside?'ROI 范围外':p.roi_relation==='CONTEXT_ONLY'?'仅周边范围重叠':'与 ROI 核心重叠';}
+function syncHash(){history.replaceState(null,'','#scene='+encodeURIComponent(currentScene)+'&id='+currentId);}
+function metrics(){
+const s=scene();
+const entries=[['待审旧 ID',s.suspected_ids,num(s.pair_count)+' 对达到当前判据的簇对'],
+['含 ROI 外证据的 ID',s.roi_outside_ids,num(s.roi_outside_pairs)+' 对完全无几何重叠'],
+['稳定观测簇',s.stable_tracks,num(s.observations)+' 条原始 Mask 观测'],
+['已导出代表图',s.exported_images,'图像与原始 Mask 来源校验通过']];
+$('metrics').innerHTML=entries.map(e=>'<div class="metric"><div class="label">'+e[0]+'</div><b>'+num(e[1])+'</b><small>'+e[2]+'</small></div>').join('');
+$('footer').textContent='Replica · 2026-11-04 · 来源与产物重算通过。当前场景另有 '+num(s.insufficient_view_pairs)+' 对证据不足两个独立共同视角，保留在原始记录中。本页未设置覆盖比例门槛；候选数量不是错误数量，也不是修复收益。';
+}
+function targets(){
+const s=scene(),outside=$('roi').value==='outside';
+const options=s.targets.filter(t=>!outside||t.outside_pairs>0);
+if(!options.some(t=>t.id===currentId))currentId=options.length?options[0].id:null;
+$('target').innerHTML=options.map(t=>'<option value="'+t.id+'">ID '+t.id+' · '+t.pair_count+' 对'+(t.outside_pairs?' · '+t.outside_pairs+' 对 ROI 外':'')+'</option>').join('');
+$('target').value=String(currentId);
+}
+function pairTable(){
+const s=scene(),q=$('query').value.trim().toUpperCase(),sort=$('sort').value;
+visiblePairs=s.pairs.filter(p=>p.old_id===currentId&&($('roi').value!=='outside'||p.roi_outside)&&(!q||p.tracks.some(t=>t.toUpperCase().includes(q))));
+visiblePairs.sort((a,b)=>{
+if(sort==='views')return b.views-a.views||b.frames-a.frames||b.min_fraction-a.min_fraction;
+if(sort==='fraction')return b.min_fraction-a.min_fraction||b.views-a.views;
+return Number(b.images.length>0)-Number(a.images.length>0)||Number(b.roi_outside)-Number(a.roi_outside)||b.min_fraction-a.min_fraction||b.views-a.views;
+});
+if(!visiblePairs.some(p=>p.key===selectedKey))selectedKey=visiblePairs.length?visiblePairs[0].key:null;
+$('targetTitle').textContent=currentScene+' · ID '+currentId;
+$('pairCount').textContent=num(visiblePairs.length)+' 对符合筛选 · '+num(visiblePairs.filter(p=>p.images.length).length)+' 对有代表图';
+$('pairs').innerHTML=visiblePairs.length?visiblePairs.map(p=>'<tr class="'+(p.key===selectedKey?'selected':'')+'"><td><button class="pairbtn" data-key="'+p.key+'" aria-label="查看 '+p.tracks.join(' 与 ')+'"><span>'+esc(p.tracks[0])+'</span><span>'+esc(p.tracks[1])+'</span><i class="badge '+(p.roi_outside?'outside':'')+'">'+roiName(p)+'</i> <i class="badge '+(p.images.length?'hasimage':'')+'">'+(p.images.length?'有代表图':'数值证据')+'</i></button></td><td>'+p.views+'</td><td>'+pct(p.min_fraction)+'</td></tr>').join(''):'<tr><td colspan="3" class="empty">没有符合当前筛选的簇对。</td></tr>';
+detail();
+syncHash();
+}
+function detail(){
+const p=visiblePairs.find(p=>p.key===selectedKey);
+if(!p){$('detail').innerHTML='<div class="empty">请选择其他旧 ID 或调整筛选。</div>';return;}
+let h='<div class="detailtop"><div><h2>旧 ID '+p.old_id+' 的分离证据</h2><div class="hint">'+esc(p.tracks.join(' / '))+'</div></div><span class="badge '+(p.roi_outside?'outside':'')+'">'+roiName(p)+'</span></div>';
+h+='<div class="pairfacts"><div><span>共同出现帧数</span><b>'+p.frames+'</b></div><div><span>独立共同视角组</span><b>'+p.views+'</b></div><div><span>较弱一侧占比 · 最低</span><b>'+pct(p.min_fraction)+'</b></div><div><span>较弱一侧占比 · 跨帧中位数</span><b>'+pct(p.median_fraction)+'</b></div></div>';
+h+='<p class="description">占比＝该 Mask 的三维支持中属于旧 ID 的点数 ÷ 该 Mask 的全部三维支持点数。每帧双方分别计算，表中取较小值；没有额外比例门槛。ROI 核心覆盖 '+pct(p.core_fraction)+'，含周边范围覆盖 '+pct(p.roi_fraction)+'。</p>';
+if(p.images.length){
+h+='<h3>原始 RGB / Mask 对照</h3><div class="hint">左：整帧原图与彩色 Mask。右：候选区域放大。点击图片可查看原尺寸。</div>';
+h+=p.images.map(im=>'<div class="imagecard"><div class="caption"><span>原始帧 '+im.frame+' · 独立视角组 '+im.view_group+'</span><a href="'+esc(im.src)+'" target="_blank" rel="noopener">打开原图尺寸 ↗</a></div><a href="'+esc(im.src)+'" target="_blank" rel="noopener"><img src="'+esc(im.src)+'" alt="'+currentScene+' 旧 ID '+p.old_id+' 原始帧 '+im.frame+' 的两个 Mask 对照图"></a></div>').join('');
+}else{
+h+='<div class="notice">这对簇尚未导出代表图，可先在左侧选择“有代表图”的簇对。以下数值证据包含全部共同观察帧。</div>';
+}
+h+='<details '+(p.images.length?'':'open')+'><summary>逐帧共同观察证据（'+p.events.length+' 帧）</summary><div class="tablewrap"><table><thead><tr><th>原始帧</th><th>视角组</th><th>Mask A / B</th><th>A：旧 ID 点数 / 支持点</th><th>B：旧 ID 点数 / 支持点</th></tr></thead><tbody>';
+h+=p.events.map(e=>'<tr><td>'+e.frame+'</td><td>'+e.view_group+'</td><td>'+e.masks.join(' / ')+'</td><td>'+num(e.counts[0])+' / '+num(e.totals[0])+' · '+pct(e.fractions[0])+'</td><td>'+num(e.counts[1])+' / '+num(e.totals[1])+' · '+pct(e.fractions[1])+'</td></tr>').join('');
+h+='</tbody></table></div></details><details><summary>当前判据与解释边界</summary><p class="description">双方均属于稳定簇；同一帧为两个不同原始 Mask；在同一个旧 ID 上各有至少 25 个表面支持点；分离在至少两个独立共同视角复现。视角按相机平移 0.1 m 或光轴 10° 分组。<br>稳定分离仍可能来自同一物体的不同局部，少量交叉标签也可能形成低覆盖对应。因此所有结果均为待审状态，不自动触发修复。</p></details>';
+$('detail').innerHTML=h;
+}
+function refresh(resetPair){metrics();targets();if(resetPair)selectedKey=null;pairTable();}
+function jump(s,id){currentScene=s;currentId=id;selectedKey=null;$('scene').value=s;$('roi').value='all';$('query').value='';$('sort').value='priority';refresh(true);}
+$('scene').addEventListener('change',()=>jump($('scene').value,$('scene').value==='room0'?162:94));
+$('target').addEventListener('change',()=>{currentId=Number($('target').value);selectedKey=null;pairTable();});
+$('roi').addEventListener('change',()=>refresh(true));
+$('sort').addEventListener('change',()=>{selectedKey=null;pairTable();});
+$('query').addEventListener('input',()=>{selectedKey=null;pairTable();});
+$('pairs').addEventListener('click',e=>{const b=e.target.closest('button[data-key]');if(b){selectedKey=b.dataset.key;pairTable();}});
+$('quickRoom').addEventListener('click',()=>jump('room0',162));
+$('quickOffice').addEventListener('click',()=>jump('office2',94));
+fetch('data.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(value=>{
+data=value;if(data.dataset!=='Replica'||data.pipeline_status!=='PASS')throw new Error('结果来源不符合当前 Replica 验证范围');
+const h=new URLSearchParams(location.hash.slice(1));if(data.scenes.some(s=>s.name===h.get('scene')))currentScene=h.get('scene');
+currentId=Number(h.get('id')||(currentScene==='room0'?162:94));$('scene').value=currentScene;refresh(true);
+}).catch(error=>{$('detail').innerHTML='<div class="error">结果加载失败：'+esc(error.message)+'。请刷新页面或检查本机转发连接。</div>';$('pairCount').textContent='未加载';});
+})();
+</script>
+</body></html>
