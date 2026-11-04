@@ -8,7 +8,7 @@
 </style></head><body>
 <header><h1>实例与 Mask 对照</h1><div class="nav"><select id="caseSelect" aria-label="选择案例"></select><span id="counter"></span><button id="prev" aria-label="上一例">上一例</button><button id="next" aria-label="下一例">下一例</button></div></header>
 <main><div class="lead"><p id="explanation">正在加载…</p><span class="status">待确认 · 未修复</span></div>
-<div class="comparison"><section class="panel"><div class="panelhead"><h2>三维实例</h2><div class="actions"><button id="original">原实例</button><button id="evidence" class="active">对应 Mask</button><button id="reset" aria-label="复位三维视角">复位</button></div></div>
+<div class="comparison"><section class="panel"><div class="panelhead"><h2>三维实例</h2><div class="actions"><button id="original">原实例</button><button id="evidence" class="active">完整 A/B</button><button id="intersection">交集</button><button id="reset" aria-label="复位三维视角">复位</button></div></div>
 <div class="cloudwrap"><canvas id="cloud" tabindex="0" aria-label="三维实例点云，可拖动旋转、滚轮缩放"></canvas><div id="loading" class="load">加载三维…</div><span class="cloudhint">拖动旋转 · 滚轮缩放</span></div><div class="legend" id="legend"></div></section>
 <section class="panel"><div class="panelhead"><h2>两个视角的原始 Mask</h2><span style="font-size:11px;color:#60767d">点击放大</span></div><div class="views" id="views"></div><div class="legend" id="maskLegend"></div></section></div>
 <details><summary>数据详情</summary><div id="detail"></div></details>
@@ -16,14 +16,14 @@
 <script>
 'use strict';
 const $=id=>document.getElementById(id);
-let cases=[],index=0,serial=0,mode=1,yaw=0,pitch=0,zoom=1,count=0,drag=null,dirty=false,extent=[2,2],center=[0,0,0];
+let cases=[],index=0,serial=0,mode=1,yaw=0,pitch=0,zoom=1,count=0,drag=null,dirty=false,extent=[2,2],center=[0,0,0],cloudPoints=null;
 const canvas=$('cloud'),gl=canvas.getContext('webgl',{antialias:true,preserveDrawingBuffer:true});
 let program,buffer;
 function shader(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s;}
 if(gl){
 program=gl.createProgram();
-gl.attachShader(program,shader(gl.VERTEX_SHADER,'attribute vec4 point;uniform vec4 view;uniform float aspect;uniform float size;uniform vec3 center;varying float kind;void main(){float cy=cos(view.x),sy=sin(view.x),cp=cos(view.y),sp=sin(view.y);vec3 p=point.xyz-center;float x=cy*p.x+sy*p.z;float z=-sy*p.x+cy*p.z;float y=cp*p.y-sp*z;z=sp*p.y+cp*z;gl_Position=vec4(x*view.z/max(1.0,aspect),-y*view.z*min(1.0,aspect),z*0.18,1.0);gl_PointSize=size;kind=point.w;}'));
-gl.attachShader(program,shader(gl.FRAGMENT_SHADER,'precision mediump float;varying float kind;uniform vec3 colorA;uniform vec3 colorB;uniform float mode;void main(){vec2 p=gl_PointCoord-vec2(.5);if(dot(p,p)>.25)discard;vec3 c=vec3(.17,.23,.28);if(kind>.5){c=vec3(.91,.73,.30);if(mode>.5){if(kind>1.5)c=colorA;if(kind>2.5)c=colorB;if(kind>3.5)c=vec3(.88,.40,.72);}}gl_FragColor=vec4(c,1.0);}'));
+gl.attachShader(program,shader(gl.VERTEX_SHADER,'attribute vec4 point;uniform vec4 view;uniform float aspect;uniform float size;uniform mediump float mode;uniform vec3 center;varying float kind;void main(){float cy=cos(view.x),sy=sin(view.x),cp=cos(view.y),sp=sin(view.y);vec3 p=point.xyz-center;float x=cy*p.x+sy*p.z;float z=-sy*p.x+cy*p.z;float y=cp*p.y-sp*z;z=sp*p.y+cp*z;gl_Position=vec4(x*view.z/max(1.0,aspect),-y*view.z*min(1.0,aspect),z*0.18,1.0);gl_PointSize=size;if(mode>1.5 && mod(point.w,2.0)>.5 && point.w>1.5)gl_PointSize=size*1.7;kind=point.w;}'));
+gl.attachShader(program,shader(gl.FRAGMENT_SHADER,'precision mediump float;varying float kind;uniform vec3 colorA;uniform vec3 colorB;uniform mediump float mode;void main(){vec2 p=gl_PointCoord-vec2(.5);if(dot(p,p)>.25)discard;bool old=mod(kind,2.0)>.5;bool a=mod(floor(kind/2.0),2.0)>.5;bool b=kind>3.5;vec3 c=vec3(.17,.23,.28);if(mode<.5){if(old)c=vec3(.91,.73,.30);else if(a||b)discard;}else{if(a)c=colorA;if(b)c=colorB;if(a&&b)c=vec3(.88,.40,.72);if(mode>1.5 && !old)c=mix(vec3(.09,.14,.18),c,.22);}gl_FragColor=vec4(c,1.0);}'));
 gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));
 buffer=gl.createBuffer();gl.useProgram(program);gl.bindBuffer(gl.ARRAY_BUFFER,buffer);const loc=gl.getAttribLocation(program,'point');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,4,gl.FLOAT,false,16,0);gl.enable(gl.DEPTH_TEST);gl.clearColor(.09,.14,.18,1);
 }
@@ -36,24 +36,29 @@ canvas.addEventListener('pointerup',()=>drag=null);canvas.addEventListener('poin
 canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.25,Math.min(8,zoom*Math.exp(-e.deltaY*.001)));requestDraw();},{passive:false});
 canvas.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-'].includes(e.key)){e.preventDefault();if(e.key==='ArrowLeft')yaw-=.12;if(e.key==='ArrowRight')yaw+=.12;if(e.key==='ArrowUp')pitch-=.12;if(e.key==='ArrowDown')pitch+=.12;if(e.key==='+')zoom=Math.min(8,zoom*1.1);if(e.key==='-')zoom=Math.max(.25,zoom/1.1);requestDraw();}});
 const color=c=>'rgb('+c.join(',')+')',swatch=(c,t)=>'<span><i class="dot" style="background:'+c+'"></i>'+t+'</span>';
-function legends(){const c=cases[index];const masks=swatch(color(c.colors[0]),'区域 A')+swatch(color(c.colors[1]),'区域 B');$('maskLegend').innerHTML=masks;$('legend').innerHTML=mode?masks+swatch('#e8ba4d','其余原实例')+(c.shared_points?swatch('#e066b8','跨帧重叠'):''):swatch('#e8ba4d','同一个原实例');$('original').classList.toggle('active',!mode);$('evidence').classList.toggle('active',!!mode);}
-function setMode(m){mode=m;legends();requestDraw();}
-$('original').onclick=()=>setMode(0);$('evidence').onclick=()=>setMode(1);$('reset').onclick=()=>{yaw=pitch=0;zoom=1;requestDraw();};
+function fitCloud(){
+if(!cloudPoints)return;const lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];
+for(let n=0;n<cloudPoints.length;n+=4){const k=cloudPoints[n+3];if(mode===0?k%2===1:k>=2){for(let j=0;j<3;j++){lo[j]=Math.min(lo[j],cloudPoints[n+j]);hi[j]=Math.max(hi[j],cloudPoints[n+j]);}}}
+extent=[Math.max(.01,hi[0]-lo[0]),Math.max(.01,hi[1]-lo[1])];center=lo.map((v,j)=>(v+hi[j])/2);
+}
+function legends(){const c=cases[index];const masks=swatch(color(c.colors[0]),'区域 A')+swatch(color(c.colors[1]),'区域 B');$('maskLegend').innerHTML=masks;$('legend').innerHTML=mode===0?swatch('#e8ba4d','原实例'):masks+(c.shared_points?swatch('#e066b8','A/B 重叠'):'')+(mode===2?'<span>亮色：与旧实例交集</span>':'<span>全部已分配帧累计</span>');$('original').classList.toggle('active',mode===0);$('evidence').classList.toggle('active',mode===1);$('intersection').classList.toggle('active',mode===2);}
+function setMode(m){mode=m;yaw=pitch=0;zoom=1;fitCloud();legends();requestDraw();}
+$('original').onclick=()=>setMode(0);$('evidence').onclick=()=>setMode(1);$('intersection').onclick=()=>setMode(2);$('reset').onclick=()=>{yaw=pitch=0;zoom=1;requestDraw();};
 function closeModal(){$('modal').hidden=true;} $('closeModal').onclick=closeModal;
 $('modal').onclick=e=>{if(e.target===$('modal'))closeModal();};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 async function show(i,updateHash=true){
-index=i;const c=cases[i],token=++serial;count=0;yaw=pitch=0;zoom=1;mode=1;closeModal();
+index=i;const c=cases[i],token=++serial;count=0;cloudPoints=null;yaw=pitch=0;zoom=1;mode=1;closeModal();
 $('caseSelect').value=String(i);$('counter').textContent=(i+1)+' / '+cases.length;$('prev').disabled=i===0;$('next').disabled=i===cases.length-1;
 $('explanation').textContent=c.min_fraction>=.5?'A、B 在 '+c.views+' 个视角中分开，但大部分对应点被原地图归入同一实例。':'A、B 与同一原实例有局部重叠，需要核对是否误合并。';
 legends();$('loading').textContent=gl?'加载三维…':'浏览器不支持三维显示';$('loading').hidden=false;requestDraw();
 $('views').replaceChildren();
 c.images.forEach((im,j)=>{const fig=document.createElement('figure');fig.className='view';const b=document.createElement('button');b.setAttribute('aria-label','放大视角 '+(j+1));const img=document.createElement('img');img.src=im.src;img.alt=c.scene+' 实例 '+c.id+' 视角 '+(j+1)+'，A 与 B 的原始 Mask';b.append(img);b.onclick=()=>{$('large').src=im.src;$('large').alt=img.alt;$('largeCaption').textContent='视角 '+(j+1)+' · 帧 '+im.frame;$('modal').hidden=false;$('closeModal').focus();};const cap=document.createElement('figcaption');cap.textContent='视角 '+(j+1)+' · 帧 '+im.frame;fig.append(b,cap);$('views').append(fig);});
-$('detail').innerHTML='共同观察 '+c.frames+' 帧 / '+c.views+' 个视角；最低归属占比 '+(c.min_fraction*100).toFixed(2)+'%（不是准确率）。<br>三维彩色点来自右侧两帧，且属于原实例；黄色为其余原实例，灰色为周边。显示 '+c.displayed_original_points.toLocaleString()+' / '+c.original_points.toLocaleString()+' 个原实例点，抽样仅用于显示。<br>本页为 87 组代表例。<a href="legacy/#scene='+c.scene+'&id='+c.id+'" target="_blank" rel="noopener">全部候选与数值证据 ↗</a>';
+$('detail').innerHTML='A：'+c.full_support_points[0].toLocaleString()+' 点 / '+c.member_counts[0]+' 帧；与旧实例交集 '+c.intersection_points[0].toLocaleString()+' 点。<br>B：'+c.full_support_points[1].toLocaleString()+' 点 / '+c.member_counts[1]+' 帧；与旧实例交集 '+c.intersection_points[1].toLocaleString()+' 点。<br>完整 A/B 为稳定簇全部已分配观测的三维支持并集，受实际可见表面限制；只作显示抽样，不按旧实例裁切。右侧为其中两个代表视角。<br><a href="legacy/#scene='+c.scene+'&id='+c.id+'" target="_blank" rel="noopener">原始候选证据 ↗</a>';
 if(updateHash)history.replaceState(null,'','#scene='+c.scene+'&id='+c.id+'&pair='+c.key);
-try{const r=await fetch(c.cloud);if(!r.ok)throw Error('HTTP '+r.status);const raw=await r.arrayBuffer();if(token!==serial)return;if(raw.byteLength!==c.point_count*16)throw Error('三维点数不一致');if(gl){gl.bindBuffer(gl.ARRAY_BUFFER,buffer);const points=new Float32Array(raw),lo=[Infinity,Infinity,Infinity],hi=[-Infinity,-Infinity,-Infinity];for(let n=0;n<points.length;n+=4){if(points[n+3]>.5){for(let j=0;j<3;j++){lo[j]=Math.min(lo[j],points[n+j]);hi[j]=Math.max(hi[j],points[n+j]);}}}extent=[Math.max(.01,hi[0]-lo[0]),Math.max(.01,hi[1]-lo[1])];center=lo.map((v,j)=>(v+hi[j])/2);gl.bufferData(gl.ARRAY_BUFFER,points,gl.STATIC_DRAW);count=c.point_count;$('loading').hidden=true;requestDraw();}}catch(e){if(token===serial){$('loading').textContent='三维加载失败，请刷新';console.error(e);}}
+try{const r=await fetch(c.cloud);if(!r.ok)throw Error('HTTP '+r.status);const raw=await r.arrayBuffer();if(token!==serial)return;if(raw.byteLength!==c.point_count*16)throw Error('三维点数不一致');if(gl){gl.bindBuffer(gl.ARRAY_BUFFER,buffer);const points=new Float32Array(raw);cloudPoints=points;fitCloud();gl.bufferData(gl.ARRAY_BUFFER,points,gl.STATIC_DRAW);count=c.point_count;$('loading').hidden=true;requestDraw();}}catch(e){if(token===serial){$('loading').textContent='三维加载失败，请刷新';console.error(e);}}
 }
 function fromHash(){const h=new URLSearchParams(location.hash.slice(1));let i=cases.findIndex(c=>c.scene===h.get('scene')&&c.id===Number(h.get('id'))&&(!h.has('pair')||c.key===h.get('pair')));return Math.max(0,i);}
 $('prev').onclick=()=>show(Math.max(0,index-1));$('next').onclick=()=>show(Math.min(cases.length-1,index+1));$('caseSelect').onchange=()=>show(Number($('caseSelect').value));window.addEventListener('hashchange',()=>show(fromHash(),false));
-fetch('visual_data.json').then(r=>{if(!r.ok)throw Error(r.status);return r.json();}).then(d=>{if(d.dataset!=='Replica')throw Error('数据来源不符');cases=d.cases;for(const s of ['room0','office2']){const g=document.createElement('optgroup');g.label=s;let n=0;cases.forEach((c,i)=>{if(c.scene!==s)return;const o=document.createElement('option');o.value=i;o.textContent=s+' · 实例 '+c.id+' · 例 '+(++n);g.append(o);});$('caseSelect').append(g);}show(fromHash());}).catch(e=>{$('explanation').textContent='加载失败，请刷新页面。';console.error(e);});
+fetch('visual_data.json').then(r=>{if(!r.ok)throw Error(r.status);return r.json();}).then(d=>{if(d.dataset!=='Replica'||d.cloud_schema!=='membership_bits_v2')throw Error('数据来源不符');cases=d.cases;for(const s of ['room0','office2']){const g=document.createElement('optgroup');g.label=s;let n=0;cases.forEach((c,i)=>{if(c.scene!==s)return;const o=document.createElement('option');o.value=i;o.textContent=s+' · 实例 '+c.id+' · 例 '+(++n);g.append(o);});$('caseSelect').append(g);}show(fromHash());}).catch(e=>{$('explanation').textContent='加载失败，请刷新页面。';console.error(e);});
 </script></body></html>
