@@ -192,6 +192,38 @@ class MappingSource:
             self.xyz = archive["xyz_m"]
         self.geometry = geometry_identity(self.xyz)
         self.xyz.setflags(write=False)
+        prefix_path = self.root / "geometry" / f"geometry_prefix{self.checkpoint}.json"
+        certificate = locked_json(prefix_path)
+        final = self.receipt["final"]
+        if (certificate.get("status") != "PASS" or certificate.get("scene") != self.scene
+                or certificate.get("no_future_geometry") is not True
+                or certificate.get("frame_count") != self.checkpoint
+                or certificate.get("last_frame_id") != self.cutoff
+                or tuple(certificate.get("frame_ids", ())) != self.frame_ids):
+            raise ValueError("Geometry certificate does not match the current prefix")
+        if (Path(certificate["source_config"]).resolve() != self.root / "config.json"
+                or certificate["config_sha256"] != self.locked_files[str(self.root / "config.json")]["sha256"]):
+            raise ValueError("Geometry certificate refers to a different input configuration")
+        if (final["processed_frames"] != self.checkpoint
+                or final["last_frame_id"] != self.cutoff
+                or tuple(final["observed_frame_ids"]) != self.frame_ids
+                or final["surface_points"] != len(self.xyz)
+                or certificate["surface_points"] != len(self.xyz)):
+            raise ValueError("Native geometry does not match its mapping receipt")
+        ply_path = self.root / "geometry/surface.ply"
+        ply_record = file_record(ply_path)
+        self.locked_files[str(ply_path)] = ply_record
+        if not (ply_record["sha256"] == certificate["surface_sha256"]
+                == final["geometry_sha256"]):
+            raise ValueError("Certified prefix PLY checksum mismatch")
+        # Existing repair runtime dependency; read only geometry, never labels.
+        import open3d as o3d
+        cloud = o3d.io.read_point_cloud(str(ply_path))
+        certified_xyz = np.asarray(cloud.points).astype(self.xyz.dtype)
+        if not np.array_equal(certified_xyz, self.xyz):
+            raise ValueError("Native NPZ coordinates/order differ from the certified prefix PLY")
+        self.geometry_binding_sources = [self.locked_files[str(prefix_path)], ply_record]
+        del cloud, certified_xyz
 
         camera = self.config["camera"]
         self.width, self.height = int(camera["width"]), int(camera["height"])

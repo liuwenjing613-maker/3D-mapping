@@ -17,7 +17,7 @@
       --cache /data/chenkejun/CVPR/results/two-audit/observations_v1_20261104/offline/5ee7c22ba0 \
       --verify-sources
 
-在 /home/chenkejun/CVPR/worktrees/two-audit 中运行。已验证的 Python 是 /data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python，设置 PYTHONDONTWRITEBYTECODE=1、OPENBLAS_NUM_THREADS=1、OMP_NUM_THREADS=1。重复构建应使用新的独立输出目录；已有目录不会被覆盖。
+在 /home/chenkejun/CVPR/worktrees/two-audit 中运行。已验证的 Python 是 /data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python，依赖现有修复环境中的 NumPy、Pillow、Open3D；设置 PYTHONDONTWRITEBYTECODE=1、OPENBLAS_NUM_THREADS=1、OMP_NUM_THREADS=1。重复构建应使用新的独立输出目录；已有目录不会被覆盖。
 
 online-v2 使用相同入口，传入对应的 mapping-root、--mode online-v2 和检查点帧数。例如 100 个建图帧对应原始帧 0,5,...,495；checkpoint 不是原始帧编号。离线必须覆盖 original_config 指定的整个实验序列；在线必须是该序列的精确前缀。缓存没有截断为候选生成的新增时段。
 
@@ -30,6 +30,8 @@ observation_key 由数据集、场景、帧号、帧内 Mask ID、原始标签�
 深度、Mask 按允许的建图帧列表逐帧读取。位姿、逐帧内参及原始 Mask 元数据仅消费截至当前 raw_cutoff 的前缀，并记录所消费前缀的字节哈希。构建末尾重新校验所有实际使用的输入，源文件或符号链接变化会失败。
 
 ## 几何与投影
+
+先核验 geometry_prefix 检查点回执、mapping_complete 的帧范围与 PLY 哈希，再用现有 Open3D 读取 PLY，逐点核对 NPZ 坐标及顺序。终场表面不能仅通过替换前缀目录中的 NPZ 冒充当前检查点。
 
 geometry_id 绑定 TSDF 有序 xyz 的形状、dtype 与精确字节哈希。点集合相同但顺序变化也属于不同索引空间。每个帧包带 geometry_id；原始观测身份可以跨检查点保持，表面索引必须重新投影。
 
@@ -48,6 +50,7 @@ V_t 保留所有通过深度检查的表面点，包括标签为 0 的背景像�
 | status.json | 当前进度及失败原因 |
 | manifest.json | 所有构建和输入不变性检查完成后才发布的完成清单 |
 | validation.json | 实验驱动器执行独立读回与来源校验后的结果 |
+| validation_geometry_binding.json | 对初始离线缓存追加完整检查点→PLY→有序坐标来源链验证的记录 |
 
 缓存不复制数据集、RGB、深度或 TSDF 坐标实体；大数组仅是当前表面的支持索引。全部结果位于 /data/chenkejun/CVPR/results/two-audit 下。manifest 的 COMPLETE 只表示观测缓存完成，不表示异常筛查、修复或效果评价完成。
 
@@ -66,3 +69,14 @@ V_t 保留所有通过深度检查的表面点，包括标签为 0 的背景像�
 单元测试覆盖深度遮挡和背景可见性、无效/零支持 Mask、逐帧内参、离线完整序列、在线禁止未来输入、原始来源替换、几何重排、缓存损坏和输入修改。真实帧正 Mask 支持与原 P0.1 投影函数进行逐点对照。全序列缓存完成后独立读回全部帧包，并重新核验实际输入。
 
 本环节不读取 GT、不生成 F1/AP50。后续实际评价仍从 /home/chenkejun/CVPR/worktrees/v3-r2-main-20261009 的当前 R2 入口运行，保持相同几何、GT 范围与对应索引。下一环节讨论共同可见区域比较、跨帧关联、独立视角和稳定性条件。
+
+## 2026-11-04 实测缓存规模
+
+| 离线场景 | 建图帧 | 原始 Mask 观测 | 零表面支持观测（仍保留） | 构建时间 |
+|---|---:|---:|---:|---:|
+| 5ee7c22ba0 | 1523 | 23828 | 2457 | 387.33 s |
+| 825d228aec | 1088 | 13049 | 694 | 308.31 s |
+
+上述是缓存规模与耗时，不是错误检出数或修复效果。初始离线缓存对应提交 6f702c9ea64eeb17ebe85a3ab4e21f80b00043f6，支持数组保留原样；加强输入几何来源校验后单独读回验证。100 帧 online-v2 测试仅验证前缀接口和跨几何索引拒绝，不运行在线修复。
+
+16 项单元测试通过，日志为 /data/chenkejun/CVPR/results/two-audit/observations_v1_20261104/run_logs/unit_tests_geometry_binding.log。全部实测验收记录写入同目录根部的 phase1_validation.json；该记录仅在离线全量读回、来源链检查和前缀一致性全部通过后生成。

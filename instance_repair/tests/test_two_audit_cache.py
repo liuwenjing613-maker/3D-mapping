@@ -19,6 +19,29 @@ def dump(path, value):
     path.write_text(json.dumps(value), encoding="utf-8")
 
 
+
+def certify_geometry(mapping, xyz):
+    """Synthetic independent PLY + original prefix certificate."""
+    (mapping / "geometry").mkdir(exist_ok=True)
+    ply = mapping / "geometry/surface.ply"
+    ply.write_text("ply\nformat ascii 1.0\nelement vertex " + str(len(xyz)) +
+                   "\nproperty double x\nproperty double y\nproperty double z\nend_header\n" +
+                   "".join(" ".join(str(float(v)) for v in point) + "\n" for point in xyz))
+    receipt = json.loads((mapping / "mapping_complete.json").read_text())
+    count, ids = receipt["frame_count"], receipt["frame_ids"]
+    digest = sha256_file(ply)
+    receipt["final"] = dict(processed_frames=count, last_frame_id=ids[-1],
+                            observed_frame_ids=ids, surface_points=len(xyz),
+                            geometry_sha256=digest)
+    dump(mapping / "mapping_complete.json", receipt)
+    dump(mapping / "geometry" / f"geometry_prefix{count}.json",
+         dict(status="PASS", scene="test", no_future_geometry=True,
+              frame_count=count, last_frame_id=ids[-1], frame_ids=ids,
+              source_config=str(mapping / "config.json"),
+              config_sha256=sha256_file(mapping / "config.json"),
+              surface_points=len(xyz), surface_sha256=digest))
+
+
 def fixture(root, count=2, per_frame=True, background_only=False):
     raw = root / "original"
     (raw / "scene/results").mkdir(parents=True)
@@ -95,6 +118,7 @@ def fixture(root, count=2, per_frame=True, background_only=False):
     # accidentally consume frame_support or identity journals.
     (mapping / "baseline/frame_support").mkdir()
     (mapping / "baseline/frame_support/f000000.npz").write_bytes(b"not original observations")
+    certify_geometry(mapping, xyz)
     return mapping, xyz
 
 
@@ -205,6 +229,7 @@ class CacheTests(unittest.TestCase):
         self.build(mapping, name="one")
         surface = mapping / "baseline/native/instance_surface.npz"
         np.savez_compressed(surface, xyz_m=xyz[::-1].copy())
+        certify_geometry(mapping, xyz[::-1].copy())
         self.build(mapping, name="two")
         a, b = ObservationCache(self.root / "one"), ObservationCache(self.root / "two")
         self.assertEqual(set(a.observations), set(b.observations))
@@ -237,6 +262,10 @@ class CacheTests(unittest.TestCase):
         config = json.loads((mapping / "config.json").read_text())
         config["source"]["mask_root"] = str(substitute)
         dump(mapping / "config.json", config)
+        cert_path = mapping / "geometry/geometry_prefix2.json"
+        cert = json.loads(cert_path.read_text())
+        cert["config_sha256"] = sha256_file(mapping / "config.json")
+        dump(cert_path, cert)
         with self.assertRaisesRegex(ValueError, "original mask source"):
             self.build(mapping)
 
@@ -268,6 +297,24 @@ class CacheTests(unittest.TestCase):
         Image.fromarray(np.full((3, 5), 2000, np.uint16)).save(path)
         with self.assertRaisesRegex(ValueError, "Source content changed"):
             source.verify_unchanged()
+
+
+    def test_native_geometry_must_match_certified_prefix_order(self):
+        mapping, xyz = fixture(self.root)
+        np.savez_compressed(mapping / "baseline/native/instance_surface.npz",
+                            xyz_m=xyz[::-1].copy())
+        with self.assertRaisesRegex(ValueError, "certified prefix PLY"):
+            self.build(mapping)
+        self.assertFalse((self.root / "cache").exists())
+
+    def test_geometry_certificate_cannot_include_future_frames(self):
+        mapping, _ = fixture(self.root, count=1)
+        path = mapping / "geometry/geometry_prefix1.json"
+        certificate = json.loads(path.read_text())
+        certificate["frame_ids"] = [0, 5]
+        dump(path, certificate)
+        with self.assertRaisesRegex(ValueError, "current prefix"):
+            self.build(mapping, mode="online-v2", checkpoint=1)
 
 
 if __name__ == "__main__":

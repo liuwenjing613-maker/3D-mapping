@@ -284,7 +284,13 @@ class ObservationCache:
         if (visible != totals["visible_point_observations"]
                 or positive != totals["positive_point_observations"]):
             raise ValueError("Cache aggregate support counts differ")
+        binding_sources = []
         if verify_sources:
+            certified = MappingSource(self.manifest["mapping_root"],
+                                      self.manifest["mode"], self.manifest["checkpoint"])
+            self.require_geometry(certified.xyz)
+            certified.verify_unchanged()
+            binding_sources = certified.geometry_binding_sources
             for record in self.manifest["locked_sources"]:
                 verify_record(record)
             for record in self.manifest["prefix_sources"]:
@@ -295,6 +301,9 @@ class ObservationCache:
         return dict(status="PASS", stage="raw_observation_cache_only",
                     cache_id=self.manifest["cache_id"], geometry_id=self.geometry_id,
                     totals=totals, source_files_verified=verify_sources,
+                    geometry_certificate_verified=verify_sources,
+                    geometry_binding_sources=binding_sources,
+                    validation_implementation=implementation_records(),
                     map_modified=False, stability_or_repair_decisions_made=False)
 
 
