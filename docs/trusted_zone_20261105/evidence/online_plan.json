@@ -1,0 +1,53 @@
+{
+  "status": "AUTHORIZED_READY",
+  "variant": "online_B",
+  "scenes": [
+    "room0",
+    "room1",
+    "room2",
+    "office0",
+    "office1",
+    "office2",
+    "office3",
+    "office4"
+  ],
+  "checkpoints": [
+    50,
+    100,
+    200,
+    300,
+    400
+  ],
+  "baseline_results": "/data/chenkejun/CVPR/results/unified_full_depth_20261101",
+  "algorithm_change": "Archived trusted partition, including association feedback and committed partitioned pixel history",
+  "policy_source": "/home/chenkejun/CVPR/experiments/online_v2_trusted_partition_20261027/full_run/room2",
+  "prefix50": "Read-only identical committed baseline before first protected continuation",
+  "tracking_reuse": "Only exact RGB/seed/ordered objects/model/inference-code/config fingerprint; no association or repair reuse after prefix50",
+  "evaluation": "main object_observed_repair revision2 fixed350 shared ordered geometry and correspondence, same finalB, no finalGT in prefix",
+  "source_run_id": "6203ef9222f92f2f0ad7c61130a3e876bea6ca450de0306f3efd31882dcf1f64",
+  "source_lock_sha256": "cc2615ac0f78aa56f05c36447aa15750afaaea4874bb3d3c180672ce582b786b",
+  "tests": {
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/policy_tests/integration_test.json": "dd080c36b73fe9ca8ceb4323b3b3d913a846a514f1c878eca290c403351966e9",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/tests/exact_tracking_cache/complete.json": "9e110ed3918a5ad4c52dee9209fa533531fbb10b993010fdc1fdd442c343a147",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/comparison_selfcheck/comparison.json": "5f806bc57de10751bc92a432e15700ab811455af47c57152cfff2c327e15b765",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/tests/shared_prefix_guard/complete.json": "104a18532affc5897de7b78408d1b7d1b82931ed84c9549bc10681e34f95d545",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/tests/model_cache_integration.json": "cc35fe651d0298b5faf4d8ebf0104c7df66080552db7eba9b88292b5d4afaeaa",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/tests/model_digest_memo/complete.json": "f922e7936d659a9bf0f50bc0179e446627388161561cd6c9a00b49ce99a355a1",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/tests/model_cache_prefix_fence.json": "790b1cb2704758f29417c45c3055413b049391d3a1c89942794abe461a452514",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/policy_tests/family_skip_compatibility.json": "042501edbdef428da22b91189a7d1cd42c8436a1523ea1fd620d47c1b6a165a0",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/tests/empty_fixed_compatibility.json": "07ecb87d77d84be110a62447faf630efdf0aaa56b06293884f383751a6552cdd"
+  },
+  "max_parallel_scenes": 8,
+  "gpu_pool": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "resource_policy": "Eight independent scene drivers; original GPU locks plus exact private RAM lock files;40GiB memory headroom",
+  "unix": 1793798532.9372146
+}

@@ -1,0 +1,32 @@
+{
+  "pipeline": "seed-boundary-20261101",
+  "frozen": false,
+  "config": "experiments/seed_boundary_20261101/config.json",
+  "default_repair": "partial_plus_E1",
+  "result_variant": "whole_to_partial",
+  "seed_pipeline": "auto-v3-swap",
+  "seed_pipeline_config": "experiments/auto_v3_swap/config.json",
+  "source_commit": "1103d8196a980874ef743f572d3b4c0748a4fdab",
+  "verification_entry": "python -B -m unittest discover -s instance_repair/tests -p test_seed_boundary.py -v",
+  "E1_kernel_registry": "instance_repair/configs/current_architecture.json",
+  "evaluation_frozen": false,
+  "seed_boundary_policy": "full-frame-and-crop-edge-20261101",
+  "seed_boundary_entry": "python -B -m instance_repair.seed_boundary screen",
+  "tracking_handoff_guard": "python -B -m instance_repair.seed_final_abc validate-selected",
+  "previous_pipeline": "partial-e1-swap-20261021",
+  "final_publication": {
+    "policy": "scene-final-B-20261101",
+    "config": "scene_completion/policy.json",
+    "entrypoint": "python -m scene_completion committed",
+    "stage": "after_entire_scene_and_final_repair_and_export",
+    "passes": 1,
+    "C_enabled": false,
+    "online_state_feedback": false,
+    "documentation": "docs/SCENE_FINAL_B.md"
+  },
+  "pre_abc_handoff_guard": "python -B -m instance_repair.seed_boundary validate-selected",
+  "final_seed_policy": "final-abc-remove-a-only-keep-windows-20261101",
+  "final_seed_config": "experiments/seed_final_abc_20261101/config.json",
+  "final_seed_entry": "python -B -m instance_repair.seed_final_abc finalize",
+  "final_seed_handoff_required": true
+}

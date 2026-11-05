@@ -1,3 +1,5 @@
+> **trusted-zone 实验分支**：[实现与复现说明](docs/trusted_zone_20261105/README.md) · [详细效果分析](docs/trusted_zone_20261105/EFFECT_ANALYSIS.md)。检测指标提高但部分实例退化，尚非默认替代方案。
+
 > **online-v2 branch:** [Online implementation, results and limitations](ONLINE_V2.md). Main baseline registration is preserved.
 
 当前最终种子处理：原最终清单确定后、跟踪前，仅删除非窗户合格 A，不新增 B/C，不恢复候选；窗户保持原样。四个活动算法分支共用 [最终 ABC 入口与验证说明](experiments/seed_final_abc_20261101/README.md)。

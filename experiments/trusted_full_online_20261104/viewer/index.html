@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>可信区域策略 · 完整在线对照</title>
+<style>
+:root{color-scheme:dark;--bg:#0b111b;--panel:#131e2d;--line:#29384c;--ink:#e8eff8;--muted:#a5b4c8;--teal:#50ddc3;--red:#ff8b85;--amber:#ffd08b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1300px;margin:auto;padding:24px 26px 48px}h1{font-size:27px;line-height:1.25;margin:6px 0 12px}h2{font-size:18px;margin:0}p{margin:5px 0}.muted{color:var(--muted)}.eyebrow{color:var(--teal);font-size:11px;letter-spacing:2px}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.spread{justify-content:space-between}button,select,input{font:inherit;color:var(--ink);background:#1b2b40;border:1px solid #3c506a;border-radius:8px;padding:7px 10px}button{cursor:pointer}button:hover{border-color:var(--teal)}a{color:var(--teal)}.banner{margin:20px 0 12px;background:#172b30;border:1px solid #305e5a;border-left:4px solid var(--teal);border-radius:10px;padding:14px 16px}.banner.warn{background:#30281c;border-color:#685432;border-left-color:var(--amber)}.banner.bad{background:#321e25;border-color:#75424d;border-left-color:var(--red)}.banner strong{font-size:18px}.sub{font-size:12px;color:var(--muted)}.card{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:15px 17px}.section{margin-top:24px}.scene-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.scene .name{font-size:17px;font-weight:650}.badge{font-size:11px;border-radius:20px;padding:2px 8px;background:#263549;color:var(--muted)}.badge.running{background:#17433f;color:var(--teal)}.badge.done{background:#17433f;color:var(--teal)}.badge.bad{background:#4e2930;color:var(--red)}.dots{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:12px}.dot{padding:3px 0;text-align:center;font-size:11px;border-radius:5px;background:#233044;color:#8e9fb7}.dot.done{background:#225347;color:#a1eed5}.dot.active{background:#53452c;color:#ffe0a8;outline:1px solid #9f7e42}.scene-stage{font-size:12px;min-height:40px;margin-top:8px}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}.metric h3{margin:0;font-size:13px;color:var(--muted);font-weight:500}.metric .value{font-size:25px;font-variant-numeric:tabular-nums;margin:6px 0}.delta{font-size:13px;color:var(--muted)}.up{color:var(--teal)}.down{color:var(--red)}.wait{color:#7d8da3}.counts{margin:13px 0;color:var(--muted)}.counts b{color:var(--ink)}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:10px;margin-top:12px}table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}th,td{padding:10px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid #243246}th{background:#172437;color:#bbcadc;font-weight:550}th:first-child,td:first-child{text-align:left}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#1a2a3e}td.severe{color:var(--red)}.small{font-size:12px}.empty{text-align:center;padding:25px;color:var(--muted)}details{margin-top:18px;color:var(--muted)}summary{cursor:pointer}.filters{margin-top:14px}.filters label{font-size:12px;color:var(--muted)}.filters input{width:115px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:11px;background:#0b1420;padding:10px;border-radius:8px}#error{color:var(--red)}#network{color:var(--amber)}footer{margin-top:22px;font-size:12px;color:var(--muted)}.link-row{gap:16px}
+@media(max-width:850px){main{padding:18px 15px 35px}h1{font-size:24px}.scene-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.card{padding:12px 13px}.metric .value{font-size:23px}th,td{padding:9px}.section{margin-top:20px}}
+@media(max-width:390px){.scene-grid{grid-template-columns:1fr}.filters{display:block}.filters label{display:block;margin:6px 0}}
+.effect-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}.effect-stat{font-size:24px;font-variant-numeric:tabular-nums;margin:4px 0}.evidence-chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:14px}.evidence-step{border:1px solid #3b4b61;background:#111d2d;border-radius:9px;padding:11px 12px}.step-num{display:inline-grid;place-items:center;border-radius:50%;width:22px;height:22px;background:#294d4d;color:var(--teal);font-size:12px;margin-right:6px}.evidence-step strong{font-size:13px}.evidence-step p{font-size:12px;color:var(--muted);margin-top:7px}.effect-caveat{border-left:3px solid var(--amber);padding:7px 11px;font-size:12px;color:#d8c29b;background:#29251e;margin-top:12px}.effect-message{font-size:13px;margin-top:10px}@media(max-width:850px){.evidence-chain{grid-template-columns:1fr}.evidence-step{padding:9px 12px}.effect-stat{font-size:21px}}
+[hidden]{display:none!important}.case-switch{margin:12px 0}.case-switch button.active{border-color:var(--teal);background:#1e3d43}
+</style>
+<main>
+<div class="eyebrow">TRUSTED REGION / FULL ONLINE EXPERIMENT</div>
+<div class="row spread"><h1>可信区域策略，完整在线跑完后怎样？</h1><button id="refresh">立即刷新</button></div>
+<p class="muted">对照原始 online-B，检查全部 8 个场景、350 个可评价 GT。新策略参与后续关联、建图与修复，最终结果使用相同的 R2 协议。</p>
+<div class="row link-row small"><a href="./">返回局部机制回放</a><a href="./dbscan-online.html">同版 DBSCAN 四组对照</a><a id="resultLink" href="./full_online/comparison/comparison.json" hidden>完整比较 JSON</a><a id="csvLink" href="./full_online/comparison/per_gt.csv" hidden>逐实例 CSV</a></div>
+<div class="banner warn" id="banner"><strong id="statusTitle">正在读取实验状态…</strong><p id="statusDetail">整体结果未齐前，不把局部案例改善当作整体指标提升。</p></div>
+<div class="row spread sub"><span id="resource">等待调度状态</span><span id="updated">每 10 秒刷新</span></div>
+<p id="network" class="small" role="status"></p><p id="error" class="small" role="alert"></p>
+<section class="section"><div class="row spread"><h2>八场景进度</h2><span id="doneCount" class="muted">0 / 8 完成</span></div><p class="sub">50 → 100 → 200 → 300 → 400 帧，场景内按因果顺序运行；当前数字是检查点目标，不是已处理帧数。</p><div id="scenes" class="scene-grid"></div></section>
+<section class="section"><h2>整体指标：原始 vs 加入策略</h2><p id="metricNote" class="sub">原始列是已完成的 8 场景基线；新策略与差值等待完整汇总，不用部分场景凑总体值。</p><div id="metrics" class="metrics"></div><div id="counts" class="counts"></div></section>
+<section class="section"><h2>分场景表现</h2><p id="sceneMetricNote" class="sub">完成最终 B 与 R2 适配后，在这里逐场景显示正式值。</p><div id="sceneTable" class="table-wrap"></div></section>
+<section class="section" id="sideEffects"><div class="row spread"><h2>已完成场景的副作用证据</h2><span class="badge" id="effectScope">等待单场景正式结果</span></div><p class="sub">区分两种副作用：候选遗漏，以及错误碎片被后续可信投票保护。这里展示已完成单场景的证据，不代替全部 350 GT 的结论。</p><div class="row case-switch"><button id="effectOffice1" class="active" aria-pressed="true">office1 · 瓶子：候选遗漏</button><button id="effectOffice0" aria-pressed="false">office0 · 沙发：错误碎片被保护</button></div><div id="effectContent" class="empty">正在读取已完成场景的配对证据…</div><div id="effectChain" class="evidence-chain" hidden></div><p id="effectCaveat" class="effect-caveat" hidden></p><div class="row link-row small" id="effectLinks" hidden><a id="effectPairLink" href="./full_online/partial_comparison/office1/partial_report.json">正式单场景配对</a><a id="effectOverlapLink" href="./full_online/partial_comparison/office1/focus_overlap.json">实例重叠证据</a><a id="chainLink" href="./full_online/diagnostics/office1_gt18_candidate_loss/evidence.json" hidden>候选丢失核验</a></div></section>
+<section class="section"><h2>其他实例有没有受损？</h2><p class="sub">按场景与 GT ID 对齐全部 350 个实例，不假定两次运行的原生 ID 相同。严重退化：最佳 IoU 降低至少 0.10，或从 &gt;0.5 降至 ≤0.5。</p>
+<div class="row filters"><label>场景 <select id="sceneFilter"><option value="all">全部场景</option></select></label><label>变化 <select id="changeFilter"><option value="degraded">所有退化</option><option value="severe">严重退化</option><option value="improved">所有改善</option><option value="unchanged">未变化</option><option value="all">全部实例</option></select></label><label>GT ID <input id="gtFilter" inputmode="numeric" placeholder="可选"></label><label>排序 <select id="sort"><option value="worst">退化最多优先</option><option value="best">改善最多优先</option><option value="scene">场景 / GT ID</option></select></label></div>
+<p id="filterCount" class="sub"></p><div id="gtTable" class="table-wrap"><div class="empty">完整比较尚未生成。</div></div>
+</section>
+<details><summary>比较范围、验证和解释边界</summary><p>正式比较仅在 8 个场景全部完成后生成，使用最终发布地图（包括相同的最终 B 处理）。评估从 main 的默认入口运行：object_observed_repair / revision 2，固定 350 GT，frozen=false。</p><p>比较脚本检查相同几何、GT 范围、观测支持、对应索引及评估源码；逐实例变化来自固定参考表面上的最佳 GT IoU。IoU50 跨阈值表示最佳 IoU 资格变化，不直接宣称它就是一对一匹配的 TP/FN 变化。</p><p>类别名来自 canonical GT 及其经过哈希验证的来源清单，仅用于事后展示，不参与评分；无法可靠命名时保留 GT ID。全体实例均接受检查；页面没有把缺少直接证据的实例称为“未参与修复”，也不把所有变化都归因于直接的区域投票。</p><p id="auditNote">尚无完整比较核验结果。</p></details>
+<details id="failureDetails" hidden><summary>失败详情</summary><pre id="failureText"></pre></details>
+<footer>数据与计算均留在服务器。原始结果独立保留；本页只读展示，不控制或终止运行。</footer>
+</main>
+<script>
+const SCENES=['room0','room1','room2','office0','office1','office2','office3','office4'],STEPS=[50,100,200,300,400],$=x=>document.getElementById(x);
+const escapeHTML=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let baseline=null,result=null,gtLabels=null,lastGlobal=null,busy=false,lastSuccessful=null;const partialScenes={},partialErrors={};let selectedSideCase='office1';const sideCases={office1:{scene:'office1',gt:18,count:23,semantic:'bottle',category:'瓶子',title:'瓶子：候选遗漏',evidenceDir:'office1_gt18_candidate_loss',schema:'trusted_online_gt18_candidate_loss_v1'},office0:{scene:'office0',gt:9,count:31,semantic:'sofa',category:'沙发',title:'沙发：错误碎片被保护',evidenceDir:'office0_gt9_split_protection',schema:'trusted_online_gt9_split_protection_v1'}};const sideData={office1:{report:null,overlap:null,evidence:null,error:''},office0:{report:null,overlap:null,evidence:null,error:''}};
+const nf=n=>Number(n).toLocaleString('zh-CN'),pct=n=>n==null?'—':(100*n).toFixed(2)+'%',signed=(n,p=true)=>n==null?'—':(n>0?'+':'')+(p?(100*n).toFixed(2)+' pp':nf(n));
+const stageName=s=>({mapping:'建图',selection_tracking:'选择与跟踪',tracking:'跟踪',repair:'修复',producer:'在线建图与修复',final_B_and_evaluation:'最终 B 处理 / R2 适配'}[s]||s||'运行中');
+$('sceneFilter').innerHTML+=SCENES.map(s=>'<option value="'+s+'">'+s+'</option>').join('');
+async function fetchJSON(path,optional=false){
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
+ try{const response=await fetch(path+'?t='+Date.now(),{cache:'no-store',signal:controller.signal});if(response.status===404&&optional)return null;if(!response.ok)throw Error(path+'：HTTP '+response.status);return await response.json()}finally{clearTimeout(timer)}
+}
+function baselineMetrics(){
+ if(!baseline)return {};
+ return {F1:baseline.CA_PRF1_0_5.F1,AP50:baseline.CA_AP50_uniform,AP:baseline.CA_AP_uniform,PQ:baseline.CA_PQ.PQ,TP:baseline.CA_PRF1_0_5.TP,FP:baseline.CA_PRF1_0_5.FP,FN:baseline.CA_PRF1_0_5.FN,correct_owner_coverage:baseline.owner_surface?.Correct_owner_Coverage,wrong_owner_coverage:baseline.owner_surface?.Wrong_owner_Coverage};
+}
+function metricCards(){
+ const keys=[['F1','F1',true],['AP50','AP50',true],['AP','AP',true],['PQ','PQ',true],['correct_owner_coverage','正确归属覆盖率',true],['wrong_owner_coverage','错误归属覆盖率 ↓ 越低越好',true],['TP','TP',false],['FP','FP',false],['FN','FN',false]],old=baselineMetrics();
+ $('metrics').innerHTML=keys.map(([key,label,ratio])=>{const d=result?.pooled_metrics[key],before=d?.before??old[key],after=d?.after,delta=d?.delta;const better=delta!=null&&(key==='FP'||key==='FN'||key==='wrong_owner_coverage'?delta<0:delta>0),worse=delta!=null&&(key==='FP'||key==='FN'||key==='wrong_owner_coverage'?delta>0:delta<0);const fmt=v=>v==null?'—':ratio?pct(v):nf(v);return '<div class="card metric"><h3>'+label+'</h3><div class="value">'+fmt(before)+' <span class="wait">→</span> '+fmt(after)+'</div><div class="delta '+(better?'up':worse?'down':'')+'">'+(d?'变化 '+signed(delta,ratio):'新策略待汇总')+'</div></div>'}).join('');
+ $('metricNote').textContent=result?'以下均为最终 400 帧、全部 8 场景的总体值；百分比指标的差值用百分点 pp 表示。':'原始列是已完成的 8 场景基线；新策略与差值等待完整汇总，不用部分场景凑总体值。';
+ const c=result?.instance_counts;$('counts').innerHTML=c?'350 个 GT：改善 <b>'+nf(c.IMPROVED)+'</b> · 退化 <b>'+nf(c.DEGRADED)+'</b> · 不变 <b>'+nf(c.UNCHANGED)+'</b> · 严重退化 <b class="down">'+nf(c.severe_degradation)+'</b>':'';
+}
+function sceneRows(){
+ const oldRows=Object.fromEntries((baseline?.per_scene||[]).map(x=>[x.scene_id,x])),newRows=Object.fromEntries((result?.per_scene||[]).map(x=>[x.scene,x]));
+ const count=result?8:Object.keys(partialScenes).length;
+ $('sceneMetricNote').textContent=result?'全部 8 场景及 350 GT 的完整比较已生成。':count?'已有 '+count+' / 8 个场景完成最终 B 与 R2 适配；下表逐场景正式值可比较，总体结果仍未齐。':'等待场景完成最终 B 与 R2 适配；不展示建图中间结果或估算指标。';
+ $('sceneTable').innerHTML='<table><thead><tr><th>场景</th><th>F1 原始 → 策略</th><th>F1 变化</th><th>AP50 原始 → 策略</th><th>AP50 变化</th><th>状态</th><th>改善 / 退化 GT</th></tr></thead><tbody>'+SCENES.map(s=>{
+  const r=newRows[s],old=oldRows[s],partial=partialScenes[s];
+  const m=r?.metrics||(partial?{F1:{before:old.CA_PRF1_0_5.F1,after:partial.F1,delta:partial.F1-old.CA_PRF1_0_5.F1},AP50:{before:old.CA_AP50_uniform,after:partial.AP50,delta:partial.AP50-old.CA_AP50_uniform}}:null);
+  const status=r?'完整比较已核验':partial?'单场景 R2 已核验':partialErrors[s]?'校验未通过':'等待正式结果';
+  return '<tr><td>'+s+'</td><td>'+pct(m?.F1.before??old?.CA_PRF1_0_5.F1)+' → '+pct(m?.F1.after)+'</td><td class="'+(m?.F1.delta>0?'up':m?.F1.delta<0?'down':'')+'">'+signed(m?.F1.delta)+'</td><td>'+pct(m?.AP50.before??old?.CA_AP50_uniform)+' → '+pct(m?.AP50.after)+'</td><td class="'+(m?.AP50.delta>0?'up':m?.AP50.delta<0?'down':'')+'">'+signed(m?.AP50.delta)+'</td><td>'+status+'</td><td>'+(r?r.corrected_instances+' / '+r.degraded_instances:'待逐实例比较')+'</td></tr>';
+ }).join('')+'</tbody></table>';
+}
+function gtRows(){
+ if(!result){$('filterCount').textContent='等待完整比较，筛选条件可先选好。';$('gtTable').innerHTML='<div class="empty">完整比较尚未生成；没有提前推断其他实例的变化。</div>';return}
+ const scene=$('sceneFilter').value,change=$('changeFilter').value,gt=$('gtFilter').value.trim(),sort=$('sort').value;
+ let rows=result.per_gt.filter(r=>(scene==='all'||r.scene===scene)&&(!gt||String(r.raw_gt_id)===gt)&&(change==='all'||change==='severe'&&r.severe_degradation||change==='degraded'&&r.change==='DEGRADED'||change==='improved'&&r.change==='IMPROVED'||change==='unchanged'&&r.change==='UNCHANGED'));
+ rows.sort(sort==='scene'?((a,b)=>SCENES.indexOf(a.scene)-SCENES.indexOf(b.scene)||a.raw_gt_id-b.raw_gt_id):sort==='best'?((a,b)=>b.delta_iou-a.delta_iou):((a,b)=>a.delta_iou-b.delta_iou));
+ $('filterCount').textContent='显示 '+rows.length+' / 350 个 GT。IoU 及差值按 0–1 原值显示。';
+ $('gtTable').innerHTML=rows.length?'<table><thead><tr><th>场景 / GT</th><th>类别</th><th>原始 IoU</th><th>策略 IoU</th><th>Δ IoU</th><th>变化</th></tr></thead><tbody>'+rows.map(r=>'<tr><td>'+r.scene+' / '+r.raw_gt_id+'</td><td>'+escapeHTML(gtLabels?.labels?.[r.scene]?.[r.raw_gt_id]?.semantic_class_zh||gtLabels?.labels?.[r.scene]?.[r.raw_gt_id]?.semantic_class||'—')+'</td><td>'+r.before_best_iou.toFixed(4)+'</td><td>'+r.after_best_iou.toFixed(4)+'</td><td class="'+(r.delta_iou<0?'down':r.delta_iou>0?'up':'')+'">'+(r.delta_iou>0?'+':'')+r.delta_iou.toFixed(4)+'</td><td class="'+(r.severe_degradation?'severe':'')+'">'+(r.severe_degradation?'严重退化':r.change==='DEGRADED'?'退化':r.change==='IMPROVED'?'改善':'不变')+(r.lost_iou50_qualification?' · 跨过 0.5':'')+'</td></tr>').join('')+'</tbody></table>':'<div class="empty">当前筛选没有实例。</div>';
+}
+function sceneCards(global,statuses,tasks,progressData=[]){
+ const completed=new Set(global?.completed||[]),running=new Set((global?.running||[]).map(r=>r.scene)),failed=new Set((global?.failures||[]).map(r=>r.scene));let done=0;
+ $('scenes').innerHTML=SCENES.map((scene,i)=>{const s=statuses[i],t=tasks[i],extra=progressData[i],progress=extra?.progress,smoke=extra?.smoke,pilot=extra?.pilot;const success=completed.has(scene)||t?.status==='PASS',bad=failed.has(scene)||s?.status==='FAILED'||t?.status==='FAILED'||smoke?.status==='FAILED';if(success)done++;
+ const active=!success&&!bad&&(running.has(scene)||t?.status==='RUNNING'||s?.status==='RUNNING'),producerDone=s?.status==='COMPLETE';let label=success?'完成':bad?'失败':pilot?(smoke?.status==='PASS'?'首段验证通过':'首段验证中'):t?.stage==='final_B_and_evaluation'?'最终处理 / 评分':producerDone?'在线流程结束':active?'运行中':'等待';
+ let detail=success?'400 帧 · 最终发布与 R2 适配完成':bad?'场景失败，查看页面下方错误详情':t?.stage==='final_B_and_evaluation'?'相同最终 B 处理，随后固定表面适配':producerDone?'等待最终 B 处理与评分':s?.checkpoint?'目标 '+s.checkpoint+' 帧 · '+stageName(s.stage):active?'准备输入与完整在线任务':'等待调度';
+ if(pilot)detail='首段续建验证 · 目标 100 帧'+(progress?.processed_frames!=null?' · 已处理 '+progress.processed_frames+'/100 帧（累计）':' · 正在读取帧进度')+(smoke?.status==='PASS'?' · 验证通过':progress?.processed_frames>=100?' · 正在收尾验证':'');else if(s?.stage==='mapping'&&progress?.processed_frames!=null)detail='建图 · 已处理 '+progress.processed_frames+'/'+(progress.target_processed_frames||s.checkpoint)+' 帧（累计）';if(extra?.progressError)detail+=' · 帧进度暂不可读';const step=Number(s?.checkpoint||extra?.checkpoint||0);return '<article class="card scene"><div class="row spread"><span class="name">'+scene+'</span><span class="badge '+(bad?'bad':success?'done':active?'running':'')+'">'+label+'</span></div><div class="scene-stage muted">'+escapeHTML(detail)+'</div><div class="dots">'+STEPS.map(n=>'<span class="dot '+(success||producerDone||n<step?'done':n===step?'active':'')+'">'+n+'</span>').join('')+'</div></article>'}).join('');
+ $('doneCount').textContent=done+' / 8 完成';
+}
+function globalState(g,failure,statuses){
+ let title,detail,kind='warn';const errors=[...(g?.failures||[]).map(r=>r.scene+' 返回码 '+r.returncode),...statuses.filter(s=>s?.status==='FAILED').map(s=>s.scene+': '+(s.traceback||'运行失败'))];if(failure&&(!g?.unix||!failure.unix||failure.unix>=g.unix))errors.push(failure.traceback||JSON.stringify(failure));
+ if(errors.length||g?.status?.includes('FAILED')){title='实验遇到失败，需检查';detail='失败不代表策略无效；当前不能把未完成结果作为总体比较。';kind='bad'}
+ else if(g?.status==='PASS'&&result){title='完整对照已完成';detail='8 场景 / 350 GT 已核验。请同时查看整体增益与下方逐实例退化，不能只看平均值。';kind=''}
+ else if(result){title='完整比较已生成';detail='全部场景指标可查看，调度器完成状态仍待确认。'}
+ else if(g?.status==='PREFLIGHT'){title='首段续建验证中';detail='room0 与 room2 正在验证 50→100 帧的完整续建；卡片显示实际已处理帧数。通过后再扩展并行任务。'}
+ else if(g?.status==='EVALUATING'){title='八场景运行完成，正在汇总评分';detail='正在用 main R2 评估全部结果，并逐个检查 350 个 GT 的变化。'}
+ else if(g){title='完整在线实验运行中';detail='新策略参与后续关联与修复；整体指标尚未齐全，暂不下结论。'}
+ else{title='等待实验调度状态';detail='状态文件尚未创建，或当前无法读取；这不等于实验已经开始。'}
+ if(g?.unix&&Date.now()/1000-g.unix>180&&g.status!=='PASS'&&g.status!=='EVALUATING'){detail+=' 调度状态超过 3 分钟未更新，请检查进程。';kind='warn'}
+ $('banner').className='banner '+kind;$('statusTitle').textContent=title;$('statusDetail').textContent=detail;
+ $('resource').textContent=g?.status==='PASS'?'运行已结束 · 8 场景完成':g?'并行场景 '+(g.running?.length||0)+' / '+(g.max_scene_parallelism??(g.status==='PREFLIGHT'?g.running?.length:'—'))+' · 待运行 '+(g.pending?.length??0)+(g.available_ram_gib!=null?' · 可用内存 '+g.available_ram_gib.toFixed(1)+' GiB':''):'等待调度状态';
+ $('failureDetails').hidden=!errors.length;$('failureText').textContent=errors.join('\n\n');
+ $('resultLink').hidden=$('csvLink').hidden=!result;
+ $('auditNote').textContent=result?'比较核验通过：8 场景、350 GT；几何、GT 范围、对应索引与 R2 源码一致。':'尚无完整比较核验结果。';
+}
+function validSideReport(d,cfg){
+ return d?.status==='PASS'&&d.scene===cfg.scene&&d.gt_count===cfg.count&&d.scope===cfg.scene+'_only_final400_'+cfg.count+'GT_not_350GT_pooled'&&d.per_gt?.length===cfg.count&&d.per_gt.some(r=>r.raw_gt_id===cfg.gt&&r.semantic_class===cfg.semantic);
+}
+function validCandidateEvidence(d,cfg){
+ return d?.schema===cfg.schema&&d.status==='PASS'&&d.scene===cfg.scene&&(d.raw_gt_id===cfg.gt||d.gt_id===cfg.gt||d.gt===cfg.gt)&&typeof d.display_scope==='string'&&typeof d.limitations==='string'&&Array.isArray(d.display_chain)&&d.display_chain.length===4&&d.display_chain.every(r=>typeof r.title==='string'&&typeof r.detail==='string');
+}
+async function loadSideEffects(){
+ await Promise.all(Object.entries(sideCases).map(async([key,cfg])=>{
+  const data=sideData[key],requests=[];data.error='';
+  if(!data.report)requests.push(fetchJSON('./full_online/partial_comparison/'+cfg.scene+'/partial_report.json',true).then(d=>{if(d&&validSideReport(d,cfg))data.report=d;else if(d)throw Error(cfg.scene+' 配对结构未通过校验')}));
+  if(!data.overlap)requests.push(fetchJSON('./full_online/partial_comparison/'+cfg.scene+'/focus_overlap.json',true).then(d=>{if(d?.scope===cfg.scene+'_only_final400_reference_overlap'&&d.runs?.baseline?.per_gt&&d.runs?.trusted?.per_gt)data.overlap=d;else if(d)throw Error('重叠证据结构未通过校验')}));
+  if(!data.evidence)requests.push(fetchJSON('./full_online/diagnostics/'+cfg.evidenceDir+'/evidence.json',true).then(d=>{if(d&&validCandidateEvidence(d,cfg))data.evidence=d;else if(d)throw Error('机制证据尚未完成或字段未通过校验')}));
+  const responses=await Promise.allSettled(requests);data.error=responses.filter(r=>r.status==='rejected').map(r=>r.reason.message).join('；');
+ }));
+}
+function renderSideEffects(){
+ const key=selectedSideCase,cfg=sideCases[key],data=sideData[key],report=data.report,overlap=data.overlap,evidence=data.evidence;
+ for(const [name,id]of [['office1','effectOffice1'],['office0','effectOffice0']]){$(id).className=name===key?'active':'';$(id).ariaPressed=String(name===key)}
+ $('effectScope').textContent='仅 '+cfg.scene+' · '+cfg.count+' GT'+(report?' · 已正式完成':' · 等待正式配对');
+ $('effectChain').hidden=true;$('effectCaveat').hidden=true;$('effectLinks').hidden=true;$('chainLink').hidden=true;
+ if(!report){$('effectContent').className='empty';$('effectContent').textContent=data.error||'等待 '+cfg.scene+' 的 '+cfg.count+' GT 正式单场景配对。';return}
+ const target=report.per_gt.find(r=>r.raw_gt_id===cfg.gt),m=report.metrics,counts=report.instance_counts,sceneGain=m.F1.after-m.F1.before;
+ $('effectContent').className='';
+ $('effectContent').innerHTML='<p><strong>'+escapeHTML(cfg.title)+'</strong></p><div class="effect-grid"><div class="card"><div class="sub">场景 F1 '+(sceneGain>0?'提高':sceneGain<0?'下降':'不变')+'</div><div class="effect-stat '+(sceneGain>0?'up':sceneGain<0?'down':'')+'">'+pct(m.F1.before)+' → '+pct(m.F1.after)+'</div><div class="sub">TP '+nf(m.TP.before)+' → '+nf(m.TP.after)+'；FP '+nf(m.FP.before)+' → '+nf(m.FP.after)+'</div></div><div class="card"><div class="sub">GT '+cfg.gt+' '+cfg.category+' · 最佳 IoU 下降</div><div class="effect-stat down">'+target.before_best_iou.toFixed(4)+' → '+target.after_best_iou.toFixed(4)+'</div><div class="sub">Δ IoU '+target.delta_iou.toFixed(4)+'</div></div></div><p class="effect-message">'+cfg.count+' 个 GT：'+nf(counts.corrected_instances)+' 个改善，'+nf(counts.degraded_instances)+' 个退化，'+nf(counts.unchanged_instances)+' 个不变。正确归属点变化 '+signed(counts.correct_owner_vertex_gain,false)+'。</p>';
+ if(overlap){
+  const oldTarget=overlap.runs.baseline.per_gt.find(r=>r.gt===cfg.gt),newTarget=overlap.runs.trusted.per_gt.find(r=>r.gt===cfg.gt);
+  let text='';
+  if(key==='office1'){
+   const oldPaper=overlap.runs.baseline.per_gt.find(r=>r.gt===1),newPaper=overlap.runs.trusted.per_gt.find(r=>r.gt===1),newPaperMain=newPaper?.top?.[0],newBottleMain=newTarget?.top?.[0],oldPaperMain=oldPaper?.top?.[0],oldBottleInPaper=oldTarget?.top?.find(r=>r.uid===oldPaperMain?.uid);
+   if(newBottleMain&&newPaperMain&&newBottleMain.uid===newPaperMain.uid)text='新结果中，同一预测 '+newPaperMain.uid+' 覆盖纸巾 '+newPaperMain.intersection+'/'+newPaper.gt_size+' 点和瓶子 '+newBottleMain.intersection+'/'+newTarget.gt_size+' 点'+(oldBottleInPaper?'；原纸巾主预测只包含瓶子 '+oldBottleInPaper.intersection+'/'+oldTarget.gt_size+' 点':'')+'。瓶子更多混入纸巾主实例，分离质量变差。';
+  }else{
+   const oldMain=oldTarget?.top?.[0],newMain=newTarget?.top?.[0],fragment=newTarget?.top?.slice(1).find(r=>r.intersection>0&&r.intersection===r.prediction_size);
+   if(oldMain&&newMain)text='沙发主预测正确覆盖 '+oldMain.intersection+' → '+newMain.intersection+' / '+newTarget.gt_size+' 个 GT 点。'+(fragment?'新碎片预测 '+fragment.uid+' 另外覆盖 '+fragment.intersection+' 个同一沙发 GT 点；其预测大小也是 '+fragment.prediction_size+'，这些可评价点全部属于该沙发。':'');
+  }
+  if(text)$('effectContent').innerHTML+='<p class="effect-message">'+escapeHTML(text)+'</p>';
+ }
+ $('effectLinks').hidden=false;$('effectPairLink').href='./full_online/partial_comparison/'+cfg.scene+'/partial_report.json';$('effectOverlapLink').href='./full_online/partial_comparison/'+cfg.scene+'/focus_overlap.json';$('chainLink').href='./full_online/diagnostics/'+cfg.evidenceDir+'/evidence.json';$('chainLink').textContent=key==='office1'?'候选遗漏核验':'碎片保护核验';
+ if(evidence){$('effectChain').hidden=false;$('effectChain').innerHTML=evidence.display_chain.map((r,i)=>'<div class="evidence-step"><strong><span class="step-num">'+(i+1)+'</span>'+escapeHTML(r.title)+'</strong><p>'+escapeHTML(r.detail)+'</p></div>').join('');$('chainLink').hidden=false}
+ else $('effectContent').innerHTML+='<p class="sub">机制链仍待核验，暂不展示推测。'+escapeHTML(data.error)+'</p>';
+ $('effectCaveat').hidden=false;$('effectCaveat').textContent=evidence?evidence.display_scope+' '+(evidence.limitations_zh||evidence.limitations):'已确认的是最终实例质量与重叠变化；形成原因尚待核验。此区仅覆盖 '+cfg.scene+' / '+cfg.count+' GT，不代表全部场景。';
+}
+$('effectOffice1').onclick=()=>{selectedSideCase='office1';renderSideEffects()};
+$('effectOffice0').onclick=()=>{selectedSideCase='office0';renderSideEffects()};
+function validateSceneMetrics(scene,receipt,data,adapter){
+ const s=data?.summary,rows=data?.per_scene,old=baseline?.per_scene?.find(r=>r.scene_id===scene);
+ if(receipt?.status!=='PASS'||receipt.scene!==scene||receipt.variant!=='online_B')throw Error('完成收据无效');
+ if(!s||s.scene_count!==1||s.evaluation_profile!=='object_observed_repair'||s.profile_revision!==2||rows?.length!==1||rows[0].scene_id!==scene)throw Error('正式单场景 R2 结构不符');
+ if(!old||s.profile_semantics_sha256!==baseline.profile_semantics_sha256)throw Error('评估协议与基线不一致');
+ const source=s.reference_scope?.find(r=>r.scene_id===scene),expected=baseline.reference_scope?.find(r=>r.scene_id===scene);
+ if(!source||!expected||['evaluation_region_sha256','gt_observed_support_sha256','gt_scope_sha256'].some(k=>source[k]!==expected[k]))throw Error('GT 范围与基线不一致');
+ if(s.CA_PRF1_0_5.TP+s.CA_PRF1_0_5.FN!==old.CA_PRF1_0_5.TP+old.CA_PRF1_0_5.FN)throw Error('GT 实例数与基线不一致');
+ if(adapter?.source_surface_sha256!==receipt.prediction_sha256||adapter?.correspondence_file_sha256!==receipt.shared_correspondence_sha256||adapter?.source_provenance?.frame_count!==400||adapter?.source_provenance?.C_enabled!==false||adapter?.source_provenance?.online_state_updated!==false)throw Error('最终发布表面或对应收据不一致');
+ const F1=s.CA_PRF1_0_5.F1,AP50=s.CA_AP50_uniform;
+ if(![F1,AP50].every(v=>Number.isFinite(v)&&v>=0&&v<=1))throw Error('指标值无效');
+ return {F1,AP50,verified:true};
+}
+async function loadSceneMetrics(global,statuses,tasks){
+ if(!baseline||result)return;
+ const completed=new Set(global?.completed||[]);
+ await Promise.all(SCENES.map(async(scene,i)=>{
+  if(partialScenes[scene]||!(completed.has(scene)||tasks[i]?.status==='PASS'||tasks[i]?.stage==='final_B_and_evaluation'||statuses[i]?.status==='COMPLETE'))return;
+  const prefix='./full_online/evaluation/online_B/'+scene+'/';
+  try{
+   const receipt=await fetchJSON(prefix+'complete.json',true);if(!receipt)return;
+   if(receipt.status!=='PASS')return;
+   const [data,adapter]=await Promise.all([fetchJSON(prefix+'r2/metrics.json',true),fetchJSON(prefix+'r2/adapter_manifest.json',true)]);
+   if(!data||!adapter)return;
+   partialScenes[scene]=validateSceneMetrics(scene,receipt,data,adapter);delete partialErrors[scene];
+  }catch(e){partialErrors[scene]=e.message}
+ }));
+}
+async function loadProgress(global,statuses){
+ const running=new Set((global?.running||[]).map(r=>r.scene));
+ return await Promise.all(SCENES.map(async(scene,i)=>{
+  const status=statuses[i],pilot=global?.status==='PREFLIGHT'&&running.has(scene)&&!status;
+  const checkpoint=pilot?100:Number(status?.checkpoint);
+  if(!pilot&&!(status?.status==='RUNNING'&&status?.stage==='mapping'&&STEPS.includes(checkpoint)))return null;
+  const prefix='./full_online/online/'+scene+'/'+checkpoint+'/B/';
+  const paths=pilot?[prefix+'mapping_smoke_status.json',prefix+'mapping/mapping_progress.json']:[prefix+'mapping/mapping_progress.json'];
+  const values=await Promise.allSettled(paths.map(p=>fetchJSON(p,true)));
+  const get=i=>values[i]?.status==='fulfilled'?values[i].value:null;
+  return {pilot,checkpoint,smoke:pilot?get(0):null,progress:get(pilot?1:0),progressError:values.some(r=>r.status==='rejected')};
+ }));
+}
+async function refresh(){
+ if(busy)return;busy=true;$('refresh').disabled=true;$('network').textContent='';$('error').textContent='';
+ try{
+  const paths=['./full_online/status.json','./full_online/comparison/comparison.json','./full_online/coordinator_failure.json',...SCENES.map(s=>'./full_online/online/'+s+'/status_B.json'),...SCENES.map(s=>'./full_online/tasks/online_B/'+s+'/status.json')];
+  const outcomes=await Promise.allSettled(paths.map(p=>fetchJSON(p,true)));
+  if(!baseline){try{baseline=await fetchJSON('./baseline_summary.json')}catch(e){$('network').textContent='原始基线暂时无法读取：'+e.message}}
+  if(!gtLabels){try{const names=await fetchJSON('./full_online/comparison_gt_labels.json',true);if(names?.status==='PASS'&&names.count===350)gtLabels=names}catch(e){/* Names are optional; never invent labels or block scoring display. */}}
+  const failures=outcomes.map((r,i)=>r.status==='rejected'?paths[i]+'：'+r.reason.message:null).filter(Boolean);
+  if(failures.length)$('network').textContent='部分状态读取失败，保留已读取结果。'+failures[0];
+  const value=i=>outcomes[i]?.status==='fulfilled'?outcomes[i].value:null;
+  if(outcomes[0].status==='fulfilled'){lastGlobal=value(0);lastSuccessful=Date.now()}
+  const candidate=value(1);
+  if(candidate){if(candidate.status==='PASS'&&candidate.self_check!==true&&candidate.per_gt?.length===350&&candidate.per_scene?.length===8)result=candidate;else $('error').textContent='发现比较文件，但完整性校验未通过，暂不显示新策略总体值。'}
+  const statuses=SCENES.map((_,i)=>value(3+i)),tasks=SCENES.map((_,i)=>value(11+i));
+  const [progressData]=await Promise.all([loadProgress(lastGlobal,statuses),loadSceneMetrics(lastGlobal,statuses,tasks),loadSideEffects()]);sceneCards(lastGlobal,statuses,tasks,progressData);globalState(lastGlobal,value(2),statuses);metricCards();sceneRows();gtRows();renderSideEffects();
+  if(Object.keys(partialErrors).length)$('error').textContent='单场景指标暂未展示：'+Object.entries(partialErrors).map(([s,e])=>s+' '+e).join('；');
+  $('updated').textContent='页面读取 '+new Date().toLocaleTimeString('zh-CN')+' · 每 10 秒刷新'+(lastGlobal?.unix?' · 调度更新 '+new Date(lastGlobal.unix*1000).toLocaleTimeString('zh-CN'):'');
+ }catch(e){$('error').textContent='页面读取异常：'+e.message+'。可点击立即刷新重试。'}finally{busy=false;$('refresh').disabled=false}
+}
+$('refresh').onclick=refresh;for(const id of ['sceneFilter','changeFilter','sort'])$(id).onchange=gtRows;$('gtFilter').oninput=gtRows;
+sceneCards(null,[],[]);metricCards();sceneRows();refresh();setInterval(refresh,10000);
+</script>
+</html>

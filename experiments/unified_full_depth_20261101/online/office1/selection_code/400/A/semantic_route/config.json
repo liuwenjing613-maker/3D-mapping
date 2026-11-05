@@ -1,0 +1,64 @@
+{
+  "schema": "semantic-sam-route-v1",
+  "model_name": "ViT-H-14",
+  "pretrained_tag": "laion2b_s32b_b79k",
+  "weight_source": "/home/chenkejun/.cache/huggingface/hub/models--laion--CLIP-ViT-H-14-laion2B-s32B-b79K/snapshots/1c2b8495b28150b8a4922ee1c8edee224c284c0c/open_clip_model.safetensors",
+  "gray": [
+    127,
+    127,
+    127
+  ],
+  "mask_input": "existing non-overlapping SAM partition; all nonempty labels before downstream gates",
+  "prompt_template": "a photo of a {}.",
+  "targets": {
+    "window": [
+      "window",
+      "window blinds"
+    ],
+    "cabinet": [
+      "cabinet",
+      "cupboard",
+      "wardrobe"
+    ]
+  },
+  "controls": [
+    "mirror",
+    "painting",
+    "door",
+    "curtain",
+    "wall",
+    "vent",
+    "bookshelf",
+    "open shelving unit",
+    "storage rack",
+    "table",
+    "desk",
+    "chair",
+    "sofa",
+    "bed",
+    "ceiling",
+    "floor",
+    "plant",
+    "flowerpot",
+    "vase",
+    "box",
+    "book",
+    "electrical outlet",
+    "small object",
+    "indistinct fragment"
+  ],
+  "margin_threshold": 0.03,
+  "margin_definition": "max cosine of all target terms minus max cosine of all control terms; not probability",
+  "cropformer_correspondence_smaller_coverage": 0.5,
+  "bypassed_gates": [
+    "overmerge",
+    "anomaly_intersection",
+    "noise",
+    "version_comparison",
+    "whole_part_conflict"
+  ],
+  "sam_hit_policy": "select each hit SAM partition unchanged; no post-recognition filtering",
+  "cropformer_hit_policy": "withdraw directly overlapping CropFormer masks from all generic processing; keep only as comparison",
+  "cabinet_scope": "cabinets, cupboards, wardrobes with cabinet bodies; excludes open bookshelves and storage racks",
+  "not_hit_policy": "use unchanged ordinary selection rules after removing semantic SAM hits and corresponding CropFormer masks"
+}

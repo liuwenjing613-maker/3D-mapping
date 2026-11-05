@@ -1,0 +1,2127 @@
+{
+  "schema": "trusted_dbscan_severe_case_stage_audit_v1",
+  "status": "PASS",
+  "scope": "7 original severe raw-policy cases; existing fixed-geometry main R2 stage overlaps; terminal postprocess only",
+  "cases": [
+    {
+      "scene": "room0",
+      "raw_gt_id": 30,
+      "stages": {
+        "old_raw": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 13749,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.9191586586922922,
+              "intersection": 13678,
+              "pred_size": 14810
+            },
+            {
+              "uid": "196",
+              "iou": 0.0008098532141049434,
+              "intersection": 24,
+              "pred_size": 15910
+            },
+            {
+              "uid": "588",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13906
+            }
+          ]
+        },
+        "old_dbscan": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 13749,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.9106703055315183,
+              "intersection": 13681,
+              "pred_size": 14955
+            },
+            {
+              "uid": "196",
+              "iou": 0.0008011483125813666,
+              "intersection": 24,
+              "pred_size": 16232
+            },
+            {
+              "uid": "591",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 6478
+            }
+          ]
+        },
+        "trusted_raw": {
+          "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 13749,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.5061122956645344,
+              "intersection": 7121,
+              "pred_size": 7442
+            },
+            {
+              "uid": "195",
+              "iou": 0.08337107829815503,
+              "intersection": 2761,
+              "pred_size": 22129
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13697
+            }
+          ]
+        },
+        "merge_only": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz",
+          "gt_size": 13749,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.5061122956645344,
+              "intersection": 7121,
+              "pred_size": 7442
+            },
+            {
+              "uid": "195",
+              "iou": 0.08337107829815503,
+              "intersection": 2761,
+              "pred_size": 22129
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13697
+            }
+          ]
+        },
+        "merge_fill": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz",
+          "gt_size": 13749,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.5093617021276595,
+              "intersection": 7182,
+              "pred_size": 7533
+            },
+            {
+              "uid": "195",
+              "iou": 0.08412478961288772,
+              "intersection": 2799,
+              "pred_size": 22322
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13706
+            }
+          ]
+        },
+        "history_final": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/r2/overlap_matrix.npz",
+          "gt_size": 13749,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.5093617021276595,
+              "intersection": 7182,
+              "pred_size": 7533
+            },
+            {
+              "uid": "195",
+              "iou": 0.08412478961288772,
+              "intersection": 2799,
+              "pred_size": 22322
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13751
+            }
+          ]
+        }
+      },
+      "best_iou": {
+        "old_raw": 0.9191586586922922,
+        "old_dbscan": 0.9106703055315183,
+        "trusted_raw": 0.5061122956645344,
+        "merge_only": 0.5061122956645344,
+        "merge_fill": 0.5093617021276595,
+        "history_final": 0.5093617021276595
+      },
+      "trusted_postprocess_delta": 0.003249406463125104,
+      "restored_to_old_raw": false,
+      "restored_to_old_dbscan": false
+    },
+    {
+      "scene": "room0",
+      "raw_gt_id": 85,
+      "stages": {
+        "old_raw": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 119,
+          "top_predictions": [
+            {
+              "uid": "395",
+              "iou": 0.46099290780141844,
+              "intersection": 65,
+              "pred_size": 87
+            },
+            {
+              "uid": "3",
+              "iou": 0.007132667617689016,
+              "intersection": 5,
+              "pred_size": 587
+            },
+            {
+              "uid": "16",
+              "iou": 0.0023148148148148147,
+              "intersection": 1,
+              "pred_size": 314
+            }
+          ]
+        },
+        "old_dbscan": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 119,
+          "top_predictions": [
+            {
+              "uid": "395",
+              "iou": 0.4965034965034965,
+              "intersection": 71,
+              "pred_size": 95
+            },
+            {
+              "uid": "3",
+              "iou": 0.007082152974504249,
+              "intersection": 5,
+              "pred_size": 592
+            },
+            {
+              "uid": "16",
+              "iou": 0.0023148148148148147,
+              "intersection": 1,
+              "pred_size": 314
+            }
+          ]
+        },
+        "trusted_raw": {
+          "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 119,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.13948497854077252,
+              "intersection": 65,
+              "pred_size": 412
+            },
+            {
+              "uid": "3",
+              "iou": 0.007042253521126761,
+              "intersection": 5,
+              "pred_size": 596
+            },
+            {
+              "uid": "7",
+              "iou": 0.0008026853473438412,
+              "intersection": 11,
+              "pred_size": 13596
+            }
+          ]
+        },
+        "merge_only": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz",
+          "gt_size": 119,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.13948497854077252,
+              "intersection": 65,
+              "pred_size": 412
+            },
+            {
+              "uid": "3",
+              "iou": 0.007042253521126761,
+              "intersection": 5,
+              "pred_size": 596
+            },
+            {
+              "uid": "7",
+              "iou": 0.0008026853473438412,
+              "intersection": 11,
+              "pred_size": 13596
+            }
+          ]
+        },
+        "merge_fill": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz",
+          "gt_size": 119,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.13948497854077252,
+              "intersection": 65,
+              "pred_size": 412
+            },
+            {
+              "uid": "3",
+              "iou": 0.006983240223463687,
+              "intersection": 5,
+              "pred_size": 602
+            },
+            {
+              "uid": "7",
+              "iou": 0.0007982004208693128,
+              "intersection": 11,
+              "pred_size": 13673
+            }
+          ]
+        },
+        "history_final": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/r2/overlap_matrix.npz",
+          "gt_size": 119,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.13948497854077252,
+              "intersection": 65,
+              "pred_size": 412
+            },
+            {
+              "uid": "3",
+              "iou": 0.006983240223463687,
+              "intersection": 5,
+              "pred_size": 602
+            },
+            {
+              "uid": "7",
+              "iou": 0.0007982004208693128,
+              "intersection": 11,
+              "pred_size": 13673
+            }
+          ]
+        }
+      },
+      "best_iou": {
+        "old_raw": 0.46099290780141844,
+        "old_dbscan": 0.4965034965034965,
+        "trusted_raw": 0.13948497854077252,
+        "merge_only": 0.13948497854077252,
+        "merge_fill": 0.13948497854077252,
+        "history_final": 0.13948497854077252
+      },
+      "trusted_postprocess_delta": 0.0,
+      "restored_to_old_raw": false,
+      "restored_to_old_dbscan": false
+    },
+    {
+      "scene": "room0",
+      "raw_gt_id": 58,
+      "stages": {
+        "old_raw": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 13780,
+          "top_predictions": [
+            {
+              "uid": "196",
+              "iou": 0.8596930786094582,
+              "intersection": 13725,
+              "pred_size": 15910
+            },
+            {
+              "uid": "588",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13906
+            },
+            {
+              "uid": "591",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 6018
+            }
+          ]
+        },
+        "old_dbscan": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 13780,
+          "top_predictions": [
+            {
+              "uid": "196",
+              "iou": 0.8455294551715656,
+              "intersection": 13750,
+              "pred_size": 16232
+            },
+            {
+              "uid": "591",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 6478
+            },
+            {
+              "uid": "593",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 7058
+            }
+          ]
+        },
+        "trusted_raw": {
+          "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 13780,
+          "top_predictions": [
+            {
+              "uid": "195",
+              "iou": 0.6227122780062362,
+              "intersection": 13780,
+              "pred_size": 22129
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13697
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14297
+            }
+          ]
+        },
+        "merge_only": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz",
+          "gt_size": 13780,
+          "top_predictions": [
+            {
+              "uid": "195",
+              "iou": 0.6227122780062362,
+              "intersection": 13780,
+              "pred_size": 22129
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13697
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14297
+            }
+          ]
+        },
+        "merge_fill": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz",
+          "gt_size": 13780,
+          "top_predictions": [
+            {
+              "uid": "195",
+              "iou": 0.6173281963981722,
+              "intersection": 13780,
+              "pred_size": 22322
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13706
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14333
+            }
+          ]
+        },
+        "history_final": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/r2/overlap_matrix.npz",
+          "gt_size": 13780,
+          "top_predictions": [
+            {
+              "uid": "195",
+              "iou": 0.6173281963981722,
+              "intersection": 13780,
+              "pred_size": 22322
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13751
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14382
+            }
+          ]
+        }
+      },
+      "best_iou": {
+        "old_raw": 0.8596930786094582,
+        "old_dbscan": 0.8455294551715656,
+        "trusted_raw": 0.6227122780062362,
+        "merge_only": 0.6227122780062362,
+        "merge_fill": 0.6173281963981722,
+        "history_final": 0.6173281963981722
+      },
+      "trusted_postprocess_delta": -0.005384081608064029,
+      "restored_to_old_raw": false,
+      "restored_to_old_dbscan": false
+    },
+    {
+      "scene": "room0",
+      "raw_gt_id": 4,
+      "stages": {
+        "old_raw": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 262,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.6891495601173021,
+              "intersection": 235,
+              "pred_size": 314
+            },
+            {
+              "uid": "588",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13906
+            },
+            {
+              "uid": "591",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 6018
+            }
+          ]
+        },
+        "old_dbscan": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 262,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.6891495601173021,
+              "intersection": 235,
+              "pred_size": 314
+            },
+            {
+              "uid": "591",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 6478
+            },
+            {
+              "uid": "593",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 7058
+            }
+          ]
+        },
+        "trusted_raw": {
+          "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/room0/r2/overlap_matrix.npz",
+          "gt_size": 262,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.5353075170842825,
+              "intersection": 235,
+              "pred_size": 412
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13697
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14297
+            }
+          ]
+        },
+        "merge_only": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz",
+          "gt_size": 262,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.5353075170842825,
+              "intersection": 235,
+              "pred_size": 412
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13697
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14297
+            }
+          ]
+        },
+        "merge_fill": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz",
+          "gt_size": 262,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.5353075170842825,
+              "intersection": 235,
+              "pred_size": 412
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13706
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14333
+            }
+          ]
+        },
+        "history_final": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/r2/overlap_matrix.npz",
+          "gt_size": 262,
+          "top_predictions": [
+            {
+              "uid": "16",
+              "iou": 0.5353075170842825,
+              "intersection": 235,
+              "pred_size": 412
+            },
+            {
+              "uid": "364",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 13751
+            },
+            {
+              "uid": "366",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 14382
+            }
+          ]
+        }
+      },
+      "best_iou": {
+        "old_raw": 0.6891495601173021,
+        "old_dbscan": 0.6891495601173021,
+        "trusted_raw": 0.5353075170842825,
+        "merge_only": 0.5353075170842825,
+        "merge_fill": 0.5353075170842825,
+        "history_final": 0.5353075170842825
+      },
+      "trusted_postprocess_delta": 0.0,
+      "restored_to_old_raw": false,
+      "restored_to_old_dbscan": false
+    },
+    {
+      "scene": "office0",
+      "raw_gt_id": 9,
+      "stages": {
+        "old_raw": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/office0/r2/overlap_matrix.npz",
+          "gt_size": 25957,
+          "top_predictions": [
+            {
+              "uid": "79",
+              "iou": 0.944803466889683,
+              "intersection": 24854,
+              "pred_size": 25203
+            },
+            {
+              "uid": "6",
+              "iou": 0.0015769672666651649,
+              "intersection": 140,
+              "pred_size": 62961
+            },
+            {
+              "uid": "16",
+              "iou": 0.0006423888002835372,
+              "intersection": 116,
+              "pred_size": 154735
+            }
+          ]
+        },
+        "old_dbscan": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/office0/r2/overlap_matrix.npz",
+          "gt_size": 25957,
+          "top_predictions": [
+            {
+              "uid": "79",
+              "iou": 0.9497833193948149,
+              "intersection": 24985,
+              "pred_size": 25334
+            },
+            {
+              "uid": "6",
+              "iou": 0.001582989042572301,
+              "intersection": 141,
+              "pred_size": 63256
+            },
+            {
+              "uid": "16",
+              "iou": 0.0006444221681225834,
+              "intersection": 117,
+              "pred_size": 155718
+            }
+          ]
+        },
+        "trusted_raw": {
+          "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/office0/r2/overlap_matrix.npz",
+          "gt_size": 25957,
+          "top_predictions": [
+            {
+              "uid": "79",
+              "iou": 0.7586115124325147,
+              "intersection": 19953,
+              "pred_size": 20298
+            },
+            {
+              "uid": "572",
+              "iou": 0.17579073082405516,
+              "intersection": 4563,
+              "pred_size": 4563
+            },
+            {
+              "uid": "6",
+              "iou": 0.0015890367732410715,
+              "intersection": 141,
+              "pred_size": 62917
+            }
+          ]
+        },
+        "merge_only": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_only/r2/overlap_matrix.npz",
+          "gt_size": 25957,
+          "top_predictions": [
+            {
+              "uid": "79",
+              "iou": 0.7586115124325147,
+              "intersection": 19953,
+              "pred_size": 20298
+            },
+            {
+              "uid": "572",
+              "iou": 0.17579073082405516,
+              "intersection": 4563,
+              "pred_size": 4563
+            },
+            {
+              "uid": "6",
+              "iou": 0.0015890367732410715,
+              "intersection": 141,
+              "pred_size": 62917
+            }
+          ]
+        },
+        "merge_fill": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_fill/r2/overlap_matrix.npz",
+          "gt_size": 25957,
+          "top_predictions": [
+            {
+              "uid": "79",
+              "iou": 0.7630218234354802,
+              "intersection": 20069,
+              "pred_size": 20414
+            },
+            {
+              "uid": "572",
+              "iou": 0.17864159956851716,
+              "intersection": 4637,
+              "pred_size": 4637
+            },
+            {
+              "uid": "6",
+              "iou": 0.0015946276768969894,
+              "intersection": 142,
+              "pred_size": 63234
+            }
+          ]
+        },
+        "history_final": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/r2/overlap_matrix.npz",
+          "gt_size": 25957,
+          "top_predictions": [
+            {
+              "uid": "79",
+              "iou": 0.7630218234354802,
+              "intersection": 20069,
+              "pred_size": 20414
+            },
+            {
+              "uid": "572",
+              "iou": 0.1814539430596756,
+              "intersection": 4710,
+              "pred_size": 4710
+            },
+            {
+              "uid": "6",
+              "iou": 0.0015946276768969894,
+              "intersection": 142,
+              "pred_size": 63234
+            }
+          ]
+        }
+      },
+      "best_iou": {
+        "old_raw": 0.944803466889683,
+        "old_dbscan": 0.9497833193948149,
+        "trusted_raw": 0.7586115124325147,
+        "merge_only": 0.7586115124325147,
+        "merge_fill": 0.7630218234354802,
+        "history_final": 0.7630218234354802
+      },
+      "trusted_postprocess_delta": 0.004410311002965517,
+      "restored_to_old_raw": false,
+      "restored_to_old_dbscan": false
+    },
+    {
+      "scene": "office0",
+      "raw_gt_id": 22,
+      "stages": {
+        "old_raw": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/office0/r2/overlap_matrix.npz",
+          "gt_size": 10129,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.5022006174866978,
+              "intersection": 7645,
+              "pred_size": 12739
+            },
+            {
+              "uid": "16",
+              "iou": 0.002170120420407642,
+              "intersection": 357,
+              "pred_size": 154735
+            },
+            {
+              "uid": "59",
+              "iou": 0.00035555555555555557,
+              "intersection": 4,
+              "pred_size": 1125
+            }
+          ]
+        },
+        "old_dbscan": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/office0/r2/overlap_matrix.npz",
+          "gt_size": 10129,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.505355276907001,
+              "intersection": 7738,
+              "pred_size": 12921
+            },
+            {
+              "uid": "16",
+              "iou": 0.0021572300441114267,
+              "intersection": 357,
+              "pred_size": 155718
+            },
+            {
+              "uid": "59",
+              "iou": 0.00044232130219391363,
+              "intersection": 5,
+              "pred_size": 1180
+            }
+          ]
+        },
+        "trusted_raw": {
+          "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/office0/r2/overlap_matrix.npz",
+          "gt_size": 10129,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.49868328087866914,
+              "intersection": 7764,
+              "pred_size": 13204
+            },
+            {
+              "uid": "16",
+              "iou": 0.0018068611891099988,
+              "intersection": 296,
+              "pred_size": 153987
+            },
+            {
+              "uid": "59",
+              "iou": 0.0003541389995573263,
+              "intersection": 4,
+              "pred_size": 1170
+            }
+          ]
+        },
+        "merge_only": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_only/r2/overlap_matrix.npz",
+          "gt_size": 10129,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.49868328087866914,
+              "intersection": 7764,
+              "pred_size": 13204
+            },
+            {
+              "uid": "16",
+              "iou": 0.0018068611891099988,
+              "intersection": 296,
+              "pred_size": 153987
+            },
+            {
+              "uid": "59",
+              "iou": 0.0003541389995573263,
+              "intersection": 4,
+              "pred_size": 1170
+            }
+          ]
+        },
+        "merge_fill": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_fill/r2/overlap_matrix.npz",
+          "gt_size": 10129,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.499330741283702,
+              "intersection": 7834,
+              "pred_size": 13394
+            },
+            {
+              "uid": "16",
+              "iou": 0.0018038043874353182,
+              "intersection": 297,
+              "pred_size": 154820
+            },
+            {
+              "uid": "59",
+              "iou": 0.0004406451044328897,
+              "intersection": 5,
+              "pred_size": 1223
+            }
+          ]
+        },
+        "history_final": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/r2/overlap_matrix.npz",
+          "gt_size": 10129,
+          "top_predictions": [
+            {
+              "uid": "57",
+              "iou": 0.499330741283702,
+              "intersection": 7834,
+              "pred_size": 13394
+            },
+            {
+              "uid": "16",
+              "iou": 0.0018038043874353182,
+              "intersection": 297,
+              "pred_size": 154820
+            },
+            {
+              "uid": "59",
+              "iou": 0.0004406451044328897,
+              "intersection": 5,
+              "pred_size": 1223
+            }
+          ]
+        }
+      },
+      "best_iou": {
+        "old_raw": 0.5022006174866978,
+        "old_dbscan": 0.505355276907001,
+        "trusted_raw": 0.49868328087866914,
+        "merge_only": 0.49868328087866914,
+        "merge_fill": 0.499330741283702,
+        "history_final": 0.499330741283702
+      },
+      "trusted_postprocess_delta": 0.0006474604050328292,
+      "restored_to_old_raw": false,
+      "restored_to_old_dbscan": false
+    },
+    {
+      "scene": "office1",
+      "raw_gt_id": 18,
+      "stages": {
+        "old_raw": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/office1/r2/overlap_matrix.npz",
+          "gt_size": 63,
+          "top_predictions": [
+            {
+              "uid": "408",
+              "iou": 0.31868131868131866,
+              "intersection": 29,
+              "pred_size": 57
+            },
+            {
+              "uid": "9",
+              "iou": 0.04871794871794872,
+              "intersection": 19,
+              "pred_size": 346
+            },
+            {
+              "uid": "3",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 1802
+            }
+          ]
+        },
+        "old_dbscan": {
+          "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/office1/r2/overlap_matrix.npz",
+          "gt_size": 63,
+          "top_predictions": [
+            {
+              "uid": "408",
+              "iou": 0.3333333333333333,
+              "intersection": 33,
+              "pred_size": 69
+            },
+            {
+              "uid": "9",
+              "iou": 0.047979797979797977,
+              "intersection": 19,
+              "pred_size": 352
+            },
+            {
+              "uid": "3",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 1810
+            }
+          ]
+        },
+        "trusted_raw": {
+          "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/office1/r2/overlap_matrix.npz",
+          "gt_size": 63,
+          "top_predictions": [
+            {
+              "uid": "9",
+              "iou": 0.12771084337349398,
+              "intersection": 53,
+              "pred_size": 405
+            },
+            {
+              "uid": "1",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 166762
+            },
+            {
+              "uid": "3",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 1802
+            }
+          ]
+        },
+        "merge_only": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_only/r2/overlap_matrix.npz",
+          "gt_size": 63,
+          "top_predictions": [
+            {
+              "uid": "9",
+              "iou": 0.12771084337349398,
+              "intersection": 53,
+              "pred_size": 405
+            },
+            {
+              "uid": "1",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 166761
+            },
+            {
+              "uid": "3",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 1802
+            }
+          ]
+        },
+        "merge_fill": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_fill/r2/overlap_matrix.npz",
+          "gt_size": 63,
+          "top_predictions": [
+            {
+              "uid": "9",
+              "iou": 0.12649164677804295,
+              "intersection": 53,
+              "pred_size": 409
+            },
+            {
+              "uid": "1",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 167354
+            },
+            {
+              "uid": "3",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 1810
+            }
+          ]
+        },
+        "history_final": {
+          "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/r2/overlap_matrix.npz",
+          "gt_size": 63,
+          "top_predictions": [
+            {
+              "uid": "9",
+              "iou": 0.12649164677804295,
+              "intersection": 53,
+              "pred_size": 409
+            },
+            {
+              "uid": "1",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 167354
+            },
+            {
+              "uid": "3",
+              "iou": 0.0,
+              "intersection": 0,
+              "pred_size": 1810
+            }
+          ]
+        }
+      },
+      "best_iou": {
+        "old_raw": 0.31868131868131866,
+        "old_dbscan": 0.3333333333333333,
+        "trusted_raw": 0.12771084337349398,
+        "merge_only": 0.12771084337349398,
+        "merge_fill": 0.12649164677804295,
+        "history_final": 0.12649164677804295
+      },
+      "trusted_postprocess_delta": -0.0012191965954510275,
+      "restored_to_old_raw": false,
+      "restored_to_old_dbscan": false
+    }
+  ],
+  "mechanisms": {
+    "room0": {
+      "merge_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_decisions.json",
+      "families": [],
+      "accepted_edges": [],
+      "focus_ids": [
+        57,
+        195,
+        16
+      ],
+      "focus_merge_candidates": [
+        {
+          "ids": [
+            57,
+            195
+          ],
+          "core_cells": [
+            11794,
+            27838
+          ],
+          "shared_cells": 4773,
+          "overlap": [
+            0.40469730371375273,
+            0.17145628277893527
+          ],
+          "rejection": [
+            "insufficient_directed_overlap"
+          ],
+          "separate_checkpoints": [],
+          "independent_covisible_frames": 0,
+          "covisible_first_last": [],
+          "covisible_sample": []
+        },
+        {
+          "ids": [
+            195,
+            386
+          ],
+          "core_cells": [
+            27838,
+            796
+          ],
+          "shared_cells": 383,
+          "overlap": [
+            0.013758172282491559,
+            0.48115577889447236
+          ],
+          "rejection": [
+            "distinct_accepted_objects_at_same_repair_checkpoint",
+            "insufficient_directed_overlap",
+            "insufficient_reciprocal_overlap",
+            "part_vs_very_large_surface"
+          ],
+          "separate_checkpoints": [
+            200
+          ],
+          "independent_covisible_frames": 0,
+          "covisible_first_last": [],
+          "covisible_sample": []
+        },
+        {
+          "ids": [
+            195,
+            854
+          ],
+          "core_cells": [
+            27838,
+            766
+          ],
+          "shared_cells": 269,
+          "overlap": [
+            0.009663050506501904,
+            0.35117493472584854
+          ],
+          "rejection": [
+            "distinct_accepted_objects_at_same_repair_checkpoint",
+            "insufficient_directed_overlap",
+            "insufficient_reciprocal_overlap",
+            "part_vs_very_large_surface"
+          ],
+          "separate_checkpoints": [
+            400
+          ],
+          "independent_covisible_frames": 0,
+          "covisible_first_last": [],
+          "covisible_sample": []
+        }
+      ],
+      "focus_objects": [
+        {
+          "id": 16,
+          "support_cells": 494,
+          "core_cells": 472,
+          "components": 2
+        },
+        {
+          "id": 57,
+          "support_cells": 11916,
+          "core_cells": 11794,
+          "components": 1
+        },
+        {
+          "id": 195,
+          "support_cells": 28112,
+          "core_cells": 27838,
+          "components": 3
+        }
+      ],
+      "history_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/decision_freeze.json",
+      "history_rows": [
+        {
+          "checkpoint": 50,
+          "source_id": 89,
+          "canonical_id": 89,
+          "track": 3,
+          "old_core_points": 1946,
+          "old_region_points": 17845,
+          "current_supported": 19384,
+          "remaining_core_points": 1946,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 46,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 50,
+          "source_id": 90,
+          "canonical_id": 90,
+          "track": 4,
+          "old_core_points": 840,
+          "old_region_points": 12908,
+          "current_supported": 13803,
+          "remaining_core_points": 837,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 33,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 363,
+          "canonical_id": 363,
+          "track": 1,
+          "old_core_points": 5335,
+          "old_region_points": 49545,
+          "current_supported": 51227,
+          "remaining_core_points": 5299,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 253,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 364,
+          "canonical_id": 364,
+          "track": 2,
+          "old_core_points": 9771,
+          "old_region_points": 43516,
+          "current_supported": 44274,
+          "remaining_core_points": 9754,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 225,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 366,
+          "canonical_id": 366,
+          "track": 4,
+          "old_core_points": 6961,
+          "old_region_points": 36957,
+          "current_supported": 38767,
+          "remaining_core_points": 6954,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 244,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 371,
+          "canonical_id": 371,
+          "track": 9,
+          "old_core_points": 702,
+          "old_region_points": 22377,
+          "current_supported": 24349,
+          "remaining_core_points": 699,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 122,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 372,
+          "canonical_id": 372,
+          "track": 10,
+          "old_core_points": 364,
+          "old_region_points": 25808,
+          "current_supported": 34137,
+          "remaining_core_points": 363,
+          "status": "PASS",
+          "accepted_clusters": 2,
+          "proposed": 26,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 373,
+          "canonical_id": 373,
+          "track": 11,
+          "old_core_points": 2863,
+          "old_region_points": 17528,
+          "current_supported": 18972,
+          "remaining_core_points": 2863,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 149,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 386,
+          "canonical_id": 386,
+          "track": 24,
+          "old_core_points": 193,
+          "old_region_points": 1022,
+          "current_supported": 1755,
+          "remaining_core_points": 192,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 227,
+          "conflicting_proposals": 83
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 391,
+          "canonical_id": 391,
+          "track": 29,
+          "old_core_points": 26,
+          "old_region_points": 94,
+          "current_supported": 298,
+          "remaining_core_points": 26,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 26,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 300,
+          "source_id": 591,
+          "canonical_id": 591,
+          "track": 15,
+          "old_core_points": 134,
+          "old_region_points": 905,
+          "current_supported": 1167,
+          "remaining_core_points": 132,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 6,
+          "conflicting_proposals": 0
+        }
+      ],
+      "history_trace_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/completion_trace.npz",
+      "history_actual_surface_assignments": {
+        "89": 46,
+        "90": 33,
+        "363": 253,
+        "364": 220,
+        "366": 166,
+        "371": 122,
+        "372": 26,
+        "373": 149,
+        "386": 144,
+        "391": 26,
+        "591": 6
+      }
+    },
+    "office0": {
+      "merge_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_decisions.json",
+      "families": [
+        [
+          44,
+          614
+        ]
+      ],
+      "accepted_edges": [
+        [
+          44,
+          614
+        ]
+      ],
+      "focus_ids": [
+        79,
+        572,
+        57
+      ],
+      "focus_merge_candidates": [],
+      "focus_objects": [
+        {
+          "id": 57,
+          "support_cells": 19772,
+          "core_cells": 19614,
+          "components": 6
+        },
+        {
+          "id": 79,
+          "support_cells": 23060,
+          "core_cells": 22694,
+          "components": 6
+        },
+        {
+          "id": 572,
+          "support_cells": 5678,
+          "core_cells": 5649,
+          "components": 1
+        }
+      ],
+      "history_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/decision_freeze.json",
+      "history_rows": [
+        {
+          "checkpoint": 100,
+          "source_id": 153,
+          "canonical_id": 153,
+          "track": 9,
+          "old_core_points": 31,
+          "old_region_points": 143,
+          "current_supported": 202,
+          "remaining_core_points": 31,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 20,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 389,
+          "canonical_id": 389,
+          "track": 14,
+          "old_core_points": 359,
+          "old_region_points": 2295,
+          "current_supported": 2462,
+          "remaining_core_points": 355,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 127,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 300,
+          "source_id": 572,
+          "canonical_id": 572,
+          "track": 4,
+          "old_core_points": 5175,
+          "old_region_points": 15332,
+          "current_supported": 15721,
+          "remaining_core_points": 5172,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 256,
+          "conflicting_proposals": 0
+        }
+      ],
+      "history_trace_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/completion_trace.npz",
+      "history_actual_surface_assignments": {
+        "153": 20,
+        "389": 127,
+        "572": 256
+      }
+    },
+    "office1": {
+      "merge_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_decisions.json",
+      "families": [
+        [
+          7,
+          113
+        ]
+      ],
+      "accepted_edges": [
+        [
+          7,
+          113
+        ]
+      ],
+      "focus_ids": [
+        9
+      ],
+      "focus_merge_candidates": [
+        {
+          "ids": [
+            9,
+            11
+          ],
+          "core_cells": [
+            946,
+            10703
+          ],
+          "shared_cells": 379,
+          "overlap": [
+            0.40063424947145876,
+            0.035410632532934694
+          ],
+          "rejection": [
+            "independent_distinct_raw_masks_covisible_multiple_frames",
+            "insufficient_directed_overlap",
+            "insufficient_reciprocal_overlap",
+            "part_vs_very_large_surface"
+          ],
+          "separate_checkpoints": [],
+          "independent_covisible_frames": 77,
+          "covisible_first_last": [
+            10,
+            645
+          ],
+          "covisible_sample": [
+            10,
+            15,
+            30,
+            35,
+            50,
+            55,
+            75,
+            95,
+            110,
+            115
+          ]
+        }
+      ],
+      "focus_objects": [
+        {
+          "id": 9,
+          "support_cells": 965,
+          "core_cells": 946,
+          "components": 2
+        }
+      ],
+      "history_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/decision_freeze.json",
+      "history_rows": [
+        {
+          "checkpoint": 50,
+          "source_id": 113,
+          "canonical_id": 7,
+          "track": 1,
+          "old_core_points": 2520,
+          "old_region_points": 5512,
+          "current_supported": 6101,
+          "remaining_core_points": 2328,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 4,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 100,
+          "source_id": 262,
+          "canonical_id": 262,
+          "track": 6,
+          "old_core_points": 126,
+          "old_region_points": 520,
+          "current_supported": 477,
+          "remaining_core_points": 122,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 44,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 409,
+          "canonical_id": 409,
+          "track": 9,
+          "old_core_points": 49,
+          "old_region_points": 158,
+          "current_supported": 181,
+          "remaining_core_points": 49,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 15,
+          "conflicting_proposals": 6
+        },
+        {
+          "checkpoint": 200,
+          "source_id": 410,
+          "canonical_id": 410,
+          "track": 10,
+          "old_core_points": 77,
+          "old_region_points": 293,
+          "current_supported": 406,
+          "remaining_core_points": 77,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 42,
+          "conflicting_proposals": 0
+        },
+        {
+          "checkpoint": 300,
+          "source_id": 571,
+          "canonical_id": 571,
+          "track": 7,
+          "old_core_points": 298,
+          "old_region_points": 675,
+          "current_supported": 770,
+          "remaining_core_points": 296,
+          "status": "PASS",
+          "accepted_clusters": 1,
+          "proposed": 5,
+          "conflicting_proposals": 0
+        }
+      ],
+      "history_trace_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/completion_trace.npz",
+      "history_actual_surface_assignments": {
+        "7": 4,
+        "262": 38,
+        "409": 9,
+        "410": 42,
+        "571": 5
+      }
+    }
+  },
+  "findings_zh": [
+    "7例均未恢复到原在线或原在线加DBSCAN的IoU。",
+    "room0没有接受任何合并。57/195因最大定向重叠0.404697低于0.8被拒绝，没有独立共视否决。GT30主57小幅补灰；GT58主195目标命中13780不变、预测大小22129到22322，IoU下降。ID16未拆分，GT85与GT4保持不变。历史补全没有57、195、16。",
+    "office0只合并44/614。79与572未进入合并预筛候选；源码预筛为共享core cells至少30且最大重叠至少0.3，未单独重算该对具体落选数值，不能说被共视规则拒绝。自身300历史572的5175 old_core中剩5172，实际补256个surface点。572在GT9上的纯沙发覆盖从4563到merge_fill的4637、再到history的4710；主79从19953到20069，分裂仍在。植物GT22仍低于0.5。",
+    "office1只合并7/113。GT18主9命中53保持不变、预测大小405到409，IoU略降；历史源为113/262/409/410/571，没有9及旧baseline的408；本补全器未重新建立该独立瓶子身份。"
+  ],
+  "limitations_zh": [
+    "阶段差异直接来自已运行产物，未做重投影、强制合并、关闭策略等新消融。",
+    "不使用跨方案同名native ID作为实例一致性证据，GT对齐依赖固定R2范围和对应。",
+    "surface trace点数与评分GT顶点数属于不同空间，不能直接相加。",
+    "合并器只合并已有身份，补全只赋值灰点；这些案例未证明调整阈值或自动拆分一定改善端到端结果。"
+  ],
+  "source_sha256": {
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/room0/r2/adapter_manifest.json": "b373a54724b3ea5cf156f50bed2bc72acb35b611f337dd5e88f3c76ede9f9a5a",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/room0/r2/overlap_matrix.npz": "e69d54a22baf46bcbf1a2ec99046fb1679c5735dd593de72e8452e31c9b7e9f4",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/room0/r2/adapter_manifest.json": "ae507ea8ce3532ba0e1655239ac50b0a0f20204039d0b622e0b4bad475fc4621",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/room0/r2/overlap_matrix.npz": "82c45a5d2e3a71fd836da628bbc5594cdb44e6aa138892a813b8053e8e1ca531",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/room0/r2/adapter_manifest.json": "5b5e05b8d31df112e14594cce75d8f7880aac8b21dfe02ee38b10104193d74e0",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/room0/r2/overlap_matrix.npz": "e07f501a3833c4a1a2c8fc87b6456dd9a323cef9ccf1efec2910ca61ee026de3",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_only/r2/adapter_manifest.json": "a8185e0f172500a084031c88899c1a5b2a3065869b0f3efe39921588c8a73694",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz": "e07f501a3833c4a1a2c8fc87b6456dd9a323cef9ccf1efec2910ca61ee026de3",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_fill/r2/adapter_manifest.json": "bf3bf4fd81238e98714c1d29e8fde53c6f330636bffa00d0075403f5e44929c3",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz": "ad4483d06843f16176287a208db1cb33dd28c5a8c6bf331927a370d0e3c76db6",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/r2/adapter_manifest.json": "a209a3965c9f904eebb51c8d0a8e8a513ce93719a89527ce9c828dd6cd18092a",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/r2/overlap_matrix.npz": "eee50bae6807057ebb7f1d9757f50b156da24db95df833be993582d7f2cc55cf",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_decisions.json": "b856f677c891613ac5a6e87e4cc8f87c8dac6739c5301c6471d7a441d1af524c",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/decision_freeze.json": "42c3226e0707b530a281038f306a1a5f7979a1c604975a6821b37171042078d3",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/completion_trace.npz": "4cf4b6c59e61af09930b8548c7a94b611472fc98698522c762b9b3c8fa71ba99",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/office0/r2/adapter_manifest.json": "9e639579d7224f0dd74eedbb8c30f43d9f324d289a950a16e7e097a020fd1d4d",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/office0/r2/overlap_matrix.npz": "386651b793f044863674febe4f2b221a2237456b88b509ab07924b4634f66cbe",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/office0/r2/adapter_manifest.json": "0e9eb83021f43fcda3cd5fa19d2d03214182735f2ca86eacc813994e037d283d",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/office0/r2/overlap_matrix.npz": "a5d3150a391caee8a246b046c68c4daaf91901ea3418e09083a1924332c72fff",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/office0/r2/adapter_manifest.json": "3ba50c242cf6aa64e23037310ba074704367d4a7a8fdb7fd3316a2adfd6407f1",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/office0/r2/overlap_matrix.npz": "307005a2fe58a2cc9bfae67f7c81f2cdf920e3f83f7b27c0240962e85e20fd39",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_only/r2/adapter_manifest.json": "5d24af398c4a92df6164dd0f908a842dda67c556561ace202fe1e63cafa12f3c",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_only/r2/overlap_matrix.npz": "b986ea5dd88ad8b9e755152ac0dd581d3516a9dc78e61a29fd0327b58b2b4d82",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_fill/r2/adapter_manifest.json": "3ca2275ea8435294e7ddcb4e62f8845601a460a61f8057344fba8cca6eac3a65",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_fill/r2/overlap_matrix.npz": "17bfc212828506bb3a513e8f8975d2336b74ff3a3eac26a9d1058f0bca177294",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/r2/adapter_manifest.json": "b4b1f6e4e938e1910101c2bdc78d6b604a727a07fade8f88e29ee9976a73b984",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/r2/overlap_matrix.npz": "6ffaaaff0b48a2088e9a6b5b144618bc847044ea3782b31de757aaeb67c8bdca",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/base/online_B/office0/merge_decisions.json": "c57495e7f727d84be8fc0eda3fd5066963410a3d9012ff8253378452b2ea1c06",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/decision_freeze.json": "8ef53c46406c825fa9666a6cf3de3463c94e44924e98764012435c5280ccd1a9",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office0/completion_trace.npz": "a728e38fc2dea20e7707100496b598b078914c6dfee60e686301b3bdc1c486cb",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/office1/r2/adapter_manifest.json": "5139f4d61965f5ed03b3528e5b491f3c2ae96f59ae765725d2cce46ac82f22e6",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/office1/r2/overlap_matrix.npz": "ad130e85b494361deef6fa8296c4cd5c6415e718d012140a43edfee991104afa",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/office1/r2/adapter_manifest.json": "3c93cd28aebc659003c43722d98473a977b146b7b2aac4fa32d0145fd4b6bcb6",
+    "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102/online_B/office1/r2/overlap_matrix.npz": "41eac027420116f361a2f3a8687c0f724c295b454afe93276ddde65c5c59b1b0",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/office1/r2/adapter_manifest.json": "aa3a7cfe3f12d4d3ed41e7c96ccbfa1cf259c6a03a3f5577aba08dc477e323aa",
+    "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/office1/r2/overlap_matrix.npz": "7056c1d8dedd13d78395a0a62061b0d8f21dacbc891df6bb9753a5d1df14db24",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_only/r2/adapter_manifest.json": "9c56be8663b3cbf020bca375eec5aab3feb8f4f5d046377d27c56b588194fb0f",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_only/r2/overlap_matrix.npz": "fefb0e5e7129e4af04cecefc981b5b434fee72bcd45198f5a9968f3674e70bc4",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_fill/r2/adapter_manifest.json": "5cab689ef624644a1d97712bb69097e8a9665ad1871f1fe7bc54db355ab0ce94",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_fill/r2/overlap_matrix.npz": "f1b4009301ff3731b18d3e52cebd57ec14718a68fcc5882e42f07d043e906c18",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/r2/adapter_manifest.json": "935c8aa53add31203240bf78ce70e6ad19b8b8c5a258bc43880a09fd527e6df7",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/r2/overlap_matrix.npz": "0a62f2d9ef6f800dce20906c0a19daa84b85205c6f92d2f5fbb4aeff67b3d4aa",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/base/online_B/office1/merge_decisions.json": "1d45feb2ddbd844e015450b99e653ff06db298612b901e1e0c75d84f942e6551",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/decision_freeze.json": "c57b015922ab9e6ef8099268ac14b1300eacbc0a69ec5b8501a3aaca2b03bb71",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/office1/completion_trace.npz": "44c5e4c5bb258b272de63d326fce3e5f406c118472762fbb2ed01326bbda4524",
+    "/home/chenkejun/CVPR/experiments/unified_full_depth_20261101/ablations/dbscan_identity_completion_guarded_20261102/run_guarded_covisible.py": "46e02592466c1ad48a6466ec0cb0c1c6079653fae8c3f6980a407d2d6bc6d930",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/comparison/comparison.json": "5d69e2e91a8d82366cfb7a02cf468262089c90652021a47934409bb0d9c46a9d",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_only/r2/adapter_manifest.json": "d0c89d69c7e6ac6ad6749f2480f45a50e60bd47fa2f382800591c90417334cda",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz": "2bb644fbf6d7146d646b6b6ad47c5985e714e921b0193859559444aea8c2617f",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_fill/r2/adapter_manifest.json": "3408e57ce9c25bf1c92d01a7abbb18a94f3336755baf0620796f32e1c4f4fb36",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz": "0d281cc46ea97694b163b6b59db71ea935ebbf39fd07ebc4613dc83fb3385641",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/r2/adapter_manifest.json": "6c623a13dc1a143dbda3e200ad8346b1cbb01b340dcd016d21ad609de705e31d",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/r2/overlap_matrix.npz": "82c45a5d2e3a71fd836da628bbc5594cdb44e6aa138892a813b8053e8e1ca531",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/decision_freeze.json": "072a30f5936688f74cdea8e8f7e406214c6e82a6bf89bbffbc0bfb48198d33ba",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/completion_trace.npz": "3476ae6edc5f1de0442b2280be98d9dcc7cb892d50cbb01d51ae657d0316f796",
+    "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_decisions.json": "823e581a0d0c304dd09044624a16af9c72e12f2ec729335f6f3e1b6387d67aad"
+  },
+  "final_four_corner_comparison_crosscheck": {
+    "status": "PASS",
+    "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/comparison/comparison.json"
+  },
+  "additional_new_severe_cases": [
+    {
+      "scene": "room0",
+      "raw_gt_id": 92,
+      "reason": "new severe gap versus old DBSCAN despite improvement versus old raw",
+      "arms": {
+        "control": {
+          "stages": {
+            "raw": {
+              "source": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/evaluation/online_B/room0/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "890",
+                  "iou": 0.0591016548463357,
+                  "intersection": 25,
+                  "pred_size": 161
+                },
+                {
+                  "uid": "235",
+                  "iou": 0.0469208211143695,
+                  "intersection": 64,
+                  "pred_size": 1141
+                },
+                {
+                  "uid": "605",
+                  "iou": 0.027874564459930314,
+                  "intersection": 8,
+                  "pred_size": 8
+                },
+                {
+                  "uid": "588",
+                  "iou": 0.0,
+                  "intersection": 0,
+                  "pred_size": 13906
+                }
+              ]
+            },
+            "merge_only": {
+              "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "890",
+                  "iou": 0.0591016548463357,
+                  "intersection": 25,
+                  "pred_size": 161
+                },
+                {
+                  "uid": "235",
+                  "iou": 0.0469208211143695,
+                  "intersection": 64,
+                  "pred_size": 1141
+                },
+                {
+                  "uid": "605",
+                  "iou": 0.027874564459930314,
+                  "intersection": 8,
+                  "pred_size": 8
+                },
+                {
+                  "uid": "591",
+                  "iou": 0.0,
+                  "intersection": 0,
+                  "pred_size": 6018
+                }
+              ]
+            },
+            "merge_fill": {
+              "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "890",
+                  "iou": 0.058823529411764705,
+                  "intersection": 25,
+                  "pred_size": 163
+                },
+                {
+                  "uid": "235",
+                  "iou": 0.047860768672951415,
+                  "intersection": 66,
+                  "pred_size": 1158
+                },
+                {
+                  "uid": "605",
+                  "iou": 0.027874564459930314,
+                  "intersection": 8,
+                  "pred_size": 8
+                },
+                {
+                  "uid": "591",
+                  "iou": 0.0,
+                  "intersection": 0,
+                  "pred_size": 6275
+                }
+              ]
+            },
+            "history_final": {
+              "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "605",
+                  "iou": 0.5505226480836237,
+                  "intersection": 158,
+                  "pred_size": 158
+                },
+                {
+                  "uid": "890",
+                  "iou": 0.058823529411764705,
+                  "intersection": 25,
+                  "pred_size": 163
+                },
+                {
+                  "uid": "235",
+                  "iou": 0.047860768672951415,
+                  "intersection": 66,
+                  "pred_size": 1158
+                },
+                {
+                  "uid": "591",
+                  "iou": 0.0,
+                  "intersection": 0,
+                  "pred_size": 6478
+                }
+              ]
+            }
+          },
+          "history": {
+            "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/decision_freeze.json",
+            "focus_rows": [
+              {
+                "checkpoint": 300,
+                "source_id": 605,
+                "canonical_id": 605,
+                "track": 20,
+                "old_core_points": 20,
+                "old_region_points": 508,
+                "current_supported": 471,
+                "remaining_core_points": 20,
+                "status": "PASS",
+                "accepted_clusters": 1,
+                "proposed": 432,
+                "conflicting_proposals": 0
+              }
+            ],
+            "trace_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/completion_trace.npz",
+            "actual_surface_assigned_to_focus": 432
+          },
+          "merge": {
+            "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/control/room0/base/online_B/room0/merge_decisions.json",
+            "families": [
+              [
+                366,
+                588
+              ]
+            ],
+            "focus_candidates": []
+          }
+        },
+        "candidate": {
+          "stages": {
+            "raw": {
+              "source": "/data/chenkejun/CVPR/results/trusted_full_online_20261104/evaluation/online_B/room0/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "391",
+                  "iou": 0.3205574912891986,
+                  "intersection": 92,
+                  "pred_size": 92
+                },
+                {
+                  "uid": "234",
+                  "iou": 0.10764872521246459,
+                  "intersection": 76,
+                  "pred_size": 495
+                },
+                {
+                  "uid": "861",
+                  "iou": 0.061611374407582936,
+                  "intersection": 26,
+                  "pred_size": 161
+                },
+                {
+                  "uid": "591",
+                  "iou": 0.0012787723785166241,
+                  "intersection": 1,
+                  "pred_size": 496
+                }
+              ]
+            },
+            "merge_only": {
+              "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_only/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "391",
+                  "iou": 0.3205574912891986,
+                  "intersection": 92,
+                  "pred_size": 92
+                },
+                {
+                  "uid": "234",
+                  "iou": 0.10764872521246459,
+                  "intersection": 76,
+                  "pred_size": 495
+                },
+                {
+                  "uid": "861",
+                  "iou": 0.061611374407582936,
+                  "intersection": 26,
+                  "pred_size": 161
+                },
+                {
+                  "uid": "591",
+                  "iou": 0.0012787723785166241,
+                  "intersection": 1,
+                  "pred_size": 496
+                }
+              ]
+            },
+            "merge_fill": {
+              "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_fill/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "391",
+                  "iou": 0.3240418118466899,
+                  "intersection": 93,
+                  "pred_size": 93
+                },
+                {
+                  "uid": "234",
+                  "iou": 0.1062937062937063,
+                  "intersection": 76,
+                  "pred_size": 504
+                },
+                {
+                  "uid": "861",
+                  "iou": 0.06103286384976526,
+                  "intersection": 26,
+                  "pred_size": 165
+                },
+                {
+                  "uid": "591",
+                  "iou": 0.001183431952662722,
+                  "intersection": 1,
+                  "pred_size": 559
+                }
+              ]
+            },
+            "history_final": {
+              "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/r2/overlap_matrix.npz",
+              "gt_size": 287,
+              "top_predictions": [
+                {
+                  "uid": "391",
+                  "iou": 0.3588850174216028,
+                  "intersection": 103,
+                  "pred_size": 103
+                },
+                {
+                  "uid": "234",
+                  "iou": 0.1062937062937063,
+                  "intersection": 76,
+                  "pred_size": 504
+                },
+                {
+                  "uid": "861",
+                  "iou": 0.06103286384976526,
+                  "intersection": 26,
+                  "pred_size": 165
+                },
+                {
+                  "uid": "591",
+                  "iou": 0.001182033096926714,
+                  "intersection": 1,
+                  "pred_size": 560
+                }
+              ]
+            }
+          },
+          "history": {
+            "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/decision_freeze.json",
+            "focus_rows": [
+              {
+                "checkpoint": 200,
+                "source_id": 391,
+                "canonical_id": 391,
+                "track": 29,
+                "old_core_points": 26,
+                "old_region_points": 94,
+                "current_supported": 298,
+                "remaining_core_points": 26,
+                "status": "PASS",
+                "accepted_clusters": 1,
+                "proposed": 26,
+                "conflicting_proposals": 0
+              }
+            ],
+            "trace_source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/completion_trace.npz",
+            "actual_surface_assigned_to_focus": 26
+          },
+          "merge": {
+            "source": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105/candidate/room0/base/online_B/room0/merge_decisions.json",
+            "families": [],
+            "focus_candidates": [
+              {
+                "ids": [
+                  234,
+                  391
+                ],
+                "core_cells": [
+                  1198,
+                  116
+                ],
+                "shared_cells": 102,
+                "overlap": [
+                  0.08514190317195326,
+                  0.8793103448275862
+                ],
+                "rejection": [
+                  "distinct_accepted_objects_at_same_repair_checkpoint",
+                  "insufficient_reciprocal_overlap",
+                  "part_vs_very_large_surface"
+                ],
+                "separate_checkpoints": [
+                  200
+                ],
+                "independent_covisible_frames": 0,
+                "covisible_first_last": [],
+                "covisible_sample": []
+              },
+              {
+                "ids": [
+                  391,
+                  861
+                ],
+                "core_cells": [
+                  116,
+                  634
+                ],
+                "shared_cells": 64,
+                "overlap": [
+                  0.5517241379310345,
+                  0.10094637223974763
+                ],
+                "rejection": [
+                  "insufficient_directed_overlap",
+                  "insufficient_reciprocal_overlap",
+                  "small_shared_region"
+                ],
+                "separate_checkpoints": [],
+                "independent_covisible_frames": 0,
+                "covisible_first_last": [],
+                "covisible_sample": []
+              }
+            ]
+          }
+        }
+      },
+      "four_corner_row": {
+        "scene": "room0",
+        "raw_gt_id": 92,
+        "old_raw": 0.0591016548463357,
+        "old_dbscan": 0.5505226480836237,
+        "trusted_raw": 0.3205574912891986,
+        "trusted_dbscan": 0.3588850174216028,
+        "semantic_class": "book",
+        "semantic_class_zh": "书本",
+        "old_postprocess_delta": 0.49142099323728805,
+        "trusted_postprocess_delta": 0.0383275261324042,
+        "policy_raw_delta": 0.26145583644286285,
+        "policy_dbscan_delta": -0.19163763066202094,
+        "postprocess_interaction_delta": -0.4530934671048838,
+        "original_severe": false,
+        "severe_vs_old_dbscan": true,
+        "severe_vs_old_raw": false,
+        "restored_to_old_raw": true,
+        "restored_to_old_dbscan": false,
+        "dbscan_effect": "IMPROVED",
+        "recovery_status": "PARTIALLY_IMPROVED"
+      },
+      "findings_zh": [
+        "差距在history阶段反转：old的raw/merge最佳IoU0.059102，普通补灰0.058824，历史补全后0.550523；trusted则0.320557、0.324042、0.358885，历史补全前一直更好。",
+        "old历史使用自己300的605，core20全部留存、region508、current_supported471，实际补432个surface点、无冲突。其GT92纯覆盖从8增至158，成为最佳预测。",
+        "trusted历史使用自己200的391，core26全部留存、region94、current_supported298，实际补26个surface点、无冲突。GT92纯覆盖92到普通补灰93、历史补全103。",
+        "两侧焦点身份都没有被合并；差异是现有不同历史身份在同一补全器中的实际增益不同，不是trusted后处理把该GT变差。"
+      ],
+      "limitations_zh": [
+        "605和391仅以同一GT的覆盖进行评价对照，不宣称二者具有相同seed或谱系。",
+        "没有强制复用另一方案的history、没有新的端到端消融，尚不能归因哪一个在线决策造成历史区域差异。",
+        "432/26为surface点，150/10为评分GT覆盖增量，二者不是同一计数空间。"
+      ]
+    }
+  ]
+}

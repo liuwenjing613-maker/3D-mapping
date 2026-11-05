@@ -1,0 +1,20 @@
+{
+  "status": "AUTHORIZED",
+  "scope": "Same archived terminal DBSCAN for trusted full-online result; compare PPT latest v2-B + DBSCAN",
+  "source_lock_sha256": "b97538fa4da665500d5f69b7e28b6eb3ee6fa2dce272ccea89e42cc00edb04c5",
+  "baseline_raw": "/data/chenkejun/CVPR/results/unified_full_depth_20261101",
+  "baseline_dbscan": "/data/chenkejun/CVPR/results/unified_full_depth_20261101/ablations/dbscan_history_covisible_20261102",
+  "trusted_raw": "/data/chenkejun/CVPR/results/trusted_full_online_20261104",
+  "output": "/data/chenkejun/CVPR/results/trusted_dbscan_20261105",
+  "stages": [
+    "full8_exact_baseline_control",
+    "full8_trusted_same_DBSCAN",
+    "main_R2_four_way_comparison"
+  ],
+  "parallel_scenes": 4,
+  "algorithm": "original g.one then original core_completion; h.one reuse excluded",
+  "native_rule": "top1>=2 and confidence>=0.67 unchanged",
+  "historical_identity": "Own actual committed lineage; only approved shared prefix50",
+  "evaluation": "main object_observed_repair revision2 fixed350; same ordered geometry and correspondence",
+  "GT_used_for_decisions": false
+}
