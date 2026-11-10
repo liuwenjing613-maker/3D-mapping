@@ -39,3 +39,6 @@ The current registry requires full-frame-and-crop-edge-20261101. Reject an entir
 
 ## Current online algorithm (2026-11-10 adoption)
 Online default is online-final: see online_final/README.md and instance_repair/configs/current_online_pipeline.json. Its frozen uniform rules supersede historical ONLINE defaults only. Offline and R2 evaluation stay unchanged.
+
+## Replica paper-final adoption (2026-11-10)
+The current Replica online-final now INCLUDES trusted-region feedback from frame51. See online_final/frozen.json and README.md. Previous b7de6eea without trusted regions is historical. Uniform filter remains unchanged; room1 validation fix checks retained-label provenance separately from new vote-supported assignments. Offline and other datasets are unchanged.

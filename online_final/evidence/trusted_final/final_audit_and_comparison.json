@@ -1,0 +1,86 @@
+{
+  "status": "PASS_COMPLETE",
+  "baseline": "online-final@b7de6eea",
+  "trusted_policy": "616f3a6",
+  "new_actual_commits": 32,
+  "reused_first50_commits": 8,
+  "all8_evaluated": true,
+  "baseline_source_unchanged": true,
+  "main_R2_lock_checked_by_evaluator": true,
+  "terminal_numeric_labels_unchanged_by_validation_fix": true,
+  "retained_label_audit": [
+    {
+      "scene": "room0",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 0
+    },
+    {
+      "scene": "room1",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 21
+    },
+    {
+      "scene": "room2",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 0
+    },
+    {
+      "scene": "office0",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 0
+    },
+    {
+      "scene": "office1",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 0
+    },
+    {
+      "scene": "office2",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 0
+    },
+    {
+      "scene": "office3",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 0
+    },
+    {
+      "scene": "office4",
+      "assigned_labels_unchanged": true,
+      "new_labels_vote_supported": true,
+      "retained_without_votes": 0
+    }
+  ],
+  "metrics": {
+    "online_final": {
+      "F1": 0.6621067031463749,
+      "AP50": 0.44021725007146384,
+      "AP": 0.23015774018346719,
+      "PQ": 0.5335282881166024,
+      "mCov": 0.6213585848031344,
+      "TP": 242,
+      "FP": 139,
+      "FN": 108
+    },
+    "online_final_trusted": {
+      "F1": 0.671251719394773,
+      "AP50": 0.44856475037424165,
+      "AP": 0.2346114452294036,
+      "PQ": 0.5397431056267806,
+      "mCov": 0.624668352880015,
+      "TP": 244,
+      "FP": 133,
+      "FN": 106
+    }
+  },
+  "comparison_sha256": "7ad70a5774b10c6dd6ed1f4f550f5f660f7587235888399c9e6baf23f21ee2f3",
+  "default_method_updated": false,
+  "room1_root_cause": "400 repair removes ID48 current votes; 21 unchanged pre-repair ID48 labels remain outside repair region. Global all-label vote assertion conflated retained labels with new assignments; corrected with strict provenance and new-assignment checks."
+}

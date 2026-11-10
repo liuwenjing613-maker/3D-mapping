@@ -1,0 +1,428 @@
+{
+  "status": "PASS",
+  "new_actual_commits": 32,
+  "reused_first50_commits": 8,
+  "uniform_actual_commit_audit": "PASS_ALL40_ACTUAL_COMMITS",
+  "trusted_feedback_enabled_all32": true,
+  "prior_only_all32": true,
+  "source_changes": {
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/evaluate_and_compare.py": {
+      "before": "1d4d175752f16606ba12473e6f3d9b90d5dae1a128240869ea92407714180b70",
+      "after": "0e3c65b7f13ab926d355dfba9d9fc5452fa3d0b102e91994675a1dbb86806e32"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/terminal_dbscan.py": {
+      "before": "0ecc522ec6de04c129dec40f441d3eab32f9b64a4c012eaf19fc17f6c48d3f3a",
+      "after": "c8f317fdf787c307d4f23eeb16a0f830289d5c7baa828cd7fd308cbef88790ef"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/room1/map_support.py": {
+      "before": "9cf7564879822b0e3193b629099a3adff97b4fb76122694b274ab92ad42e1076",
+      "after": "59e84add94f32148c97f668b106e43ee72a702c8ecd39826fda578de58951e25"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/office0/map_support.py": {
+      "before": "377ac82f4d2003186f3c2b8f7a723e033a9127917ec53427d5f165087807bf7a",
+      "after": "4e8fc94999e9017fa464387bcb1557e45b017624be72535162b656ee4812eab3"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/room2/map_support.py": {
+      "before": "ade31d534053d34c8eaa950b54a0f5b69473748673d6aa293a75435201a2902e",
+      "after": "58194b4e39bdaf5370610ecf54e868cb0c3ed7c07fa17ae38a1e87b7937bddeb"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/office4/map_support.py": {
+      "before": "e5acc9474cd90b8cf74fd1de7b30fee7973eeaac07b99226ee0727718fbae67c",
+      "after": "e1306dd343db688b792ab3a957d1d032258fdf4f6986c1af7a1594e65d69a92b"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/room0/map_support.py": {
+      "before": "3463fedcaf7de31ba7cd714f7879f0cfdf737aaa032bdb8be0681e5e8671f41f",
+      "after": "5f8219d10c523e74cd5a02a2c09aaa7e2aedef15df557bba55b755fe31d94f1a"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/office3/map_support.py": {
+      "before": "2b0e1b6c3c5689fb4343eaba7daa7009718b812b7470f2b4ee19499f2c1dd2c8",
+      "after": "d60919e03e0294570b2fcf2623359a4353dfafb1beed661400a89274ecb88c5e"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/office1/map_support.py": {
+      "before": "d8b75d6c30f31cd693c7a76b72fa04ecb23a0d3bbb28e2a3396f6e40508450d1",
+      "after": "8f2507d1465c146fd69879d31598740ca0eef2c27af5c02746297c6ac149921a"
+    },
+    "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/office2/map_support.py": {
+      "before": "909a19d41159bea0cad07553beab5cf5cb3dc5b44ce18c2312b86037572447b6",
+      "after": "b4478557c9dbb288344a1866bd86b24401febcbf3d764197d8209049f5e71d23"
+    }
+  },
+  "nodes": [
+    {
+      "scene": "room0",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "normal": 947,
+        "partial_conflict": 261,
+        "multi": 27,
+        "single_mismatch": 28
+      },
+      "commit_sha256": "b950b7d9a9251e94cc0503c7e3880ee8f6905f68cf809f236ebab08c265f5df2"
+    },
+    {
+      "scene": "room0",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "normal": 904,
+        "partial_conflict": 78,
+        "single_mismatch": 33,
+        "multi": 31
+      },
+      "commit_sha256": "e502640ea9461c6c3fc7708cf7ae2ba1bcdfa40be98d058bd9ac4f696fd64c46"
+    },
+    {
+      "scene": "room0",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "partial_conflict": 250,
+        "normal": 2674,
+        "multi": 100,
+        "single_mismatch": 17
+      },
+      "commit_sha256": "77f06bb8cdffeaaf8c14ea8051001bf4022c75e42fb007ae4d77e66757b9350b"
+    },
+    {
+      "scene": "room0",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "partial_conflict": 333,
+        "normal": 2696,
+        "multi": 93,
+        "single_mismatch": 69
+      },
+      "commit_sha256": "43feb86a1ef199503d4e25074a175530dda92a170625cae00e4cdf368bc84127"
+    },
+    {
+      "scene": "room1",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "normal": 286,
+        "partial_conflict": 40,
+        "multi": 11,
+        "single_mismatch": 11
+      },
+      "commit_sha256": "652f25a148e141bd312f3af8da15f0b6b6e5e5b534f68a20c350dd070daf4a80"
+    },
+    {
+      "scene": "room1",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "partial_conflict": 291,
+        "normal": 1935,
+        "single_mismatch": 18
+      },
+      "commit_sha256": "4a1f3fe753a71aa7b4e51e758b315baf785bbba456a88aafe01958d8a2385676"
+    },
+    {
+      "scene": "room1",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "partial_conflict": 461,
+        "normal": 957,
+        "single_mismatch": 51,
+        "multi": 58
+      },
+      "commit_sha256": "b84a062b127adcf88ca54be8ec7e6b415b9addd11a9327fb5a506d29ee705f0f"
+    },
+    {
+      "scene": "room1",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "partial_conflict": 678,
+        "normal": 836,
+        "multi": 42,
+        "single_mismatch": 58
+      },
+      "commit_sha256": "4ef0129f972a7089f0ae5b0ef7f62bd4f3f29f229cde896dd27fbe6e49b8b3d9"
+    },
+    {
+      "scene": "room2",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "partial_conflict": 415,
+        "normal": 752,
+        "single_mismatch": 44,
+        "multi": 30
+      },
+      "commit_sha256": "99ae5890392ac64fc2b21789c9f7054b52e2da7ad0e48728b7cea07a587b351d"
+    },
+    {
+      "scene": "room2",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "partial_conflict": 955,
+        "normal": 1379,
+        "single_mismatch": 80,
+        "multi": 99
+      },
+      "commit_sha256": "060a11bd3a8d90d0483cee764ef876f0a67e81d293f67ccdbbcda45f77dada81"
+    },
+    {
+      "scene": "room2",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "partial_conflict": 476,
+        "normal": 1013,
+        "multi": 104,
+        "single_mismatch": 36
+      },
+      "commit_sha256": "b23118df26fd027960ab4c34686b2f5477add87a7f2ed586b02360561dc4f2a3"
+    },
+    {
+      "scene": "room2",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "partial_conflict": 463,
+        "normal": 700,
+        "multi": 71,
+        "single_mismatch": 39
+      },
+      "commit_sha256": "b7f1c49b256ce6df50d35f41f76c6efb5ab220ce7d94dbd91d367509d87bf089"
+    },
+    {
+      "scene": "office0",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "partial_conflict": 23,
+        "normal": 208,
+        "single_mismatch": 3
+      },
+      "commit_sha256": "cdab0676ce839eedab6d297935320e58476c5995c3b42383b52ac177e60e5252"
+    },
+    {
+      "scene": "office0",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "normal": 1297,
+        "partial_conflict": 354,
+        "single_mismatch": 105,
+        "multi": 7
+      },
+      "commit_sha256": "a98c78f53ba55ffdf674936dc679de45f404cd5c2035fd45f8b387497c3c8c67"
+    },
+    {
+      "scene": "office0",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "partial_conflict": 899,
+        "normal": 892,
+        "single_mismatch": 200,
+        "multi": 69
+      },
+      "commit_sha256": "b91262187cdba56fbbbcfd228960b487b75404a622f858ed3a18c4ff3eecaa62"
+    },
+    {
+      "scene": "office0",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "partial_conflict": 435,
+        "normal": 842,
+        "multi": 63,
+        "single_mismatch": 109
+      },
+      "commit_sha256": "09e4338814b152068ac8c89be277f63fe1b7e318c476742f07616728a55101c3"
+    },
+    {
+      "scene": "office1",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "partial_conflict": 263,
+        "normal": 585,
+        "single_mismatch": 34,
+        "multi": 6
+      },
+      "commit_sha256": "2cf1b566a29994dcce36e3bf752c8059a50266e8a31924871a86fd90f3389a6f"
+    },
+    {
+      "scene": "office1",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "partial_conflict": 380,
+        "normal": 338,
+        "single_mismatch": 68,
+        "multi": 51
+      },
+      "commit_sha256": "2048e37f04c5247805652797e8b4ddd7dcf0e0c38353544206b5023790423180"
+    },
+    {
+      "scene": "office1",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "partial_conflict": 369,
+        "single_mismatch": 120,
+        "normal": 466,
+        "multi": 42
+      },
+      "commit_sha256": "e4341fef411090c1e4672ddf69ce5c9e2a598952a9c5f82ebaabd8b0be70d6ef"
+    },
+    {
+      "scene": "office1",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "single_mismatch": 150,
+        "partial_conflict": 787,
+        "normal": 258,
+        "multi": 34
+      },
+      "commit_sha256": "5f003788dcb3726886a211121a831b33cc2b70af055850afef0eebd3664f2bbd"
+    },
+    {
+      "scene": "office2",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "normal": 1235,
+        "partial_conflict": 43
+      },
+      "commit_sha256": "ef20c6ae5fbbdc5384490959674c0f0a4a1893cdf9e06b5ec82f317f7acb9519"
+    },
+    {
+      "scene": "office2",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "normal": 725,
+        "partial_conflict": 151,
+        "single_mismatch": 6,
+        "multi": 8
+      },
+      "commit_sha256": "bc8ea9365973cf993a6403d98d58f588bdb2eac4b00324a975597bcafbf2e7aa"
+    },
+    {
+      "scene": "office2",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "normal": 1236,
+        "partial_conflict": 277,
+        "single_mismatch": 48,
+        "multi": 20
+      },
+      "commit_sha256": "19ad30c48144d1c8abd01cb7c08c85cd5c7e43798ae0c7580ba1ce4bef340617"
+    },
+    {
+      "scene": "office2",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "partial_conflict": 285,
+        "normal": 996,
+        "single_mismatch": 35,
+        "multi": 28
+      },
+      "commit_sha256": "0288e9735d18d05988e552256552aac70a6b72bec125c0401d37c065678eb297"
+    },
+    {
+      "scene": "office3",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "normal": 1280,
+        "partial_conflict": 49,
+        "single_mismatch": 1
+      },
+      "commit_sha256": "8774d76a96d38cf82cb8a80e91005a72de03299d6e695b46e43f17ff3ef88118"
+    },
+    {
+      "scene": "office3",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "normal": 1625,
+        "partial_conflict": 178,
+        "single_mismatch": 18
+      },
+      "commit_sha256": "5ff0cd0d239fea8674c76831dc0adb21428ee54057493b6d31d412064ed072f3"
+    },
+    {
+      "scene": "office3",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "partial_conflict": 482,
+        "normal": 1584,
+        "multi": 13,
+        "single_mismatch": 12
+      },
+      "commit_sha256": "1599aa0b9b3314ce7a7b6c08fd9c02a9f672bcf31d4ccd7eb1702eba160f0456"
+    },
+    {
+      "scene": "office3",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "partial_conflict": 540,
+        "normal": 2001,
+        "single_mismatch": 20,
+        "multi": 26
+      },
+      "commit_sha256": "2f9428e743e2560a753fdaa050f1cfd9a7673a0394cd8e67ca361796ad629dbf"
+    },
+    {
+      "scene": "office4",
+      "checkpoint": 100,
+      "prior_trusted_cutoff": 50,
+      "partition_modes": {
+        "partial_conflict": 90,
+        "normal": 404,
+        "multi": 33
+      },
+      "commit_sha256": "24b1a4d4b213e6f573da4789a24397a33e01dcfa62604a5a127af6e9765967d2"
+    },
+    {
+      "scene": "office4",
+      "checkpoint": 200,
+      "prior_trusted_cutoff": 100,
+      "partition_modes": {
+        "normal": 663,
+        "partial_conflict": 111,
+        "multi": 8
+      },
+      "commit_sha256": "7ce94951a8ba19b7874fe6548d16327a81d8a939de090cc11eb30edfd2bb430b"
+    },
+    {
+      "scene": "office4",
+      "checkpoint": 300,
+      "prior_trusted_cutoff": 200,
+      "partition_modes": {
+        "partial_conflict": 343,
+        "normal": 1362,
+        "single_mismatch": 110,
+        "multi": 15
+      },
+      "commit_sha256": "4acace97698f33128b02fb6cd9af781fa323c61f4f7d256bb373576a442fd6f2"
+    },
+    {
+      "scene": "office4",
+      "checkpoint": 400,
+      "prior_trusted_cutoff": 300,
+      "partition_modes": {
+        "partial_conflict": 650,
+        "normal": 739,
+        "single_mismatch": 122,
+        "multi": 49
+      },
+      "commit_sha256": "6be031bb1682a45099761cfc47a29c24e5c3f0df4b3641e3c4f78c09c4603125"
+    }
+  ]
+}

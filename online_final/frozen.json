@@ -2,7 +2,7 @@
   "method": "online-final",
   "algorithm_frozen": true,
   "user_approved_adoption": "2026-11-10",
-  "baseline": "PPT online-v2 B@a15f7612c71ce38466c07024a45653ac10b85a92 + history DBSCAN",
+  "baseline": "online-final@b7de6eeabf6860b94513a185c85c3c620185e967",
   "filter_version": "ppt5-full-depth-postid-uniform025-new3500-v1",
   "mode": "actual five-round online repair",
   "schedule": [
@@ -33,17 +33,39 @@
     "frozen": false
   },
   "offline_changed": false,
-  "source_root": "/home/chenkejun/CVPR/experiments/ppt5_staged_postid_full_depth_20261110",
-  "result_root": "/data/chenkejun/CVPR/results/ppt5_staged_postid_full_depth_20261110",
+  "source_root": "/home/chenkejun/CVPR/experiments/online_final_trusted_20261110",
+  "result_root": "/data/chenkejun/CVPR/results/online_final_trusted_20261110",
   "pooled": {
-    "F1": 0.6621067031463749,
-    "AP50": 0.44021725007146384,
-    "AP": 0.23015774018346719,
-    "PQ": 0.5335282881166024,
-    "mCov": 0.6213585848031344,
-    "TP": 242,
-    "FP": 139,
-    "FN": 108
+    "F1": 0.671251719394773,
+    "AP50": 0.44856475037424165,
+    "AP": 0.2346114452294036,
+    "PQ": 0.5397431056267806,
+    "mCov": 0.624668352880015,
+    "TP": 244,
+    "FP": 133,
+    "FN": 106
   },
-  "pre_adoption_evidence": "Historical audit default-PPT decision is superseded by this user approval."
+  "pre_adoption_evidence": "Historical experiment records default_method_updated=false. This user-approved adoption supersedes that decision.",
+  "method_revision": "replica-paper-final-trusted-20261110",
+  "dataset_scope": "Replica eight scenes",
+  "paper_final": true,
+  "trusted_region": {
+    "source_version": "trusted-zone@616f3a6",
+    "enabled_from_frame": 51,
+    "query_radius_m": 0.015,
+    "min_distinct_points": 10,
+    "min_mask_fraction": 0.05,
+    "history": "all committed previous repairs only",
+    "association_feedback": true
+  },
+  "execution": {
+    "total_commits": 40,
+    "new_actual_commits": 32,
+    "verified_read_only_first50_reused": 8
+  },
+  "terminal_validation": {
+    "retained_labels": "unchanged; no-vote retained labels must be exact pre-repair labels outside repair region",
+    "new_assignments": "must have current vote support",
+    "invented_IDs": false
+  }
 }

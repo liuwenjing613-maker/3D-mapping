@@ -1,0 +1,126 @@
+import sys
+sys.path.insert(0,'/home/chenkejun/CVPR/experiments/online_final_trusted_20261110')
+import write_fence
+"""Owned mapping helpers for causal continuation to 200 and 300 frames."""
+from pathlib import Path
+import os, json, hashlib, time
+BASEC=Path('/home/chenkejun/CVPR/experiments/online_room0_repair50_to100_20261022')
+TOP=Path('/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022')
+C=Path('/home/chenkejun/CVPR/experiments/online_final_trusted_20261110/branches/office3')
+TARGET=int(os.environ.get('CVPR_CHECKPOINT',os.environ.get('CVPR_TARGET_COUNT','0')))
+GROUP=os.environ.get('CVPR_TRACK_GROUP')
+assert TARGET in (50,100,200,300,400) and GROUP in ('A','B')
+if not os.environ.get('CVPR_MAPPING_RUN_ROOT'):
+ raise ValueError('Set CVPR_MAPPING_RUN_ROOT to a fresh directory under /data/chenkejun/CVPR; archived outputs must not be reused')
+ROOT=Path(os.environ['CVPR_MAPPING_RUN_ROOT']).resolve()
+if not ROOT.is_relative_to(Path('/data/chenkejun/CVPR')) or ROOT==Path('/data/chenkejun/CVPR'):
+ raise ValueError('CVPR_MAPPING_RUN_ROOT must be a subdirectory of /data/chenkejun/CVPR')
+if ROOT.is_relative_to(TOP.resolve()):
+ raise ValueError('CVPR_MAPPING_RUN_ROOT must not be inside the archived experiment')
+R=ROOT/'mapping'
+FIDS=tuple(range(0,TARGET*5,5))
+PRIOR_COUNT={50:0,100:50,200:100,300:200,400:300}[TARGET]
+PRIOR_RAW=max(-1,(PRIOR_COUNT-1)*5)
+CUTOFF=FIDS[-1]
+SNAPSHOT=Path('/home/chenkejun/CVPR/experiments/p1a1_raw_replica8_20261002/snapshot')
+PY='/data/chenkejun/beauty/ovo_paper_original_20260915/env/bin/python'
+def sha(path):
+ h=hashlib.sha256()
+ with Path(path).open('rb') as f:
+  for block in iter(lambda:f.read(1048576),b''):h.update(block)
+ return h.hexdigest()
+def read(path):return json.loads(Path(path).read_text())
+def write(path,value):
+ path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+ tmp=path.with_name(path.name+'.tmp');tmp.write_text(json.dumps(value,ensure_ascii=False,indent=2,allow_nan=False)+'\n');tmp.replace(path)
+def atomic_text(path,text):
+ path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
+ tmp=path.with_name(path.name+'.tmp');tmp.write_text(text);tmp.replace(path)
+def prior_paths():
+ out=Path('/data/chenkejun/CVPR/results/online_final_trusted_20261110/online/office3')
+ if PRIOR_COUNT==0:return out/'initial'/GROUP/'initial_complete.json',out/'initial'/GROUP
+ return out/str(PRIOR_COUNT)/GROUP/'repair/commit_complete.json',out/str(PRIOR_COUNT)/GROUP/'mapping'
+
+def setup():
+ if (R/'mapping_complete.json').exists():
+  raise FileExistsError('Completed mapping output is immutable; choose a fresh CVPR_MAPPING_RUN_ROOT')
+ pointer,previous=prior_paths();prior=read(pointer)
+ assert prior['status']=='PASS' and prior['group']==GROUP
+ assert prior['processed_frames']==PRIOR_COUNT and prior['last_raw_frame']==PRIOR_RAW
+ for key in ['checkpoint','source_pixel_support','journal_manifest','geometry','final_map']:
+  assert sha(prior[key])==prior[key+'_sha256'],key
+ lineage=Path(prior.get('observation_lineage',str(Path(prior['checkpoint']).parent/'observation_lineage.json')))
+ assert read(lineage)['status']=='PASS'
+ if 'observation_lineage_sha256' in prior:assert sha(lineage)==prior['observation_lineage_sha256']
+ copied=dict(prior,prior_commit_path=str(pointer),prior_commit_sha256=sha(pointer),
+  prior_mapping_root=str(previous),prior_processed_frames=PRIOR_COUNT,prior_raw_cutoff=PRIOR_RAW,
+  observation_lineage=str(lineage),observation_lineage_sha256=sha(lineage))
+ R.mkdir(parents=True,exist_ok=True)
+ existing=R/'prior_commit.json'
+ if existing.exists():assert read(existing)==copied
+ else:write(existing,copied)
+ config=read(Path('/home/chenkejun/CVPR/experiments/p1a1_raw_replica8_20261002/configs/office3.json'))
+ original=read(Path('/home/chenkejun/CVPR/experiments/p1a1_raw_replica8_20261002/configs/office3.json'))
+ scene=Path(original['source']['scene_root']).resolve()
+ masks=Path(original['source']['mask_root']).resolve()
+ frozen=Path('/data/chenkejun/CVPR/datasets/cropformer_frozen/office3').resolve()
+ config['frame_selection']['stop_exclusive']=PRIOR_RAW+1
+ config['source'].update(scene_root=str(R/'inputs/scene'),mask_root=str(R/'inputs/masks'))
+ config['purpose']=f'causal_room0_{GROUP}_continuation_{PRIOR_COUNT}_to_{TARGET}'
+ if not (R/'mapping_complete.json').exists():write(R/'config.json',config)
+ files=[]
+ for fid in FIDS:
+  for path in [scene/f'results/frame{fid:06d}.jpg',scene/f'results/depth{fid:06d}.png',masks/f'frame{fid:06d}.png',frozen/f'frame{fid:06d}.png']:
+   files.append(str(path.resolve(strict=True)))
+ trajectory=scene/original['source']['trajectory']
+ files.extend([str(trajectory),str(frozen/'frames.jsonl')])
+ cache=[str(previous.resolve()),str(Path(prior['checkpoint']).parent.parent),str(previous.resolve())]
+ # All trusted regions belong to committed prefixes of this branch. The first
+ # checkpoint may be an immutable baseline symlink; authorize its resolved path.
+ for n in (50,100,200,300):
+  if n<=PRIOR_COUNT:
+   prefix=ROOT.parents[1]/str(n)/GROUP
+   cache.extend([str(prefix),str(prefix.resolve())])
+ # Authorize only committed trusted-region inputs, including nested symlinks.
+ for n in (50,100,200,300):
+  if n<=PRIOR_COUNT:
+   prefix=ROOT.parents[1]/str(n)/GROUP
+   for rel in ['repair/e1/region.npz','mapping/baseline/native/instance_surface.npz']:
+    files.append(str((prefix/rel).resolve(strict=True)))
+ # Authorize exact resolved historical inputs only after verifying their
+ # hashes against the previous completed mapping's recorded source hashes.
+ history_audit=[]
+ if PRIOR_COUNT:
+  prev_complete=read(previous/'mapping_complete.json')
+  assert prev_complete['status']=='PASS' and prev_complete['frame_count']==PRIOR_COUNT
+  prior_hashes=prev_complete.get('source_hashes',{})
+  for stage in (x for x in (50,100,200,300) if x<PRIOR_COUNT):
+   prefix=ROOT.parents[1]/str(stage)/GROUP
+   for item in ('repair/e1/region.npz','mapping/baseline/native/instance_surface.npz'):
+    logical=prefix/item
+    expected=prior_hashes.get(str(logical))
+    if not expected: raise ValueError('missing prior historical hash: '+str(logical))
+    resolved=logical.resolve(strict=True)
+    actual=sha(resolved)
+    if actual!=expected: raise ValueError('historical source hash mismatch: '+str(logical))
+    files.append(str(resolved))
+    history_audit.append(dict(checkpoint=stage,logical_path=str(logical),resolved_path=str(resolved),sha256=actual))
+ guard=dict(root=str(ROOT),allowed_source_files=sorted(set(files)),
+  allowed_prefix_cache_roots=sorted(set(cache)),restricted_input_roots=sorted(set(map(str,[scene,masks,frozen]))),
+  restricted_result_roots=['/data/chenkejun/CVPR/results','/data/chenkejun/CVPR/revisable_instance_map','/data/chenkejun/CVPR/evaluation_results'],
+  frame_ids=list(FIDS),initial_cutoff=PRIOR_RAW,raw_cutoff=CUTOFF)
+ guard['allowed_source_files'] += [str(p.resolve(strict=True)) for p in (Path('/data/chenkejun/CVPR/results/unified_full_depth_20261101')/'frame_meta'/'office3').glob('*.json') if int(p.stem[1:])<=CUTOFF]
+ for n in [PRIOR_COUNT,TARGET]:
+  if n:
+   guard['allowed_prefix_cache_roots'].append(str(Path('/data/chenkejun/CVPR/results/unified_full_depth_20261101')/'attributes'/'office3'/str(n)))
+ guard['allowed_prefix_cache_roots'] += [str(Path(x).resolve()) for x in list(guard['allowed_prefix_cache_roots'])]
+ guard['verified_historical_sources']=history_audit
+ write(R/'input_guard.json',guard)
+ write(R/'mapping_plan.json',dict(status='READY',group=GROUP,target_processed_frames=TARGET,
+  prior_processed_frames=PRIOR_COUNT,raw_cutoff=CUTOFF,prior_raw_cutoff=PRIOR_RAW,
+  source_scene=str(scene),source_masks=str(masks),frozen_masks=str(frozen),source_trajectory=str(trajectory),
+  original_config='/home/chenkejun/CVPR/experiments/p1a1_raw_replica8_20261002/configs/office3.json',
+  guard=str(R/'input_guard.json'),config=str(R/'config.json')))
+ return copied
+if __name__=='__main__':
+ p=setup();print(json.dumps(dict(status='READY',group=GROUP,target=TARGET,prior_commit=p['prior_commit_path'],mapping=str(R))))

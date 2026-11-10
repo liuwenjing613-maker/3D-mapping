@@ -1,0 +1,82 @@
+{
+  "status": "PASS_FULL8_FAIR_COMPARISON_AUDITED",
+  "baseline": "PPT online-v2 B@a15f7612",
+  "filter": "ppt5-full-depth-postid-uniform025-new3500-v1",
+  "mode": "actual five-round online repair",
+  "schedule": [
+    50,
+    100,
+    200,
+    300,
+    400
+  ],
+  "actual_completed_commits": 40,
+  "source_counts_verified": {
+    "trial": 2241,
+    "original_PPT": 5519,
+    "evaluator_scoring_files": 7
+  },
+  "metrics": {
+    "PPT_online_B": {
+      "F1": 0.6550335570469799,
+      "AP50": 0.4281238250407318,
+      "AP": 0.22161925053264814,
+      "PQ": 0.525514974559232,
+      "mCov": 0.6249989767901398,
+      "TP": 244,
+      "FP": 151,
+      "FN": 106
+    },
+    "uniform_postid": {
+      "F1": 0.6621067031463749,
+      "AP50": 0.44021725007146384,
+      "AP": 0.23015774018346719,
+      "PQ": 0.5335282881166024,
+      "mCov": 0.6213585848031344,
+      "TP": 242,
+      "FP": 139,
+      "FN": 108
+    }
+  },
+  "delta": {
+    "F1": 0.007073146099395022,
+    "AP50": 0.012093425030732019,
+    "AP": 0.008538489650819048,
+    "PQ": 0.008013313557370338,
+    "mCov": -0.003640391987005387,
+    "TP": -2,
+    "FP": -12,
+    "FN": 2
+  },
+  "primary_F1_and_AP50_gate_passed": true,
+  "F1_improved_scenes": [
+    "room0",
+    "room2",
+    "office1",
+    "office2",
+    "office3"
+  ],
+  "F1_regressed_scenes": [
+    "room1",
+    "office0",
+    "office4"
+  ],
+  "AP50_improved_scenes": [
+    "room0",
+    "room2",
+    "office1",
+    "office2",
+    "office3"
+  ],
+  "severe_GT_degradations": 26,
+  "default_online_method": "PPT online-v2 B",
+  "new_method_adopted": false,
+  "conditional_PPT_reproduction_triggered": false,
+  "decision": "Primary pooled improvement achieved; report per-scene and recall/coverage regressions; retain PPT default pending explicit user adoption.",
+  "online_thresholds_uniform": true,
+  "offline_method_unchanged": true,
+  "evaluation_frozen": false,
+  "comparison_sha256": "18e3cb60fe5bc07fdfba6f4d7976658ef421c9ed09372f0133264f617fd56708",
+  "actual_audit_sha256": "fca8fa45d6e54ac1cdddc835e7049894bbc2888268001362ab45b0ccfbad245b",
+  "unix": 1794287359.2178018
+}

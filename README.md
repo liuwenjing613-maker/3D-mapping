@@ -139,3 +139,6 @@ The current registry requires full-frame-and-crop-edge-20261101. Reject an entir
 
 ## Frozen online method
 The user-approved online method is [online-final](online_final/README.md), with eight scenes and 40 actual repair commits complete.
+
+### Replica paper-final update
+[online-final now includes the trusted-region strategy](online_final/README.md): F1 67.1252%, AP50 44.8565%, eight-scene final400 main R2. Previous b7de6eea is retained as history.
