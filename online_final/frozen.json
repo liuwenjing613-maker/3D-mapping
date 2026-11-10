@@ -1,0 +1,49 @@
+{
+  "method": "online-final",
+  "algorithm_frozen": true,
+  "user_approved_adoption": "2026-11-10",
+  "baseline": "PPT online-v2 B@a15f7612c71ce38466c07024a45653ac10b85a92 + history DBSCAN",
+  "filter_version": "ppt5-full-depth-postid-uniform025-new3500-v1",
+  "mode": "actual five-round online repair",
+  "schedule": [
+    50,
+    100,
+    200,
+    300,
+    400
+  ],
+  "uniform_all_scenes_and_rounds": true,
+  "thresholds": {
+    "inherit_dice_strict_gt": 0.25,
+    "min_inherit_support_gte": 100,
+    "min_new_support_gte": 3500,
+    "id_competition": "after final same-view deduplication"
+  },
+  "tracker": "SAM3",
+  "geometry": "PPT full-depth TSDF",
+  "postprocess": "PPT finalB + history DBSCAN",
+  "actual_commits": 40,
+  "completed_scenes": 8,
+  "evaluation": {
+    "entry_root": "/home/chenkejun/CVPR/worktrees/v3-r2-main-20261009",
+    "protocol": "object_observed_repair",
+    "revision": 2,
+    "GT": 350,
+    "frame": 400,
+    "frozen": false
+  },
+  "offline_changed": false,
+  "source_root": "/home/chenkejun/CVPR/experiments/ppt5_staged_postid_full_depth_20261110",
+  "result_root": "/data/chenkejun/CVPR/results/ppt5_staged_postid_full_depth_20261110",
+  "pooled": {
+    "F1": 0.6621067031463749,
+    "AP50": 0.44021725007146384,
+    "AP": 0.23015774018346719,
+    "PQ": 0.5335282881166024,
+    "mCov": 0.6213585848031344,
+    "TP": 242,
+    "FP": 139,
+    "FN": 108
+  },
+  "pre_adoption_evidence": "Historical audit default-PPT decision is superseded by this user approval."
+}

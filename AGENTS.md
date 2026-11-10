@@ -36,3 +36,6 @@ The current registry requires full-frame-and-crop-edge-20261101. Reject an entir
 ## 当前最终种子 ABC（2026-11-01）
 
 当前注册要求在原最终筛选、语义豁免与投影预检全部结束后、跟踪之前执行 instance_repair.seed_final_abc finalize。仅删除满足已确认 ABC 判据的确切非窗户 A；windowpane/blind 保持原样，不新增 B/C、不恢复候选、不提升辅助、不重跑后续筛选。跟踪必须读取其输出清单并通过新的 tracking_handoff_guard。已有前置边界规则、main skip90（如适用）、冻结 E1、R2 和整场景最终 B 均保持原样。实现、阈值与接入方式见 [最终 ABC 说明](experiments/seed_final_abc_20261101/README.md)。新实验须接入注册入口，不直接重跑历史 launcher；历史快照及结果锁不覆盖。
+
+## Current online algorithm (2026-11-10 adoption)
+Online default is online-final: see online_final/README.md and instance_repair/configs/current_online_pipeline.json. Its frozen uniform rules supersede historical ONLINE defaults only. Offline and R2 evaluation stay unchanged.

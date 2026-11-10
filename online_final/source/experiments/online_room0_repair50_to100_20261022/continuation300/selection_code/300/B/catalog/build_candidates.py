@@ -1,0 +1,134 @@
+"""Rank each state independently on unchanged whole adjacent alarm components."""
+from common import *
+import argparse,shutil,csv
+from scipy.sparse import load_npz
+from scipy.sparse.csgraph import connected_components,dijkstra
+from scipy.spatial import cKDTree
+from PIL import Image,ImageDraw
+
+def log(*a):print(time.strftime('%H:%M:%S'),*a,flush=True)
+
+def build(scene):
+ data=ROOT/scene;data.mkdir(parents=True,exist_ok=True)
+ if (data/'candidate_manifest.json').exists():log('FROZEN_CANDIDATES_RESUME',scene);return
+ def status(stage):write(data/'progress.json',{'scene':scene,'stage':stage,'updated_at':time.time()})
+ status('形成完整连通区域')
+ surface,evidence,graphpath,config=paths(scene)
+ assert read('/data/chenkejun/CVPR/results/online_room0_repair50_to100_20261022/continuation300/300/B/candidates/mapping_complete.json')['frame_ids']==list(range(0,1496,5))
+ with np.load(surface) as z:xyz=z['xyz_m'];inst=z['instance_id']
+ with np.load(evidence) as z:states=z['state'];assert np.array_equal(xyz,z['xyz_m'])
+ graph=load_npz(graphpath);assert graph.shape==(len(xyz),len(xyz)) and (graph!=graph.T).nnz==0
+ alarm=(inst<=0)&np.isin(states,list(GROUPS.values()));seeds=np.flatnonzero(alarm)
+ closed=np.unique(np.r_[seeds,graph[seeds].indices]);n,labels=connected_components(graph[closed][:,closed],directed=False)
+ order=np.argsort(labels,kind='stable');offset=np.r_[0,np.cumsum(np.bincount(labels,minlength=n))]
+ components=[]
+ for cid in range(n):
+  ix=closed[order[offset[cid]:offset[cid+1]]];core=ix[alarm[ix]]
+  if len(core):components.append({'cid':cid,'core':core,'counts':{k:int(np.sum(states[core]==v)) for k,v in GROUPS.items()}})
+ assert sum(len(c['core']) for c in components)==len(seeds)
+ ranked={k:sorted([c for c in components if c['counts'][k]>0],key=lambda c:(-c['counts'][k],c['cid']))[:20] for k in GROUPS}
+ union={c['cid']:c for k in GROUPS for c in ranked[k]};canonical=[];entries=[]
+ for c in union.values():
+  c['hash']=core_sha(c['core']);c['uid']=scene+'-'+c['hash'][:16];c['index']=len(canonical)
+  canonical.append({'uid':c['uid'],'component_index':c['index'],'parent_component':c['cid'],'core_sha256':c['hash'],'counts':c['counts'],'core_points':len(c['core']),'center':xyz[c['core']].mean(0).tolist(),'aliases':[]})
+ for group in GROUPS:
+  for rank,c in enumerate(ranked[group],1):
+   alias=f'ROI-{PREFIX[group]}{rank:04d}';entries.append({'id':alias,'uid':c['uid'],'group':group,'rank':rank,'count':c['counts'][group],'counts':c['counts'],'core_sha256':c['hash'],'component_index':c['index'],'views':[]})
+   canonical[c['index']]['aliases'].append({'id':alias,'group':group,'rank':rank,'count':c['counts'][group]})
+ # Reuse original C/U point membership and views where they are byte-equivalent.
+ reusable={};old_cores={};old_context={};oldroot=OLD/scene
+ status('准备完整区域与固定索引')
+ tree=cKDTree(xyz);cores=[];contexts=[]
+ for c in union.values():
+  core=c['core'];context=old_context.get(c['hash'])
+  if context is None:
+   d=dijkstra(graph,directed=False,indices=core,min_only=True,limit=.10);context=np.flatnonzero(np.isfinite(d))
+   neighbors=[]
+   for start in range(0,len(core),10000):neighbors.append(np.unique(np.concatenate(tree.query_ball_point(xyz[core[start:start+10000]],.06,workers=2))))
+   context=np.union1d(context,np.concatenate(neighbors)).astype(np.int32)
+  cores.append(core);contexts.append(context)
+  canonical[c['index']].update(context_points=len(context),bbox_min=xyz[context].min(0).tolist(),bbox_max=xyz[context].max(0).tolist())
+ def pack(a):return np.r_[0,np.cumsum([len(x) for x in a])],np.concatenate(a).astype(np.int32)
+ co,cp=pack(cores);xo,xp=pack(contexts)
+ np.savez_compressed(data/'membership.npz',core_offsets=co,core_point_index=cp,context_offsets=xo,context_point_index=xp)
+ cfg=read(config);camera=cfg['camera'];src=Path(cfg['source']['scene_root']);poses=np.loadtxt(src/'traj.txt').reshape(-1,4,4)
+ vox=np.unique(np.floor(xyz/.01).astype(np.int64),axis=0,return_inverse=True)[1]
+ fresh=[e for e in entries if e['id'] not in reusable];reps=[];owner=[]
+ for k,e in enumerate(fresh):
+  core=cores[e['component_index']];target=core[states[core]==GROUPS[e['group']]]
+  _,first=np.unique(vox[target],return_index=True);r=target[np.sort(first)];reps.append(r);owner.extend([k]*len(r))
+ if fresh:
+  status('按实际状态点选择历史视角')
+  rep=np.concatenate(reps);owner=np.asarray(owner,np.int32);denom=np.array([len(r) for r in reps]);offsets=np.r_[0,np.cumsum(denom)]
+  fids=np.arange(1000,1496,5,dtype=int);assert len(poses)==1496;visible=np.zeros((len(fids),len(rep)),bool);counts=np.zeros((len(fresh),len(fids)),np.int32);pixels=counts.copy()
+  for j,fid in enumerate(fids):
+   dep=np.asarray(Image.open(src/f'results/depth{fid:06d}.png'),np.float32)/camera['depth_png_units_per_meter'];vis,uv=project_visible(xyz[rep],poses[fid],dep,camera)
+   visible[j]=vis;counts[:,j]=np.bincount(owner[vis],minlength=len(fresh))
+   key=owner[vis].astype(np.int64)*(camera['width']*camera['height'])+uv[vis,1]*camera['width']+uv[vis,0]
+   pixels[:,j]=np.bincount(np.unique(key)//(camera['width']*camera['height']),minlength=len(fresh))
+  quality=counts/denom[:,None]*(.65+.35*np.minimum(1.,pixels/np.maximum(1,counts)))
+  for k,e in enumerate(fresh):
+   available=list(np.flatnonzero(counts[k]>0));selected=[];seen=np.zeros(denom[k],bool);ridx=np.arange(offsets[k],offsets[k+1]);center=np.array(canonical[e['component_index']]['center'])
+   directions=poses[fids,:3,3]-center;directions/=np.maximum(np.linalg.norm(directions,axis=1,keepdims=True),1e-12)
+   for _ in range(min(3,len(available))):
+    if not selected:chosen=max(available,key=lambda j:(quality[k,j],pixels[k,j],-int(fids[j])))
+    else:
+     angle=np.rad2deg(np.arccos(np.clip(directions@directions[selected].T,-1,1))).min(1)
+     chosen=max(available,key=lambda j:(quality[k,j]*(.25+.75*min(1.,angle[j]/25.))+.20*np.mean(visible[j,ridx]&~seen),quality[k,j],-int(fids[j])))
+    selected.append(chosen);available.remove(chosen);seen|=visible[chosen,ridx]
+   e['chosen_frames']=[int(fids[j]) for j in selected]
+ # Resolve zero-view candidates against all vertices and all remaining frames.
+ zeros=[e for e in fresh if not e['chosen_frames']]
+ if zeros:
+  status('核验无视角候选的完整历史帧')
+  zero_points=[]
+  for e in zeros:
+   core=cores[e['component_index']];zero_points.append(core[states[core]==GROUPS[e['group']]])
+  zi=np.concatenate(zero_points);zo=np.repeat(np.arange(len(zeros)),[len(x) for x in zero_points]);found={}
+  for fid in range(1000,1496,5):
+   dep=np.asarray(Image.open(src/f'results/depth{fid:06d}.png'),np.float32)/camera['depth_png_units_per_meter'];vis,_=project_visible(xyz[zi],poses[fid],dep,camera)
+   for k in np.unique(zo[vis]):found.setdefault(int(k),int(fid))
+  for k,e in enumerate(zeros):
+   e['chosen_frames']=[found[k]] if k in found else [];e['all_frames_checked']=100
+ assets=data/'assets';assets.mkdir(exist_ok=True);frame_cache={}
+ def frame(fid):
+  if fid not in frame_cache:
+   p=src/f'results/frame{fid:06d}.jpg';dst=assets/f'frame{fid:06d}.jpg'
+   if not dst.exists():dst.symlink_to(p)
+   rgb=Image.open(p).convert('RGB');dep=np.asarray(Image.open(src/f'results/depth{fid:06d}.png'),np.float32)/camera['depth_png_units_per_meter']
+   frame_cache[fid]=(rgb,dep,sha(p))
+  return frame_cache[fid]
+ status('生成可查看历史帧与点分布')
+ projection_checks=0
+ for e in entries:
+  previous=reusable.get(e['id']);fids=[v['frame'] for v in previous] if previous is not None else e['chosen_frames'];core=cores[e['component_index']]
+  for vno,fid in enumerate(fids,1):
+   rgb,dep,rgb_sha=frame(fid);valid,uv=project_visible(xyz[core],poses[fid],dep,camera);shown=core[valid];at=uv[valid]
+   target=states[shown]==GROUPS[e['group']];assert target.any()
+   box=previous[vno-1]['crop_xyxy'] if previous is not None else crop_box(at[target],camera['width'],camera['height'])
+   mask=np.zeros((camera['height'],camera['width'],3),np.uint8)
+   for channel,state in enumerate([0,1,3]):
+    pos=at[states[shown]==state];mask[pos[:,1],pos[:,0],channel]=255
+   alarm_file=f'{e["id"]}_v{vno}_alarm.png';Image.fromarray(mask).save(assets/alarm_file)
+   thumbnail=rgb.copy();draw=ImageDraw.Draw(thumbnail);fill={'CONFLICT':'#ff0000','U':'#000000','T':'#e8b620'}[e['group']];radius=5 if e['group']=='CONFLICT' else 1
+   pos=np.unique(at[target],axis=0)
+   for u,v in pos:draw.ellipse((u-radius,v-radius,u+radius,v+radius),fill=fill,outline=None if e['group']=='CONFLICT' else 'white')
+   thumb=f'{e["id"]}_v{vno}_thumb.jpg';thumbnail.crop(tuple(box)).resize((420,285)).save(assets/thumb,quality=86)
+   e['views'].append({'view':vno,'frame':fid,'RGB_file':f'assets/frame{fid:06d}.jpg','RGB_sha256':rgb_sha,'alarm_file':'assets/'+alarm_file,'alarm_sha256':sha(assets/alarm_file),'thumbnail':'assets/'+thumb,'crop_xyxy':box,'visible_counts':{k:int(np.sum(states[shown]==s)) for k,s in GROUPS.items()},'visible_target_points':int(target.sum()),'reused_original_C_U_view':previous is not None})
+   projection_checks+=int(target.sum())
+  e['viewable']=bool(e['views']);e['unviewable_reason']=None if e['views'] else '候选来源处理帧201至300中未找到 2 cm 深度一致的该类状态点；可用 3D 定位并选择'
+  e.pop('chosen_frames',None)
+ # Frozen manifests do not change when users begin selecting or later scenes finish.
+ manifest={'scene':scene,'method':'P1-A1-strict-vote whole-connected C/U/T candidate selection after committed checkpoint200 branch B, continuation to300','groups':{k:len(ranked[k]) for k in GROUPS},'entries':entries,'unique_components':canonical,'surface_file':str(surface),'surface_sha256':sha(surface),'evidence_file':str(evidence),'evidence_sha256':sha(evidence),'graph_file':str(graphpath),'graph_sha256':sha(graphpath),'camera_config_file':str(config),'camera_config_sha256':sha(config),'membership_sha256':sha(data/'membership.npz'),'ranking':'CONFLICT, U, T separately; absolute native point count descending, component ID ascending for ties','state_definition':'native state C=3/U=0/T=1 AND strict-vote final P1-A1 instance_id <= 0','no_partition':True,'one_ring_bridge':True,'no_GT_used':True,'repair_applied':True,'repair50_applied':True,'repair100_applied':True,'current_checkpoint_repaired':False,'previous_committed_checkpoint':200,'original_C_U_unchanged':False,'depth_tolerance_m':DEPTH_TOLERANCE,'history_frames':300,'checkpoint':300,'branch':'B','candidate_source_policy':'new_mapping_frames_201_to300','candidate_processed_frame_range':[201,300],'candidate_raw_frame_range':[1000,1495],'candidate_search_frame_ids':list(range(1000,1496,5)),'scoring_history_frame_ids':list(range(0,1496,5)),'generated_at':time.time()}
+ for k in GROUPS:
+  counts=[e['count'] for e in entries if e['group']==k];assert counts==[c['counts'][k] for c in ranked[k]]
+ with (data/'ranking.csv').open('w',encoding='utf-8-sig',newline='') as f:
+  w=csv.DictWriter(f,fieldnames=['id','uid','group','rank','count','CONFLICT','U','T','views']);w.writeheader()
+  for e in entries:w.writerow({**{k:e[k] for k in ['id','uid','group','rank','count']},**e['counts'],'views':len(e['views'])})
+ write(data/'verification.json',{'status':'PASS','scene':scene,'groups':manifest['groups'],'unique_ROIs':len(canonical),'up_to_top20_each_exact':True,'no_partition':True,'C_U_existing_ROIs_views_unchanged':False,'target_projected_points_checked':projection_checks,'no_GT_used':True,'no_map_change':True,'baseline_sha256':manifest['surface_sha256'],'unviewable_entries':[e['id'] for e in entries if not e['views']]})
+ write(data/'candidate_manifest.json',manifest);status('就绪');log('SELECTION_CANDIDATES_READY',scene,manifest['groups'],'unique',len(canonical))
+
+if __name__=='__main__':
+ p=argparse.ArgumentParser();p.add_argument('scene',choices=SCENES);a=p.parse_args()
+ try:build(a.scene)
+ except Exception as ex:write(ROOT/a.scene/'progress.json',{'scene':a.scene,'stage':'失败','error':str(ex),'updated_at':time.time()});raise
